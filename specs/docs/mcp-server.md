@@ -27,14 +27,6 @@ Connect any MCP client that supports remote servers (Streamable HTTP). There's n
 When you connect, your client opens a browser window to log in to Resend and approve access using OAuth.
 
 <Tabs>
-  <Tab title="Claude Code">
-    ```bash theme={"theme":{"light":"github-light","dark":"vesper"}}
-    claude plugin install resend@claude-plugins-official
-    ```
-
-    Then run `/mcp` in Claude Code and select **resend** to complete the OAuth login. The plugin bundles the MCP server and every [Resend skill](/docs/resend-skill).
-  </Tab>
-
   <Tab title="Claude">
     Connect Resend in one click from the [connector directory](https://claude.ai/directory/connectors/resend). The connector bundles the MCP server and every Resend skill.
 
@@ -45,8 +37,35 @@ When you connect, your client opens a browser window to log in to Resend and app
     ```
   </Tab>
 
+  <Tab title="Copilot">
+    To use GitHub Copilot in VS Code, add the following to your `settings.json`:
+
+    ```json theme={"theme":{"light":"github-light","dark":"vesper"}}
+    {
+      "mcp": {
+        "servers": {
+          "resend": {
+            "type": "http",
+            "url": "https://mcp.resend.com/mcp"
+          }
+        }
+      }
+    }
+    ```
+  </Tab>
+
+  <Tab title="Claude Code">
+    ```bash theme={"theme":{"light":"github-light","dark":"vesper"}}
+    claude plugin install resend@claude-plugins-official
+    ```
+
+    Then run `/mcp` in Claude Code and select **resend** to complete the OAuth login. The plugin bundles the MCP server and every [Resend skill](/docs/resend-skill).
+  </Tab>
+
   <Tab title="Cursor">
-    Open the command palette and choose "Cursor Settings" > "MCP" > "Add new global MCP server".
+    Run `/add-plugin resend` in Cursor's chat to install the official plugin. It bundles the MCP server and every Resend skill.
+
+    To connect only the MCP server, open the command palette and choose "Cursor Settings" > "MCP" > "Add new global MCP server".
 
     ```json theme={"theme":{"light":"github-light","dark":"vesper"}}
     {
@@ -69,6 +88,23 @@ When you connect, your client opens a browser window to log in to Resend and app
     ```
   </Tab>
 
+  <Tab title="OpenCode">
+    Add to your `opencode.json` config:
+
+    ```json theme={"theme":{"light":"github-light","dark":"vesper"}}
+    {
+      "$schema": "https://opencode.ai/config.json",
+      "mcp": {
+        "resend": {
+          "type": "remote",
+          "url": "https://mcp.resend.com/mcp",
+          "enabled": true
+        }
+      }
+    }
+    ```
+  </Tab>
+
   <Tab title="Antigravity">
     Add this to your `~/.gemini/config/mcp_config.json` file:
 
@@ -83,29 +119,43 @@ When you connect, your client opens a browser window to log in to Resend and app
     ```
   </Tab>
 
-  <Tab title="Copilot">
-    To use GitHub Copilot in VS Code, add the following to your `settings.json`:
+  <Tab title="Gemini CLI">
+    Add this to your `~/.gemini/settings.json` file:
 
     ```json theme={"theme":{"light":"github-light","dark":"vesper"}}
     {
-      "mcp": {
-        "servers": {
-          "resend": {
-            "type": "http",
-            "url": "https://mcp.resend.com/mcp"
-          }
+      "mcpServers": {
+        "resend": {
+          "httpUrl": "https://mcp.resend.com/mcp"
         }
       }
     }
     ```
   </Tab>
 
-  <Tab title="Windsurf">
+  <Tab title="Devin">
+    In Devin, open **Settings** > **Connections** > **MCP Servers** and click **Add a custom MCP**. See the [Devin guide](/docs/guides/devin) for the full step-by-step.
+
     ```json theme={"theme":{"light":"github-light","dark":"vesper"}}
     {
       "mcpServers": {
         "resend": {
-          "serverUrl": "https://mcp.resend.com/mcp"
+          "transport": "HTTP",
+          "url": "https://mcp.resend.com/mcp"
+        }
+      }
+    }
+    ```
+  </Tab>
+
+  <Tab title="Zed">
+    Add this to your Zed `settings.json`:
+
+    ```json theme={"theme":{"light":"github-light","dark":"vesper"}}
+    {
+      "context_servers": {
+        "resend": {
+          "url": "https://mcp.resend.com/mcp"
         }
       }
     }
@@ -123,6 +173,17 @@ When you connect, your client opens a browser window to log in to Resend and app
     }
     ```
   </Tab>
+
+  <Tab title="fx">
+    [fx](https://fx.sh) is a tiny, open, native coding agent from Vercel Labs. Install it, then add Resend as an HTTP server:
+
+    ```bash theme={"theme":{"light":"github-light","dark":"vesper"}}
+    curl -fsSL https://fx.sh/setup.sh | bash
+    fx mcp add --transport http resend https://mcp.resend.com/mcp
+    ```
+
+    fx completes the OAuth login the first time it connects. Inside the fx shell, the equivalent is `/mcp add --transport http resend https://mcp.resend.com/mcp`.
+  </Tab>
 </Tabs>
 
 ***
@@ -137,7 +198,7 @@ When you connect, your client opens a browser window to log in to Resend and app
   </Tab>
 
   <Tab title="JSON config">
-    For clients configured with JSON (Cursor, Windsurf, and others), add an `Authorization` header:
+    For clients configured with JSON (Cursor, Zed, and others), add an `Authorization` header:
 
     ```json theme={"theme":{"light":"github-light","dark":"vesper"}}
     {
@@ -168,22 +229,8 @@ Choose your preferred mode and client below to get started. Remember to replace 
 ### Stdio Transport (Default)
 
 <Tabs>
-  <Tab title="Claude Code">
-    ```bash theme={"theme":{"light":"github-light","dark":"vesper"}}
-    claude mcp add resend -e RESEND_API_KEY=re_xxxxxxxxx -- npx -y resend-mcp
-    ```
-  </Tab>
-
-  <Tab title="Codex">
-    ```bash theme={"theme":{"light":"github-light","dark":"vesper"}}
-    codex mcp add resend \
-      --env RESEND_API_KEY=re_xxxxxxxxx \
-      -- npx -y resend-mcp
-    ```
-  </Tab>
-
-  <Tab title="Antigravity">
-    Add this to your `~/.gemini/config/mcp_config.json` file:
+  <Tab title="Claude Desktop">
+    Open Claude Desktop settings > "Developer" tab > "Edit Config".
 
     ```json theme={"theme":{"light":"github-light","dark":"vesper"}}
     {
@@ -197,6 +244,32 @@ Choose your preferred mode and client below to get started. Remember to replace 
         }
       }
     }
+    ```
+  </Tab>
+
+  <Tab title="Copilot">
+    To use GitHub Copilot in VS Code, add the following to your `settings.json`:
+
+    ```json theme={"theme":{"light":"github-light","dark":"vesper"}}
+    {
+      "mcp": {
+        "servers": {
+          "resend": {
+            "command": "npx",
+            "args": ["-y", "resend-mcp"],
+            "env": {
+              "RESEND_API_KEY": "re_xxxxxxxxx"
+            }
+          }
+        }
+      }
+    }
+    ```
+  </Tab>
+
+  <Tab title="Claude Code">
+    ```bash theme={"theme":{"light":"github-light","dark":"vesper"}}
+    claude mcp add resend -e RESEND_API_KEY=re_xxxxxxxxx -- npx -y resend-mcp
     ```
   </Tab>
 
@@ -218,57 +291,11 @@ Choose your preferred mode and client below to get started. Remember to replace 
     ```
   </Tab>
 
-  <Tab title="Claude Desktop">
-    Open Claude Desktop settings > "Developer" tab > "Edit Config".
-
-    ```json theme={"theme":{"light":"github-light","dark":"vesper"}}
-    {
-      "mcpServers": {
-        "resend": {
-          "command": "npx",
-          "args": ["-y", "resend-mcp"],
-          "env": {
-            "RESEND_API_KEY": "re_xxxxxxxxx"
-          }
-        }
-      }
-    }
-    ```
-  </Tab>
-
-  <Tab title="Copilot">
-    To use Github Copilot in VS Code, add the following to your `settings.json`:
-
-    ```json theme={"theme":{"light":"github-light","dark":"vesper"}}
-    {
-      "mcp": {
-        "servers": {
-          "resend": {
-            "command": "npx",
-            "args": ["-y", "resend-mcp"],
-            "env": {
-              "RESEND_API_KEY": "re_xxxxxxxxx"
-            }
-          }
-        }
-      }
-    }
-    ```
-  </Tab>
-
-  <Tab title="Gemini CLI">
-    ```json theme={"theme":{"light":"github-light","dark":"vesper"}}
-    {
-      "mcpServers": {
-        "resend": {
-          "command": "npx",
-          "args": ["-y", "resend-mcp"],
-          "env": {
-            "RESEND_API_KEY": "re_xxxxxxxxx"
-          }
-        }
-      }
-    }
+  <Tab title="Codex">
+    ```bash theme={"theme":{"light":"github-light","dark":"vesper"}}
+    codex mcp add resend \
+      --env RESEND_API_KEY=re_xxxxxxxxx \
+      -- npx -y resend-mcp
     ```
   </Tab>
 
@@ -292,10 +319,65 @@ Choose your preferred mode and client below to get started. Remember to replace 
     ```
   </Tab>
 
-  <Tab title="Windsurf">
+  <Tab title="Antigravity">
+    Add this to your `~/.gemini/config/mcp_config.json` file:
+
     ```json theme={"theme":{"light":"github-light","dark":"vesper"}}
     {
       "mcpServers": {
+        "resend": {
+          "command": "npx",
+          "args": ["-y", "resend-mcp"],
+          "env": {
+            "RESEND_API_KEY": "re_xxxxxxxxx"
+          }
+        }
+      }
+    }
+    ```
+  </Tab>
+
+  <Tab title="Gemini CLI">
+    ```json theme={"theme":{"light":"github-light","dark":"vesper"}}
+    {
+      "mcpServers": {
+        "resend": {
+          "command": "npx",
+          "args": ["-y", "resend-mcp"],
+          "env": {
+            "RESEND_API_KEY": "re_xxxxxxxxx"
+          }
+        }
+      }
+    }
+    ```
+  </Tab>
+
+  <Tab title="Devin">
+    In Devin, open **Settings** > **Connections** > **MCP Servers** and click **Add a custom MCP**. See the [Devin guide](/docs/guides/devin) for the full step-by-step.
+
+    ```json theme={"theme":{"light":"github-light","dark":"vesper"}}
+    {
+      "mcpServers": {
+        "resend": {
+          "command": "npx",
+          "args": ["-y", "resend-mcp"],
+          "env": {
+            "RESEND_API_KEY": "re_xxxxxxxxx",
+            "SENDER_EMAIL_ADDRESS": "onboarding@resend.dev"
+          }
+        }
+      }
+    }
+    ```
+  </Tab>
+
+  <Tab title="Zed">
+    Add this to your Zed `settings.json`:
+
+    ```json theme={"theme":{"light":"github-light","dark":"vesper"}}
+    {
+      "context_servers": {
         "resend": {
           "command": "npx",
           "args": ["-y", "resend-mcp"],
@@ -324,18 +406,17 @@ Choose your preferred mode and client below to get started. Remember to replace 
     ```
   </Tab>
 
-  <Tab title="Devin">
-    In Devin, open **Settings** > **Connections** > **MCP Servers** and click **Add a custom MCP**. See the [Devin guide](/docs/guides/devin) for the full step-by-step.
+  <Tab title="fx">
+    Add this to your `~/.fx/mcp.json` file:
 
     ```json theme={"theme":{"light":"github-light","dark":"vesper"}}
     {
-      "mcpServers": {
+      "mcp": {
         "resend": {
-          "command": "npx",
-          "args": ["-y", "resend-mcp"],
-          "env": {
-            "RESEND_API_KEY": "re_xxxxxxxxx",
-            "SENDER_EMAIL_ADDRESS": "onboarding@resend.dev"
+          "type": "stdio",
+          "command": ["npx", "-y", "resend-mcp"],
+          "environment": {
+            "RESEND_API_KEY": "re_xxxxxxxxx"
           }
         }
       }

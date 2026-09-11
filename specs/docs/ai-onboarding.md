@@ -195,7 +195,7 @@ Claude and Codex also offer one-click installs that bundle the MCP server and ev
 * [Resend plugin for Codex](https://chatgpt.com/plugins/plugin_asdk_app_6a3c407853888191beddc2151c2b6f8b?open_in_codex)
 
 <Card title="MCP Server" icon="microchip-ai" href="/docs/mcp-server">
-  View setup instructions for Claude, Cursor, Codex, Copilot, Windsurf,
+  View setup instructions for Claude, Cursor, Codex, Copilot, Devin,
   Antigravity, and more.
 </Card>
 
