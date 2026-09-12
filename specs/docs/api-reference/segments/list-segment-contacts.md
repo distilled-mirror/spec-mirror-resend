@@ -124,7 +124,7 @@ export const ResendParamField = ({children, body, path, ...props}) => {
 
   resend.api_key = 're_xxxxxxxxx'
 
-  contacts = resend.Contacts.list('78261eea-8f8b-4381-83c6-79fa7120f1cf')
+  contacts = resend.Contacts.list(segment_id='78261eea-8f8b-4381-83c6-79fa7120f1cf')
   ```
 
   ```rust Rust theme={"theme":{"light":"github-light","dark":"vesper"}}

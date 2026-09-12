@@ -120,6 +120,7 @@
     "api-reference/webhooks/list-events.md",
     "api-reference/webhooks/list-webhooks.md",
     "api-reference/webhooks/replay-event.md",
+    "api-reference/webhooks/rotate-signing-secret.md",
     "api-reference/webhooks/update-webhook.md",
     "api-vs-sdk.md",
     "appwrite-integration.md",

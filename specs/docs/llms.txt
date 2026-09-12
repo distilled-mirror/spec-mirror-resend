@@ -353,6 +353,7 @@
 - [List Webhooks](https://resend.com/docs/api-reference/webhooks/list-webhooks.md): Retrieve a list of webhooks for the authenticated user.
 - [Update Webhook](https://resend.com/docs/api-reference/webhooks/update-webhook.md): Update an existing webhook configuration.
 - [Delete Webhook](https://resend.com/docs/api-reference/webhooks/delete-webhook.md): Remove an existing webhook.
+- [Rotate Signing Secret](https://resend.com/docs/api-reference/webhooks/rotate-signing-secret.md): Generate a new signing secret for a webhook.
 - [List Events](https://resend.com/docs/api-reference/webhooks/list-events.md): Retrieve a list of events delivered to a webhook.
 - [Retrieve Event](https://resend.com/docs/api-reference/webhooks/get-event.md): Retrieve the details of a single event delivered to a webhook.
 - [Replay Event](https://resend.com/docs/api-reference/webhooks/replay-event.md): Queue an additional delivery attempt for a webhook event.
