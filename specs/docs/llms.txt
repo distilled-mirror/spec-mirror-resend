@@ -267,6 +267,7 @@
 - [Create Broadcast](https://resend.com/docs/api-reference/broadcasts/create-broadcast.md): Create a new broadcast to send to your contacts.
 - [Send Broadcast](https://resend.com/docs/api-reference/broadcasts/send-broadcast.md): Start sending broadcasts to your audience through the Resend API.
 - [Cancel Broadcast](https://resend.com/docs/api-reference/broadcasts/cancel-broadcast.md): Cancel a queued or scheduled broadcast.
+- [Duplicate Broadcast](https://resend.com/docs/api-reference/broadcasts/duplicate-broadcast.md): Duplicate a broadcast.
 - [Retrieve Broadcast](https://resend.com/docs/api-reference/broadcasts/get-broadcast.md): Retrieve a single broadcast.
 - [List Broadcasts](https://resend.com/docs/api-reference/broadcasts/list-broadcasts.md): Retrieve a list of broadcast.
 - [Update Broadcast](https://resend.com/docs/api-reference/broadcasts/update-broadcast.md): Update a broadcast to send to your contacts.

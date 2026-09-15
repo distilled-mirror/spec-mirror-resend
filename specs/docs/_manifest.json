@@ -22,6 +22,7 @@
     "api-reference/broadcasts/cancel-broadcast.md",
     "api-reference/broadcasts/create-broadcast.md",
     "api-reference/broadcasts/delete-broadcast.md",
+    "api-reference/broadcasts/duplicate-broadcast.md",
     "api-reference/broadcasts/get-broadcast.md",
     "api-reference/broadcasts/list-broadcast-clicked-links.md",
     "api-reference/broadcasts/list-broadcast-recipients.md",
