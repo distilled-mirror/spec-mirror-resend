@@ -146,6 +146,15 @@ with cursors. See [Pagination](/docs/api-reference/pagination) for how `after` a
   );
   ```
 
+  ```php PHP theme={"theme":{"light":"github-light","dark":"vesper"}}
+  $resend = Resend::client('re_xxxxxxxxx');
+
+  $resend->broadcasts->recipients('559ac32e-9ef5-46fb-82a1-b76b840c0f7b', [
+    'type' => 'clicked',
+    'limit' => 20
+  ]);
+  ```
+
   ```py Python theme={"theme":{"light":"github-light","dark":"vesper"}}
   import resend
 

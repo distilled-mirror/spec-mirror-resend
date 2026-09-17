@@ -111,6 +111,14 @@ paginated with cursors. See [Pagination](/docs/api-reference/pagination) for how
   );
   ```
 
+  ```php PHP theme={"theme":{"light":"github-light","dark":"vesper"}}
+  $resend = Resend::client('re_xxxxxxxxx');
+
+  $resend->broadcasts->clickedLinks->list('559ac32e-9ef5-46fb-82a1-b76b840c0f7b',[
+    'limit' => 20
+  +]);
+  ```
+
   ```py Python theme={"theme":{"light":"github-light","dark":"vesper"}}
   import resend
 
