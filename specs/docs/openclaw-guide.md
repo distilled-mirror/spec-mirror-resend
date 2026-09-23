@@ -18,9 +18,16 @@ Giving your agent an inbox enables it to:
 
 ## How to set up an inbox for OpenClaw
 
-### Step 1: Install the skill
+### Step 1: Connect Resend
 
-Ask your agent to install the skill:
+Add the remote MCP server, then sign in. This is the same setup as the [OpenClaw page](https://resend.com/openclaw).
+
+```bash theme={"theme":{"light":"github-light","dark":"vesper"}}
+openclaw mcp add resend --url https://mcp.resend.com/mcp --transport streamable-http
+openclaw mcp login resend
+```
+
+Ask your agent to install the skills:
 
 ```
 Let's get you set up with an email inbox! Install the resend-skills from https://github.com/resend/resend-skills and review them before continuing.

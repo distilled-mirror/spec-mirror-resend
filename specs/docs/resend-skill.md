@@ -16,6 +16,8 @@ This skill is part of the [resend-skills](https://github.com/resend/resend-skill
 npx skills add resend/resend-skills
 ```
 
+Clients that support the [Agent Plugins](https://agent-plugins.org) spec can install the same repository as a plugin. That install adds these skills and the [remote MCP server](/docs/mcp-server) together. The [MCP server docs](/docs/mcp-server#remote-mcp-server) list the install command for each supported client.
+
 ## Advantages
 
 Build with our official recommendations for sending emails with Resend.

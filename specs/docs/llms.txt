@@ -208,7 +208,7 @@
 - [Template emails with React Email](https://resend.com/docs/knowledge-base/template-emails-with-react-email.md): Author email templates as React components and upload them to Resend with the CLI.
 - [Embed the React Email editor in your app](https://resend.com/docs/knowledge-base/embed-react-email-editor.md): Add the open-source React Email editor to your application: base component, styling, Inspector sidebar, and custom extensions.
 - [Building an OAuth client for Resend](https://resend.com/docs/guides/building-a-resend-oauth-client.md): Implement an OAuth 2.1 + PKCE client against the Resend API, from scratch or with a library.
-- [Vercel Marketplace Integration](https://resend.com/docs/guides/vercel-marketplace-integration.md): Create and connect a Resend account directly from Vercel using the dashboard or the CLI.
+- [Vercel Marketplace Integration](https://resend.com/docs/guides/vercel-marketplace-integration.md): Create and connect a Resend account directly from Vercel using the dashboard, the CLI, or v0.
 - [Send emails with n8n and Resend](https://resend.com/docs/knowledge-base/n8n-integration.md): Learn how to install and use the official Resend node for n8n to send emails, manage contacts, handle webhooks, and more.
 - [Send emails with Devin and Resend](https://resend.com/docs/guides/devin.md): Learn how to install the Resend MCP server in Devin.ai so your agent can send emails, manage contacts, and run broadcasts.
 - [Turn Paper designs into Resend emails](https://resend.com/docs/guides/paper.md): Learn how to combine the Paper MCP server and the Resend MCP server so your agent can turn a Paper design into a template or broadcast in your Resend account.

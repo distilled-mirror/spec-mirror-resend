@@ -189,14 +189,14 @@ https://mcp.resend.com/mcp
 
 When you connect, your client authenticates with OAuth by opening a browser to log in to Resend. Clients that can't complete a browser login can pass an API key as a Bearer token instead. You can also run the server locally with `npx` using the `resend-mcp` package on NPM.
 
-Claude and Codex also offer one-click installs that bundle the MCP server and every Resend skill:
+The [Resend plugin](https://github.com/resend/resend-skills) follows the [Agent Plugins](https://agent-plugins.org) spec. On clients whose landing page installs that plugin, it adds the remote MCP server and the Resend skills together. Setup for each client is on the [MCP server page](/docs/mcp-server), and it matches the page at resend.com. Claude and Codex also keep these one-click installs:
 
 * [Resend connector for Claude](https://claude.ai/directory/connectors/resend)
 * [Resend plugin for Codex](https://chatgpt.com/plugins/plugin_asdk_app_6a3c407853888191beddc2151c2b6f8b?open_in_codex)
 
 <Card title="MCP Server" icon="microchip-ai" href="/docs/mcp-server">
-  View setup instructions for Claude, Cursor, Codex, Copilot, Devin,
-  Antigravity, and more.
+  View setup instructions for Claude, Cursor, Codex, Copilot, Hermes, OpenClaw,
+  and more.
 </Card>
 
 ## Resend CLI

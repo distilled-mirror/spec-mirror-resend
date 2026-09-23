@@ -26,15 +26,21 @@ Connect any MCP client that supports remote servers (Streamable HTTP). There's n
 
 When you connect, your client opens a browser window to log in to Resend and approve access using OAuth.
 
+The [Resend plugin](https://github.com/resend/resend-skills) follows the [Agent Plugins](https://agent-plugins.org) spec. On clients that install that plugin, it adds this remote MCP server and the adjacent [Resend skills](/docs/resend-skill) together. `plugin.json` identifies the plugin, `skills/` holds the skills, and `mcp.json` points at `https://mcp.resend.com/mcp`.
+
+Each tab below matches the install on that client's page at resend.com.
+
 <Tabs>
   <Tab title="Claude">
-    Connect Resend in one click from the [connector directory](https://claude.ai/directory/connectors/resend). The connector bundles the MCP server and every Resend skill.
+    Connect Resend in one click from the [connector directory](https://claude.ai/directory/connectors/resend). The connector installs the MCP server and every Resend skill.
 
     To install only the MCP server, add it manually in Claude (web or desktop) from **Settings** > **Connectors** > **Add custom connector**:
 
     ```
     https://mcp.resend.com/mcp
     ```
+
+    See the [Claude page](https://resend.com/claude).
   </Tab>
 
   <Tab title="Copilot">
@@ -52,6 +58,14 @@ When you connect, your client opens a browser window to log in to Resend and app
       }
     }
     ```
+
+    Install the skills separately:
+
+    ```bash theme={"theme":{"light":"github-light","dark":"vesper"}}
+    npx skills add resend/resend-skills
+    ```
+
+    See the [GitHub Copilot page](https://resend.com/github-copilot).
   </Tab>
 
   <Tab title="Claude Code">
@@ -59,11 +73,13 @@ When you connect, your client opens a browser window to log in to Resend and app
     claude plugin install resend@claude-plugins-official
     ```
 
-    Then run `/mcp` in Claude Code and select **resend** to complete the OAuth login. The plugin bundles the MCP server and every [Resend skill](/docs/resend-skill).
+    Then run `/mcp` in Claude Code and select **resend** to complete the OAuth login. The plugin installs the remote MCP server and every [Resend skill](/docs/resend-skill).
+
+    See the [Claude Code page](https://resend.com/claude-code).
   </Tab>
 
   <Tab title="Cursor">
-    Run `/add-plugin resend` in Cursor's chat to install the official plugin. It bundles the MCP server and every Resend skill.
+    Run `/add-plugin resend` in Cursor's chat to install the official plugin. It follows the Agent Plugins spec and installs the remote MCP server and every Resend skill.
 
     To connect only the MCP server, open the command palette and choose "Cursor Settings" > "MCP" > "Add new global MCP server".
 
@@ -76,16 +92,61 @@ When you connect, your client opens a browser window to log in to Resend and app
       }
     }
     ```
+
+    See the [Cursor page](https://resend.com/cursor).
   </Tab>
 
   <Tab title="Codex">
-    Install the [Resend plugin](https://chatgpt.com/plugins/plugin_asdk_app_6a3c407853888191beddc2151c2b6f8b?open_in_codex) in one click. It bundles the MCP server and every Resend skill.
+    Install the [Resend plugin](https://chatgpt.com/plugins/plugin_asdk_app_6a3c407853888191beddc2151c2b6f8b?open_in_codex) in one click. It follows the Agent Plugins spec and installs the remote MCP server and every Resend skill.
 
     To connect the MCP server on its own, use the Codex CLI:
 
     ```bash theme={"theme":{"light":"github-light","dark":"vesper"}}
     codex mcp add resend --url https://mcp.resend.com/mcp
     ```
+
+    See the [Codex page](https://resend.com/codex).
+  </Tab>
+
+  <Tab title="Hermes">
+    Install the official Resend plugin. One command adds the remote MCP server and every Resend skill.
+
+    ```bash theme={"theme":{"light":"github-light","dark":"vesper"}}
+    hermes plugins install resend/resend-skills --enable
+    ```
+
+    Store `RESEND_API_KEY` so Hermes can send on your behalf. You will be prompted on first use.
+
+    See the [Hermes page](https://resend.com/hermes).
+  </Tab>
+
+  <Tab title="Grok Bot">
+    In Grok Bot, install the Resend plugin. That adds every Resend skill.
+
+    ```
+    /install-plugin resend
+
+    # Then add RESEND_API_KEY so Grok Bot can send on your behalf.
+    ```
+
+    See the [Grok Bot page](https://resend.com/grokbot).
+  </Tab>
+
+  <Tab title="OpenClaw">
+    Add the remote MCP server, then sign in:
+
+    ```bash theme={"theme":{"light":"github-light","dark":"vesper"}}
+    openclaw mcp add resend --url https://mcp.resend.com/mcp --transport streamable-http
+    openclaw mcp login resend
+    ```
+
+    Ask OpenClaw to install the skills:
+
+    ```
+    Install the Resend skills: https://github.com/resend/resend-skills
+    ```
+
+    See the [OpenClaw page](https://resend.com/openclaw). For an inbox, see the [OpenClaw guide](/docs/openclaw-guide).
   </Tab>
 
   <Tab title="OpenCode">
