@@ -46,6 +46,9 @@ Newer list endpoints always return paginated results:
 * [List Emails](/docs/api-reference/emails/list-emails)
 * [List Templates](/docs/api-reference/templates/list-templates)
 * [List Topics](/docs/api-reference/topics/list-topics)
+* [List Inboxes](/docs/api-reference/inboxes/list-inboxes)
+* [List Threads](/docs/api-reference/inboxes/list-threads)
+* [List Drafts](/docs/api-reference/inboxes/list-drafts)
 
 ## Parameters
 

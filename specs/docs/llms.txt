@@ -209,6 +209,7 @@
 - [Embed the React Email editor in your app](https://resend.com/docs/knowledge-base/embed-react-email-editor.md): Add the open-source React Email editor to your application: base component, styling, Inspector sidebar, and custom extensions.
 - [Building an OAuth client for Resend](https://resend.com/docs/guides/building-a-resend-oauth-client.md): Implement an OAuth 2.1 + PKCE client against the Resend API, from scratch or with a library.
 - [Vercel Marketplace Integration](https://resend.com/docs/guides/vercel-marketplace-integration.md): Create and connect a Resend account directly from Vercel using the dashboard, the CLI, or v0.
+- [Stripe Projects Integration](https://resend.com/docs/guides/stripe-projects-integration.md): Provision Resend for a project directly from Stripe and start sending email.
 - [Send emails with n8n and Resend](https://resend.com/docs/knowledge-base/n8n-integration.md): Learn how to install and use the official Resend node for n8n to send emails, manage contacts, handle webhooks, and more.
 - [Send emails with Devin and Resend](https://resend.com/docs/guides/devin.md): Learn how to install the Resend MCP server in Devin.ai so your agent can send emails, manage contacts, and run broadcasts.
 - [Turn Paper designs into Resend emails](https://resend.com/docs/guides/paper.md): Learn how to combine the Paper MCP server and the Resend MCP server so your agent can turn a Paper design into a template or broadcast in your Resend account.
@@ -264,6 +265,28 @@
 - [List Received Emails](https://resend.com/docs/api-reference/emails/list-received-emails.md): Retrieve a list of received emails for the authenticated user.
 - [Retrieve Attachment](https://resend.com/docs/api-reference/emails/retrieve-received-email-attachment.md): Retrieve a single attachment from a received email.
 - [List Attachments](https://resend.com/docs/api-reference/emails/list-received-email-attachments.md): Retrieve a list of attachments from a received email.
+- [Create Inbox](https://resend.com/docs/api-reference/inboxes/create-inbox.md): Create an inbox to send, receive and organize email.
+- [Retrieve Inbox](https://resend.com/docs/api-reference/inboxes/get-inbox.md): Retrieve a single inbox by its ID.
+- [List Inboxes](https://resend.com/docs/api-reference/inboxes/list-inboxes.md): Retrieve a list of inboxes for the authenticated user.
+- [Update Inbox](https://resend.com/docs/api-reference/inboxes/update-inbox.md): Update the internal inbox name or the name recipients see when sending.
+- [Delete Inbox](https://resend.com/docs/api-reference/inboxes/delete-inbox.md): Remove an existing inbox.
+- [Create Label](https://resend.com/docs/api-reference/inboxes/create-label.md): Create a label on an inbox.
+- [List Labels](https://resend.com/docs/api-reference/inboxes/list-labels.md): Retrieve the labels on an inbox.
+- [Update Label](https://resend.com/docs/api-reference/inboxes/update-label.md): Rename or recolor an existing label.
+- [Delete Label](https://resend.com/docs/api-reference/inboxes/delete-label.md): Remove an existing label from an inbox.
+- [List Threads](https://resend.com/docs/api-reference/inboxes/list-threads.md): Retrieve the threads in one folder of an inbox.
+- [Retrieve Thread](https://resend.com/docs/api-reference/inboxes/get-thread.md): Retrieve a thread with its full message history.
+- [Update Thread](https://resend.com/docs/api-reference/inboxes/update-thread.md): Mark a thread read or unread, move it, or apply a label.
+- [Delete Thread](https://resend.com/docs/api-reference/inboxes/delete-thread.md): Move a thread to the trash folder.
+- [Retrieve Thread Email](https://resend.com/docs/api-reference/inboxes/get-thread-email.md): Retrieve a single message from a thread.
+- [Reply to Thread Email](https://resend.com/docs/api-reference/inboxes/reply-thread-email.md): Send a reply to a message in an inbox thread.
+- [Forward Thread Email](https://resend.com/docs/api-reference/inboxes/forward-thread-email.md): Forward a message in an inbox thread to new recipients.
+- [Create Draft](https://resend.com/docs/api-reference/inboxes/create-draft.md): Create a draft on an inbox, either as a new conversation or as a reply.
+- [List Drafts](https://resend.com/docs/api-reference/inboxes/list-drafts.md): Retrieve the drafts on an inbox.
+- [Retrieve Draft](https://resend.com/docs/api-reference/inboxes/get-draft.md): Retrieve a single draft by its ID.
+- [Update Draft](https://resend.com/docs/api-reference/inboxes/update-draft.md): Update fields on an existing draft.
+- [Delete Draft](https://resend.com/docs/api-reference/inboxes/delete-draft.md): Discard an existing draft.
+- [Send Draft](https://resend.com/docs/api-reference/inboxes/send-draft.md): Send an existing draft from the inbox address.
 - [Create Broadcast](https://resend.com/docs/api-reference/broadcasts/create-broadcast.md): Create a new broadcast to send to your contacts.
 - [Send Broadcast](https://resend.com/docs/api-reference/broadcasts/send-broadcast.md): Start sending broadcasts to your audience through the Resend API.
 - [Cancel Broadcast](https://resend.com/docs/api-reference/broadcasts/cancel-broadcast.md): Cancel a queued or scheduled broadcast.
