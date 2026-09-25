@@ -10,7 +10,7 @@ Multi-factor authentication (MFA), also called two-factor authentication (2FA), 
 
 ## Enable MFA
 
-To enable MFA to your Resend account:
+To enable MFA on your Resend account:
 
 1. Navigate to your [**Profile**](https://resend.com/profile) page.
 2. Click **Enable MFA**.
@@ -21,7 +21,7 @@ Once MFA is enabled, you'll be asked for a code from your authenticator app when
 
 ## Disable MFA
 
-To turn off MFA on your Resend account:
+To disable MFA on your Resend account:
 
 1. Navigate to your [**Profile**](https://resend.com/profile) page.
 2. Click **Revoke Access**.

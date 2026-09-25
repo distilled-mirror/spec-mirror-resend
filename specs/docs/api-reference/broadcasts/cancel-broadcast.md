@@ -83,7 +83,7 @@ You can only cancel Broadcasts that are `queued` or `scheduled`. When you cancel
   ```go Go theme={"theme":{"light":"github-light","dark":"vesper"}}
   package main
 
-  import "github.com/resend/resend-go/v3"
+  import "github.com/resend/resend-go/v4"
 
   func main() {
   	client := resend.NewClient("re_xxxxxxxxx")
@@ -109,6 +109,9 @@ You can only cancel Broadcasts that are `queued` or `scheduled`. When you cancel
   ```
 
   ```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
+  import com.resend.Resend;
+  import com.resend.services.broadcasts.model.CancelBroadcastResponseSuccess;
+
   Resend resend = new Resend("re_xxxxxxxxx");
 
   CancelBroadcastResponseSuccess data = resend.broadcasts().cancel("559ac32e-9ef5-46fb-82a1-b76b840c0f7b");

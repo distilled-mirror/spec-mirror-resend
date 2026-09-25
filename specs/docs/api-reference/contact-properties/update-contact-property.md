@@ -79,7 +79,7 @@ export const ResendParamField = ({children, body, path, ...props}) => {
 
   resend.api_key = 're_xxxxxxxxx'
 
-  params = {
+  params: resend.ContactProperties.UpdateParams = {
       "id": "b6d24b8e-af0b-4c3c-be0c-359bbd97381e",
       "fallback_value": "Example Company",
   }
@@ -105,7 +105,7 @@ export const ResendParamField = ({children, body, path, ...props}) => {
   	"context"
   	"fmt"
 
-  	"github.com/resend/resend-go/v3"
+  	"github.com/resend/resend-go/v4"
   )
 
   func main() {
@@ -143,10 +143,12 @@ export const ResendParamField = ({children, body, path, ...props}) => {
   ```
 
   ```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
-  import com.resend.*;
+  import com.resend.Resend;
+  import com.resend.core.exception.ResendException;
+  import com.resend.services.contactproperties.model.UpdateContactPropertyOptions;
 
   public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ResendException {
       Resend resend = new Resend("re_xxxxxxxxx");
 
       UpdateContactPropertyOptions options = UpdateContactPropertyOptions.builder()

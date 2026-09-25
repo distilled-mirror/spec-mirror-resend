@@ -50,7 +50,7 @@
   import (
   	"fmt"
 
-  	"github.com/resend/resend-go/v3"
+  	"github.com/resend/resend-go/v4"
   )
 
   func main() {
@@ -81,10 +81,12 @@
   ```
 
   ```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
-  import com.resend.*;
+  import com.resend.Resend;
+  import com.resend.core.exception.ResendException;
+  import com.resend.services.emails.model.CancelEmailResponse;
 
   public class Main {
-      public static void main(String[] args) {
+      public static void main(String[] args) throws ResendException {
           Resend resend = new Resend("re_xxxxxxxxx");
 
           CancelEmailResponse canceled = resend

@@ -86,11 +86,14 @@ Here's how you can add custom headers to your emails:
   puts sent
   ```
 
-  ```go Go {17} theme={"theme":{"light":"github-light","dark":"vesper"}}
+  ```go Go {20} theme={"theme":{"light":"github-light","dark":"vesper"}}
+  package main
+
   import (
+  	"context"
   	"fmt"
 
-  	"github.com/resend/resend-go/v3"
+  	"github.com/resend/resend-go/v4"
   )
 
   func main() {
@@ -104,7 +107,7 @@ Here's how you can add custom headers to your emails:
         Html:        "<p>it works!</p>",
         Headers:     map[string]string{
           "X-Entity-Ref-ID": "xxx_xxxx",
-        }
+        },
     }
 
     sent, err := client.Emails.SendWithContext(ctx, params)
@@ -138,11 +141,15 @@ Here's how you can add custom headers to your emails:
   }
   ```
 
-  ```java Java {13} theme={"theme":{"light":"github-light","dark":"vesper"}}
+  ```java Java {17} theme={"theme":{"light":"github-light","dark":"vesper"}}
   import com.resend.*;
+  import com.resend.core.exception.ResendException;
+  import com.resend.services.emails.model.CreateEmailOptions;
+  import com.resend.services.emails.model.CreateEmailResponse;
+  import java.util.Map;
 
   public class Main {
-      public static void main(String[] args) {
+      public static void main(String[] args) throws ResendException {
           Resend resend = new Resend("re_xxxxxxxxx");
 
           CreateEmailOptions params = CreateEmailOptions.builder()

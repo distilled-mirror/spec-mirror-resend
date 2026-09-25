@@ -157,7 +157,7 @@ export const ResendParamField = ({children, body, path, ...props}) => {
   ```
 
   ```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
-  import com.resend.*;
+  import com.resend.Resend;
   import com.resend.core.exception.ResendException;
   import com.resend.services.webhooks.model.ListWebhookEventsResponseSuccess;
 

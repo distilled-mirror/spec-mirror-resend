@@ -54,14 +54,9 @@ Either `id` or `email` must be provided.
 
   const resend = new Resend('re_xxxxxxxxx');
 
-  // Get by contact id
   const { data, error } = await resend.contacts.get({
     id: 'e169aa45-1ecf-4183-9955-b1499d5701d3',
-  });
-
-  // Get by contact email
-  const { data, error } = await resend.contacts.get({
-    email: 'steve.wozniak@gmail.com',
+    // or: email: 'steve.wozniak@gmail.com',
   });
   ```
 
@@ -70,12 +65,12 @@ Either `id` or `email` must be provided.
 
   // Get by contact id
   $resend->contacts->get(
-    id: 'e169aa45-1ecf-4183-9955-b1499d5701d3'
+    idOrEmail: 'e169aa45-1ecf-4183-9955-b1499d5701d3'
   );
 
   // Get by contact email
   $resend->contacts->get(
-    email: 'steve.wozniak@gmail.com'
+    idOrEmail: 'steve.wozniak@gmail.com'
   );
   ```
 
@@ -118,16 +113,20 @@ Either `id` or `email` must be provided.
   ```go Go theme={"theme":{"light":"github-light","dark":"vesper"}}
   package main
 
-  import "github.com/resend/resend-go/v3"
+  import "github.com/resend/resend-go/v4"
 
   func main() {
   	client := resend.NewClient("re_xxxxxxxxx")
 
   	// Get by contact id
-  	client.Contacts.Get("e169aa45-1ecf-4183-9955-b1499d5701d3")
+  	client.Contacts.Get(&resend.GetContactOptions{
+  		Id: "e169aa45-1ecf-4183-9955-b1499d5701d3",
+  	})
 
   	// Get by contact email
-  	client.Contacts.Get("steve.wozniak@gmail.com")
+  	client.Contacts.Get(&resend.GetContactOptions{
+  		Id: "steve.wozniak@gmail.com",
+  	})
   }
   ```
 
@@ -155,20 +154,17 @@ Either `id` or `email` must be provided.
   ```
 
   ```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
-  import com.resend.*;
+  import com.resend.Resend;
+  import com.resend.core.exception.ResendException;
+  import com.resend.services.contacts.model.GetContactOptions;
+  import com.resend.services.contacts.model.GetContactResponseSuccess;
 
   public class Main {
-      public static void main(String[] args) {
+      public static void main(String[] args) throws ResendException {
           Resend resend = new Resend("re_xxxxxxxxx");
 
-          // Get by contact id
           GetContactOptions params = GetContactOptions.builder()
-                  .id("e169aa45-1ecf-4183-9955-b1499d5701d3")
-                  .build();
-
-          // Get by contact email
-          GetContactOptions params = GetContactOptions.builder()
-                  .email("steve.wozniak@gmail.com")
+                  .id("e169aa45-1ecf-4183-9955-b1499d5701d3") // or: .email("steve.wozniak@gmail.com")
                   .build();
 
           GetContactResponseSuccess data = resend.contacts().get(params);

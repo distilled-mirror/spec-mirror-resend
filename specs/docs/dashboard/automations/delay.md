@@ -124,7 +124,7 @@ Common use cases:
       ```go Go {18-24} theme={"theme":{"light":"github-light","dark":"vesper"}}
       package main
 
-      import "github.com/resend/resend-go/v3"
+      import "github.com/resend/resend-go/v4"
 
       func main() {
       	client := resend.NewClient("re_xxxxxxxxx")
@@ -194,11 +194,17 @@ Common use cases:
       }
       ```
 
-      ```java Java {14-18} theme={"theme":{"light":"github-light","dark":"vesper"}}
+      ```java Java {20-24} theme={"theme":{"light":"github-light","dark":"vesper"}}
       import com.resend.*;
+      import com.resend.core.exception.ResendException;
+      import com.resend.services.automations.model.AutomationConnection;
+      import com.resend.services.automations.model.AutomationStep;
+      import com.resend.services.automations.model.ConnectionType;
+      import com.resend.services.automations.model.CreateAutomationOptions;
+      import com.resend.services.automations.model.CreateAutomationResponseSuccess;
 
       public class Main {
-          public static void main(String[] args) {
+          public static void main(String[] args) throws ResendException {
               Resend resend = new Resend("re_xxxxxxxxx");
 
               CreateAutomationOptions options = CreateAutomationOptions.builder()
@@ -208,7 +214,7 @@ Common use cases:
                               .eventName("user.created")
                               .build(),
                           AutomationStep.delay("wait_1_day")
-                              .seconds(86400)
+                              .duration("1 day")
                               .build()
                       )
                       .connections(
@@ -288,7 +294,7 @@ Common use cases:
   30 days.
 </ParamField>
 
-```json Example theme={"theme":{"light":"github-light","dark":"vesper"}}
+```json Example theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}}
 {
   "key": "wait_1_hour",
   "type": "delay",

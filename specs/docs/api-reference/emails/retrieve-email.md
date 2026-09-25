@@ -42,7 +42,10 @@
   ```
 
   ```ruby Ruby theme={"theme":{"light":"github-light","dark":"vesper"}}
+  require "resend"
+
   Resend.api_key = "re_xxxxxxxxx"
+
   email = Resend::Emails.get("4ef9a417-02e9-4d39-ad75-9611e0fcc33c")
   puts email
   ```
@@ -50,7 +53,7 @@
   ```go Go theme={"theme":{"light":"github-light","dark":"vesper"}}
   package main
 
-  import "github.com/resend/resend-go/v3"
+  import "github.com/resend/resend-go/v4"
 
   func main() {
   	client := resend.NewClient("re_xxxxxxxxx")
@@ -76,10 +79,12 @@
   ```
 
   ```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
-  import com.resend.*;
+  import com.resend.Resend;
+  import com.resend.core.exception.ResendException;
+  import com.resend.services.emails.model.Email;
 
   public class Main {
-      public static void main(String[] args) {
+      public static void main(String[] args) throws ResendException {
           Resend resend = new Resend("re_xxxxxxxxx");
 
           Email email = resend.emails().get("4ef9a417-02e9-4d39-ad75-9611e0fcc33c");

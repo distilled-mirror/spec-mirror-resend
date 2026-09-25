@@ -54,7 +54,9 @@ For the API, optionally pass the custom return path parameter.
   ```
 
   ```ruby Ruby theme={"theme":{"light":"github-light","dark":"vesper"}}
-  Resend.api_key = ENV["RESEND_API_KEY"]
+  require "resend"
+
+  Resend.api_key = "re_xxxxxxxxx"
 
   params = {
     name: "example.com",
@@ -67,7 +69,7 @@ For the API, optionally pass the custom return path parameter.
   ```go Go theme={"theme":{"light":"github-light","dark":"vesper"}}
   package main
 
-  import "github.com/resend/resend-go/v3"
+  import "github.com/resend/resend-go/v4"
 
   func main() {
   	client := resend.NewClient("re_xxxxxxxxx")
@@ -77,7 +79,7 @@ For the API, optionally pass the custom return path parameter.
   		CustomReturnPath: "outbound",
   	}
 
-  	domain, err := client.Domains.Create(params)
+  	client.Domains.Create(params)
   }
   ```
 
@@ -90,7 +92,7 @@ For the API, optionally pass the custom return path parameter.
 
     let _domain = resend
       .domains
-      .add(CreateDomainOptions::new("example.com").with_custom_return_path("outbound"))
+      .create(CreateDomainOptions::new("example.com").with_custom_return_path("outbound"))
       .await?;
 
     Ok(())
@@ -99,9 +101,12 @@ For the API, optionally pass the custom return path parameter.
 
   ```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
   import com.resend.*;
+  import com.resend.core.exception.ResendException;
+  import com.resend.services.domains.model.CreateDomainOptions;
+  import com.resend.services.domains.model.CreateDomainResponse;
 
   public class Main {
-      public static void main(String[] args) {
+      public static void main(String[] args) throws ResendException {
           Resend resend = new Resend("re_xxxxxxxxx");
 
           CreateDomainOptions params = CreateDomainOptions

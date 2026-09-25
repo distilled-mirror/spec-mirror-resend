@@ -21,7 +21,7 @@ Before you start, you'll need:
 
     <CodeGroup>
       ```bash bash theme={"theme":{"light":"github-light","dark":"vesper"}}
-      go get github.com/resend/resend-go/v3
+      go get github.com/resend/resend-go/v4
       ```
     </CodeGroup>
   </Step>
@@ -35,7 +35,7 @@ Before you start, you'll need:
     import (
     	"fmt"
 
-    	"github.com/resend/resend-go/v3"
+    	"github.com/resend/resend-go/v4"
     )
 
     func main() {

@@ -168,7 +168,7 @@ To paginate forward through results (newer to older items), use the `after` para
   ```go Go theme={"theme":{"light":"github-light","dark":"vesper"}}
   package main
 
-  import "github.com/resend/resend-go/v3"
+  import "github.com/resend/resend-go/v4"
 
   func main() {
   	client := resend.NewClient("re_xxxxxxxxx")
@@ -334,7 +334,7 @@ To paginate backward through results (older to newer items), use the `before` pa
   ```go Go theme={"theme":{"light":"github-light","dark":"vesper"}}
   package main
 
-  import "github.com/resend/resend-go/v3"
+  import "github.com/resend/resend-go/v4"
 
   func main() {
   	client := resend.NewClient("re_xxxxxxxxx")

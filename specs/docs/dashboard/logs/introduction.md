@@ -134,6 +134,8 @@ Logs are a powerful tool for monitoring activity and troubleshooting issues.
       ```
 
       ```ruby Ruby theme={"theme":{"light":"github-light","dark":"vesper"}}
+      require "resend"
+
       Resend.api_key = "re_xxxxxxxxx"
 
       logs = Resend::Logs.list
@@ -146,7 +148,7 @@ Logs are a powerful tool for monitoring activity and troubleshooting issues.
       import (
         "context"
 
-        "github.com/resend/resend-go/v3"
+        "github.com/resend/resend-go/v4"
       )
 
       func main() {
@@ -185,9 +187,10 @@ Logs are a powerful tool for monitoring activity and troubleshooting issues.
 
       ```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
       import com.resend.*;
+      import com.resend.core.exception.ResendException;
 
       public class Main {
-          public static void main(String[] args) {
+          public static void main(String[] args) throws ResendException {
               Resend resend = new Resend("re_xxxxxxxxx");
 
               resend.logs().list();
@@ -241,6 +244,8 @@ Logs are a powerful tool for monitoring activity and troubleshooting issues.
       ```
 
       ```ruby Ruby theme={"theme":{"light":"github-light","dark":"vesper"}}
+      require "resend"
+
       Resend.api_key = "re_xxxxxxxxx"
 
       log = Resend::Logs.get("37e4414c-5e25-4dbc-a071-43552a4bd53b")
@@ -250,7 +255,7 @@ Logs are a powerful tool for monitoring activity and troubleshooting issues.
       ```go Go theme={"theme":{"light":"github-light","dark":"vesper"}}
       package main
 
-      import "github.com/resend/resend-go/v3"
+      import "github.com/resend/resend-go/v4"
 
       func main() {
         client := resend.NewClient("re_xxxxxxxxx")
@@ -277,9 +282,10 @@ Logs are a powerful tool for monitoring activity and troubleshooting issues.
 
       ```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
       import com.resend.*;
+      import com.resend.core.exception.ResendException;
 
       public class Main {
-          public static void main(String[] args) {
+          public static void main(String[] args) throws ResendException {
               Resend resend = new Resend("re_xxxxxxxxx");
 
               resend.logs().get("37e4414c-5e25-4dbc-a071-43552a4bd53b");
@@ -326,7 +332,7 @@ Admins can download your data in CSV format for the following resources:
 
 To start, apply filters to your data and click on the "Export" button. Confirm your filters before exporting your data.
 
-<video autoPlay muted loop playsinline className="w-full aspect-video" src="https://mintcdn.com/resend/OWNnQaVDyqcGyhhN/images/exports.mp4?fit=max&auto=format&n=OWNnQaVDyqcGyhhN&q=85&s=1149ee4e83b4414e75a0ecaa92774c38" data-path="images/exports.mp4" />
+<video autoPlay muted loop playsinline className="w-full aspect-video" src="https://mintlify.s3.us-west-1.amazonaws.com/resend/images/exports.mp4" />
 
 If your exported data includes 1,000 items or less, the export will download immediately. For larger exports, you'll receive an email with a link to download your data.
 

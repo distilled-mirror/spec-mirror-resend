@@ -69,19 +69,10 @@ Either `contact_id` or `email` must be provided, but not both.
 
   const resend = new Resend('re_xxxxxxxxx');
 
-  // Trigger with a contact ID
   const { data, error } = await resend.events.send({
     event: 'user.created',
     contactId: '7f2e4a3b-dfbc-4e9a-8b2c-5f3a1d6e7c8b',
-    payload: {
-      plan: 'pro',
-    },
-  });
-
-  // Trigger with an email address
-  const { data, error } = await resend.events.send({
-    event: 'user.created',
-    email: 'steve.wozniak@gmail.com',
+    // or: email: 'steve.wozniak@gmail.com',
     payload: {
       plan: 'pro',
     },
@@ -165,7 +156,7 @@ Either `contact_id` or `email` must be provided, but not both.
   ```go Go theme={"theme":{"light":"github-light","dark":"vesper"}}
   package main
 
-  import "github.com/resend/resend-go/v3"
+  import "github.com/resend/resend-go/v4"
 
   func main() {
   	client := resend.NewClient("re_xxxxxxxxx")
@@ -210,14 +201,7 @@ Either `contact_id` or `email` must be provided, but not both.
       contact_id_or_email: ContactIdOrEmail::ContactId(
         "7f2e4a3b-dfbc-4e9a-8b2c-5f3a1d6e7c8b".to_owned(),
       ),
-      payload: json!({
-        "plan": "pro"
-      }),
-    };
-
-    let opts = SendEventOptions {
-      event: "user.created".to_owned(),
-      contact_id_or_email: ContactIdOrEmail::Email("steve.wozniak@gmail.com".to_owned()),
+      // or: ContactIdOrEmail::Email("steve.wozniak@gmail.com".to_owned())
       payload: json!({
         "plan": "pro"
       }),
@@ -230,25 +214,18 @@ Either `contact_id` or `email` must be provided, but not both.
   ```
 
   ```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
-  import com.resend.*;
+  import com.resend.Resend;
+  import com.resend.core.exception.ResendException;
+  import com.resend.services.events.model.SendEventOptions;
+  import com.resend.services.events.model.SendEventResponseSuccess;
 
   public class Main {
-      public static void main(String[] args) {
+      public static void main(String[] args) throws ResendException {
           Resend resend = new Resend("re_xxxxxxxxx");
 
-          // Trigger with a contact ID
           SendEventOptions params = SendEventOptions.builder()
                   .event("user.created")
-                  .contactId("7f2e4a3b-dfbc-4e9a-8b2c-5f3a1d6e7c8b")
-                  .addPayload("plan", "pro")
-                  .build();
-
-          SendEventResponseSuccess data = resend.events().send(params);
-
-          // Trigger with an email address
-          SendEventOptions params = SendEventOptions.builder()
-                  .event("user.created")
-                  .email("steve.wozniak@gmail.com")
+                  .contactId("7f2e4a3b-dfbc-4e9a-8b2c-5f3a1d6e7c8b") // or: .email("steve.wozniak@gmail.com")
                   .addPayload("plan", "pro")
                   .build();
 

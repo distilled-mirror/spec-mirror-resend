@@ -100,7 +100,7 @@ export const ResendParamField = ({children, body, path, ...props}) => {
   ```go Go theme={"theme":{"light":"github-light","dark":"vesper"}}
   package main
 
-  import "github.com/resend/resend-go/v3"
+  import "github.com/resend/resend-go/v4"
 
   func main() {
   	client := resend.NewClient("re_xxxxxxxxx")
@@ -134,11 +134,14 @@ export const ResendParamField = ({children, body, path, ...props}) => {
   ```
 
   ```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
-  import com.resend.*;
+  import com.resend.Resend;
+  import com.resend.core.exception.ResendException;
+  import com.resend.services.webhooks.model.CreateWebhookOptions;
+  import com.resend.services.webhooks.model.CreateWebhookResponseSuccess;
   import static com.resend.services.webhooks.model.WebhookEvent.*;
 
   public class Main {
-      public static void main(String[] args) {
+      public static void main(String[] args) throws ResendException {
           Resend resend = new Resend("re_xxxxxxxxx");
 
           CreateWebhookOptions options = CreateWebhookOptions.builder()

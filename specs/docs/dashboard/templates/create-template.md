@@ -180,11 +180,11 @@ Programmatically create a Template from your application with the [Templates API
   ```
 
   ```go Go theme={"theme":{"light":"github-light","dark":"vesper"}}
-  import "github.com/resend/resend-go/v3"
+  import "github.com/resend/resend-go/v4"
 
   client := resend.NewClient("re_xxxxxxxxx")
 
-  template, err := client.Templates.Create(&resend.CreateTemplateRequest{
+  client.Templates.Create(&resend.CreateTemplateRequest{
   	Name:    "order-confirmation",
   	From:    "Resend Store <store@example.com>",
   	Subject: "Thanks for your order!",
@@ -224,8 +224,9 @@ Programmatically create a Template from your application with the [Templates API
       Variable::new("PRICE", VariableType::Number).with_fallback(20)
     ];
 
-    let opts = CreateTemplateOptions::new(name, from, subject)
-      .with_html(html)
+    let opts = CreateTemplateOptions::new(name, html)
+      .with_from(from)
+      .with_subject(subject)
       .with_variables(&variables);
 
     let template = resend.templates.create(opts).await?;
@@ -238,9 +239,14 @@ Programmatically create a Template from your application with the [Templates API
 
   ```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
   import com.resend.*;
+  import com.resend.core.exception.ResendException;
+  import com.resend.services.templates.model.CreateTemplateOptions;
+  import com.resend.services.templates.model.CreateTemplateResponseSuccess;
+  import com.resend.services.templates.model.Variable;
+  import com.resend.services.templates.model.VariableType;
 
   public class Main {
-      public static void main(String[] args) {
+      public static void main(String[] args) throws ResendException {
           Resend resend = new Resend("re_xxxxxxxxx");
 
           CreateTemplateOptions params = CreateTemplateOptions.builder()
@@ -348,7 +354,16 @@ By default, Templates are in a **draft** state. To use a Template to send emails
 For a more streamlined flow in your application, you can create and publish a Template in a single step.
 
 ```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
-await resend.templates.create({ ... }).publish();
+import { Resend } from 'resend';
+
+const resend = new Resend('re_xxxxxxxxx');
+
+const { data, error } = await resend.templates
+  .create({
+    name: 'order-confirmation',
+    html: '<p>Thanks for your order!</p>',
+  })
+  .publish();
 ```
 
 ## Edit a Template

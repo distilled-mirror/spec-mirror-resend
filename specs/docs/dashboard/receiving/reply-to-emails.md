@@ -34,26 +34,30 @@ Use the `message_id` value from `event.data.message_id` as the `In-Reply-To` hea
 Here's how you can reply in thread using each SDK:
 
 <CodeGroup>
-  ```ts Node.js {13} theme={"theme":{"light":"github-light","dark":"vesper"}}
-  import { Resend } from 'resend';
+  ```ts Node.js {14} theme={"theme":{"light":"github-light","dark":"vesper"}}
+  import { Resend, type EmailReceivedEvent } from 'resend';
 
   const resend = new Resend('re_xxxxxxxxx');
 
-  const messageId = event.data.message_id;
+  export async function replyToEmail(event: EmailReceivedEvent) {
+    const messageId = event.data.message_id;
 
-  const { data, error } = await resend.emails.send({
-    from: 'Acme <onboarding@resend.dev>',
-    to: ['delivered@resend.dev'],
-    subject: `Re: ${event.data.subject}`,
-    html: '<p>Thanks for your email!</p>',
-    headers: {
-      'In-Reply-To': messageId,
-    },
-  });
+    const { data, error } = await resend.emails.send({
+      from: 'Acme <onboarding@resend.dev>',
+      to: ['delivered@resend.dev'],
+      subject: `Re: ${event.data.subject}`,
+      html: '<p>Thanks for your email!</p>',
+      headers: {
+        'In-Reply-To': messageId,
+      },
+    });
+  }
   ```
 
-  ```php PHP {11} theme={"theme":{"light":"github-light","dark":"vesper"}}
+  ```php PHP {13} theme={"theme":{"light":"github-light","dark":"vesper"}}
   $resend = Resend::client('re_xxxxxxxxx');
+
+  $event = json_decode(file_get_contents('php://input'), true);
 
   $messageId = $event['data']['message_id'];
 
@@ -68,24 +72,25 @@ Here's how you can reply in thread using each SDK:
   ]);
   ```
 
-  ```python Python {13} theme={"theme":{"light":"github-light","dark":"vesper"}}
+  ```python Python {14} theme={"theme":{"light":"github-light","dark":"vesper"}}
   import resend
 
   resend.api_key = "re_xxxxxxxxx"
 
-  message_id = event["data"]["message_id"]
+  def handle_email_received(event: resend.EmailReceivedEvent):
+      message_id = event["data"]["message_id"]
 
-  params: resend.Emails.SendParams = {
-      "from": "Acme <onboarding@resend.dev>",
-      "to": ["delivered@resend.dev"],
-      "subject": f"Re: {event['data']['subject']}",
-      "html": "<p>Thanks for your email!</p>",
-      "headers": {
-          "In-Reply-To": message_id,
-      },
-  }
+      params: resend.Emails.SendParams = {
+          "from": "Acme <onboarding@resend.dev>",
+          "to": ["delivered@resend.dev"],
+          "subject": f"Re: {event['data']['subject']}",
+          "html": "<p>Thanks for your email!</p>",
+          "headers": {
+              "In-Reply-To": message_id,
+          },
+      }
 
-  email = resend.Emails.send(params)
+      email = resend.Emails.send(params)
   ```
 
   ```rb Ruby {13} theme={"theme":{"light":"github-light","dark":"vesper"}}
@@ -108,17 +113,26 @@ Here's how you can reply in thread using each SDK:
   sent = Resend::Emails.send(params)
   ```
 
-  ```go Go {20} theme={"theme":{"light":"github-light","dark":"vesper"}}
+  ```go Go {29} theme={"theme":{"light":"github-light","dark":"vesper"}}
+  package main
+
   import (
   	"fmt"
   	"context"
 
-  	"github.com/resend/resend-go/v3"
+  	"github.com/resend/resend-go/v4"
   )
 
   func main() {
       ctx := context.TODO()
       client := resend.NewClient("re_xxxxxxxxx")
+
+      var event struct {
+          Data struct {
+              MessageId string `json:"message_id"`
+              Subject   string `json:"subject"`
+          } `json:"data"`
+      }
 
       messageId := event.Data.MessageId
 
@@ -142,14 +156,14 @@ Here's how you can reply in thread using each SDK:
   ```
 
   ```rust Rust {17} theme={"theme":{"light":"github-light","dark":"vesper"}}
+  use resend_rs::events::EmailEvent;
   use resend_rs::types::CreateEmailBaseOptions;
   use resend_rs::{Resend, Result};
 
-  #[tokio::main]
-  async fn main() -> Result<()> {
+  async fn reply(event: EmailEvent) -> Result<()> {
       let resend = Resend::new("re_xxxxxxxxx");
 
-      let message_id = &event.data.received.unwrap().message_id;
+      let message_id = &event.data.message_id;
       let subject = format!("Re: {}", event.data.subject);
 
       let email = CreateEmailBaseOptions::new(
@@ -166,19 +180,24 @@ Here's how you can reply in thread using each SDK:
   }
   ```
 
-  ```java Java {15} theme={"theme":{"light":"github-light","dark":"vesper"}}
+  ```java Java {20} theme={"theme":{"light":"github-light","dark":"vesper"}}
   import com.resend.*;
+  import com.resend.core.exception.ResendException;
+  import com.resend.services.emails.model.CreateEmailOptions;
+  import com.resend.services.emails.model.CreateEmailResponse;
+  import com.resend.services.receiving.model.ReceivedEmail;
+  import java.util.Map;
 
   public class Main {
-      public static void main(String[] args) {
+      public static void reply(ReceivedEmail event) throws ResendException {
           Resend resend = new Resend("re_xxxxxxxxx");
 
-          String messageId = event.getData().getMessageId();
+          String messageId = event.getMessageId();
 
           CreateEmailOptions params = CreateEmailOptions.builder()
                   .from("Acme <onboarding@resend.dev>")
                   .to("delivered@resend.dev")
-                  .subject("Re: " + event.getData().getSubject())
+                  .subject("Re: " + event.getSubject())
                   .html("<p>Thanks for your email!</p>")
                   .headers(Map.of(
                       "In-Reply-To", messageId
@@ -190,27 +209,30 @@ Here's how you can reply in thread using each SDK:
   }
   ```
 
-  ```csharp .NET {16} theme={"theme":{"light":"github-light","dark":"vesper"}}
+  ```csharp .NET {18} theme={"theme":{"light":"github-light","dark":"vesper"}}
   using Resend;
   using System.Collections.Generic;
 
-  IResend resend = ResendClient.Create("re_xxxxxxxxx");
+  IResend resend = ResendClient.Create( "re_xxxxxxxxx" ); // Or from DI
 
-  var messageId = eventData.MessageId;
-
-  var message = new EmailMessage()
+  async Task ReplyAsync(ReceivedEmail eventData)
   {
-      From = "Acme <onboarding@resend.dev>",
-      To = "delivered@resend.dev",
-      Subject = $"Re: {eventData.Subject}",
-      HtmlBody = "<p>Thanks for your email!</p>",
-      Headers = new Dictionary<string, string>()
-      {
-          { "In-Reply-To", messageId },
-      },
-  };
+      var messageId = eventData.MessageId;
 
-  var resp = await resend.EmailSendAsync(message);
+      var message = new EmailMessage()
+      {
+          From = "Acme <onboarding@resend.dev>",
+          To = "delivered@resend.dev",
+          Subject = $"Re: {eventData.Subject}",
+          HtmlBody = "<p>Thanks for your email!</p>",
+          Headers = new Dictionary<string, string>()
+          {
+              { "In-Reply-To", messageId },
+          },
+      };
+
+      var resp = await resend.EmailSendAsync(message);
+  }
   ```
 
   ```bash cURL {10} theme={"theme":{"light":"github-light","dark":"vesper"}}
@@ -238,6 +260,21 @@ Here's how you can reply in thread using each SDK:
   ```
 
   ```rust Rust theme={"theme":{"light":"github-light","dark":"vesper"}}
+  use axum::{
+      extract::State,
+      response::{IntoResponse, Json, Response},
+  };
+  use resend_rs::{types::CreateEmailBaseOptions, Resend};
+  use serde::Serialize;
+  use std::sync::Arc;
+
+  struct AppState {
+      resend: Resend,
+  }
+
+  #[derive(Serialize)]
+  struct Empty {}
+
   async fn example(
       State(state): State<Arc<AppState>>,
       Json(event): Json<resend_rs::events::EmailEvent>,
@@ -252,7 +289,7 @@ Here's how you can reply in thread using each SDK:
               format!("Re: {}", event.data.subject),
           )
           .with_html("<p>Thanks for your email!</p>")
-          .with_header("In-Reply-To", &event.data.received.unwrap().message_id);
+          .with_header("In-Reply-To", &event.data.message_id);
 
           let data = state.resend.emails.send(email).await.unwrap();
           Json(data).into_response()
@@ -270,22 +307,32 @@ the previous `message_id`s to the `References` header, separated by spaces.
 This helps email clients maintain the correct threading structure.
 
 <CodeGroup>
-  ```ts Node.js {9-10} theme={"theme":{"light":"github-light","dark":"vesper"}}
-  const previousReferences = ['<msg_id1@domain.com>', '<msg_id2@domain.com>'];
+  ```ts Node.js {14-15} theme={"theme":{"light":"github-light","dark":"vesper"}}
+  import { Resend, type EmailReceivedEvent } from 'resend';
 
-  const { data, error } = await resend.emails.send({
-    from: 'Acme <onboarding@resend.dev>',
-    to: ['delivered@resend.dev'],
-    subject: `Re: ${event.data.subject}`,
-    html: '<p>Thanks for your email!</p>',
-    headers: {
-      'In-Reply-To': event.data.message_id,
-      'References': [...previousReferences, event.data.message_id].join(' '),
-    },
-  });
+  const resend = new Resend('re_xxxxxxxxx');
+
+  export async function replyInThread(event: EmailReceivedEvent) {
+    const previousReferences = ['<msg_id1@domain.com>', '<msg_id2@domain.com>'];
+
+    const { data, error } = await resend.emails.send({
+      from: 'Acme <onboarding@resend.dev>',
+      to: ['delivered@resend.dev'],
+      subject: `Re: ${event.data.subject}`,
+      html: '<p>Thanks for your email!</p>',
+      headers: {
+        'In-Reply-To': event.data.message_id,
+        'References': [...previousReferences, event.data.message_id].join(' '),
+      },
+    });
+  }
   ```
 
-  ```php PHP {9-10} theme={"theme":{"light":"github-light","dark":"vesper"}}
+  ```php PHP {13-14} theme={"theme":{"light":"github-light","dark":"vesper"}}
+  $resend = Resend::client('re_xxxxxxxxx');
+
+  $event = json_decode(file_get_contents('php://input'), true);
+
   $previousReferences = ['<msg_id1@domain.com>', '<msg_id2@domain.com>'];
 
   $data = $resend->emails->send([
@@ -300,24 +347,33 @@ This helps email clients maintain the correct threading structure.
   ]);
   ```
 
-  ```python Python {9-10} theme={"theme":{"light":"github-light","dark":"vesper"}}
-  previous_references = ["<msg_id1@domain.com>", "<msg_id2@domain.com>"]
+  ```python Python {14-15} theme={"theme":{"light":"github-light","dark":"vesper"}}
+  import resend
 
-  params: resend.Emails.SendParams = {
-      "from": "Acme <onboarding@resend.dev>",
-      "to": ["delivered@resend.dev"],
-      "subject": f"Re: {event['data']['subject']}",
-      "html": "<p>Thanks for your email!</p>",
-      "headers": {
-          "In-Reply-To": event["data"]["message_id"],
-          "References": " ".join([*previous_references, event["data"]["message_id"]]),
-      },
-  }
+  resend.api_key = "re_xxxxxxxxx"
 
-  email = resend.Emails.send(params)
+  def handle_email_received(event: resend.EmailReceivedEvent):
+      previous_references = ["<msg_id1@domain.com>", "<msg_id2@domain.com>"]
+
+      params: resend.Emails.SendParams = {
+          "from": "Acme <onboarding@resend.dev>",
+          "to": ["delivered@resend.dev"],
+          "subject": f"Re: {event['data']['subject']}",
+          "html": "<p>Thanks for your email!</p>",
+          "headers": {
+              "In-Reply-To": event["data"]["message_id"],
+              "References": " ".join([*previous_references, event["data"]["message_id"]]),
+          },
+      }
+
+      email = resend.Emails.send(params)
   ```
 
-  ```rb Ruby {9-10} theme={"theme":{"light":"github-light","dark":"vesper"}}
+  ```rb Ruby {13-14} theme={"theme":{"light":"github-light","dark":"vesper"}}
+  require "resend"
+
+  Resend.api_key = "re_xxxxxxxxx"
+
   previous_references = ["<msg_id1@domain.com>", "<msg_id2@domain.com>"]
 
   params = {
@@ -334,82 +390,140 @@ This helps email clients maintain the correct threading structure.
   sent = Resend::Emails.send(params)
   ```
 
-  ```go Go {11-12} theme={"theme":{"light":"github-light","dark":"vesper"}}
-  previousReferences := []string{"<msg_id1@domain.com>", "<msg_id2@domain.com>"}
+  ```go Go {32-33} theme={"theme":{"light":"github-light","dark":"vesper"}}
+  package main
 
-  allReferences := append(previousReferences, event.Data.MessageId)
+  import (
+  	"context"
+  	"fmt"
+  	"strings"
 
-  params := &resend.SendEmailRequest{
-      From:    "Acme <onboarding@resend.dev>",
-      To:      []string{"delivered@resend.dev"},
-      Subject: fmt.Sprintf("Re: %s", event.Data.Subject),
-      Html:    "<p>Thanks for your email!</p>",
-      Headers: map[string]string{
-          "In-Reply-To": event.Data.MessageId,
-          "References":  strings.Join(allReferences, " "),
-      },
-  }
-
-  sent, err := client.Emails.SendWithContext(ctx, params)
-  ```
-
-  ```rust Rust {13-14} theme={"theme":{"light":"github-light","dark":"vesper"}}
-  let previous_references = vec!["<msg_id1@domain.com>", "<msg_id2@domain.com>"];
-
-  let all_references = [previous_references, vec![&event.data.message_id]]
-      .concat()
-      .join(" ");
-
-  let email = CreateEmailBaseOptions::new(
-      "Acme <onboarding@resend.dev>",
-      ["delivered@resend.dev"],
-      &subject,
+  	"github.com/resend/resend-go/v4"
   )
-  .with_html("<p>Thanks for your email!</p>")
-  .with_header("In-Reply-To", &event.data.message_id)
-  .with_header("References", &all_references);
 
-  let _email = resend.emails.send(email).await?;
+  func main() {
+      ctx := context.TODO()
+      client := resend.NewClient("re_xxxxxxxxx")
+
+      var event struct {
+          Data struct {
+              MessageId string `json:"message_id"`
+              Subject   string `json:"subject"`
+          } `json:"data"`
+      }
+
+      previousReferences := []string{"<msg_id1@domain.com>", "<msg_id2@domain.com>"}
+
+      allReferences := append(previousReferences, event.Data.MessageId)
+
+      params := &resend.SendEmailRequest{
+          From:    "Acme <onboarding@resend.dev>",
+          To:      []string{"delivered@resend.dev"},
+          Subject: fmt.Sprintf("Re: %s", event.Data.Subject),
+          Html:    "<p>Thanks for your email!</p>",
+          Headers: map[string]string{
+              "In-Reply-To": event.Data.MessageId,
+              "References":  strings.Join(allReferences, " "),
+          },
+      }
+
+      sent, err := client.Emails.SendWithContext(ctx, params)
+
+      if err != nil {
+          panic(err)
+      }
+      fmt.Println(sent.Id)
+  }
   ```
 
-  ```java Java {12-13} theme={"theme":{"light":"github-light","dark":"vesper"}}
-  List<String> previousReferences = List.of("<msg_id1@domain.com>", "<msg_id2@domain.com>");
+  ```rust Rust {19-20} theme={"theme":{"light":"github-light","dark":"vesper"}}
+  use resend_rs::events::EmailEvent;
+  use resend_rs::types::CreateEmailBaseOptions;
+  use resend_rs::{Resend, Result};
 
-  List<String> allReferences = new ArrayList<>(previousReferences);
-  allReferences.add(event.getData().getMessageId());
+  async fn reply(resend: &Resend, event: EmailEvent) -> Result<()> {
+      let subject = format!("Re: {}", event.data.subject);
+      let previous_references = vec!["<msg_id1@domain.com>", "<msg_id2@domain.com>"];
 
-  CreateEmailOptions params = CreateEmailOptions.builder()
-          .from("Acme <onboarding@resend.dev>")
-          .to("delivered@resend.dev")
-          .subject("Re: " + event.getData().getSubject())
-          .html("<p>Thanks for your email!</p>")
-          .headers(Map.of(
-              "In-Reply-To", event.getData().getMessageId(),
-              "References", String.join(" ", allReferences)
-          ))
-          .build();
+      let all_references = [previous_references, vec![event.data.message_id.as_str()]]
+          .concat()
+          .join(" ");
 
-  CreateEmailResponse data = resend.emails().send(params);
+      let email = CreateEmailBaseOptions::new(
+          "Acme <onboarding@resend.dev>",
+          ["delivered@resend.dev"],
+          &subject,
+      )
+      .with_html("<p>Thanks for your email!</p>")
+      .with_header("In-Reply-To", &event.data.message_id)
+      .with_header("References", &all_references);
+
+      let _email = resend.emails.send(email).await?;
+
+      Ok(())
+  }
   ```
 
-  ```csharp .NET {12-13} theme={"theme":{"light":"github-light","dark":"vesper"}}
-  var previousReferences = new List<string> { "<msg_id1@domain.com>", "<msg_id2@domain.com>" };
-  previousReferences.Add(eventData.MessageId);
+  ```java Java {25-26} theme={"theme":{"light":"github-light","dark":"vesper"}}
+  import com.resend.*;
+  import com.resend.core.exception.ResendException;
+  import com.resend.services.emails.model.CreateEmailOptions;
+  import com.resend.services.emails.model.CreateEmailResponse;
+  import com.resend.services.receiving.model.ReceivedEmail;
+  import java.util.ArrayList;
+  import java.util.List;
+  import java.util.Map;
 
-  var message = new EmailMessage()
+  public class Main {
+      public static void reply(ReceivedEmail event) throws ResendException {
+          Resend resend = new Resend("re_xxxxxxxxx");
+
+          List<String> previousReferences = List.of("<msg_id1@domain.com>", "<msg_id2@domain.com>");
+
+          List<String> allReferences = new ArrayList<>(previousReferences);
+          allReferences.add(event.getMessageId());
+
+          CreateEmailOptions params = CreateEmailOptions.builder()
+                  .from("Acme <onboarding@resend.dev>")
+                  .to("delivered@resend.dev")
+                  .subject("Re: " + event.getSubject())
+                  .html("<p>Thanks for your email!</p>")
+                  .headers(Map.of(
+                      "In-Reply-To", event.getMessageId(),
+                      "References", String.join(" ", allReferences)
+                  ))
+                  .build();
+
+          CreateEmailResponse data = resend.emails().send(params);
+      }
+  }
+  ```
+
+  ```csharp .NET {18-19} theme={"theme":{"light":"github-light","dark":"vesper"}}
+  using Resend;
+
+  IResend resend = ResendClient.Create( "re_xxxxxxxxx" ); // Or from DI
+
+  async Task ReplyAsync(ReceivedEmail eventData)
   {
-      From = "Acme <onboarding@resend.dev>",
-      To = "delivered@resend.dev",
-      Subject = $"Re: {eventData.Subject}",
-      HtmlBody = "<p>Thanks for your email!</p>",
-      Headers = new Dictionary<string, string>()
-      {
-          { "In-Reply-To", eventData.MessageId },
-          { "References", string.Join(" ", previousReferences) },
-      },
-  };
+      var previousReferences = new List<string> { "<msg_id1@domain.com>", "<msg_id2@domain.com>" };
+      previousReferences.Add(eventData.MessageId);
 
-  var resp = await resend.EmailSendAsync(message);
+      var message = new EmailMessage()
+      {
+          From = "Acme <onboarding@resend.dev>",
+          To = "delivered@resend.dev",
+          Subject = $"Re: {eventData.Subject}",
+          HtmlBody = "<p>Thanks for your email!</p>",
+          Headers = new Dictionary<string, string>()
+          {
+              { "In-Reply-To", eventData.MessageId },
+              { "References", string.Join(" ", previousReferences) },
+          },
+      };
+
+      var resp = await resend.EmailSendAsync(message);
+  }
   ```
 
   ```bash cURL {10-11} theme={"theme":{"light":"github-light","dark":"vesper"}}
@@ -439,23 +553,25 @@ This helps email clients maintain the correct threading structure.
   ```
 
   ```rust Rust theme={"theme":{"light":"github-light","dark":"vesper"}}
-  let received = &event.data.received.unwrap();
+  use resend_rs::{events::EmailEvent, types::CreateEmailBaseOptions, Resend};
 
-  let previous_references = [
-      "<msg_id1@domain.com>",
-      "<msg_id2@domain.com>",
-      &received.message_id,
-  ];
+  async fn reply(resend: &Resend, event: EmailEvent) {
+      let previous_references = [
+          "<msg_id1@domain.com>",
+          "<msg_id2@domain.com>",
+          &event.data.message_id,
+      ];
 
-  let email = CreateEmailBaseOptions::new(
-      "Acme <onboarding@resend.dev>",
-      vec!["delivered@resend.dev"],
-      format!("Re: {}", event.data.subject),
-  )
+      let email = CreateEmailBaseOptions::new(
+          "Acme <onboarding@resend.dev>",
+          vec!["delivered@resend.dev"],
+          format!("Re: {}", event.data.subject),
+      )
       .with_html("<p>Thanks for your email!</p>")
-      .with_header("In-Reply-To", &received.message_id)
+      .with_header("In-Reply-To", &event.data.message_id)
       .with_header("References", &previous_references.join(" "));
 
-  let data = state.resend.emails.send(email).await.unwrap();
+      let data = resend.emails.send(email).await.unwrap();
+  }
   ```
 </CodeGroup>

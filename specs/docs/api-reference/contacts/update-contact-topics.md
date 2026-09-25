@@ -40,27 +40,12 @@ Either `id` or `email` must be provided.
 
   const resend = new Resend('re_xxxxxxxxx');
 
-  // Update by contact id
   const { data, error } = await resend.contacts.topics.update({
     id: 'e169aa45-1ecf-4183-9955-b1499d5701d3',
+    // or: email: 'steve.wozniak@gmail.com',
     topics: [
       {
         id: 'b6d24b8e-af0b-4c3c-be0c-359bbd97381e',
-        subscription: 'opt_out',
-      },
-      {
-        id: '07d84122-7224-4881-9c31-1c048e204602',
-        subscription: 'opt_in',
-      },
-    ],
-  });
-
-  // Update by contact email
-  const { data, error } = await resend.contacts.topics.update({
-    email: 'steve.wozniak@gmail.com',
-    topics: [
-      {
-        id: '07d84122-7224-4881-9c31-1c048e204602',
         subscription: 'opt_out',
       },
       {
@@ -105,7 +90,7 @@ Either `id` or `email` must be provided.
   resend.api_key = 're_xxxxxxxxx'
 
   # Update by contact id
-  params = {
+  params: resend.Contacts.Topics.UpdateParams = {
       "id": "e169aa45-1ecf-4183-9955-b1499d5701d3",
       "topics": [
           {"id": "b6d24b8e-af0b-4c3c-be0c-359bbd97381e", "subscription": "opt_out"},
@@ -116,7 +101,7 @@ Either `id` or `email` must be provided.
   response = resend.Contacts.Topics.update(params)
 
   # Update by contact email
-  params_by_email = {
+  params_by_email: resend.Contacts.Topics.UpdateParams = {
       "email": "steve.wozniak@gmail.com",
       "topics": [
           {"id": "07d84122-7224-4881-9c31-1c048e204602", "subscription": "opt_out"},
@@ -160,7 +145,7 @@ Either `id` or `email` must be provided.
   	"context"
   	"fmt"
 
-  	"github.com/resend/resend-go/v3"
+  	"github.com/resend/resend-go/v4"
   )
 
   func main() {
@@ -169,7 +154,7 @@ Either `id` or `email` must be provided.
 
   	// Update by contact id
   	params := &resend.UpdateContactTopicsRequest{
-  		ContactId: "e169aa45-1ecf-4183-9955-b1499d5701d3",
+  		Id: "e169aa45-1ecf-4183-9955-b1499d5701d3",
   		Topics: []resend.TopicSubscriptionUpdate{
   			{
   				Id:           "b6d24b8e-af0b-4c3c-be0c-359bbd97381e",
@@ -242,10 +227,13 @@ Either `id` or `email` must be provided.
   ```
 
   ```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
-  import com.resend.*;
+  import com.resend.Resend;
+  import com.resend.core.exception.ResendException;
+  import com.resend.services.contacts.model.ContactTopicOptions;
+  import com.resend.services.contacts.model.UpdateContactTopicsOptions;
 
   public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ResendException {
       Resend resend = new Resend("re_xxxxxxxxx");
 
       // Update by contact id
@@ -276,7 +264,7 @@ Either `id` or `email` must be provided.
                               .build())
                   .build();
 
-      resend.contacts().topics().update(optionsById);
+      resend.contacts().topics().update(optionsByEmail);
     }
   }
   ```

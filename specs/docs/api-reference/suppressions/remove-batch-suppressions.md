@@ -26,14 +26,9 @@ Provide either `emails` or `ids`, but not both.
 
   const resend = new Resend('re_xxxxxxxxx');
 
-  // Remove by suppression ids
   const { data, error } = await resend.suppressions.batch.remove({
     ids: ['e169aa45-1ecf-4183-9955-b1499d5701d3'],
-  });
-
-  // Remove by emails
-  const { data, error } = await resend.suppressions.batch.remove({
-    emails: ['steve.wozniak@example.com', 'susan.kare@example.com'],
+    // or: emails: ['steve.wozniak@example.com', 'susan.kare@example.com'],
   });
   ```
 
@@ -90,7 +85,7 @@ Provide either `emails` or `ids`, but not both.
   ```go Go theme={"theme":{"light":"github-light","dark":"vesper"}}
   package main
 
-  import "github.com/resend/resend-go/v3"
+  import "github.com/resend/resend-go/v4"
 
   func main() {
   	client := resend.NewClient("re_xxxxxxxxx")
@@ -130,12 +125,13 @@ Provide either `emails` or `ids`, but not both.
   ```
 
   ```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
-  import com.resend.*;
+  import com.resend.Resend;
+  import com.resend.core.exception.ResendException;
   import com.resend.services.suppressions.model.RemoveSuppressionsOptions;
   import java.util.List;
 
   public class Main {
-      public static void main(String[] args) {
+      public static void main(String[] args) throws ResendException {
           Resend resend = new Resend("re_xxxxxxxxx");
 
           // Remove by suppression ids

@@ -110,18 +110,23 @@ By default, the API will return the most recent 20 templates. You can optionally
   ```
 
   ```go Go theme={"theme":{"light":"github-light","dark":"vesper"}}
+  package main
+
   import (
   	"context"
 
-  	"github.com/resend/resend-go/v3"
+  	"github.com/resend/resend-go/v4"
   )
 
   func main() {
   	client := resend.NewClient("re_xxxxxxxxx")
 
+  	limit := 2
+  	after := "34a080c9-b17d-4187-ad80-5af20266e535"
+
   	client.Templates.ListWithContext(context.TODO(), &resend.ListOptions{
-  		Limit: 2,
-  		After: "34a080c9-b17d-4187-ad80-5af20266e535",
+  		Limit: &limit,
+  		After: &after,
   	})
   }
   ```
@@ -144,10 +149,13 @@ By default, the API will return the most recent 20 templates. You can optionally
   ```
 
   ```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
-  import com.resend.*;
+  import com.resend.Resend;
+  import com.resend.core.exception.ResendException;
+  import com.resend.core.net.ListParams;
+  import com.resend.services.templates.model.ListTemplatesResponseSuccess;
 
   public class Main {
-      public static void main(String[] args) {
+      public static void main(String[] args) throws ResendException {
           Resend resend = new Resend("re_xxxxxxxxx");
 
           ListParams params = ListParams.builder()

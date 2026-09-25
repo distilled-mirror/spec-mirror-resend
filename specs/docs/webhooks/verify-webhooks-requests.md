@@ -98,3 +98,7 @@ Webhooks are vulnerable because attackers can send fake HTTP POST requests to en
 To mitigate this, each webhook and its metadata are signed with a unique key specific to the endpoint. This signature helps verify the source of the webhook, allowing only authenticated webhooks to be processed.
 
 Another security concern is replay attacks, where intercepted valid payloads, complete with their signatures, are resent to endpoints. These payloads would pass the signature verification and be executed, posing a potential security threat.
+
+## API Reference
+
+For complete API documentation, see the [Webhooks API reference](/docs/api-reference/webhooks/create-webhook).

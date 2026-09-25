@@ -118,11 +118,14 @@ As with all our features, inline images are available across all our SDKs.
   Resend::Emails.send(params)
   ```
 
-  ```go Go {14, 21} theme={"theme":{"light":"github-light","dark":"vesper"}}
+  ```go Go {17, 24} theme={"theme":{"light":"github-light","dark":"vesper"}}
+  package main
+
   import (
+  	"context"
   	"fmt"
 
-  	"github.com/resend/resend-go/v3"
+  	"github.com/resend/resend-go/v4"
   )
 
   func main() {
@@ -182,17 +185,21 @@ As with all our features, inline images are available across all our SDKs.
   }
   ```
 
-  ```java Java {10, 17} theme={"theme":{"light":"github-light","dark":"vesper"}}
+  ```java Java {14, 21} theme={"theme":{"light":"github-light","dark":"vesper"}}
   import com.resend.*;
+  import com.resend.core.exception.ResendException;
+  import com.resend.services.emails.model.Attachment;
+  import com.resend.services.emails.model.CreateEmailOptions;
+  import com.resend.services.emails.model.CreateEmailResponse;
 
   public class Main {
-      public static void main(String[] args) {
+      public static void main(String[] args) throws ResendException {
           Resend resend = new Resend("re_xxxxxxxxx");
 
           Attachment att = Attachment.builder()
                   .path("https://resend.com/static/sample/logo.png")
                   .fileName("logo.png")
-                  .ContentId("logo-image")
+                  .contentId("logo-image")
                   .build();
 
           CreateEmailOptions params = CreateEmailOptions.builder()
@@ -280,8 +287,10 @@ As with all our features, inline images are available across all our SDKs.
   });
   ```
 
-  ```php PHP {7, 12} theme={"theme":{"light":"github-light","dark":"vesper"}}
+  ```php PHP {9, 14} theme={"theme":{"light":"github-light","dark":"vesper"}}
   $resend = Resend::client('re_xxxxxxxxx');
+
+  $attachment = base64_encode(file_get_contents(__DIR__ . '/static/logo.png'));
 
   $resend->emails->send([
     'from' => 'Acme <onboarding@resend.dev>',
@@ -291,7 +300,7 @@ As with all our features, inline images are available across all our SDKs.
     'attachments' => [
       [
         'filename' => 'logo.png',
-        'content' => $invoiceBuffer,
+        'content' => $attachment,
         'content_id' => 'logo-image',
       ]
     ]
@@ -345,12 +354,15 @@ As with all our features, inline images are available across all our SDKs.
   Resend::Emails.send(params)
   ```
 
-  ```go Go {21, 28} theme={"theme":{"light":"github-light","dark":"vesper"}}
+  ```go Go {24, 31} theme={"theme":{"light":"github-light","dark":"vesper"}}
+  package main
+
   import (
+  	"context"
   	"fmt"
   	"os"
 
-  	"github.com/resend/resend-go/v3"
+  	"github.com/resend/resend-go/v4"
   )
 
   func main() {
@@ -421,11 +433,15 @@ As with all our features, inline images are available across all our SDKs.
   }
   ```
 
-  ```java Java {10, 17} theme={"theme":{"light":"github-light","dark":"vesper"}}
+  ```java Java {14, 21} theme={"theme":{"light":"github-light","dark":"vesper"}}
   import com.resend.*;
+  import com.resend.core.exception.ResendException;
+  import com.resend.services.emails.model.Attachment;
+  import com.resend.services.emails.model.CreateEmailOptions;
+  import com.resend.services.emails.model.CreateEmailResponse;
 
   public class Main {
-      public static void main(String[] args) {
+      public static void main(String[] args) throws ResendException {
           Resend resend = new Resend("re_xxxxxxxxx");
 
           Attachment att = Attachment.builder()
@@ -442,7 +458,7 @@ As with all our features, inline images are available across all our SDKs.
                   .attachments(att)
                   .build();
 
-          CreateEmailOptions params = CreateEmailOptions.builder()
+          CreateEmailResponse data = resend.emails().send(params);
       }
   }
   ```

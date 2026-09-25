@@ -87,7 +87,7 @@ The SDKs read the process environment, not the `.env` file. Load it first, for e
   ```
 
   ```bash Go theme={"theme":{"light":"github-light","dark":"vesper"}}
-  go get github.com/resend/resend-go/v3
+  go get github.com/resend/resend-go/v4
   ```
 
   ```bash Rust theme={"theme":{"light":"github-light","dark":"vesper"}}
@@ -198,7 +198,7 @@ Then send an email:
   	"fmt"
   	"os"
 
-  	"github.com/resend/resend-go/v3"
+  	"github.com/resend/resend-go/v4"
   )
 
   func main() {

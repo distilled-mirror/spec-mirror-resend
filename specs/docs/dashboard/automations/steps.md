@@ -6,11 +6,11 @@
 
 > Steps and their properties in Automation workflows.
 
-## How it works
+## Available steps
 
 Steps are the building blocks of Automation workflows. They define the actions that will be executed when the Automation runs.
 
-The following steps are available:
+Learn more about each available step in its dedicated guide:
 
 * [Trigger](/docs/dashboard/automations/trigger)
 * [Condition](/docs/dashboard/automations/condition)
@@ -23,29 +23,48 @@ The following steps are available:
 
 ## Step properties
 
-Every step in an automation has the following base properties:
+Every step in an automation has common base properties: `key`, `type`, and a `config` object whose shape depends on the type of the step.
+
+### `key`
 
 <ParamField body="key" type="string" required>
   A unique identifier for the step. Used in connection definitions to connect
   steps.
 </ParamField>
 
+### `type`
+
 <ParamField body="type" type="string" required>
   The type of step. Possible values:
 
   * `trigger`
-  * `send_email`
+  * `condition`
   * `delay`
   * `wait_for_event`
-  * `condition`
+  * `send_email`
+  * `add_to_segment`
   * `contact_update`
   * `contact_delete`
-  * `add_to_segment`
 </ParamField>
+
+### `config`
 
 <ParamField body="config" type="object" required>
   The configuration object for the step. The shape depends on the step `type`.
+
+  See the configuration for each step `type`:
+
+  * [`trigger`](#trigger)
+  * [`condition`](#condition)
+  * [`delay`](#delay)
+  * [`wait_for_event`](#wait_for_event)
+  * [`send_email`](#send_email)
+  * [`add_to_segment`](#add_to_segment)
+  * [`contact_update`](#contact_update)
+  * [`contact_delete`](#contact_delete)
 </ParamField>
+
+## Step configuration
 
 Below is a list of all the possible step types and their configurations.
 
@@ -63,107 +82,6 @@ The trigger step starts the automation when a matching event is received.
   "type": "trigger",
   "config": {
     "event_name": "user.created"
-  }
-}
-```
-
-### `send_email`
-
-Sends an email using a template.
-
-<ParamField body="config.template" type="object" required>
-  The published template to send. Provide `id` and optionally `variables`.
-
-  <Expandable defaultOpen title="properties">
-    <ParamField body="config.template.id" type="string" required>
-      The ID or alias of the template to send.
-    </ParamField>
-
-    <ParamField body="config.template.variables" type="object">
-      A key-value map of template variables. Each value can be a static string or a variable reference object (`{ "var": "event.fieldName" }`) that resolves dynamically from the `event.*`, `contact.*`, or `wait_events.*` namespaces.
-    </ParamField>
-  </Expandable>
-</ParamField>
-
-<ParamField body="config.from" type="string">
-  The sender email address.
-
-  If provided, this value will override the template's default value.
-</ParamField>
-
-<ParamField body="config.subject" type="string">
-  The email subject line.
-
-  If provided, this value will override the template's default value.
-</ParamField>
-
-<ParamField body="config.reply_to" type="string">
-  Reply-to email address.
-
-  If provided, this value will override the template's default value.
-</ParamField>
-
-```json theme={"theme":{"light":"github-light","dark":"vesper"}}
-{
-  "key": "welcome",
-  "type": "send_email",
-  "config": {
-    "template": {
-      "id": "062f8ef4-fbfa-44f1-b5e0-ff8e1e8ffa96",
-      "variables": {
-        "name": { "var": "event.firstName" }
-      }
-    },
-    "from": "hello@example.com",
-    "subject": "Welcome!",
-    "reply_to": "support@example.com"
-  }
-}
-```
-
-### `delay`
-
-Pauses execution for a specified duration.
-
-<ParamField body="config.duration" type="string" required>
-  The delay duration in natural language (e.g. `"1 hour"`, `"3 days"`). Maximum:
-  30 days.
-</ParamField>
-
-```json Example theme={"theme":{"light":"github-light","dark":"vesper"}}
-{
-  "key": "wait_1_hour",
-  "type": "delay",
-  "config": {
-    "duration": "1 hour"
-  }
-}
-```
-
-### `wait_for_event`
-
-Pauses execution until a specific event is received or a timeout is reached.
-
-<ParamField body="config.event_name" type="string" required>
-  The name of the event to wait for.
-</ParamField>
-
-<ParamField body="config.timeout" type="string">
-  The maximum time to wait before timing out (e.g. `"3 days"`, `"1 hour"`).
-  Maximum: 30 days.
-</ParamField>
-
-<ParamField body="config.filter_rule" type="object">
-  An optional rule object to filter incoming events.
-</ParamField>
-
-```json Example theme={"theme":{"light":"github-light","dark":"vesper"}}
-{
-  "key": "wait_for_purchase",
-  "type": "wait_for_event",
-  "config": {
-    "event_name": "purchase.completed",
-    "timeout": "3 days"
   }
 }
 ```
@@ -255,6 +173,125 @@ Use `and` or `or` to combine multiple rules into a single branch:
 }
 ```
 
+### `delay`
+
+Pauses execution for a specified duration.
+
+<ParamField body="config.duration" type="string" required>
+  The delay duration in natural language (e.g. `"1 hour"`, `"3 days"`). Maximum:
+  30 days.
+</ParamField>
+
+```json Example theme={"theme":{"light":"github-light","dark":"vesper"}}
+{
+  "key": "wait_1_hour",
+  "type": "delay",
+  "config": {
+    "duration": "1 hour"
+  }
+}
+```
+
+### `wait_for_event`
+
+Pauses execution until a specific event is received or a timeout is reached.
+
+<ParamField body="config.event_name" type="string" required>
+  The name of the event to wait for.
+</ParamField>
+
+<ParamField body="config.timeout" type="string">
+  The maximum time to wait before timing out (e.g. `"3 days"`, `"1 hour"`).
+  Maximum: 30 days.
+</ParamField>
+
+<ParamField body="config.filter_rule" type="object">
+  An optional rule object to filter incoming events.
+</ParamField>
+
+```json Example theme={"theme":{"light":"github-light","dark":"vesper"}}
+{
+  "key": "wait_for_purchase",
+  "type": "wait_for_event",
+  "config": {
+    "event_name": "purchase.completed",
+    "timeout": "3 days"
+  }
+}
+```
+
+### `send_email`
+
+Sends an email using a template.
+
+<ParamField body="config.template" type="object" required>
+  The published template to send. Provide `id` and optionally `variables`.
+
+  <Expandable defaultOpen title="properties">
+    <ParamField body="config.template.id" type="string" required>
+      The ID or alias of the template to send.
+    </ParamField>
+
+    <ParamField body="config.template.variables" type="object">
+      A key-value map of template variables. Each value can be a static string or a variable reference object (`{ "var": "event.fieldName" }`) that resolves dynamically from the `event.*`, `contact.*`, or `wait_events.*` namespaces.
+    </ParamField>
+  </Expandable>
+</ParamField>
+
+<ParamField body="config.from" type="string">
+  The sender email address.
+
+  If provided, this value will override the template's default value.
+</ParamField>
+
+<ParamField body="config.subject" type="string">
+  The email subject line.
+
+  If provided, this value will override the template's default value.
+</ParamField>
+
+<ParamField body="config.reply_to" type="string">
+  Reply-to email address.
+
+  If provided, this value will override the template's default value.
+</ParamField>
+
+```json theme={"theme":{"light":"github-light","dark":"vesper"}}
+{
+  "key": "welcome",
+  "type": "send_email",
+  "config": {
+    "template": {
+      "id": "062f8ef4-fbfa-44f1-b5e0-ff8e1e8ffa96",
+      "variables": {
+        "name": { "var": "event.firstName" }
+      }
+    },
+    "from": "hello@example.com",
+    "subject": "Welcome!",
+    "reply_to": "support@example.com"
+  }
+}
+```
+
+### `add_to_segment`
+
+Adds the contact to a segment.
+
+<ParamField body="config.segment_id" type="string" required>
+  The ID of the segment to add the contact to.
+</ParamField>
+
+```json Example theme={"theme":{"light":"github-light","dark":"vesper"}}
+{
+  "key": "add_to_vip",
+  "type": "add_to_segment",
+  "config": {
+    "segment_id": "83a1e324-26dc-47eb-9b28-ba8b6d1fe808"
+  }
+}
+```
+
 ### `contact_update`
 
 Updates a contact's fields. Each field value can be either a hardcoded value or a dynamic variable reference using the `{ var: '...' }` syntax.
@@ -304,23 +341,5 @@ Deletes the contact from the audience. This step does not require any configurat
   "key": "remove_contact",
   "type": "contact_delete",
   "config": {}
-}
-```
-
-### `add_to_segment`
-
-Adds the contact to a segment.
-
-<ParamField body="config.segment_id" type="string" required>
-  The ID of the segment to add the contact to.
-</ParamField>
-
-```json Example theme={"theme":{"light":"github-light","dark":"vesper"}}
-{
-  "key": "add_to_vip",
-  "type": "add_to_segment",
-  "config": {
-    "segment_id": "83a1e324-26dc-47eb-9b28-ba8b6d1fe808"
-  }
 }
 ```

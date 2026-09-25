@@ -150,6 +150,8 @@ export const ResendParamField = ({children, body, path, ...props}) => {
   ```
 
   ```ruby Ruby theme={"theme":{"light":"github-light","dark":"vesper"}}
+  require "resend"
+
   Resend.api_key = "re_xxxxxxxxx"
 
   Resend::Domains.update({
@@ -164,7 +166,7 @@ export const ResendParamField = ({children, body, path, ...props}) => {
   ```go Go theme={"theme":{"light":"github-light","dark":"vesper"}}
   package main
 
-  import "github.com/resend/resend-go/v3"
+  import "github.com/resend/resend-go/v4"
 
   func main() {
   	client := resend.NewClient("re_xxxxxxxxx")
@@ -203,6 +205,10 @@ export const ResendParamField = ({children, body, path, ...props}) => {
   ```
 
   ```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
+  import com.resend.Resend;
+  import com.resend.services.domains.model.Tls;
+  import com.resend.services.domains.model.UpdateDomainOptions;
+
   Resend resend = new Resend("re_xxxxxxxxx");
 
   UpdateDomainOptions params = UpdateDomainOptions.builder()

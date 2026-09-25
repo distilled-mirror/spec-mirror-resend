@@ -91,6 +91,7 @@ Here's how you can implement this:
 
   ```php Laravel theme={"theme":{"light":"github-light","dark":"vesper"}}
   // routes/api.php
+  use Illuminate\Http\JsonResponse;
   use Illuminate\Http\Request;
   use Illuminate\Support\Facades\Http;
   use Illuminate\Support\Facades\Log;
@@ -119,10 +120,10 @@ Here's how you can implement this:
               // process the content (e.g., save to storage, analyze, etc.)
           }
 
-          return response()->json($event);
+          return new JsonResponse($event);
       }
 
-      return response()->json([]);
+      return new JsonResponse([]);
   });
   ```
 
@@ -189,6 +190,10 @@ Here's how you can implement this:
   use resend_rs::{json, list_opts::ListOptions, Resend};
   use serde::Serialize;
   use std::sync::Arc;
+
+  struct AppState {
+      resend: Resend,
+  }
 
   #[derive(Serialize)]
   struct Empty {}

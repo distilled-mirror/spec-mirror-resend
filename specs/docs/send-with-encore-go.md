@@ -35,7 +35,7 @@
   ### **Install the SDK**
 
   ```bash theme={"theme":{"light":"github-light","dark":"vesper"}}
-  go get github.com/resend/resend-go/v3
+  go get github.com/resend/resend-go/v4
   ```
 
   ### **Define Secrets**
@@ -56,7 +56,7 @@
   import (
       "context"
 
-      "github.com/resend/resend-go/v3"
+      "github.com/resend/resend-go/v4"
   )
 
   var secrets struct {
@@ -151,7 +151,7 @@
   ### **3.1 - ALWAYS DO THE FOLLOWING**
 
   1. **Store the API key as an Encore secret** using `encore secret set`. Access it via `var secrets struct { ResendAPIKey string }`. Never use `os.Getenv()` or `.env` files.
-  2. **Import from `github.com/resend/resend-go/v3`** — the current version is v3.
+  2. **Import from `github.com/resend/resend-go/v4`** — the current version is v4.
   3. **Use `resend.NewClient(secrets.ResendAPIKey)`** to create the client.
   4. **Use `//encore:api` annotations** to define HTTP endpoints — not `net/http`, Gin, Chi, or any other router.
   5. **Check the `error` return value** from `client.Emails.Send()`.
@@ -162,7 +162,7 @@
 
   1. **Do not** use `os.Getenv("RESEND_API_KEY")` or `.env` files — Encore has its own secrets management.
   2. **Do not** hardcode API keys in source code.
-  3. **Do not** import from `github.com/resend/resend-go` (v1) or `github.com/resend/resend-go/v2` — use v3.
+  3. **Do not** import from `github.com/resend/resend-go` (v1), `github.com/resend/resend-go/v2`, or `github.com/resend/resend-go/v3` — use v4.
   4. **Do not** use `net/http`, Gin, Chi, Echo, or any other HTTP framework — Encore Go provides its own API routing via `//encore:api` annotations.
   5. **Do not** use `onboarding@resend.dev` as the `From` address in production code. It is a test-only address.
   6. **Do not** set up testing flows with fake email addresses. Resend provides the following test addresses:
@@ -227,7 +227,7 @@
 
   Before returning any Resend + Encore Go solution, you **must** verify:
 
-  1. **Import**: Is the SDK imported from `github.com/resend/resend-go/v3`?
+  1. **Import**: Is the SDK imported from `github.com/resend/resend-go/v4`?
   2. **Secrets**: Is the API key accessed via `var secrets struct { ResendAPIKey string }` (not `os.Getenv`)?
   3. **Client**: Is the client created with `resend.NewClient(secrets.ResendAPIKey)`?
   4. **API Annotation**: Are endpoints defined with `//encore:api` (not `net/http`, Gin, etc.)?
@@ -269,7 +269,7 @@ Before you start, you'll need:
     Then install the Resend Go SDK:
 
     ```bash theme={"theme":{"light":"github-light","dark":"vesper"}}
-    go get github.com/resend/resend-go/v3
+    go get github.com/resend/resend-go/v4
     ```
   </Step>
 
@@ -290,7 +290,7 @@ Before you start, you'll need:
     import (
         "context"
 
-        "github.com/resend/resend-go/v3"
+        "github.com/resend/resend-go/v4"
     )
 
     var secrets struct {

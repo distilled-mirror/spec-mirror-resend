@@ -62,8 +62,7 @@ Our policies are based on the following **foundational principles**:
 
   <Card title="Data backup" icon="database">
     Resend backs-up all production data using a point-in-time approach. Backups
-    are persisted for 30 days, and are globally replicated for resiliency
-    against regional disasters.
+    are persisted for 7 days.
   </Card>
 </CardGroup>
 

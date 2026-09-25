@@ -83,6 +83,8 @@ Once verified, all tracked links in your emails will use your tracking subdomain
       ```
 
       ```ruby Ruby theme={"theme":{"light":"github-light","dark":"vesper"}}
+      require "resend"
+
       Resend.api_key = "re_xxxxxxxxx"
 
       params = {
@@ -97,15 +99,15 @@ Once verified, all tracked links in your emails will use your tracking subdomain
       ```go Go theme={"theme":{"light":"github-light","dark":"vesper"}}
       package main
 
-      import "github.com/resend/resend-go/v3"
+      import "github.com/resend/resend-go/v4"
 
       func main() {
       	client := resend.NewClient("re_xxxxxxxxx")
 
       	params := &resend.CreateDomainRequest{
       		Name:              "example.com",
-      		OpenTracking:      true,
-      		ClickTracking:     true,
+      		OpenTracking:      resend.Bool(true),
+      		ClickTracking:     resend.Bool(true),
       		TrackingSubdomain: "links",
       	}
 
@@ -222,6 +224,8 @@ Once verified, all tracked links in your emails will use your tracking subdomain
       ```
 
       ```ruby Ruby theme={"theme":{"light":"github-light","dark":"vesper"}}
+      require "resend"
+
       Resend.api_key = "re_xxxxxxxxx"
 
       Resend::Domains.update({
@@ -235,7 +239,7 @@ Once verified, all tracked links in your emails will use your tracking subdomain
       ```go Go theme={"theme":{"light":"github-light","dark":"vesper"}}
       package main
 
-      import "github.com/resend/resend-go/v3"
+      import "github.com/resend/resend-go/v4"
 
       func main() {
       	client := resend.NewClient("re_xxxxxxxxx")
@@ -381,6 +385,8 @@ Once verified, all tracked links in your emails will use your tracking subdomain
       ```
 
       ```ruby Ruby theme={"theme":{"light":"github-light","dark":"vesper"}}
+      require "resend"
+
       Resend.api_key = "re_xxxxxxxxx"
 
       Resend::Domains.verify("d91cd9bd-1176-453e-8fc1-35364d380206")
@@ -389,7 +395,7 @@ Once verified, all tracked links in your emails will use your tracking subdomain
       ```go Go theme={"theme":{"light":"github-light","dark":"vesper"}}
       package main
 
-      import "github.com/resend/resend-go/v3"
+      import "github.com/resend/resend-go/v4"
 
       func main() {
       	client := resend.NewClient("re_xxxxxxxxx")
@@ -416,6 +422,7 @@ Once verified, all tracked links in your emails will use your tracking subdomain
 
       ```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
       import com.resend.*;
+      import com.resend.services.domains.model.VerifyDomainResponse;
 
       Resend resend = new Resend("re_xxxxxxxxx");
 

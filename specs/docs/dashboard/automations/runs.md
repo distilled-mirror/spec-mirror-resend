@@ -80,7 +80,7 @@ When a contact unsubscribes, any remaining **Send Email** steps in the Automatio
       ```go Go theme={"theme":{"light":"github-light","dark":"vesper"}}
       package main
 
-      import "github.com/resend/resend-go/v3"
+      import "github.com/resend/resend-go/v4"
 
       func main() {
       	client := resend.NewClient("re_xxxxxxxxx")
@@ -111,12 +111,14 @@ When a contact unsubscribes, any remaining **Send Email** steps in the Automatio
 
       ```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
       import com.resend.*;
+      import com.resend.core.exception.ResendException;
+      import com.resend.services.automations.model.ListAutomationRunsResponseSuccess;
 
       public class Main {
-          public static void main(String[] args) {
+          public static void main(String[] args) throws ResendException {
               Resend resend = new Resend("re_xxxxxxxxx");
 
-              ListAutomationRunsResponse data = resend.automations().listRuns("c9b16d4f-ba6c-4e2e-b044-6bf4404e57fd");
+              ListAutomationRunsResponseSuccess data = resend.automations().listRuns("c9b16d4f-ba6c-4e2e-b044-6bf4404e57fd");
           }
       }
       ```
@@ -176,6 +178,10 @@ View the [List Automation Runs API reference](/docs/api-reference/automations/li
 
     <CodeGroup>
       ```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
+      import { Resend } from 'resend';
+
+      const resend = new Resend('re_xxxxxxxxx');
+
       const { data, error } = await resend.automations.runs.list({
         automationId: 'c9b16d4f-ba6c-4e2e-b044-6bf4404e57fd',
         status: ['running', 'completed'],
@@ -218,7 +224,7 @@ View the [List Automation Runs API reference](/docs/api-reference/automations/li
       import (
       	"context"
 
-      	"github.com/resend/resend-go/v3"
+      	"github.com/resend/resend-go/v4"
       )
 
       func main() {
@@ -259,9 +265,13 @@ View the [List Automation Runs API reference](/docs/api-reference/automations/li
 
       ```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
       import com.resend.*;
+      import com.resend.core.exception.ResendException;
+      import com.resend.services.automations.model.ListAutomationRunsParams;
+      import com.resend.services.automations.model.ListAutomationRunsResponseSuccess;
+      import com.resend.services.automations.model.RunStatus;
 
       public class Main {
-          public static void main(String[] args) {
+          public static void main(String[] args) throws ResendException {
               Resend resend = new Resend("re_xxxxxxxxx");
 
               ListAutomationRunsParams params = ListAutomationRunsParams.builder()
@@ -273,6 +283,10 @@ View the [List Automation Runs API reference](/docs/api-reference/automations/li
       ```
 
       ```csharp .NET theme={"theme":{"light":"github-light","dark":"vesper"}}
+      using Resend;
+
+      IResend resend = ResendClient.Create( "re_xxxxxxxxx" ); // Or from DI
+
       var resp = await resend.AutomationRunListAsync(
           new Guid( "c9b16d4f-ba6c-4e2e-b044-6bf4404e57fd" ),
           new AutomationRunListQuery() { Status = "running,completed" }
@@ -305,6 +319,10 @@ View the [List Automation Runs API reference](/docs/api-reference/automations/li
 
     <CodeGroup>
       ```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
+      import { Resend } from 'resend';
+
+      const resend = new Resend('re_xxxxxxxxx');
+
       const { data, error } = await resend.automations.runs.get({
         automationId: 'c9b16d4f-ba6c-4e2e-b044-6bf4404e57fd',
         runId: 'a1b2c3d4-e5f6-7890-abcd-ef1234567890',
@@ -345,7 +363,7 @@ View the [List Automation Runs API reference](/docs/api-reference/automations/li
       ```go Go theme={"theme":{"light":"github-light","dark":"vesper"}}
       package main
 
-      import "github.com/resend/resend-go/v3"
+      import "github.com/resend/resend-go/v4"
 
       func main() {
       	client := resend.NewClient("re_xxxxxxxxx")
@@ -377,6 +395,12 @@ View the [List Automation Runs API reference](/docs/api-reference/automations/li
       ```
 
       ```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
+      import com.resend.*;
+      import com.resend.services.automations.model.AutomationRun;
+      import com.resend.services.automations.model.GetAutomationRunOptions;
+
+      Resend resend = new Resend("re_xxxxxxxxx");
+
       AutomationRun data = resend.automations().getRun(
               GetAutomationRunOptions.builder()
                       .automationId("c9b16d4f-ba6c-4e2e-b044-6bf4404e57fd")
@@ -386,6 +410,10 @@ View the [List Automation Runs API reference](/docs/api-reference/automations/li
       ```
 
       ```csharp .NET theme={"theme":{"light":"github-light","dark":"vesper"}}
+      using Resend;
+
+      IResend resend = ResendClient.Create( "re_xxxxxxxxx" ); // Or from DI
+
       var resp = await resend.AutomationRunRetrieveAsync(
           new Guid( "c9b16d4f-ba6c-4e2e-b044-6bf4404e57fd" ),
           new Guid( "a1b2c3d4-e5f6-7890-abcd-ef1234567890" )
@@ -473,6 +501,10 @@ View the [Retrieve Automation Run API reference](/docs/api-reference/automations
 
     <CodeGroup>
       ```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
+      import { Resend } from 'resend';
+
+      const resend = new Resend('re_xxxxxxxxx');
+
       const { data, error } = await resend.automations.runs.get({
         automationId: 'c9b16d4f-ba6c-4e2e-b044-6bf4404e57fd',
         runId: 'a1b2c3d4-e5f6-7890-abcd-ef1234567890',
@@ -513,7 +545,7 @@ View the [Retrieve Automation Run API reference](/docs/api-reference/automations
       ```go Go theme={"theme":{"light":"github-light","dark":"vesper"}}
       package main
 
-      import "github.com/resend/resend-go/v3"
+      import "github.com/resend/resend-go/v4"
 
       func main() {
       	client := resend.NewClient("re_xxxxxxxxx")
@@ -545,6 +577,12 @@ View the [Retrieve Automation Run API reference](/docs/api-reference/automations
       ```
 
       ```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
+      import com.resend.*;
+      import com.resend.services.automations.model.AutomationRun;
+      import com.resend.services.automations.model.GetAutomationRunOptions;
+
+      Resend resend = new Resend("re_xxxxxxxxx");
+
       AutomationRun data = resend.automations().getRun(
               GetAutomationRunOptions.builder()
                       .automationId("c9b16d4f-ba6c-4e2e-b044-6bf4404e57fd")
@@ -554,6 +592,10 @@ View the [Retrieve Automation Run API reference](/docs/api-reference/automations
       ```
 
       ```csharp .NET theme={"theme":{"light":"github-light","dark":"vesper"}}
+      using Resend;
+
+      IResend resend = ResendClient.Create( "re_xxxxxxxxx" ); // Or from DI
+
       var resp = await resend.AutomationRunRetrieveAsync(
           new Guid( "c9b16d4f-ba6c-4e2e-b044-6bf4404e57fd" ),
           new Guid( "a1b2c3d4-e5f6-7890-abcd-ef1234567890" )
@@ -600,6 +642,10 @@ Common failure scenarios:
 
     <CodeGroup>
       ```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
+      import { Resend } from 'resend';
+
+      const resend = new Resend('re_xxxxxxxxx');
+
       const { data, error } = await resend.automations.stop(
         'c9b16d4f-ba6c-4e2e-b044-6bf4404e57fd',
       );
@@ -630,7 +676,7 @@ Common failure scenarios:
       ```go Go theme={"theme":{"light":"github-light","dark":"vesper"}}
       package main
 
-      import "github.com/resend/resend-go/v3"
+      import "github.com/resend/resend-go/v4"
 
       func main() {
       	client := resend.NewClient("re_xxxxxxxxx")
@@ -656,10 +702,19 @@ Common failure scenarios:
       ```
 
       ```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
-      StopAutomationResponse data = resend.automations().stop("c9b16d4f-ba6c-4e2e-b044-6bf4404e57fd");
+      import com.resend.*;
+      import com.resend.services.automations.model.StopAutomationResponseSuccess;
+
+      Resend resend = new Resend("re_xxxxxxxxx");
+
+      StopAutomationResponseSuccess data = resend.automations().stop("c9b16d4f-ba6c-4e2e-b044-6bf4404e57fd");
       ```
 
       ```csharp .NET theme={"theme":{"light":"github-light","dark":"vesper"}}
+      using Resend;
+
+      IResend resend = ResendClient.Create( "re_xxxxxxxxx" ); // Or from DI
+
       var resp = await resend.AutomationStopAsync( new Guid( "c9b16d4f-ba6c-4e2e-b044-6bf4404e57fd" ) );
       Console.WriteLine( "Status={0}", resp.Content.Status );
       ```

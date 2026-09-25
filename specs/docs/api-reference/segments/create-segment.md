@@ -36,7 +36,7 @@
 
   resend.api_key = 're_xxxxxxxxx'
 
-  params = {
+  params: resend.Segments.CreateParams = {
       "name": "Registered Users",
   }
 
@@ -61,7 +61,7 @@
   	"context"
   	"fmt"
 
-  	"github.com/resend/resend-go/v3"
+  	"github.com/resend/resend-go/v4"
   )
 
   func main() {
@@ -94,10 +94,13 @@
   ```
 
   ```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
-  import com.resend.*;
+  import com.resend.Resend;
+  import com.resend.core.exception.ResendException;
+  import com.resend.services.segments.model.CreateSegmentOptions;
+  import com.resend.services.segments.model.CreateSegmentResponseSuccess;
 
   public class Main {
-      public static void main(String[] args) {
+      public static void main(String[] args) throws ResendException {
           Resend resend = new Resend("re_xxxxxxxxx");
 
           CreateSegmentOptions options = CreateSegmentOptions.builder()

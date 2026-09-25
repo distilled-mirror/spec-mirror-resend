@@ -38,6 +38,10 @@ Here are some examples:
         event.data.email_id,
       );
 
+      if (!email) {
+        return NextResponse.json({ error: 'Email not found' }, { status: 404 });
+      }
+
       console.log(email.html);
       console.log(email.text);
       console.log(email.headers);
@@ -51,6 +55,7 @@ Here are some examples:
 
   ```php Laravel theme={"theme":{"light":"github-light","dark":"vesper"}}
   // routes/api.php
+  use Illuminate\Http\JsonResponse;
   use Illuminate\Http\Request;
   use Illuminate\Support\Facades\Log;
   use Illuminate\Support\Facades\Route;
@@ -64,12 +69,12 @@ Here are some examples:
 
           Log::info($email->html);
           Log::info($email->text);
-          Log::info($email->headers);
+          Log::info(print_r($email->headers, true));
 
-          return response()->json($email);
+          return new JsonResponse($email);
       }
 
-      return response()->json([]);
+      return new JsonResponse([]);
   });
   ```
 
@@ -108,9 +113,17 @@ Here are some examples:
   ```
 
   ```rust Rust theme={"theme":{"light":"github-light","dark":"vesper"}}
-  use axum::{extract::State, response::Json};
-  use resend_rs::Resend;
+  use axum::{
+      extract::State,
+      response::{IntoResponse, Json, Response},
+  };
+  use resend_rs::{types::GetInboundEmailOptions, Resend};
+  use serde::Serialize;
   use std::sync::Arc;
+
+  struct AppState {
+      resend: Resend,
+  }
 
   #[derive(Serialize)]
   struct Empty {}
@@ -126,7 +139,7 @@ Here are some examples:
           let email = state
               .resend
               .receiving
-              .get(&event.data.email_id)
+              .get(&event.data.email_id, GetInboundEmailOptions::default())
               .await
               .unwrap();
 

@@ -204,7 +204,7 @@ Common use cases:
       ```go Go {18-27} theme={"theme":{"light":"github-light","dark":"vesper"}}
       package main
 
-      import "github.com/resend/resend-go/v3"
+      import "github.com/resend/resend-go/v4"
 
       func main() {
       	client := resend.NewClient("re_xxxxxxxxx")
@@ -309,11 +309,19 @@ Common use cases:
       }
       ```
 
-      ```java Java {14-21} theme={"theme":{"light":"github-light","dark":"vesper"}}
+      ```java Java {22-29} theme={"theme":{"light":"github-light","dark":"vesper"}}
       import com.resend.*;
+      import com.resend.core.exception.ResendException;
+      import com.resend.services.automations.model.AutomationConnection;
+      import com.resend.services.automations.model.AutomationStep;
+      import com.resend.services.automations.model.ConditionOperator;
+      import com.resend.services.automations.model.ConditionRule;
+      import com.resend.services.automations.model.ConnectionType;
+      import com.resend.services.automations.model.CreateAutomationOptions;
+      import com.resend.services.automations.model.CreateAutomationResponseSuccess;
 
       public class Main {
-          public static void main(String[] args) {
+          public static void main(String[] args) throws ResendException {
               Resend resend = new Resend("re_xxxxxxxxx");
 
               CreateAutomationOptions options = CreateAutomationOptions.builder()
@@ -507,7 +515,7 @@ For `and` / `or` types:
 
 Single rule example:
 
-```json theme={"theme":{"light":"github-light","dark":"vesper"}}
+```json theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}}
 {
   "key": "check_plan",
   "type": "condition",
@@ -522,7 +530,7 @@ Single rule example:
 
 Use `and` or `or` to combine multiple rules into a single branch:
 
-```json {5-19} theme={"theme":{"light":"github-light","dark":"vesper"}}
+```json {5-19} theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}}
 {
   "key": "check_plan_and_amount",
   "type": "condition",

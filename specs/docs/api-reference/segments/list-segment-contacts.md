@@ -127,27 +127,45 @@ export const ResendParamField = ({children, body, path, ...props}) => {
   contacts = resend.Contacts.list(segment_id='78261eea-8f8b-4381-83c6-79fa7120f1cf')
   ```
 
-  ```rust Rust theme={"theme":{"light":"github-light","dark":"vesper"}}
-  use resend_rs::{Resend, Result};
+  ```ruby Ruby theme={"theme":{"light":"github-light","dark":"vesper"}}
+  require 'resend'
 
-  #[tokio::main]
-  async fn main() -> Result<()> {
-    let resend = Resend::new("re_xxxxxxxxx");
+  Resend.api_key = 're_xxxxxxxxx'
 
-    let _contacts = resend
-      .contacts
-      .list("78261eea-8f8b-4381-83c6-79fa7120f1cf", ListOptions::default())
-      .await?;
+  contacts = Resend::Contacts.list(segment_id: '78261eea-8f8b-4381-83c6-79fa7120f1cf')
+  ```
 
-    Ok(())
+  ```go Go theme={"theme":{"light":"github-light","dark":"vesper"}}
+  package main
+
+  import (
+  	"context"
+  	"fmt"
+
+  	"github.com/resend/resend-go/v4"
+  )
+
+  func main() {
+  	ctx := context.TODO()
+  	client := resend.NewClient("re_xxxxxxxxx")
+
+  	contacts, err := client.Contacts.ListWithContext(ctx, &resend.ListContactsOptions{
+  		SegmentId: "78261eea-8f8b-4381-83c6-79fa7120f1cf",
+  	})
+  	if err != nil {
+  		panic(err)
+  	}
+  	fmt.Println(contacts)
   }
   ```
 
   ```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
-  import com.resend.*;
+  import com.resend.Resend;
+  import com.resend.core.exception.ResendException;
+  import com.resend.services.contacts.model.ListContactsResponseSuccess;
 
   public class Main {
-      public static void main(String[] args) {
+      public static void main(String[] args) throws ResendException {
           Resend resend = new Resend("re_xxxxxxxxx");
 
           ListContactsResponseSuccess response = resend.contacts().list("78261eea-8f8b-4381-83c6-79fa7120f1cf");

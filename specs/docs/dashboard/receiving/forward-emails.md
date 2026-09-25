@@ -53,6 +53,25 @@ Here's how you can implement this:
   ```
 
   ```rust Rust theme={"theme":{"light":"github-light","dark":"vesper"}}
+  use axum::{
+      extract::State,
+      http::StatusCode,
+      response::{IntoResponse, Json, Response},
+  };
+  use resend_rs::{
+      types::{ForwardReceivingEmail, InboundEmailId},
+      Resend,
+  };
+  use serde::Serialize;
+  use std::sync::Arc;
+
+  struct AppState {
+      resend: Resend,
+  }
+
+  #[derive(Serialize)]
+  struct Empty {}
+
   async fn example(
       State(state): State<Arc<AppState>>,
       Json(event): Json<resend_rs::events::EmailEvent>,
@@ -83,27 +102,41 @@ Alternatively, you can forward emails as if they had been forwarded through an e
 
 <CodeGroup>
   ```ts Next.js theme={"theme":{"light":"github-light","dark":"vesper"}}
-  const { data, error } = await resend.emails.receiving.forward({
-    emailId: event.data.email_id,
-    to: 'delivered@resend.dev',
-    from: 'onboarding@resend.dev',
-    passthrough: false,
-    text: 'See attached forwarded message.',
-    html: '<p>See attached forwarded message.</p>',
-  });
+  import { Resend, type EmailReceivedEvent } from 'resend';
+
+  const resend = new Resend('re_xxxxxxxxx');
+
+  export async function forwardEmail(event: EmailReceivedEvent) {
+    const { data, error } = await resend.emails.receiving.forward({
+      emailId: event.data.email_id,
+      to: 'delivered@resend.dev',
+      from: 'onboarding@resend.dev',
+      passthrough: false,
+      text: 'See attached forwarded message.',
+      html: '<p>See attached forwarded message.</p>',
+    });
+  }
   ```
 
   ```rust Rust theme={"theme":{"light":"github-light","dark":"vesper"}}
-  let opts = ForwardReceivingEmail::new(
-      InboundEmailId::new(&event.data.email_id),
-      "onboarding@resend.dev",
-      vec!["delivered@resend.dev"],
-  )
-  .with_passthrough(false)
-  .with_text("See attached forwarded message.")
-  .with_html("<p>See attached forwarded message.</p>");
+  use resend_rs::{
+      events::EmailEvent,
+      types::{ForwardReceivingEmail, InboundEmailId},
+      Resend,
+  };
 
-  let data = state.resend.receiving.forward(opts).await;
+  async fn forward(resend: &Resend, event: EmailEvent) {
+      let opts = ForwardReceivingEmail::new(
+          InboundEmailId::new(&event.data.email_id),
+          "onboarding@resend.dev",
+          vec!["delivered@resend.dev"],
+      )
+      .with_passthrough(false)
+      .with_text("See attached forwarded message.")
+      .with_html("<p>See attached forwarded message.</p>");
+
+      let data = resend.receiving.forward(opts).await;
+  }
   ```
 </CodeGroup>
 
@@ -155,8 +188,8 @@ The recommended approach is to download the raw email and parse it to properly e
         return {
           filename: attachment.filename,
           content: attachment.content.toString('base64'),
-          content_type: attachment.contentType,
-          content_id: contentId || undefined,
+          contentType: attachment.contentType,
+          contentId: contentId || undefined,
         };
       });
 
@@ -165,7 +198,7 @@ The recommended approach is to download the raw email and parse it to properly e
         to: ['delivered@resend.dev'],
         subject: email.subject || '(no subject)',
         html: parsed.html || undefined,
-        text: parsed.text || undefined,
+        text: parsed.text || '',
         attachments: attachments.length > 0 ? attachments : undefined,
       });
 

@@ -95,7 +95,7 @@ The date can be defined using natural language, such as `"in 1 hour"`, `"tomorro
   	"context"
   	"fmt"
 
-  	"github.com/resend/resend-go/v3"
+  	"github.com/resend/resend-go/v4"
   )
 
   func main() {
@@ -141,11 +141,14 @@ The date can be defined using natural language, such as `"in 1 hour"`, `"tomorro
   }
   ```
 
-  ```java Java {12} theme={"theme":{"light":"github-light","dark":"vesper"}}
+  ```java Java {15} theme={"theme":{"light":"github-light","dark":"vesper"}}
   import com.resend.*;
+  import com.resend.core.exception.ResendException;
+  import com.resend.services.emails.model.CreateEmailOptions;
+  import com.resend.services.emails.model.CreateEmailResponse;
 
   public class Main {
-      public static void main(String[] args) {
+      public static void main(String[] args) throws ResendException {
           Resend resend = new Resend("re_xxxxxxxxx");
 
           CreateEmailOptions params = CreateEmailOptions.builder()
@@ -280,7 +283,7 @@ You can also use a date in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) fo
   	"fmt"
   	"time"
 
-  	"github.com/resend/resend-go/v3"
+  	"github.com/resend/resend-go/v4"
   )
 
   func main() {
@@ -334,11 +337,16 @@ You can also use a date in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) fo
   }
   ```
 
-  ```java Java {7-10} theme={"theme":{"light":"github-light","dark":"vesper"}}
+  ```java Java {12-15} theme={"theme":{"light":"github-light","dark":"vesper"}}
   import com.resend.*;
+  import com.resend.core.exception.ResendException;
+  import com.resend.services.emails.model.CreateEmailOptions;
+  import com.resend.services.emails.model.CreateEmailResponse;
+  import java.time.Instant;
+  import java.time.temporal.ChronoUnit;
 
   public class Main {
-      public static void main(String[] args) {
+      public static void main(String[] args) throws ResendException {
           Resend resend = new Resend("re_xxxxxxxxx");
 
           String oneMinuteFromNow = Instant
@@ -505,7 +513,7 @@ Each email in a batch request can be scheduled independently using natural langu
   	"context"
   	"fmt"
 
-  	"github.com/resend/resend-go/v3"
+  	"github.com/resend/resend-go/v4"
   )
 
   func main() {
@@ -571,12 +579,15 @@ Each email in a batch request can be scheduled independently using natural langu
   }
   ```
 
-  ```java Java {13,21} theme={"theme":{"light":"github-light","dark":"vesper"}}
+  ```java Java {16,24} theme={"theme":{"light":"github-light","dark":"vesper"}}
   import com.resend.*;
+  import com.resend.core.exception.ResendException;
+  import com.resend.services.batch.model.CreateBatchEmailsResponse;
+  import com.resend.services.emails.model.CreateEmailOptions;
   import java.util.Arrays;
 
   public class Main {
-      public static void main(String[] args) {
+      public static void main(String[] args) throws ResendException {
           Resend resend = new Resend("re_xxxxxxxxx");
 
           CreateEmailOptions firstEmail = CreateEmailOptions.builder()
@@ -670,20 +681,30 @@ After scheduling an email, you might need to update the scheduled time.
 You can do so with the following method:
 
 <CodeGroup>
-  ```ts Node.js {3} theme={"theme":{"light":"github-light","dark":"vesper"}}
+  ```ts Node.js {7} theme={"theme":{"light":"github-light","dark":"vesper"}}
+  import { Resend } from 'resend';
+
+  const resend = new Resend('re_xxxxxxxxx');
+
   resend.emails.update({
     id: '49a3999c-0ce1-4ea6-ab68-afcd6dc2e794',
     scheduledAt: 'in 1 min',
   });
   ```
 
-  ```php PHP {2} theme={"theme":{"light":"github-light","dark":"vesper"}}
+  ```php PHP {4} theme={"theme":{"light":"github-light","dark":"vesper"}}
+  $resend = Resend::client('re_xxxxxxxxx');
+
   $resend->emails->update('49a3999c-0ce1-4ea6-ab68-afcd6dc2e794', [
     'scheduled_at' => 'in 1 min'
   ]);
   ```
 
-  ```python Python {3} theme={"theme":{"light":"github-light","dark":"vesper"}}
+  ```python Python {7} theme={"theme":{"light":"github-light","dark":"vesper"}}
+  import resend
+
+  resend.api_key = "re_xxxxxxxxx"
+
   update_params: resend.Emails.UpdateParams = {
     "id": "49a3999c-0ce1-4ea6-ab68-afcd6dc2e794",
     "scheduled_at": "in 1 min"
@@ -692,7 +713,11 @@ You can do so with the following method:
   resend.Emails.update(params=update_params)
   ```
 
-  ```rb Ruby {3} theme={"theme":{"light":"github-light","dark":"vesper"}}
+  ```rb Ruby {7} theme={"theme":{"light":"github-light","dark":"vesper"}}
+  require "resend"
+
+  Resend.api_key = "re_xxxxxxxxx"
+
   update_params = {
     "email_id": "49a3999c-0ce1-4ea6-ab68-afcd6dc2e794",
     "scheduled_at": "in 1 min"
@@ -707,7 +732,7 @@ You can do so with the following method:
   import (
   	"fmt"
 
-  	"github.com/resend/resend-go/v3"
+  	"github.com/resend/resend-go/v4"
   )
 
   func main() {
@@ -727,17 +752,33 @@ You can do so with the following method:
   }
   ```
 
-  ```rust Rust {2} theme={"theme":{"light":"github-light","dark":"vesper"}}
-  let update = UpdateEmailOptions::new()
-    .with_scheduled_at("in 1 min");
+  ```rust Rust {9} theme={"theme":{"light":"github-light","dark":"vesper"}}
+  use resend_rs::types::UpdateEmailOptions;
+  use resend_rs::{Resend, Result};
 
-  let _email = resend
-    .emails
-    .update("49a3999c-0ce1-4ea6-ab68-afcd6dc2e794", update)
-    .await?;
+  #[tokio::main]
+  async fn main() -> Result<()> {
+    let resend = Resend::new("re_xxxxxxxxx");
+
+    let update = UpdateEmailOptions::new()
+      .with_scheduled_at("in 1 min");
+
+    let _email = resend
+      .emails
+      .update("49a3999c-0ce1-4ea6-ab68-afcd6dc2e794", update)
+      .await?;
+
+    Ok(())
+  }
   ```
 
-  ```java Java {2} theme={"theme":{"light":"github-light","dark":"vesper"}}
+  ```java Java {8} theme={"theme":{"light":"github-light","dark":"vesper"}}
+  import com.resend.*;
+  import com.resend.services.emails.model.UpdateEmailOptions;
+  import com.resend.services.emails.model.UpdateEmailResponse;
+
+  Resend resend = new Resend("re_xxxxxxxxx");
+
   UpdateEmailOptions updateParams = UpdateEmailOptions.builder()
     .scheduledAt("in 1 min")
     .build();
@@ -783,37 +824,77 @@ If you need to cancel a scheduled email, you can do so with the following code:
 
 <CodeGroup>
   ```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
+  import { Resend } from 'resend';
+
+  const resend = new Resend('re_xxxxxxxxx');
+
   resend.emails.cancel('49a3999c-0ce1-4ea6-ab68-afcd6dc2e794');
   ```
 
   ```php PHP theme={"theme":{"light":"github-light","dark":"vesper"}}
+  $resend = Resend::client('re_xxxxxxxxx');
+
   $resend->emails->cancel('49a3999c-0ce1-4ea6-ab68-afcd6dc2e794');
   ```
 
   ```python Python theme={"theme":{"light":"github-light","dark":"vesper"}}
+  import resend
+
+  resend.api_key = "re_xxxxxxxxx"
+
   resend.Emails.cancel(email_id="49a3999c-0ce1-4ea6-ab68-afcd6dc2e794")
   ```
 
   ```rb Ruby theme={"theme":{"light":"github-light","dark":"vesper"}}
+  require "resend"
+
+  Resend.api_key = "re_xxxxxxxxx"
+
   Resend::Emails.cancel("49a3999c-0ce1-4ea6-ab68-afcd6dc2e794")
   ```
 
   ```go Go theme={"theme":{"light":"github-light","dark":"vesper"}}
-  canceled, err := client.Emails.Cancel("49a3999c-0ce1-4ea6-ab68-afcd6dc2e794")
-  if err != nil {
-    panic(err)
+  package main
+
+  import (
+  	"fmt"
+
+  	"github.com/resend/resend-go/v4"
+  )
+
+  func main() {
+  	client := resend.NewClient("re_xxxxxxxxx")
+
+  	canceled, err := client.Emails.Cancel("49a3999c-0ce1-4ea6-ab68-afcd6dc2e794")
+  	if err != nil {
+  		panic(err)
+  	}
+  	fmt.Println(canceled.Id)
   }
-  fmt.Println(canceled.Id)
   ```
 
   ```rust Rust theme={"theme":{"light":"github-light","dark":"vesper"}}
-  let _canceled = resend
-    .emails
-    .cancel("49a3999c-0ce1-4ea6-ab68-afcd6dc2e794")
-    .await?;
+  use resend_rs::{Resend, Result};
+
+  #[tokio::main]
+  async fn main() -> Result<()> {
+    let resend = Resend::new("re_xxxxxxxxx");
+
+    let _canceled = resend
+      .emails
+      .cancel("49a3999c-0ce1-4ea6-ab68-afcd6dc2e794")
+      .await?;
+
+    Ok(())
+  }
   ```
 
   ```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
+  import com.resend.*;
+  import com.resend.services.emails.model.CancelEmailResponse;
+
+  Resend resend = new Resend("re_xxxxxxxxx");
+
   CancelEmailResponse canceled = resend
       .emails()
       .cancel("49a3999c-0ce1-4ea6-ab68-afcd6dc2e794");

@@ -116,16 +116,18 @@ To add a custom variable to your Template, select **Variable** in the commands p
   ```
 
   ```go Go theme={"theme":{"light":"github-light","dark":"vesper"}}
+  package main
+
   import (
   	"context"
 
-  	"github.com/resend/resend-go/v3"
+  	"github.com/resend/resend-go/v4"
   )
 
   func main() {
   	client := resend.NewClient("re_xxxxxxxxx")
 
-  	template, err := client.Templates.CreateWithContext(context.TODO(), &resend.CreateTemplateRequest{
+  	client.Templates.CreateWithContext(context.TODO(), &resend.CreateTemplateRequest{
   		Name: "order-confirmation",
   		Html: "<p>Name: {{{PRODUCT}}}</p><p>Total: {{{PRICE}}}</p>",
   		Variables: []*resend.TemplateVariable{
@@ -138,7 +140,7 @@ To add a custom variable to your Template, select **Variable** in the commands p
   				Key:           "PRICE",
   				Type:          resend.VariableTypeNumber,
   				FallbackValue: 25,
-  			}
+  			},
   		},
   	})
   }
@@ -173,9 +175,14 @@ To add a custom variable to your Template, select **Variable** in the commands p
 
   ```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
   import com.resend.*;
+  import com.resend.core.exception.ResendException;
+  import com.resend.services.templates.model.CreateTemplateOptions;
+  import com.resend.services.templates.model.CreateTemplateResponseSuccess;
+  import com.resend.services.templates.model.Variable;
+  import com.resend.services.templates.model.VariableType;
 
   public class Main {
-      public static void main(String[] args) {
+      public static void main(String[] args) throws ResendException {
           Resend resend = new Resend("re_xxxxxxxxx");
 
           CreateTemplateOptions params = CreateTemplateOptions.builder()
@@ -358,10 +365,12 @@ Both the `/emails` and `/emails/batch` endpoints support Templates.
   ```
 
   ```go Go theme={"theme":{"light":"github-light","dark":"vesper"}}
+  package main
+
   import (
   	"context"
 
-  	"github.com/resend/resend-go/v3"
+  	"github.com/resend/resend-go/v4"
   )
 
   func main() {
@@ -372,19 +381,23 @@ Both the `/emails` and `/emails/batch` endpoints support Templates.
   		To:      []string{"delivered@resend.dev"},
   		Subject: "hello world",
   		Template: &resend.EmailTemplate{
-  			ID: "f3b9756c-f4f4-44da-bc00-9f7903c8a83f",
+  			Id: "f3b9756c-f4f4-44da-bc00-9f7903c8a83f",
   			Variables: map[string]interface{}{
   				"PRODUCT": "Laptop",
   			},
   		},
   	}
 
-  	sent, err := client.Emails.SendWithContext(context.TODO(), params)
+  	client.Emails.SendWithContext(context.TODO(), params)
   }
   ```
 
   ```rust Rust theme={"theme":{"light":"github-light","dark":"vesper"}}
-  use resend_rs::{types::CreateEmailBaseOptions, Resend, Result};
+  use resend_rs::{
+  	json,
+  	types::{CreateEmailBaseOptions, EmailTemplate},
+  	Resend, Result,
+  };
   use std::collections::HashMap;
 
   #[tokio::main]
@@ -396,10 +409,11 @@ Both the `/emails` and `/emails/batch` endpoints support Templates.
   	let subject = "hello world";
 
   	let mut variables = HashMap::new();
-  	variables.insert("PRODUCT".to_string(), "Laptop".to_string());
+  	variables.insert("PRODUCT".to_string(), json!("Laptop"));
 
-  	let email = CreateEmailBaseOptions::new(from, to, subject)
-  		.with_template("f3b9756c-f4f4-44da-bc00-9f7903c8a83f", variables);
+  	let template = EmailTemplate::new("f3b9756c-f4f4-44da-bc00-9f7903c8a83f").with_variables(variables);
+
+  	let email = CreateEmailBaseOptions::new(from, to, subject).with_template(template);
 
   	let _email = resend.emails.send(email).await?;
 
@@ -409,11 +423,15 @@ Both the `/emails` and `/emails/batch` endpoints support Templates.
 
   ```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
   import com.resend.*;
+  import com.resend.core.exception.ResendException;
+  import com.resend.services.emails.model.CreateEmailOptions;
+  import com.resend.services.emails.model.CreateEmailResponse;
+  import com.resend.services.emails.model.Template;
   import java.util.HashMap;
   import java.util.Map;
 
   public class Main {
-      public static void main(String[] args) {
+      public static void main(String[] args) throws ResendException {
           Resend resend = new Resend("re_xxxxxxxxx");
 
           Map<String, Object> variables = new HashMap<>();
@@ -423,7 +441,10 @@ Both the `/emails` and `/emails/batch` endpoints support Templates.
                   .from("Acme <onboarding@resend.dev>")
                   .to("delivered@resend.dev")
                   .subject("hello world")
-                  .template("f3b9756c-f4f4-44da-bc00-9f7903c8a83f", variables)
+                  .template(Template.builder()
+                          .id("f3b9756c-f4f4-44da-bc00-9f7903c8a83f")
+                          .variables(variables)
+                          .build())
                   .build();
 
           CreateEmailResponse data = resend.emails().send(params);
@@ -442,7 +463,7 @@ Both the `/emails` and `/emails/batch` endpoints support Templates.
       To = "delivered@resend.dev",
       Subject = "hello world",
       Template = new EmailMessageTemplate() {
-        TemplateId = new Guid( "f3b9756c-f4f4-44da-bc00-9f7903c8a83f" ),
+        TemplateId = "f3b9756c-f4f4-44da-bc00-9f7903c8a83f",
         Variables = new Dictionary<string, object>()
         {
           { "PRODUCT", "Laptop" },

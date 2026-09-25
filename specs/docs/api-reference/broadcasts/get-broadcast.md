@@ -85,7 +85,7 @@ You can retrieve broadcasts created via both this API and the Resend dashboard.
   ```go Go theme={"theme":{"light":"github-light","dark":"vesper"}}
   package main
 
-  import "github.com/resend/resend-go/v3"
+  import "github.com/resend/resend-go/v4"
 
   func main() {
   	client := resend.NewClient("re_xxxxxxxxx")
@@ -111,6 +111,9 @@ You can retrieve broadcasts created via both this API and the Resend dashboard.
   ```
 
   ```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
+  import com.resend.Resend;
+  import com.resend.services.broadcasts.model.GetBroadcastResponseSuccess;
+
   Resend resend = new Resend("re_xxxxxxxxx");
 
   GetBroadcastResponseSuccess data = resend.broadcasts().get("559ac32e-9ef5-46fb-82a1-b76b840c0f7b");

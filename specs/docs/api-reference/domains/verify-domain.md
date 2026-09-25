@@ -87,14 +87,17 @@ export const ResendParamField = ({children, body, path, ...props}) => {
   ```
 
   ```ruby Ruby theme={"theme":{"light":"github-light","dark":"vesper"}}
-  Resend.api_key = ENV["RESEND_API_KEY"]
+  require "resend"
+
+  Resend.api_key = "re_xxxxxxxxx"
+
   Resend::Domains.verify("d91cd9bd-1176-453e-8fc1-35364d380206")
   ```
 
   ```go Go theme={"theme":{"light":"github-light","dark":"vesper"}}
   package main
 
-  import "github.com/resend/resend-go/v3"
+  import "github.com/resend/resend-go/v4"
 
   func main() {
   	client := resend.NewClient("re_xxxxxxxxx")
@@ -120,10 +123,12 @@ export const ResendParamField = ({children, body, path, ...props}) => {
   ```
 
   ```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
-  import com.resend.*;
+  import com.resend.Resend;
+  import com.resend.core.exception.ResendException;
+  import com.resend.services.domains.model.VerifyDomainResponse;
 
   public class Main {
-      public static void main(String[] args) {
+      public static void main(String[] args) throws ResendException {
           Resend resend = new Resend("re_xxxxxxxxx");
 
           VerifyDomainResponse verified = resend.domains().verify("d91cd9bd-1176-453e-8fc1-35364d380206");

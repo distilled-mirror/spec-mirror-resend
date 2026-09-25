@@ -64,14 +64,15 @@ export const QueryParams = ({type, isRequired}) => {
 
 <Warning>
   Inboxes are currently in private beta and only available to a limited
-  number of users. The response shape might change before GA. [Get in
-  touch](https://resend.com/help) if you're interested in testing this
-  feature.
+  number of users. The response shape might change before GA.
 
   <span />
 
-  Once you have access, upgrade your Resend SDK to use the methods on this
-  page:
+  [Get early access](https://resend.com/help?type=report\&message=I+would+like+early+access+to+Inboxes.\&priority=low) if you're interested in testing this feature.
+
+  <span />
+
+  Once you have access, upgrade your Resend SDK to use the new methods:
 
   <CodeGroup>
     ```bash Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
@@ -79,7 +80,7 @@ export const QueryParams = ({type, isRequired}) => {
     ```
 
     ```bash CLI theme={"theme":{"light":"github-light","dark":"vesper"}}
-    npm install -g resend-cli@2.22.0-preview-inboxes.1
+    npm install -g resend-cli@2.22.0-preview-inboxes.2
     ```
   </CodeGroup>
 </Warning>

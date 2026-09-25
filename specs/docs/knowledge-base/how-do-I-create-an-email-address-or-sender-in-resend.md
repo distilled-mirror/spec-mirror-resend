@@ -85,7 +85,7 @@ To include a friendly name, use the format `"Your Name <sender@example.com>"`.
   	"context"
   	"fmt"
 
-  	"github.com/resend/resend-go/v3"
+  	"github.com/resend/resend-go/v4"
   )
 
   func main() {

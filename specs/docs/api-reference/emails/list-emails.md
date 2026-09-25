@@ -95,7 +95,10 @@ You can list all emails sent by your team. The list returns references to indivi
   ```
 
   ```ruby Ruby theme={"theme":{"light":"github-light","dark":"vesper"}}
+  require "resend"
+
   Resend.api_key = "re_xxxxxxxxx"
+
   emails = Resend::Emails.list
   puts emails
   ```
@@ -106,7 +109,7 @@ You can list all emails sent by your team. The list returns references to indivi
   import (
   	"context"
 
-  	"github.com/resend/resend-go/v3"
+  	"github.com/resend/resend-go/v4"
   )
 
   func main() {
@@ -120,7 +123,7 @@ You can list all emails sent by your team. The list returns references to indivi
 
   	if paginatedResp.HasMore {
   		opts := &resend.ListOptions{
-  			After: &paginatedResp.Data[len(paginatedResp.Data)-1].ID,
+  			After: &paginatedResp.Data[len(paginatedResp.Data)-1].Id,
   		}
   		client.Emails.ListWithOptions(ctx, opts)
   	}
@@ -141,10 +144,12 @@ You can list all emails sent by your team. The list returns references to indivi
   ```
 
   ```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
-  import com.resend.*;
+  import com.resend.Resend;
+  import com.resend.core.exception.ResendException;
+  import com.resend.services.emails.model.ListEmailsResponseSuccess;
 
   public class Main {
-      public static void main(String[] args) {
+      public static void main(String[] args) throws ResendException {
           Resend resend = new Resend("re_xxxxxxxxx");
 
           ListEmailsResponseSuccess emails = resend.emails().list();

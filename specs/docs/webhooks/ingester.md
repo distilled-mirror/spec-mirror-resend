@@ -10,7 +10,7 @@ The Resend Webhook Ingester is an open-source Next.js application that receives,
 
 <Info>
   For more details on why you should store your webhook data, see the [data
-  storage guide](/docs/dashboard/webhooks/how-to-store-webhooks-data).
+  storage guide](/docs/webhooks/how-to-store-webhooks-data).
 </Info>
 
 ## Why use the Webhook Ingester
@@ -322,7 +322,7 @@ WHERE event_created_at < NOW() - INTERVAL '90 days';
     Understand webhook retry behavior
   </Card>
 
-  <Card title="Storing Webhooks Data" icon="database" href="/docs/dashboard/webhooks/how-to-store-webhooks-data">
+  <Card title="Storing Webhooks Data" icon="database" href="/docs/webhooks/how-to-store-webhooks-data">
     Learn why and how to store your webhook data
   </Card>
 </CardGroup>

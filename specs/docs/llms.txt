@@ -95,7 +95,11 @@
 - [Compose and send with the Broadcast editor](https://resend.com/docs/dashboard/broadcasts/editor.md): Learn how to write and send your Broadcasts in the Dashboard editor
 - [Compose and send Broadcasts with the API](https://resend.com/docs/dashboard/broadcasts/send-broadcast-with-api.md): Send marketing emails using the Broadcasts API.
 - [Performance Tracking](https://resend.com/docs/dashboard/broadcasts/performance-tracking.md): Track your Broadcasts email performance in real-time
-- [Using Automations](https://resend.com/docs/dashboard/automations/introduction.md): Automate emails with custom events.
+- [Automations](https://resend.com/docs/dashboard/automations/introduction.md): An introduction to automating emails with custom events.
+- [Create Automations](https://resend.com/docs/dashboard/automations/create-automation.md): Create an automation triggered by an event in your application.
+- [Custom Events](https://resend.com/docs/dashboard/automations/custom-events.md): Define custom events to trigger Automations.
+- [Connections](https://resend.com/docs/dashboard/automations/connections.md): Connections between steps in Automation workflows.
+- [Runs](https://resend.com/docs/dashboard/automations/runs.md): Monitor and debug your Automation executions.
 - [Steps](https://resend.com/docs/dashboard/automations/steps.md): Steps and their properties in Automation workflows.
 - [Trigger](https://resend.com/docs/dashboard/automations/trigger.md): Start your Automations based on custom events.
 - [Condition](https://resend.com/docs/dashboard/automations/condition.md): Route contacts through different paths based on conditions.
@@ -105,9 +109,6 @@
 - [Add to Segment](https://resend.com/docs/dashboard/automations/add-to-segment.md): Include contacts to a segment as part of your Automation.
 - [Contact Update](https://resend.com/docs/dashboard/automations/contact-update.md): Update contact fields during an Automation.
 - [Contact Delete](https://resend.com/docs/dashboard/automations/contact-delete.md): Remove a contact from your audience in an Automation.
-- [Custom Events](https://resend.com/docs/dashboard/automations/custom-events.md): Define custom events to trigger Automations.
-- [Connections](https://resend.com/docs/dashboard/automations/connections.md): Connections between steps in Automation workflows.
-- [Runs](https://resend.com/docs/dashboard/automations/runs.md): Monitor and debug your Automation executions.
 - [Using Templates](https://resend.com/docs/dashboard/templates/introduction.md): Learn how to use Templates to send transactional emails.
 - [Create a Template](https://resend.com/docs/dashboard/templates/create-template.md): Learn how to create a Template in the Resend Dashboard editor or with the API.
 - [Compose with the Template editor](https://resend.com/docs/dashboard/templates/template-editor.md): Learn how to write reusable transactional email Templates in the Dashboard editor
@@ -121,12 +122,13 @@
 - [Migrating from Audiences to Segments](https://resend.com/docs/dashboard/segments/migrating-from-audiences-to-segments.md): Learn how to migrate from Audiences to Segments
 - [Managing Unsubscribed Contacts](https://resend.com/docs/dashboard/audiences/managing-unsubscribe-list.md): Learn how to check and remove recipients who have unsubscribed to your marketing emails.
 - [Introduction](https://resend.com/docs/dashboard/logs/introduction.md): Learn how to view and troubleshoot API logs.
-- [Managing Webhooks](https://resend.com/docs/webhooks/introduction.md): Use webhooks to notify your application about events from Resend.
-- [Event Types](https://resend.com/docs/webhooks/event-types.md): List of supported event types and their payload.
-- [Retries and Replays](https://resend.com/docs/webhooks/retries-and-replays.md): Learn how to use the retries and replays to handle webhook failures.
+- [Webhooks](https://resend.com/docs/webhooks/introduction.md): An introduction to using webhooks to notify your application about email events.
+- [Create a Webhook](https://resend.com/docs/webhooks/create-webhook.md): Learn how to add a webhook to notify your application about events from Resend.
 - [Verify Webhooks Requests](https://resend.com/docs/webhooks/verify-webhooks-requests.md): Learn how to use the signing secret to verify your webhooks.
+- [Retries and Replays](https://resend.com/docs/webhooks/retries-and-replays.md): Learn how to use the retries and replays to handle webhook failures.
 - [Webhook Ingester](https://resend.com/docs/webhooks/ingester.md): A self-hosted solution to store all your Resend webhook events in your own database.
-- [How to Store Webhooks Data](https://resend.com/docs/dashboard/webhooks/how-to-store-webhooks-data.md): Storing your email event data matters. Learn how to set up your own data storage.
+- [How to Store Webhooks Data](https://resend.com/docs/webhooks/how-to-store-webhooks-data.md): Storing your email event data matters. Learn how to set up your own data storage.
+- [Event Types](https://resend.com/docs/webhooks/event-types.md): List of supported event types and their payload.
 - [email.bounced](https://resend.com/docs/webhooks/emails/bounced.md): Received when an email bounces.
 - [email.clicked](https://resend.com/docs/webhooks/emails/clicked.md): Received when an email link is clicked.
 - [email.complained](https://resend.com/docs/webhooks/emails/complained.md): Received when an email is marked as spam.

@@ -58,15 +58,9 @@ Either `id` or `email` must be provided.
 
   const resend = new Resend('re_xxxxxxxxx');
 
-  // Remove by contact id
   const { data, error } = await resend.contacts.segments.remove({
     contactId: 'e169aa45-1ecf-4183-9955-b1499d5701d3',
-    segmentId: '78261eea-8f8b-4381-83c6-79fa7120f1cf',
-  });
-
-  // Remove by contact email
-  const { data, error } = await resend.contacts.segments.remove({
-    email: 'steve.wozniak@gmail.com',
+    // or: email: 'steve.wozniak@gmail.com',
     segmentId: '78261eea-8f8b-4381-83c6-79fa7120f1cf',
   });
   ```
@@ -93,7 +87,7 @@ Either `id` or `email` must be provided.
   resend.api_key = 're_xxxxxxxxx'
 
   # Remove by contact id
-  params = {
+  params: resend.Contacts.Segments.RemoveParams = {
       "segment_id": '78261eea-8f8b-4381-83c6-79fa7120f1cf',
       "contact_id": 'e169aa45-1ecf-4183-9955-b1499d5701d3',
   }
@@ -126,7 +120,7 @@ Either `id` or `email` must be provided.
   	"context"
   	"fmt"
 
-  	"github.com/resend/resend-go/v3"
+  	"github.com/resend/resend-go/v4"
   )
 
   func main() {
@@ -189,10 +183,12 @@ Either `id` or `email` must be provided.
   ```
 
   ```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
-  import com.resend.*;
+  import com.resend.Resend;
+  import com.resend.core.exception.ResendException;
+  import com.resend.services.contacts.model.RemoveContactFromSegmentOptions;
 
   public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ResendException {
       Resend resend = new Resend("re_xxxxxxxxx");
 
       // Remove by contact id

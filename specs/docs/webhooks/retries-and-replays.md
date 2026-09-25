@@ -21,7 +21,9 @@ Each message is attempted based on the following schedule, where each period is 
 * 10 hours
 * 10 hours (in addition to the previous)
 
-If an endpoint is removed or disabled delivery attempts to the endpoint will be disabled as well.
+For example, an attempt that fails three times before eventually succeeding will be delivered roughly 35 minutes and 5 seconds following the first attempt.
+
+If an endpoint is removed or disabled, delivery attempts to the endpoint will be disabled as well.
 
 To see when a message will be retried next, check the webhook message details in the dashboard.
 
@@ -30,8 +32,6 @@ To see when a message will be retried next, check the webhook message details in
 When a webhook endpoint starts failing to receive events, Resend sends an email notification to your team. The email includes the endpoint URL, the time of the last failed attempt, and the last HTTP response status code.
 
 If the endpoint continues to fail, Resend will eventually disable it automatically and send a second notification to let you know. Once your endpoint is back up, you can re-enable it from the [Webhooks](https://resend.com/webhooks) page in the dashboard.
-
-For example, an attempt that fails three times before eventually succeeding will be delivered roughly 35 minutes and 5 seconds following the first attempt.
 
 ## Manual Replays
 

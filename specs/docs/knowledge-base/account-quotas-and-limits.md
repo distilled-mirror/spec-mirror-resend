@@ -118,7 +118,7 @@ Enterprise plans have access to **flexible data retention** options. [Contact su
 <Tip>
   If you need access to historical email data beyond the 30-day retention
   window, consider storing [webhook
-  events](/docs/dashboard/webhooks/how-to-store-webhooks-data) in your own database.
-  This gives you full control over retention periods and ensures you never lose
-  important information.
+  events](/docs/webhooks/how-to-store-webhooks-data) in your own database. This gives
+  you full control over retention periods and ensures you never lose important
+  information.
 </Tip>

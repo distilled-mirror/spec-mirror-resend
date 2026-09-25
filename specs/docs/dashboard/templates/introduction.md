@@ -120,7 +120,7 @@ Specify the Template ID and include any [Template variables](/docs/dashboard/tem
   ```
 
   ```go Go {8-14} theme={"theme":{"light":"github-light","dark":"vesper"}}
-  import "github.com/resend/resend-go/v3"
+  import "github.com/resend/resend-go/v4"
 
   client := resend.NewClient("re_xxxxxxxxx")
 
@@ -136,38 +136,53 @@ Specify the Template ID and include any [Template variables](/docs/dashboard/tem
     },
   }
 
-  email, err := client.Emails.Send(params)
+  client.Emails.Send(params)
   ```
 
-  ```rust Rust {7-13} theme={"theme":{"light":"github-light","dark":"vesper"}}
-  use resend_rs::{types::SendEmailOptions, Resend, Result};
+  ```rust Rust {11-13,20} theme={"theme":{"light":"github-light","dark":"vesper"}}
+  use resend_rs::{
+    json,
+    types::{CreateEmailBaseOptions, EmailTemplate},
+    Resend, Result,
+  };
 
   #[tokio::main]
   async fn main() -> Result<()> {
     let resend = Resend::new("re_xxxxxxxxx");
 
-    let variables = serde_json::json!({
-      "PRODUCT": "Vintage Macintosh",
-      "PRICE": 499
-    });
+    let template = EmailTemplate::new("order-confirmation")
+      .with_variable("PRODUCT", json!("Vintage Macintosh"))
+      .with_variable("PRICE", json!(499));
 
-    let opts = SendEmailOptions::new("Acme <onboarding@resend.dev>", vec!["delivered@resend.dev"])
-      .with_template("order-confirmation", variables);
+    let email = CreateEmailBaseOptions::new(
+      "Acme <onboarding@resend.dev>",
+      ["delivered@resend.dev"],
+      "hello world",
+    )
+    .with_template(template);
 
-    let _email = resend.emails.send(opts).await?;
+    let _email = resend.emails.send(email).await?;
 
     Ok(())
   }
   ```
 
-  ```java Java {3-5,10-13} theme={"theme":{"light":"github-light","dark":"vesper"}}
+  ```java Java {11-13,18-21} theme={"theme":{"light":"github-light","dark":"vesper"}}
+  import com.resend.*;
+  import com.resend.services.emails.model.CreateEmailOptions;
+  import com.resend.services.emails.model.CreateEmailResponse;
+  import com.resend.services.emails.model.Template;
+  import java.util.Arrays;
+  import java.util.HashMap;
+  import java.util.Map;
+
   Resend resend = new Resend("re_xxxxxxxxx");
 
   Map<String, Object> variables = new HashMap<>();
   variables.put("PRODUCT", "Vintage Macintosh");
   variables.put("PRICE", 499);
 
-  SendEmailOptions params = SendEmailOptions.builder()
+  CreateEmailOptions params = CreateEmailOptions.builder()
     .from("Acme <onboarding@resend.dev>")
     .to(Arrays.asList("customer@email.com"))
     .template(Template.builder()
@@ -176,7 +191,7 @@ Specify the Template ID and include any [Template variables](/docs/dashboard/tem
       .build())
     .build();
 
-  SendEmailResponseSuccess data = resend.emails().send(params);
+  CreateEmailResponse data = resend.emails().send(params);
   ```
 
   ```csharp .NET {5-9,17-20} theme={"theme":{"light":"github-light","dark":"vesper"}}
@@ -197,7 +212,7 @@ Specify the Template ID and include any [Template variables](/docs/dashboard/tem
       To = new[] { "delivered@resend.dev" },
       Template = new EmailMessageTemplate()
       {
-        TemplateId = new Guid( "b6d24b8e-af0b-4c3c-be0c-359bbd97381e" ),
+        TemplateId = "b6d24b8e-af0b-4c3c-be0c-359bbd97381e",
         Variables = variables
       }
     }

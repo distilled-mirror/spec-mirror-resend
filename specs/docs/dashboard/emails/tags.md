@@ -93,11 +93,14 @@ Here's how you can add custom tags to your emails.
   puts sent
   ```
 
-  ```go Go {16} theme={"theme":{"light":"github-light","dark":"vesper"}}
+  ```go Go {19} theme={"theme":{"light":"github-light","dark":"vesper"}}
+  package main
+
   import (
+  	"context"
   	"fmt"
 
-  	"github.com/resend/resend-go/v3"
+  	"github.com/resend/resend-go/v4"
   )
 
   func main() {
@@ -143,11 +146,15 @@ Here's how you can add custom tags to your emails.
   }
   ```
 
-  ```java Java {17} theme={"theme":{"light":"github-light","dark":"vesper"}}
+  ```java Java {21} theme={"theme":{"light":"github-light","dark":"vesper"}}
   import com.resend.*;
+  import com.resend.core.exception.ResendException;
+  import com.resend.services.emails.model.CreateEmailOptions;
+  import com.resend.services.emails.model.CreateEmailResponse;
+  import com.resend.services.emails.model.Tag;
 
   public class Main {
-      public static void main(String[] args) {
+      public static void main(String[] args) throws ResendException {
           Resend resend = new Resend("re_xxxxxxxxx");
 
           Tag tag = Tag.builder()
@@ -155,7 +162,7 @@ Here's how you can add custom tags to your emails.
                   .value("confirm_email")
                   .build();
 
-          SendEmailRequest sendEmailRequest = SendEmailRequest.builder()
+          CreateEmailOptions params = CreateEmailOptions.builder()
                   .from("Acme <onboarding@resend.dev>")
                   .to("delivered@resend.dev")
                   .subject("hello world")
@@ -163,7 +170,7 @@ Here's how you can add custom tags to your emails.
                   .tags(tag)
                   .build();
 
-          SendEmailResponse data = resend.emails().send(sendEmailRequest);
+          CreateEmailResponse data = resend.emails().send(params);
       }
   }
   ```
@@ -355,10 +362,10 @@ Here's how you can add custom tags to your emails.
   package main
 
   import (
+  	"context"
   	"fmt"
-  	"os"
 
-  	"github.com/resend/resend-go/v3"
+  	"github.com/resend/resend-go/v4"
   )
 
   func main() {
@@ -394,7 +401,7 @@ Here's how you can add custom tags to your emails.
   ```
 
   ```rust Rust {15,22} theme={"theme":{"light":"github-light","dark":"vesper"}}
-  use resend_rs::types::CreateEmailBaseOptions;
+  use resend_rs::types::{CreateEmailBaseOptions, Tag};
   use resend_rs::{Resend, Result};
 
   #[tokio::main]
@@ -424,11 +431,16 @@ Here's how you can add custom tags to your emails.
   }
   ```
 
-  ```java Java {12-15,23-26} theme={"theme":{"light":"github-light","dark":"vesper"}}
+  ```java Java {17-20,28-31} theme={"theme":{"light":"github-light","dark":"vesper"}}
   import com.resend.*;
+  import com.resend.core.exception.ResendException;
+  import com.resend.services.batch.model.CreateBatchEmailsResponse;
+  import com.resend.services.emails.model.CreateEmailOptions;
+  import com.resend.services.emails.model.Tag;
+  import java.util.Arrays;
 
   public class Main {
-      public static void main(String[] args) {
+      public static void main(String[] args) throws ResendException {
           Resend resend = new Resend("re_xxxxxxxxx");
 
           CreateEmailOptions firstEmail = CreateEmailOptions.builder()

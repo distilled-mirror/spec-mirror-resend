@@ -140,7 +140,7 @@ This automation step triggers a [Template](/docs/dashboard/templates/introductio
       ```go Go {18-26} theme={"theme":{"light":"github-light","dark":"vesper"}}
       package main
 
-      import "github.com/resend/resend-go/v3"
+      import "github.com/resend/resend-go/v4"
 
       func main() {
       	client := resend.NewClient("re_xxxxxxxxx")
@@ -212,11 +212,17 @@ This automation step triggers a [Template](/docs/dashboard/templates/introductio
       }
       ```
 
-      ```java Java {15-23} theme={"theme":{"light":"github-light","dark":"vesper"}}
+      ```java Java {21-29} theme={"theme":{"light":"github-light","dark":"vesper"}}
       import com.resend.*;
+      import com.resend.core.exception.ResendException;
+      import com.resend.services.automations.model.AutomationConnection;
+      import com.resend.services.automations.model.AutomationStep;
+      import com.resend.services.automations.model.CreateAutomationOptions;
+      import com.resend.services.automations.model.CreateAutomationResponseSuccess;
+      import java.util.Map;
 
       public class Main {
-          public static void main(String[] args) {
+          public static void main(String[] args) throws ResendException {
               Resend resend = new Resend("re_xxxxxxxxx");
 
               CreateAutomationOptions options = CreateAutomationOptions.builder()
@@ -398,7 +404,7 @@ See [when to use an unsubscribe link](/docs/knowledge-base/should-i-add-an-unsub
   If provided, this value will override the template's default value.
 </ParamField>
 
-```json theme={"theme":{"light":"github-light","dark":"vesper"}}
+```json theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}}
 {
   "key": "welcome",
   "type": "send_email",

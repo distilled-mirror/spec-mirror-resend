@@ -57,7 +57,7 @@ You can also create Contact Properties [via the API or SDKs](/docs/api-reference
 
   resend.api_key = 're_xxxxxxxxx'
 
-  params = {
+  params: resend.ContactProperties.CreateParams = {
       "key": "company_name",
       "type": "string",
       "fallback_value": "Acme Corp",
@@ -85,7 +85,7 @@ You can also create Contact Properties [via the API or SDKs](/docs/api-reference
   	"context"
   	"fmt"
 
-  	"github.com/resend/resend-go/v3"
+  	"github.com/resend/resend-go/v4"
   )
 
   func main() {
@@ -129,9 +129,11 @@ You can also create Contact Properties [via the API or SDKs](/docs/api-reference
 
   ```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
   import com.resend.*;
+  import com.resend.core.exception.ResendException;
+  import com.resend.services.contactproperties.model.CreateContactPropertyOptions;
 
   public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ResendException {
       Resend resend = new Resend("re_xxxxxxxxx");
 
       CreateContactPropertyOptions options = CreateContactPropertyOptions.builder()
@@ -255,7 +257,7 @@ You can also add properties to a Contact when you [create a Contact](/docs/api-r
   ```
 
   ```go Go {10-12} theme={"theme":{"light":"github-light","dark":"vesper"}}
-  import "github.com/resend/resend-go/v3"
+  import "github.com/resend/resend-go/v4"
 
   client := resend.NewClient("re_xxxxxxxxx")
 
@@ -266,14 +268,15 @@ You can also add properties to a Contact when you [create a Contact](/docs/api-r
     Unsubscribed: false,
     Properties: map[string]interface{} {
       "company_name": "Acme Corp",
-    }
+    },
   }
 
-  contact, err := client.Contacts.Create(params)
+  client.Contacts.Create(params)
   ```
 
-  ```rust Rust {11-12} theme={"theme":{"light":"github-light","dark":"vesper"}}
+  ```rust Rust {12-15} theme={"theme":{"light":"github-light","dark":"vesper"}}
   use resend_rs::{types::CreateContactOptions, Resend, Result};
+  use std::collections::HashMap;
 
   #[tokio::main]
   async fn main() -> Result<()> {
@@ -283,7 +286,10 @@ You can also add properties to a Contact when you [create a Contact](/docs/api-r
       .with_first_name("Steve")
       .with_last_name("Wozniak")
       .with_unsubscribed(false)
-      .with_properties(vec![("company_name".to_string(), "Acme Corp".to_string())]);
+      .with_properties(HashMap::from([(
+        "company_name".to_string(),
+        "Acme Corp".to_string(),
+      )]));
 
     let _contact = resend.contacts.create(contact).await?;
 
@@ -291,11 +297,14 @@ You can also add properties to a Contact when you [create a Contact](/docs/api-r
   }
   ```
 
-  ```java Java {12-13} theme={"theme":{"light":"github-light","dark":"vesper"}}
+  ```java Java {15-16} theme={"theme":{"light":"github-light","dark":"vesper"}}
   import com.resend.*;
+  import com.resend.core.exception.ResendException;
+  import com.resend.services.contacts.model.CreateContactOptions;
+  import com.resend.services.contacts.model.CreateContactResponseSuccess;
 
   public class Main {
-      public static void main(String[] args) {
+      public static void main(String[] args) throws ResendException {
           Resend resend = new Resend("re_xxxxxxxxx");
 
           CreateContactOptions params = CreateContactOptions.builder()
@@ -323,7 +332,7 @@ You can also add properties to a Contact when you [create a Contact](/docs/api-r
           FirstName = "Steve",
           LastName = "Wozniak",
           IsUnsubscribed = false,
-          Properties = new Dictionary<string, object> {
+          Properties = new Dictionary<string, object?> {
             { "company_name", "Acme Corp" }
           }
       }
@@ -350,22 +359,14 @@ You can also add properties to a Contact when you [create a Contact](/docs/api-r
 Or you can update a Contact to add or change a property value [using the update contact endpoint](/docs/api-reference/contacts/update-contact).
 
 <CodeGroup>
-  ```ts Node.js {8-10, 16-18} theme={"theme":{"light":"github-light","dark":"vesper"}}
+  ```ts Node.js {8-10} theme={"theme":{"light":"github-light","dark":"vesper"}}
   import { Resend } from 'resend';
 
   const resend = new Resend('re_xxxxxxxxx');
 
-  // Update by contact id
   const { data, error } = await resend.contacts.update({
     id: 'e169aa45-1ecf-4183-9955-b1499d5701d3',
-    properties: {
-      company_name: 'Acme Corp',
-    },
-  });
-
-  // Update by contact email
-  const { data, error } = await resend.contacts.update({
-    email: 'acme@example.com',
+    // or: email: 'acme@example.com',
     properties: {
       company_name: 'Acme Corp',
     },
@@ -377,7 +378,7 @@ Or you can update a Contact to add or change a property value [using the update 
 
   // Update by contact id
   $resend->contacts->update(
-    id: 'e169aa45-1ecf-4183-9955-b1499d5701d3',
+    idOrEmail: 'e169aa45-1ecf-4183-9955-b1499d5701d3',
     parameters: [
       'properties' => [
         'company_name' => 'Acme Corp',
@@ -387,7 +388,7 @@ Or you can update a Contact to add or change a property value [using the update 
 
   // Update by contact email
   $resend->contacts->update(
-    email: 'acme@example.com',
+    idOrEmail: 'acme@example.com',
     parameters: [
       'properties' => [
         'company_name' => 'Acme Corp',
@@ -449,41 +450,45 @@ Or you can update a Contact to add or change a property value [using the update 
   ```
 
   ```go Go {8-10, 19-21} theme={"theme":{"light":"github-light","dark":"vesper"}}
-  import "github.com/resend/resend-go/v3"
+  import "github.com/resend/resend-go/v4"
 
   client := resend.NewClient("re_xxxxxxxxx")
 
   // Update by contact id
   params := &resend.UpdateContactRequest{
     Id:           "e169aa45-1ecf-4183-9955-b1499d5701d3",
-    Properties: new Dictionary<string, object> {
-      { "company_name", "Acme Corp" }
-    }
+    Properties: map[string]interface{}{
+      "company_name": "Acme Corp",
+    },
   }
   params.SetUnsubscribed(true)
 
-  contact, err := client.Contacts.Update(params)
+  client.Contacts.Update(params)
 
   // Update by contact email
   params = &resend.UpdateContactRequest{
     Email:        "acme@example.com",
-    Properties: new Dictionary<string, object> {
-      { "company_name", "Acme Corp" }
-    }
+    Properties: map[string]interface{}{
+      "company_name": "Acme Corp",
+    },
   }
   params.SetUnsubscribed(true)
 
-  contact, err := client.Contacts.Update(params)
+  client.Contacts.Update(params)
   ```
 
-  ```rust Rust {7} theme={"theme":{"light":"github-light","dark":"vesper"}}
+  ```rust Rust {8-11} theme={"theme":{"light":"github-light","dark":"vesper"}}
   use resend_rs::{types::ContactChanges, Resend, Result};
+  use std::collections::HashMap;
 
   #[tokio::main]
   async fn main() -> Result<()> {
     let resend = Resend::new("re_xxxxxxxxx");
 
-    let changes = ContactChanges::new().with_properties(vec![("company_name".to_string(), "Acme Corp".to_string())]);
+    let changes = ContactChanges::new().with_properties(HashMap::from([(
+      "company_name".to_string(),
+      "Acme Corp".to_string(),
+    )]));
 
     // Update by contact id
     let _contact = resend
@@ -501,23 +506,19 @@ Or you can update a Contact to add or change a property value [using the update 
   }
   ```
 
-  ```java Java {10, 16} theme={"theme":{"light":"github-light","dark":"vesper"}}
+  ```java Java {12} theme={"theme":{"light":"github-light","dark":"vesper"}}
   import com.resend.*;
+  import com.resend.core.exception.ResendException;
+  import com.resend.services.contacts.model.UpdateContactOptions;
+  import com.resend.services.contacts.model.UpdateContactResponseSuccess;
 
   public class Main {
-      public static void main(String[] args) {
+      public static void main(String[] args) throws ResendException {
           Resend resend = new Resend("re_xxxxxxxxx");
 
-          // Update by contact id
           UpdateContactOptions params = UpdateContactOptions.builder()
-                  .id("e169aa45-1ecf-4183-9955-b1499d5701d3")
-                  .properties(vec![("company_name".to_string(), "Acme Corp".to_string())])
-                  .build();
-
-          // Update by contact email
-          UpdateContactOptions params = UpdateContactOptions.builder()
-                  .email("acme@example.com")
-                  .properties(vec![("company_name".to_string(), "Acme Corp".to_string())])
+                  .id("e169aa45-1ecf-4183-9955-b1499d5701d3") // or: .email("acme@example.com")
+                  .properties(java.util.Map.of("company_name", "Acme Corp"))
                   .build();
 
           UpdateContactResponseSuccess data = resend.contacts().update(params);
@@ -537,7 +538,7 @@ Or you can update a Contact to add or change a property value [using the update 
       {
           FirstName = "Stevie",
           LastName = "Wozniaks",
-          Properties = new Dictionary<string, object> {
+          Properties = new Dictionary<string, object?> {
             { "company_name", "Acme Corp" }
           }
       }
@@ -550,7 +551,7 @@ Or you can update a Contact to add or change a property value [using the update 
       {
           FirstName = "Stevie",
           LastName = "Wozniaks",
-          Properties = new Dictionary<string, object> {
+          Properties = new Dictionary<string, object?> {
             { "company_name", "Acme Corp" }
           }
       }

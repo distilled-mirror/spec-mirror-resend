@@ -103,7 +103,7 @@ export const QueryParams = ({type, isRequired}) => {
   ```go Go theme={"theme":{"light":"github-light","dark":"vesper"}}
   package main
 
-  import "github.com/resend/resend-go/v3"
+  import "github.com/resend/resend-go/v4"
 
   func main() {
   	client := resend.NewClient("re_xxxxxxxxx")
@@ -126,6 +126,9 @@ export const QueryParams = ({type, isRequired}) => {
   ```
 
   ```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
+  import com.resend.Resend;
+  import com.resend.services.broadcasts.model.ListBroadcastsResponseSuccess;
+
   Resend resend = new Resend("re_xxxxxxxxx");
 
   ListBroadcastsResponseSuccess data = resend.broadcasts().list();

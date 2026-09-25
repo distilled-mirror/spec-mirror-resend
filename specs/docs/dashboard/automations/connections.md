@@ -122,7 +122,7 @@ If creating an Automation via the API, define connections as an array of objects
   ```go Go {13, 20, 30} theme={"theme":{"light":"github-light","dark":"vesper"}}
   package main
 
-  import "github.com/resend/resend-go/v3"
+  import "github.com/resend/resend-go/v4"
 
   func main() {
   	client := resend.NewClient("re_xxxxxxxxx")
@@ -195,11 +195,17 @@ If creating an Automation via the API, define connections as an array of objects
   }
   ```
 
-  ```java Java {11,16,20-23} theme={"theme":{"light":"github-light","dark":"vesper"}}
+  ```java Java {17,22,26-29} theme={"theme":{"light":"github-light","dark":"vesper"}}
   import com.resend.*;
+  import com.resend.core.exception.ResendException;
+  import com.resend.services.automations.model.AutomationConnection;
+  import com.resend.services.automations.model.AutomationStatus;
+  import com.resend.services.automations.model.AutomationStep;
+  import com.resend.services.automations.model.CreateAutomationOptions;
+  import com.resend.services.automations.model.CreateAutomationResponseSuccess;
 
   public class Main {
-      public static void main(String[] args) {
+      public static void main(String[] args) throws ResendException {
           Resend resend = new Resend("re_xxxxxxxxx");
 
           CreateAutomationOptions options = CreateAutomationOptions.builder()
@@ -349,7 +355,7 @@ Connections define the links between steps in the automation graph.
   * `event_received`
 </ParamField>
 
-```json Example theme={"theme":{"light":"github-light","dark":"vesper"}}
+```json Example theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}}
 {
   "from": "start",
   "to": "welcome",

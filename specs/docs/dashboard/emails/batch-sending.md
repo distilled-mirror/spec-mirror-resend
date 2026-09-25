@@ -122,7 +122,7 @@ You can send up to 100 emails in a single API call using the batch endpoint. Eac
   	"context"
   	"fmt"
 
-  	"github.com/resend/resend-go/v3"
+  	"github.com/resend/resend-go/v4"
   )
 
   func main() {
@@ -184,10 +184,13 @@ You can send up to 100 emails in a single API call using the batch endpoint. Eac
 
   ```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
   import com.resend.*;
+  import com.resend.core.exception.ResendException;
+  import com.resend.services.batch.model.CreateBatchEmailsResponse;
+  import com.resend.services.emails.model.CreateEmailOptions;
   import java.util.Arrays;
 
   public class Main {
-      public static void main(String[] args) {
+      public static void main(String[] args) throws ResendException {
           Resend resend = new Resend("re_xxxxxxxxx");
 
           CreateEmailOptions firstEmail = CreateEmailOptions.builder()
@@ -233,7 +236,7 @@ You can send up to 100 emails in a single API call using the batch endpoint. Eac
   };
 
   var resp = await resend.EmailBatchAsync([mail1, mail2]);
-  Console.WriteLine("Nr Emails={0}", resp.Content.Data.Count);
+  Console.WriteLine("Nr Emails={0}", resp.Content.Count);
   ```
 
   ```bash cURL theme={"theme":{"light":"github-light","dark":"vesper"}}

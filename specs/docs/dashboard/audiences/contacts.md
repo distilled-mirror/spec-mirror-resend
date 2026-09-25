@@ -77,7 +77,7 @@ You can add contacts programmatically using the [contacts](/docs/api-reference/c
   ```go Go theme={"theme":{"light":"github-light","dark":"vesper"}}
   package main
 
-  import "github.com/resend/resend-go/v3"
+  import "github.com/resend/resend-go/v4"
 
   func main() {
   	client := resend.NewClient("re_xxxxxxxxx")
@@ -94,13 +94,13 @@ You can add contacts programmatically using the [contacts](/docs/api-reference/c
   ```
 
   ```rust Rust theme={"theme":{"light":"github-light","dark":"vesper"}}
-  use resend_rs::{types::ContactData, Resend, Result};
+  use resend_rs::{types::CreateContactOptions, Resend, Result};
 
   #[tokio::main]
   async fn main() -> Result<()> {
     let resend = Resend::new("re_xxxxxxxxx");
 
-    let contact = ContactData::new("steve.wozniak@gmail.com")
+    let contact = CreateContactOptions::new("steve.wozniak@gmail.com")
       .with_first_name("Steve")
       .with_last_name("Wozniak");
 
@@ -115,9 +115,12 @@ You can add contacts programmatically using the [contacts](/docs/api-reference/c
 
   ```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
   import com.resend.*;
+  import com.resend.core.exception.ResendException;
+  import com.resend.services.contacts.model.CreateContactOptions;
+  import com.resend.services.contacts.model.CreateContactResponseSuccess;
 
   public class Main {
-      public static void main(String[] args) {
+      public static void main(String[] args) throws ResendException {
           Resend resend = new Resend("re_xxxxxxxxx");
 
           CreateContactOptions params = CreateContactOptions.builder()
@@ -252,15 +255,9 @@ You can also [update a Contact](/docs/api-reference/contacts/update-contact) via
 
   const resend = new Resend('re_xxxxxxxxx');
 
-  // Update by contact id
   const { data, error } = await resend.contacts.update({
     id: 'e169aa45-1ecf-4183-9955-b1499d5701d3',
-    unsubscribed: true,
-  });
-
-  // Update by contact email
-  const { data, error } = await resend.contacts.update({
-    email: 'acme@example.com',
+    // or: email: 'acme@example.com',
     unsubscribed: true,
   });
   ```
@@ -270,7 +267,7 @@ You can also [update a Contact](/docs/api-reference/contacts/update-contact) via
 
   // Update by contact id
   $resend->contacts->update(
-    id: 'e169aa45-1ecf-4183-9955-b1499d5701d3',
+    idOrEmail: 'e169aa45-1ecf-4183-9955-b1499d5701d3',
     parameters: [
       'unsubscribed' => true
     ]
@@ -278,7 +275,7 @@ You can also [update a Contact](/docs/api-reference/contacts/update-contact) via
 
   // Update by contact email
   $resend->contacts->update(
-    email: 'acme@example.com',
+    idOrEmail: 'acme@example.com',
     parameters: [
       'unsubscribed' => true
     ]
@@ -330,7 +327,7 @@ You can also [update a Contact](/docs/api-reference/contacts/update-contact) via
   ```
 
   ```go Go theme={"theme":{"light":"github-light","dark":"vesper"}}
-  import "github.com/resend/resend-go/v3"
+  import "github.com/resend/resend-go/v4"
 
   client := resend.NewClient("re_xxxxxxxxx")
 
@@ -341,7 +338,7 @@ You can also [update a Contact](/docs/api-reference/contacts/update-contact) via
   }
   params.SetUnsubscribed(true)
 
-  contact, err := client.Contacts.Update(params)
+  client.Contacts.Update(params)
 
   // Update by contact email
   params = &resend.UpdateContactRequest{
@@ -350,7 +347,7 @@ You can also [update a Contact](/docs/api-reference/contacts/update-contact) via
   }
   params.SetUnsubscribed(true)
 
-  contact, err := client.Contacts.Update(params)
+  client.Contacts.Update(params)
   ```
 
   ```rust Rust theme={"theme":{"light":"github-light","dark":"vesper"}}
@@ -380,20 +377,16 @@ You can also [update a Contact](/docs/api-reference/contacts/update-contact) via
 
   ```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
   import com.resend.*;
+  import com.resend.core.exception.ResendException;
+  import com.resend.services.contacts.model.UpdateContactOptions;
+  import com.resend.services.contacts.model.UpdateContactResponseSuccess;
 
   public class Main {
-      public static void main(String[] args) {
+      public static void main(String[] args) throws ResendException {
           Resend resend = new Resend("re_xxxxxxxxx");
 
-          // Update by contact id
           UpdateContactOptions params = UpdateContactOptions.builder()
-                  .id("e169aa45-1ecf-4183-9955-b1499d5701d3")
-                  .unsubscribed(true)
-                  .build();
-
-          // Update by contact email
-          UpdateContactOptions params = UpdateContactOptions.builder()
-                  .email("acme@example.com")
+                  .id("e169aa45-1ecf-4183-9955-b1499d5701d3") // or: .email("acme@example.com")
                   .unsubscribed(true)
                   .build();
 
@@ -476,14 +469,9 @@ You can also [delete a Contact](/docs/api-reference/contacts/delete-contact) via
 
   const resend = new Resend('re_xxxxxxxxx');
 
-  // Delete by contact id
   const { data, error } = await resend.contacts.remove({
     id: '520784e2-887d-4c25-b53c-4ad46ad38100',
-  });
-
-  // Delete by contact email
-  const { data, error } = await resend.contacts.remove({
-    email: 'acme@example.com',
+    // or: email: 'acme@example.com',
   });
   ```
 
@@ -492,12 +480,12 @@ You can also [delete a Contact](/docs/api-reference/contacts/delete-contact) via
 
   // Delete by contact id
   $resend->contacts->remove(
-    id: '520784e2-887d-4c25-b53c-4ad46ad38100'
+    idOrEmail: '520784e2-887d-4c25-b53c-4ad46ad38100'
   );
 
   // Delete by contact email
   $resend->contacts->remove(
-    email: 'acme@example.com'
+    idOrEmail: 'acme@example.com'
   );
   ```
 
@@ -524,7 +512,7 @@ You can also [delete a Contact](/docs/api-reference/contacts/delete-contact) via
 
   # Delete by contact id
   Resend::Contacts.remove(
-    "520784e2-887d-4c25-b53c-4ad46ad38100"
+    id: "520784e2-887d-4c25-b53c-4ad46ad38100"
   )
 
   # Delete by contact email
@@ -534,19 +522,19 @@ You can also [delete a Contact](/docs/api-reference/contacts/delete-contact) via
   ```
 
   ```go Go theme={"theme":{"light":"github-light","dark":"vesper"}}
-  import "github.com/resend/resend-go/v3"
+  import "github.com/resend/resend-go/v4"
 
   client := resend.NewClient("re_xxxxxxxxx")
 
   // Delete by contact id
-  removed, err := client.Contacts.Remove(
-    "520784e2-887d-4c25-b53c-4ad46ad38100"
-  )
+  client.Contacts.Remove(&resend.RemoveContactOptions{
+    Id: "520784e2-887d-4c25-b53c-4ad46ad38100",
+  })
 
   // Delete by contact email
-  removed, err := client.Contacts.Remove(
-    "acme@example.com"
-  )
+  client.Contacts.Remove(&resend.RemoveContactOptions{
+    Id: "acme@example.com",
+  })
   ```
 
   ```rust Rust theme={"theme":{"light":"github-light","dark":"vesper"}}
@@ -574,18 +562,20 @@ You can also [delete a Contact](/docs/api-reference/contacts/delete-contact) via
 
   ```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
   import com.resend.*;
+  import com.resend.core.exception.ResendException;
+  import com.resend.services.contacts.model.RemoveContactOptions;
 
   public class Main {
-      public static void main(String[] args) {
+      public static void main(String[] args) throws ResendException {
           Resend resend = new Resend("re_xxxxxxxxx");
 
           // Delete by contact id
-          resend.contacts().remove(ContactRequestOptions.builder()
+          resend.contacts().remove(RemoveContactOptions.builder()
                           .id("520784e2-887d-4c25-b53c-4ad46ad38100")
                           .build());
 
           // Delete by contact email
-          resend.contacts().remove(ContactRequestOptions.builder()
+          resend.contacts().remove(RemoveContactOptions.builder()
                           .email("acme@example.com")
                           .build());
       }

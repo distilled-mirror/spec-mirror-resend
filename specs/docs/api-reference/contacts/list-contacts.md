@@ -134,38 +134,22 @@ export const QueryParams = ({type, isRequired}) => {
   ```go Go theme={"theme":{"light":"github-light","dark":"vesper"}}
   package main
 
-  import "github.com/resend/resend-go/v3"
+  import "github.com/resend/resend-go/v4"
 
   func main() {
   	client := resend.NewClient("re_xxxxxxxxx")
 
-  	client.Contacts.List()
-  }
-  ```
-
-  ```rust Rust theme={"theme":{"light":"github-light","dark":"vesper"}}
-  use resend_rs::{Resend, Result, list_opts::ListOptions};
-
-  #[tokio::main]
-  async fn main() -> Result<()> {
-    let resend = Resend::new("re_xxxxxxxxx");
-
-    let _contacts = resend
-      .contacts
-      .list(
-          ListOptions::default(),
-      )
-      .await?;
-
-    Ok(())
+  	client.Contacts.List(&resend.ListContactsOptions{})
   }
   ```
 
   ```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
-  import com.resend.*;
+  import com.resend.Resend;
+  import com.resend.core.exception.ResendException;
+  import com.resend.services.contacts.model.ListContactsResponseSuccess;
 
   public class Main {
-      public static void main(String[] args) {
+      public static void main(String[] args) throws ResendException {
           Resend resend = new Resend("re_xxxxxxxxx");
 
           ListContactsResponseSuccess data = resend.contacts().list();

@@ -110,7 +110,7 @@ export const ResendParamField = ({children, body, path, ...props}) => {
   import (
   	"time"
 
-  	"github.com/resend/resend-go/v3"
+  	"github.com/resend/resend-go/v4"
   )
 
   func main() {
@@ -155,10 +155,15 @@ export const ResendParamField = ({children, body, path, ...props}) => {
   ```
 
   ```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
-  import com.resend.*;
+  import com.resend.Resend;
+  import com.resend.core.exception.ResendException;
+  import com.resend.services.emails.model.UpdateEmailOptions;
+  import com.resend.services.emails.model.UpdateEmailResponse;
+  import java.time.Instant;
+  import java.time.temporal.ChronoUnit;
 
   public class Main {
-      public static void main(String[] args) {
+      public static void main(String[] args) throws ResendException {
           Resend resend = new Resend("re_xxxxxxxxx");
 
           String oneMinuteFromNow = Instant

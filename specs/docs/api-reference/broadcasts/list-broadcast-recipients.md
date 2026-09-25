@@ -179,7 +179,7 @@ with cursors. See [Pagination](/docs/api-reference/pagination) for how `after` a
   ```go Go theme={"theme":{"light":"github-light","dark":"vesper"}}
   package main
 
-  import "github.com/resend/resend-go/v3"
+  import "github.com/resend/resend-go/v4"
 
   func main() {
   	client := resend.NewClient("re_xxxxxxxxx")
@@ -211,6 +211,11 @@ with cursors. See [Pagination](/docs/api-reference/pagination) for how `after` a
   ```
 
   ```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
+  import com.resend.Resend;
+  import com.resend.services.broadcasts.model.BroadcastRecipientEventType;
+  import com.resend.services.broadcasts.model.ListBroadcastRecipientsParams;
+  import com.resend.services.broadcasts.model.ListBroadcastRecipientsResponseSuccess;
+
   Resend resend = new Resend("re_xxxxxxxxx");
 
   ListBroadcastRecipientsResponseSuccess data = resend.broadcasts().recipients(

@@ -106,6 +106,9 @@ Creates a new draft broadcast with the same segment, topic, sender, subject, rep
   ```
 
   ```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
+  import com.resend.Resend;
+  import com.resend.services.broadcasts.model.DuplicateBroadcastResponseSuccess;
+
   Resend resend = new Resend("re_xxxxxxxxx");
 
   DuplicateBroadcastResponseSuccess data = resend.broadcasts().duplicate("559ac32e-9ef5-46fb-82a1-b76b840c0f7b");

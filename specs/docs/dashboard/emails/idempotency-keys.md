@@ -34,7 +34,11 @@ Idempotency keys are kept in the system for **24 hours**. This gives you an ampl
 ### `POST /emails` endpoint example
 
 <CodeGroup>
-  ```ts Node.js {9} theme={"theme":{"light":"github-light","dark":"vesper"}}
+  ```ts Node.js {13} theme={"theme":{"light":"github-light","dark":"vesper"}}
+  import { Resend } from 'resend';
+
+  const resend = new Resend('re_xxxxxxxxx');
+
   await resend.emails.send(
     {
       from: 'Acme <onboarding@resend.dev>',
@@ -61,7 +65,11 @@ Idempotency keys are kept in the system for **24 hours**. This gives you an ampl
   ]);
   ```
 
-  ```python Python {9} theme={"theme":{"light":"github-light","dark":"vesper"}}
+  ```python Python {13} theme={"theme":{"light":"github-light","dark":"vesper"}}
+  import resend
+
+  resend.api_key = "re_xxxxxxxxx"
+
   params: resend.Emails.SendParams = {
     "from": "Acme <onboarding@resend.dev>",
     "to": ["delivered@resend.dev"],
@@ -76,7 +84,11 @@ Idempotency keys are kept in the system for **24 hours**. This gives you an ampl
   resend.Emails.send(params, options)
   ```
 
-  ```rb Ruby {9} theme={"theme":{"light":"github-light","dark":"vesper"}}
+  ```rb Ruby {13} theme={"theme":{"light":"github-light","dark":"vesper"}}
+  require "resend"
+
+  Resend.api_key = "re_xxxxxxxxx"
+
   params = {
     "from": "Acme <onboarding@resend.dev>",
     "to": ["delivered@resend.dev"],
@@ -95,7 +107,7 @@ Idempotency keys are kept in the system for **24 hours**. This gives you an ampl
   import (
   	"context"
 
-  	"github.com/resend/resend-go/v3"
+  	"github.com/resend/resend-go/v4"
   )
 
   func main() {
@@ -140,7 +152,14 @@ Idempotency keys are kept in the system for **24 hours**. This gives you an ampl
   }
   ```
 
-  ```java Java {9} theme={"theme":{"light":"github-light","dark":"vesper"}}
+  ```java Java {16} theme={"theme":{"light":"github-light","dark":"vesper"}}
+  import com.resend.*;
+  import com.resend.core.net.RequestOptions;
+  import com.resend.services.emails.model.CreateEmailOptions;
+  import com.resend.services.emails.model.CreateEmailResponse;
+
+  Resend resend = new Resend("re_xxxxxxxxx");
+
   CreateEmailOptions params = CreateEmailOptions.builder()
     .from("Acme <onboarding@resend.dev>")
     .to("delivered@resend.dev")
@@ -318,10 +337,10 @@ Idempotency keys are kept in the system for **24 hours**. This gives you an ampl
   package main
 
   import (
+  	"context"
   	"fmt"
-  	"os"
 
-  	"github.com/resend/resend-go/v3"
+  	"github.com/resend/resend-go/v4"
   )
 
   func main() {
@@ -358,8 +377,8 @@ Idempotency keys are kept in the system for **24 hours**. This gives you an ampl
   }
   ```
 
-  ```rust Rust {23} theme={"theme":{"light":"github-light","dark":"vesper"}}
-  use resend_rs::types::CreateEmailBaseOptions;
+  ```rust Rust {22} theme={"theme":{"light":"github-light","dark":"vesper"}}
+  use resend_rs::{idempotent::IdempotentTrait, types::CreateEmailBaseOptions};
   use resend_rs::{Resend, Result};
 
   #[tokio::main]
@@ -379,19 +398,25 @@ Idempotency keys are kept in the system for **24 hours**. This gives you an ampl
         "world hello",
       )
       .with_html("<p>it works!</p>"),
-    ];
+    ]
+    .with_idempotency_key("team-quota/123456789");
 
-    let _emails = resend.batch.send_with_idempotency_key(emails, "team-quota/123456789").await?;
+    let _emails = resend.batch.send(emails).await?;
 
     Ok(())
   }
   ```
 
-  ```java Java {23} theme={"theme":{"light":"github-light","dark":"vesper"}}
+  ```java Java {28} theme={"theme":{"light":"github-light","dark":"vesper"}}
   import com.resend.*;
+  import com.resend.core.exception.ResendException;
+  import com.resend.core.net.RequestOptions;
+  import com.resend.services.batch.model.CreateBatchEmailsResponse;
+  import com.resend.services.emails.model.CreateEmailOptions;
+  import java.util.Arrays;
 
   public class Main {
-      public static void main(String[] args) {
+      public static void main(String[] args) throws ResendException {
           Resend resend = new Resend("re_xxxxxxxxx");
 
           CreateEmailOptions firstEmail = CreateEmailOptions.builder()
@@ -410,7 +435,7 @@ Idempotency keys are kept in the system for **24 hours**. This gives you an ampl
 
           CreateBatchEmailsResponse data = resend.batch().send(
               Arrays.asList(firstEmail, secondEmail),
-              Map.of("idempotency_key", "team-quota/123456789")
+              RequestOptions.builder().setIdempotencyKey("team-quota/123456789").build()
           );
       }
   }

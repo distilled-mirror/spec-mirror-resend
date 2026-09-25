@@ -31,26 +31,31 @@ Once you [publish a Template](/docs/dashboard/templates/create-template#publish-
     name: 'order-confirmation',
     from: 'Resend Store <store@resend.com>',
     subject: 'Thanks for your order!',
-    html: "<p>Name: {{{PRODUCT}}}</p><p>Total: {{{PRICE}}}</p>",
+    html: '<p>Name: {{{PRODUCT}}}</p><p>Total: {{{PRICE}}}</p>',
     variables: [
       {
         key: 'PRODUCT',
         type: 'string',
-        fallbackValue: 'item'
+        fallbackValue: 'item',
       },
       {
         key: 'PRICE',
         type: 'number',
-        fallbackValue: 20
-      }
-    ]
+        fallbackValue: 20,
+      },
+    ],
   });
 
   // Publish template
   await resend.templates.publish('template_id');
 
   // Or create and publish a template in one step
-  await resend.templates.create({ ... }).publish();
+  const { data, error } = await resend.templates
+    .create({
+      name: 'order-confirmation',
+      html: '<p>Thanks for your order!</p>',
+    })
+    .publish();
   ```
 
   ```php PHP theme={"theme":{"light":"github-light","dark":"vesper"}}
@@ -66,12 +71,12 @@ Once you [publish a Template](/docs/dashboard/templates/create-template#publish-
       [
         'key' => 'PRODUCT',
         'type' => 'string',
-        'fallbackValue' => 'item'
+        'fallback_value' => 'item'
       ],
       [
         'key' => 'PRICE',
         'type' => 'number',
-        'fallbackValue' => 49.99
+        'fallback_value' => 49.99
       ]
     ]
   ]);
@@ -85,7 +90,7 @@ Once you [publish a Template](/docs/dashboard/templates/create-template#publish-
 
   resend.api_key = "re_xxxxxxxxx"
 
-  // Create template
+  # Create template
   params: resend.Templates.CreateParams = {
     "name": "order-confirmation",
     "from": "Resend Store <store@resend.com>",
@@ -95,19 +100,19 @@ Once you [publish a Template](/docs/dashboard/templates/create-template#publish-
       {
         "key": "PRODUCT",
         "type": "string",
-        "fallbackValue": "item"
+        "fallback_value": "item"
       },
       {
         "key": "PRICE",
         "type": "number",
-        "fallbackValue": 20
+        "fallback_value": 20
       },
     ]
   }
 
   resend.Templates.create(params)
 
-  // Publish template
+  # Publish template
   resend.Templates.publish('template_id');
   ```
 
@@ -116,33 +121,33 @@ Once you [publish a Template](/docs/dashboard/templates/create-template#publish-
 
   Resend.api_key = "re_xxxxxxxxx"
 
-  // Create template
+  # Create template
   params = {
     "name": 'order-confirmation',
     "from": 'Resend Store <store@resend.com>',
     "subject": 'Thanks for your order!',
-    "html": "<p>Name: #{{{PRODUCT}}}</p><p>Total: #{{{PRICE}}}</p>",
+    "html": "<p>Name: {{{PRODUCT}}}</p><p>Total: {{{PRICE}}}</p>",
     "variables": [{
         "key": 'PRODUCT',
         "type": 'string',
-        "fallbackValue": 'item'
+        "fallback_value": 'item'
       },
       {
         "key": 'PRICE',
         "type": 'number',
-        "fallbackValue": 20
+        "fallback_value": 20
       }
     ]
   }
 
   Resend::Templates.create(params)
 
-  // Publish template
+  # Publish template
   Resend::Templates.publish('template_id');
   ```
 
   ```go Go theme={"theme":{"light":"github-light","dark":"vesper"}}
-  import "github.com/resend/resend-go/v2"
+  import "github.com/resend/resend-go/v4"
 
   client := resend.NewClient("re_xxxxxxxxx")
 
@@ -152,7 +157,7 @@ Once you [publish a Template](/docs/dashboard/templates/create-template#publish-
     From: "Resend Store <store@resend.com>",
     Subject: "Thanks for your order!",
     Html: "<p>Name: {{{PRODUCT}}}</p><p>Total: {{{PRICE}}}</p>",
-    Variables: []resend.TemplateVariable{
+    Variables: []*resend.TemplateVariable{
       {
         Key: "PRODUCT",
         Type: "string",
@@ -173,7 +178,10 @@ Once you [publish a Template](/docs/dashboard/templates/create-template#publish-
   ```
 
   ```rust Rust theme={"theme":{"light":"github-light","dark":"vesper"}}
-  use resend_rs::{types::CreateTemplateOptions, Resend, Result};
+  use resend_rs::{
+    types::{CreateTemplateOptions, Variable, VariableType},
+    Resend, Result,
+  };
 
   #[tokio::main]
   async fn main() -> Result<()> {
@@ -185,24 +193,17 @@ Once you [publish a Template](/docs/dashboard/templates/create-template#publish-
     let subject = "Thanks for your order!";
     let html = "<p>Name: {{{PRODUCT}}}</p><p>Total: {{{PRICE}}}</p>";
 
-    let variables = vec![
-      TemplateVariable {
-        key: "PRODUCT",
-        type_: "string",
-        fallback_value: Some("item"),
-      },
-      TemplateVariable {
-        key: "PRICE",
-        type_: "number",
-        fallback_value: Some(20),
-      },
+    let variables = [
+      Variable::new("PRODUCT", VariableType::String).with_fallback("item"),
+      Variable::new("PRICE", VariableType::Number).with_fallback(20),
     ];
 
-    let opts = CreateTemplateOptions::new(name, from, subject)
-      .with_html(html)
-      .with_variables(variables);
+    let opts = CreateTemplateOptions::new(name, html)
+      .with_from(from)
+      .with_subject(subject)
+      .with_variables(&variables);
 
-    let _template = resend.templates.create(opts).await?;
+    let template = resend.templates.create(opts).await?;
 
     // Publish template
     resend.templates.publish(&template.id).await?;
@@ -212,26 +213,34 @@ Once you [publish a Template](/docs/dashboard/templates/create-template#publish-
   ```
 
   ```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
+  import com.resend.*;
+  import com.resend.services.templates.model.CreateTemplateOptions;
+  import com.resend.services.templates.model.CreateTemplateResponseSuccess;
+  import com.resend.services.templates.model.Variable;
+  import com.resend.services.templates.model.VariableType;
+  import java.util.Arrays;
+  import java.util.List;
+
   Resend resend = new Resend("re_xxxxxxxxx");
 
   // Create template
-  List<TemplateVariable> variables = Arrays.asList(
-    new TemplateVariable("PRODUCT", "string", "item"),
-    new TemplateVariable("PRICE", "number", 20),
+  List<Variable> variables = Arrays.asList(
+    new Variable("PRODUCT", VariableType.STRING, "item"),
+    new Variable("PRICE", VariableType.NUMBER, 20)
   );
 
   CreateTemplateOptions params = CreateTemplateOptions.builder()
     .name("order-confirmation")
     .from("Resend Store <store@resend.com>")
     .subject("Thanks for your order!")
-      .html("<p>Name: {{{PRODUCT}}}</p><p>Total: {{{PRICE}}}</p>")
+    .html("<p>Name: {{{PRODUCT}}}</p><p>Total: {{{PRICE}}}</p>")
     .variables(variables)
     .build();
 
   CreateTemplateResponseSuccess data = resend.templates().create(params);
 
   // Publish template
-  resend.templates().publish(data.content);
+  resend.templates().publish(data.getId());
   ```
 
   ```csharp .NET theme={"theme":{"light":"github-light","dark":"vesper"}}

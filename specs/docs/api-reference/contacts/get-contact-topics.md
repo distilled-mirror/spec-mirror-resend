@@ -82,14 +82,9 @@ Either `id` or `email` must be provided.
 
   const resend = new Resend('re_xxxxxxxxx');
 
-  // Get by contact id
   const { data, error } = await resend.contacts.topics.list({
     id: 'e169aa45-1ecf-4183-9955-b1499d5701d3',
-  });
-
-  // Get by contact email
-  const { data, error } = await resend.contacts.topics.list({
-    email: 'steve.wozniak@gmail.com',
+    // or: email: 'steve.wozniak@gmail.com',
   });
   ```
 
@@ -124,7 +119,7 @@ Either `id` or `email` must be provided.
   contact_topics = Resend::Contacts::Topics.list(id: "e169aa45-1ecf-4183-9955-b1499d5701d3")
 
   # Get by contact email
-  contact_topics = Resend::Contacts::Topics.list(id: "steve.wozniak@gmail.com")
+  contact_topics = Resend::Contacts::Topics.list(email: "steve.wozniak@gmail.com")
   ```
 
   ```go Go theme={"theme":{"light":"github-light","dark":"vesper"}}
@@ -134,7 +129,7 @@ Either `id` or `email` must be provided.
   	"context"
   	"fmt"
 
-  	"github.com/resend/resend-go/v3"
+  	"github.com/resend/resend-go/v4"
   )
 
   func main() {
@@ -142,18 +137,14 @@ Either `id` or `email` must be provided.
   	client := resend.NewClient("re_xxxxxxxxx")
 
   	// Get by contact id
-  	topics, err := client.Contacts.Topics.ListWithContext(ctx, &resend.ListContactTopicsRequest{
-  		ContactId: "e169aa45-1ecf-4183-9955-b1499d5701d3",
-  	})
+  	topics, err := client.Contacts.Topics.ListWithContext(ctx, "e169aa45-1ecf-4183-9955-b1499d5701d3")
   	if err != nil {
   		panic(err)
   	}
   	fmt.Println(topics)
 
   	// Get by contact email
-  	topics, err = client.Contacts.Topics.ListWithContext(ctx, &resend.ListContactTopicsRequest{
-  		Email: "steve.wozniak@gmail.com",
-  	})
+  	topics, err = client.Contacts.Topics.ListWithContext(ctx, "steve.wozniak@gmail.com")
   	if err != nil {
   		panic(err)
   	}
@@ -181,10 +172,11 @@ Either `id` or `email` must be provided.
   ```
 
   ```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
-  import com.resend.*;
+  import com.resend.Resend;
+  import com.resend.core.exception.ResendException;
 
   public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ResendException {
       Resend resend = new Resend("re_xxxxxxxxx");
 
       // Get by contact id

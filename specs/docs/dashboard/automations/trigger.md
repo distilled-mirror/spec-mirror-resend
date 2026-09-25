@@ -104,7 +104,7 @@ When your application sends an event to Resend, every active Automation with a m
       ```go Go {11-17} theme={"theme":{"light":"github-light","dark":"vesper"}}
       package main
 
-      import "github.com/resend/resend-go/v3"
+      import "github.com/resend/resend-go/v4"
 
       func main() {
       	client := resend.NewClient("re_xxxxxxxxx")
@@ -154,11 +154,15 @@ When your application sends an event to Resend, every active Automation with a m
       }
       ```
 
-      ```java Java {9-13} theme={"theme":{"light":"github-light","dark":"vesper"}}
+      ```java Java {13-17} theme={"theme":{"light":"github-light","dark":"vesper"}}
       import com.resend.*;
+      import com.resend.core.exception.ResendException;
+      import com.resend.services.automations.model.AutomationStep;
+      import com.resend.services.automations.model.CreateAutomationOptions;
+      import com.resend.services.automations.model.CreateAutomationResponseSuccess;
 
       public class Main {
-          public static void main(String[] args) {
+          public static void main(String[] args) throws ResendException {
               Resend resend = new Resend("re_xxxxxxxxx");
 
               CreateAutomationOptions options = CreateAutomationOptions.builder()
@@ -285,7 +289,7 @@ When sending an event to trigger an Automation, you must identify the contact us
       ```go Go {10} theme={"theme":{"light":"github-light","dark":"vesper"}}
       package main
 
-      import "github.com/resend/resend-go/v3"
+      import "github.com/resend/resend-go/v4"
 
       func main() {
       	client := resend.NewClient("re_xxxxxxxxx")
@@ -326,12 +330,13 @@ When sending an event to trigger an Automation, you must identify the contact us
       }
       ```
 
-      ```java Java {9} theme={"theme":{"light":"github-light","dark":"vesper"}}
+      ```java Java {10} theme={"theme":{"light":"github-light","dark":"vesper"}}
       import com.resend.*;
+      import com.resend.core.exception.ResendException;
       import com.resend.services.events.model.*;
 
       public class Main {
-          public static void main(String[] args) {
+          public static void main(String[] args) throws ResendException {
               Resend resend = new Resend("re_xxxxxxxxx");
 
               SendEventOptions params = SendEventOptions.builder()
@@ -442,7 +447,7 @@ When sending an event to trigger an Automation, you must identify the contact us
       ```go Go {10} theme={"theme":{"light":"github-light","dark":"vesper"}}
       package main
 
-      import "github.com/resend/resend-go/v3"
+      import "github.com/resend/resend-go/v4"
 
       func main() {
       	client := resend.NewClient("re_xxxxxxxxx")
@@ -481,12 +486,13 @@ When sending an event to trigger an Automation, you must identify the contact us
       }
       ```
 
-      ```java Java {9} theme={"theme":{"light":"github-light","dark":"vesper"}}
+      ```java Java {10} theme={"theme":{"light":"github-light","dark":"vesper"}}
       import com.resend.*;
+      import com.resend.core.exception.ResendException;
       import com.resend.services.events.model.*;
 
       public class Main {
-          public static void main(String[] args) {
+          public static void main(String[] args) throws ResendException {
               Resend resend = new Resend("re_xxxxxxxxx");
 
               SendEventOptions params = SendEventOptions.builder()
@@ -613,7 +619,7 @@ You can include a `payload` object with your event to pass data into the Automat
   ```go Go {11-15} theme={"theme":{"light":"github-light","dark":"vesper"}}
   package main
 
-  import "github.com/resend/resend-go/v3"
+  import "github.com/resend/resend-go/v4"
 
   func main() {
   	client := resend.NewClient("re_xxxxxxxxx")
@@ -660,12 +666,13 @@ You can include a `payload` object with your event to pass data into the Automat
   }
   ```
 
-  ```java Java {10-12} theme={"theme":{"light":"github-light","dark":"vesper"}}
+  ```java Java {11-13} theme={"theme":{"light":"github-light","dark":"vesper"}}
   import com.resend.*;
+  import com.resend.core.exception.ResendException;
   import com.resend.services.events.model.*;
 
   public class Main {
-      public static void main(String[] args) {
+      public static void main(String[] args) throws ResendException {
           Resend resend = new Resend("re_xxxxxxxxx");
 
           SendEventOptions params = SendEventOptions.builder()
@@ -735,7 +742,7 @@ View the [Send Event API reference](/docs/api-reference/events/send-event) for t
   The name of the event that triggers the automation.
 </ParamField>
 
-```json theme={"theme":{"light":"github-light","dark":"vesper"}}
+```json theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}}
 {
   "key": "start",
   "type": "trigger",

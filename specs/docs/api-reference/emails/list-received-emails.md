@@ -104,10 +104,12 @@ You can list all emails received by your team. The list returns references to in
   ```
 
   ```go Go theme={"theme":{"light":"github-light","dark":"vesper"}}
+  package main
+
   import (
   	"context"
 
-  	"github.com/resend/resend-go/v3"
+  	"github.com/resend/resend-go/v4"
   )
 
   func main() {
@@ -131,10 +133,12 @@ You can list all emails received by your team. The list returns references to in
   ```
 
   ```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
-  import com.resend.*;
+  import com.resend.Resend;
+  import com.resend.core.exception.ResendException;
+  import com.resend.services.receiving.model.ListReceivedEmailsResponse;
 
   public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ResendException {
       Resend resend = new Resend("re_xxxxxxxxx");
 
       ListReceivedEmailsResponse response = resend.receiving().list();

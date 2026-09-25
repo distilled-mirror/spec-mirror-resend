@@ -101,11 +101,14 @@ Define the file name that will be attached using the `filename` parameter.
   Resend::Emails.send(params)
   ```
 
-  ```go Go {12-13} theme={"theme":{"light":"github-light","dark":"vesper"}}
+  ```go Go {15-16} theme={"theme":{"light":"github-light","dark":"vesper"}}
+  package main
+
   import (
+  	"context"
   	"fmt"
 
-  	"github.com/resend/resend-go/v3"
+  	"github.com/resend/resend-go/v4"
   )
 
   func main() {
@@ -159,11 +162,15 @@ Define the file name that will be attached using the `filename` parameter.
   }
   ```
 
-  ```java Java {8-9} theme={"theme":{"light":"github-light","dark":"vesper"}}
+  ```java Java {12-13} theme={"theme":{"light":"github-light","dark":"vesper"}}
   import com.resend.*;
+  import com.resend.core.exception.ResendException;
+  import com.resend.services.emails.model.Attachment;
+  import com.resend.services.emails.model.CreateEmailOptions;
+  import com.resend.services.emails.model.CreateEmailResponse;
 
   public class Main {
-      public static void main(String[] args) {
+      public static void main(String[] args) throws ResendException {
           Resend resend = new Resend("re_xxxxxxxxx");
 
           Attachment att = Attachment.builder()
@@ -257,8 +264,10 @@ Define the file name that will be attached using the `filename` parameter.
   });
   ```
 
-  ```php PHP {10-11} theme={"theme":{"light":"github-light","dark":"vesper"}}
+  ```php PHP {12-13} theme={"theme":{"light":"github-light","dark":"vesper"}}
   $resend = Resend::client('re_xxxxxxxxx');
+
+  $attachment = base64_encode(file_get_contents(__DIR__ . '/static/invoice.pdf'));
 
   $resend->emails->send([
     'from' => 'Acme <onboarding@resend.dev>',
@@ -268,7 +277,7 @@ Define the file name that will be attached using the `filename` parameter.
     'attachments' => [
       [
         'filename' => 'invoice.pdf',
-        'content' => $invoiceBuffer
+        'content' => $attachment
       ]
     ]
   ]);
@@ -320,12 +329,15 @@ Define the file name that will be attached using the `filename` parameter.
   Resend::Emails.send(params)
   ```
 
-  ```go Go {19-20} theme={"theme":{"light":"github-light","dark":"vesper"}}
+  ```go Go {22-23} theme={"theme":{"light":"github-light","dark":"vesper"}}
+  package main
+
   import (
+  	"context"
   	"fmt"
   	"os"
 
-  	"github.com/resend/resend-go/v3"
+  	"github.com/resend/resend-go/v4"
   )
 
   func main() {
@@ -390,11 +402,15 @@ Define the file name that will be attached using the `filename` parameter.
   }
   ```
 
-  ```java Java {8-9} theme={"theme":{"light":"github-light","dark":"vesper"}}
+  ```java Java {12-13} theme={"theme":{"light":"github-light","dark":"vesper"}}
   import com.resend.*;
+  import com.resend.core.exception.ResendException;
+  import com.resend.services.emails.model.Attachment;
+  import com.resend.services.emails.model.CreateEmailOptions;
+  import com.resend.services.emails.model.CreateEmailResponse;
 
   public class Main {
-      public static void main(String[] args) {
+      public static void main(String[] args) throws ResendException {
           Resend resend = new Resend("re_xxxxxxxxx");
 
           Attachment att = Attachment.builder()
@@ -410,7 +426,7 @@ Define the file name that will be attached using the `filename` parameter.
                   .attachments(att)
                   .build();
 
-          CreateEmailOptions params = CreateEmailOptions.builder()
+          CreateEmailResponse data = resend.emails().send(params);
       }
   }
   ```
@@ -569,11 +585,14 @@ The content id is an arbitrary string set by you, and must be less than 128 char
   Resend::Emails.send(params)
   ```
 
-  ```go Go {14, 21} theme={"theme":{"light":"github-light","dark":"vesper"}}
+  ```go Go {17, 24} theme={"theme":{"light":"github-light","dark":"vesper"}}
+  package main
+
   import (
+  	"context"
   	"fmt"
 
-  	"github.com/resend/resend-go/v3"
+  	"github.com/resend/resend-go/v4"
   )
 
   func main() {
@@ -633,17 +652,21 @@ The content id is an arbitrary string set by you, and must be less than 128 char
   }
   ```
 
-  ```java Java {10, 17} theme={"theme":{"light":"github-light","dark":"vesper"}}
+  ```java Java {14, 21} theme={"theme":{"light":"github-light","dark":"vesper"}}
   import com.resend.*;
+  import com.resend.core.exception.ResendException;
+  import com.resend.services.emails.model.Attachment;
+  import com.resend.services.emails.model.CreateEmailOptions;
+  import com.resend.services.emails.model.CreateEmailResponse;
 
   public class Main {
-      public static void main(String[] args) {
+      public static void main(String[] args) throws ResendException {
           Resend resend = new Resend("re_xxxxxxxxx");
 
           Attachment att = Attachment.builder()
                   .path("https://resend.com/static/sample/logo.png")
                   .fileName("logo.png")
-                  .ContentId("logo-image")
+                  .contentId("logo-image")
                   .build();
 
           CreateEmailOptions params = CreateEmailOptions.builder()
