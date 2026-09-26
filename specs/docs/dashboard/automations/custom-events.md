@@ -214,7 +214,7 @@ View the [Create Event API reference](/docs/api-reference/events/create-event) f
   flat key/type pairs. Supported types: `string`, `number`, `boolean`, `date`.
 </ParamField>
 
-```json Example theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}}
+```json Example theme={"theme":{"light":"github-light","dark":"vesper"}}
 {
   "schema": {
     "plan": "string",

@@ -386,7 +386,7 @@ For more help working with variables in templates, see the [Send Email](/docs/da
   hardcoded value (string, number, boolean) or a variable reference.
 </ParamField>
 
-```json Example theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}}
+```json Example theme={"theme":{"light":"github-light","dark":"vesper"}}
 {
   "key": "update_contact",
   "type": "contact_update",

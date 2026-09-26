@@ -742,7 +742,7 @@ View the [Send Event API reference](/docs/api-reference/events/send-event) for t
   The name of the event that triggers the automation.
 </ParamField>
 
-```json theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}}
+```json theme={"theme":{"light":"github-light","dark":"vesper"}}
 {
   "key": "start",
   "type": "trigger",

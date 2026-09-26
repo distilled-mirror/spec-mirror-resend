@@ -515,7 +515,7 @@ For `and` / `or` types:
 
 Single rule example:
 
-```json theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}}
+```json theme={"theme":{"light":"github-light","dark":"vesper"}}
 {
   "key": "check_plan",
   "type": "condition",
@@ -530,7 +530,7 @@ Single rule example:
 
 Use `and` or `or` to combine multiple rules into a single branch:
 
-```json {5-19} theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}}
+```json {5-19} theme={"theme":{"light":"github-light","dark":"vesper"}}
 {
   "key": "check_plan_and_amount",
   "type": "condition",

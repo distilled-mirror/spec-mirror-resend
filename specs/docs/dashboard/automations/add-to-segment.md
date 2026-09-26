@@ -297,7 +297,7 @@ Common use cases:
   The ID of the segment to add the contact to.
 </ParamField>
 
-```json Example theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}}
+```json Example theme={"theme":{"light":"github-light","dark":"vesper"}}
 {
   "key": "add_to_vip",
   "type": "add_to_segment",

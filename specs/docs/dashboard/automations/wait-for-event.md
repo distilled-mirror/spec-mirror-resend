@@ -372,7 +372,7 @@ The filter rule supports the same [operators](/docs/dashboard/automations/condit
   An optional rule object to filter incoming events.
 </ParamField>
 
-```json Example theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}}
+```json Example theme={"theme":{"light":"github-light","dark":"vesper"}}
 {
   "key": "wait_for_purchase",
   "type": "wait_for_event",

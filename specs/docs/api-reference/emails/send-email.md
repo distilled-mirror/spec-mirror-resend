@@ -178,7 +178,7 @@ export const ResendParamField = ({children, body, path, ...props}) => {
 <ParamField body="variables" type="object">
   Template variables object with key/value pairs.
 
-  ```ts theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}}
+  ```ts theme={"theme":{"light":"github-light","dark":"vesper"}}
   variables: {
   	CTA: 'Sign up now',
   	CTA_LINK: 'https://example.com/signup'

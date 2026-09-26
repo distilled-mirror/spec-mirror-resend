@@ -404,7 +404,7 @@ See [when to use an unsubscribe link](/docs/knowledge-base/should-i-add-an-unsub
   If provided, this value will override the template's default value.
 </ParamField>
 
-```json theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}}
+```json theme={"theme":{"light":"github-light","dark":"vesper"}}
 {
   "key": "welcome",
   "type": "send_email",
