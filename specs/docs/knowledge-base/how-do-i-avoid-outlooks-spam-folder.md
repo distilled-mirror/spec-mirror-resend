@@ -18,11 +18,11 @@
 
 Outlook uses email authentication to confirm that you are who you say you are. Microsoft requires bulk senders (5,000+ messages per day) to authenticate with SPF, DKIM, and DMARC, and it's recommended for every sender.
 
-| Authentication                    | Requires Setup | Purpose                                                      |
-| --------------------------------- | -------------- | ------------------------------------------------------------ |
-| **SPF**                           | No             | Proves you are allowed to send from this domain              |
-| **DKIM**                          | No             | Proves your email originated from you                        |
-| [DMARC](/docs/dashboard/domains/dmarc) | Yes            | Proves you own the domain and instructs how to handle spoofs |
+| Authentication | Requires Setup | Purpose |
+| - | - | - |
+| **SPF** | No | Proves you are allowed to send from this domain |
+| **DKIM** | No | Proves your email originated from you |
+| [DMARC](/docs/dashboard/domains/dmarc) | Yes | Proves you own the domain and instructs how to handle spoofs |
 
 When you verify your domain with Resend, **SPF** and **DKIM** are configured and validated for you automatically. [DMARC](/docs/dashboard/domains/dmarc) is an additional authentication method that can build trust and further improve inbox placement.
 
@@ -37,29 +37,29 @@ When Outlook or Hotmail filters a message, it records why in the headers. Ask th
 
 **Spam Confidence Level (SCL)** appears as `SCL:` in `X-Forefront-Antispam-Report`. It also often appears in `X-MS-Exchange-Organization-SCL`. Microsoft stamps a value of `-1`, or `0` through `9`. An SCL of 5 or higher generally indicates the message is considered bad. See [Spam confidence level](https://learn.microsoft.com/en-us/defender-office-365/anti-spam-spam-confidence-level-scl-about).
 
-| SCL    | Meaning                                                            | Typical outcome    |
-| ------ | ------------------------------------------------------------------ | ------------------ |
-| -1     | Filtering was bypassed (safe sender, allowlist, or mail flow rule) | Inbox              |
-| 0 to 1 | Not classified as spam                                             | Inbox              |
-| 5 to 6 | Classified as spam                                                 | Junk               |
-| 9      | Classified as high confidence spam                                 | Junk or quarantine |
+| SCL | Meaning | Typical outcome |
+| - | - | - |
+| -1 | Filtering was bypassed (safe sender, allowlist, or mail flow rule) | Inbox |
+| 0 to 1 | Not classified as spam | Inbox |
+| 5 to 6 | Classified as spam | Junk |
+| 9 | Classified as high confidence spam | Junk or quarantine |
 
 In Microsoft 365 cloud organizations, SCL no longer determines the Spam vs High confidence spam verdict or the action taken. Microsoft says to read the category (CAT) field in `X-Forefront-Antispam-Report` instead.
 
-| CAT    | Meaning              |
-| ------ | -------------------- |
-| `SPM`  | Spam                 |
-| `BULK` | Bulk                 |
+| CAT | Meaning |
+| - | - |
+| `SPM` | Spam |
+| `BULK` | Bulk |
 | `HSPM` | High confidence spam |
 
 **Bulk Complaint Level (BCL)** appears in `X-Microsoft-Antispam` and scores how bulk-like the message is. See [Bulk complaint level](https://learn.microsoft.com/en-us/defender-office-365/anti-spam-bulk-complaint-level-bcl-about).
 
-| BCL    | Meaning                                                 |
-| ------ | ------------------------------------------------------- |
-| 0      | The message isn't from a bulk sender                    |
-| 1 to 3 | Bulk sender that generates few complaints               |
+| BCL | Meaning |
+| - | - |
+| 0 | The message isn't from a bulk sender |
+| 1 to 3 | Bulk sender that generates few complaints |
 | 4 to 7 | Bulk sender that generates a mixed number of complaints |
-| 8 to 9 | Bulk sender that generates a high number of complaints  |
+| 8 to 9 | Bulk sender that generates a high number of complaints |
 
 Microsoft's default anti-spam policy treats BCL 7 or higher as bulk mail and delivers it to Junk.
 

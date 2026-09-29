@@ -22,11 +22,11 @@ Apple does not offer allowlists or feedback loops for iCloud Mail. Your reputati
 
 Like every major mailbox provider, iCloud uses email authentication to confirm that you are who you say you are. Apple requires that bulk senders authenticate with SPF, DKIM, and DMARC.
 
-| Authentication                    | Requires Setup | Purpose                                                      |
-| --------------------------------- | -------------- | ------------------------------------------------------------ |
-| **SPF**                           | No             | Proves you are allowed to send from this domain              |
-| **DKIM**                          | No             | Proves your email originated from you                        |
-| [DMARC](/docs/dashboard/domains/dmarc) | Yes            | Proves you own the domain and instructs how to handle spoofs |
+| Authentication | Requires Setup | Purpose |
+| - | - | - |
+| **SPF** | No | Proves you are allowed to send from this domain |
+| **DKIM** | No | Proves your email originated from you |
+| [DMARC](/docs/dashboard/domains/dmarc) | Yes | Proves you own the domain and instructs how to handle spoofs |
 
 When you verify your domain with Resend, **SPF** and **DKIM** are configured and validated for you automatically, so your email meets Apple's authentication requirements out of the box. Resend also signs every message with DKIM and handles SPF alignment on your behalf, so you don't have to manage these records yourself. Apple additionally requires that your sending domain publish a [DMARC](/docs/dashboard/domains/dmarc) policy.
 

@@ -41,10 +41,10 @@ about:
 
 When an email lands in spam, providers like Gmail display a banner explaining why. Here are common messages and what they mean:
 
-| Banner message                                                       | What it means                             | Fix                                                                                     |
-| -------------------------------------------------------------------- | ----------------------------------------- | --------------------------------------------------------------------------------------- |
-| "It's similar to messages that were identified as spam in the past." | Content is triggering spam filters        | Simplify your email content and remove excessive links, images, or marketing language   |
-| "This message seems dangerous"                                       | A URL or content was flagged as malicious | Review the links and content in your email for anything that might be flagged as unsafe |
+| Banner message | What it means | Fix |
+| - | - | - |
+| "It's similar to messages that were identified as spam in the past." | Content is triggering spam filters | Simplify your email content and remove excessive links, images, or marketing language |
+| "This message seems dangerous" | A URL or content was flagged as malicious | Review the links and content in your email for anything that might be flagged as unsafe |
 
 ## Check your domain reputation
 

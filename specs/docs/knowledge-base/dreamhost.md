@@ -38,10 +38,10 @@ First, log in to your [Resend Account](https://resend.com/login) and [add a doma
 
 Below is a mapping of the record fields from Resend to DreamHost:
 
-| DreamHost | Resend  | Example Value                       |
-| --------- | ------- | ----------------------------------- |
-| Type      | Type    | `TXT Record`                        |
-| Host      | Name    | `send`                              |
+| DreamHost | Resend | Example Value |
+| - | - | - |
+| Type | Type | `TXT Record` |
+| Host | Name | `send` |
 | TXT Value | Content | `v=spf1 include:amazonses.com ~all` |
 
 <img alt="DreamHost DNS Dashboard" src="https://mintcdn.com/resend/7M2Hdgv3dPiLlTrA/images/dashboard-domains-dreamhost-spf.png?fit=max&auto=format&n=7M2Hdgv3dPiLlTrA&q=85&s=8c285c277231e0f0abbe68b8cdf67e66" width="2536" height="1456" data-path="images/dashboard-domains-dreamhost-spf.png" />
@@ -60,10 +60,10 @@ Below is a mapping of the record fields from Resend to DreamHost:
    <img alt="DreamHost DNS Dashboard" src="https://mintcdn.com/resend/7M2Hdgv3dPiLlTrA/images/dashboard-domains-dreamhost-dkim.png?fit=max&auto=format&n=7M2Hdgv3dPiLlTrA&q=85&s=90f2e23d3b70ff95c418e178489df7bb" width="2530" height="1448" data-path="images/dashboard-domains-dreamhost-dkim.png" />
    Below is a mapping of the record fields from Resend to DreamHost:
 
-| DreamHost | Resend  | Example Value                |
-| --------- | ------- | ---------------------------- |
-| Type      | Type    | `TXT Record`                 |
-| Host      | Name    | `resend._domainkey`          |
+| DreamHost | Resend | Example Value |
+| - | - | - |
+| Type | Type | `TXT Record` |
+| Host | Name | `resend._domainkey` |
 | TXT Value | Content | `p=example_domain_key_value` |
 
 ## Add MX SPF Record
@@ -79,12 +79,12 @@ Below is a mapping of the record fields from Resend to DreamHost:
 
 Below is a mapping of the record fields from Resend to DreamHost:
 
-| DreamHost | Resend   | Example Value                           |
-| --------- | -------- | --------------------------------------- |
-| Type      | Type     | `MX Record`                             |
-| Host      | Name     | `send`                                  |
-| Points to | Content  | `feedback-smtp.us-east-1.amazonses.com` |
-| Priority  | Priority | `10`                                    |
+| DreamHost | Resend | Example Value |
+| - | - | - |
+| Type | Type | `MX Record` |
+| Host | Name | `send` |
+| Points to | Content | `feedback-smtp.us-east-1.amazonses.com` |
+| Priority | Priority | `10` |
 
 <Info>MX record will differ depending on your selected sending region.</Info>
 
@@ -119,12 +119,12 @@ Add an MX record for receiving:
 
 Below is a mapping of the record fields from Resend to DreamHost:
 
-| DreamHost | Resend   | Example Value                          |
-| --------- | -------- | -------------------------------------- |
-| Type      | Type     | `MX Record`                            |
-| Host      | Name     | `inbound`                              |
-| Points to | Content  | `inbound-smtp.us-east-1.amazonaws.com` |
-| Priority  | Priority | `10`                                   |
+| DreamHost | Resend | Example Value |
+| - | - | - |
+| Type | Type | `MX Record` |
+| Host | Name | `inbound` |
+| Points to | Content | `inbound-smtp.us-east-1.amazonaws.com` |
+| Priority | Priority | `10` |
 
 After verifying your domain, create a webhook to process incoming emails. For help setting up a webhook, how to access email data and attachments, forward emails, and more, see [our guide on receiving emails with Resend](/docs/dashboard/receiving/introduction).
 

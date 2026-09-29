@@ -105,11 +105,11 @@ counts are a point-in-time snapshot rather than a historical window.
 
 Every metric counts contacts, not emails.
 
-| Metric          | Description                                              |
-| --------------- | -------------------------------------------------------- |
-| `all_contacts`  | Every contact. Sum of `subscribers` and `unsubscribers`. |
-| `subscribers`   | Contacts with `unsubscribed` set to `false`.             |
-| `unsubscribers` | Contacts with `unsubscribed` set to `true`.              |
+| Metric | Description |
+| - | - |
+| `all_contacts` | Every contact. Sum of `subscribers` and `unsubscribers`. |
+| `subscribers` | Contacts with `unsubscribed` set to `false`. |
+| `unsubscribers` | Contacts with `unsubscribed` set to `true`. |
 
 <Info>
   `totals` counts each contact once. `data` counts a contact in every segment it

@@ -101,35 +101,35 @@
 
   ### **Required Fields**
 
-  | Field     | Type       | Description                                                                      |
-  | --------- | ---------- | -------------------------------------------------------------------------------- |
-  | `From`    | `string`   | Sender email address. Supports friendly name format: `"Name <email@domain.com>"` |
-  | `To`      | `[]string` | Recipient email address(es). Maximum 50 addresses.                               |
-  | `Subject` | `string`   | Email subject line.                                                              |
+  | Field | Type | Description |
+  | - | - | - |
+  | `From` | `string` | Sender email address. Supports friendly name format: `"Name <email@domain.com>"` |
+  | `To` | `[]string` | Recipient email address(es). Maximum 50 addresses. |
+  | `Subject` | `string` | Email subject line. |
 
   ### **Content Fields (at least one required)**
 
-  | Field  | Type     | Description                                                |
-  | ------ | -------- | ---------------------------------------------------------- |
-  | `Html` | `string` | HTML version of the email body.                            |
+  | Field | Type | Description |
+  | - | - | - |
+  | `Html` | `string` | HTML version of the email body. |
   | `Text` | `string` | Plain text version. Auto-generated from `Html` if omitted. |
 
   ### **Optional Fields**
 
-  | Field         | Type                | Description                                                   |
-  | ------------- | ------------------- | ------------------------------------------------------------- |
-  | `Cc`          | `[]string`          | Carbon copy recipients.                                       |
-  | `Bcc`         | `[]string`          | Blind carbon copy recipients.                                 |
-  | `ReplyTo`     | `string`            | Reply-to address.                                             |
-  | `ScheduledAt` | `string`            | Schedule delivery time. Accepts ISO 8601 or natural language. |
-  | `Headers`     | `map[string]string` | Custom email headers as key-value pairs.                      |
-  | `Tags`        | `[]Tag`             | Custom metadata. Name and value: max 256 chars, ASCII only.   |
-  | `Attachments` | `[]*Attachment`     | File attachments. Max 40MB total per email after encoding.    |
+  | Field | Type | Description |
+  | - | - | - |
+  | `Cc` | `[]string` | Carbon copy recipients. |
+  | `Bcc` | `[]string` | Blind carbon copy recipients. |
+  | `ReplyTo` | `string` | Reply-to address. |
+  | `ScheduledAt` | `string` | Schedule delivery time. Accepts ISO 8601 or natural language. |
+  | `Headers` | `map[string]string` | Custom email headers as key-value pairs. |
+  | `Tags` | `[]Tag` | Custom metadata. Name and value: max 256 chars, ASCII only. |
+  | `Attachments` | `[]*Attachment` | File attachments. Max 40MB total per email after encoding. |
 
   ### **Template Fields**
 
-  | Field      | Type             | Description                |
-  | ---------- | ---------------- | -------------------------- |
+  | Field | Type | Description |
+  | - | - | - |
   | `Template` | `*EmailTemplate` | Published template to use. |
 
   If `Template` is provided, do not include `Html` or `Text`.

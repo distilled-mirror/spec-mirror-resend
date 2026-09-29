@@ -148,8 +148,8 @@ The response echoes back the registered client metadata along with the issued `c
 
 Errors use the standard OAuth shape (`{"error": "...", "error_description": "..."}`) rather than Resend's usual [error format](/docs/api-reference/errors).
 
-| Status | `error`             | When                                                                     |
-| ------ | ------------------- | ------------------------------------------------------------------------ |
-| `400`  | `invalid_request`   | A required field is missing, malformed, or a redirect URI is disallowed. |
-| `400`  | `invalid_scope`     | `scope` includes a value outside the supported scope set.                |
-| `429`  | `too_many_requests` | More than 20 registrations from this IP in the last hour.                |
+| Status | `error` | When |
+| - | - | - |
+| `400` | `invalid_request` | A required field is missing, malformed, or a redirect URI is disallowed. |
+| `400` | `invalid_scope` | `scope` includes a value outside the supported scope set. |
+| `429` | `too_many_requests` | More than 20 registrations from this IP in the last hour. |

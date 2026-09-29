@@ -53,13 +53,13 @@ Copy and paste the values MX in Resend to Hostinger.
 
 Below is a mapping of the record fields from Resend to Hostinger:
 
-| Hostinger   | Resend   | Example Value                           |
-| ----------- | -------- | --------------------------------------- |
-| Type        | Type     | `MX Record`                             |
-| Name        | Name     | `send`                                  |
-| Mail Server | Content  | `feedback-smtp.us-east-1.amazonses.com` |
-| TTL         | -        | `Set to 3660`                           |
-| Priority    | Priority | `10`                                    |
+| Hostinger | Resend | Example Value |
+| - | - | - |
+| Type | Type | `MX Record` |
+| Name | Name | `send` |
+| Mail Server | Content | `feedback-smtp.us-east-1.amazonses.com` |
+| TTL | - | `Set to 3660` |
+| Priority | Priority | `10` |
 
 <Info>
   Do not use the same priority for multiple records. If Priority `10` is already
@@ -88,12 +88,12 @@ In the same section, add another record in Hostinger.
 
 Below is a mapping of the record fields from Resend to Hostinger:
 
-| Hostinger | Resend  | Example Value                         |
-| --------- | ------- | ------------------------------------- |
-| Type      | Type    | `TXT Record`                          |
-| Name      | Name    | `send`                                |
+| Hostinger | Resend | Example Value |
+| - | - | - |
+| Type | Type | `TXT Record` |
+| Name | Name | `send` |
 | TXT value | Content | `"v=spf1 include:amazonses.com ~all"` |
-| TTL       | -       | `Set to 3600`                         |
+| TTL | - | `Set to 3600` |
 
 ## Add TXT DKIM Records
 
@@ -117,12 +117,12 @@ In the same section, add another record in Hostinger.
 
 Below is a mapping of the record fields from Resend to Hostinger:
 
-| Hostinger | Resend  | Example Value                |
-| --------- | ------- | ---------------------------- |
-| Type      | Type    | `TXT Record`                 |
-| Name      | Name    | `send`                       |
+| Hostinger | Resend | Example Value |
+| - | - | - |
+| Type | Type | `TXT Record` |
+| Name | Name | `send` |
 | TXT value | Content | `p=example_domain_key_value` |
-| TTL       | -       | `Set to 3600`                |
+| TTL | - | `Set to 3600` |
 
 ## Receiving Emails
 
@@ -150,13 +150,13 @@ Copy and paste the values MX in Resend to Hostinger:
 
 Below is a mapping of the record fields from Resend to Hostinger:
 
-| Hostinger   | Resend   | Example Value                          |
-| ----------- | -------- | -------------------------------------- |
-| Type        | Type     | `MX Record`                            |
-| Name        | Name     | `inbound`                              |
-| Mail Server | Content  | `inbound-smtp.us-east-1.amazonaws.com` |
-| TTL         | -        | `Set to 3660`                          |
-| Priority    | Priority | `10`                                   |
+| Hostinger | Resend | Example Value |
+| - | - | - |
+| Type | Type | `MX Record` |
+| Name | Name | `inbound` |
+| Mail Server | Content | `inbound-smtp.us-east-1.amazonaws.com` |
+| TTL | - | `Set to 3660` |
+| Priority | Priority | `10` |
 
 After verifying your domain, create a webhook to process incoming emails. For help setting up a webhook, how to access email data and attachments, forward emails, and more, see [our guide on receiving emails with Resend](/docs/dashboard/receiving/introduction).
 

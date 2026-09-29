@@ -313,10 +313,10 @@ When you set a `timeout`, the step will stop waiting after that duration. This p
 
 When a wait-until step times out, it produces two possible connection types:
 
-| Connection type  | When it's used                                  |
-| ---------------- | ----------------------------------------------- |
-| `event_received` | The event arrived before the timeout            |
-| `timeout`        | The timeout elapsed without receiving the event |
+| Connection type | When it's used |
+| - | - |
+| `event_received` | The event arrived before the timeout |
+| `timeout` | The timeout elapsed without receiving the event |
 
 You can create different paths depending on whether the user took action within an given time period.
 
@@ -337,6 +337,13 @@ You can create different paths depending on whether the user took action within 
 
 Use `filter_rule` to match events that meet only specific criteria. This is useful when the same event name might be sent with different payloads.
 
+`wait_events.*` is not available.
+
+* `field` reads the incoming event (`event.*`) or the Automation's contact (`contact.*`).
+* `value` is a fixed value, or it reads the event that triggered the Automation (`event.*`) or the contact (`contact.*`).
+
+See [Configuration](#configuration) for every operator a filter rule supports.
+
 For example, to wait specifically for a successful payment:
 
 ```json {6-11} theme={"theme":{"light":"github-light","dark":"vesper"}}
@@ -355,7 +362,73 @@ For example, to wait specifically for a successful payment:
 }
 ```
 
-The filter rule supports the same [operators](/docs/dashboard/automations/condition#configuration) as condition steps.
+### Compare against the triggering event
+
+`field` and `value` can use the same path and still read different payloads. In a `value`, `event.*` is the event that triggered the Automation, not the incoming event.
+
+For example, an Automation triggered by `order.placed` can wait for `order.paid` for the same order:
+
+```json {8-10} theme={"theme":{"light":"github-light","dark":"vesper"}}
+{
+  "key": "wait_for_payment",
+  "type": "wait_for_event",
+  "config": {
+    "event_name": "order.paid",
+    "filter_rule": {
+      "type": "rule",
+      "field": "event.order_id",
+      "operator": "eq",
+      "value": { "var": "event.order_id" }
+    }
+  }
+}
+```
+
+Here, `field` reads `order_id` from the incoming `order.paid` event, and `value` reads `order_id` from the `order.placed` event that started the Automation. `order.paid` events for other orders don't resume it.
+
+A `value` can also reference the contact, such as `{ "var": "contact.email" }`. Neither `field` nor `value` can reference `wait_events.*`.
+
+## Use the received event in later steps
+
+When the event arrives, steps after the wait can read its payload with `wait_events`. The path is `wait_events.`, then the event name, then the payload field. In `wait_events.order.shipped.tracking_url`, the event name is `order.shipped` and the field is `tracking_url`.
+
+For example, wait for `order.shipped`, then send its tracking link:
+
+```json {6,15-16,23} theme={"theme":{"light":"github-light","dark":"vesper"}}
+{
+  "steps": [
+    {
+      "key": "wait_for_shipping",
+      "type": "wait_for_event",
+      "config": { "event_name": "order.shipped", "timeout": "7 days" }
+    },
+    {
+      "key": "shipping_email",
+      "type": "send_email",
+      "config": {
+        "template": {
+          "id": "044db673-fff6-420f-a566-f6aba05d60e7",
+          "variables": {
+            "carrier": { "var": "wait_events.order.shipped.carrier" },
+            "trackingUrl": { "var": "wait_events.order.shipped.tracking_url" }
+          }
+        }
+      }
+    }
+  ],
+  "connections": [
+    {
+      "from": "wait_for_shipping",
+      "to": "shipping_email",
+      "type": "event_received"
+    }
+  ]
+}
+```
+
+Connect the step to the `event_received` path. On the `timeout` path, the event never arrived, so there's no payload to read.
+
+You can use `wait_events` in [send email](/docs/dashboard/automations/send-email#template-variables) variables, [contact update](/docs/dashboard/automations/contact-update#dynamic-variables) fields, and [condition](/docs/dashboard/automations/condition#compare-against-other-data) rules.
 
 ## Configuration
 
@@ -369,16 +442,69 @@ The filter rule supports the same [operators](/docs/dashboard/automations/condit
 </ParamField>
 
 <ParamField body="config.filter_rule" type="object">
-  An optional rule object to filter incoming events.
+  An optional rule that filters which incoming events resume the step.
+  `wait_events.` is not available.
+
+  <Expandable title="properties" defaultOpen>
+    <ParamField body="type" type="string" required>
+      The type of filter rule. Possible values:
+
+      * `rule`
+      * `and`
+      * `or`
+    </ParamField>
+
+    <ParamField body="field" type="string">
+      Required when `type` is `rule`. The payload field to evaluate. Use
+      `event.` for the incoming event or `contact.` for the Automation's contact
+      (for example, `event.status` or `contact.email`).
+    </ParamField>
+
+    <ParamField body="operator" type="string">
+      Required when `type` is `rule`. The comparison operator. Possible values:
+
+      * `eq`: equals
+      * `neq`: not equals
+      * `gt`: greater than
+      * `gte`: greater than or equal to
+      * `lt`: less than
+      * `lte`: less than or equal to
+      * `contains`: contains a given value
+      * `starts_with`: starts with a given value
+      * `ends_with`: ends with a given value
+      * `exists`: field exists
+      * `is_empty`: field is empty
+    </ParamField>
+
+    <ParamField body="value" type="string | number | boolean | null | object">
+      Used when `type` is `rule`. The value to compare against. A fixed value,
+      or a variable reference such as `{ "var": "event.order_id" }`. `event.`
+      is the event that triggered the Automation. `contact.` is the
+      Automation's contact. Not required for `exists` and `is_empty`.
+    </ParamField>
+
+    <ParamField body="rules" type="object[]">
+      Required when `type` is `and` or `or`. An array of nested filter rules.
+      Must contain at least one item.
+    </ParamField>
+  </Expandable>
 </ParamField>
 
-```json Example theme={"theme":{"light":"github-light","dark":"vesper"}}
+This waits for `order.paid` only when it is the order that started the Automation. `field` reads `order_id` on the incoming event. `value` reads `order_id` on the triggering event.
+
+```json Example {9-11} theme={"theme":{"light":"github-light","dark":"vesper"}}
 {
-  "key": "wait_for_purchase",
+  "key": "wait_for_payment",
   "type": "wait_for_event",
   "config": {
-    "event_name": "purchase.completed",
-    "timeout": "3 days"
+    "event_name": "order.paid",
+    "timeout": "3 days",
+    "filter_rule": {
+      "type": "rule",
+      "field": "event.order_id",
+      "operator": "eq",
+      "value": { "var": "event.order_id" }
+    }
   }
 }
 ```

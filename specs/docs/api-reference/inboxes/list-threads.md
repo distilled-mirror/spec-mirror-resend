@@ -100,13 +100,13 @@ A thread is a conversation within an inbox, made up of one or more messages.
 
 Every thread sits in exactly one folder within its inbox.
 
-| Folder    | Meaning                                                      |
-| --------- | ------------------------------------------------------------ |
-| `inbox`   | The default. The thread holds at least one received message. |
-| `archive` | The thread was archived.                                     |
-| `spam`    | The thread was marked as spam.                               |
-| `trash`   | The thread is scheduled for deletion in 30 days.             |
-| `sent`    | Threads whose messages are all outbound.                     |
+| Folder | Meaning |
+| - | - |
+| `inbox` | The default. The thread holds at least one received message. |
+| `archive` | The thread was archived. |
+| `spam` | The thread was marked as spam. |
+| `trash` | The thread is scheduled for deletion in 30 days. |
+| `sent` | Threads whose messages are all outbound. |
 
 You can move a thread to `inbox`, `archive`, `spam`, or `trash`. `sent` is
 assigned automatically.

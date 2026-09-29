@@ -61,16 +61,16 @@ Resend verifies the domain ownership, releases the domain from the previous team
 
 ## Claim status
 
-| Status       | Meaning                                                  |
-| ------------ | -------------------------------------------------------- |
-| `pending`    | Waiting for DNS verification.                            |
-| `verified`   | DNS proof accepted; the transfer is in progress.         |
-| `completed`  | The domain now belongs to your team.                     |
-| `blocked`    | A safety check blocked the claim — see `blocked_reason`. |
-| `expired`    | The claim window passed before it completed.             |
-| `superseded` | A newer claim replaced this one.                         |
-| `canceled`   | The claim was canceled.                                  |
-| `failed`     | The claim could not be completed.                        |
+| Status | Meaning |
+| - | - |
+| `pending` | Waiting for DNS verification. |
+| `verified` | DNS proof accepted; the transfer is in progress. |
+| `completed` | The domain now belongs to your team. |
+| `blocked` | A safety check blocked the claim — see `blocked_reason`. |
+| `expired` | The claim window passed before it completed. |
+| `superseded` | A newer claim replaced this one. |
+| `canceled` | The claim was canceled. |
+| `failed` | The claim could not be completed. |
 
 When a claim is `blocked`, `blocked_reason` explains why: `grace_period`,
 `recent_owner_activity`, or `pending_scheduled_emails`.

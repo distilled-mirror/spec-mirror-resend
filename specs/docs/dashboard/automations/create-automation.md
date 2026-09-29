@@ -40,15 +40,15 @@ The following examples show how to create an automation triggered by the creatio
 
     There are several step types you can add to your Automation:
 
-    | Step type                                               | Description                                         |
-    | ------------------------------------------------------- | --------------------------------------------------- |
-    | [Condition](/docs/dashboard/automations/condition)           | Branches the workflow based on rules                |
-    | [Delay](/docs/dashboard/automations/delay)                   | Pauses execution for a specified duration           |
+    | Step type | Description |
+    | - | - |
+    | [Condition](/docs/dashboard/automations/condition) | Branches the workflow based on rules |
+    | [Delay](/docs/dashboard/automations/delay) | Pauses execution for a specified duration |
     | [Wait for Event](/docs/dashboard/automations/wait-for-event) | Pauses execution until a specific event is received |
-    | [Send Email](/docs/dashboard/automations/send-email)         | Sends an email using a template                     |
-    | [Contact Update](/docs/dashboard/automations/contact-update) | Updates a contact's fields                          |
-    | [Contact Delete](/docs/dashboard/automations/contact-delete) | Deletes the contact                                 |
-    | [Add to Segment](/docs/dashboard/automations/add-to-segment) | Adds the contact to a segment                       |
+    | [Send Email](/docs/dashboard/automations/send-email) | Sends an email using a template |
+    | [Contact Update](/docs/dashboard/automations/contact-update) | Updates a contact's fields |
+    | [Contact Delete](/docs/dashboard/automations/contact-delete) | Deletes the contact |
+    | [Add to Segment](/docs/dashboard/automations/add-to-segment) | Adds the contact to a segment |
 
     This example will send an email when a user is created.
 

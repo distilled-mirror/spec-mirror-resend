@@ -321,14 +321,11 @@ This automation step triggers a [Template](/docs/dashboard/templates/introductio
 
 ## Template variables
 
-Use the `variables` field to pass data into your template. Each variable value can be a dynamic reference or a static string.
+Use the `variables` field to pass data into your template. Each value is a static string, passed as-is, or a reference with `{ "var": "<path>" }`:
 
-| Type              | Format                                          | Description                                                                                               |
-| ----------------- | ----------------------------------------------- | --------------------------------------------------------------------------------------------------------- |
-| Event data        | `{ "var": "event.<field>" }`                    | Resolves a field from the triggering event's payload.                                                     |
-| Contact data      | `{ "var": "contact.<field>" }`                  | Resolves a field from the contact record.                                                                 |
-| Waited event data | `{ "var": "wait_events.<event_name>.<field>" }` | Resolves a field from a preceding [wait for event](/docs/dashboard/automations/wait-for-event) step's payload. |
-| Static value      | `"<string>"`                                    | Passed as-is to the template.                                                                             |
+* `event.*` is a field from the event that triggered the Automation, such as `event.firstName`.
+* `contact.*` is a field from the contact, such as `contact.properties.company`.
+* `wait_events.<event_name>.*` is a field from an event a previous [wait for event](/docs/dashboard/automations/wait-for-event#use-the-received-event-in-later-steps) step received, such as `wait_events.feedback.received.response`. If the Automation waited for that event more than once, this is the most recent one before this step.
 
 ```json {7-14} theme={"theme":{"light":"github-light","dark":"vesper"}}
 {
@@ -349,12 +346,6 @@ Use the `variables` field to pass data into your template. Each variable value c
   }
 }
 ```
-
-<Note>
-  If the same branch has multiple [wait for
-  event](/docs/dashboard/automations/wait-for-event) steps with the same key, the
-  resolved data will come from the last event received before the current step.
-</Note>
 
 Template variables must be present in your referenced template and the key names must match exactly with the template variable names.
 

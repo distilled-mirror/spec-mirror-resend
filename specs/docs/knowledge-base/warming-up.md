@@ -311,28 +311,28 @@ Following these rules and metrics will establish a good domain reputation.
 If you're already sending from an existing domain with established reputation and volumes, you can use the following guidelines to start sending with Resend.
 
 | **Day** | **Messages per day** | **Messages per hour** |
-| ------- | -------------------- | --------------------- |
-| **1**   | Up to 1,000 emails   | 100 Maximum           |
-| **2**   | Up to 2,500 emails   | 300 Maximum           |
-| **3**   | Up to 5,000 emails   | 600 Maximum           |
-| **4**   | Up to 5,000 emails   | 800 Maximum           |
-| **5**   | Up to 7,500 emails   | 1,000 Maximum         |
-| **6**   | Up to 7,500 emails   | 1,500 Maximum         |
-| **7**   | Up to 10,000 emails  | 2,000 Maximum         |
+| - | - | - |
+| **1** | Up to 1,000 emails | 100 Maximum |
+| **2** | Up to 2,500 emails | 300 Maximum |
+| **3** | Up to 5,000 emails | 600 Maximum |
+| **4** | Up to 5,000 emails | 800 Maximum |
+| **5** | Up to 7,500 emails | 1,000 Maximum |
+| **6** | Up to 7,500 emails | 1,500 Maximum |
+| **7** | Up to 10,000 emails | 2,000 Maximum |
 
 ## New domain
 
 Before you start sending emails with a brand new domain, it's especially important to have a warm-up plan so you can maximize your deliverability right from the start.
 
 | **Day** | **Messages per day** | **Messages per hour** |
-| ------- | -------------------- | --------------------- |
-| **1**   | Up to 150 emails     |                       |
-| **2**   | Up to 250 emails     |                       |
-| **3**   | Up to 400 emails     |                       |
-| **4**   | Up to 700 emails     | 50 Maximum            |
-| **5**   | Up to 1,000 emails   | 75 Maximum            |
-| **6**   | Up to 1,500 emails   | 100 Maximum           |
-| **7**   | Up to 2,000 emails   | 150 Maximum           |
+| - | - | - |
+| **1** | Up to 150 emails | |
+| **2** | Up to 250 emails | |
+| **3** | Up to 400 emails | |
+| **4** | Up to 700 emails | 50 Maximum |
+| **5** | Up to 1,000 emails | 75 Maximum |
+| **6** | Up to 1,500 emails | 100 Maximum |
+| **7** | Up to 2,000 emails | 150 Maximum |
 
 ## Warm-up calculator
 

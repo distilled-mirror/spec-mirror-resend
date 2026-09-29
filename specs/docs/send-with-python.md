@@ -109,36 +109,36 @@
 
   ### **Required Parameters**
 
-  | Parameter | Type               | Description                                                                      |
-  | --------- | ------------------ | -------------------------------------------------------------------------------- |
-  | `from`    | `str`              | Sender email address. Supports friendly name format: `"Name <email@domain.com>"` |
-  | `to`      | `str \| List[str]` | Recipient email address(es). Maximum 50 addresses.                               |
-  | `subject` | `str`              | Email subject line.                                                              |
+  | Parameter | Type | Description |
+  | - | - | - |
+  | `from` | `str` | Sender email address. Supports friendly name format: `"Name <email@domain.com>"` |
+  | `to` | `str \| List[str]` | Recipient email address(es). Maximum 50 addresses. |
+  | `subject` | `str` | Email subject line. |
 
   ### **Content Parameters (at least one required)**
 
-  | Parameter | Type  | Description                                                |
-  | --------- | ----- | ---------------------------------------------------------- |
-  | `html`    | `str` | HTML version of the email body.                            |
-  | `text`    | `str` | Plain text version. Auto-generated from `html` if omitted. |
+  | Parameter | Type | Description |
+  | - | - | - |
+  | `html` | `str` | HTML version of the email body. |
+  | `text` | `str` | Plain text version. Auto-generated from `html` if omitted. |
 
   ### **Optional Parameters**
 
-  | Parameter      | Type                                   | Description                                                         |
-  | -------------- | -------------------------------------- | ------------------------------------------------------------------- |
-  | `cc`           | `str \| List[str]`                     | Carbon copy recipients.                                             |
-  | `bcc`          | `str \| List[str]`                     | Blind carbon copy recipients.                                       |
-  | `reply_to`     | `str \| List[str]`                     | Reply-to address(es).                                               |
-  | `scheduled_at` | `str`                                  | Schedule delivery time. ISO 8601 (e.g. `2024-08-05T11:52:01.858Z`). |
-  | `headers`      | `Dict[str, str]`                       | Custom email headers as key-value pairs.                            |
-  | `tags`         | `List[Tag]`                            | Custom metadata. Name and value: max 256 chars, ASCII only.         |
-  | `attachments`  | `List[Attachment \| RemoteAttachment]` | File attachments. Max 40MB total per email after encoding.          |
+  | Parameter | Type | Description |
+  | - | - | - |
+  | `cc` | `str \| List[str]` | Carbon copy recipients. |
+  | `bcc` | `str \| List[str]` | Blind carbon copy recipients. |
+  | `reply_to` | `str \| List[str]` | Reply-to address(es). |
+  | `scheduled_at` | `str` | Schedule delivery time. ISO 8601 (e.g. `2024-08-05T11:52:01.858Z`). |
+  | `headers` | `Dict[str, str]` | Custom email headers as key-value pairs. |
+  | `tags` | `List[Tag]` | Custom metadata. Name and value: max 256 chars, ASCII only. |
+  | `attachments` | `List[Attachment \| RemoteAttachment]` | File attachments. Max 40MB total per email after encoding. |
 
   ### **Template Parameters**
 
-  | Parameter               | Type                    | Description                                                      |
-  | ----------------------- | ----------------------- | ---------------------------------------------------------------- |
-  | `template["id"]`        | `str`                   | Published template identifier.                                   |
+  | Parameter | Type | Description |
+  | - | - | - |
+  | `template["id"]` | `str` | Published template identifier. |
   | `template["variables"]` | `Dict[str, str \| int]` | Variable substitutions. Key max 50 chars, value max 2,000 chars. |
 
   If `template` is provided, do not include `html` or `text`.

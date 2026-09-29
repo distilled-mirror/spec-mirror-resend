@@ -48,10 +48,10 @@ For this reason, follow all possible methods for adding your logo to your emails
 
     Here's an overview of the required parameters:
 
-    | Parameter | Purpose    | Required Value                 |
-    | --------- | ---------- | ------------------------------ |
-    | `p`       | Policy     | `p=quarantine;` or `p=reject;` |
-    | `pct`     | Percentage | `pct=100;`                     |
+    | Parameter | Purpose | Required Value |
+    | - | - | - |
+    | `p` | Policy | `p=quarantine;` or `p=reject;` |
+    | `pct` | Percentage | `pct=100;` |
 
     Here is an example of an adequate DMARC record:
 

@@ -344,10 +344,11 @@ Common use cases:
 
 ## Dynamic variables
 
-Each field value can be a hardcoded value (string, number, boolean) or a dynamic variable reference using the `{ "var": "..." }` syntax. Variable references use dot-notation with one of these scopes:
+Each field value is a fixed value (string, number, or boolean), or a reference with `{ "var": "<path>" }`:
 
-* `event.*`: references a field from the triggering event payload.
-* `contact.*`: references a field from the current contact record.
+* `event.*` is a field from the event that triggered the Automation, such as `event.firstName`.
+* `contact.*` is a field from the contact, such as `contact.properties.company`.
+* `wait_events.<event_name>.*` is a field from an event a previous [wait for event](/docs/dashboard/automations/wait-for-event#use-the-received-event-in-later-steps) step received. If the Automation waited for that event more than once, this is the most recent one before this step.
 
 For more help working with variables in templates, see the [Send Email](/docs/dashboard/automations/send-email#template-variables) step documentation.
 

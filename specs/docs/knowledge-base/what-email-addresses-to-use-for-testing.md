@@ -22,12 +22,12 @@ A high bounce rate can negatively impact your sender reputation and affect futur
 
 To help you safely test email functionality, Resend provides the following test addresses, each designed to simulate a different delivery event:
 
-| Address                 | Delivery event simulated |
-| ----------------------- | ------------------------ |
-| `delivered@resend.dev`  | Email being delivered    |
-| `bounced@resend.dev`    | Email bouncing           |
-| `complained@resend.dev` | Email marked as spam     |
-| `suppressed@resend.dev` | Email being suppressed   |
+| Address | Delivery event simulated |
+| - | - |
+| `delivered@resend.dev` | Email being delivered |
+| `bounced@resend.dev` | Email bouncing |
+| `complained@resend.dev` | Email marked as spam |
+| `suppressed@resend.dev` | Email being suppressed |
 
 Using these addresses in your tests allows you to validate email flows without risking real-world deliverability problems. For more help sending test emails, see our [testing documentation](/docs/dashboard/emails/send-test-emails).
 

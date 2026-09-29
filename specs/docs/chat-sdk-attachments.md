@@ -18,11 +18,11 @@ interface ResendAttachment {
 }
 ```
 
-| Field         | Type     | Description                                      |
-| ------------- | -------- | ------------------------------------------------ |
-| `filename`    | `string` | Original filename (e.g., `invoice.pdf`)          |
-| `contentType` | `string` | MIME type (e.g., `application/pdf`)              |
-| `url`         | `string` | Optional download URL for the attachment content |
+| Field | Type | Description |
+| - | - | - |
+| `filename` | `string` | Original filename (e.g., `invoice.pdf`) |
+| `contentType` | `string` | MIME type (e.g., `application/pdf`) |
+| `url` | `string` | Optional download URL for the attachment content |
 
 ## Detecting and processing attachments
 

@@ -23,12 +23,12 @@ authentication, the required `User-Agent` header, request serialization, typed
 responses, and error handling for you. That leaves less boilerplate to get
 wrong.
 
-|                      | Resend SDK (recommended) | Raw HTTP API                                  |
-| -------------------- | ------------------------ | --------------------------------------------- |
-| Auth & headers       | Handled automatically    | Set `Authorization` and `User-Agent` manually |
-| Types & autocomplete | Built in                 | None                                          |
-| Errors               | Structured error objects | Parse status codes and JSON yourself          |
-| Maintained by        | Resend                   | You                                           |
+| | Resend SDK (recommended) | Raw HTTP API |
+| - | - | - |
+| Auth & headers | Handled automatically | Set `Authorization` and `User-Agent` manually |
+| Types & autocomplete | Built in | None |
+| Errors | Structured error objects | Parse status codes and JSON yourself |
+| Maintained by | Resend | You |
 
 ## When to use the raw API directly
 

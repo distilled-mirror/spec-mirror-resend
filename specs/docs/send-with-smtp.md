@@ -32,9 +32,9 @@ When configuring your SMTP integration, use the following settings:
 
 Ports help to instruct the type of security you want to use in your SMTP connection.
 
-| Type     | Port                | Security                                                                  |
-| -------- | ------------------- | ------------------------------------------------------------------------- |
-| SMTPS    | `465`, `2465`       | Implicit SSL/TLS (Immediately connects via SSL/TLS)                       |
+| Type | Port | Security |
+| - | - | - |
+| SMTPS | `465`, `2465` | Implicit SSL/TLS (Immediately connects via SSL/TLS) |
 | STARTTLS | `25`, `587`, `2587` | Explicit SSL/TLS (First connects via plaintext, then upgrades to SSL/TLS) |
 
 ## Idempotency Key

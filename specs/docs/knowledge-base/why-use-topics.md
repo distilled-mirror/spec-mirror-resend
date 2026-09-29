@@ -34,13 +34,13 @@ With Topics, recipients can say "no" to specific content types while staying con
 
 Topics are most valuable when you send **multiple types of marketing content** to the same audience. Consider using Topics if you send:
 
-| Topic Example        | Description                                   |
-| -------------------- | --------------------------------------------- |
-| **Newsletter**       | Regular updates, articles, or curated content |
-| **Product Updates**  | New features, releases, and announcements     |
-| **Promotions**       | Discounts, sales, and special offers          |
-| **Events**           | Webinars, conferences, and meetups            |
-| **Tips & Tutorials** | Educational content and how-to guides         |
+| Topic Example | Description |
+| - | - |
+| **Newsletter** | Regular updates, articles, or curated content |
+| **Product Updates** | New features, releases, and announcements |
+| **Promotions** | Discounts, sales, and special offers |
+| **Events** | Webinars, conferences, and meetups |
+| **Tips & Tutorials** | Educational content and how-to guides |
 
 ## When you might not need Topics
 
@@ -50,12 +50,12 @@ If you only send one type of marketing email (for example, a monthly newsletter 
 
 Topics and Segments serve fundamentally different purposes. Understanding this distinction is key to using them effectively.
 
-| Aspect              | Topics                             | Segments                                   |
-| ------------------- | ---------------------------------- | ------------------------------------------ |
-| **Who controls it** | Your recipients                    | You (the sender)                           |
-| **Visibility**      | Shown on the unsubscribe page      | Internal only (recipients never see them)  |
-| **Purpose**         | Let users manage their preferences | Organize contacts for targeted sending     |
-| **Example**         | "Newsletter", "Product Updates"    | "Enterprise customers", "Free trial users" |
+| Aspect | Topics | Segments |
+| - | - | - |
+| **Who controls it** | Your recipients | You (the sender) |
+| **Visibility** | Shown on the unsubscribe page | Internal only (recipients never see them) |
+| **Purpose** | Let users manage their preferences | Organize contacts for targeted sending |
+| **Example** | "Newsletter", "Product Updates" | "Enterprise customers", "Free trial users" |
 
 ## How Segments and Topics work together
 

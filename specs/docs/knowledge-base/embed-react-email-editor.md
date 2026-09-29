@@ -194,11 +194,11 @@ This guide walks through embedding the editor in a React app, styling it to matc
 
     The ref exposes three export methods:
 
-    | Method           | Returns                   | Description           |
-    | ---------------- | ------------------------- | --------------------- |
-    | `getEmailHTML()` | `Promise<string>`         | Email-ready HTML      |
-    | `getEmailText()` | `Promise<string>`         | Plain text version    |
-    | `getEmail()`     | `Promise<{ html, text }>` | Both in a single call |
+    | Method | Returns | Description |
+    | - | - | - |
+    | `getEmailHTML()` | `Promise<string>` | Email-ready HTML |
+    | `getEmailText()` | `Promise<string>` | Plain text version |
+    | `getEmail()` | `Promise<{ html, text }>` | Both in a single call |
 
     All three use [composeReactEmail](https://react.email/docs/editor/api-reference/compose-react-email) under the hood.
 

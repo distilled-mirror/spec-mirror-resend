@@ -58,13 +58,13 @@ Under the `Mail Settings` section, click the dropdown and select `Custom MX`:
 
 Below is a mapping of the record fields from Resend to Namecheap:
 
-| Namecheap | Resend   | Example Value                           |
-| --------- | -------- | --------------------------------------- |
-| Type      | Type     | `MX Record`                             |
-| Host      | Name     | `send`                                  |
-| TTL       | TTL      | `Automatic`                             |
-| Value     | Content  | `feedback-smtp.us-east-1.amazonses.com` |
-| -         | Priority | `10`                                    |
+| Namecheap | Resend | Example Value |
+| - | - | - |
+| Type | Type | `MX Record` |
+| Host | Name | `send` |
+| TTL | TTL | `Automatic` |
+| Value | Content | `feedback-smtp.us-east-1.amazonses.com` |
+| - | Priority | `10` |
 
 <Info>
   Omit your domain from the record values in Resend when you paste. Instead of
@@ -96,12 +96,12 @@ Under the `Host Records` section, click `Add New Record`:
 
 Below is a mapping of the record fields from Resend to Namecheap:
 
-| Namecheap | Resend  | Example Value                         |
-| --------- | ------- | ------------------------------------- |
-| Type      | Type    | `TXT Record`                          |
-| Host      | Name    | `send`                                |
-| TTL       | TTL     | `Automatic`                           |
-| Value     | Content | `"v=spf1 include:amazonses.com ~all"` |
+| Namecheap | Resend | Example Value |
+| - | - | - |
+| Type | Type | `TXT Record` |
+| Host | Name | `send` |
+| TTL | TTL | `Automatic` |
+| Value | Content | `"v=spf1 include:amazonses.com ~all"` |
 
 <Info>
   Omit your domain from the record values in Resend when you paste. Instead of
@@ -127,12 +127,12 @@ In that same `Host Records` section, click `Add New Record`.
 
 Below is a mapping of the record fields from Resend to Namecheap:
 
-| Namecheap | Resend  | Example Value                |
-| --------- | ------- | ---------------------------- |
-| Type      | Type    | `TXT Record`                 |
-| Host      | Name    | `resend._domainkey`          |
-| TTL       | TTL     | `Automatic`                  |
-| Value     | Content | `p=example_domain_key_value` |
+| Namecheap | Resend | Example Value |
+| - | - | - |
+| Type | Type | `TXT Record` |
+| Host | Name | `resend._domainkey` |
+| TTL | TTL | `Automatic` |
+| Value | Content | `p=example_domain_key_value` |
 
 <Info>
   Omit your domain from the record values in Resend when you paste. Instead of
@@ -164,13 +164,13 @@ Under the `Mail Settings` section, click the dropdown and select `Custom MX`:
 
 Below is a mapping of the record fields from Resend to Namecheap:
 
-| Namecheap | Resend   | Example Value                          |
-| --------- | -------- | -------------------------------------- |
-| Type      | Type     | `MX Record`                            |
-| Host      | Name     | `inbound`                              |
-| TTL       | TTL      | `Automatic`                            |
-| Value     | Content  | `inbound-smtp.us-east-1.amazonaws.com` |
-| -         | Priority | `10`                                   |
+| Namecheap | Resend | Example Value |
+| - | - | - |
+| Type | Type | `MX Record` |
+| Host | Name | `inbound` |
+| TTL | TTL | `Automatic` |
+| Value | Content | `inbound-smtp.us-east-1.amazonaws.com` |
+| - | Priority | `10` |
 
 After verifying your domain, create a webhook to process incoming emails. For help setting up a webhook, how to access email data and attachments, forward emails, and more, see [our guide on receiving emails with Resend](/docs/dashboard/receiving/introduction).
 

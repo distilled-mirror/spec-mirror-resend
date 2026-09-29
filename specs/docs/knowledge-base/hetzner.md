@@ -66,13 +66,13 @@ In the `Add Record` section on Hetzner copy and paste the values MX from Resend:
 
 Below is a mapping of the record fields from Resend to Hetzner Console:
 
-| Hetzner  | Resend   | Example Value                            |
-| -------- | -------- | ---------------------------------------- |
-| Type     | Type     | `MX Record`                              |
-| Name     | Name     | `send.subdomain`                         |
-| Value    | Content  | `feedback-smtp.us-east-1.amazonses.com.` |
-| TTL      | TTL      | `1800`                                   |
-| Priority | Priority | `10`                                     |
+| Hetzner | Resend | Example Value |
+| - | - | - |
+| Type | Type | `MX Record` |
+| Name | Name | `send.subdomain` |
+| Value | Content | `feedback-smtp.us-east-1.amazonses.com.` |
+| TTL | TTL | `1800` |
+| Priority | Priority | `10` |
 
 <Info>
   Do not use the same priority for multiple records. If Priority `10` is already
@@ -101,12 +101,12 @@ On the same `Add Record` section:
 
 Below is a mapping of the record fields from Resend to Hetzner:
 
-| Hetzner | Resend  | Example Value                         |
-| ------- | ------- | ------------------------------------- |
-| Type    | Type    | `TXT Record`                          |
-| Name    | Name    | `send.subdomain`                      |
-| Value   | Content | `"v=spf1 include:amazonses.com ~all"` |
-| TTL     | TTL     | `10800`                               |
+| Hetzner | Resend | Example Value |
+| - | - | - |
+| Type | Type | `TXT Record` |
+| Name | Name | `send.subdomain` |
+| Value | Content | `"v=spf1 include:amazonses.com ~all"` |
+| TTL | TTL | `10800` |
 
 ## Add TXT DKIM Records
 
@@ -130,12 +130,12 @@ On the same `Add Record` section:
 
 Below is a mapping of the record fields from Resend to Hetzner:
 
-| Hetzner | Resend  | Example Value                |
-| ------- | ------- | ---------------------------- |
-| Type    | Type    | `TXT Record`                 |
-| Name    | Name    | `send.subdomain`             |
-| Value   | Content | `p=example_domain_key_value` |
-| TTL     | TTL     | `1 hour`                     |
+| Hetzner | Resend | Example Value |
+| - | - | - |
+| Type | Type | `TXT Record` |
+| Name | Name | `send.subdomain` |
+| Value | Content | `p=example_domain_key_value` |
+| TTL | TTL | `1 hour` |
 
 ## Receiving Emails
 
@@ -165,13 +165,13 @@ In the `Add Record` section on Hetzner:
 
 Below is a mapping of the record fields from Resend to Hetzner:
 
-| Hetzner     | Resend   | Example Value                           |
-| ----------- | -------- | --------------------------------------- |
-| Type        | Type     | `MX Record`                             |
-| Name        | Name     | `subdomain`                             |
-| Mail server | Content  | `inbound-smtp.us-east-1.amazonaws.com.` |
-| TTL         | TTL      | `1800`                                  |
-| Priority    | Priority | `10`                                    |
+| Hetzner | Resend | Example Value |
+| - | - | - |
+| Type | Type | `MX Record` |
+| Name | Name | `subdomain` |
+| Mail server | Content | `inbound-smtp.us-east-1.amazonaws.com.` |
+| TTL | TTL | `1800` |
+| Priority | Priority | `10` |
 
 After verifying your domain, create a webhook to process incoming emails. For help setting up a webhook, how to access email data and attachments, forward emails, and more, see [our guide on receiving emails with Resend](/docs/dashboard/receiving/introduction).
 

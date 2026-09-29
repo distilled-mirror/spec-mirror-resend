@@ -101,8 +101,11 @@ Branches the workflow based on rules. Condition configs can be a single rule or 
 For `rule` type:
 
 <ParamField body="config.field" type="string" required>
-  The field to evaluate. Must use the `event.` or `contact.` namespace prefix
-  (e.g., `event.amount`, `contact.email`).
+  The field to evaluate on a condition step. Use `event.` for the event that
+  triggered the Automation, `contact.` for the contact, or `wait_events.` for an
+  event received by a preceding wait for event step (for example,
+  `event.amount`, `contact.email`, or `wait_events.order.shipped.order_id`). A
+  wait for event `filter_rule` cannot use `wait_events.`.
 </ParamField>
 
 <ParamField body="config.operator" type="string" required>
@@ -121,9 +124,12 @@ For `rule` type:
   * `is_empty`: field is empty
 </ParamField>
 
-<ParamField body="config.value" type="string | number | boolean | null">
-  The value to compare against. Not required for `exists` and `is_empty`
-  operators.
+<ParamField body="config.value" type="string | number | boolean | null | object">
+  The value to compare against on a condition step. Either a fixed value or a
+  variable reference such as `{ "var": "event.order_id" }`, using the
+  condition namespaces: `event.` (the triggering event), `contact.`, or
+  `wait_events.` (a preceding wait for event). Not required for `exists` and
+  `is_empty` operators.
 </ParamField>
 
 For `and` / `or` types:
@@ -206,16 +212,69 @@ Pauses execution until a specific event is received or a timeout is reached.
 </ParamField>
 
 <ParamField body="config.filter_rule" type="object">
-  An optional rule object to filter incoming events.
+  An optional rule that filters which incoming events resume the step.
+  `wait_events.` is not available.
+
+  <Expandable title="properties" defaultOpen>
+    <ParamField body="type" type="string" required>
+      The type of filter rule. Possible values:
+
+      * `rule`
+      * `and`
+      * `or`
+    </ParamField>
+
+    <ParamField body="field" type="string">
+      Required when `type` is `rule`. The payload field to evaluate. Use
+      `event.` for the incoming event or `contact.` for the Automation's contact
+      (for example, `event.status` or `contact.email`).
+    </ParamField>
+
+    <ParamField body="operator" type="string">
+      Required when `type` is `rule`. The comparison operator. Possible values:
+
+      * `eq`: equals
+      * `neq`: not equals
+      * `gt`: greater than
+      * `gte`: greater than or equal to
+      * `lt`: less than
+      * `lte`: less than or equal to
+      * `contains`: contains a given value
+      * `starts_with`: starts with a given value
+      * `ends_with`: ends with a given value
+      * `exists`: field exists
+      * `is_empty`: field is empty
+    </ParamField>
+
+    <ParamField body="value" type="string | number | boolean | null | object">
+      Used when `type` is `rule`. The value to compare against. A fixed value,
+      or a variable reference such as `{ "var": "event.order_id" }`. `event.`
+      is the event that triggered the Automation. `contact.` is the
+      Automation's contact. Not required for `exists` and `is_empty`.
+    </ParamField>
+
+    <ParamField body="rules" type="object[]">
+      Required when `type` is `and` or `or`. An array of nested filter rules.
+      Must contain at least one item.
+    </ParamField>
+  </Expandable>
 </ParamField>
 
-```json Example theme={"theme":{"light":"github-light","dark":"vesper"}}
+This waits for `order.paid` only when it is the order that started the Automation. `field` reads `order_id` on the incoming event. `value` reads `order_id` on the triggering event.
+
+```json Example {9-11} theme={"theme":{"light":"github-light","dark":"vesper"}}
 {
-  "key": "wait_for_purchase",
+  "key": "wait_for_payment",
   "type": "wait_for_event",
   "config": {
-    "event_name": "purchase.completed",
-    "timeout": "3 days"
+    "event_name": "order.paid",
+    "timeout": "3 days",
+    "filter_rule": {
+      "type": "rule",
+      "field": "event.order_id",
+      "operator": "eq",
+      "value": { "var": "event.order_id" }
+    }
   }
 }
 ```

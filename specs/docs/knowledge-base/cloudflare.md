@@ -63,12 +63,12 @@ Click "Add Record" on Cloudflare:
 
 Below is a mapping of the record fields from Resend to Cloudflare:
 
-| Cloudflare  | Resend   | Example Value                           |
-| ----------- | -------- | --------------------------------------- |
-| Type        | Type     | `MX`                                    |
-| Name        | Name     | `send`                                  |
-| Mail Server | Content  | `feedback-smtp.us-east-1.amazonses.com` |
-| Priority    | Priority | `10`                                    |
+| Cloudflare | Resend | Example Value |
+| - | - | - |
+| Type | Type | `MX` |
+| Name | Name | `send` |
+| Mail Server | Content | `feedback-smtp.us-east-1.amazonses.com` |
+| Priority | Priority | `10` |
 
 <Info>
   Omit your domain from the record values in Resend when you paste. Instead of
@@ -99,12 +99,12 @@ Click "Add Record" on Cloudflare:
 
 Below is a mapping of the record fields from Resend to Cloudflare:
 
-| Cloudflare | Resend  | Example Value                         |
-| ---------- | ------- | ------------------------------------- |
-| Type       | Type    | `TXT`                                 |
-| Name       | Name    | `send`                                |
-| Content    | Content | `"v=spf1 include:amazonses.com ~all"` |
-| TTL        | -       | `Auto`                                |
+| Cloudflare | Resend | Example Value |
+| - | - | - |
+| Type | Type | `TXT` |
+| Name | Name | `send` |
+| Content | Content | `"v=spf1 include:amazonses.com ~all"` |
+| TTL | - | `Auto` |
 
 <Info>
   Omit your domain from the record values in Resend when you paste. Instead of
@@ -130,13 +130,13 @@ Click "Add Record" on Cloudflare:
 
 Below is a mapping of the record fields from Resend to Cloudflare:
 
-| Cloudflare   | Resend  | Example Value                |
-| ------------ | ------- | ---------------------------- |
-| Type         | Type    | `TXT`                        |
-| Name         | Name    | `resend._domainkey`          |
-| Target       | Content | `p=example_domain_key_value` |
-| Proxy Status | -       | `DNS Only (disabled)`        |
-| TTL          | -       | `Auto`                       |
+| Cloudflare | Resend | Example Value |
+| - | - | - |
+| Type | Type | `TXT` |
+| Name | Name | `resend._domainkey` |
+| Target | Content | `p=example_domain_key_value` |
+| Proxy Status | - | `DNS Only (disabled)` |
+| TTL | - | `Auto` |
 
 <Info>
   Omit your domain from the record values in Resend when you paste. Instead of
@@ -170,12 +170,12 @@ Click “Add Record” on Cloudflare:
 
 Below is a mapping of the record fields from Resend to Cloudflare:
 
-| Cloudflare  | Resend   | Example Value                          |
-| ----------- | -------- | -------------------------------------- |
-| Type        | Type     | `MX`                                   |
-| Name        | Name     | `inbound`                              |
-| Mail Server | Content  | `inbound-smtp.us-east-1.amazonaws.com` |
-| Priority    | Priority | `10`                                   |
+| Cloudflare | Resend | Example Value |
+| - | - | - |
+| Type | Type | `MX` |
+| Name | Name | `inbound` |
+| Mail Server | Content | `inbound-smtp.us-east-1.amazonaws.com` |
+| Priority | Priority | `10` |
 
 After verifying your domain, create a webhook to process incoming emails. For help setting up a webhook, how to access email data and attachments, forward emails, and more, see [our guide on receiving emails with Resend](/docs/dashboard/receiving/introduction).
 

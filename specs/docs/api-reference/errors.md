@@ -134,7 +134,7 @@ Resend uses standard HTTP response codes for success and failure notifications, 
 
 * **Status:** 429
 * **Message:** You have exceeded your daily email sending quota.
-* **Suggested action:** [Upgrade your plan](https://resend.com/settings/billing) to remove the daily quota limit or wait until 24 hours have passed. Both sent and received emails count towards this quota.
+* **Suggested action:** [Upgrade your plan](https://resend.com/settings/billing) to remove the daily quota limit or wait for the quota to reset at midnight UTC. Both sent and received emails count towards this quota.
 
 ### `monthly_quota_exceeded`
 

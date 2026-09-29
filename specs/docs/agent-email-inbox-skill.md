@@ -44,13 +44,13 @@ Your agent only processes emails that pass your chosen security level. Rejected 
 
 Choose a security level before setting up your webhook endpoint. Start with **Level 1** and relax only if needed.
 
-| Level | Name                 | Best For                                                  |
-| ----- | -------------------- | --------------------------------------------------------- |
-| **1** | Strict Allowlist     | Most use cases, only process emails from known senders    |
-| **2** | Domain Allowlist     | Organization-wide access from trusted domains             |
-| **3** | Content Filtering    | Accept from anyone, but filter unsafe patterns            |
-| **4** | Sandboxed Processing | Process all emails with restricted agent capabilities     |
-| **5** | Human-in-the-Loop    | Require human approval for actions from untrusted senders |
+| Level | Name | Best For |
+| - | - | - |
+| **1** | Strict Allowlist | Most use cases, only process emails from known senders |
+| **2** | Domain Allowlist | Organization-wide access from trusted domains |
+| **3** | Content Filtering | Accept from anyone, but filter unsafe patterns |
+| **4** | Sandboxed Processing | Process all emails with restricted agent capabilities |
+| **5** | Human-in-the-Loop | Require human approval for actions from untrusted senders |
 
 Each level includes full implementation code in the skill. After installation, your AI agent will have access to the detailed security patterns and can help you implement the right level.
 

@@ -16,16 +16,16 @@ Many SaaS platforms need to send emails on behalf of their tenants: whether it's
 
 ## At a glance
 
-| Factor                   | Single Account                                | Separate Accounts / BYOK                   |
-| ------------------------ | --------------------------------------------- | ------------------------------------------ |
-| **Setup complexity**     | Low: fully API-driven                         | Higher: manual account creation per tenant |
-| **Sending isolation**    | Shared: one bad actor affects all             | Full: each tenant is isolated              |
-| **Billing**              | Single plan covers all tenants                | Each tenant manages their own plan         |
-| **Per-tenant analytics** | Not available natively                        | Each tenant has own dashboard              |
-| **Webhook routing**      | Via tags or `from` domain                     | Each account has its own webhooks          |
-| **Deliverability**       | Shared sender reputation                      | Independent sender reputation              |
-| **Rate limits**          | Aggregate volume: likely requires an increase | Each tenant uses their own limits          |
-| **Troubleshooting**      | Full visibility into all tenant emails        | Requires access to tenant's account        |
+| Factor | Single Account | Separate Accounts / BYOK |
+| - | - | - |
+| **Setup complexity** | Low: fully API-driven | Higher: manual account creation per tenant |
+| **Sending isolation** | Shared: one bad actor affects all | Full: each tenant is isolated |
+| **Billing** | Single plan covers all tenants | Each tenant manages their own plan |
+| **Per-tenant analytics** | Not available natively | Each tenant has own dashboard |
+| **Webhook routing** | Via tags or `from` domain | Each account has its own webhooks |
+| **Deliverability** | Shared sender reputation | Independent sender reputation |
+| **Rate limits** | Aggregate volume: likely requires an increase | Each tenant uses their own limits |
+| **Troubleshooting** | Full visibility into all tenant emails | Requires access to tenant's account |
 
 ## Option A: Single Resend account
 

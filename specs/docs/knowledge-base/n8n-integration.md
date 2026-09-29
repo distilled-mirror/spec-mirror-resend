@@ -61,14 +61,14 @@ The **Send and Wait for Response** operation enables human-in-the-loop workflows
 3. Configure the email content and any wait-time limits.
 4. The workflow pauses until the recipient clicks a button or submits the form.
 
-| Option                   | Description                                              |
-| ------------------------ | -------------------------------------------------------- |
-| **Response Type**        | Choose between Approval (buttons) or Free Text (form)    |
-| **Approval Type**        | Single button (Approve only) or Double (Approve/Decline) |
-| **Button Labels**        | Customize the button text                                |
-| **Message Button Label** | Label for the form link button (Free Text mode)          |
-| **Response Form Title**  | Title shown on the response form                         |
-| **Limit Wait Time**      | Set a timeout for the wait period                        |
+| Option | Description |
+| - | - |
+| **Response Type** | Choose between Approval (buttons) or Free Text (form) |
+| **Approval Type** | Single button (Approve only) or Double (Approve/Decline) |
+| **Button Labels** | Customize the button text |
+| **Message Button Label** | Label for the form link button (Free Text mode) |
+| **Response Form Title** | Title shown on the response form |
+| **Limit Wait Time** | Set a timeout for the wait period |
 
 ## Receive webhooks with the Resend Trigger
 
@@ -94,25 +94,25 @@ The **Resend Trigger** node lets you start workflows automatically when email ev
 
 ### Supported trigger events
 
-| Event                    | Description                                                                                                                  |
-| ------------------------ | ---------------------------------------------------------------------------------------------------------------------------- |
-| `email.sent`             | Email sent to recipient                                                                                                      |
-| `email.delivered`        | Email delivered successfully                                                                                                 |
-| `email.delivery_delayed` | Email delivery delayed                                                                                                       |
-| `email.failed`           | Email failed to send due to an error (for example, invalid recipients, API key issues, domain verification, or quota limits) |
-| `email.opened`           | Recipient opened the email                                                                                                   |
-| `email.clicked`          | Link clicked in email                                                                                                        |
-| `email.bounced`          | Email bounced                                                                                                                |
-| `email.complained`       | Spam complaint received                                                                                                      |
-| `email.received`         | Resend successfully received an inbound email                                                                                |
-| `email.scheduled`        | Email is scheduled to be sent                                                                                                |
-| `email.suppressed`       | Email is suppressed by Resend                                                                                                |
-| `contact.created`        | New contact added                                                                                                            |
-| `contact.updated`        | Contact modified                                                                                                             |
-| `contact.deleted`        | Contact removed                                                                                                              |
-| `domain.created`         | New domain added                                                                                                             |
-| `domain.updated`         | Domain modified                                                                                                              |
-| `domain.deleted`         | Domain removed                                                                                                               |
+| Event | Description |
+| - | - |
+| `email.sent` | Email sent to recipient |
+| `email.delivered` | Email delivered successfully |
+| `email.delivery_delayed` | Email delivery delayed |
+| `email.failed` | Email failed to send due to an error (for example, invalid recipients, API key issues, domain verification, or quota limits) |
+| `email.opened` | Recipient opened the email |
+| `email.clicked` | Link clicked in email |
+| `email.bounced` | Email bounced |
+| `email.complained` | Spam complaint received |
+| `email.received` | Resend successfully received an inbound email |
+| `email.scheduled` | Email is scheduled to be sent |
+| `email.suppressed` | Email is suppressed by Resend |
+| `contact.created` | New contact added |
+| `contact.updated` | Contact modified |
+| `contact.deleted` | Contact removed |
+| `domain.created` | New domain added |
+| `domain.updated` | Domain modified |
+| `domain.deleted` | Domain removed |
 
 ## Example workflow: Send a welcome email when a contact is created
 

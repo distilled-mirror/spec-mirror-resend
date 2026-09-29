@@ -20,12 +20,12 @@ The 2024 bulk sender requirements from Google, Yahoo, and Microsoft (which apply
 
 ## 1024-bit vs 2048-bit keys
 
-|                       | 1024-bit                                                        | 2048-bit                                                                                   |
-| --------------------- | --------------------------------------------------------------- | ------------------------------------------------------------------------------------------ |
-| **Security**          | Meets current RFC recommendations for email signing             | Stronger cryptographic margin, better future-proofing                                      |
-| **Performance**       | Faster signing and verification                                 | More system resources required, can add latency                                            |
-| **DNS compatibility** | Fits comfortably in a single TXT record                         | Longer public key. Some DNS providers require splitting the record or hit character limits |
-| **Setup**             | Straightforward, works with every DNS provider you'll encounter | Requires careful setup. Misconfigured records can fail verification                        |
+| | 1024-bit | 2048-bit |
+| - | - | - |
+| **Security** | Meets current RFC recommendations for email signing | Stronger cryptographic margin, better future-proofing |
+| **Performance** | Faster signing and verification | More system resources required, can add latency |
+| **DNS compatibility** | Fits comfortably in a single TXT record | Longer public key. Some DNS providers require splitting the record or hit character limits |
+| **Setup** | Straightforward, works with every DNS provider you'll encounter | Requires careful setup. Misconfigured records can fail verification |
 
 ## Trade-offs of 2048-bit
 

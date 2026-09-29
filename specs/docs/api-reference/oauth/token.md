@@ -157,10 +157,10 @@ const codeChallenge = base64url(
 
 ## Errors
 
-| Status | `error`               | When                                                                                                                                                                                           |
-| ------ | --------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `400`  | `invalid_request`     | A required field is missing or malformed, or the client sent credentials via more than one mechanism (both a Basic header and a body `client_secret`).                                         |
-| `400`  | `invalid_scope`       | Refresh requests a scope outside what the grant already has.                                                                                                                                   |
-| `400`  | `invalid_grant`       | The code/refresh token is invalid, expired, already used, or reused after rotation (which also revokes the grant). Also returned when PKCE verification fails or `redirect_uri` doesn't match. |
-| `401`  | `invalid_client`      | Unknown or disabled `client_id`, or a confidential client failed authentication (missing or wrong `client_secret`, or `client_id` in the Basic header doesn't match the request).              |
-| `400`  | `unauthorized_client` | The client isn't registered for the grant type it's using.                                                                                                                                     |
+| Status | `error` | When |
+| - | - | - |
+| `400` | `invalid_request` | A required field is missing or malformed, or the client sent credentials via more than one mechanism (both a Basic header and a body `client_secret`). |
+| `400` | `invalid_scope` | Refresh requests a scope outside what the grant already has. |
+| `400` | `invalid_grant` | The code/refresh token is invalid, expired, already used, or reused after rotation (which also revokes the grant). Also returned when PKCE verification fails or `redirect_uri` doesn't match. |
+| `401` | `invalid_client` | Unknown or disabled `client_id`, or a confidential client failed authentication (missing or wrong `client_secret`, or `client_id` in the Basic header doesn't match the request). |
+| `400` | `unauthorized_client` | The client isn't registered for the grant type it's using. |

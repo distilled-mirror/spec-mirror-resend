@@ -48,17 +48,17 @@ docker pull ghcr.io/resend/resend-webhooks-ingester
 
 ## Supported Databases
 
-| Database    | Endpoint       | Best For                               |
-| ----------- | -------------- | -------------------------------------- |
-| Supabase    | `/supabase`    | Quick setup with managed Postgres      |
-| Neon        | `/neon`        | Serverless Postgres with branching     |
-| PostgreSQL  | `/postgresql`  | Self-hosted or managed Postgres        |
-| MySQL       | `/mysql`       | Self-hosted or managed MySQL           |
-| PlanetScale | `/planetscale` | Serverless MySQL                       |
-| MongoDB     | `/mongodb`     | Document database (Atlas, self-hosted) |
-| Snowflake   | `/snowflake`   | Data warehousing and analytics         |
-| BigQuery    | `/bigquery`    | Google Cloud analytics                 |
-| ClickHouse  | `/clickhouse`  | High-performance analytics             |
+| Database | Endpoint | Best For |
+| - | - | - |
+| Supabase | `/supabase` | Quick setup with managed Postgres |
+| Neon | `/neon` | Serverless Postgres with branching |
+| PostgreSQL | `/postgresql` | Self-hosted or managed Postgres |
+| MySQL | `/mysql` | Self-hosted or managed MySQL |
+| PlanetScale | `/planetscale` | Serverless MySQL |
+| MongoDB | `/mongodb` | Document database (Atlas, self-hosted) |
+| Snowflake | `/snowflake` | Data warehousing and analytics |
+| BigQuery | `/bigquery` | Google Cloud analytics |
+| ClickHouse | `/clickhouse` | High-performance analytics |
 
 ## Quick Start
 
@@ -116,11 +116,11 @@ docker pull ghcr.io/resend/resend-webhooks-ingester
 
 The ingester creates three tables to store webhook events:
 
-| Table                | Description                                                  |
-| -------------------- | ------------------------------------------------------------ |
-| `resend_wh_emails`   | All email events (sent, delivered, bounced, opened, clicked) |
-| `resend_wh_contacts` | Contact events (created, updated, deleted)                   |
-| `resend_wh_domains`  | Domain events (created, updated, deleted)                    |
+| Table | Description |
+| - | - |
+| `resend_wh_emails` | All email events (sent, delivered, bounced, opened, clicked) |
+| `resend_wh_contacts` | Contact events (created, updated, deleted) |
+| `resend_wh_domains` | Domain events (created, updated, deleted) |
 
 Each table includes:
 
@@ -140,8 +140,8 @@ If Resend retries a webhook delivery (due to a temporary failure), the duplicate
 
 ### Required Environment Variables
 
-| Variable                | Description                             |
-| ----------------------- | --------------------------------------- |
+| Variable | Description |
+| - | - |
 | `RESEND_WEBHOOK_SECRET` | Your webhook signing secret from Resend |
 
 ### Database-Specific Variables

@@ -14,13 +14,13 @@ A run tracks the execution of each step in the workflow, including its status an
 
 Each run has one of the following statuses:
 
-| Status      | Description                                                                                        |
-| ----------- | -------------------------------------------------------------------------------------------------- |
-| `running`   | The Automation is executing steps                                                                  |
-| `completed` | All steps finished successfully                                                                    |
-| `failed`    | A step encountered an error and the run stopped                                                    |
-| `cancelled` | The run was cancelled before completing                                                            |
-| `skipped`   | A step was skipped because the contact has either unsubscribed or followed a different branch path |
+| Status | Description |
+| - | - |
+| `running` | The Automation is executing steps |
+| `completed` | All steps finished successfully |
+| `failed` | A step encountered an error and the run stopped |
+| `cancelled` | The run was cancelled before completing |
+| `skipped` | A step was skipped because the contact has either unsubscribed or followed a different branch path |
 
 ### Skipped steps
 
@@ -473,15 +473,15 @@ View the [List Automation Runs API reference](/docs/api-reference/automations/li
 
     Each step in the response includes:
 
-    | Field          | Description                                            |
-    | -------------- | ------------------------------------------------------ |
-    | `key`          | The unique key of the step in the automation graph     |
-    | `type`         | The step type (e.g., `trigger`, `send_email`, `delay`) |
-    | `status`       | The step's execution status                            |
-    | `started_at`   | When the step started executing                        |
-    | `completed_at` | When the step finished                                 |
-    | `output`       | Output data from the step (if any)                     |
-    | `error`        | Error details if the step failed                       |
+    | Field | Description |
+    | - | - |
+    | `key` | The unique key of the step in the automation graph |
+    | `type` | The step type (e.g., `trigger`, `send_email`, `delay`) |
+    | `status` | The step's execution status |
+    | `started_at` | When the step started executing |
+    | `completed_at` | When the step finished |
+    | `output` | Output data from the step (if any) |
+    | `error` | Error details if the step failed |
   </Tab>
 </Tabs>
 

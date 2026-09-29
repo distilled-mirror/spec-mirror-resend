@@ -93,10 +93,10 @@ Before `client_id` and `redirect_uri` are validated (unknown `client_id`, invali
 
 Once Resend validates `client_id` and `redirect_uri`, errors redirect (`302`) back to `redirect_uri` with `error`, `error_description`, and (if provided) `state` as query parameters only when the `redirect_uri` is trusted: a loopback address, a private-use URI scheme, or a verified client. An unverified `https` callback gets a JSON error body instead, which prevents the endpoint from being used as an open redirect. Handle both.
 
-| `error`               | When                                                                                                       |
-| --------------------- | ---------------------------------------------------------------------------------------------------------- |
-| `invalid_request`     | `response_type` isn't `code`, or `code_challenge_method` isn't `S256`.                                     |
-| `invalid_client`      | Unknown or disabled `client_id`. Also a metadata document that couldn't be fetched or didn't validate.     |
-| `unauthorized_client` | The client isn't registered for the `authorization_code` grant.                                            |
-| `invalid_scope`       | No scope requested, a scope isn't supported, or a scope isn't in the client's registered `scopes_allowed`. |
-| `server_error`        | Resend failed to persist the authorization request.                                                        |
+| `error` | When |
+| - | - |
+| `invalid_request` | `response_type` isn't `code`, or `code_challenge_method` isn't `S256`. |
+| `invalid_client` | Unknown or disabled `client_id`. Also a metadata document that couldn't be fetched or didn't validate. |
+| `unauthorized_client` | The client isn't registered for the `authorization_code` grant. |
+| `invalid_scope` | No scope requested, a scope isn't supported, or a scope isn't in the client's registered `scopes_allowed`. |
+| `server_error` | Resend failed to persist the authorization request. |

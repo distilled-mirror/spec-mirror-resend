@@ -67,13 +67,13 @@ Whether using the Webhook Ingester or your own handler, you'll need to consider 
 
 The right database depends on your use case:
 
-| Use Case                   | Recommended Database                                                                                     |
-| -------------------------- | -------------------------------------------------------------------------------------------------------- |
-| Already using Postgres     | [PostgreSQL](https://www.postgresql.org/) or [Supabase](https://supabase.com/)                           |
-| Need simple setup          | [Supabase](https://supabase.com/) or [Neon](https://neon.com/)                                           |
-| High-volume analytics      | [ClickHouse](https://clickhouse.com/) or [BigQuery](https://cloud.google.com/bigquery)                   |
-| Data warehouse integration | [Snowflake](https://www.snowflake.com/) or [BigQuery](https://cloud.google.com/bigquery)                 |
-| Serverless architecture    | [Neon](https://neon.com/), [PlanetScale](https://planetscale.com/), or [Supabase](https://supabase.com/) |
+| Use Case | Recommended Database |
+| - | - |
+| Already using Postgres | [PostgreSQL](https://www.postgresql.org/) or [Supabase](https://supabase.com/) |
+| Need simple setup | [Supabase](https://supabase.com/) or [Neon](https://neon.com/) |
+| High-volume analytics | [ClickHouse](https://clickhouse.com/) or [BigQuery](https://cloud.google.com/bigquery) |
+| Data warehouse integration | [Snowflake](https://www.snowflake.com/) or [BigQuery](https://cloud.google.com/bigquery) |
+| Serverless architecture | [Neon](https://neon.com/), [PlanetScale](https://planetscale.com/), or [Supabase](https://supabase.com/) |
 
 <Tip>
   If you're unsure, start with [Supabase](https://supabase.com/) which has a

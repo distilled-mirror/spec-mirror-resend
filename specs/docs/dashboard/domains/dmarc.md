@@ -36,9 +36,9 @@ An email must pass either SPF or DKIM checks (but not necessarily both) to achie
   <Step title="Add a TXT _dmarc Record">
     To start, add a flexible DMARC record to your domain.
 
-    | Name                | Type | Value                                                    |
-    | ------------------- | ---- | -------------------------------------------------------- |
-    | \_dmarc.example.com | TXT  | `v=DMARC1; p=none; rua=mailto:dmarcreports@example.com;` |
+    | Name | Type | Value |
+    | - | - | - |
+    | \_dmarc.example.com | TXT | `v=DMARC1; p=none; rua=mailto:dmarcreports@example.com;` |
 
     This record is specifying a few parameters (see [Reference](#reference) section for more details):
 
@@ -72,15 +72,15 @@ An email must pass either SPF or DKIM checks (but not necessarily both) to achie
 
     Update the value of your existing `_dmarc` TXT record to use a stricter policy:
 
-    | Name                | Type | Value                                                          |
-    | ------------------- | ---- | -------------------------------------------------------------- |
-    | \_dmarc.example.com | TXT  | `v=DMARC1; p=quarantine; rua=mailto:dmarcreports@example.com;` |
+    | Name | Type | Value |
+    | - | - | - |
+    | \_dmarc.example.com | TXT | `v=DMARC1; p=quarantine; rua=mailto:dmarcreports@example.com;` |
 
     Once you're confident that all legitimate email is passing DMARC, you can further tighten the policy to `reject`:
 
-    | Name                | Type | Value                                                      |
-    | ------------------- | ---- | ---------------------------------------------------------- |
-    | \_dmarc.example.com | TXT  | `v=DMARC1; p=reject; rua=mailto:dmarcreports@example.com;` |
+    | Name | Type | Value |
+    | - | - | - |
+    | \_dmarc.example.com | TXT | `v=DMARC1; p=reject; rua=mailto:dmarcreports@example.com;` |
 
     <Info>
       While tightening your policy, it's important to have visibility into your
@@ -94,11 +94,11 @@ An email must pass either SPF or DKIM checks (but not necessarily both) to achie
 
     Here is a summary of the available policies and their behavior:
 
-    | Policy        | Value                                            |
-    | ------------- | ------------------------------------------------ |
-    | p=none;       | Allow all email. Monitoring for DMARC failures.  |
+    | Policy | Value |
+    | - | - |
+    | p=none; | Allow all email. Monitoring for DMARC failures. |
     | p=quarantine; | Send messages that fail DMARC to the spam folder |
-    | p=reject;     | Bounce delivery of emails that fail DMARC.       |
+    | p=reject; | Bounce delivery of emails that fail DMARC. |
 
     Once your policy is `p=quarantine;` or `p=reject;` you can explore setting up [BIMI](/docs/dashboard/domains/bimi), which can provide established brands even greater sending credibility by displaying a logo as an avatar in an email client.
   </Step>
@@ -112,16 +112,16 @@ An email must pass either SPF or DKIM checks (but not necessarily both) to achie
   or followed.
 </Tip>
 
-| Parameter | Purpose                                       | Example                           |
-| --------- | --------------------------------------------- | --------------------------------- |
-| `v`       | Protocol version                              | `v=DMARC1`                        |
-| `pct`     | Percentage of messages subjected to filtering | `pct=20`                          |
-| `ruf`     | Reporting URI for forensic reports            | `ruf=mailto:authfail@example.com` |
-| `rua`     | Reporting URI of aggregate reports            | `rua=mailto:aggrep@example.com`   |
-| `p`       | Policy for organizational domain              | `p=quarantine`                    |
-| `sp`      | Policy for subdomains of the OD               | `sp=reject`                       |
-| `adkim`   | Alignment mode for DKIM                       | `adkim=s`                         |
-| `aspf`    | Alignment mode for SPF                        | `aspf=r`                          |
+| Parameter | Purpose | Example |
+| - | - | - |
+| `v` | Protocol version | `v=DMARC1` |
+| `pct` | Percentage of messages subjected to filtering | `pct=20` |
+| `ruf` | Reporting URI for forensic reports | `ruf=mailto:authfail@example.com` |
+| `rua` | Reporting URI of aggregate reports | `rua=mailto:aggrep@example.com` |
+| `p` | Policy for organizational domain | `p=quarantine` |
+| `sp` | Policy for subdomains of the OD | `sp=reject` |
+| `adkim` | Alignment mode for DKIM | `adkim=s` |
+| `aspf` | Alignment mode for SPF | `aspf=r` |
 
 <Note>
   Having issues setting up DMARC? [We can help](https://resend.com/help).

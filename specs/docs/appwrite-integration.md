@@ -30,13 +30,13 @@ In the Appwrite Console, navigate to **Messaging** > **Providers** > **Add provi
 
 In the **Configure** step, you will need to provide details from your Resend dashboard to connect your Appwrite project:
 
-| Field          | Description                                                                                                                                                   |
-| -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| API key        | Head to API Keys > Create API Key. You can also follow [Resend's instructions](/docs/dashboard/api-keys/introduction) to create an API key.                        |
-| Sender email   | The provider sends emails from this sender email. The sender email needs to be an email under a [verified domain](/docs/dashboard/domains/introduction) in Resend. |
-| Sender name    | The sender name that appears in the emails sent from this provider.                                                                                           |
-| Reply-to email | The reply-to email that appears in the emails sent from this provider.                                                                                        |
-| Reply-to name  | The reply-to name that appears in the emails sent from this provider.                                                                                         |
+| Field | Description |
+| - | - |
+| API key | Head to API Keys > Create API Key. You can also follow [Resend's instructions](/docs/dashboard/api-keys/introduction) to create an API key. |
+| Sender email | The provider sends emails from this sender email. The sender email needs to be an email under a [verified domain](/docs/dashboard/domains/introduction) in Resend. |
+| Sender name | The sender name that appears in the emails sent from this provider. |
+| Reply-to email | The reply-to email that appears in the emails sent from this provider. |
+| Reply-to name | The reply-to name that appears in the emails sent from this provider. |
 
 After adding these details, click **Save and continue** to enable the provider.
 

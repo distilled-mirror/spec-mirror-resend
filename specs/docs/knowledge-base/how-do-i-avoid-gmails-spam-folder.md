@@ -16,12 +16,12 @@
 
 All communication is built on trust, and email is no different. When you send an email, you want to be sure that the recipient (and Gmail) knows who you are and that you are a legitimate sender. Email authentication is a way to prove that an email is from you. It also helps to prevent your email from being spoofed or forged.
 
-| Authentication                    | Requires Setup | Purpose                                                      |
-| --------------------------------- | -------------- | ------------------------------------------------------------ |
-| **SPF**                           | No             | Proves you are allowed to send from this domain              |
-| **DKIM**                          | No             | Proves your email originated from you                        |
-| [DMARC](/docs/dashboard/domains/dmarc) | Yes            | Proves you own the domain and instructs how to handle spoofs |
-| [BIMI](/docs/dashboard/domains/bimi)   | Yes            | Proves you are the brand you say you are                     |
+| Authentication | Requires Setup | Purpose |
+| - | - | - |
+| **SPF** | No | Proves you are allowed to send from this domain |
+| **DKIM** | No | Proves your email originated from you |
+| [DMARC](/docs/dashboard/domains/dmarc) | Yes | Proves you own the domain and instructs how to handle spoofs |
+| [BIMI](/docs/dashboard/domains/bimi) | Yes | Proves you are the brand you say you are |
 
 **SPF** and **DKIM** are baseline requirements for all sending which is why both are automatically setup when you verify your domain with Resend. [DMARC](/docs/dashboard/domains/dmarc) and [BIMI](/docs/dashboard/domains/bimi) are both additional authentication methods that can build trust and further improve inbox placement.
 

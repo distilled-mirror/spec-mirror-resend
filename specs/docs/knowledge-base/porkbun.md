@@ -45,13 +45,13 @@ In the `DNS` section on Porkbun copy and paste the values MX from Resend:
 
 Below is a mapping of the record fields from Resend to Porkbun:
 
-| Porkbun        | Resend   | Example Value                           |
-| -------------- | -------- | --------------------------------------- |
-| Type           | Type     | `MX Record`                             |
-| Host           | Name     | `send`                                  |
-| Answer / Value | Content  | `feedback-smtp.us-east-1.amazonses.com` |
-| TTL            | TTL      | `600`                                   |
-| Priority       | Priority | `10`                                    |
+| Porkbun | Resend | Example Value |
+| - | - | - |
+| Type | Type | `MX Record` |
+| Host | Name | `send` |
+| Answer / Value | Content | `feedback-smtp.us-east-1.amazonses.com` |
+| TTL | TTL | `600` |
+| Priority | Priority | `10` |
 
 <Info>
   Do not use the same priority for multiple records. If Priority `10` is already
@@ -80,12 +80,12 @@ On the same section:
 
 Below is a mapping of the record fields from Resend to Porkbun:
 
-| Porkbun        | Resend  | Example Value                         |
-| -------------- | ------- | ------------------------------------- |
-| Type           | Type    | `TXT Record`                          |
-| Host           | Name    | `send`                                |
+| Porkbun | Resend | Example Value |
+| - | - | - |
+| Type | Type | `TXT Record` |
+| Host | Name | `send` |
 | Answer / Value | Content | `"v=spf1 include:amazonses.com ~all"` |
-| TTL            | TTL     | `600`                                 |
+| TTL | TTL | `600` |
 
 ## Add TXT DKIM Records
 
@@ -109,12 +109,12 @@ On the same `Create Record` section:
 
 Below is a mapping of the record fields from Resend to Porkbun:
 
-| Porkbun        | Resend  | Example Value                |
-| -------------- | ------- | ---------------------------- |
-| Type           | Type    | `TXT Record`                 |
-| Host           | Name    | `send`                       |
+| Porkbun | Resend | Example Value |
+| - | - | - |
+| Type | Type | `TXT Record` |
+| Host | Name | `send` |
 | Answer / Value | Content | `p=example_domain_key_value` |
-| TTL            | TTL     | `600`                        |
+| TTL | TTL | `600` |
 
 ## Receiving Emails
 
@@ -142,13 +142,13 @@ In the `DNS` section on Porkbun:
 
 Below is a mapping of the record fields from Resend to Porkbun:
 
-| Porkbun        | Resend   | Example Value                          |
-| -------------- | -------- | -------------------------------------- |
-| Type           | Type     | `MX Record`                            |
-| Host           | Name     | `inbound`                              |
-| Answer / Value | Content  | `inbound-smtp.us-east-1.amazonaws.com` |
-| TTL            | TTL      | `600`                                  |
-| Priority       | Priority | `10`                                   |
+| Porkbun | Resend | Example Value |
+| - | - | - |
+| Type | Type | `MX Record` |
+| Host | Name | `inbound` |
+| Answer / Value | Content | `inbound-smtp.us-east-1.amazonaws.com` |
+| TTL | TTL | `600` |
+| Priority | Priority | `10` |
 
 After verifying your domain, create a webhook to process incoming emails. For help setting up a webhook, how to access email data and attachments, forward emails, and more, see [our guide on receiving emails with Resend](/docs/dashboard/receiving/introduction).
 

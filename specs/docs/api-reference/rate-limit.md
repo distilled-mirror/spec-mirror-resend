@@ -14,12 +14,12 @@ The Resend API enforces three types of limits: **rate limits** control how many 
 
 The response headers describe your current rate limit following every request in conformance with the [sixth IETF standard draft](https://datatracker.ietf.org/doc/html/draft-ietf-httpapi-ratelimit-headers-06):
 
-| Header name           | Description                                                 |
-| --------------------- | ----------------------------------------------------------- |
-| `ratelimit-limit`     | Maximum number of requests allowed within a window.         |
-| `ratelimit-remaining` | How many requests you have left within the current window.  |
-| `ratelimit-reset`     | How many seconds until the limits are reset.                |
-| `retry-after`         | How many seconds to wait before making a follow-up request. |
+| Header name | Description |
+| - | - |
+| `ratelimit-limit` | Maximum number of requests allowed within a window. |
+| `ratelimit-remaining` | How many requests you have left within the current window. |
+| `ratelimit-reset` | How many seconds until the limits are reset. |
+| `retry-after` | How many seconds to wait before making a follow-up request. |
 
 The default maximum rate limit is **10 requests per second per team**. This limit applies across all API keys associated with your team. This number can be increased for trusted senders upon request. You can view your team's current rate limit on the [Settings Usage page](https://resend.com/settings/usage).
 
@@ -33,10 +33,10 @@ To prevent this, reduce the rate at which you request the API. This can be done 
 
 In addition to rate limits, the API returns headers that track your email sending quotas:
 
-| Header name              | Description                                                        |
-| ------------------------ | ------------------------------------------------------------------ |
-| `x-resend-daily-quota`   | Your used daily email sending quota. Only sent to free plan users. |
-| `x-resend-monthly-quota` | Your used monthly email sending quota.                             |
+| Header name | Description |
+| - | - |
+| `x-resend-daily-quota` | Your used daily email sending quota. Only sent to free plan users. |
+| `x-resend-monthly-quota` | Your used monthly email sending quota. |
 
 These headers help you monitor your usage and avoid hitting quota limits.
 

@@ -69,12 +69,12 @@ For ongoing monitoring, deploy your own instance. This connects to Resend Receiv
     cp .env.example .env.local
     ```
 
-    | Variable                | Description                                                                                     |
-    | ----------------------- | ----------------------------------------------------------------------------------------------- |
-    | `RESEND_API_KEY`        | Your [Resend API key](https://resend.com/api-keys)                                              |
-    | `RESEND_WEBHOOK_SECRET` | Signing secret from your [Resend webhook](https://resend.com/webhooks) endpoint set up below    |
-    | `EMAIL_FROM`            | Sender address for digest emails (must be from a [verified domain](https://resend.com/domains)) |
-    | `EMAIL_TO`              | Recipient address for digest emails                                                             |
+    | Variable | Description |
+    | - | - |
+    | `RESEND_API_KEY` | Your [Resend API key](https://resend.com/api-keys) |
+    | `RESEND_WEBHOOK_SECRET` | Signing secret from your [Resend webhook](https://resend.com/webhooks) endpoint set up below |
+    | `EMAIL_FROM` | Sender address for digest emails (must be from a [verified domain](https://resend.com/domains)) |
+    | `EMAIL_TO` | Recipient address for digest emails |
   </Step>
 
   <Step title="Test the application">

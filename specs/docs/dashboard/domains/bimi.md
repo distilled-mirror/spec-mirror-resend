@@ -25,12 +25,12 @@ Though this standard is newer, most major mailbox providers now support it. This
 
 Here's an overview of current email client support:
 
-| Client                                                | BIMI w/a CMC | BIMI w/a VMC | BIMI w/out a VMC or CMC |
-| ----------------------------------------------------- | ------------ | ------------ | ----------------------- |
-| [Apple Mail](https://support.apple.com/en-us/108340)  | X            | ✓            | X                       |
-| [Gmail](https://support.google.com/a/answer/10911320) | ✓            | ✓            | X                       |
-| Outlook                                               | X            | X            | X                       |
-| [Yahoo](https://senders.yahooinc.com/bimi/)           | ✓            | ✓            | ✓                       |
+| Client | BIMI w/a CMC | BIMI w/a VMC | BIMI w/out a VMC or CMC |
+| - | - | - | - |
+| [Apple Mail](https://support.apple.com/en-us/108340) | X | ✓ | X |
+| [Gmail](https://support.google.com/a/answer/10911320) | ✓ | ✓ | X |
+| Outlook | X | X | X |
+| [Yahoo](https://senders.yahooinc.com/bimi/) | ✓ | ✓ | ✓ |
 
 ## Implementing BIMI
 
@@ -45,10 +45,10 @@ Here's an overview of current email client support:
 
     Here's an overview of the required parameters:
 
-    | Parameter | Purpose    | Required Value                 |
-    | --------- | ---------- | ------------------------------ |
-    | `p`       | Policy     | `p=quarantine;` or `p=reject;` |
-    | `pct`     | Percentage | `pct=100;`                     |
+    | Parameter | Purpose | Required Value |
+    | - | - | - |
+    | `p` | Policy | `p=quarantine;` or `p=reject;` |
+    | `pct` | Percentage | `pct=100;` |
 
     Here is an example of an adequate DMARC record:
 
@@ -90,9 +90,9 @@ Here's an overview of current email client support:
   <Step title="Set your BIMI DNS Record">
     Once you have your VMC, you can set your BIMI DNS record. This TXT record points to the location of your VMC and your logo.
 
-    | Name           | Type | Value                                               |
-    | -------------- | ---- | --------------------------------------------------- |
-    | default.\_bimi | TXT  | v=BIMI1; l=link\_to\_logo; a=link\_to\_certificate; |
+    | Name | Type | Value |
+    | - | - | - |
+    | default.\_bimi | TXT | v=BIMI1; l=link\_to\_logo; a=link\_to\_certificate; |
 
     Here is an example of a BIMI record:
 
@@ -115,12 +115,12 @@ Here's an overview of current email client support:
 
 ## Reference
 
-| Parameter | Purpose             | Example                                |
-| --------- | ------------------- | -------------------------------------- |
-| `v`       | The version of BIMI | `v=BIMI1`                              |
-| `l`       | Logo                | `l=https://vmc.digicert.com/00-00.svg` |
-| `a`       | Certificate         | `a=https://vmc.digicert.com/00-00.pem` |
-| `s`       | Selector            | `s=springlogo`                         |
+| Parameter | Purpose | Example |
+| - | - | - |
+| `v` | The version of BIMI | `v=BIMI1` |
+| `l` | Logo | `l=https://vmc.digicert.com/00-00.svg` |
+| `a` | Certificate | `a=https://vmc.digicert.com/00-00.pem` |
+| `s` | Selector | `s=springlogo` |
 
 <Tip>
   The BIMI standard allows for multiple logos using the [selector

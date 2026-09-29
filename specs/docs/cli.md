@@ -40,11 +40,11 @@ The [Resend CLI](https://github.com/resend/resend-cli) is the official command-l
 
 The CLI resolves your API key using the following priority chain:
 
-| Priority    | Source                   | How to set                                |
-| ----------- | ------------------------ | ----------------------------------------- |
-| 1 (highest) | `--api-key` flag         | `resend --api-key re_xxx emails send ...` |
-| 2           | `RESEND_API_KEY` env var | `export RESEND_API_KEY=re_xxx`            |
-| 3 (lowest)  | Saved credentials        | `resend login`                            |
+| Priority | Source | How to set |
+| - | - | - |
+| 1 (highest) | `--api-key` flag | `resend --api-key re_xxx emails send ...` |
+| 2 | `RESEND_API_KEY` env var | `export RESEND_API_KEY=re_xxx` |
+| 3 (lowest) | Saved credentials | `resend login` |
 
 If no key is found from any source, the CLI errors with code `auth_error`.
 
@@ -64,8 +64,8 @@ resend login --key re_xxxxxxxxxxxxx
 
 Credentials are saved to your system's secure credential storage (macOS Keychain, Windows Credential Manager, or Linux secret service).
 
-| Flag          | Description                                         |
-| ------------- | --------------------------------------------------- |
+| Flag | Description |
+| - | - |
 | `--key <key>` | API key to store (required in non-interactive mode) |
 
 **`resend logout`**
@@ -92,13 +92,13 @@ resend domains list --profile production
 
 Other profile management commands:
 
-| Command                          | Description                        |
-| -------------------------------- | ---------------------------------- |
-| `resend auth list`               | List all profiles                  |
-| `resend auth switch [name]`      | Switch the active profile          |
-| `resend auth rename [old] [new]` | Rename a profile                   |
-| `resend auth remove [name]`      | Remove a profile                   |
-| `resend whoami`                  | Show current authentication status |
+| Command | Description |
+| - | - |
+| `resend auth list` | List all profiles |
+| `resend auth switch [name]` | Switch the active profile |
+| `resend auth rename [old] [new]` | Rename a profile |
+| `resend auth remove [name]` | Remove a profile |
+| `resend whoami` | Show current authentication status |
 
 ## Emails
 
@@ -116,26 +116,26 @@ resend emails send \
   --text "It works!"
 ```
 
-| Flag                        | Required         | Description                                                |
-| --------------------------- | ---------------- | ---------------------------------------------------------- |
-| `--from <address>`          | Yes \*           | Sender email address (must be from a verified domain)      |
-| `--to <addresses...>`       | Yes              | One or more recipient email addresses (space-separated)    |
-| `--subject <subject>`       | Yes \*           | Email subject line                                         |
-| `--text <text>`             | One of text/html | Plain text body                                            |
-| `--text-file <path>`        | One of text/html | Path to a plain text file (use `-` for stdin)              |
-| `--html <html>`             | One of text/html | HTML body as a string                                      |
-| `--html-file <path>`        | One of text/html | Path to an HTML file (use `-` for stdin)                   |
-| `--react-email <path>`      | One of text/html | Path to a React Email template (`.tsx`) to render and send |
-| `--cc <addresses...>`       | No               | CC recipients                                              |
-| `--bcc <addresses...>`      | No               | BCC recipients                                             |
-| `--reply-to <address>`      | No               | Reply-to email address                                     |
-| `--scheduled-at <datetime>` | No               | Schedule for later (ISO 8601 or natural language)          |
-| `--attachment <paths...>`   | No               | File path(s) to attach                                     |
-| `--headers <key=value...>`  | No               | Custom headers as key=value pairs                          |
-| `--tags <name=value...>`    | No               | Email tags as name=value pairs                             |
-| `--idempotency-key <key>`   | No               | Deduplicate this send request                              |
-| `--template <id>`           | No               | Template ID to use                                         |
-| `--var <key=value...>`      | No               | Template variables as key=value pairs                      |
+| Flag | Required | Description |
+| - | - | - |
+| `--from <address>` | Yes \* | Sender email address (must be from a verified domain) |
+| `--to <addresses...>` | Yes | One or more recipient email addresses (space-separated) |
+| `--subject <subject>` | Yes \* | Email subject line |
+| `--text <text>` | One of text/html | Plain text body |
+| `--text-file <path>` | One of text/html | Path to a plain text file (use `-` for stdin) |
+| `--html <html>` | One of text/html | HTML body as a string |
+| `--html-file <path>` | One of text/html | Path to an HTML file (use `-` for stdin) |
+| `--react-email <path>` | One of text/html | Path to a React Email template (`.tsx`) to render and send |
+| `--cc <addresses...>` | No | CC recipients |
+| `--bcc <addresses...>` | No | BCC recipients |
+| `--reply-to <address>` | No | Reply-to email address |
+| `--scheduled-at <datetime>` | No | Schedule for later (ISO 8601 or natural language) |
+| `--attachment <paths...>` | No | File path(s) to attach |
+| `--headers <key=value...>` | No | Custom headers as key=value pairs |
+| `--tags <name=value...>` | No | Email tags as name=value pairs |
+| `--idempotency-key <key>` | No | Deduplicate this send request |
+| `--template <id>` | No | Template ID to use |
+| `--var <key=value...>` | No | Template variables as key=value pairs |
 
 \* Not required when using `--template`, which provides them.
 
@@ -182,12 +182,12 @@ Send up to 100 emails in a single API request from a JSON file.
 resend emails batch --file ./emails.json
 ```
 
-| Flag                        | Required | Description                                                                                |
-| --------------------------- | -------- | ------------------------------------------------------------------------------------------ |
-| `--file <path>`             | Yes      | Path to JSON file containing array of email objects (use `-` for stdin)                    |
-| `--react-email <path>`      | No       | Path to a React Email template (`.tsx`). Rendered HTML applies to every email in the batch |
-| `--idempotency-key <key>`   | No       | Deduplicate this batch request                                                             |
-| `--batch-validation <mode>` | No       | `strict` (default, entire batch fails on any error) or `permissive`                        |
+| Flag | Required | Description |
+| - | - | - |
+| `--file <path>` | Yes | Path to JSON file containing array of email objects (use `-` for stdin) |
+| `--react-email <path>` | No | Path to a React Email template (`.tsx`). Rendered HTML applies to every email in the batch |
+| `--idempotency-key <key>` | No | Deduplicate this batch request |
+| `--batch-validation <mode>` | No | `strict` (default, entire batch fails on any error) or `permissive` |
 
 Each email in the JSON array supports the same fields as `resend emails send`, including per-email `scheduled_at` (natural language or ISO 8601) and `tags`. The `attachments` field is not supported in batch sends.
 
@@ -308,13 +308,13 @@ resend contacts imports create \
   --on-conflict upsert
 ```
 
-| Flag                   | Required | Description                                                                    |
-| ---------------------- | -------- | ------------------------------------------------------------------------------ |
-| `--file <path>`        | Yes      | Path to the CSV file to import. Maximum file size is 200MB                     |
-| `--column-map <json>`  | No       | JSON object mapping CSV headers to contact fields                              |
-| `--on-conflict <mode>` | No       | `upsert` to update existing contacts or `skip` to leave them unchanged         |
-| `--segment-id <id...>` | No       | Segment IDs to add imported contacts to. Repeat the flag for multiple segments |
-| `--topics <json>`      | No       | JSON array of topic subscriptions with `id` and `subscription` fields          |
+| Flag | Required | Description |
+| - | - | - |
+| `--file <path>` | Yes | Path to the CSV file to import. Maximum file size is 200MB |
+| `--column-map <json>` | No | JSON object mapping CSV headers to contact fields |
+| `--on-conflict <mode>` | No | `upsert` to update existing contacts or `skip` to leave them unchanged |
+| `--segment-id <id...>` | No | Segment IDs to add imported contacts to. Repeat the flag for multiple segments |
+| `--topics <json>` | No | JSON array of topic subscriptions with `id` and `subscription` fields |
 
 Without `--column-map`, CSV headers must match the lowercase contact field
 names exactly: `email`, `first_name`, and `last_name`. Use `--column-map` when
@@ -349,12 +349,12 @@ List contact imports. The default limit is `10`.
 resend contacts imports list --status completed
 ```
 
-| Flag                | Required | Description                                                        |
-| ------------------- | -------- | ------------------------------------------------------------------ |
-| `--limit <n>`       | No       | Maximum number of imports to return. Must be between `1` and `100` |
-| `--after <cursor>`  | No       | Return imports after this contact import ID                        |
-| `--before <cursor>` | No       | Return imports before this contact import ID                       |
-| `--status <status>` | No       | Filter by `queued`, `in_progress`, `completed`, or `failed`        |
+| Flag | Required | Description |
+| - | - | - |
+| `--limit <n>` | No | Maximum number of imports to return. Must be between `1` and `100` |
+| `--after <cursor>` | No | Return imports after this contact import ID |
+| `--before <cursor>` | No | Return imports before this contact import ID |
+| `--status <status>` | No | Filter by `queued`, `in_progress`, `completed`, or `failed` |
 
 ## Contact Properties
 
@@ -439,10 +439,10 @@ resend webhooks create \
   --events email.sent email.delivered
 ```
 
-| Flag                  | Required | Description                                            |
-| --------------------- | -------- | ------------------------------------------------------ |
-| `--endpoint <url>`    | Yes      | HTTPS URL to receive events                            |
-| `--events <types...>` | Yes      | Event types to subscribe to (use `all` for all events) |
+| Flag | Required | Description |
+| - | - | - |
+| `--endpoint <url>` | Yes | HTTPS URL to receive events |
+| `--events <types...>` | Yes | Event types to subscribe to (use `all` for all events) |
 
 **`resend webhooks listen`**
 
@@ -454,12 +454,12 @@ resend webhooks listen \
   --events email.received
 ```
 
-| Flag                  | Required | Description                                                       |
-| --------------------- | -------- | ----------------------------------------------------------------- |
-| `--url <url>`         | Yes      | Your public URL (e.g., Tailscale Funnel URL)                      |
-| `--events <types...>` | No       | Event types to listen for (default: `all`)                        |
-| `--forward-to <url>`  | No       | Forward payloads to a local server (passes original Svix headers) |
-| `--port <port>`       | No       | Local server port (default: 4318)                                 |
+| Flag | Required | Description |
+| - | - | - |
+| `--url <url>` | Yes | Your public URL (e.g., Tailscale Funnel URL) |
+| `--events <types...>` | No | Event types to listen for (default: `all`) |
+| `--forward-to <url>` | No | Forward payloads to a local server (passes original Svix headers) |
+| `--port <port>` | No | Local server port (default: 4318) |
 
 <Info>
   See the [webhook events documentation](/docs/webhooks/event-types) for the full
@@ -492,13 +492,13 @@ Create a new automation from a JSON file describing the workflow graph.
 resend automations create --file ./automation.json
 ```
 
-| Flag                   | Required | Description                                                        |
-| ---------------------- | -------- | ------------------------------------------------------------------ |
-| `--name <name>`        | Yes \*   | Automation name                                                    |
-| `--status <status>`    | No       | Initial status: `enabled` or `disabled` (default: `disabled`)      |
-| `--steps <json>`       | Yes \*   | Steps array as JSON string                                         |
-| `--connections <json>` | Yes \*   | Connections array as JSON string                                   |
-| `--file <path>`        | Yes \*   | Path to JSON file with full automation payload (use `-` for stdin) |
+| Flag | Required | Description |
+| - | - | - |
+| `--name <name>` | Yes \* | Automation name |
+| `--status <status>` | No | Initial status: `enabled` or `disabled` (default: `disabled`) |
+| `--steps <json>` | Yes \* | Steps array as JSON string |
+| `--connections <json>` | Yes \* | Connections array as JSON string |
+| `--file <path>` | Yes \* | Path to JSON file with full automation payload (use `-` for stdin) |
 
 \* Provide `--file`, or `--name` with `--steps` and `--connections`. When using `--file`, other flags override file values.
 
@@ -522,9 +522,9 @@ resend automations runs list <automation-id> --status running   # Filter by stat
 resend automations runs get --automation-id <id> --run-id <id>  # Retrieve a specific run
 ```
 
-| Flag                | Required | Description                                                                       |
-| ------------------- | -------- | --------------------------------------------------------------------------------- |
-| `--status <status>` | No       | Filter by status: `running`, `completed`, `failed`, `cancelled` (comma-separated) |
+| Flag | Required | Description |
+| - | - | - |
+| `--status <status>` | No | Filter by status: `running`, `completed`, `failed`, `cancelled` (comma-separated) |
 
 ## Events
 
@@ -541,12 +541,12 @@ resend events send \
   --payload '{"plan":"pro"}'
 ```
 
-| Flag                | Required       | Description                                            |
-| ------------------- | -------------- | ------------------------------------------------------ |
-| `--event <name>`    | Yes            | Event name (e.g. `user.created`)                       |
-| `--contact-id <id>` | One of contact | Contact ID (mutually exclusive with `--email`)         |
-| `--email <email>`   | One of contact | Contact email (mutually exclusive with `--contact-id`) |
-| `--payload <json>`  | No             | Event payload as JSON string                           |
+| Flag | Required | Description |
+| - | - | - |
+| `--event <name>` | Yes | Event name (e.g. `user.created`) |
+| `--contact-id <id>` | One of contact | Contact ID (mutually exclusive with `--email`) |
+| `--email <email>` | One of contact | Contact email (mutually exclusive with `--contact-id`) |
+| `--payload <json>` | No | Event payload as JSON string |
 
 **Other event commands**
 
@@ -571,12 +571,12 @@ Run environment diagnostics. Verifies your CLI version, API key, credential stor
 resend doctor
 ```
 
-| Check                  | Pass                                  | Warn                                         | Fail            |
-| ---------------------- | ------------------------------------- | -------------------------------------------- | --------------- |
-| **CLI Version**        | Running latest                        | Update available                             | N/A             |
-| **API Key**            | Key found (shows masked key + source) | N/A                                          | No key found    |
-| **Credential Storage** | Secure backend (e.g., macOS Keychain) | Plaintext file fallback                      | N/A             |
-| **API Validation**     | Verified domains exist                | Sending-only key, no domains, or all pending | API key invalid |
+| Check | Pass | Warn | Fail |
+| - | - | - | - |
+| **CLI Version** | Running latest | Update available | N/A |
+| **API Key** | Key found (shows masked key + source) | N/A | No key found |
+| **Credential Storage** | Secure backend (e.g., macOS Keychain) | Plaintext file fallback | N/A |
+| **API Validation** | Verified domains exist | Sending-only key, no domains, or all pending | API key invalid |
 
 ```bash theme={"theme":{"light":"github-light","dark":"vesper"}}
 # JSON output
@@ -607,13 +607,13 @@ Exits `0` when all checks pass or warn. Exits `1` if any check fails.
 
 **Other utility commands**
 
-| Command                       | Description                                                     |
-| ----------------------------- | --------------------------------------------------------------- |
-| `resend whoami`               | Show current authentication status                              |
-| `resend open`                 | Open the Resend dashboard in your browser                       |
-| `resend update`               | Check for available CLI updates                                 |
-| `resend completion [shell]`   | Generate shell completion scripts (bash, zsh, fish, powershell) |
-| `resend completion --install` | Auto-install completions into your shell profile                |
+| Command | Description |
+| - | - |
+| `resend whoami` | Show current authentication status |
+| `resend open` | Open the Resend dashboard in your browser |
+| `resend update` | Check for available CLI updates |
+| `resend completion [shell]` | Generate shell completion scripts (bash, zsh, fish, powershell) |
+| `resend completion --install` | Auto-install completions into your shell profile |
 
 ## Global options
 
@@ -623,24 +623,24 @@ These flags work on every command:
 resend [global options] <command> [command options]
 ```
 
-| Flag                   | Description                                            |
-| ---------------------- | ------------------------------------------------------ |
-| `--api-key <key>`      | Override API key for this invocation                   |
-| `-p, --profile <name>` | Profile to use (overrides `RESEND_PROFILE` env var)    |
-| `--json`               | Force JSON output even in interactive terminals        |
-| `-q, --quiet`          | Suppress spinners and status output (implies `--json`) |
-| `--insecure-storage`   | Save API key as plaintext instead of secure storage    |
-| `--version`            | Print version and exit                                 |
-| `--help`               | Show help text                                         |
+| Flag | Description |
+| - | - |
+| `--api-key <key>` | Override API key for this invocation |
+| `-p, --profile <name>` | Profile to use (overrides `RESEND_PROFILE` env var) |
+| `--json` | Force JSON output even in interactive terminals |
+| `-q, --quiet` | Suppress spinners and status output (implies `--json`) |
+| `--insecure-storage` | Save API key as plaintext instead of secure storage |
+| `--version` | Print version and exit |
+| `--help` | Show help text |
 
 ## Output behavior
 
 The CLI has two output modes that switch automatically:
 
-| Mode            | When                   | Stdout         | Stderr            |
-| --------------- | ---------------------- | -------------- | ----------------- |
-| **Interactive** | Terminal (TTY)         | Formatted text | Spinners, prompts |
-| **Machine**     | Piped, CI, or `--json` | JSON           | Nothing           |
+| Mode | When | Stdout | Stderr |
+| - | - | - | - |
+| **Interactive** | Terminal (TTY) | Formatted text | Spinners, prompts |
+| **Machine** | Piped, CI, or `--json` | JSON | Nothing |
 
 Pipe to another command and JSON output activates:
 
@@ -678,11 +678,11 @@ steps:
 
 ## Configuration
 
-| Item              | Path                  | Notes                                                               |
-| ----------------- | --------------------- | ------------------------------------------------------------------- |
-| Config directory  | `~/.config/resend/`   | Respects `$XDG_CONFIG_HOME` on Linux, `%APPDATA%` on Windows        |
-| Credentials       | System secure storage | macOS Keychain, Windows Credential Manager, or Linux secret service |
-| Install directory | `~/.resend/bin/`      | Respects `$RESEND_INSTALL`                                          |
+| Item | Path | Notes |
+| - | - | - |
+| Config directory | `~/.config/resend/` | Respects `$XDG_CONFIG_HOME` on Linux, `%APPDATA%` on Windows |
+| Credentials | System secure storage | macOS Keychain, Windows Credential Manager, or Linux secret service |
+| Install directory | `~/.resend/bin/` | Respects `$RESEND_INSTALL` |
 
 <Card title="Using the CLI with AI Agents" icon="microchip-ai" href="/docs/cli-agents">
   Learn about Agent Skills, non-interactive mode, and local webhook development

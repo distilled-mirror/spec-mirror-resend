@@ -65,7 +65,7 @@ Confidential clients must authenticate the same way they do at the [token endpoi
 
 ## Errors
 
-| Status | `error`           | When                                                                                                                                  |
-| ------ | ----------------- | ------------------------------------------------------------------------------------------------------------------------------------- |
-| `400`  | `invalid_request` | `token` or `client_id` is missing, `token_type_hint` is `"access_token"`, or the client sent credentials via more than one mechanism. |
-| `401`  | `invalid_client`  | Unknown or disabled `client_id`, or a confidential client failed authentication (missing or wrong `client_secret`).                   |
+| Status | `error` | When |
+| - | - | - |
+| `400` | `invalid_request` | `token` or `client_id` is missing, `token_type_hint` is `"access_token"`, or the client sent credentials via more than one mechanism. |
+| `401` | `invalid_client` | Unknown or disabled `client_id`, or a confidential client failed authentication (missing or wrong `client_secret`). |

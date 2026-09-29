@@ -25,11 +25,11 @@ Yahoo splits its rules into requirements for **all senders** and additional requ
 
 Authentication is the foundation of every other requirement on this page. Yahoo requires all senders to authenticate with SPF or DKIM at a minimum, and bulk senders to implement both alongside a valid DMARC policy.
 
-| Authentication                    | Requires Setup | Yahoo's Requirement                                                             |
-| --------------------------------- | -------------- | ------------------------------------------------------------------------------- |
-| **SPF**                           | No             | Required for all senders (with DKIM, or on its own)                             |
-| **DKIM**                          | No             | Required for all senders (with SPF, or on its own). Minimum 1024-bit key length |
-| [DMARC](/docs/dashboard/domains/dmarc) | Yes            | Required for bulk senders. At least `p=none`, and DMARC must pass               |
+| Authentication | Requires Setup | Yahoo's Requirement |
+| - | - | - |
+| **SPF** | No | Required for all senders (with DKIM, or on its own) |
+| **DKIM** | No | Required for all senders (with SPF, or on its own). Minimum 1024-bit key length |
+| [DMARC](/docs/dashboard/domains/dmarc) | Yes | Required for bulk senders. At least `p=none`, and DMARC must pass |
 
 A few Yahoo-specific details worth knowing:
 
@@ -68,11 +68,11 @@ To enroll, create a Sender Hub profile, add and verify your domain, then enroll 
 
 You can recognize a Yahoo CFL report by these headers:
 
-| Header              | Value                           |
-| ------------------- | ------------------------------- |
-| `From:`             | `Yahoo! Mail AntiSpam Feedback` |
-| SMTP `MAIL FROM`    | `feedback@arf.mail.yahoo.com`   |
-| DKIM signing domain | `arf.mail.yahoo.com`            |
+| Header | Value |
+| - | - |
+| `From:` | `Yahoo! Mail AntiSpam Feedback` |
+| SMTP `MAIL FROM` | `feedback@arf.mail.yahoo.com` |
+| DKIM signing domain | `arf.mail.yahoo.com` |
 
 **Action Items**
 
@@ -176,12 +176,12 @@ Generic or unhelpful subject lines also invite complaints, which feed straight b
 
 Yahoo tells you a lot through SMTP responses. Treating them differently based on type is expected.
 
-| Error        | Type      | What It Means                                                      |
-| ------------ | --------- | ------------------------------------------------------------------ |
+| Error | Type | What It Means |
+| - | - | - |
 | `421`, `451` | Temporary | Unusual traffic, spam characteristics, complaints, or busy servers |
-| `TS*`        | Temporary | Deferral from complaints, poor IP reputation, or unusual traffic   |
-| `PH*`        | Permanent | Content block for malicious content or links                       |
-| `553`, `554` | Permanent | Invalid recipient, failed DMARC or DKIM, or policy violation       |
+| `TS*` | Temporary | Deferral from complaints, poor IP reputation, or unusual traffic |
+| `PH*` | Permanent | Content block for malicious content or links |
+| `553`, `554` | Permanent | Invalid recipient, failed DMARC or DKIM, or policy violation |
 
 Temporary errors can be retried later. **Never retry a permanent error.** Yahoo expects list managers to have a policy for removing addresses that generate 5xx bounces. A `554` citing Spamhaus means your IP is listed, so check with [Spamhaus](https://www.spamhaus.org/) directly.
 

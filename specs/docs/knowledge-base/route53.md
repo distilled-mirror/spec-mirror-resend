@@ -45,13 +45,13 @@ Then, log in to your [AWS Management Console, and open Route 53 console](https:/
 
 Below is a mapping of the record fields from Resend to Route 53:
 
-| Route 53       | Resend             | Example Value                              |
-| -------------- | ------------------ | ------------------------------------------ |
-| Record Type    | Type               | `MX Record`                                |
-| Record name    | Name               | `send`                                     |
-| Value          | Content & Priority | `10 feedback-smtp.us-east-1.amazonses.com` |
-| TTL            | TTL                | `Use Route 53 Default (300)`               |
-| Routing policy | -                  | `Simple routing`                           |
+| Route 53 | Resend | Example Value |
+| - | - | - |
+| Record Type | Type | `MX Record` |
+| Record name | Name | `send` |
+| Value | Content & Priority | `10 feedback-smtp.us-east-1.amazonses.com` |
+| TTL | TTL | `Use Route 53 Default (300)` |
+| Routing policy | - | `Simple routing` |
 
 <Info>
   Route 53 does not label the `priority` column, and you will need to add this
@@ -75,13 +75,13 @@ In the same section, choose `Add another record`:
 
 Below is a mapping of the record fields from Resend to Route 53:
 
-| Route 53       | Resend  | Example Value                         |
-| -------------- | ------- | ------------------------------------- |
-| Record type    | Type    | `TXT Record`                          |
-| Record name    | Name    | `send`                                |
-| Value          | Content | `"v=spf1 include:amazonses.com ~all"` |
-| TTL            | TTL     | `Use Route 53 Default (300)`          |
-| Routing policy | -       | `Simple routing`                      |
+| Route 53 | Resend | Example Value |
+| - | - | - |
+| Record type | Type | `TXT Record` |
+| Record name | Name | `send` |
+| Value | Content | `"v=spf1 include:amazonses.com ~all"` |
+| TTL | TTL | `Use Route 53 Default (300)` |
+| Routing policy | - | `Simple routing` |
 
 <Info>
   Omit your domain from the record values in Resend when you paste. Instead of
@@ -104,13 +104,13 @@ In the same section, choose `Add another record`:
 
 Below is a mapping of the record fields from Resend to Route 53:
 
-| Route 53       | Resend  | Example Value                |
-| -------------- | ------- | ---------------------------- |
-| Record type    | Type    | `TXT Record`                 |
-| Record name    | Name    | `resend._domainkey`          |
-| Value          | Content | `p=example_domain_key_value` |
-| TTL            | TTL     | `Use Route 53 Default (300)` |
-| Routing policy | -       | `Simple routing`             |
+| Route 53 | Resend | Example Value |
+| - | - | - |
+| Record type | Type | `TXT Record` |
+| Record name | Name | `resend._domainkey` |
+| Value | Content | `p=example_domain_key_value` |
+| TTL | TTL | `Use Route 53 Default (300)` |
+| Routing policy | - | `Simple routing` |
 
 <Info>
   Omit your domain from the record values in Resend when you paste. Instead of
@@ -142,13 +142,13 @@ In the Route 53 console, click `Create Record`:
 
 Below is a mapping of the record fields from Resend to Route 53:
 
-| Route 53       | Resend             | Example Value                             |
-| -------------- | ------------------ | ----------------------------------------- |
-| Record Type    | Type               | `MX Record`                               |
-| Record name    | Name               | `inbound`                                 |
-| Value          | Content & Priority | `10 inbound-smtp.us-east-1.amazonaws.com` |
-| TTL            | TTL                | `Use Route 53 Default (300)`              |
-| Routing policy | -                  | `Simple routing`                          |
+| Route 53 | Resend | Example Value |
+| - | - | - |
+| Record Type | Type | `MX Record` |
+| Record name | Name | `inbound` |
+| Value | Content & Priority | `10 inbound-smtp.us-east-1.amazonaws.com` |
+| TTL | TTL | `Use Route 53 Default (300)` |
+| Routing policy | - | `Simple routing` |
 
 After verifying your domain, create a webhook to process incoming emails. For help setting up a webhook, how to access email data and attachments, forward emails, and more, see [our guide on receiving emails with Resend](/docs/dashboard/receiving/introduction).
 

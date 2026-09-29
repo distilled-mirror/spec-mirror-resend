@@ -177,37 +177,37 @@
 
   ### **Required Parameters**
 
-  | Parameter | Type                 | Description                                                                      |
-  | --------- | -------------------- | -------------------------------------------------------------------------------- |
-  | `from`    | `string`             | Sender email address. Supports friendly name format: `"Name <email@domain.com>"` |
-  | `to`      | `string \| string[]` | Recipient email address(es). Maximum 50 addresses.                               |
-  | `subject` | `string`             | Email subject line.                                                              |
+  | Parameter | Type | Description |
+  | - | - | - |
+  | `from` | `string` | Sender email address. Supports friendly name format: `"Name <email@domain.com>"` |
+  | `to` | `string \| string[]` | Recipient email address(es). Maximum 50 addresses. |
+  | `subject` | `string` | Email subject line. |
 
   ### **Content Parameters (at least one required)**
 
-  | Parameter | Type              | Description                                                |
-  | --------- | ----------------- | ---------------------------------------------------------- |
-  | `html`    | `string`          | HTML version of the email body.                            |
-  | `text`    | `string`          | Plain text version. Auto-generated from `html` if omitted. |
-  | `react`   | `React.ReactNode` | React Email component to render the message. Node.js only. |
+  | Parameter | Type | Description |
+  | - | - | - |
+  | `html` | `string` | HTML version of the email body. |
+  | `text` | `string` | Plain text version. Auto-generated from `html` if omitted. |
+  | `react` | `React.ReactNode` | React Email component to render the message. Node.js only. |
 
   ### **Optional Parameters**
 
-  | Parameter     | Type                 | Description                                                   |
-  | ------------- | -------------------- | ------------------------------------------------------------- |
-  | `cc`          | `string \| string[]` | Carbon copy recipients.                                       |
-  | `bcc`         | `string \| string[]` | Blind carbon copy recipients.                                 |
-  | `replyTo`     | `string \| string[]` | Reply-to address(es).                                         |
-  | `scheduledAt` | `string`             | Schedule delivery time. Accepts ISO 8601 or natural language. |
-  | `headers`     | `object`             | Custom email headers as key-value pairs.                      |
-  | `tags`        | `Tag[]`              | Custom metadata. Name and value: max 256 chars, ASCII only.   |
-  | `attachments` | `Attachment[]`       | File attachments. Max 40MB total per email after encoding.    |
+  | Parameter | Type | Description |
+  | - | - | - |
+  | `cc` | `string \| string[]` | Carbon copy recipients. |
+  | `bcc` | `string \| string[]` | Blind carbon copy recipients. |
+  | `replyTo` | `string \| string[]` | Reply-to address(es). |
+  | `scheduledAt` | `string` | Schedule delivery time. Accepts ISO 8601 or natural language. |
+  | `headers` | `object` | Custom email headers as key-value pairs. |
+  | `tags` | `Tag[]` | Custom metadata. Name and value: max 256 chars, ASCII only. |
+  | `attachments` | `Attachment[]` | File attachments. Max 40MB total per email after encoding. |
 
   ### **Template Parameters**
 
-  | Parameter            | Type     | Description                                                      |
-  | -------------------- | -------- | ---------------------------------------------------------------- |
-  | `template.id`        | `string` | Published template identifier.                                   |
+  | Parameter | Type | Description |
+  | - | - | - |
+  | `template.id` | `string` | Published template identifier. |
   | `template.variables` | `object` | Variable substitutions. Key max 50 chars, value max 2,000 chars. |
 
   If `template` is provided, do not include `html`, `text`, or `react`.

@@ -261,11 +261,11 @@ npx skills add resend/resend-skills
 
 Or install individually:
 
-| Skill                                               | Install                                      | What it does                                                                                                       |
-| --------------------------------------------------- | -------------------------------------------- | ------------------------------------------------------------------------------------------------------------------ |
-| [Resend](/docs/resend-skill)                             | `npx skills add resend/resend-skills`        | Send and receive emails, handle errors, and prevent duplicate sends. Get code examples from various SDKs.          |
-| [React Email](/docs/react-email-skill)                   | `npx skills add resend/react-email`          | Build emails in React, Tailwind, and TypeScript. Audit existing React emails for style and cross-client rendering. |
-| [Email Best Practices](/docs/email-best-practices-skill) | `npx skills add resend/email-best-practices` | Audit SPF/DKIM/DMARC setup, compliance (CAN-SPAM, GDPR), webhook handling                                          |
+| Skill | Install | What it does |
+| - | - | - |
+| [Resend](/docs/resend-skill) | `npx skills add resend/resend-skills` | Send and receive emails, handle errors, and prevent duplicate sends. Get code examples from various SDKs. |
+| [React Email](/docs/react-email-skill) | `npx skills add resend/react-email` | Build emails in React, Tailwind, and TypeScript. Audit existing React emails for style and cross-client rendering. |
+| [Email Best Practices](/docs/email-best-practices-skill) | `npx skills add resend/email-best-practices` | Audit SPF/DKIM/DMARC setup, compliance (CAN-SPAM, GDPR), webhook handling |
 
 ## Quick Start Guides
 
@@ -274,10 +274,10 @@ The documentation includes quick start guides for common tasks with Resend. They
 <Prompt description="Example agent quick start guide for sending emails." icon="envelope" actions={["copy", "cursor"]}>
   Resend provides two endpoints for sending emails:
 
-  | Approach   | Endpoint             | Use Case                                                                  |
-  | ---------- | -------------------- | ------------------------------------------------------------------------- |
-  | **Single** | `POST /emails`       | Individual transactional emails, emails with attachments, scheduled sends |
-  | **Batch**  | `POST /emails/batch` | Multiple distinct emails in one request (max 100), bulk notifications     |
+  | Approach | Endpoint | Use Case |
+  | - | - | - |
+  | **Single** | `POST /emails` | Individual transactional emails, emails with attachments, scheduled sends |
+  | **Batch** | `POST /emails/batch` | Multiple distinct emails in one request (max 100), bulk notifications |
 
   **Choose batch when:**
 
@@ -307,24 +307,24 @@ The documentation includes quick start guides for common tasks with Resend. They
 
   Prevent duplicate emails when retrying failed requests.
 
-  | Key Facts             |                                                                  |
-  | --------------------- | ---------------------------------------------------------------- |
-  | **Format (single)**   | `<event-type>/<entity-id>` (e.g., `welcome-email/user-123`)      |
-  | **Format (batch)**    | `batch-<event-type>/<batch-id>` (e.g., `batch-orders/batch-456`) |
-  | **Expiration**        | 24 hours                                                         |
-  | **Max length**        | 256 characters                                                   |
-  | **Duplicate payload** | Returns original response without resending                      |
-  | **Different payload** | Returns 409 error                                                |
+  | Key Facts | |
+  | - | - |
+  | **Format (single)** | `<event-type>/<entity-id>` (e.g., `welcome-email/user-123`) |
+  | **Format (batch)** | `batch-<event-type>/<batch-id>` (e.g., `batch-orders/batch-456`) |
+  | **Expiration** | 24 hours |
+  | **Max length** | 256 characters |
+  | **Duplicate payload** | Returns original response without resending |
+  | **Different payload** | Returns 409 error |
 
   ### Error Handling
 
-  | Code     | Action                                                                                       |
-  | -------- | -------------------------------------------------------------------------------------------- |
-  | 400, 422 | Fix request parameters, don't retry                                                          |
-  | 401, 403 | Check API key / verify domain, don't retry                                                   |
-  | 409      | Idempotency conflict - use new key or fix payload                                            |
-  | 429      | Rate limited - retry with exponential backoff (by default, rate limit is 10 requests/second) |
-  | 500      | Server error - retry with exponential backoff                                                |
+  | Code | Action |
+  | - | - |
+  | 400, 422 | Fix request parameters, don't retry |
+  | 401, 403 | Check API key / verify domain, don't retry |
+  | 409 | Idempotency conflict - use new key or fix payload |
+  | 429 | Rate limited - retry with exponential backoff (by default, rate limit is 10 requests/second) |
+  | 500 | Server error - retry with exponential backoff |
 
   ### Retry Strategy
 
@@ -339,24 +339,24 @@ The documentation includes quick start guides for common tasks with Resend. They
 
   ### Required Parameters
 
-  | Parameter        | Type      | Description                                         |
-  | ---------------- | --------- | --------------------------------------------------- |
-  | `from`           | string    | Sender address. Format: `"Name <email@domain.com>"` |
-  | `to`             | string\[] | Recipient addresses (max 50)                        |
-  | `subject`        | string    | Email subject line                                  |
-  | `html` or `text` | string    | Email body content                                  |
+  | Parameter | Type | Description |
+  | - | - | - |
+  | `from` | string | Sender address. Format: `"Name <email@domain.com>"` |
+  | `to` | string\[] | Recipient addresses (max 50) |
+  | `subject` | string | Email subject line |
+  | `html` or `text` | string | Email body content |
 
   ### Optional Parameters
 
-  | Parameter        | Type      | Description                       |
-  | ---------------- | --------- | --------------------------------- |
-  | `cc`             | string\[] | CC recipients                     |
-  | `bcc`            | string\[] | BCC recipients                    |
-  | `reply_to`\*     | string\[] | Reply-to addresses                |
-  | `scheduled_at`\* | string    | Schedule send time (ISO 8601)     |
-  | `attachments`    | array     | File attachments (max 40MB total) |
-  | `tags`           | array     | Key/value pairs for tracking      |
-  | `headers`        | object    | Custom headers                    |
+  | Parameter | Type | Description |
+  | - | - | - |
+  | `cc` | string\[] | CC recipients |
+  | `bcc` | string\[] | BCC recipients |
+  | `reply_to`\* | string\[] | Reply-to addresses |
+  | `scheduled_at`\* | string | Schedule send time (ISO 8601) |
+  | `attachments` | array | File attachments (max 40MB total) |
+  | `tags` | array | Key/value pairs for tracking |
+  | `headers` | object | Custom headers |
 
   \*Parameter naming varies by SDK (e.g., `replyTo` in Node.js, `reply_to` in Python).
 

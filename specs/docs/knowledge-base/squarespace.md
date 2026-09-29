@@ -43,13 +43,13 @@ Scroll down to the **Custom records** section and select `Add record` on Squares
 
 Below is a mapping of the record fields from Resend to Squarespace:
 
-| Squarespace | Resend   | Example Value                           |
-| ----------- | -------- | --------------------------------------- |
-| Type        | Type     | `MX`                                    |
-| Host        | Name     | `send`                                  |
-| TTL         | TTL      | `4 hrs` (default)                       |
-| Mail Server | Content  | `feedback-smtp.us-east-1.amazonses.com` |
-| Priority    | Priority | `10`                                    |
+| Squarespace | Resend | Example Value |
+| - | - | - |
+| Type | Type | `MX` |
+| Host | Name | `send` |
+| TTL | TTL | `4 hrs` (default) |
+| Mail Server | Content | `feedback-smtp.us-east-1.amazonses.com` |
+| Priority | Priority | `10` |
 
 <Info>
   Omit your domain from the record values in Resend when you paste. Instead of
@@ -82,12 +82,12 @@ Add the **TXT Record** from your domain in Resend to Squarespace and click "Save
 
 Below is a mapping of the record fields from Resend to Squarespace:
 
-| Squarespace | Resend  | Example Value                         |
-| ----------- | ------- | ------------------------------------- |
-| Type        | Type    | `TXT`                                 |
-| Host        | Name    | `send`                                |
-| TTL         | TTL     | `4 hrs` (default)                     |
-| Text        | Content | `"v=spf1 include:amazonses.com ~all"` |
+| Squarespace | Resend | Example Value |
+| - | - | - |
+| Type | Type | `TXT` |
+| Host | Name | `send` |
+| TTL | TTL | `4 hrs` (default) |
+| Text | Content | `"v=spf1 include:amazonses.com ~all"` |
 
 <Info>
   Omit your domain from the record values in Resend when you paste. Instead of
@@ -111,12 +111,12 @@ In the same **Custom records** section, select `Add Record` on Squarespace.
 
 Below is a mapping of the record fields from Resend to Squarespace:
 
-| Squarespace | Resend  | Example Value                |
-| ----------- | ------- | ---------------------------- |
-| Type        | Type    | `TXT`                        |
-| Host        | Name    | `resend._domainkey`          |
-| TTL         | TTL     | `4 hrs` (default)            |
-| Text        | Content | `p=example_domain_key_value` |
+| Squarespace | Resend | Example Value |
+| - | - | - |
+| Type | Type | `TXT` |
+| Host | Name | `resend._domainkey` |
+| TTL | TTL | `4 hrs` (default) |
+| Text | Content | `p=example_domain_key_value` |
 
 <Info>
   Omit your domain from the record values in Resend when you paste. Instead of
@@ -150,13 +150,13 @@ Scroll down to the **Custom records** section and select `Add record` on Squares
 
 Below is a mapping of the record fields from Resend to Squarespace:
 
-| Squarespace | Resend   | Example Value                          |
-| ----------- | -------- | -------------------------------------- |
-| Type        | Type     | `MX`                                   |
-| Host        | Name     | `inbound`                              |
-| TTL         | TTL      | `4 hrs` (default)                      |
-| Mail Server | Content  | `inbound-smtp.us-east-1.amazonaws.com` |
-| Priority    | Priority | `10`                                   |
+| Squarespace | Resend | Example Value |
+| - | - | - |
+| Type | Type | `MX` |
+| Host | Name | `inbound` |
+| TTL | TTL | `4 hrs` (default) |
+| Mail Server | Content | `inbound-smtp.us-east-1.amazonaws.com` |
+| Priority | Priority | `10` |
 
 After verifying your domain, create a webhook to process incoming emails. For help setting up a webhook, how to access email data and attachments, forward emails, and more, see [our guide on receiving emails with Resend](/docs/dashboard/receiving/introduction).
 

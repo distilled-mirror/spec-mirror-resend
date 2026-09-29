@@ -451,10 +451,10 @@ To paginate backward through results (older to newer items), use the `before` pa
 
 Pagination requests may return the following validation errors:
 
-| Error              | Description                                         |
-| ------------------ | --------------------------------------------------- |
+| Error | Description |
+| - | - |
 | `validation_error` | Invalid cursor format or limit out of range (1–100) |
-| `validation_error` | Both `before` and `after` parameters provided       |
+| `validation_error` | Both `before` and `after` parameters provided |
 
 Example error response:
 

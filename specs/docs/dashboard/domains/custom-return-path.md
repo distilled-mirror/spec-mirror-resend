@@ -16,7 +16,14 @@ By default, Resend uses the `send` subdomain for the Return-Path address.
   verify.
 </Info>
 
-You can provide a custom Return-Path address when you [add a new domain in the Dashboard](/docs/add-a-domain) under **Advanced options**, or by setting the optional `custom_return_path` parameter when [creating or updating a domain via the API](/docs/api-reference/domains/create-domain) or with [a domains CLI command](/docs/cli#domains).
+You can provide a custom Return-Path address when you [add a new domain in the Dashboard](/docs/add-a-domain) under **Advanced options**, or by setting the optional `custom_return_path` parameter when [creating a domain via the API](/docs/api-reference/domains/create-domain) or with [the `domains create` CLI command](/docs/cli#domains).
+
+<Note>
+  The Return-Path is set when the domain is created and cannot be changed
+  afterwards, so `custom_return_path` is not accepted by the [Update
+  Domain](/docs/api-reference/domains/update-domain) endpoint. To use a different
+  Return-Path subdomain, delete the domain and add it again with the new value.
+</Note>
 
 <img alt="Custom Return Path" src="https://mintcdn.com/resend/JHWt09hsc7E33HK2/images/dashboard-domains-resend-custom-return-path.png?fit=max&auto=format&n=JHWt09hsc7E33HK2&q=85&s=569a75fc160aad18116efc93bcebe148" width="3360" height="2100" data-path="images/dashboard-domains-resend-custom-return-path.png" />
 

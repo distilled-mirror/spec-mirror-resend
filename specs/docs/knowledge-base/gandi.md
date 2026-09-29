@@ -52,13 +52,13 @@ Select “Add record” on Gandi to copy and paste the values MX from Resend.
 
 Below is a mapping of the record fields from Resend to Gandi:
 
-| Gandi    | Resend   | Example Value                            |
-| -------- | -------- | ---------------------------------------- |
-| Type     | Type     | `MX Record`                              |
-| Name     | Name     | `send`                                   |
-| Hostname | Content  | `feedback-smtp.us-east-1.amazonses.com.` |
-| TTL      | -        | `10800`                                  |
-| Priority | Priority | `10`                                     |
+| Gandi | Resend | Example Value |
+| - | - | - |
+| Type | Type | `MX Record` |
+| Name | Name | `send` |
+| Hostname | Content | `feedback-smtp.us-east-1.amazonses.com.` |
+| TTL | - | `10800` |
+| Priority | Priority | `10` |
 
 <Info>
   Do not use the same priority for multiple records. If Priority `10` is already
@@ -87,12 +87,12 @@ In the same section, select “Add record” again.
 
 Below is a mapping of the record fields from Resend to Gandi:
 
-| Gandi      | Resend  | Example Value                         |
-| ---------- | ------- | ------------------------------------- |
-| Type       | Type    | `TXT Record`                          |
-| Name       | Name    | `send`                                |
+| Gandi | Resend | Example Value |
+| - | - | - |
+| Type | Type | `TXT Record` |
+| Name | Name | `send` |
 | Text value | Content | `"v=spf1 include:amazonses.com ~all"` |
-| TTL        | -       | `10800`                               |
+| TTL | - | `10800` |
 
 ## Add TXT DKIM Records
 
@@ -116,12 +116,12 @@ In the same section, select “Add record” again.
 
 Below is a mapping of the record fields from Resend to Gandi:
 
-| Gandi      | Resend  | Example Value                |
-| ---------- | ------- | ---------------------------- |
-| Type       | Type    | `TXT Record`                 |
-| Name       | Name    | `send`                       |
+| Gandi | Resend | Example Value |
+| - | - | - |
+| Type | Type | `TXT Record` |
+| Name | Name | `send` |
 | Text value | Content | `p=example_domain_key_value` |
-| TTL        | -       | `1 hour`                     |
+| TTL | - | `1 hour` |
 
 ## Receiving Emails
 
@@ -149,13 +149,13 @@ Select “Add record” on Gandi:
 
 Below is a mapping of the record fields from Resend to Gandi:
 
-| Gandi    | Resend   | Example Value                           |
-| -------- | -------- | --------------------------------------- |
-| Type     | Type     | `MX Record`                             |
-| Name     | Name     | `inbound`                               |
-| Hostname | Content  | `inbound-smtp.us-east-1.amazonaws.com.` |
-| TTL      | -        | `10800`                                 |
-| Priority | Priority | `10`                                    |
+| Gandi | Resend | Example Value |
+| - | - | - |
+| Type | Type | `MX Record` |
+| Name | Name | `inbound` |
+| Hostname | Content | `inbound-smtp.us-east-1.amazonaws.com.` |
+| TTL | - | `10800` |
+| Priority | Priority | `10` |
 
 After verifying your domain, create a webhook to process incoming emails. For help setting up a webhook, how to access email data and attachments, forward emails, and more, see [our guide on receiving emails with Resend](/docs/dashboard/receiving/introduction).
 

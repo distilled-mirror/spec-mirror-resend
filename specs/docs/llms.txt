@@ -225,6 +225,7 @@
 - [Chat SDK Card Emails](https://resend.com/docs/chat-sdk-card-emails.md): Send rich HTML card emails using the Chat SDK and React Email.
 - [Chat SDK Attachments](https://resend.com/docs/chat-sdk-attachments.md): Handle inbound email attachments with the Chat SDK adapter.
 - [Chat SDK Proactive Outreach](https://resend.com/docs/chat-sdk-proactive-outreach.md): Start new email conversations proactively with the Chat SDK adapter.
+- [Eve](https://resend.com/docs/knowledge-base/eve.md): Connect to your Eve agent over email.
 - [How to add the Resend integration to your Anything project](https://resend.com/docs/anything-integration.md): Learn how to add the Resend integration to your Anything project.
 - [Send emails with Lovable and Resend](https://resend.com/docs/lovable-integration.md): Learn how to add the Resend integration to your Lovable project.
 - [Send emails with v0 and Resend](https://resend.com/docs/v0-integration.md): Learn how to add the Resend integration to your v0 project.

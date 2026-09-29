@@ -51,12 +51,12 @@ Log in to your [Strato account](https://www.strato.es/apps/CustomerService):
 
 Below is a mapping of the record fields from Resend to Strato:
 
-| Strato      | Resend   | Example Value                            |
-| ----------- | -------- | ---------------------------------------- |
-| Type        | Type     | `MX Record`                              |
-| Name        | Name     | `send`                                   |
-| Mail server | Content  | `feedback-smtp.eu-west-1.amazonses.com.` |
-| Priority    | Priority | `Low`                                    |
+| Strato | Resend | Example Value |
+| - | - | - |
+| Type | Type | `MX Record` |
+| Name | Name | `send` |
+| Mail server | Content | `feedback-smtp.eu-west-1.amazonses.com.` |
+| Priority | Priority | `Low` |
 
 ## Add TXT SPF Record
 
@@ -81,11 +81,11 @@ On the base domain settings:
 
 Below is a mapping of the record fields from Resend to Strato:
 
-| Strato | Resend  | Example Value                       |
-| ------ | ------- | ----------------------------------- |
-| Type   | Type    | `TXT Record`                        |
-| Name   | Name    | `send`                              |
-| Value  | Content | `v=spf1 include:amazonses.com ~all` |
+| Strato | Resend | Example Value |
+| - | - | - |
+| Type | Type | `TXT Record` |
+| Name | Name | `send` |
+| Value | Content | `v=spf1 include:amazonses.com ~all` |
 
 ## Add TXT DKIM Records
 
@@ -109,11 +109,11 @@ On the same TXT and CNAME manage page:
 
 Below is a mapping of the record fields from Resend to Strato:
 
-| Strato | Resend  | Example Value                |
-| ------ | ------- | ---------------------------- |
-| Type   | Type    | `TXT Record`                 |
-| Name   | Name    | `send`                       |
-| Value  | Content | `p=example_domain_key_value` |
+| Strato | Resend | Example Value |
+| - | - | - |
+| Type | Type | `TXT Record` |
+| Name | Name | `send` |
+| Value | Content | `p=example_domain_key_value` |
 
 <Info>
   Copy DKIM value using the small copy icon in Resend. DKIM records are
@@ -145,12 +145,12 @@ If you want to receive emails at your domain, toggle the "Receiving" switch on t
 
 Below is a mapping of the record fields from Resend to Strato:
 
-| Strato      | Resend   | Example Value                           |
-| ----------- | -------- | --------------------------------------- |
-| Type        | Type     | `MX Record`                             |
-| Name        | Name     | `inbound`                               |
-| Mail server | Content  | `inbound-smtp.us-east-1.amazonaws.com.` |
-| Priority    | Priority | `Low`                                   |
+| Strato | Resend | Example Value |
+| - | - | - |
+| Type | Type | `MX Record` |
+| Name | Name | `inbound` |
+| Mail server | Content | `inbound-smtp.us-east-1.amazonaws.com.` |
+| Priority | Priority | `Low` |
 
 After verifying your domain, create a webhook to process incoming emails. For help setting up a webhook, how to access email data and attachments, forward emails, and more, see [our guide on receiving emails with Resend](/docs/dashboard/receiving/introduction).
 

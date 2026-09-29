@@ -451,9 +451,9 @@ Common use cases:
 
 A condition step always produces two outgoing connections.
 
-| Connection type     | Description                                 |
-| ------------------- | ------------------------------------------- |
-| `condition_met`     | Taken when the condition evaluates to true  |
+| Connection type | Description |
+| - | - |
+| `condition_met` | Taken when the condition evaluates to true |
 | `condition_not_met` | Taken when the condition evaluates to false |
 
 ```json {4,9} theme={"theme":{"light":"github-light","dark":"vesper"}}
@@ -466,6 +466,33 @@ A condition step always produces two outgoing connections.
   "from": "check_plan",
   "to": "send_free_email",
   "type": "condition_not_met"
+}
+```
+
+## Compare against other data
+
+A rule's `value` can reference data instead of a fixed value. This lets a condition compare two values from the Automation.
+
+`field` and `value` can read:
+
+* `event.*`, the event that triggered the Automation.
+* `contact.*`, the contact.
+* `wait_events.<event_name>.*`, an event a previous [wait for event](/docs/dashboard/automations/wait-for-event#use-the-received-event-in-later-steps) step received. If the Automation waited for that event more than once, this is the most recent one before this step.
+
+A `value` that points at data that doesn't exist never matches.
+
+For example, after a [wait for event](/docs/dashboard/automations/wait-for-event) step for `order.shipped`, check that the shipped order is the one that triggered the Automation:
+
+```json {6-8} theme={"theme":{"light":"github-light","dark":"vesper"}}
+{
+  "key": "check_same_order",
+  "type": "condition",
+  "config": {
+    "type": "rule",
+    "field": "wait_events.order.shipped.order_id",
+    "operator": "eq",
+    "value": { "var": "event.order_id" }
+  }
 }
 ```
 
@@ -482,8 +509,11 @@ A condition step always produces two outgoing connections.
 For `rule` type:
 
 <ParamField body="config.field" type="string" required>
-  The field to evaluate. Must use the `event.` or `contact.` namespace prefix
-  (e.g., `event.amount`, `contact.email`).
+  The field to evaluate on a condition step. Use `event.` for the event that
+  triggered the Automation, `contact.` for the contact, or `wait_events.` for an
+  event received by a preceding wait for event step (for example,
+  `event.amount`, `contact.email`, or `wait_events.order.shipped.order_id`). A
+  wait for event `filter_rule` cannot use `wait_events.`.
 </ParamField>
 
 <ParamField body="config.operator" type="string" required>
@@ -502,9 +532,12 @@ For `rule` type:
   * `is_empty`: field is empty
 </ParamField>
 
-<ParamField body="config.value" type="string | number | boolean | null">
-  The value to compare against. Not required for `exists` and `is_empty`
-  operators.
+<ParamField body="config.value" type="string | number | boolean | null | object">
+  The value to compare against on a condition step. Either a fixed value or a
+  variable reference such as `{ "var": "event.order_id" }`, using the
+  condition namespaces: `event.` (the triggering event), `contact.`, or
+  `wait_events.` (a preceding wait for event). Not required for `exists` and
+  `is_empty` operators.
 </ParamField>
 
 For `and` / `or` types:

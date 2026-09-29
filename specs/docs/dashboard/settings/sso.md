@@ -37,9 +37,9 @@ Single Sign-On (SSO) lets everyone with an email address on your organization's 
   <Step title="Add the TXT record to your DNS">
     Resend issues a `TXT` record that proves you own the domain. Add it at the apex of your domain:
 
-    | Type | Name | Content                              | TTL  |
-    | ---- | ---- | ------------------------------------ | ---- |
-    | TXT  | @    | `resend-domain-verification=<value>` | Auto |
+    | Type | Name | Content | TTL |
+    | - | - | - | - |
+    | TXT | @ | `resend-domain-verification=<value>` | Auto |
 
     Copy the value from the Dashboard rather than typing it, since it's unique to your domain.
 

@@ -51,15 +51,15 @@ Resend uses standard HTTP codes to indicate the success or failure of your reque
 
 In general, `2xx` HTTP codes correspond to success, `4xx` codes are for user-related failures, and `5xx` codes are for infrastructure issues.
 
-| Status | Description                             |
-| ------ | --------------------------------------- |
-| `200`  | Successful request.                     |
-| `400`  | Check that the parameters were correct. |
-| `401`  | The API key used was missing.           |
-| `403`  | The API key used was invalid.           |
-| `404`  | The resource was not found.             |
-| `429`  | The rate limit was exceeded.            |
-| `5xx`  | Indicates an error with Resend servers. |
+| Status | Description |
+| - | - |
+| `200` | Successful request. |
+| `400` | Check that the parameters were correct. |
+| `401` | The API key used was missing. |
+| `403` | The API key used was invalid. |
+| `404` | The resource was not found. |
+| `429` | The rate limit was exceeded. |
+| `5xx` | Indicates an error with Resend servers. |
 
 <Info>
   Check [Error Codes](/docs/api-reference/errors) for a comprehensive breakdown of

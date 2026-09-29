@@ -38,13 +38,13 @@ Marketing emails can be **1-to-1** (e.g., abandoned cart reminders) or **1-to-ma
 
 While not exhaustive, here's a table listing different examples of emails and the most appropriate type for each example.
 
-| Type of Message    | Type of Recipient | Transactional | Marketing |
-| ------------------ | ----------------- | ------------- | --------- |
-| Order confirmation | Single            | ✓             | ⨯         |
-| Password reset     | Single            | ✓             | ⨯         |
-| Abandoned cart     | Single            | ⨯             | ✓         |
-| Newsletter         | Multiple          | ⨯             | ✓         |
-| Promotional offer  | Multiple          | ⨯             | ✓         |
+| Type of Message | Type of Recipient | Transactional | Marketing |
+| - | - | - | - |
+| Order confirmation | Single | ✓ | ⨯ |
+| Password reset | Single | ✓ | ⨯ |
+| Abandoned cart | Single | ⨯ | ✓ |
+| Newsletter | Multiple | ⨯ | ✓ |
+| Promotional offer | Multiple | ⨯ | ✓ |
 
 ## How to send an email with Resend
 

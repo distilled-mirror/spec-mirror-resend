@@ -72,13 +72,13 @@ Copy and paste the values MX in Resend to GoDaddy.
 
 Below is a mapping of the record fields from Resend to GoDaddy:
 
-| GoDaddy  | Resend   | Example Value                           |
-| -------- | -------- | --------------------------------------- |
-| Type     | Type     | `MX Record`                             |
-| Name     | Name     | `send`                                  |
-| Value    | Content  | `feedback-smtp.us-east-1.amazonses.com` |
-| TTL      | -        | `600` (or use default)                  |
-| Priority | Priority | `10`                                    |
+| GoDaddy | Resend | Example Value |
+| - | - | - |
+| Type | Type | `MX Record` |
+| Name | Name | `send` |
+| Value | Content | `feedback-smtp.us-east-1.amazonses.com` |
+| TTL | - | `600` (or use default) |
+| Priority | Priority | `10` |
 
 <Info>
   Do not use the same priority for multiple records. If Priority `10` is already
@@ -108,12 +108,12 @@ In the same section, add another record in GoDaddy.
 
 Below is a mapping of the record fields from Resend to GoDaddy:
 
-| GoDaddy | Resend  | Example Value                         |
-| ------- | ------- | ------------------------------------- |
-| Type    | Type    | `TXT Record`                          |
-| Name    | Name    | `send`                                |
-| Value   | Content | `"v=spf1 include:amazonses.com ~all"` |
-| TTL     | -       | `600` (or use default)                |
+| GoDaddy | Resend | Example Value |
+| - | - | - |
+| Type | Type | `TXT Record` |
+| Name | Name | `send` |
+| Value | Content | `"v=spf1 include:amazonses.com ~all"` |
+| TTL | - | `600` (or use default) |
 
 ## Add TXT DKIM Records
 
@@ -138,12 +138,12 @@ In the same section, add another record in GoDaddy.
 
 Below is a mapping of the record fields from Resend to GoDaddy:
 
-| GoDaddy | Resend  | Example Value                |
-| ------- | ------- | ---------------------------- |
-| Type    | Type    | `TXT Record`                 |
-| Name    | Name    | `resend._domainkey`          |
-| Value   | Content | `p=example_domain_key_value` |
-| TTL     | -       | `600` (or use default)       |
+| GoDaddy | Resend | Example Value |
+| - | - | - |
+| Type | Type | `TXT Record` |
+| Name | Name | `resend._domainkey` |
+| Value | Content | `p=example_domain_key_value` |
+| TTL | - | `600` (or use default) |
 
 ## Receiving Emails
 
@@ -171,13 +171,13 @@ Click `Add New Record` to create a new record:
 
 Below is a mapping of the record fields from Resend to GoDaddy:
 
-| GoDaddy  | Resend   | Example Value                          |
-| -------- | -------- | -------------------------------------- |
-| Type     | Type     | `MX Record`                            |
-| Name     | Name     | `inbound`                              |
-| Value    | Content  | `inbound-smtp.us-east-1.amazonaws.com` |
-| TTL      | -        | `600` (or use default)                 |
-| Priority | Priority | `10`                                   |
+| GoDaddy | Resend | Example Value |
+| - | - | - |
+| Type | Type | `MX Record` |
+| Name | Name | `inbound` |
+| Value | Content | `inbound-smtp.us-east-1.amazonaws.com` |
+| TTL | - | `600` (or use default) |
+| Priority | Priority | `10` |
 
 After verifying your domain, create a webhook to process incoming emails. For help setting up a webhook, how to access email data and attachments, forward emails, and more, see [our guide on receiving emails with Resend](/docs/dashboard/receiving/introduction).
 

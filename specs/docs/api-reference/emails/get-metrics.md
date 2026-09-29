@@ -94,30 +94,30 @@ All parameters are optional. With none, the response covers the last 7 days
 
 ## Metrics
 
-| Metric                 | Description                                                                          |
-| ---------------------- | ------------------------------------------------------------------------------------ |
-| `received`             | Emails Resend accepted for processing.                                               |
-| `sent`                 | Emails sent to the recipient's mail server.                                          |
-| `delivered`            | Emails the recipient's mail server accepted.                                         |
-| `delivery_delayed`     | Delivery postponed by a temporary issue. Not final.                                  |
-| `failed`               | Emails that never reached a mail server.                                             |
-| `suppressed`           | Skipped because the recipient is [suppressed](/docs/dashboard/emails/email-suppressions). |
-| `bounced`              | All [bounces](/docs/dashboard/emails/email-bounces), summing the three below.             |
-| `bounced_transient`    | Soft bounce. Temporary, so a later send can succeed.                                 |
-| `bounced_permanent`    | Hard bounce. Permanent, and the address is suppressed.                               |
-| `bounced_undetermined` | Bounce with no classifiable reason.                                                  |
-| `opened`               | Open events, including repeats.                                                      |
-| `unique_opened`        | Emails opened at least once.                                                         |
-| `clicked`              | Link click events, including repeats.                                                |
-| `unique_clicked`       | Emails clicked at least once.                                                        |
-| `complained`           | Delivered emails marked as spam.                                                     |
-| `unsubscribed`         | Recipients who unsubscribed.                                                         |
-| `delivery_rate`        | `delivered` / `sent`                                                                 |
-| `open_rate`            | `unique_opened` / `delivered`                                                        |
-| `click_rate`           | `unique_clicked` / `delivered`                                                       |
-| `bounce_rate`          | `bounced` / `sent`                                                                   |
-| `complaint_rate`       | `complained` / `delivered`                                                           |
-| `unsubscribe_rate`     | `unsubscribed` / `delivered`                                                         |
+| Metric | Description |
+| - | - |
+| `received` | Emails Resend accepted for processing. |
+| `sent` | Emails sent to the recipient's mail server. |
+| `delivered` | Emails the recipient's mail server accepted. |
+| `delivery_delayed` | Delivery postponed by a temporary issue. Not final. |
+| `failed` | Emails that never reached a mail server. |
+| `suppressed` | Skipped because the recipient is [suppressed](/docs/dashboard/emails/email-suppressions). |
+| `bounced` | All [bounces](/docs/dashboard/emails/email-bounces), summing the three below. |
+| `bounced_transient` | Soft bounce. Temporary, so a later send can succeed. |
+| `bounced_permanent` | Hard bounce. Permanent, and the address is suppressed. |
+| `bounced_undetermined` | Bounce with no classifiable reason. |
+| `opened` | Open events, including repeats. |
+| `unique_opened` | Emails opened at least once. |
+| `clicked` | Link click events, including repeats. |
+| `unique_clicked` | Emails clicked at least once. |
+| `complained` | Delivered emails marked as spam. |
+| `unsubscribed` | Recipients who unsubscribed. |
+| `delivery_rate` | `delivered` / `sent` |
+| `open_rate` | `unique_opened` / `delivered` |
+| `click_rate` | `unique_clicked` / `delivered` |
+| `bounce_rate` | `bounced` / `sent` |
+| `complaint_rate` | `complained` / `delivered` |
+| `unsubscribe_rate` | `unsubscribed` / `delivered` |
 
 <Note>
   Open and click metrics require [open and click

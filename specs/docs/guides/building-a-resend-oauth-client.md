@@ -104,19 +104,19 @@ Host the document on a site you control, whatever the client is. A hosted app se
 
 The fields are the [registration](/docs/api-reference/oauth/register) fields, with extra rules:
 
-| Field                        | Rule                                                                                                                                   |
-| ---------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
-| `client_id`                  | Required. Must equal the document's own URL, character for character.                                                                  |
-| `client_name`                | Required, 1–200 characters.                                                                                                            |
-| `redirect_uris`              | Required, 1 to 10 entries. An `https` URI must be on the same host as the document. See [Redirect URIs](#redirect-uris-in-a-document). |
-| `token_endpoint_auth_method` | Must be `none`, or omitted. A document is public, so it can't authenticate with a secret.                                              |
-| `client_secret`              | Must be absent.                                                                                                                        |
-| `jwks`, `jwks_uri`           | Must be absent. Resend doesn't support `private_key_jwt`.                                                                              |
-| `grant_types`                | Must include `authorization_code`. Values Resend doesn't support are ignored rather than rejected.                                     |
-| `response_types`             | If present, `["code"]` only.                                                                                                           |
-| `scope`                      | Space-delimited, and every value must be [supported](#scopes). Pass it explicitly: an omitted `scope` gives the client both scopes.    |
-| `logo_uri`                   | Optional, `http` or `https`. Shown on the consent screen only when it's served from the same host as the document.                     |
-| `client_uri`                 | Optional. Read but not otherwise used.                                                                                                 |
+| Field | Rule |
+| - | - |
+| `client_id` | Required. Must equal the document's own URL, character for character. |
+| `client_name` | Required, 1–200 characters. |
+| `redirect_uris` | Required, 1 to 10 entries. An `https` URI must be on the same host as the document. See [Redirect URIs](#redirect-uris-in-a-document). |
+| `token_endpoint_auth_method` | Must be `none`, or omitted. A document is public, so it can't authenticate with a secret. |
+| `client_secret` | Must be absent. |
+| `jwks`, `jwks_uri` | Must be absent. Resend doesn't support `private_key_jwt`. |
+| `grant_types` | Must include `authorization_code`. Values Resend doesn't support are ignored rather than rejected. |
+| `response_types` | If present, `["code"]` only. |
+| `scope` | Space-delimited, and every value must be [supported](#scopes). Pass it explicitly: an omitted `scope` gives the client both scopes. |
+| `logo_uri` | Optional, `http` or `https`. Shown on the consent screen only when it's served from the same host as the document. |
+| `client_uri` | Optional. Read but not otherwise used. |
 
 Apart from `grant_types`, a declaration Resend can't honor fails the whole document rather than being dropped from it. A client that declares `private_key_jwt`, for instance, gets an error rather than being downgraded to an unauthenticated one.
 
