@@ -231,7 +231,7 @@ When sending an event to trigger an Automation, you must identify the contact us
 
 <Tabs>
   <Tab title="Using contact ID">
-    Use a contact ID when you already have the contact stored in your [Audience](/docs/dashboard/audiences/introduction):
+    Use a contact ID when you already have the [Contact](/docs/dashboard/contacts/introduction) stored:
 
     <CodeGroup>
       ```ts Node.js {7} theme={"theme":{"light":"github-light","dark":"vesper"}}

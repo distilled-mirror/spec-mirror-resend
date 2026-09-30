@@ -50,7 +50,7 @@ export const ResendParamField = ({children, body, path, ...props}) => {
 
   <CodeGroup>
     ```bash Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
-    npm install resend@6.28.1-preview-inboxes.1
+    npm install resend@6.28.1-preview-inboxes.2
     ```
 
     ```bash CLI theme={"theme":{"light":"github-light","dark":"vesper"}}

@@ -64,11 +64,11 @@ export const ResendParamField = ({children, body, path, ...props}) => {
 <ParamField body="html" type="string">
   The HTML version of the message. You can include Contact Properties in the
   body of the Broadcast. Learn more about [Contact
-  Properties](/docs/dashboard/audiences/contacts).
+  Properties](/docs/dashboard/contacts/properties).
 </ParamField>
 
 <ParamField body="text" type="string">
-  The plain text version of the message. You can include Contact Properties in the body of the Broadcast. Learn more about [Contact Properties](/docs/dashboard/audiences/contacts).
+  The plain text version of the message. You can include Contact Properties in the body of the Broadcast. Learn more about [Contact Properties](/docs/dashboard/contacts/properties).
 
   <Info>
     If not provided, the HTML will be used to generate a plain text version. You

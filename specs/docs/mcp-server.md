@@ -575,7 +575,7 @@ Resend's MCP server gives your AI agent native access to the full Resend platfor
 Here are some real examples of what your agent can do with these tools:
 
 * Turn a [Paper design](/docs/guides/paper) into a ready-to-send [Template](/docs/dashboard/templates/introduction) or [Broadcast](/docs/dashboard/broadcasts/introduction)
-* [Bulk import contacts from a CSV](/docs/dashboard/audiences/contacts#bulk-upload-by-csv), upserting or skipping duplicates, and organize them into [Segments](/docs/dashboard/segments/introduction)
+* [Bulk import contacts from a CSV](/docs/dashboard/contacts/add-contacts#add-contacts-by-uploading-a-csv), upserting or skipping duplicates, and organize them into [Segments](/docs/dashboard/segments/introduction)
 * Build [Automations](/docs/dashboard/automations/introduction) that send emails when a contact is created, updated, or triggers a [custom event](/docs/dashboard/automations/custom-events)
 * Read and triage [inbound email](/docs/dashboard/receiving/introduction), download attachments, and send replies
 * Schedule, reschedule, and cancel [scheduled emails](/docs/dashboard/emails/schedule-email)

@@ -71,6 +71,13 @@ Plans, features, and cost-per-email for transactional and marketing emails.
 - [Pricing (Markdown)](https://resend.com/pricing.md)
 - [Pricing (HTML)](https://resend.com/pricing)
 
+## Enterprise
+
+Enterprise plans, SLAs, security and compliance, and how to contact sales.
+
+- [Enterprise (Markdown)](https://resend.com/enterprise.md)
+- [Enterprise (HTML)](https://resend.com/enterprise)
+
 ## Blog
 
 Articles on email infrastructure, developer experience, and product updates. The index enumerates every post as a flat list of links. Append `.md` to any post URL, or send `Accept: text/markdown`, to receive the raw markdown source.

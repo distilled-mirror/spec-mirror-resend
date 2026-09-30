@@ -7,8 +7,8 @@
 > Learn how to give email recipients the ability to unsubscribe without searching for the unsubscribe link.
 
 <Info>
-  For contact and unsubscribe management workflows, see the [Audiences
-  overview](/docs/dashboard/audiences/introduction), where Broadcasts are built for
+  For contact and unsubscribe management workflows, see the [Contacts
+  overview](/docs/dashboard/contacts/introduction), where Broadcasts are built for
   keeping track of topics, segments, and unsubscribe preferences.
 </Info>
 

@@ -6,7 +6,7 @@
 
 > Remove a contact from your audience in an Automation.
 
-This step removes the contact that triggered the Automation from its [Audience](/docs/dashboard/audiences/introduction). Once deleted, the contact will no longer receive emails from that audience and any remaining steps in the Automation run are skipped.
+This step removes the contact that triggered the Automation from your [Contact list](/docs/dashboard/contacts/introduction). Once deleted, the contact will no longer receive Broadcasts, and any remaining steps in the Automation run are skipped.
 
 Common use cases:
 

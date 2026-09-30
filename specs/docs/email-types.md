@@ -45,7 +45,7 @@ Marketing emails are typically **1-to-many** messages, sent when you want to rea
 
 With a Resend Marketing Plan, you can send [Broadcasts](/docs/dashboard/broadcasts/introduction) to your subscribers using a no-code editor in your Resend Dashboard, or from the [Broadcast API](https://resend.com/docs/api-reference/broadcasts/create-broadcast).
 
-When you use Broadcasts, you get tools for [managing your contacts](/docs/dashboard/audiences/introduction), [tracking performance](/docs/dashboard/broadcasts/performance-tracking), and [customizing your personal unsubscribe page](/docs/dashboard/settings/unsubscribe-page). Resend also handles all the queuing, throttling, and scheduling for you so that you don't have to roll your own infrastructure.
+When you use Broadcasts, you get tools for [managing your contacts](/docs/dashboard/contacts/introduction), [tracking performance](/docs/dashboard/broadcasts/performance-tracking), and [customizing your personal unsubscribe page](/docs/dashboard/settings/unsubscribe-page). Resend also handles all the queuing, throttling, and scheduling for you so that you don't have to roll your own infrastructure.
 
 Marketing plans also allow you to create [Resend automations](/docs/dashboard/automations/introduction) for repeatable actions like welcoming new subscribers and updating your contact list. Resources such as the [Resend MCP server](/docs/mcp-server), [agent skills](/docs/react-email-skill), and more are all available to your preferred [AI builders and tooling](/docs/ai-onboarding) to help you send and manage your marketing emails.
 
@@ -79,7 +79,7 @@ Resend allows you to choose both a Transactional and a Marketing plan, each at t
 ## Next steps
 
 <CardGroup cols={2}>
-  <Card title="Import or add email contacts" icon="globe" href="/docs/dashboard/audiences/contacts">
+  <Card title="Import or add email contacts" icon="globe" href="/docs/dashboard/contacts/add-contacts">
     Add existing subscribers to your Resend contact list programmatically,
     manually, or by uploading a `.csv` file.
   </Card>

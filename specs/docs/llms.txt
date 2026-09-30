@@ -95,6 +95,14 @@
 - [Compose and send with the Broadcast editor](https://resend.com/docs/dashboard/broadcasts/editor.md): Learn how to write and send your Broadcasts in the Dashboard editor
 - [Compose and send Broadcasts with the API](https://resend.com/docs/dashboard/broadcasts/send-broadcast-with-api.md): Send marketing emails using the Broadcasts API.
 - [Performance Tracking](https://resend.com/docs/dashboard/broadcasts/performance-tracking.md): Track your Broadcasts email performance in real-time
+- [Contacts](https://resend.com/docs/dashboard/contacts/introduction.md): An introduction to how your Contacts are organized and maintained in Resend.
+- [Add Contacts](https://resend.com/docs/dashboard/contacts/add-contacts.md): Learn how to add Contacts with Resend.
+- [Managing Contacts](https://resend.com/docs/dashboard/contacts/manage-contacts.md): Learn how to view, update, and delete your Contacts with Resend.
+- [Contact properties](https://resend.com/docs/dashboard/contacts/properties.md): Learn how to work with Contact properties with Resend.
+- [Managing Segments](https://resend.com/docs/dashboard/contacts/manage-segments.md): Learn how to create, retrieve, and delete Segments.
+- [Topics](https://resend.com/docs/dashboard/contacts/manage-topics.md): Learn how to create, view, delete, and manage Topics.
+- [Managing unsubscribed Contacts](https://resend.com/docs/dashboard/contacts/managing-unsubscribe-list.md): Learn how to check and remove recipients who have unsubscribed from your marketing emails.
+- [Migrating from Audiences to Segments](https://resend.com/docs/dashboard/contacts/migrating-from-audiences-to-segments.md): Learn how to migrate from Audiences to Segments
 - [Automations](https://resend.com/docs/dashboard/automations/introduction.md): An introduction to automating emails with custom events.
 - [Create Automations](https://resend.com/docs/dashboard/automations/create-automation.md): Create an automation triggered by an event in your application.
 - [Custom Events](https://resend.com/docs/dashboard/automations/custom-events.md): Define custom events to trigger Automations.
@@ -114,13 +122,6 @@
 - [Compose with the Template editor](https://resend.com/docs/dashboard/templates/template-editor.md): Learn how to write reusable transactional email Templates in the Dashboard editor
 - [Working with Variables](https://resend.com/docs/dashboard/templates/template-variables.md): How to work with custom variables in Templates.
 - [Version History](https://resend.com/docs/dashboard/templates/version-history.md): Edit Templates safely in production environments with version history.
-- [Your Resend Audience](https://resend.com/docs/dashboard/audiences/introduction.md): Learn how to manage your Contacts and send personalized Broadcasts to them.
-- [Managing Contacts](https://resend.com/docs/dashboard/audiences/contacts.md): Learn how to work with Contacts with Resend.
-- [Contact Properties](https://resend.com/docs/dashboard/audiences/properties.md): Learn how to work with Contact Properties with Resend.
-- [Managing Segments](https://resend.com/docs/dashboard/segments/introduction.md): Learn how to create, retrieve, and delete segments.
-- [Topics](https://resend.com/docs/dashboard/topics/introduction.md): Give your users more control over their subscription preferences.
-- [Migrating from Audiences to Segments](https://resend.com/docs/dashboard/segments/migrating-from-audiences-to-segments.md): Learn how to migrate from Audiences to Segments
-- [Managing Unsubscribed Contacts](https://resend.com/docs/dashboard/audiences/managing-unsubscribe-list.md): Learn how to check and remove recipients who have unsubscribed to your marketing emails.
 - [Introduction](https://resend.com/docs/dashboard/logs/introduction.md): Learn how to view and troubleshoot API logs.
 - [Webhooks](https://resend.com/docs/webhooks/introduction.md): An introduction to using webhooks to notify your application about email events.
 - [Create a Webhook](https://resend.com/docs/webhooks/create-webhook.md): Learn how to add a webhook to notify your application about events from Resend.
@@ -146,8 +147,26 @@
 - [contact.created](https://resend.com/docs/webhooks/contacts/created.md): Received when a contact is created.
 - [contact.updated](https://resend.com/docs/webhooks/contacts/updated.md): Received when a contact is updated.
 - [contact.deleted](https://resend.com/docs/webhooks/contacts/deleted.md): Received when a contact is deleted.
+- [contact.topics.updated](https://resend.com/docs/webhooks/contacts/topics-updated.md): Received when a contact's topic subscriptions change.
 - [suppression.added](https://resend.com/docs/webhooks/suppressions/added.md): Received when an email address is added to your suppression list.
 - [suppression.removed](https://resend.com/docs/webhooks/suppressions/removed.md): Received when an email address is removed from your suppression list.
+- [topic.created](https://resend.com/docs/webhooks/topics/created.md): Received when a topic is created.
+- [topic.updated](https://resend.com/docs/webhooks/topics/updated.md): Received when a topic is updated.
+- [topic.deleted](https://resend.com/docs/webhooks/topics/deleted.md): Received when a topic is deleted.
+- [inbox.created](https://resend.com/docs/webhooks/inboxes/created.md): Received when an inbox is created.
+- [inbox.updated](https://resend.com/docs/webhooks/inboxes/updated.md): Received when an inbox's settings change.
+- [inbox.deleted](https://resend.com/docs/webhooks/inboxes/deleted.md): Received when an inbox is deleted.
+- [inbox.thread.created](https://resend.com/docs/webhooks/inboxes/thread-created.md): Received when the first email of a thread lands in an inbox.
+- [inbox.thread.folder.updated](https://resend.com/docs/webhooks/inboxes/thread-folder-updated.md): Received when a thread moves between folders.
+- [inbox.thread.assigned](https://resend.com/docs/webhooks/inboxes/thread-assigned.md): Received when a thread is assigned or reassigned.
+- [inbox.thread.unassigned](https://resend.com/docs/webhooks/inboxes/thread-unassigned.md): Received when a thread is unassigned.
+- [inbox.thread.labels.updated](https://resend.com/docs/webhooks/inboxes/thread-labels-updated.md): Received when a label is applied to or removed from a thread.
+- [inbox.email.received](https://resend.com/docs/webhooks/inboxes/email-received.md): Received when an inbound email is added to a thread.
+- [inbox.email.sent](https://resend.com/docs/webhooks/inboxes/email-sent.md): Received when an outbound email is accepted for delivery and added to a thread.
+- [inbox.draft.created](https://resend.com/docs/webhooks/inboxes/draft-created.md): Received when a draft is created.
+- [inbox.draft.updated](https://resend.com/docs/webhooks/inboxes/draft-updated.md): Received when a draft is edited.
+- [inbox.draft.sent](https://resend.com/docs/webhooks/inboxes/draft-sent.md): Received when a draft is sent.
+- [inbox.draft.deleted](https://resend.com/docs/webhooks/inboxes/draft-deleted.md): Received when a draft is discarded.
 - [Official SDKs](https://resend.com/docs/sdks.md): Open source client libraries for your favorite platforms.
 - [Resend CLI](https://resend.com/docs/cli.md): The official command-line tool for Resend. Send emails, manage your account, and develop locally from the terminal.
 - [MCP Server](https://resend.com/docs/mcp-server.md): Connect your AI agent to Resend using the hosted MCP server.

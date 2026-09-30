@@ -45,9 +45,8 @@ You can send bulk marketing emails from [a verified domain](/docs/dashboard/doma
 
 <Steps>
   <Step title="Add contacts.">
-    [Add or import contacts](/docs/dashboard/audiences/contacts#add-contacts)
-    manually or programmatically. You can also upload a `.csv` file of existing
-    contacts.
+    [Add or import contacts](/docs/dashboard/contacts/add-contacts) manually or
+    programmatically. You can also upload a `.csv` file of existing contacts.
   </Step>
 
   <Step title="Create a segment and add contacts.">
@@ -140,7 +139,7 @@ See how to use Resend's Broadcast features.
 
   <Card title="Manage Broadcasts" icon="envelopes-bulk" href="/docs/dashboard/broadcasts/manage-broadcasts" />
 
-  <Card title="Contacts" icon="id-card" href="/docs/dashboard/audiences/contacts" />
+  <Card title="Contacts" icon="id-card" href="/docs/dashboard/contacts/introduction" />
 
   <Card title="Segments" icon="chart-pie" href="/docs/dashboard/segments/introduction" />
 
