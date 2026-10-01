@@ -73,8 +73,8 @@ quoted under a forwarded-message banner.
 </ResendParamField>
 
 <ResendParamField path="email_id" type="string" required>
-  The Email ID of the message to forward, as returned in the thread's
-  `messages[].id`.
+  The Email ID of the message to forward, as returned by [List Thread
+  Emails](/docs/api-reference/inboxes/list-thread-emails) in `data[].id`.
 </ResendParamField>
 
 ## Body Parameters
@@ -128,7 +128,7 @@ quoted under a forwarded-message banner.
 </ParamField>
 
 <ParamField body="reply_to" type="string[]">
-  Always an empty array.
+  The Reply-To addresses.
 </ParamField>
 
 <ParamField body="subject" type="string">
@@ -136,14 +136,14 @@ quoted under a forwarded-message banner.
 </ParamField>
 
 <ParamField body="message_id" type="string | null">
-  Always `null`.
+  The Message-ID header of the message.
 </ParamField>
 
-<ParamField body="html" type="string">
+<ParamField body="html" type="string | null">
   The HTML body, including the note and the quoted original.
 </ParamField>
 
-<ParamField body="text" type="string">
+<ParamField body="text" type="string | null">
   The plain-text body, including the note and the quoted original.
 </ParamField>
 
@@ -216,14 +216,20 @@ quoted under a forwarded-message banner.
     "direction": "outbound",
     "from": "support@example.com",
     "to": ["colleague@example.org"],
-    "cc": [],
-    "bcc": [],
-    "reply_to": [],
+    "cc": ["billing@example.com"],
+    "bcc": ["records@example.com"],
+    "reply_to": ["support@example.com"],
     "subject": "Fwd: Refund for order 1041",
-    "message_id": null,
+    "message_id": "<6a0c8e58@example.com>",
     "html": "<div>Flagging this refund request for you.<br>\n<br>\n---------- Forwarded message ---------<br>\nFrom: Ada Lovelace &lt;ada@example.org&gt;<br>\nDate: Wed, Aug 5, 2026 at 2:03 PM<br>\nSubject: Refund for order 1041<br>\nTo: support@example.com<br>\n<br>\nCould I get a refund for order 1041?</div>",
     "text": "Flagging this refund request for you.\n\n---------- Forwarded message ---------\nFrom: Ada Lovelace <ada@example.org>\nDate: Wed, Aug 5, 2026 at 2:03 PM\nSubject: Refund for order 1041\nTo: support@example.com\n\nCould I get a refund for order 1041?",
-    "attachments": [],
+    "attachments": [
+      {
+        "id": "9d4f2b81-6c3a-4e7d-8b12-0a5c6d7e8f90",
+        "filename": "receipt.pdf",
+        "size": 20841
+      }
+    ],
     "read": true,
     "received_at": "2026-08-05T14:12:04.110Z"
   }

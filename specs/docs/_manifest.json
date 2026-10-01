@@ -92,6 +92,7 @@
     "api-reference/inboxes/list-drafts.md",
     "api-reference/inboxes/list-inboxes.md",
     "api-reference/inboxes/list-labels.md",
+    "api-reference/inboxes/list-thread-emails.md",
     "api-reference/inboxes/list-threads.md",
     "api-reference/inboxes/reply-thread-email.md",
     "api-reference/inboxes/send-draft.md",

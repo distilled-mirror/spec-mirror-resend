@@ -107,7 +107,7 @@ Event triggered whenever an **outbound email is accepted for delivery** and adde
   </ParamField>
 
   <ParamField body="email" type="object">
-    The email, as it is when the webhook is sent, without `html` or `text`. Fetch the body from the API
+    The email, as it is when the webhook is sent, without `html` or `text`. Fetch the body with [Retrieve Thread Email](/docs/api-reference/inboxes/get-thread-email)
 
     <Expandable title="email object" defaultOpen>
       <ParamField body="id" type="string">

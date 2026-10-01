@@ -105,7 +105,7 @@ An inbox sends and receives email at an address on one of your domains, such as
   The ID of the domain that owns the address.
 </ParamField>
 
-<ParamField body="forwarding_address" type="string | null">
+<ParamField body="receiving_address" type="string | null">
   The address to forward mail to when forwarding is enabled. `null` otherwise.
 </ParamField>
 
@@ -162,7 +162,7 @@ An inbox sends and receives email at an address on one of your domains, such as
     "name": "Customer Support",
     "email_address": "support@example.com",
     "domain_id": "d91cd9bd-1176-453e-8fc1-35364d380206",
-    "forwarding_address": null,
+    "receiving_address": null,
     "friendly_name": "Ada from Support",
     "unread": 0,
     "created_at": "2026-08-05T14:03:11.229Z"

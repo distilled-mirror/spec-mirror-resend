@@ -103,7 +103,7 @@ Event triggered whenever a **draft is created**, standalone or reply.
   </ParamField>
 
   <ParamField body="draft" type="object">
-    The draft, as it is when the webhook is sent, without `html` or `text`. Fetch the body from the API
+    The draft, as it is when the webhook is sent, without `html` or `text`. Fetch the body with [Retrieve Draft](/docs/api-reference/inboxes/get-draft)
 
     <Expandable title="draft object" defaultOpen>
       <ParamField body="object" type="string">

@@ -104,7 +104,8 @@ or `200` if that reply draft already exists.
 </ResendParamField>
 
 <ResendParamField body="reply_to_email_id" type="string">
-  The Email ID to reply to, as returned in the thread's `messages[].id`. Must be
+  The Email ID to reply to, as returned by [List Thread
+  Emails](/docs/api-reference/inboxes/list-thread-emails) in `data[].id`. Must be
   sent with `thread_id`.
 </ResendParamField>
 

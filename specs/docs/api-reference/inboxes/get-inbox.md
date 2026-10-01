@@ -83,7 +83,7 @@ export const ResendParamField = ({children, body, path, ...props}) => {
   The address of the inbox.
 </ParamField>
 
-<ParamField body="forwarding_address" type="string | null">
+<ParamField body="receiving_address" type="string | null">
   The address to forward mail to when forwarding is enabled. `null` otherwise.
 </ParamField>
 
@@ -132,7 +132,7 @@ export const ResendParamField = ({children, body, path, ...props}) => {
     "id": "b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1",
     "name": "Customer Support",
     "email_address": "support@example.com",
-    "forwarding_address": null,
+    "receiving_address": null,
     "friendly_name": "Ada from Support",
     "unread": 3,
     "drafts": 2,

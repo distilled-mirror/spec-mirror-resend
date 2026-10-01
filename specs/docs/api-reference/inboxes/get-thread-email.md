@@ -59,8 +59,8 @@ export const ResendParamField = ({children, body, path, ...props}) => {
   </CodeGroup>
 </Warning>
 
-Returns one message of a thread, in the same shape [Retrieve
-Thread](/docs/api-reference/inboxes/get-thread) returns inside `messages`.
+Returns one message of a thread. Each item from [List Thread
+Emails](/docs/api-reference/inboxes/list-thread-emails) has this shape.
 
 ## Path Parameters
 
@@ -73,7 +73,8 @@ Thread](/docs/api-reference/inboxes/get-thread) returns inside `messages`.
 </ResendParamField>
 
 <ResendParamField path="email_id" type="string" required>
-  The Email ID, as returned in the thread's `messages[].id`.
+  The Email ID, as returned by [List Thread
+  Emails](/docs/api-reference/inboxes/list-thread-emails) in `data[].id`.
 </ResendParamField>
 
 ## Response Fields
@@ -83,7 +84,8 @@ Thread](/docs/api-reference/inboxes/get-thread) returns inside `messages`.
 </ParamField>
 
 <ParamField body="direction" type="string">
-  Whether the message was received by the inbox or sent from it.
+  Whether the message was received by the inbox or sent from it. One of
+  `inbound` or `outbound`.
 </ParamField>
 
 <ParamField body="from" type="string">

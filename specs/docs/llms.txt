@@ -297,9 +297,10 @@
 - [Update Label](https://resend.com/docs/api-reference/inboxes/update-label.md): Rename or recolor an existing label.
 - [Delete Label](https://resend.com/docs/api-reference/inboxes/delete-label.md): Remove an existing label from an inbox.
 - [List Threads](https://resend.com/docs/api-reference/inboxes/list-threads.md): Retrieve the threads in one folder of an inbox.
-- [Retrieve Thread](https://resend.com/docs/api-reference/inboxes/get-thread.md): Retrieve a thread with its full message history.
+- [Retrieve Thread](https://resend.com/docs/api-reference/inboxes/get-thread.md): Retrieve a thread summary.
 - [Update Thread](https://resend.com/docs/api-reference/inboxes/update-thread.md): Mark a thread read or unread, move it, or apply a label.
 - [Delete Thread](https://resend.com/docs/api-reference/inboxes/delete-thread.md): Move a thread to the trash folder.
+- [List Thread Emails](https://resend.com/docs/api-reference/inboxes/list-thread-emails.md): Retrieve the messages in a thread.
 - [Retrieve Thread Email](https://resend.com/docs/api-reference/inboxes/get-thread-email.md): Retrieve a single message from a thread.
 - [Reply to Thread Email](https://resend.com/docs/api-reference/inboxes/reply-thread-email.md): Send a reply to a message in an inbox thread.
 - [Forward Thread Email](https://resend.com/docs/api-reference/inboxes/forward-thread-email.md): Forward a message in an inbox thread to new recipients.

@@ -4,7 +4,7 @@
 
 # Retrieve Thread
 
-> Retrieve a thread with its full message history.
+> Retrieve a thread summary.
 
 export const ResendParamField = ({children, body, path, ...props}) => {
   const [lang, setLang] = useState(() => {
@@ -59,6 +59,9 @@ export const ResendParamField = ({children, body, path, ...props}) => {
   </CodeGroup>
 </Warning>
 
+The response is the thread summary. Messages are listed separately with [List
+Thread Emails](/docs/api-reference/inboxes/list-thread-emails).
+
 ## Path Parameters
 
 <ResendParamField path="inbox_id" type="string" required>
@@ -94,83 +97,6 @@ export const ResendParamField = ({children, body, path, ...props}) => {
 
 <ParamField body="read" type="boolean">
   True only when every message in the thread is read.
-</ParamField>
-
-<ParamField body="messages" type="array">
-  The thread's messages, oldest first. The full history is returned in one
-  response.
-
-  <Expandable defaultOpen="true" title="properties">
-    <ParamField body="id" type="string">
-      The ID of the message.
-    </ParamField>
-
-    <ParamField body="direction" type="string">
-      Whether the message was received by the inbox or sent from it.
-    </ParamField>
-
-    <ParamField body="from" type="string">
-      Sender email address.
-    </ParamField>
-
-    <ParamField body="to" type="string[]">
-      The recipients of the message.
-    </ParamField>
-
-    <ParamField body="cc" type="string[]">
-      The CC recipients of the message.
-    </ParamField>
-
-    <ParamField body="bcc" type="string[]">
-      The BCC recipients of the message.
-    </ParamField>
-
-    <ParamField body="reply_to" type="string[]">
-      The Reply-To addresses.
-    </ParamField>
-
-    <ParamField body="subject" type="string | null">
-      The subject of the message.
-    </ParamField>
-
-    <ParamField body="message_id" type="string | null">
-      The Message-ID header of the message.
-    </ParamField>
-
-    <ParamField body="html" type="string | null">
-      The HTML body.
-    </ParamField>
-
-    <ParamField body="text" type="string | null">
-      The plain-text body.
-    </ParamField>
-
-    <ParamField body="attachments" type="array">
-      The attachments on the message.
-
-      <Expandable defaultOpen="true" title="properties">
-        <ParamField body="id" type="string">
-          The ID of the attachment.
-        </ParamField>
-
-        <ParamField body="filename" type="string | null">
-          The filename of the attachment.
-        </ParamField>
-
-        <ParamField body="size" type="number | null">
-          The size of the attachment in bytes.
-        </ParamField>
-      </Expandable>
-    </ParamField>
-
-    <ParamField body="read" type="boolean">
-      Whether the message has been read.
-    </ParamField>
-
-    <ParamField body="received_at" type="string">
-      ISO 8601 timestamp when the message arrived or was sent.
-    </ParamField>
-  </Expandable>
 </ParamField>
 
 <RequestExample>
@@ -211,31 +137,7 @@ export const ResendParamField = ({children, body, path, ...props}) => {
         "color": "crimson"
       }
     ],
-    "read": false,
-    "messages": [
-      {
-        "id": "5b1a9f47-2c8d-4e6f-9a03-1d2e3f4a5b60",
-        "direction": "inbound",
-        "from": "Ada Lovelace <ada@example.org>",
-        "to": ["support@example.com"],
-        "cc": [],
-        "bcc": [],
-        "reply_to": ["replies@example.org"],
-        "subject": "Refund for order 1041",
-        "message_id": "<1041@example.org>",
-        "html": "<p>Could I get a refund for order 1041?</p>",
-        "text": "Could I get a refund for order 1041?",
-        "attachments": [
-          {
-            "id": "9d4f2b81-6c3a-4e7d-8b12-0a5c6d7e8f90",
-            "filename": "receipt.pdf",
-            "size": 20841
-          }
-        ],
-        "read": false,
-        "received_at": "2026-08-05T14:03:11.229Z"
-      }
-    ]
+    "read": false
   }
   ```
 </ResponseExample>
