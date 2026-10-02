@@ -159,6 +159,25 @@ export const ResendParamField = ({children, body, path, ...props}) => {
   }
   ```
 
+  ```rust Rust theme={"theme":{"light":"github-light","dark":"vesper"}}
+  use resend_rs::{list_opts::ListOptions, Resend, Result};
+
+  #[tokio::main]
+  async fn main() -> Result<()> {
+    let resend = Resend::new("re_xxxxxxxxx");
+
+    let _contacts = resend
+      .segments
+      .list_contacts(
+        "78261eea-8f8b-4381-83c6-79fa7120f1cf",
+        ListOptions::default(),
+      )
+      .await?;
+
+    Ok(())
+  }
+  ```
+
   ```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
   import com.resend.Resend;
   import com.resend.core.exception.ResendException;
@@ -171,6 +190,15 @@ export const ResendParamField = ({children, body, path, ...props}) => {
           ListContactsResponseSuccess response = resend.contacts().list("78261eea-8f8b-4381-83c6-79fa7120f1cf");
       }
   }
+  ```
+
+  ```csharp .NET theme={"theme":{"light":"github-light","dark":"vesper"}}
+  using Resend;
+
+  IResend resend = ResendClient.Create( "re_xxxxxxxxx" ); // Or from DI
+
+  var resp = await resend.SegmentListContactsAsync( new Guid( "78261eea-8f8b-4381-83c6-79fa7120f1cf" ) );
+  Console.WriteLine( "Nr Contacts={0}", resp.Content.Data.Count );
   ```
 
   ```bash cURL theme={"theme":{"light":"github-light","dark":"vesper"}}
