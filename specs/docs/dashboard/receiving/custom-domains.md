@@ -36,8 +36,9 @@ Receiving emails requires an extra [MX record](/docs/knowledge-base/how-do-i-avo
   if the required `MX` record is not the lowest priority value for the domain.
 
   Alternatively, you can configure your email service to forward emails to an address
-  that's configured in Resend or forward them directly to the SMTP server address
-  that appears in the receiving `MX` record.
+  on a domain where receiving is verified in Resend. Don't forward directly to the
+  SMTP server address that appears in the receiving `MX` record: Resend drops emails
+  for domains whose receiving `MX` record isn't verified.
 </Warning>
 
 You can now [create a webhook to receive emails](/docs/dashboard/receiving/create-receiving-webhook) at your custom domain in your application.
@@ -69,8 +70,10 @@ Once you add the MX record, confirm by clicking the **I've added the record** bu
 
     If you still want to use the same domain both in for Resend and your day-to-day
     email service, you can also set up forwarding rules in your existing email service
-    to forward emails to an address that's configured in Resend or forward them directly
-    to the SMTP server address that appears in the receiving `MX` record.
+    to forward emails to an address on a domain where receiving is verified in Resend.
+    Forwarding directly to the SMTP server address that appears in the receiving `MX`
+    record doesn't work: Resend drops emails for domains whose receiving `MX` record
+    isn't verified.
   </Accordion>
 
   <Accordion title="I have already verified my domain for sending. Do I need to verify it again for receiving?">

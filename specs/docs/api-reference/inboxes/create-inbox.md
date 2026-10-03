@@ -70,10 +70,11 @@ An inbox sends and receives email at an address on one of your domains, such as
 </ResendParamField>
 
 <ParamField body="name" type="string">
-  Internal name for the inbox. Recipients do not see it.
+  Internal name for the inbox. Recipients do not see it. Defaults to
+  `email_address`.
 </ParamField>
 
-<ResendParamField body="friendly_name" type="string">
+<ResendParamField body="from_name" type="string">
   The name recipients see when mail is sent from this inbox. A plain name, not
   a `Name <email>` address.
 </ResendParamField>
@@ -109,13 +110,21 @@ An inbox sends and receives email at an address on one of your domains, such as
   The address to forward mail to when forwarding is enabled. `null` otherwise.
 </ParamField>
 
-<ParamField body="friendly_name" type="string | null">
+<ParamField body="from_name" type="string | null">
   The name recipients see when mail is sent from this inbox. A plain name, not
   a `Name <email>` address.
 </ParamField>
 
 <ParamField body="unread" type="number">
   The number of unread threads in the inbox.
+</ParamField>
+
+<ParamField body="drafts" type="number">
+  The number of unsent drafts.
+</ParamField>
+
+<ParamField body="last_received" type="string | null">
+  ISO 8601 timestamp when a thread in this inbox was last active.
 </ParamField>
 
 <ParamField body="created_at" type="string">
@@ -131,7 +140,7 @@ An inbox sends and receives email at an address on one of your domains, such as
   const { data, error } = await resend.inboxes.create({
     emailAddress: 'support@example.com',
     name: 'Customer Support',
-    friendlyName: 'Ada from Support',
+    fromName: 'Ada from Support',
   });
   ```
 
@@ -142,7 +151,7 @@ An inbox sends and receives email at an address on one of your domains, such as
        -d $'{
     "email_address": "support@example.com",
     "name": "Customer Support",
-    "friendly_name": "Ada from Support"
+    "from_name": "Ada from Support"
   }'
   ```
 
@@ -150,7 +159,7 @@ An inbox sends and receives email at an address on one of your domains, such as
   resend inboxes create \
     --email_address support@example.com \
     --name "Customer Support" \
-    --friendly_name "Ada from Support"
+    --from_name "Ada from Support"
   ```
 </RequestExample>
 
@@ -163,8 +172,10 @@ An inbox sends and receives email at an address on one of your domains, such as
     "email_address": "support@example.com",
     "domain_id": "d91cd9bd-1176-453e-8fc1-35364d380206",
     "receiving_address": null,
-    "friendly_name": "Ada from Support",
+    "from_name": "Ada from Support",
     "unread": 0,
+    "drafts": 0,
+    "last_received": null,
     "created_at": "2026-08-05T14:03:11.229Z"
   }
   ```

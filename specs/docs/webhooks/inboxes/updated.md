@@ -93,12 +93,20 @@ Event triggered whenever an **inbox's settings change**.
         The address to forward mail to when forwarding is enabled. `null` otherwise
       </ParamField>
 
-      <ParamField body="friendly_name" type="string | null">
+      <ParamField body="from_name" type="string | null">
         The name recipients see when mail is sent from this inbox
       </ParamField>
 
       <ParamField body="unread" type="number">
         The number of unread threads in the inbox
+      </ParamField>
+
+      <ParamField body="drafts" type="number">
+        The number of unsent drafts
+      </ParamField>
+
+      <ParamField body="last_received" type="string | null">
+        ISO 8601 timestamp when a thread in this inbox was last active
       </ParamField>
 
       <ParamField body="created_at" type="string">
@@ -123,8 +131,10 @@ Event triggered whenever an **inbox's settings change**.
         "email_address": "support@example.com",
         "domain_id": "d91cd9bd-1176-453e-8fc1-35364d380206",
         "receiving_address": null,
-        "friendly_name": "Ada from Support",
+        "from_name": "Ada from Support",
         "unread": 3,
+        "drafts": 2,
+        "last_received": "2026-09-29T11:42:08.000Z",
         "created_at": "2026-09-01T09:30:00.000Z"
       }
     }

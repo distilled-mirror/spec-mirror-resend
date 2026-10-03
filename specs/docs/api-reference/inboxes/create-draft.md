@@ -60,7 +60,9 @@ export const ResendParamField = ({children, body, path, ...props}) => {
 </Warning>
 
 A draft is an unsent message. Omit `thread_id` for a new conversation. Pass
-`thread_id` and `reply_to_email_id` together to attach it as a reply.
+`thread_id` and `reply_to_email_id` together to attach it as a reply. A reply
+draft doesn't copy recipients from the message it replies to, so set `to`
+before you send it.
 
 At least one of `to`, `cc`, `bcc`, `subject`, `text`, or `html` must be
 non-empty. Combined recipients cannot exceed 50. Returns `201` for a new draft,
@@ -201,6 +203,7 @@ or `200` if that reply draft already exists.
        -d $'{
     "thread_id": "4d8e2a1c-9b3f-4c6d-8a21-3e5f7c9c0d12",
     "reply_to_email_id": "5b1a9f47-2c8d-4e6f-9a03-1d2e3f4a5b60",
+    "to": ["replies@example.org"],
     "text": "Refund issued for order 1041."
   }'
   ```

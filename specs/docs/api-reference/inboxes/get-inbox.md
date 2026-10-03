@@ -4,7 +4,7 @@
 
 # Retrieve Inbox
 
-> Retrieve a single inbox by its ID.
+> Retrieve a single inbox by its ID or email address.
 
 export const ResendParamField = ({children, body, path, ...props}) => {
   const [lang, setLang] = useState(() => {
@@ -62,7 +62,7 @@ export const ResendParamField = ({children, body, path, ...props}) => {
 ## Path Parameters
 
 <ResendParamField path="inbox_id" type="string" required>
-  The Inbox ID.
+  The Inbox ID or the inbox email address, such as `support@example.com`.
 </ResendParamField>
 
 ## Response Fields
@@ -75,7 +75,7 @@ export const ResendParamField = ({children, body, path, ...props}) => {
   The ID of the inbox.
 </ParamField>
 
-<ParamField body="name" type="string | null">
+<ParamField body="name" type="string">
   Internal name for the inbox. Recipients do not see it.
 </ParamField>
 
@@ -83,11 +83,15 @@ export const ResendParamField = ({children, body, path, ...props}) => {
   The address of the inbox.
 </ParamField>
 
+<ParamField body="domain_id" type="string">
+  The ID of the domain that owns the address.
+</ParamField>
+
 <ParamField body="receiving_address" type="string | null">
   The address to forward mail to when forwarding is enabled. `null` otherwise.
 </ParamField>
 
-<ParamField body="friendly_name" type="string | null">
+<ParamField body="from_name" type="string | null">
   The name recipients see when mail is sent from this inbox. A plain name, not
   a `Name <email>` address.
 </ParamField>
@@ -102,6 +106,10 @@ export const ResendParamField = ({children, body, path, ...props}) => {
 
 <ParamField body="last_received" type="string | null">
   ISO 8601 timestamp when a thread in this inbox was last active.
+</ParamField>
+
+<ParamField body="created_at" type="string">
+  ISO 8601 timestamp when the inbox was created.
 </ParamField>
 
 <RequestExample>
@@ -132,11 +140,13 @@ export const ResendParamField = ({children, body, path, ...props}) => {
     "id": "b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1",
     "name": "Customer Support",
     "email_address": "support@example.com",
+    "domain_id": "d91cd9bd-1176-453e-8fc1-35364d380206",
     "receiving_address": null,
-    "friendly_name": "Ada from Support",
+    "from_name": "Ada from Support",
     "unread": 3,
     "drafts": 2,
-    "last_received": "2026-08-05T14:03:11.229Z"
+    "last_received": "2026-08-05T14:03:11.229Z",
+    "created_at": "2026-08-01T09:12:44.512Z"
   }
   ```
 </ResponseExample>

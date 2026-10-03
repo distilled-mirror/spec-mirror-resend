@@ -59,8 +59,9 @@ export const ResendParamField = ({children, body, path, ...props}) => {
   </CodeGroup>
 </Warning>
 
-Replies from the inbox address. Recipients are taken from the message you
-reply to.
+Replies from the inbox address. `to` is taken from the message you reply to.
+Add more recipients with `cc` and `bcc`. The total number of recipients can't
+exceed 50.
 
 At least one of `html` or `text` is required.
 
@@ -81,6 +82,16 @@ At least one of `html` or `text` is required.
 
 ## Body Parameters
 
+<ParamField body="cc" type="string | string[]">
+  CC recipient email address. For multiple addresses, send as an array of
+  strings. Not copied from the message you reply to.
+</ParamField>
+
+<ParamField body="bcc" type="string | string[]">
+  BCC recipient email address. For multiple addresses, send as an array of
+  strings. Not copied from the message you reply to.
+</ParamField>
+
 <ParamField body="html" type="string">
   The HTML body.
 </ParamField>
@@ -91,7 +102,7 @@ At least one of `html` or `text` is required.
 
 <ParamField body="subject" type="string">
   The subject of the reply. When omitted, the thread subject is used, prefixed
-  with `Re:` if it isn't already.
+  with `Re:` if it isn't already. Max 2000 characters.
 </ParamField>
 
 ## Response Fields
@@ -125,7 +136,7 @@ At least one of `html` or `text` is required.
 </ParamField>
 
 <ParamField body="reply_to" type="string[]">
-  The Reply-To addresses.
+  Always empty in this response.
 </ParamField>
 
 <ParamField body="subject" type="string">
@@ -133,7 +144,7 @@ At least one of `html` or `text` is required.
 </ParamField>
 
 <ParamField body="message_id" type="string | null">
-  The Message-ID header of the message.
+  Always `null` in this response.
 </ParamField>
 
 <ParamField body="html" type="string | null">
@@ -145,25 +156,11 @@ At least one of `html` or `text` is required.
 </ParamField>
 
 <ParamField body="attachments" type="array">
-  The attachments on the message.
-
-  <Expandable defaultOpen="true" title="properties">
-    <ParamField body="id" type="string">
-      The ID of the attachment.
-    </ParamField>
-
-    <ParamField body="filename" type="string | null">
-      The filename of the attachment.
-    </ParamField>
-
-    <ParamField body="size" type="number | null">
-      The size of the attachment in bytes.
-    </ParamField>
-  </Expandable>
+  Always empty in this response.
 </ParamField>
 
 <ParamField body="read" type="boolean">
-  Whether the message has been read.
+  Always `true`.
 </ParamField>
 
 <ParamField body="received_at" type="string">
@@ -180,6 +177,8 @@ At least one of `html` or `text` is required.
     inboxId: 'b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1',
     threadId: '4d8e2a1c-9b3f-4c6d-8a21-3e5f7c9c0d12',
     emailId: '5b1a9f47-2c8d-4e6f-9a03-1d2e3f4a5b60',
+    cc: ['billing@example.com'],
+    bcc: ['records@example.com'],
     html: '<p>Refund issued for order 1041.</p>',
     text: 'Refund issued for order 1041.',
   });
@@ -190,6 +189,8 @@ At least one of `html` or `text` is required.
        -H 'Authorization: Bearer re_xxxxxxxxx' \
        -H 'Content-Type: application/json' \
        -d $'{
+    "cc": ["billing@example.com"],
+    "bcc": ["records@example.com"],
     "html": "<p>Refund issued for order 1041.</p>",
     "text": "Refund issued for order 1041."
   }'
@@ -212,21 +213,15 @@ At least one of `html` or `text` is required.
     "email_id": "6a0c8e58-3d9e-4f7a-8b14-2e3f4a5b6c71",
     "direction": "outbound",
     "from": "support@example.com",
-    "to": ["Ada Lovelace <ada@example.org>"],
+    "to": ["replies@example.org"],
     "cc": ["billing@example.com"],
     "bcc": ["records@example.com"],
-    "reply_to": ["support@example.com"],
+    "reply_to": [],
     "subject": "Re: Refund for order 1041",
-    "message_id": "<6a0c8e58@example.com>",
+    "message_id": null,
     "html": "<p>Refund issued for order 1041.</p>",
     "text": "Refund issued for order 1041.",
-    "attachments": [
-      {
-        "id": "1c7e4a90-5b2d-4f8a-9c31-6d0e1f2a3b44",
-        "filename": "refund-receipt.pdf",
-        "size": 18420
-      }
-    ],
+    "attachments": [],
     "read": true,
     "received_at": "2026-08-05T14:12:04.110Z"
   }

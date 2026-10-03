@@ -288,7 +288,7 @@
 - [Retrieve Attachment](https://resend.com/docs/api-reference/emails/retrieve-received-email-attachment.md): Retrieve a single attachment from a received email.
 - [List Attachments](https://resend.com/docs/api-reference/emails/list-received-email-attachments.md): Retrieve a list of attachments from a received email.
 - [Create Inbox](https://resend.com/docs/api-reference/inboxes/create-inbox.md): Create an inbox to send, receive and organize email.
-- [Retrieve Inbox](https://resend.com/docs/api-reference/inboxes/get-inbox.md): Retrieve a single inbox by its ID.
+- [Retrieve Inbox](https://resend.com/docs/api-reference/inboxes/get-inbox.md): Retrieve a single inbox by its ID or email address.
 - [List Inboxes](https://resend.com/docs/api-reference/inboxes/list-inboxes.md): Retrieve a list of inboxes for the authenticated user.
 - [Update Inbox](https://resend.com/docs/api-reference/inboxes/update-inbox.md): Update the internal inbox name or the name recipients see when sending.
 - [Delete Inbox](https://resend.com/docs/api-reference/inboxes/delete-inbox.md): Remove an existing inbox.

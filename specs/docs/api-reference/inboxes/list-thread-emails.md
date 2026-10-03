@@ -85,7 +85,7 @@ Thread Email](/docs/api-reference/inboxes/get-thread-email).
 
 <ParamField query="before" type="string">
   The ID of the first message on the current page. Returns the previous, older
-  page.
+  page. Cannot be combined with `after`.
 </ParamField>
 
 ## Response Fields
