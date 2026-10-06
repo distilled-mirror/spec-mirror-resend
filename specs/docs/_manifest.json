@@ -231,6 +231,7 @@
     "email-best-practices-skill.md",
     "email-types.md",
     "examples.md",
+    "guides/attio-integration.md",
     "guides/building-a-resend-oauth-client.md",
     "guides/devin.md",
     "guides/paper.md",

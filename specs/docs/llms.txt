@@ -232,6 +232,7 @@
 - [Vercel Marketplace Integration](https://resend.com/docs/guides/vercel-marketplace-integration.md): Create and connect a Resend account directly from Vercel using the dashboard, the CLI, or v0.
 - [Stripe Projects Integration](https://resend.com/docs/guides/stripe-projects-integration.md): Provision Resend for a project directly from Stripe and start sending email.
 - [Send emails with n8n and Resend](https://resend.com/docs/knowledge-base/n8n-integration.md): Learn how to install and use the official Resend node for n8n to send emails, manage contacts, handle webhooks, and more.
+- [Send emails with Attio and Resend](https://resend.com/docs/guides/attio-integration.md): Connect Resend to Attio to create contacts, add people to segments, and send emails from workflows.
 - [Send emails with Devin and Resend](https://resend.com/docs/guides/devin.md): Learn how to install the Resend MCP server in Devin.ai so your agent can send emails, manage contacts, and run broadcasts.
 - [Turn Paper designs into Resend emails](https://resend.com/docs/guides/paper.md): Learn how to combine the Paper MCP server and the Resend MCP server so your agent can turn a Paper design into a template or broadcast in your Resend account.
 - [Resend CLI for AI Agents](https://resend.com/docs/cli-agents.md): How to use the Resend CLI in AI agent workflows.

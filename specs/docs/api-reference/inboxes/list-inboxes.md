@@ -68,7 +68,7 @@ export const QueryParams = ({type, isRequired}) => {
 
   <span />
 
-  [Get early access](https://resend.com/help?type=report\&message=I+would+like+early+access+to+Inboxes.\&priority=low) if you're interested in testing this feature.
+  [Get early access](https://resend.com/settings/labs) if you're interested in testing this feature.
 
   <span />
 
@@ -76,7 +76,7 @@ export const QueryParams = ({type, isRequired}) => {
 
   <CodeGroup>
     ```bash Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
-    npm install resend@6.28.1-preview-inboxes.2
+    npm install resend@6.32.1-preview-inboxes.1
     ```
 
     ```bash CLI theme={"theme":{"light":"github-light","dark":"vesper"}}

@@ -6,6 +6,11 @@
 
 > Integrate Resend with the tools you already use.
 
+export const AppwriteIcon = props => <svg className="h-6 w-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+    <title>Appwrite</title>
+    <path d="M24 17.291v5.29H10.557A10.58 10.58 0 0 1 0 12.715v-1.43c.048-.735.174-1.463.374-2.171C1.63 4.673 5.713 1.419 10.557 1.419c4.844 0 8.927 3.254 10.183 7.695h-5.749a5.283 5.283 0 0 0-4.434-2.404 5.282 5.282 0 0 0-4.434 2.404A5.23 5.23 0 0 0 5.267 12a5.27 5.27 0 0 0 1.66 3.848 5.27 5.27 0 0 0 3.63 1.443H24Zm0-6.734v5.291h-9.813A5.276 5.276 0 0 0 15.848 12c0-.5-.07-.984-.199-1.443H24Z" fill="currentColor" />
+  </svg>;
+
 export const PlayrunnerIcon = props => <svg className="h-6 w-6" viewBox="0 0 300 300" fill="none" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" xmlns="http://www.w3.org/2000/svg" {...props}>
     <title>Playrunner</title>
     <g transform="translate(0 300) scale(1 -1)">
@@ -260,6 +265,14 @@ export const CourierIcon = props => <svg className="h-6 w-6" width="68" height="
     <path d="M63.5245 30.6744C63.6695 30.4568 63.7421 30.1668 63.7421 29.9492C61.1315 14.8658 47.9335 3.40823 32.125 3.40823C14.3585 3.40823 -0.0722441 17.9115 0.00027211 35.7505C0.145305 53.0819 14.7211 67.5851 31.9799 67.5851C46.7007 67.6576 59.101 57.7954 62.9444 44.3799C63.0894 43.9448 62.7993 43.4372 62.3642 43.2197L61.059 42.712C55.9103 40.8991 50.1815 41.5518 45.613 44.525C43.51 45.9028 41.9872 46.9905 41.9872 46.9905C39.3766 48.7309 36.1859 49.8186 32.8501 49.8186C23.7856 49.8186 17.4767 42.422 16.4615 33.43L15.7363 28.4989C15.5188 26.976 14.5035 25.7432 13.0532 25.1631L11.2403 24.4379C10.9502 24.2929 10.8052 23.9303 11.0228 23.6403C18.782 13.2705 28.2816 15.5185 28.2816 15.5185C29.9495 15.6635 31.3998 16.3161 32.5601 17.1138C34.2279 18.2741 35.5332 19.942 36.3309 21.8274C39.2316 28.4989 45.9031 33.2124 53.6623 33.2124C53.6623 33.2124 61.059 33.5025 63.5245 30.6744Z" fill="currentColor" />
     <path d="M19.7247 22.9151C20.766 22.9151 21.6101 22.071 21.6101 21.0297C21.6101 19.9884 20.766 19.1443 19.7247 19.1443C18.6834 19.1443 17.8393 19.9884 17.8393 21.0297C17.8393 22.071 18.6834 22.9151 19.7247 22.9151Z" fill="currentColor" />
     <path d="M20.0873 32.7048C20.5224 35.6054 22.8429 44.8875 33.1402 46.5554C33.2852 46.5554 33.3578 46.3379 33.2127 46.2653C30.8197 45.1776 24.5833 41.5518 20.3773 32.5598C20.3048 32.4872 20.0873 32.5598 20.0873 32.7048Z" fill="currentColor" />
+  </svg>;
+
+export const AttioIcon = props => <svg className="h-6 w-6" viewBox="0 0 703 580" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+    <title>Attio</title>
+    <g transform="translate(0, 580) scale(0.1, -0.1)" fill="currentColor">
+      <path d="M2763 5715 c-82 -18 -156 -58 -219 -120 -71 -69 -2408 -3808 -2441 -3905 -37 -107 -28 -253 22 -349 59 -115 674 -1083 713 -1123 56 -58 157 -112 237 -128 43 -8 268 -10 775 -8 703 3 716 3 772 24 66 26 130 67 180 119 20 20 569 891 1221 1934 864 1383 1192 1915 1207 1962 32 93 26 239 -13 322 -14 32 -175 296 -356 586 -350 559 -374 592 -481 646 -105 53 -127 55 -870 54 -538 0 -698 -4 -747 -14z m1650 -377 c14 -13 158 -237 321 -499 328 -527 333 -537 304 -635 -17 -57 -2281 -3692 -2324 -3731 -32 -29 -66 -29 -97 0 -27 24 -577 904 -608 971 -24 54 -25 148 0 201 30 67 2301 3694 2319 3704 28 17 59 12 85 -11z" />
+      <path d="M4370 2104 c-311 -498 -587 -941 -614 -985 l-49 -79 247 -394 c264 -423 296 -464 407 -517 98 -48 117 -49 857 -49 767 0 757 -1 873 62 32 17 80 54 107 82 71 75 709 1101 734 1180 29 91 22 240 -15 319 -14 32 -175 296 -356 586 -251 401 -342 539 -381 575 -58 54 -150 101 -229 116 -32 6 -248 10 -535 10 l-481 -1 -565 -905z m1744 514 c44 -41 608 -957 624 -1015 28 -99 23 -109 -311 -644 -204 -326 -311 -488 -329 -498 -59 -33 -62 -30 -356 439 -360 574 -352 559 -352 640 0 41 7 80 19 105 39 86 604 977 625 985 35 14 54 11 80 -12z" />
+    </g>
   </svg>;
 
 export const SoftrIcon = props => <svg className="h-6 w-6" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
@@ -853,6 +866,10 @@ export const CursorIcon = props => <svg className="h-6 w-6" viewBox="0 0 24 24" 
   <Card title="Softr" href="https://docs.softr.io/workflows/integrations/resend" icon={<SoftrIcon />}>
     Send emails from Softr apps and workflows
   </Card>
+
+  <Card title="Attio" href="/docs/guides/attio-integration" icon={<AttioIcon />}>
+    Send emails and add contacts to segments from Attio
+  </Card>
 </CardGroup>
 
 ## Notifications
@@ -976,6 +993,10 @@ export const CursorIcon = props => <svg className="h-6 w-6" viewBox="0 0 24 24" 
 
   <Card title="Playrunner" href="https://playrunner.dev/docs/integration-packages/resend/" icon={<PlayrunnerIcon />}>
     Send and receive email in Playrunner workflows
+  </Card>
+
+  <Card title="Appwrite" href="https://appwrite.io/docs/products/messaging/resend" icon={<AppwriteIcon />}>
+    Send emails using Appwrite Messaging
   </Card>
 </CardGroup>
 
