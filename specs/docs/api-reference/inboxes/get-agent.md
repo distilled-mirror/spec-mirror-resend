@@ -2,9 +2,9 @@
 > Fetch the complete documentation index at: https://resend.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-# Create Label
+# Retrieve Agent Settings
 
-> Create a label on an inbox.
+> Retrieve the agent settings for an inbox.
 
 export const ResendParamField = ({children, body, path, ...props}) => {
   const [lang, setLang] = useState(() => {
@@ -59,7 +59,7 @@ export const ResendParamField = ({children, body, path, ...props}) => {
   </CodeGroup>
 </Warning>
 
-A label is a named, colored tag that belongs to one inbox.
+An inbox without a configured agent returns empty settings.
 
 ## Path Parameters
 
@@ -67,37 +67,26 @@ A label is a named, colored tag that belongs to one inbox.
   The Inbox ID.
 </ResendParamField>
 
-## Body Parameters
-
-<ParamField body="name" type="string" required>
-  The name of the label.
-</ParamField>
-
-<ParamField body="color" type="string">
-  The color of the label: `cyan`, `teal`, `grass`, `lime`, `yellow`, `orange`,
-  `iris`, `plum`, `crimson`, `bronze`, or `mauve`.
-</ParamField>
-
 ## Response Fields
 
 <ParamField body="object" type="string">
-  Always `inbox_label`.
+  Always `inbox_agent`.
 </ParamField>
 
-<ParamField body="id" type="string">
-  The ID of the label.
+<ParamField body="instructions" type="string | null">
+  Instructions the agent follows when handling the inbox's threads. `null` when
+  no instructions are set.
 </ParamField>
 
-<ParamField body="name" type="string">
-  The name of the label.
+<ParamField body="tone" type="string | null">
+  Tone the agent writes in, such as `friendly and concise`. `null` when no tone
+  is set.
 </ParamField>
 
-<ParamField body="color" type="string">
-  The color of the label.
-</ParamField>
-
-<ParamField body="created_at" type="string">
-  ISO 8601 timestamp when the label was created.
+<ParamField body="enabled_actions" type="string[]">
+  Actions the agent is allowed to take. Each entry is one of `draft_reply`,
+  `forward_thread`, `add_labels`, `assign_thread`, `mark_as_spam`,
+  `archive_thread`, or `delete_thread`.
 </ParamField>
 
 <RequestExample>
@@ -106,39 +95,28 @@ A label is a named, colored tag that belongs to one inbox.
 
   const resend = new Resend('re_xxxxxxxxx');
 
-  const { data, error } = await resend.inboxes.labels.create({
+  const { data, error } = await resend.inboxes.agent.get({
     inboxId: 'b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1',
-    name: 'Urgent',
-    color: 'crimson',
   });
   ```
 
   ```bash cURL theme={"theme":{"light":"github-light","dark":"vesper"}}
-  curl -X POST 'https://api.resend.com/inboxes/b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1/labels' \
-       -H 'Authorization: Bearer re_xxxxxxxxx' \
-       -H 'Content-Type: application/json' \
-       -d $'{
-    "name": "Urgent",
-    "color": "crimson"
-  }'
+  curl -X GET 'https://api.resend.com/inboxes/b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1/agent' \
+       -H 'Authorization: Bearer re_xxxxxxxxx'
   ```
 
   ```bash CLI theme={"theme":{"light":"github-light","dark":"vesper"}}
-  resend inboxes labels create \
-    --inbox_id b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1 \
-    --name Urgent \
-    --color crimson
+  resend inboxes agent get --inbox_id b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1
   ```
 </RequestExample>
 
 <ResponseExample>
   ```json Response theme={"theme":{"light":"github-light","dark":"vesper"}}
   {
-    "object": "inbox_label",
-    "id": "7f9c1d2e-4a6b-4c3d-8e15-9b0a7c6d5e34",
-    "name": "Urgent",
-    "color": "crimson",
-    "created_at": "2026-08-05T14:07:42.881Z"
+    "object": "inbox_agent",
+    "instructions": "Answer refund questions yourself. Escalate legal threats.",
+    "tone": "friendly and concise",
+    "enabled_actions": ["draft_reply", "add_labels"]
   }
   ```
 </ResponseExample>

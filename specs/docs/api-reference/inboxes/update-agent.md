@@ -2,9 +2,9 @@
 > Fetch the complete documentation index at: https://resend.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-# Create Label
+# Update Agent Settings
 
-> Create a label on an inbox.
+> Update the agent settings for an inbox.
 
 export const ResendParamField = ({children, body, path, ...props}) => {
   const [lang, setLang] = useState(() => {
@@ -59,7 +59,8 @@ export const ResendParamField = ({children, body, path, ...props}) => {
   </CodeGroup>
 </Warning>
 
-A label is a named, colored tag that belongs to one inbox.
+At least one of `instructions`, `tone`, or `enabled_actions` is required.
+Omitted fields keep their current value.
 
 ## Path Parameters
 
@@ -69,35 +70,21 @@ A label is a named, colored tag that belongs to one inbox.
 
 ## Body Parameters
 
-<ParamField body="name" type="string" required>
-  The name of the label.
+<ParamField body="instructions" type="string | null">
+  Instructions the agent follows when handling the inbox's threads. Max 4000
+  characters and must not be an empty string. Send `null` to clear them.
 </ParamField>
 
-<ParamField body="color" type="string">
-  The color of the label: `cyan`, `teal`, `grass`, `lime`, `yellow`, `orange`,
-  `iris`, `plum`, `crimson`, `bronze`, or `mauve`.
+<ParamField body="tone" type="string | null">
+  Tone the agent writes in, such as `friendly and concise`. Max 64 characters
+  and must not be an empty string. Send `null` to clear it.
 </ParamField>
 
-## Response Fields
-
-<ParamField body="object" type="string">
-  Always `inbox_label`.
-</ParamField>
-
-<ParamField body="id" type="string">
-  The ID of the label.
-</ParamField>
-
-<ParamField body="name" type="string">
-  The name of the label.
-</ParamField>
-
-<ParamField body="color" type="string">
-  The color of the label.
-</ParamField>
-
-<ParamField body="created_at" type="string">
-  ISO 8601 timestamp when the label was created.
+<ParamField body="enabled_actions" type="string[]">
+  Actions the agent is allowed to take. Replaces the whole set. Each entry must
+  be one of `draft_reply`, `forward_thread`, `add_labels`, `assign_thread`,
+  `mark_as_spam`, `archive_thread`, or `delete_thread`. Send an empty array to
+  disable all actions.
 </ParamField>
 
 <RequestExample>
@@ -106,39 +93,39 @@ A label is a named, colored tag that belongs to one inbox.
 
   const resend = new Resend('re_xxxxxxxxx');
 
-  const { data, error } = await resend.inboxes.labels.create({
+  const { data, error } = await resend.inboxes.agent.update({
     inboxId: 'b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1',
-    name: 'Urgent',
-    color: 'crimson',
+    instructions: 'Answer refund questions yourself. Escalate legal threats.',
+    tone: 'friendly and concise',
+    enabledActions: ['draft_reply', 'add_labels'],
   });
   ```
 
   ```bash cURL theme={"theme":{"light":"github-light","dark":"vesper"}}
-  curl -X POST 'https://api.resend.com/inboxes/b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1/labels' \
+  curl -X PATCH 'https://api.resend.com/inboxes/b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1/agent' \
        -H 'Authorization: Bearer re_xxxxxxxxx' \
        -H 'Content-Type: application/json' \
        -d $'{
-    "name": "Urgent",
-    "color": "crimson"
+    "instructions": "Answer refund questions yourself. Escalate legal threats.",
+    "tone": "friendly and concise",
+    "enabled_actions": ["draft_reply", "add_labels"]
   }'
   ```
 
   ```bash CLI theme={"theme":{"light":"github-light","dark":"vesper"}}
-  resend inboxes labels create \
+  resend inboxes agent update \
     --inbox_id b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1 \
-    --name Urgent \
-    --color crimson
+    --instructions "Answer refund questions yourself. Escalate legal threats." \
+    --tone "friendly and concise" \
+    --enabled_actions draft_reply,add_labels
   ```
 </RequestExample>
 
 <ResponseExample>
   ```json Response theme={"theme":{"light":"github-light","dark":"vesper"}}
   {
-    "object": "inbox_label",
-    "id": "7f9c1d2e-4a6b-4c3d-8e15-9b0a7c6d5e34",
-    "name": "Urgent",
-    "color": "crimson",
-    "created_at": "2026-08-05T14:07:42.881Z"
+    "object": "inbox_agent",
+    "id": "a1f84a4e-6f2b-4f0a-9c1d-8a2e5b3c7d90"
   }
   ```
 </ResponseExample>

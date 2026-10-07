@@ -311,6 +311,8 @@
 - [Update Draft](https://resend.com/docs/api-reference/inboxes/update-draft.md): Update fields on an existing draft.
 - [Delete Draft](https://resend.com/docs/api-reference/inboxes/delete-draft.md): Discard an existing draft.
 - [Send Draft](https://resend.com/docs/api-reference/inboxes/send-draft.md): Send an existing draft from the inbox address.
+- [Retrieve Agent Settings](https://resend.com/docs/api-reference/inboxes/get-agent.md): Retrieve the agent settings for an inbox.
+- [Update Agent Settings](https://resend.com/docs/api-reference/inboxes/update-agent.md): Update the agent settings for an inbox.
 - [Create Broadcast](https://resend.com/docs/api-reference/broadcasts/create-broadcast.md): Create a new broadcast to send to your contacts.
 - [Send Broadcast](https://resend.com/docs/api-reference/broadcasts/send-broadcast.md): Start sending broadcasts to your audience through the Resend API.
 - [Cancel Broadcast](https://resend.com/docs/api-reference/broadcasts/cancel-broadcast.md): Cancel a queued or scheduled broadcast.
