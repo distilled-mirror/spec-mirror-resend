@@ -68,7 +68,8 @@ Event triggered whenever a **contact was successfully created**.
   </ParamField>
 
   <ParamField body="unsubscribed" type="boolean" required>
-    Whether the contact has unsubscribed from all emails sent from your team
+    Whether the contact has unsubscribed from all Broadcasts and Automation emails
+    sent from your team
   </ParamField>
 </ResponseBodyParameters>
 

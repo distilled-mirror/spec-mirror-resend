@@ -183,19 +183,6 @@
 - [403 Error Using resend.dev Domain](https://resend.com/docs/knowledge-base/403-error-resend-dev-domain.md): Learn how to resolve a 403 error when using the resend.dev domain to send emails to recipients other than your own.
 - [Domain Already Registered by Another Account](https://resend.com/docs/knowledge-base/domain-already-registered.md): Resolve the 403 domain already registered error by verifying domain ownership or starting a self-serve claim.
 - [DMARC Analyzer](https://resend.com/docs/dmarc-analyzer.md): Analyze DMARC XML reports with a free, open-source tool built by Resend.
-- [Cloudflare](https://resend.com/docs/knowledge-base/cloudflare.md): Verify your domain on Cloudflare with Resend.
-- [DreamHost](https://resend.com/docs/knowledge-base/dreamhost.md): Verify your domain on DreamHost with Resend.
-- [Gandi](https://resend.com/docs/knowledge-base/gandi.md): Verify your domain on Gandi with Resend.
-- [GoDaddy](https://resend.com/docs/knowledge-base/godaddy.md): Verify your domain on GoDaddy with Resend.
-- [Hetzner](https://resend.com/docs/knowledge-base/hetzner.md): Verify your domain on Hetzner with Resend.
-- [Hostinger](https://resend.com/docs/knowledge-base/hostinger.md): Verify your domain on Hostinger with Resend.
-- [IONOS](https://resend.com/docs/knowledge-base/ionos.md): Verify your domain on IONOS with Resend.
-- [Namecheap](https://resend.com/docs/knowledge-base/namecheap.md): Verify your domain on Namecheap with Resend.
-- [Porkbun](https://resend.com/docs/knowledge-base/porkbun.md): Verify your domain on Porkbun with Resend.
-- [AWS Route 53](https://resend.com/docs/knowledge-base/route53.md): Verify your domain on Route 53 with Resend.
-- [Squarespace](https://resend.com/docs/knowledge-base/squarespace.md): Verify your domain on Squarespace with Resend.
-- [Strato](https://resend.com/docs/knowledge-base/strato.md): Verify your domain on Strato with Resend.
-- [Vercel](https://resend.com/docs/knowledge-base/vercel.md): Verify your domain on Vercel with Resend.
 - [Which sending feature do you need?](https://resend.com/docs/knowledge-base/what-sending-feature-to-use.md): How to pick between our different sending features depending on your number of recipients and the nature of the message.
 - [Why and when to use Topics?](https://resend.com/docs/knowledge-base/why-use-topics.md): Learn when to use Topics to improve deliverability and give recipients control over their email preferences.
 - [Do you need to add an unsubscribe link to all of your emails sent with Resend?](https://resend.com/docs/knowledge-base/should-i-add-an-unsubscribe-link.md): Learn best practices about using unsubscribe links.
@@ -297,7 +284,8 @@
 - [List Labels](https://resend.com/docs/api-reference/inboxes/list-labels.md): Retrieve the labels on an inbox.
 - [Update Label](https://resend.com/docs/api-reference/inboxes/update-label.md): Rename or recolor an existing label.
 - [Delete Label](https://resend.com/docs/api-reference/inboxes/delete-label.md): Remove an existing label from an inbox.
-- [List Threads](https://resend.com/docs/api-reference/inboxes/list-threads.md): Retrieve the threads in one folder of an inbox.
+- [List Threads](https://resend.com/docs/api-reference/inboxes/list-threads.md): Retrieve the threads in an inbox, filtered by folder, label, and read status.
+- [Search Threads](https://resend.com/docs/api-reference/inboxes/search-threads.md): Find threads in an inbox by text, people, attachments, and dates.
 - [Retrieve Thread](https://resend.com/docs/api-reference/inboxes/get-thread.md): Retrieve a thread summary.
 - [Update Thread](https://resend.com/docs/api-reference/inboxes/update-thread.md): Mark a thread read or unread, move it, or apply a label.
 - [Delete Thread](https://resend.com/docs/api-reference/inboxes/delete-thread.md): Move a thread to the trash folder.
@@ -413,6 +401,19 @@
 - [Token](https://resend.com/docs/api-reference/oauth/token.md): Exchange an authorization code for tokens, or refresh an access token.
 - [Revoke Token](https://resend.com/docs/api-reference/oauth/revoke.md): Disconnect a client by revoking its refresh token.
 - [Resend API vs SDK](https://resend.com/docs/api-vs-sdk.md): For most use cases, the Resend SDK offers a better developer experience.
+- [Cloudflare](https://resend.com/docs/guides/dns/cloudflare.md): Verify your domain on Cloudflare with Resend.
+- [DreamHost](https://resend.com/docs/guides/dns/dreamhost.md): Verify your domain on DreamHost with Resend.
+- [Gandi](https://resend.com/docs/guides/dns/gandi.md): Verify your domain on Gandi with Resend.
+- [GoDaddy](https://resend.com/docs/guides/dns/godaddy.md): Verify your domain on GoDaddy with Resend.
+- [Hetzner](https://resend.com/docs/guides/dns/hetzner.md): Verify your domain on Hetzner with Resend.
+- [Hostinger](https://resend.com/docs/guides/dns/hostinger.md): Verify your domain on Hostinger with Resend.
+- [IONOS](https://resend.com/docs/guides/dns/ionos.md): Verify your domain on IONOS with Resend.
+- [Namecheap](https://resend.com/docs/guides/dns/namecheap.md): Verify your domain on Namecheap with Resend.
+- [Porkbun](https://resend.com/docs/guides/dns/porkbun.md): Verify your domain on Porkbun with Resend.
+- [AWS Route 53](https://resend.com/docs/guides/dns/route53.md): Verify your domain on Route 53 with Resend.
+- [Squarespace](https://resend.com/docs/guides/dns/squarespace.md): Verify your domain on Squarespace with Resend.
+- [Strato](https://resend.com/docs/guides/dns/strato.md): Verify your domain on Strato with Resend.
+- [Vercel](https://resend.com/docs/guides/dns/vercel.md): Verify your domain on Vercel with Resend.
 - [How to delete your Resend team](https://resend.com/docs/knowledge-base/how-can-i-delete-my-team.md): How to request your Resend team and team data to be deleted.
 - [The Secret Endpoint](https://resend.com/docs/secret.md): Get a special gift from Resend.
 - [SupaSquad + Resend](https://resend.com/docs/supasquad.md): A quick jumpstart to using Resend with Supabase for SupaSquad members.

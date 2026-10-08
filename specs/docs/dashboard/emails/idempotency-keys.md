@@ -9,8 +9,10 @@
 Include an idempotency key in any email requests to ensure that the same email request is processed only once, even if it's sent multiple times.
 
 <Info>
-  Idempotency keys are currently supported on the `POST /emails` and the `POST
-      /emails/batch` endpoints on the Resend API.
+  Idempotency keys are currently supported on the following endpoints:
+
+  * Emails: [Send Email](/docs/api-reference/emails/send-email) and [Send Email Batch](/docs/api-reference/emails/send-batch-emails)
+  * Inboxes: [Send Draft](/docs/api-reference/inboxes/send-draft), [Reply to Thread Email](/docs/api-reference/inboxes/reply-thread-email) and [Forward Thread Email](/docs/api-reference/inboxes/forward-thread-email)
 </Info>
 
 ## How it works

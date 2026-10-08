@@ -25,7 +25,7 @@ Benefits of managing your unsubscribe list:
   Whenever possible, [add a Topic to your
   Broadcast](/docs/dashboard/contacts/introduction#topics). This allows your Contact
   to unsubscribe from only specific types of emails (instead of unsubscribing
-  from all emails from your account).
+  from all Broadcasts and Automation emails from your team).
 </Tip>
 
 You can also [include an unsubscribe link in transactional emails](/docs/dashboard/emails/add-unsubscribe-to-transactional-emails) where Resend does not manage your Contacts.
@@ -37,7 +37,7 @@ The [**Contacts** Dashboard view](https://resend.com/audience) shows the global 
 <img alt="Unsubscribe Statuses" src="https://mintcdn.com/resend/2SHIfycCcJlAJEpt/images/audiences-contacts-intro.png?fit=max&auto=format&n=2SHIfycCcJlAJEpt&q=85&s=82101b2b495815ad50f8b7eb823876bd" width="3736" height="1916" data-path="images/audiences-contacts-intro.png" />
 
 * **Subscribed**: The Contact will receive Broadcasts sent to any Segment they belong to, and to any Topics they are subscribed to.
-* **Unsubscribed**: The Contact will not receive any emails from your account, even if they are subscribed to individual Topics.
+* **Unsubscribed**: The Contact will not receive Broadcasts or Automation emails, even if they are subscribed to individual Topics. Transactional emails sent through the API or SMTP are still delivered, unless the request includes a `topic_id` the Contact has opted out of.
 
 ## Delete unsubscribed Contacts
 

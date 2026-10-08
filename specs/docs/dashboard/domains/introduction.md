@@ -62,5 +62,5 @@ See how to use Resend's verified domain features.
 
   <Card title="Claim a domain" icon="bell-concierge" href="/docs/dashboard/domains/claim" />
 
-  <Card title="DNS provider guides" icon="book-atlas" href="/docs/knowledge-base/cloudflare" />
+  <Card title="DNS provider guides" icon="book-atlas" href="/docs/knowledge-base/introduction#dns-guides" />
 </CardGroup>

@@ -29,9 +29,7 @@ To see when a message will be retried next, check the webhook message details in
 
 ## Failure notifications
 
-When a webhook endpoint starts failing to receive events, Resend sends an email notification to your team. The email includes the endpoint URL, the time of the last failed attempt, and the last HTTP response status code.
-
-If the endpoint continues to fail, Resend will eventually disable it automatically and send a second notification to let you know. Once your endpoint is back up, you can re-enable it from the [Webhooks](https://resend.com/webhooks) page in the dashboard.
+If a webhook endpoint keeps failing to receive events, Resend disables it automatically and sends an email notification to your team. The email includes the endpoint URL and, when known, how long the endpoint had been failing. Once your endpoint is back up, you can re-enable it from the [Webhooks](https://resend.com/webhooks) page in the dashboard.
 
 ## Manual Replays
 
