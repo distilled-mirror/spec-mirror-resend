@@ -50,11 +50,11 @@ export const ResendParamField = ({children, body, path, ...props}) => {
 
   <CodeGroup>
     ```bash Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
-    npm install resend@6.32.1-preview-inboxes.4
+    npm install resend@6.32.1-preview-inboxes.6
     ```
 
     ```bash CLI theme={"theme":{"light":"github-light","dark":"vesper"}}
-    npm install -g resend-cli@2.22.0-preview-inboxes.6
+    npm install -g resend-cli@2.22.0-preview-inboxes.9
     ```
   </CodeGroup>
 </Warning>
@@ -86,8 +86,8 @@ Returns every label on the inbox, oldest first.
     </ParamField>
 
     <ParamField body="color" type="string">
-      The color of the label: `cyan`, `teal`, `grass`, `lime`, `yellow`,
-      `orange`, `iris`, `plum`, `crimson`, `bronze`, or `mauve`.
+      The color of the label as an uppercase `#RRGGBB` hex code, like
+      `#E93D82`.
     </ParamField>
 
     <ParamField body="created_at" type="string">
@@ -125,13 +125,13 @@ Returns every label on the inbox, oldest first.
       {
         "id": "2a8b4c6d-1e3f-4a5b-9c7d-8e0f1a2b3c4d",
         "name": "Billing",
-        "color": "cyan",
+        "color": "#00A2C7",
         "created_at": "2026-08-01T09:12:03.004Z"
       },
       {
         "id": "7f9c1d2e-4a6b-4c3d-8e15-9b0a7c6d5e34",
         "name": "Urgent",
-        "color": "crimson",
+        "color": "#E93D82",
         "created_at": "2026-08-05T14:07:42.881Z"
       }
     ]

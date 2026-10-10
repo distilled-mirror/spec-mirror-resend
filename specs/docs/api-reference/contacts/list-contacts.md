@@ -6,36 +6,6 @@
 
 > Show all contacts.
 
-export const ResendParamField = ({children, body, path, ...props}) => {
-  const [lang, setLang] = useState(() => {
-    return localStorage.getItem('code') || '"Node.js"';
-  });
-  useEffect(() => {
-    const onStorage = event => {
-      const key = event.detail.key;
-      if (key === 'code') {
-        setLang(event.detail.value);
-      }
-    };
-    document.addEventListener('mintlify-localstorage', onStorage);
-    return () => {
-      document.removeEventListener('mintlify-localstorage', onStorage);
-    };
-  }, []);
-  const toCamelCase = str => typeof str === 'string' ? str.replace(/[_-](\w)/g, (_, c) => c.toUpperCase()) : str;
-  const resolvedBody = useMemo(() => {
-    const value = JSON.parse(lang);
-    return value === 'Node.js' ? toCamelCase(body) : body;
-  }, [body, lang]);
-  const resolvedPath = useMemo(() => {
-    const value = JSON.parse(lang);
-    return value === 'Node.js' ? toCamelCase(path) : path;
-  }, [path, lang]);
-  return <ParamField body={resolvedBody} path={resolvedPath} {...props}>
-      {children}
-    </ParamField>;
-};
-
 export const QueryParams = ({type, isRequired}) => {
   return <>
       <h2>Query Parameters</h2>
@@ -92,13 +62,12 @@ export const QueryParams = ({type, isRequired}) => {
     </>;
 };
 
-## Path Parameters
+<QueryParams type="contacts" isRequired={true} />
 
-<ResendParamField path="segment_id" type="string">
-  The Segment ID to filter contacts by. If provided, only contacts in this Segment will be returned.
-</ResendParamField>
-
-<QueryParams type="contacts" isRequired={false} />
+<ParamField query="segment_id" type="string">
+  The Segment ID to filter contacts by. If provided, only contacts in this
+  Segment will be returned.
+</ParamField>
 
 <RequestExample>
   ```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}

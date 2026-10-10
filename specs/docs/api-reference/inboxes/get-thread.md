@@ -50,11 +50,11 @@ export const ResendParamField = ({children, body, path, ...props}) => {
 
   <CodeGroup>
     ```bash Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
-    npm install resend@6.32.1-preview-inboxes.4
+    npm install resend@6.32.1-preview-inboxes.6
     ```
 
     ```bash CLI theme={"theme":{"light":"github-light","dark":"vesper"}}
-    npm install -g resend-cli@2.22.0-preview-inboxes.6
+    npm install -g resend-cli@2.22.0-preview-inboxes.9
     ```
   </CodeGroup>
 </Warning>
@@ -134,7 +134,7 @@ Thread Emails](/docs/api-reference/inboxes/list-thread-emails).
       {
         "id": "7f9c1d2e-4a6b-4c3d-8e15-9b0a7c6d5e34",
         "name": "Urgent",
-        "color": "crimson"
+        "color": "#E93D82"
       }
     ],
     "read": false

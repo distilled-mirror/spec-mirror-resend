@@ -50,11 +50,11 @@ export const ResendParamField = ({children, body, path, ...props}) => {
 
   <CodeGroup>
     ```bash Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
-    npm install resend@6.32.1-preview-inboxes.4
+    npm install resend@6.32.1-preview-inboxes.6
     ```
 
     ```bash CLI theme={"theme":{"light":"github-light","dark":"vesper"}}
-    npm install -g resend-cli@2.22.0-preview-inboxes.6
+    npm install -g resend-cli@2.22.0-preview-inboxes.9
     ```
   </CodeGroup>
 </Warning>
@@ -289,6 +289,20 @@ Validation errors return `422` with the name `validation_error`.
 | `404` | `The pagination cursor references an object that does not exist. See https://resend.com/docs/api-reference/pagination for more information.` | The thread in `after` or `before` isn't in the results. |
 
 <RequestExample>
+  ```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
+  import { Resend } from 'resend';
+
+  const resend = new Resend('re_xxxxxxxxx');
+
+  const { data, error } = await resend.inboxes.threads.search({
+    inboxId: 'b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1',
+    query: 'invoice -draft',
+    from: ['isabella@example.com', 'carolina@example.com'],
+    startDate: '2026-09-01',
+    limit: 2,
+  });
+  ```
+
   ```bash cURL theme={"theme":{"light":"github-light","dark":"vesper"}}
   curl --get 'https://api.resend.com/inboxes/b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1/threads/search' \
        -H 'Authorization: Bearer re_xxxxxxxxx' \
@@ -296,6 +310,15 @@ Validation errors return `422` with the name `validation_error`.
        --data-urlencode 'from=isabella@example.com,carolina@example.com' \
        --data-urlencode 'start_date=2026-09-01' \
        --data-urlencode 'limit=2'
+  ```
+
+  ```bash CLI theme={"theme":{"light":"github-light","dark":"vesper"}}
+  resend inboxes threads search \
+    --inbox_id b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1 \
+    --query "invoice -draft" \
+    --from isabella@example.com carolina@example.com \
+    --start_date 2026-09-01 \
+    --limit 2
   ```
 </RequestExample>
 
@@ -316,7 +339,7 @@ Validation errors return `422` with the name `validation_error`.
           {
             "id": "0c9e4b7a-3f2d-4a1c-b8e6-5d7f2a9c1e03",
             "name": "Billing",
-            "color": "grass"
+            "color": "#46A758"
           }
         ],
         "message_count": 3,

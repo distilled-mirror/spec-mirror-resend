@@ -44,11 +44,11 @@ export const ResponseBodyParameters = ({type, children}) => {
 
   <CodeGroup>
     ```bash Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
-    npm install resend@6.32.1-preview-inboxes.4
+    npm install resend@6.32.1-preview-inboxes.6
     ```
 
     ```bash CLI theme={"theme":{"light":"github-light","dark":"vesper"}}
-    npm install -g resend-cli@2.22.0-preview-inboxes.6
+    npm install -g resend-cli@2.22.0-preview-inboxes.9
     ```
   </CodeGroup>
 </Warning>
@@ -121,7 +121,7 @@ Event triggered whenever a **label is applied to or removed from a thread**.
         {
           "id": "c0a8012e-3b4f-4d7a-9e21-5f6a7b8c9d0e",
           "name": "Billing",
-          "color": "orange"
+          "color": "#F76B15"
         }
       ],
       "removed": [],
@@ -137,7 +137,7 @@ Event triggered whenever a **label is applied to or removed from a thread**.
           {
             "id": "c0a8012e-3b4f-4d7a-9e21-5f6a7b8c9d0e",
             "name": "Billing",
-            "color": "orange"
+            "color": "#F76B15"
           }
         ],
         "read": false

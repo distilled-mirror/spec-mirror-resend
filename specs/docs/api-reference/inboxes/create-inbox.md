@@ -50,11 +50,11 @@ export const ResendParamField = ({children, body, path, ...props}) => {
 
   <CodeGroup>
     ```bash Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
-    npm install resend@6.32.1-preview-inboxes.4
+    npm install resend@6.32.1-preview-inboxes.6
     ```
 
     ```bash CLI theme={"theme":{"light":"github-light","dark":"vesper"}}
-    npm install -g resend-cli@2.22.0-preview-inboxes.6
+    npm install -g resend-cli@2.22.0-preview-inboxes.9
     ```
   </CodeGroup>
 </Warning>
@@ -81,54 +81,8 @@ An inbox sends and receives email at an address on one of your domains, such as
 
 <ParamField body="forwarding" type="boolean">
   When `true`, Resend provisions a receiving address so you can receive mail
-  without adding an MX record. Defaults to `false`.
-</ParamField>
-
-## Response Fields
-
-<ParamField body="object" type="string">
-  Always `inbox`.
-</ParamField>
-
-<ParamField body="id" type="string">
-  The ID of the inbox.
-</ParamField>
-
-<ParamField body="name" type="string">
-  Internal name for the inbox. Recipients do not see it.
-</ParamField>
-
-<ParamField body="email_address" type="string">
-  The address of the inbox.
-</ParamField>
-
-<ParamField body="domain_id" type="string">
-  The ID of the domain that owns the address.
-</ParamField>
-
-<ParamField body="receiving_address" type="string | null">
-  The address to forward mail to when forwarding is enabled. `null` otherwise.
-</ParamField>
-
-<ParamField body="from_name" type="string | null">
-  The name recipients see when mail is sent from this inbox. A plain name, not
-  a `Name <email>` address.
-</ParamField>
-
-<ParamField body="unread" type="number">
-  The number of unread threads in the inbox.
-</ParamField>
-
-<ParamField body="drafts" type="number">
-  The number of unsent drafts.
-</ParamField>
-
-<ParamField body="last_received" type="string | null">
-  ISO 8601 timestamp when a thread in this inbox was last active.
-</ParamField>
-
-<ParamField body="created_at" type="string">
-  ISO 8601 timestamp when the inbox was created.
+  without adding an MX record. Read it from `receiving_address` with [Get
+  Inbox](/docs/api-reference/inboxes/get-inbox). Defaults to `false`.
 </ParamField>
 
 <RequestExample>
@@ -167,16 +121,7 @@ An inbox sends and receives email at an address on one of your domains, such as
   ```json Response theme={"theme":{"light":"github-light","dark":"vesper"}}
   {
     "object": "inbox",
-    "id": "b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1",
-    "name": "Customer Support",
-    "email_address": "support@example.com",
-    "domain_id": "d91cd9bd-1176-453e-8fc1-35364d380206",
-    "receiving_address": null,
-    "from_name": "Ada from Support",
-    "unread": 0,
-    "drafts": 0,
-    "last_received": null,
-    "created_at": "2026-08-05T14:03:11.229Z"
+    "id": "b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1"
   }
   ```
 </ResponseExample>

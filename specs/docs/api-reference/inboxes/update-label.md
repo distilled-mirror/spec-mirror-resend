@@ -50,11 +50,11 @@ export const ResendParamField = ({children, body, path, ...props}) => {
 
   <CodeGroup>
     ```bash Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
-    npm install resend@6.32.1-preview-inboxes.4
+    npm install resend@6.32.1-preview-inboxes.6
     ```
 
     ```bash CLI theme={"theme":{"light":"github-light","dark":"vesper"}}
-    npm install -g resend-cli@2.22.0-preview-inboxes.6
+    npm install -g resend-cli@2.22.0-preview-inboxes.9
     ```
   </CodeGroup>
 </Warning>
@@ -76,8 +76,7 @@ export const ResendParamField = ({children, body, path, ...props}) => {
 </ParamField>
 
 <ParamField body="color" type="string">
-  The color of the label: `cyan`, `teal`, `grass`, `lime`, `yellow`, `orange`,
-  `iris`, `plum`, `crimson`, `bronze`, or `mauve`.
+  The color of the label as a `#RRGGBB` hex code, like `#E93D82`.
 </ParamField>
 
 <RequestExample>
@@ -89,7 +88,7 @@ export const ResendParamField = ({children, body, path, ...props}) => {
   const { data, error } = await resend.inboxes.labels.update({
     inboxId: 'b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1',
     labelId: '7f9c1d2e-4a6b-4c3d-8e15-9b0a7c6d5e34',
-    color: 'orange',
+    color: '#F76B15',
   });
   ```
 
@@ -98,7 +97,7 @@ export const ResendParamField = ({children, body, path, ...props}) => {
        -H 'Authorization: Bearer re_xxxxxxxxx' \
        -H 'Content-Type: application/json' \
        -d $'{
-    "color": "orange"
+    "color": "#F76B15"
   }'
   ```
 
@@ -106,7 +105,7 @@ export const ResendParamField = ({children, body, path, ...props}) => {
   resend inboxes labels update \
     --inbox_id b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1 \
     --label_id 7f9c1d2e-4a6b-4c3d-8e15-9b0a7c6d5e34 \
-    --color orange
+    --color '#F76B15'
   ```
 </RequestExample>
 

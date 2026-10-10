@@ -86,6 +86,13 @@ Articles on email infrastructure, developer experience, and product updates. The
 - [Blog index (HTML)](https://resend.com/blog)
 - Example: [https://resend.com/blog/agent-experience.md](https://resend.com/blog/agent-experience.md)
 
+## Guides
+
+Step-by-step guides for sending, receiving, and delivering email with Resend. The index enumerates every guide as a list of links grouped by category. Append `.md` to any guide or category URL, or send `Accept: text/markdown`, to receive the raw markdown source.
+
+- [Guides index (Markdown)](https://resend.com/guides.md)
+- [Guides index (HTML)](https://resend.com/guides)
+
 ## Changelog
 
 Resend product updates and changes. The index enumerates every entry as a flat list of links. Append `.md` to any entry URL, or send `Accept: text/markdown`, to receive the raw markdown source.

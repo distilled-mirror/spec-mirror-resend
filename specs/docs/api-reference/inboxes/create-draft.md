@@ -50,11 +50,11 @@ export const ResendParamField = ({children, body, path, ...props}) => {
 
   <CodeGroup>
     ```bash Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
-    npm install resend@6.32.1-preview-inboxes.4
+    npm install resend@6.32.1-preview-inboxes.6
     ```
 
     ```bash CLI theme={"theme":{"light":"github-light","dark":"vesper"}}
-    npm install -g resend-cli@2.22.0-preview-inboxes.6
+    npm install -g resend-cli@2.22.0-preview-inboxes.9
     ```
   </CodeGroup>
 </Warning>
@@ -111,64 +111,6 @@ or `200` if that reply draft already exists.
   sent with `thread_id`.
 </ResendParamField>
 
-## Response Fields
-
-<ParamField body="object" type="string">
-  Always `inbox_draft`.
-</ParamField>
-
-<ParamField body="id" type="string">
-  The ID of the draft.
-</ParamField>
-
-<ParamField body="type" type="string">
-  `standalone` for a new conversation, or `reply`.
-</ParamField>
-
-<ParamField body="to" type="string[] | null">
-  Recipients.
-</ParamField>
-
-<ParamField body="cc" type="string[]">
-  CC recipients.
-</ParamField>
-
-<ParamField body="bcc" type="string[]">
-  BCC recipients.
-</ParamField>
-
-<ParamField body="subject" type="string | null">
-  The subject.
-</ParamField>
-
-<ParamField body="html" type="string | null">
-  The HTML body.
-</ParamField>
-
-<ParamField body="text" type="string | null">
-  The plain-text body.
-</ParamField>
-
-<ParamField body="thread_id" type="string | null">
-  The Thread ID when this draft is a reply. `null` otherwise.
-</ParamField>
-
-<ParamField body="reply_to_email_id" type="string | null">
-  The Email ID being replied to. `null` otherwise.
-</ParamField>
-
-<ParamField body="email_id" type="string | null">
-  The queued outbound email after send. `null` until then.
-</ParamField>
-
-<ParamField body="created_at" type="string">
-  ISO 8601 timestamp when the draft was created.
-</ParamField>
-
-<ParamField body="updated_at" type="string">
-  ISO 8601 timestamp when the draft was last saved.
-</ParamField>
-
 <RequestExample>
   ```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
   import { Resend } from 'resend';
@@ -222,19 +164,7 @@ or `200` if that reply draft already exists.
   ```json Response theme={"theme":{"light":"github-light","dark":"vesper"}}
   {
     "object": "inbox_draft",
-    "id": "c3a1e8b4-2d5f-4a7c-9e10-6b8d7f5a4c32",
-    "type": "standalone",
-    "to": ["ada@example.org"],
-    "cc": [],
-    "bcc": [],
-    "subject": "Refund for order 1041",
-    "html": "<p>Refund issued for order 1041.</p>",
-    "text": "Refund issued for order 1041.",
-    "thread_id": null,
-    "reply_to_email_id": null,
-    "email_id": null,
-    "created_at": "2026-08-05T14:12:04.110Z",
-    "updated_at": "2026-08-05T14:12:04.110Z"
+    "id": "c3a1e8b4-2d5f-4a7c-9e10-6b8d7f5a4c32"
   }
   ```
 </ResponseExample>

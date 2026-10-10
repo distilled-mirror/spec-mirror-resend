@@ -50,11 +50,11 @@ export const ResendParamField = ({children, body, path, ...props}) => {
 
   <CodeGroup>
     ```bash Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
-    npm install resend@6.32.1-preview-inboxes.4
+    npm install resend@6.32.1-preview-inboxes.6
     ```
 
     ```bash CLI theme={"theme":{"light":"github-light","dark":"vesper"}}
-    npm install -g resend-cli@2.22.0-preview-inboxes.6
+    npm install -g resend-cli@2.22.0-preview-inboxes.9
     ```
   </CodeGroup>
 </Warning>
@@ -74,30 +74,8 @@ A label is a named, colored tag that belongs to one inbox.
 </ParamField>
 
 <ParamField body="color" type="string">
-  The color of the label: `cyan`, `teal`, `grass`, `lime`, `yellow`, `orange`,
-  `iris`, `plum`, `crimson`, `bronze`, or `mauve`.
-</ParamField>
-
-## Response Fields
-
-<ParamField body="object" type="string">
-  Always `inbox_label`.
-</ParamField>
-
-<ParamField body="id" type="string">
-  The ID of the label.
-</ParamField>
-
-<ParamField body="name" type="string">
-  The name of the label.
-</ParamField>
-
-<ParamField body="color" type="string">
-  The color of the label.
-</ParamField>
-
-<ParamField body="created_at" type="string">
-  ISO 8601 timestamp when the label was created.
+  The color of the label as a `#RRGGBB` hex code, like `#E93D82`. If you leave
+  it out, Resend picks one for you.
 </ParamField>
 
 <RequestExample>
@@ -109,7 +87,7 @@ A label is a named, colored tag that belongs to one inbox.
   const { data, error } = await resend.inboxes.labels.create({
     inboxId: 'b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1',
     name: 'Urgent',
-    color: 'crimson',
+    color: '#E93D82',
   });
   ```
 
@@ -119,7 +97,7 @@ A label is a named, colored tag that belongs to one inbox.
        -H 'Content-Type: application/json' \
        -d $'{
     "name": "Urgent",
-    "color": "crimson"
+    "color": "#E93D82"
   }'
   ```
 
@@ -127,7 +105,7 @@ A label is a named, colored tag that belongs to one inbox.
   resend inboxes labels create \
     --inbox_id b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1 \
     --name Urgent \
-    --color crimson
+    --color '#E93D82'
   ```
 </RequestExample>
 
@@ -135,10 +113,7 @@ A label is a named, colored tag that belongs to one inbox.
   ```json Response theme={"theme":{"light":"github-light","dark":"vesper"}}
   {
     "object": "inbox_label",
-    "id": "7f9c1d2e-4a6b-4c3d-8e15-9b0a7c6d5e34",
-    "name": "Urgent",
-    "color": "crimson",
-    "created_at": "2026-08-05T14:07:42.881Z"
+    "id": "7f9c1d2e-4a6b-4c3d-8e15-9b0a7c6d5e34"
   }
   ```
 </ResponseExample>
