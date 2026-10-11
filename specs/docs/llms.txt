@@ -242,7 +242,8 @@
 - [Send emails with Leap and Resend](https://resend.com/docs/leap-new-integration.md): Learn how to add the Resend integration to your Leap.new project.
 - [Send emails with Appwrite and Resend](https://resend.com/docs/appwrite-integration.md): Learn how to send emails through Resend using Appwrite Messaging.
 - [How to change your Resend email address](https://resend.com/docs/knowledge-base/how-can-i-change-my-email-address.md): How to change the email address associated with your Resend account.
-- [How to add multi-factor authentication to your Resend account](https://resend.com/docs/knowledge-base/how-can-i-add-mfa.md): How to enable and disable multi-factor authentication (MFA) or two-factor authentication (2FA) on your Resend account.
+- [How to add multi-factor authentication to your Resend account](https://resend.com/docs/knowledge-base/how-can-i-add-mfa.md): How to enable and disable multi-factor authentication (MFA) or two-factor authentication (2FA) on your Resend account, save your recovery code, and what to do if you lose your device.
+- [Locked out by MFA](https://resend.com/docs/guides/account/locked-out-by-mfa.md): How to use your MFA recovery code when you lose your authenticator app, and how Resend support verifies ownership when you have no recovery code.
 - [Does Resend require production approval?](https://resend.com/docs/knowledge-base/does-resend-require-production-approval.md): Learn about production access and account limitations on Resend.
 - [What's the difference between Opportunistic TLS vs Enforced TLS?](https://resend.com/docs/knowledge-base/whats-the-difference-between-opportunistic-tls-vs-enforced-tls.md): Understand the different TLS configurations available.
 - [Managing Billing](https://resend.com/docs/dashboard/settings/billing.md): Manage your account subscription and billing information
@@ -251,6 +252,8 @@
 - [What are Resend account quotas and limits?](https://resend.com/docs/knowledge-base/account-quotas-and-limits.md): Learn what quotas and limits apply to accounts.
 - [Custom Unsubscribe Page](https://resend.com/docs/dashboard/settings/unsubscribe-page.md): Customize your unsubscribe page
 - [Managing Teams](https://resend.com/docs/dashboard/settings/team.md): Manage your account across multiple teams
+- [Can I merge accounts or teams?](https://resend.com/docs/guides/account/can-i-merge-accounts-or-teams.md): Teams cannot be merged, but you can move people, domains and your plan onto the one team you want to keep.
+- [How to recover access to a team you can no longer sign in to](https://resend.com/docs/guides/account/how-to-recover-access-to-a-team.md): How to get back into a Resend team when the email you signed in with no longer works or no admin is left on the team.
 - [Single Sign-On](https://resend.com/docs/dashboard/settings/sso.md): Let your team sign in to Resend with your identity provider
 - [Setting up Resend for Multi-Tenant Applications](https://resend.com/docs/knowledge-base/setting-up-resend-for-multi-tenants.md): Learn how to configure Resend for SaaS platforms where tenants send emails from their own domains.
 - [Where to find Resend documents like DPA or W-9](https://resend.com/docs/knowledge-base/downloading-documents.md): How to download compliance and tax documents from your Resend account.

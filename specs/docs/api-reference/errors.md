@@ -76,6 +76,12 @@ Resend uses standard HTTP response codes for success and failure notifications, 
 * **Message:** The `example.com` domain has been registered already.
 * **Suggested action:** Verify you are signed in to the correct Resend account and check whether a teammate already added the domain. If you still cannot access it, [contact support](https://resend.com/help). [Learn more about resolving this error](/docs/knowledge-base/domain-already-registered).
 
+### `validation_error`
+
+* **Status:** 403
+* **Message:** You have reached the inbox limit of your plan. Upgrade to add more.
+* **Suggested action:** Enable pay-as-you-go for inboxes in your [usage settings](https://resend.com/settings/usage) to create more than the 3 included inboxes (requires a paid plan).
+
 ### `not_found`
 
 * **Status:** 404

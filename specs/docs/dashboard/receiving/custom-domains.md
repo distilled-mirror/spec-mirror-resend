@@ -82,4 +82,8 @@ Once you add the MX record, confirm by clicking the **I've added the record** bu
     add the required MX record to your DNS provider, and click "I've added the record"
     to start verifying *only* the MX record.
   </Accordion>
+
+  <Accordion title="I want my domain to only receive emails, not send emails from Resend. Is that possible?">
+    Yes, on the domain details page, turn off "Enable Sending". You no longer need Resend's SPF records, so you can remove them from your DNS host. You still need our DKIM record to stay published, and the receiving `MX` record with "Enable Receiving" turned on.
+  </Accordion>
 </AccordionGroup>

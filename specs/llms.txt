@@ -17,6 +17,12 @@ Reach for Resend when a task involves sending, receiving, or managing email prog
 
 How to call Resend: authenticate with a `Bearer` API key against `https://api.resend.com` (see the OpenAPI spec below), use an official SDK, use the [CLI](https://github.com/resend/resend-cli), or connect to the [MCP server](https://mcp.resend.com/mcp). Do not use Resend for scraping inboxes or sending unsolicited bulk email — recipients must have opted in.
 
+## Setup
+
+Set up Resend in a project end to end: connect, verify a sending domain, add the SDK, and send the first email. Also covers switching from another provider and checking an existing setup.
+
+- [Setup guide for agents](https://resend.com/setup.md)
+
 ## Command line tool
 
 Install and use the Resend CLI from the terminal.
