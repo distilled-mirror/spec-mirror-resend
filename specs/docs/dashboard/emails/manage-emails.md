@@ -29,7 +29,7 @@ Here are all the events that can be associated with an email:
 * `clicked` - The recipient clicked on a link in the email.
 * `complained` - The email was successfully delivered to the recipient's mail server, but the recipient marked it as spam.
 * `delivered` - Resend successfully delivered the email to the recipient's mail server.
-* `delivery_delayed` - The email couldn't be delivered to the recipient's mail server because a temporary issue occurred. Delivery delays can occur, for example, when the recipient's inbox is full, or when the receiving email server experiences a transient issue.
+* `delivery_delayed` - The email couldn't be delivered to the recipient's mail server because a temporary issue occurred. Delivery delays can occur, for example, when the recipient's inbox is full, or when the receiving email server experiences a transient issue. Resend keeps retrying automatically for up to 14 hours. If the recipient's mail server still hasn't accepted the email by then, it's marked as `bounced`.
 * `failed` - The email failed to be sent.
 * `opened` - The recipient opened the email. ([Open rates are not always accurate](/docs/knowledge-base/why-are-my-open-rates-not-accurate))
 * `queued` - The email created from Broadcasts or Batches is queued for delivery.
@@ -83,7 +83,7 @@ Admins can download your data in CSV format for the following resources:
 
 To start, apply filters to your data and click on the "Export" button. Confirm your filters before exporting your data.
 
-<video autoPlay muted loop playsinline className="w-full aspect-video" src="https://mintcdn.com/resend/OWNnQaVDyqcGyhhN/images/exports.mp4?fit=max&auto=format&n=OWNnQaVDyqcGyhhN&q=85&s=1149ee4e83b4414e75a0ecaa92774c38" data-path="images/exports.mp4" />
+<video autoPlay muted loop playsinline className="w-full aspect-video" src="https://mintlify.s3.us-west-1.amazonaws.com/resend/images/exports.mp4" />
 
 If your exported data includes 1,000 items or less, the export will download immediately. For larger exports, you'll receive an email with a link to download your data.
 

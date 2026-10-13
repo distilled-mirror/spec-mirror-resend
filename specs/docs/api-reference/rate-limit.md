@@ -51,7 +51,7 @@ Both sent and received emails count towards these quotas. See the full list of [
 
 ## Contact Quotas
 
-Contact quotas restrict the number of contacts you can store for marketing emails and broadcasts. You can add more contacts beyond your plan's limit, but you won't be able to send broadcasts until you upgrade your plan.
+Contact quotas restrict the number of contacts you can store for marketing emails and broadcasts. You can add more contacts beyond your plan's limit, but you won't be able to send broadcasts until you upgrade your plan or remove contacts to get back within the limit.
 
 When you attempt to send a broadcast after reaching your contact limit, you'll receive a `403` response error code with a `validation_error` type and the message: "You have reached your contacts quota. Please upgrade your plan to send more emails."
 
