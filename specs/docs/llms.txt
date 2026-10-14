@@ -290,7 +290,7 @@
 - [List Threads](https://resend.com/docs/api-reference/inboxes/list-threads.md): Retrieve the threads in an inbox, filtered by folder, label, and read status.
 - [Search Threads](https://resend.com/docs/api-reference/inboxes/search-threads.md): Find threads in an inbox by text, people, attachments, and dates.
 - [Retrieve Thread](https://resend.com/docs/api-reference/inboxes/get-thread.md): Retrieve a thread summary.
-- [Update Thread](https://resend.com/docs/api-reference/inboxes/update-thread.md): Mark a thread read or unread, move it, or apply a label.
+- [Update Thread](https://resend.com/docs/api-reference/inboxes/update-thread.md): Mark a thread read or unread, move it, or add and remove labels.
 - [Delete Thread](https://resend.com/docs/api-reference/inboxes/delete-thread.md): Move a thread to the trash folder.
 - [List Thread Emails](https://resend.com/docs/api-reference/inboxes/list-thread-emails.md): Retrieve the messages in a thread.
 - [Retrieve Thread Email](https://resend.com/docs/api-reference/inboxes/get-thread-email.md): Retrieve a single message from a thread.

@@ -49,19 +49,26 @@ export const ResendParamField = ({children, body, path, ...props}) => {
   Once you have access, upgrade your Resend SDK to use the new methods:
 
   <CodeGroup>
-    ```bash Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
+    ```bash Node.js theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}}
     npm install resend@6.32.1-preview-inboxes.6
     ```
 
-    ```bash CLI theme={"theme":{"light":"github-light","dark":"vesper"}}
+    ```bash CLI theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}}
     npm install -g resend-cli@2.22.0-preview-inboxes.9
     ```
   </CodeGroup>
 </Warning>
 
-Omitted fields are left unchanged. Send at least one of `to`, `cc`, `bcc`,
-`subject`, `text`, or `html`. The merged draft must still contain at least one
-non-empty field. Combined recipients cannot exceed 50.
+Send at least one of `to`, `cc`, `bcc`, `subject`, `text`, `html`, or
+`attachments`. An empty body is rejected even when the draft already has files.
+After the update, the draft must still contain at least one non-empty field.
+Files already on the draft count toward that, so clearing the other fields
+while leaving `attachments` out is allowed. Combined recipients cannot exceed 50.
+
+Fields you leave out stay as they are. `html` and `text` are the exception:
+sending either one replaces both, and the one you leave out is saved as `null`.
+For `attachments`, a present array replaces the files, `[]` removes them, and
+leaving the field out keeps them.
 
 ## Path Parameters
 
@@ -92,11 +99,34 @@ non-empty field. Combined recipients cannot exceed 50.
 </ParamField>
 
 <ParamField body="html" type="string | null">
-  The HTML body. Pass `null` to clear.
+  The HTML body. Pass `null` to clear. Sending `html` or `text` replaces both,
+  and the one you leave out is saved as `null`.
 </ParamField>
 
 <ParamField body="text" type="string | null">
-  The plain-text body. Pass `null` to clear.
+  The plain-text body. Pass `null` to clear. Sending `html` or `text` replaces
+  both, and the one you leave out is saved as `null`.
+</ParamField>
+
+<ParamField body="attachments" type="array">
+  Filename and content of attachments (max 25MB of content). Each file is raw
+  `content`. `path` and `content_id` return `422`. An empty file returns `422`.
+  A present array replaces the files on the draft. `[]` removes them. Leave the
+  field out to keep the current files.
+
+  <Expandable defaultOpen="true" title="properties">
+    <ParamField body="content" type="buffer | string" required>
+      Content of an attached file, passed as a buffer or Base64 string.
+    </ParamField>
+
+    <ParamField body="filename" type="string" required>
+      Name of attached file.
+    </ParamField>
+
+    <ResendParamField body="content_type" type="string" required>
+      Content type for the attachment.
+    </ResendParamField>
+  </Expandable>
 </ParamField>
 
 ## Response Fields
@@ -157,6 +187,28 @@ non-empty field. Combined recipients cannot exceed 50.
   ISO 8601 timestamp when the draft was last saved.
 </ParamField>
 
+<ParamField body="attachments" type="array">
+  The files saved on the draft.
+
+  <Expandable defaultOpen="true" title="properties">
+    <ParamField body="id" type="string">
+      The ID of the attachment.
+    </ParamField>
+
+    <ParamField body="filename" type="string">
+      The filename of the attachment.
+    </ParamField>
+
+    <ParamField body="content_type" type="string">
+      The MIME type of the attachment, such as `application/pdf`.
+    </ParamField>
+
+    <ParamField body="size" type="number">
+      The size of the attachment in bytes.
+    </ParamField>
+  </Expandable>
+</ParamField>
+
 <RequestExample>
   ```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
   import { Resend } from 'resend';
@@ -203,7 +255,15 @@ non-empty field. Combined recipients cannot exceed 50.
     "reply_to_email_id": null,
     "email_id": null,
     "created_at": "2026-08-05T14:12:04.110Z",
-    "updated_at": "2026-08-05T14:13:22.004Z"
+    "updated_at": "2026-08-05T14:13:22.004Z",
+    "attachments": [
+      {
+        "id": "9d4f2b81-6c3a-4e7d-8b12-0a5c6d7e8f90",
+        "filename": "receipt.pdf",
+        "content_type": "application/pdf",
+        "size": 5
+      }
+    ]
   }
   ```
 </ResponseExample>

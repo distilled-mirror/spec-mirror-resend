@@ -49,18 +49,23 @@ export const ResendParamField = ({children, body, path, ...props}) => {
   Once you have access, upgrade your Resend SDK to use the new methods:
 
   <CodeGroup>
-    ```bash Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
+    ```bash Node.js theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}}
     npm install resend@6.32.1-preview-inboxes.6
     ```
 
-    ```bash CLI theme={"theme":{"light":"github-light","dark":"vesper"}}
+    ```bash CLI theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}}
     npm install -g resend-cli@2.22.0-preview-inboxes.9
     ```
   </CodeGroup>
 </Warning>
 
-The draft must have at least one recipient. A draft that was already sent
-returns `409`.
+The draft must have at least one recipient and a subject; a draft without a
+subject returns `422`. Attachments saved on the draft are sent with it. A draft
+that was already sent returns `409`.
+
+A reply draft is sent with the same `In-Reply-To` and `References` headers as
+[Reply to Thread Email](/docs/api-reference/inboxes/reply-thread-email). A draft for
+a new conversation has neither.
 
 ## Path Parameters
 
@@ -71,6 +76,13 @@ returns `409`.
 <ResendParamField path="draft_id" type="string" required>
   The Draft ID.
 </ResendParamField>
+
+## Body Parameters
+
+<ParamField body="headers" type="object">
+  Custom headers to add to the email. `In-Reply-To`, `References`, and
+  `Reply-To` can't be set and return `422`.
+</ParamField>
 
 ## Headers
 
@@ -86,19 +98,7 @@ returns `409`.
 
 ## Response Fields
 
-<ParamField body="object" type="string">
-  Always `inbox_draft`.
-</ParamField>
-
 <ParamField body="id" type="string">
-  The ID of the draft.
-</ParamField>
-
-<ParamField body="thread_id" type="string">
-  The Thread ID the sent message belongs to.
-</ParamField>
-
-<ParamField body="email_id" type="string">
   The ID of the queued outbound email.
 </ParamField>
 
@@ -129,10 +129,7 @@ returns `409`.
 <ResponseExample>
   ```json Response theme={"theme":{"light":"github-light","dark":"vesper"}}
   {
-    "object": "inbox_draft",
-    "id": "c3a1e8b4-2d5f-4a7c-9e10-6b8d7f5a4c32",
-    "thread_id": "4d8e2a1c-9b3f-4c6d-8a21-3e5f7c9c0d12",
-    "email_id": "6a0c8e58-3d9e-4f7a-8b14-2e3f4a5b6c71"
+    "id": "6a0c8e58-3d9e-4f7a-8b14-2e3f4a5b6c71"
   }
   ```
 </ResponseExample>

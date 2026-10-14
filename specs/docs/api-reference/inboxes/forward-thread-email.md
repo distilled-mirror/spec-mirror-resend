@@ -49,18 +49,25 @@ export const ResendParamField = ({children, body, path, ...props}) => {
   Once you have access, upgrade your Resend SDK to use the new methods:
 
   <CodeGroup>
-    ```bash Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
+    ```bash Node.js theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}}
     npm install resend@6.32.1-preview-inboxes.6
     ```
 
-    ```bash CLI theme={"theme":{"light":"github-light","dark":"vesper"}}
+    ```bash CLI theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}}
     npm install -g resend-cli@2.22.0-preview-inboxes.9
     ```
   </CodeGroup>
 </Warning>
 
 Forwards from the inbox address. `to` is required. The original message is
-quoted under a forwarded-message banner.
+quoted under a forwarded-message banner, and its attachments are included.
+Files in `attachments` are sent along with those. Both count toward the 25MB
+of content. An original attachment that was sent as a URL cannot be forwarded.
+
+The forward carries the same `In-Reply-To` and `References` headers as a
+[reply](/docs/api-reference/inboxes/reply-thread-email) to the original message, so
+mail clients may group it with the original conversation. These headers can't
+be set or overridden.
 
 ## Path Parameters
 
@@ -107,6 +114,40 @@ quoted under a forwarded-message banner.
   with `Fwd:` if it isn't already. Max 2000 characters.
 </ParamField>
 
+<ParamField body="attachments" type="array">
+  Filename and content of attachments (max 25MB of content per message). A
+  `path` is fetched when the email is sent and does not count toward that limit.
+
+  [See examples](/docs/dashboard/emails/attachments)
+
+  <Expandable defaultOpen="true" title="properties">
+    <ParamField body="content" type="buffer | string">
+      Content of an attached file, passed as a buffer or Base64 string.
+    </ParamField>
+
+    <ParamField body="filename" type="string">
+      Name of attached file.
+    </ParamField>
+
+    <ParamField body="path" type="string">
+      Path where the attachment file is hosted
+    </ParamField>
+
+    <ResendParamField body="content_type" type="string">
+      Content type for the attachment.
+    </ResendParamField>
+
+    <ResendParamField body="content_id" type="string">
+      You can embed images using the content id parameter for the attachment. To show the image, you need to include the ID in the `src` attribute of the `img` tag (e.g., `<img src="cid:...">`) of your HTML. [Learn about inline images](/docs/dashboard/emails/embed-inline-images).
+    </ResendParamField>
+  </Expandable>
+</ParamField>
+
+<ParamField body="headers" type="object">
+  Custom headers to add to the email. `In-Reply-To`, `References`, and
+  `Reply-To` can't be set and return `422`.
+</ParamField>
+
 ## Headers
 
 <ParamField header="Idempotency-Key" type="string">
@@ -125,62 +166,6 @@ quoted under a forwarded-message banner.
   The ID of the queued outbound email.
 </ParamField>
 
-<ParamField body="email_id" type="string">
-  The ID of the queued outbound email. Same value as `id`.
-</ParamField>
-
-<ParamField body="direction" type="string">
-  Always `outbound`.
-</ParamField>
-
-<ParamField body="from" type="string">
-  Sender email address.
-</ParamField>
-
-<ParamField body="to" type="string[]">
-  The recipients of the message.
-</ParamField>
-
-<ParamField body="cc" type="string[]">
-  The CC recipients of the message.
-</ParamField>
-
-<ParamField body="bcc" type="string[]">
-  The BCC recipients of the message.
-</ParamField>
-
-<ParamField body="reply_to" type="string[]">
-  Always empty in this response.
-</ParamField>
-
-<ParamField body="subject" type="string">
-  The subject of the sent forward.
-</ParamField>
-
-<ParamField body="message_id" type="string | null">
-  Always `null` in this response.
-</ParamField>
-
-<ParamField body="html" type="string | null">
-  The HTML body, including the note and the quoted original.
-</ParamField>
-
-<ParamField body="text" type="string | null">
-  The plain-text body, including the note and the quoted original.
-</ParamField>
-
-<ParamField body="attachments" type="array">
-  Always empty in this response.
-</ParamField>
-
-<ParamField body="read" type="boolean">
-  Always `true`.
-</ParamField>
-
-<ParamField body="received_at" type="string">
-  ISO 8601 timestamp when the message was sent.
-</ParamField>
-
 <RequestExample>
   ```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
   import { Resend } from 'resend';
@@ -195,6 +180,12 @@ quoted under a forwarded-message banner.
     cc: ['billing@example.com'],
     bcc: ['records@example.com'],
     text: 'Flagging this refund request for you.',
+    attachments: [
+      {
+        path: 'https://resend.com/static/sample/invoice.pdf',
+        filename: 'invoice.pdf',
+      },
+    ],
   });
   ```
 
@@ -206,7 +197,13 @@ quoted under a forwarded-message banner.
     "to": ["colleague@example.org"],
     "cc": ["billing@example.com"],
     "bcc": ["records@example.com"],
-    "text": "Flagging this refund request for you."
+    "text": "Flagging this refund request for you.",
+    "attachments": [
+      {
+        "path": "https://resend.com/static/sample/invoice.pdf",
+        "filename": "invoice.pdf"
+      }
+    ]
   }'
   ```
 
@@ -223,21 +220,7 @@ quoted under a forwarded-message banner.
 <ResponseExample>
   ```json Response theme={"theme":{"light":"github-light","dark":"vesper"}}
   {
-    "id": "6a0c8e58-3d9e-4f7a-8b14-2e3f4a5b6c71",
-    "email_id": "6a0c8e58-3d9e-4f7a-8b14-2e3f4a5b6c71",
-    "direction": "outbound",
-    "from": "support@example.com",
-    "to": ["colleague@example.org"],
-    "cc": ["billing@example.com"],
-    "bcc": ["records@example.com"],
-    "reply_to": [],
-    "subject": "Fwd: Refund for order 1041",
-    "message_id": null,
-    "html": "<div>Flagging this refund request for you.<br>\n<br>\n---------- Forwarded message ---------<br>\nFrom: Ada Lovelace &lt;ada@example.org&gt;<br>\nDate: Wed, Aug 5, 2026 at 2:03 PM<br>\nSubject: Refund for order 1041<br>\nTo: support@example.com<br>\n<br>\nCould I get a refund for order 1041?</div>",
-    "text": "Flagging this refund request for you.\n\n---------- Forwarded message ---------\nFrom: Ada Lovelace <ada@example.org>\nDate: Wed, Aug 5, 2026 at 2:03 PM\nSubject: Refund for order 1041\nTo: support@example.com\n\nCould I get a refund for order 1041?",
-    "attachments": [],
-    "read": true,
-    "received_at": "2026-08-05T14:12:04.110Z"
+    "id": "6a0c8e58-3d9e-4f7a-8b14-2e3f4a5b6c71"
   }
   ```
 </ResponseExample>

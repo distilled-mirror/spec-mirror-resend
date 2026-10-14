@@ -98,6 +98,7 @@ Step-by-step guides for sending, receiving, and delivering email with Resend. Th
 
 - [Guides index (Markdown)](https://resend.com/guides.md)
 - [Guides index (HTML)](https://resend.com/guides)
+- Example: [https://resend.com/guides/email/new-domain-emails-going-to-spam.md](https://resend.com/guides/email/new-domain-emails-going-to-spam.md)
 
 ## Changelog
 

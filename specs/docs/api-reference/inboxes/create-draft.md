@@ -49,24 +49,25 @@ export const ResendParamField = ({children, body, path, ...props}) => {
   Once you have access, upgrade your Resend SDK to use the new methods:
 
   <CodeGroup>
-    ```bash Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
+    ```bash Node.js theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}}
     npm install resend@6.32.1-preview-inboxes.6
     ```
 
-    ```bash CLI theme={"theme":{"light":"github-light","dark":"vesper"}}
+    ```bash CLI theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}}
     npm install -g resend-cli@2.22.0-preview-inboxes.9
     ```
   </CodeGroup>
 </Warning>
 
 A draft is an unsent message. Omit `thread_id` for a new conversation. Pass
-`thread_id` and `reply_to_email_id` together to attach it as a reply. A reply
-draft doesn't copy recipients from the message it replies to, so set `to`
-before you send it.
+`thread_id` and `reply_to_email_id` together to attach it as a reply. When a
+reply draft is created without `to`, it's filled in the same way as [Reply to
+Thread Email](/docs/api-reference/inboxes/reply-thread-email). `cc`, `bcc`, and
+`subject` are never filled in, so set `subject` before you send it.
 
-At least one of `to`, `cc`, `bcc`, `subject`, `text`, or `html` must be
-non-empty. Combined recipients cannot exceed 50. Returns `201` for a new draft,
-or `200` if that reply draft already exists.
+At least one of `to`, `cc`, `bcc`, `subject`, `text`, `html`, or `attachments`
+must be non-empty. Combined recipients cannot exceed 50. Returns `201` for a
+new draft, or `200` if that reply draft already exists.
 
 ## Path Parameters
 
@@ -101,6 +102,26 @@ or `200` if that reply draft already exists.
   The plain-text body.
 </ParamField>
 
+<ParamField body="attachments" type="array">
+  Filename and content of attachments (max 25MB of content). Each file is raw
+  `content`. `path` and `content_id` return `422`. An empty file returns `422`.
+  A file counts as draft content.
+
+  <Expandable defaultOpen="true" title="properties">
+    <ParamField body="content" type="buffer | string" required>
+      Content of an attached file, passed as a buffer or Base64 string.
+    </ParamField>
+
+    <ParamField body="filename" type="string" required>
+      Name of attached file.
+    </ParamField>
+
+    <ResendParamField body="content_type" type="string" required>
+      Content type for the attachment.
+    </ResendParamField>
+  </Expandable>
+</ParamField>
+
 <ResendParamField body="thread_id" type="string">
   The Thread ID to reply in. Must be sent with `reply_to_email_id`.
 </ResendParamField>
@@ -110,6 +131,16 @@ or `200` if that reply draft already exists.
   Emails](/docs/api-reference/inboxes/list-thread-emails) in `data[].id`. Must be
   sent with `thread_id`.
 </ResendParamField>
+
+## Response Fields
+
+<ParamField body="object" type="string">
+  Always `inbox_draft`.
+</ParamField>
+
+<ParamField body="id" type="string">
+  The ID of the draft.
+</ParamField>
 
 <RequestExample>
   ```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
@@ -123,6 +154,13 @@ or `200` if that reply draft already exists.
     subject: 'Refund for order 1041',
     html: '<p>Refund issued for order 1041.</p>',
     text: 'Refund issued for order 1041.',
+    attachments: [
+      {
+        filename: 'note.txt',
+        content: 'aGVsbG8=',
+        contentType: 'text/plain',
+      },
+    ],
   });
   ```
 
@@ -134,7 +172,14 @@ or `200` if that reply draft already exists.
     "to": ["ada@example.org"],
     "subject": "Refund for order 1041",
     "html": "<p>Refund issued for order 1041.</p>",
-    "text": "Refund issued for order 1041."
+    "text": "Refund issued for order 1041.",
+    "attachments": [
+      {
+        "filename": "note.txt",
+        "content": "aGVsbG8=",
+        "content_type": "text/plain"
+      }
+    ]
   }'
   ```
 

@@ -30,11 +30,14 @@ Free accounts have the following:
 
 * Domains: up to 3 verified domains.
 
+* Inboxes: up to 3 inboxes.
+
 ## Paid Plan Quota
 
 * Transactional Pro, Scale and Enterprise plans have no daily quota limits, though the plan tier will dictate the monthly email quota. Both sent and received emails count towards this monthly quota. To see your current month usage, view the [**Usage page**](https://resend.com/settings/usage). Multiple `To`, `CC`, or `BCC` recipients in sent emails count as separate emails towards the monthly quota.
 * Marketing Pro, Enterprise plans have unlimited emails, though the plan tier will dictate the monthly contacts.
 * Pro plans include 10 domains and Scale plans include 1,000 domains. Enterprise domain limits are set by contract. Pro and Scale plans can add 100 more domains with a [\$20/month add-on](/docs/knowledge-base/what-is-resend-pricing#add-ons).
+* All plans include 3 inboxes. Paid transactional plans can enable pay-as-you-go for inboxes to create more at \$1 per inbox per month. See [Inbox Limits](#inbox-limits).
 
 ## Overage Limits
 
@@ -59,6 +62,20 @@ Paid plans include pay-as-you-go overages, which allow you to continue sending e
 Every plan includes a set number of verified custom domains, listed on the [pricing page](https://resend.com/pricing). You can see how many domains your team is using on the [**Usage page**](https://resend.com/settings/usage).
 
 If you need more, paid transactional plans can enable the domains add-on, which adds 100 domains on top of the number included in your plan for \$20 per month. See [How to add more domains](/docs/knowledge-base/how-to-add-more-domains).
+
+## Inbox Limits
+
+Every plan includes 3 [inboxes](/docs/api-reference/inboxes/create-inbox) for free. To create more, enable pay-as-you-go for inboxes on the [**Usage page**](https://resend.com/settings/usage). Each inbox beyond the included 3 costs \$1 per month. Pay-as-you-go for inboxes requires a paid transactional plan, so free accounts need to [upgrade](https://resend.com/settings/billing) first.
+
+You can see how many inboxes your team is using on the [**Usage page**](https://resend.com/settings/usage).
+
+<Note>
+  Pay-as-you-go for inboxes is off by default and can only be turned on by a
+  team admin. Turning it off later stops new inboxes from being created, but
+  existing inboxes keep working and keep being billed until you delete them.
+</Note>
+
+Inboxes are in early access. Enable them in [Labs](https://resend.com/settings/labs) to show them in the dashboard.
 
 ## Rate Limits
 

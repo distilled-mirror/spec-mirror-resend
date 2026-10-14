@@ -4,7 +4,7 @@
 
 # Update Thread
 
-> Mark a thread read or unread, move it, or apply a label.
+> Mark a thread read or unread, move it, or add and remove labels.
 
 export const ResendParamField = ({children, body, path, ...props}) => {
   const [lang, setLang] = useState(() => {
@@ -49,17 +49,17 @@ export const ResendParamField = ({children, body, path, ...props}) => {
   Once you have access, upgrade your Resend SDK to use the new methods:
 
   <CodeGroup>
-    ```bash Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
+    ```bash Node.js theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}}
     npm install resend@6.32.1-preview-inboxes.6
     ```
 
-    ```bash CLI theme={"theme":{"light":"github-light","dark":"vesper"}}
+    ```bash CLI theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}}
     npm install -g resend-cli@2.22.0-preview-inboxes.9
     ```
   </CodeGroup>
 </Warning>
 
-At least one of `read`, `folder`, or `label_id` is required.
+At least one of `read`, `folder`, `add_label_ids`, or `remove_label_ids` is required.
 
 ## Path Parameters
 
@@ -81,8 +81,14 @@ At least one of `read`, `folder`, or `label_id` is required.
   Moves the thread. One of `inbox`, `archive`, `spam`, or `trash`.
 </ParamField>
 
-<ResendParamField body="label_id" type="string">
-  Applies this label to the thread.
+<ResendParamField body="add_label_ids" type="string[]">
+  Applies these labels to the thread. Up to 10 label IDs per request. A label ID
+  cannot appear in both `add_label_ids` and `remove_label_ids`.
+</ResendParamField>
+
+<ResendParamField body="remove_label_ids" type="string[]">
+  Takes these labels off the thread. Up to 10 label IDs per request. The labels
+  themselves are kept and stay on every other thread carrying them.
 </ResendParamField>
 
 ## Folders
@@ -164,7 +170,17 @@ assigned automatically.
        -H 'Authorization: Bearer re_xxxxxxxxx' \
        -H 'Content-Type: application/json' \
        -d $'{
-    "label_id": "7f9c1d2e-4a6b-4c3d-8e15-9b0a7c6d5e34"
+    "add_label_ids": ["7f9c1d2e-4a6b-4c3d-8e15-9b0a7c6d5e34"]
+  }'
+  ```
+
+  ```bash Swap labels theme={"theme":{"light":"github-light","dark":"vesper"}}
+  curl -X PATCH 'https://api.resend.com/inboxes/b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1/threads/4d8e2a1c-9b3f-4c6d-8a21-3e5f7c9c0d12' \
+       -H 'Authorization: Bearer re_xxxxxxxxx' \
+       -H 'Content-Type: application/json' \
+       -d $'{
+    "add_label_ids": ["7f9c1d2e-4a6b-4c3d-8e15-9b0a7c6d5e34"],
+    "remove_label_ids": ["2c6a8e4b-1d3f-4a5c-9b7e-0f1a2b3c4d5e"]
   }'
   ```
 
