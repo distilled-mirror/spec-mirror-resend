@@ -41,7 +41,7 @@ For each Contact, you can:
 
 In the [Dashboard](https://resend.com/audience), add Contacts manually by providing one or more email addresses, or [upload your existing Contacts](/docs/dashboard/contacts/add-contacts#add-contacts-by-uploading-a-csv) stored in a `.csv` file.
 
-Add Contacts programmatically with the [Contacts API](/docs/dashboard/contacts/manage-contacts#add-contacts-programmatically-via-api) or [CLI commands](cli#contacts).
+Add Contacts programmatically with the [Contacts API](/docs/dashboard/contacts/manage-contacts#add-contacts-programmatically-via-api) or [CLI commands](/docs/cli#contacts).
 
 To add a single Contact manually in the Dashboard:
 

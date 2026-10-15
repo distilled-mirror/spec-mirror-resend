@@ -4,7 +4,7 @@
 
 # List Inboxes
 
-> Retrieve a list of inboxes for the authenticated user.
+> Retrieve a list of inboxes for the team.
 
 export const QueryParams = ({type, isRequired}) => {
   return <>
@@ -76,17 +76,22 @@ export const QueryParams = ({type, isRequired}) => {
 
   <CodeGroup>
     ```bash Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
-    npm install resend@6.32.1-preview-inboxes.6
+    npm install resend@6.33.0
     ```
 
     ```bash CLI theme={"theme":{"light":"github-light","dark":"vesper"}}
-    npm install -g resend-cli@2.22.0-preview-inboxes.9
+    npm install -g resend-cli@2.25.0
     ```
   </CodeGroup>
 </Warning>
 
 Inboxes are returned newest first. Results are paginated with cursors. See
-[Pagination](/docs/api-reference/pagination) for how `after` and `before` work.
+[Pagination](/docs/api-reference/pagination) for how `after` and `before` work. The
+cursors take an inbox ID. A value that is not a UUID returns a `422`, and an
+unknown ID returns a `404`.
+
+The list items carry fewer fields than a single inbox. [Retrieve an
+inbox](/docs/api-reference/inboxes/get-inbox) to get all its fields.
 
 <QueryParams type="inboxes" isRequired={true} />
 
@@ -117,16 +122,17 @@ Inboxes are returned newest first. Results are paginated with cursors. See
     </ParamField>
 
     <ParamField body="from_name" type="string | null">
-      The name recipients see when mail is sent from this inbox. A plain name,
-      not a `Name <email>` address.
+      The name recipients see when mail is sent from this inbox. `null` when
+      not set.
     </ParamField>
 
     <ParamField body="unread" type="number">
-      The number of unread threads in the inbox.
+      The number of unread threads in the Inbox folder.
     </ParamField>
 
     <ParamField body="last_received" type="string | null">
-      ISO 8601 timestamp when a thread in this inbox was last active.
+      ISO 8601 timestamp of the newest received email in the Inbox folder.
+      `null` when the folder has no received email.
     </ParamField>
   </Expandable>
 </ParamField>

@@ -50,22 +50,25 @@ export const ResendParamField = ({children, body, path, ...props}) => {
 
   <CodeGroup>
     ```bash Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
-    npm install resend@6.32.1-preview-inboxes.6
+    npm install resend@6.33.0
     ```
 
     ```bash CLI theme={"theme":{"light":"github-light","dark":"vesper"}}
-    npm install -g resend-cli@2.22.0-preview-inboxes.9
+    npm install -g resend-cli@2.25.0
     ```
   </CodeGroup>
 </Warning>
 
 Messages are returned oldest first. Each item has the same shape as [Retrieve
-Thread Email](/docs/api-reference/inboxes/get-thread-email).
+Thread Email](/docs/api-reference/inboxes/get-thread-email). Pass the `id` of the
+last message as `after` to get the next, newer page. Pass the `id` of the first
+message as `before` to get the previous, older page. You cannot combine `after`
+and `before`. A cursor that is not a message of the thread returns a `404`.
 
 ## Path Parameters
 
 <ResendParamField path="inbox_id" type="string" required>
-  The Inbox ID.
+  The Inbox ID. An email address is not accepted.
 </ResendParamField>
 
 <ResendParamField path="thread_id" type="string" required>
@@ -109,15 +112,18 @@ Thread Email](/docs/api-reference/inboxes/get-thread-email).
 
     <ParamField body="direction" type="string">
       Whether the message was received by the inbox or sent from it. One of
-      `inbound` or `outbound`.
+      `inbound` or `outbound`. A message the inbox sent to itself is `inbound`, so
+      a reply to it goes to its sender.
     </ParamField>
 
     <ParamField body="from" type="string">
-      Sender email address.
+      Sender email address. Includes the display name when the sender has one, in
+      the format `Name <sender@domain.com>`.
     </ParamField>
 
     <ParamField body="to" type="string[]">
-      The recipients of the message.
+      The recipients of the message. For a received message, these are the
+      addresses it was delivered to, not the full `To` header.
     </ParamField>
 
     <ParamField body="cc" type="string[]">
@@ -125,7 +131,7 @@ Thread Email](/docs/api-reference/inboxes/get-thread-email).
     </ParamField>
 
     <ParamField body="bcc" type="string[]">
-      The BCC recipients of the message.
+      The BCC recipients of the message. Always empty for a received message.
     </ParamField>
 
     <ParamField body="reply_to" type="string[]">
@@ -171,7 +177,8 @@ Thread Email](/docs/api-reference/inboxes/get-thread-email).
     </ParamField>
 
     <ParamField body="received_at" type="string">
-      ISO 8601 timestamp when the message arrived or was sent.
+      ISO 8601 timestamp when the inbox received the message, or when the inbox
+      sent it.
     </ParamField>
   </Expandable>
 </ParamField>
@@ -194,9 +201,7 @@ Thread Email](/docs/api-reference/inboxes/get-thread-email).
   ```
 
   ```bash CLI theme={"theme":{"light":"github-light","dark":"vesper"}}
-  resend inboxes threads emails list \
-    --inbox_id b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1 \
-    --thread_id 4d8e2a1c-9b3f-4c6d-8a21-3e5f7c9c0d12
+  resend inboxes threads emails list b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1 4d8e2a1c-9b3f-4c6d-8a21-3e5f7c9c0d12
   ```
 </RequestExample>
 

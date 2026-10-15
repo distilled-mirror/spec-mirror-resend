@@ -253,6 +253,7 @@
     "guides/dns/squarespace.md",
     "guides/dns/strato.md",
     "guides/dns/vercel.md",
+    "guides/laravel-cloud-integration.md",
     "guides/paper.md",
     "guides/stripe-projects-integration.md",
     "guides/vercel-marketplace-integration.md",

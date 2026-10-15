@@ -6,6 +6,11 @@
 
 > Integrate Resend with the tools you already use.
 
+export const LaravelIcon = props => <svg className="h-6 w-6" fill="none" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" {...props}>
+    <title>{'Laravel'}</title>
+    <path d="M6.69141 2.76562L4.07422 4.27344M6.69141 2.76562L4.07422 1.25781L1.46094 2.76562M6.69141 2.76562V8.74242M4.07422 4.27344L1.46094 2.76562M4.07422 4.27344V10.2397M1.46094 2.76562V11.7266L6.69141 14.7422M6.69141 14.7422V11.7266M6.69141 14.7422L11.9201 11.7266V8.74242M6.69141 11.7266L4.07422 10.2397M6.69141 11.7266L11.9201 8.74242M4.07422 10.2397L6.69141 8.74242M9.31189 4.27344L11.9201 2.76562L14.5365 4.27344M9.31189 4.27344L11.9201 5.77934M9.31189 4.27344V7.24025M11.9201 5.77934L14.5365 4.27344M11.9201 5.77934V8.74242M14.5365 4.27344V7.24025L11.9201 8.74242M11.9201 8.74242L9.31189 7.24025M9.31189 7.24025L6.69141 8.74242" stroke="currentcolor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="0.9"></path>
+  </svg>;
+
 export const AppwriteIcon = props => <svg className="h-6 w-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
     <title>Appwrite</title>
     <path d="M24 17.291v5.29H10.557A10.58 10.58 0 0 1 0 12.715v-1.43c.048-.735.174-1.463.374-2.171C1.63 4.673 5.713 1.419 10.557 1.419c4.844 0 8.927 3.254 10.183 7.695h-5.749a5.283 5.283 0 0 0-4.434-2.404 5.282 5.282 0 0 0-4.434 2.404A5.23 5.23 0 0 0 5.267 12a5.27 5.27 0 0 0 1.66 3.848 5.27 5.27 0 0 0 3.63 1.443H24Zm0-6.734v5.291h-9.813A5.276 5.276 0 0 0 15.848 12c0-.5-.07-.984-.199-1.443H24Z" fill="currentColor" />
@@ -915,6 +920,10 @@ export const CursorIcon = props => <svg className="h-6 w-6" viewBox="0 0 24 24" 
 ## Developer tools
 
 <CardGroup>
+  <Card title="Laravel Cloud" href="/docs/guides/laravel-cloud-integration" icon={<LaravelIcon />}>
+    Connect Resend to a Laravel Cloud environment
+  </Card>
+
   <Card title="Raycast" href="https://www.raycast.com/resend/resend" icon={<RaycastIcon />}>
     Manage emails, domains, and more
   </Card>

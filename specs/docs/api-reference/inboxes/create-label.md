@@ -50,32 +50,35 @@ export const ResendParamField = ({children, body, path, ...props}) => {
 
   <CodeGroup>
     ```bash Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
-    npm install resend@6.32.1-preview-inboxes.6
+    npm install resend@6.33.0
     ```
 
     ```bash CLI theme={"theme":{"light":"github-light","dark":"vesper"}}
-    npm install -g resend-cli@2.22.0-preview-inboxes.9
+    npm install -g resend-cli@2.25.0
     ```
   </CodeGroup>
 </Warning>
 
-A label is a named, colored tag that belongs to one inbox.
+A label is a named, colored tag that belongs to one inbox. An inbox can have at
+most 100 labels. Label names are unique per inbox, compared without case. A
+duplicate name or a full inbox returns a `422` `validation_error`.
 
 ## Path Parameters
 
 <ResendParamField path="inbox_id" type="string" required>
-  The Inbox ID.
+  The Inbox ID. An email address is not accepted.
 </ResendParamField>
 
 ## Body Parameters
 
 <ParamField body="name" type="string" required>
-  The name of the label.
+  The name of the label. Max 64 characters. Leading and trailing whitespace is
+  trimmed. Must not match another label on the inbox, compared without case.
 </ParamField>
 
 <ParamField body="color" type="string">
-  The color of the label as a `#RRGGBB` hex code, like `#E93D82`. If you leave
-  it out, Resend picks one for you.
+  The color of the label as a `#RRGGBB` hex code, like `#E93D82`. It is stored
+  in uppercase. When omitted, a random color from the dashboard palette is used.
 </ParamField>
 
 <RequestExample>
@@ -102,8 +105,7 @@ A label is a named, colored tag that belongs to one inbox.
   ```
 
   ```bash CLI theme={"theme":{"light":"github-light","dark":"vesper"}}
-  resend inboxes labels create \
-    --inbox_id b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1 \
+  resend inboxes labels create b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1 \
     --name Urgent \
     --color '#E93D82'
   ```

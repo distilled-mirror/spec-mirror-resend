@@ -49,19 +49,23 @@ export const ResendParamField = ({children, body, path, ...props}) => {
   Once you have access, upgrade your Resend SDK to use the new methods:
 
   <CodeGroup>
-    ```bash Node.js theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}}
-    npm install resend@6.32.1-preview-inboxes.6
+    ```bash Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
+    npm install resend@6.33.0
     ```
 
-    ```bash CLI theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}}
-    npm install -g resend-cli@2.22.0-preview-inboxes.9
+    ```bash CLI theme={"theme":{"light":"github-light","dark":"vesper"}}
+    npm install -g resend-cli@2.25.0
     ```
   </CodeGroup>
 </Warning>
 
-The draft must have at least one recipient and a subject; a draft without a
-subject returns `422`. Attachments saved on the draft are sent with it. A draft
-that was already sent returns `409`.
+Sends the draft from the inbox address. A reply draft is sent in its thread. A
+draft without a thread starts a new thread. Attachments saved on the draft are
+sent with it.
+
+The draft must have at least one `to` recipient, a non-empty `subject`, and
+`html` or `text`, or the request returns a `422`. A draft that was already sent
+returns a `409`.
 
 A reply draft is sent with the same `In-Reply-To` and `References` headers as
 [Reply to Thread Email](/docs/api-reference/inboxes/reply-thread-email). A draft for
@@ -70,7 +74,7 @@ a new conversation has neither.
 ## Path Parameters
 
 <ResendParamField path="inbox_id" type="string" required>
-  The Inbox ID.
+  The Inbox ID. An email address is not accepted.
 </ResendParamField>
 
 <ResendParamField path="draft_id" type="string" required>
@@ -79,9 +83,15 @@ a new conversation has neither.
 
 ## Body Parameters
 
+The request body is optional and takes only `headers`. Without headers, send no
+body.
+
 <ParamField body="headers" type="object">
-  Custom headers to add to the email. `In-Reply-To`, `References`, and
-  `Reply-To` can't be set and return `422`.
+  Custom headers to add to the email. Resend sets the `In-Reply-To`,
+  `References`, and `Reply-To` headers, so you cannot set them here. Sending one
+  of them, in any letter case, returns a `422`. A header name cannot be empty,
+  and names and values cannot contain line breaks or null characters, or the
+  request returns a `422`.
 </ParamField>
 
 ## Headers
@@ -92,6 +102,11 @@ a new conversation has neither.
   * Should be **unique per API request**
   * Idempotency keys expire after **24 hours**
   * Have a maximum length of **256 characters**
+  * A retry with the same key returns the first successful response, with the
+    `idempotent-replayed: true` header
+  * A failed request is not stored, so you can retry it with the same key
+  * Reusing the key with a different body, or while the first request is still
+    running, returns a `409`
 
   [Learn more](/docs/dashboard/emails/idempotency-keys)
 </ParamField>
@@ -99,7 +114,8 @@ a new conversation has neither.
 ## Response Fields
 
 <ParamField body="id" type="string">
-  The ID of the queued outbound email.
+  The ID of the sent email. Use it with the [emails
+  endpoints](/docs/api-reference/emails/retrieve-email).
 </ParamField>
 
 <RequestExample>
@@ -120,9 +136,7 @@ a new conversation has neither.
   ```
 
   ```bash CLI theme={"theme":{"light":"github-light","dark":"vesper"}}
-  resend inboxes drafts send \
-    --inbox_id b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1 \
-    --draft_id c3a1e8b4-2d5f-4a7c-9e10-6b8d7f5a4c32
+  resend inboxes drafts send b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1 c3a1e8b4-2d5f-4a7c-9e10-6b8d7f5a4c32
   ```
 </RequestExample>
 

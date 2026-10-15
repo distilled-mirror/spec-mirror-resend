@@ -50,11 +50,11 @@ export const ResendParamField = ({children, body, path, ...props}) => {
 
   <CodeGroup>
     ```bash Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
-    npm install resend@6.32.1-preview-inboxes.6
+    npm install resend@6.33.0
     ```
 
     ```bash CLI theme={"theme":{"light":"github-light","dark":"vesper"}}
-    npm install -g resend-cli@2.22.0-preview-inboxes.9
+    npm install -g resend-cli@2.25.0
     ```
   </CodeGroup>
 </Warning>
@@ -71,7 +71,7 @@ Threads](/docs/api-reference/inboxes/list-threads).
 ## Path Parameters
 
 <ResendParamField path="inbox_id" type="string" required>
-  The Inbox ID.
+  The Inbox ID. An email address is not accepted.
 </ResendParamField>
 
 ## Query Parameters
@@ -86,25 +86,27 @@ Threads](/docs/api-reference/inboxes/list-threads).
 <ParamField query="from" type="string">
   Comma-separated senders. Each value matches part of the sender's address or
   name, case-insensitive. Returns threads matching any of them. Up to `20`
-  values.
+  values. Repeating the parameter returns a `422` `validation_error`.
 </ParamField>
 
 <ParamField query="to" type="string">
   Comma-separated recipients, matched the same way as `from`. Up to `20` values.
+  Repeating the parameter returns a `422` `validation_error`.
 </ParamField>
 
 <ParamField query="cc" type="string">
   Comma-separated CC recipients, matched the same way as `from`. Up to `20`
-  values.
+  values. Repeating the parameter returns a `422` `validation_error`.
 </ParamField>
 
 <ParamField query="bcc" type="string">
   Comma-separated BCC recipients, matched the same way as `from`. Up to `20`
-  values.
+  values. Repeating the parameter returns a `422` `validation_error`.
 </ParamField>
 
 <ParamField query="has_attachment" type="boolean">
   `true` matches emails with an attachment. `false` matches emails without one.
+  Only the literal values `true` and `false` are accepted.
 </ParamField>
 
 <ParamField query="start_date" type="string">
@@ -115,7 +117,8 @@ Threads](/docs/api-reference/inboxes/list-threads).
 <ParamField query="end_date" type="string">
   Matches emails sent on or before this date. Same formats as `start_date`. A
   date covers that whole day, so `start_date=2026-09-01&end_date=2026-09-30`
-  covers all of September. A timestamp is used as given.
+  covers all of September. A timestamp is used as given. An `end_date` before
+  `start_date` returns a `422` `validation_error`.
 </ParamField>
 
 <ParamField query="folders" type="string">
@@ -123,17 +126,20 @@ Threads](/docs/api-reference/inboxes/list-threads).
   `trash`. A thread is returned when any of its emails is in one of them, so a
   thread in `inbox` with an email you sent matches both `inbox` and `sent`.
   Defaults to `inbox`, or `inbox,archive,sent` when `labels` is set. `spam` and
-  `trash` are only included when you name them.
+  `trash` are only included when you name them. Repeating the parameter returns
+  a `422` `validation_error`.
 </ParamField>
 
 <ParamField query="labels" type="string">
   Comma-separated label IDs. Returns threads with any of these labels. Up to
-  `50` IDs. An ID that doesn't exist in the inbox returns a `404`.
+  `50` IDs. An ID that doesn't exist in the inbox returns a `404`. Repeating the
+  parameter returns a `422` `validation_error`.
 </ParamField>
 
 <ParamField query="read" type="boolean">
   `true` returns threads where every email is read. `false` returns threads with
-  at least one unread email.
+  at least one unread email. Only the literal values `true` and `false` are
+  accepted.
 </ParamField>
 
 <ParamField query="limit" type="number">
@@ -163,6 +169,8 @@ Threads](/docs/api-reference/inboxes/list-threads).
 * `folders`, `labels`, and `read` apply to the thread. `query`, `from`, `to`,
   `cc`, `bcc`, `has_attachment`, `start_date`, and `end_date` must all match
   the same email in the thread.
+* When any of these email filters is set, the matching email must itself be in
+  one of `folders`. For `sent`, that means an email the inbox sent.
 * When more than 10,000 threads match, search covers the 10,000 with the
   newest matching email.
 
@@ -205,11 +213,12 @@ assigned automatically.
     </ParamField>
 
     <ParamField body="from" type="string | null">
-      Sender email address.
+      Sender email address. Can include the display name.
     </ParamField>
 
     <ParamField body="to" type="string[]">
-      The recipients of the most recent message.
+      The recipients of the most recent message. For a received email, these
+      are the addresses it was delivered to, not the full `To` header.
     </ParamField>
 
     <ParamField body="cc" type="string[]">
@@ -217,7 +226,8 @@ assigned automatically.
     </ParamField>
 
     <ParamField body="bcc" type="string[]">
-      The BCC recipients of the most recent message.
+      The BCC recipients of the most recent message. Always empty for a
+      received email.
     </ParamField>
 
     <ParamField body="labels" type="array">
@@ -225,12 +235,12 @@ assigned automatically.
       `color`.
     </ParamField>
 
-    <ParamField body="message_count" type="number">
-      The number of messages in the thread.
+    <ParamField body="email_count" type="number">
+      The number of emails in the thread.
     </ParamField>
 
     <ParamField body="has_attachment" type="boolean">
-      Whether any message has an attachment.
+      Whether the most recent message in the thread has an attachment.
     </ParamField>
 
     <ParamField body="has_draft" type="boolean">
@@ -251,17 +261,12 @@ assigned automatically.
     </ParamField>
 
     <ParamField body="matched_email_id" type="string | null">
-      The ID of the email in the thread that matched the search. When `query`
+      Identifies the email in the thread that matched the search. When `query`
       has words or phrases, it's the most relevant match. Otherwise, it's the
-      newest. Pass it to [Retrieve Thread
-      Email](/docs/api-reference/inboxes/get-thread-email) to read that email.
-    </ParamField>
-
-    <ParamField body="highlights" type="object">
-      Where `query` matched the email in `matched_email_id`, as text fragments
-      with each match wrapped in `**`. Keys are `subject`, `body`, `from`,
-      `to`, `cc`, `bcc`, and `attachments`, each an array of strings, and only
-      keys with a match are present. `{}` when there's no `query`.
+      newest. [Retrieve Thread Email](/docs/api-reference/inboxes/get-thread-email),
+      reply, and forward accept it as `email_id`, but it is not equal to the
+      `id` those endpoints return. `null` when the search index returns no
+      matched email for the thread.
     </ParamField>
   </Expandable>
 </ParamField>
@@ -313,11 +318,10 @@ Validation errors return `422` with the name `validation_error`.
   ```
 
   ```bash CLI theme={"theme":{"light":"github-light","dark":"vesper"}}
-  resend inboxes threads search \
-    --inbox_id b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1 \
+  resend inboxes threads search b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1 \
     --query "invoice -draft" \
     --from isabella@example.com carolina@example.com \
-    --start_date 2026-09-01 \
+    --start-date 2026-09-01 \
     --limit 2
   ```
 </RequestExample>
@@ -342,18 +346,13 @@ Validation errors return `422` with the name `validation_error`.
             "color": "#46A758"
           }
         ],
-        "message_count": 3,
+        "email_count": 3,
         "has_attachment": true,
         "has_draft": false,
         "read": false,
         "received_at": "2026-09-24T14:12:08.000Z",
         "folder": "inbox",
-        "matched_email_id": "e8a3f1c6-2b9d-4e5a-a7c4-9d1b6f3e2a80",
-        "highlights": {
-          "subject": ["September **invoice**"],
-          "body": ["Attached is the **invoice** for September, due on the 30th."],
-          "attachments": ["**invoice**-2026-09.pdf"]
-        }
+        "matched_email_id": "e8a3f1c6-2b9d-4e5a-a7c4-9d1b6f3e2a80"
       },
       {
         "id": "7d2f8a3b-9c1e-4b6d-a5f2-3e8c0b7a9d16",
@@ -363,16 +362,13 @@ Validation errors return `422` with the name `validation_error`.
         "cc": ["finance@example.com"],
         "bcc": [],
         "labels": [],
-        "message_count": 5,
+        "email_count": 5,
         "has_attachment": false,
         "has_draft": false,
         "read": true,
         "received_at": "2026-09-18T09:47:31.000Z",
         "folder": "inbox",
-        "matched_email_id": "3c6b9e2d-7a1f-4d8c-b3e5-0f2a8d6c4b19",
-        "highlights": {
-          "body": ["I'll send the **invoice** once the renewal is signed."]
-        }
+        "matched_email_id": "3c6b9e2d-7a1f-4d8c-b3e5-0f2a8d6c4b19"
       }
     ]
   }

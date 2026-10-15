@@ -50,21 +50,25 @@ export const ResendParamField = ({children, body, path, ...props}) => {
 
   <CodeGroup>
     ```bash Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
-    npm install resend@6.32.1-preview-inboxes.6
+    npm install resend@6.33.0
     ```
 
     ```bash CLI theme={"theme":{"light":"github-light","dark":"vesper"}}
-    npm install -g resend-cli@2.22.0-preview-inboxes.9
+    npm install -g resend-cli@2.25.0
     ```
   </CodeGroup>
 </Warning>
 
 A thread is a conversation within an inbox, made up of one or more messages.
+Threads are returned most recently active first. The `after` and `before`
+cursors take a thread ID, and only one of them can be passed. A date cursor
+returns a `422` `validation_error`. A cursor thread that is not in the selected
+folders returns a `404`.
 
 ## Path Parameters
 
 <ResendParamField path="inbox_id" type="string" required>
-  The Inbox ID.
+  The Inbox ID. An email address is not accepted.
 </ResendParamField>
 
 ## Query Parameters
@@ -74,17 +78,20 @@ A thread is a conversation within an inbox, made up of one or more messages.
   `trash`. A thread is returned when any of its emails is in one of them, so a
   thread in `inbox` with an email you sent matches both `inbox` and `sent`.
   Defaults to `inbox`, or `inbox,archive,sent` when `labels` is set. `spam` and
-  `trash` are only included when you name them.
+  `trash` are only included when you name them. Repeating the parameter returns
+  a `422` `validation_error`.
 </ParamField>
 
 <ParamField query="labels" type="string">
   Comma-separated label IDs. Returns threads with any of these labels. Up to
-  `50` IDs. An ID that doesn't exist in the inbox returns a `404`.
+  `50` IDs. An ID that doesn't exist in the inbox returns a `404`. Repeating the
+  parameter returns a `422` `validation_error`.
 </ParamField>
 
 <ParamField query="read" type="boolean">
   `true` returns threads where every email is read. `false` returns threads with
-  at least one unread email.
+  at least one unread email. Only the literal values `true` and `false` are
+  accepted.
 </ParamField>
 
 <ParamField query="limit" type="number">
@@ -146,11 +153,12 @@ assigned automatically.
     </ParamField>
 
     <ParamField body="from" type="string | null">
-      Sender email address.
+      Sender email address. Can include the display name.
     </ParamField>
 
     <ParamField body="to" type="string[]">
-      The recipients of the most recent message.
+      The recipients of the most recent message. For a received email, these
+      are the addresses it was delivered to, not the full `To` header.
     </ParamField>
 
     <ParamField body="cc" type="string[]">
@@ -158,7 +166,8 @@ assigned automatically.
     </ParamField>
 
     <ParamField body="bcc" type="string[]">
-      The BCC recipients of the most recent message.
+      The BCC recipients of the most recent message. Always empty for a
+      received email.
     </ParamField>
 
     <ParamField body="labels" type="array">
@@ -166,12 +175,12 @@ assigned automatically.
       `color`.
     </ParamField>
 
-    <ParamField body="message_count" type="number">
-      The number of messages in the thread.
+    <ParamField body="email_count" type="number">
+      The number of emails in the thread.
     </ParamField>
 
     <ParamField body="has_attachment" type="boolean">
-      Whether any message has an attachment.
+      Whether the most recent message in the thread has an attachment.
     </ParamField>
 
     <ParamField body="has_draft" type="boolean">
@@ -210,7 +219,7 @@ assigned automatically.
   ```
 
   ```bash CLI theme={"theme":{"light":"github-light","dark":"vesper"}}
-  resend inboxes threads list --inbox_id b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1
+  resend inboxes threads list b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1
   ```
 </RequestExample>
 
@@ -234,7 +243,7 @@ assigned automatically.
             "color": "#E93D82"
           }
         ],
-        "message_count": 2,
+        "email_count": 2,
         "has_attachment": true,
         "has_draft": false,
         "read": false,

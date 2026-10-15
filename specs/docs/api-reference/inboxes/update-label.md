@@ -50,19 +50,23 @@ export const ResendParamField = ({children, body, path, ...props}) => {
 
   <CodeGroup>
     ```bash Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
-    npm install resend@6.32.1-preview-inboxes.6
+    npm install resend@6.33.0
     ```
 
     ```bash CLI theme={"theme":{"light":"github-light","dark":"vesper"}}
-    npm install -g resend-cli@2.22.0-preview-inboxes.9
+    npm install -g resend-cli@2.25.0
     ```
   </CodeGroup>
 </Warning>
 
+Omitted fields keep their current value. A new name must not match another
+label on the inbox, compared without case, or the request returns a `422`
+`validation_error`.
+
 ## Path Parameters
 
 <ResendParamField path="inbox_id" type="string" required>
-  The Inbox ID.
+  The Inbox ID. An email address is not accepted.
 </ResendParamField>
 
 <ResendParamField path="label_id" type="string" required>
@@ -72,11 +76,13 @@ export const ResendParamField = ({children, body, path, ...props}) => {
 ## Body Parameters
 
 <ParamField body="name" type="string">
-  A new name for the label.
+  A new name for the label. Max 64 characters. Leading and trailing whitespace
+  is trimmed.
 </ParamField>
 
 <ParamField body="color" type="string">
-  The color of the label as a `#RRGGBB` hex code, like `#E93D82`.
+  A new color for the label as a `#RRGGBB` hex code, like `#E93D82`. It is
+  stored in uppercase.
 </ParamField>
 
 <RequestExample>
@@ -102,9 +108,7 @@ export const ResendParamField = ({children, body, path, ...props}) => {
   ```
 
   ```bash CLI theme={"theme":{"light":"github-light","dark":"vesper"}}
-  resend inboxes labels update \
-    --inbox_id b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1 \
-    --label_id 7f9c1d2e-4a6b-4c3d-8e15-9b0a7c6d5e34 \
+  resend inboxes labels update b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1 7f9c1d2e-4a6b-4c3d-8e15-9b0a7c6d5e34 \
     --color '#F76B15'
   ```
 </RequestExample>

@@ -49,31 +49,35 @@ export const ResendParamField = ({children, body, path, ...props}) => {
   Once you have access, upgrade your Resend SDK to use the new methods:
 
   <CodeGroup>
-    ```bash Node.js theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}}
-    npm install resend@6.32.1-preview-inboxes.6
+    ```bash Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
+    npm install resend@6.33.0
     ```
 
-    ```bash CLI theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}}
-    npm install -g resend-cli@2.22.0-preview-inboxes.9
+    ```bash CLI theme={"theme":{"light":"github-light","dark":"vesper"}}
+    npm install -g resend-cli@2.25.0
     ```
   </CodeGroup>
 </Warning>
 
-Send at least one of `to`, `cc`, `bcc`, `subject`, `text`, `html`, or
-`attachments`. An empty body is rejected even when the draft already has files.
-After the update, the draft must still contain at least one non-empty field.
-Files already on the draft count toward that, so clearing the other fields
-while leaving `attachments` out is allowed. Combined recipients cannot exceed 50.
+Updates the content of an unsent draft. Send at least one of `to`, `cc`, `bcc`,
+`subject`, `text`, `html`, or `attachments`. An empty body is rejected even when
+the draft already has files. A body with none of these keys returns a `422`, even
+when it has other keys.
 
 Fields you leave out stay as they are. `html` and `text` are the exception:
 sending either one replaces both, and the one you leave out is saved as `null`.
-For `attachments`, a present array replaces the files, `[]` removes them, and
-leaving the field out keeps them.
+For `attachments`, a present array replaces every file on the draft, `[]` or
+`null` removes them, and leaving the field out keeps them.
+
+After the update, the draft must still contain at least one non-empty field.
+Files already on the draft count toward that. The combined recipients cannot
+exceed 50. A draft that was already sent, or that changed during the request,
+returns a `409`.
 
 ## Path Parameters
 
 <ResendParamField path="inbox_id" type="string" required>
-  The Inbox ID.
+  The Inbox ID. An email address is not accepted.
 </ResendParamField>
 
 <ResendParamField path="draft_id" type="string" required>
@@ -83,7 +87,8 @@ leaving the field out keeps them.
 ## Body Parameters
 
 <ParamField body="to" type="string | string[] | null">
-  Recipients. Pass `null` to clear.
+  Recipients. For multiple addresses, send an array of strings. Each value can
+  include a friendly name. Pass `null` to clear.
 </ParamField>
 
 <ParamField body="cc" type="string | string[] | null">
@@ -95,7 +100,8 @@ leaving the field out keeps them.
 </ParamField>
 
 <ParamField body="subject" type="string | null">
-  The subject. Pass `null` to clear. Max 2000 characters.
+  The subject. Max 2000 characters. Must not contain a line break. Pass `null`
+  to clear.
 </ParamField>
 
 <ParamField body="html" type="string | null">
@@ -108,11 +114,13 @@ leaving the field out keeps them.
   both, and the one you leave out is saved as `null`.
 </ParamField>
 
-<ParamField body="attachments" type="array">
-  Filename and content of attachments (max 25MB of content). Each file is raw
-  `content`. `path` and `content_id` return `422`. An empty file returns `422`.
-  A present array replaces the files on the draft. `[]` removes them. Leave the
-  field out to keep the current files.
+<ParamField body="attachments" type="array | null">
+  Files to store on the draft. Each one needs `content`, `filename`, and
+  `content_type`. `path` and `content_id` return `422`. An empty file or a
+  blocked file type, such as `.exe`, returns `422`. The files on a draft can
+  total at most 25 MB. A present array
+  replaces every file on the draft. `[]` or `null` removes them. Leave the field out to
+  keep the current files.
 
   <Expandable defaultOpen="true" title="properties">
     <ParamField body="content" type="buffer | string" required>
@@ -140,11 +148,12 @@ leaving the field out keeps them.
 </ParamField>
 
 <ParamField body="type" type="string">
-  `standalone` for a new conversation, or `reply`.
+  `reply` when the draft replies to an email in an existing thread. `standalone`
+  when the draft starts a new thread.
 </ParamField>
 
 <ParamField body="to" type="string[] | null">
-  Recipients.
+  Recipients. `null` or empty when no recipients are set.
 </ParamField>
 
 <ParamField body="cc" type="string[]">
@@ -176,7 +185,8 @@ leaving the field out keeps them.
 </ParamField>
 
 <ParamField body="email_id" type="string | null">
-  The queued outbound email after send. `null` until then.
+  The ID of the outbound email queued when the draft was sent. `null` until the
+  draft is sent.
 </ParamField>
 
 <ParamField body="created_at" type="string">
@@ -232,9 +242,7 @@ leaving the field out keeps them.
   ```
 
   ```bash CLI theme={"theme":{"light":"github-light","dark":"vesper"}}
-  resend inboxes drafts update \
-    --inbox_id b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1 \
-    --draft_id c3a1e8b4-2d5f-4a7c-9e10-6b8d7f5a4c32 \
+  resend inboxes drafts update b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1 c3a1e8b4-2d5f-4a7c-9e10-6b8d7f5a4c32 \
     --subject "Refund issued for order 1041"
   ```
 </RequestExample>

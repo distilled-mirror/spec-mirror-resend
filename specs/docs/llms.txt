@@ -183,6 +183,19 @@
 - [403 Error Using resend.dev Domain](https://resend.com/docs/knowledge-base/403-error-resend-dev-domain.md): Learn how to resolve a 403 error when using the resend.dev domain to send emails to recipients other than your own.
 - [Domain Already Registered by Another Account](https://resend.com/docs/knowledge-base/domain-already-registered.md): Resolve the 403 domain already registered error by verifying domain ownership or starting a self-serve claim.
 - [DMARC Analyzer](https://resend.com/docs/dmarc-analyzer.md): Analyze DMARC XML reports with a free, open-source tool built by Resend.
+- [Cloudflare](https://resend.com/docs/guides/dns/cloudflare.md): Verify your domain on Cloudflare with Resend.
+- [DreamHost](https://resend.com/docs/guides/dns/dreamhost.md): Verify your domain on DreamHost with Resend.
+- [Gandi](https://resend.com/docs/guides/dns/gandi.md): Verify your domain on Gandi with Resend.
+- [GoDaddy](https://resend.com/docs/guides/dns/godaddy.md): Verify your domain on GoDaddy with Resend.
+- [Hetzner](https://resend.com/docs/guides/dns/hetzner.md): Verify your domain on Hetzner with Resend.
+- [Hostinger](https://resend.com/docs/guides/dns/hostinger.md): Verify your domain on Hostinger with Resend.
+- [IONOS](https://resend.com/docs/guides/dns/ionos.md): Verify your domain on IONOS with Resend.
+- [Namecheap](https://resend.com/docs/guides/dns/namecheap.md): Verify your domain on Namecheap with Resend.
+- [Porkbun](https://resend.com/docs/guides/dns/porkbun.md): Verify your domain on Porkbun with Resend.
+- [AWS Route 53](https://resend.com/docs/guides/dns/route53.md): Verify your domain on Route 53 with Resend.
+- [Squarespace](https://resend.com/docs/guides/dns/squarespace.md): Verify your domain on Squarespace with Resend.
+- [Strato](https://resend.com/docs/guides/dns/strato.md): Verify your domain on Strato with Resend.
+- [Vercel](https://resend.com/docs/guides/dns/vercel.md): Verify your domain on Vercel with Resend.
 - [Which sending feature do you need?](https://resend.com/docs/knowledge-base/what-sending-feature-to-use.md): How to pick between our different sending features depending on your number of recipients and the nature of the message.
 - [Why and when to use Topics?](https://resend.com/docs/knowledge-base/why-use-topics.md): Learn when to use Topics to improve deliverability and give recipients control over their email preferences.
 - [Do you need to add an unsubscribe link to all of your emails sent with Resend?](https://resend.com/docs/knowledge-base/should-i-add-an-unsubscribe-link.md): Learn best practices about using unsubscribe links.
@@ -218,6 +231,7 @@
 - [Building an OAuth client for Resend](https://resend.com/docs/guides/building-a-resend-oauth-client.md): Implement an OAuth 2.1 + PKCE client against the Resend API, from scratch or with a library.
 - [Vercel Marketplace Integration](https://resend.com/docs/guides/vercel-marketplace-integration.md): Create and connect a Resend account directly from Vercel using the dashboard, the CLI, or v0.
 - [Stripe Projects Integration](https://resend.com/docs/guides/stripe-projects-integration.md): Provision Resend for a project directly from Stripe and start sending email.
+- [Laravel Cloud Integration](https://resend.com/docs/guides/laravel-cloud-integration.md): Connect a Resend account to Laravel Cloud and send email from your environments.
 - [Send emails with n8n and Resend](https://resend.com/docs/knowledge-base/n8n-integration.md): Learn how to install and use the official Resend node for n8n to send emails, manage contacts, handle webhooks, and more.
 - [Send emails with Attio and Resend](https://resend.com/docs/guides/attio-integration.md): Connect Resend to Attio to create contacts, add people to segments, and send emails from workflows.
 - [Send emails with Devin and Resend](https://resend.com/docs/guides/devin.md): Learn how to install the Resend MCP server in Devin.ai so your agent can send emails, manage contacts, and run broadcasts.
@@ -280,7 +294,7 @@
 - [List Attachments](https://resend.com/docs/api-reference/emails/list-received-email-attachments.md): Retrieve a list of attachments from a received email.
 - [Create Inbox](https://resend.com/docs/api-reference/inboxes/create-inbox.md): Create an inbox to send, receive and organize email.
 - [Retrieve Inbox](https://resend.com/docs/api-reference/inboxes/get-inbox.md): Retrieve a single inbox by its ID or email address.
-- [List Inboxes](https://resend.com/docs/api-reference/inboxes/list-inboxes.md): Retrieve a list of inboxes for the authenticated user.
+- [List Inboxes](https://resend.com/docs/api-reference/inboxes/list-inboxes.md): Retrieve a list of inboxes for the team.
 - [Update Inbox](https://resend.com/docs/api-reference/inboxes/update-inbox.md): Update the internal inbox name or the name recipients see when sending.
 - [Delete Inbox](https://resend.com/docs/api-reference/inboxes/delete-inbox.md): Remove an existing inbox.
 - [Create Label](https://resend.com/docs/api-reference/inboxes/create-label.md): Create a label on an inbox.
@@ -404,19 +418,6 @@
 - [Token](https://resend.com/docs/api-reference/oauth/token.md): Exchange an authorization code for tokens, or refresh an access token.
 - [Revoke Token](https://resend.com/docs/api-reference/oauth/revoke.md): Disconnect a client by revoking its refresh token.
 - [Resend API vs SDK](https://resend.com/docs/api-vs-sdk.md): For most use cases, the Resend SDK offers a better developer experience.
-- [Cloudflare](https://resend.com/docs/guides/dns/cloudflare.md): Verify your domain on Cloudflare with Resend.
-- [DreamHost](https://resend.com/docs/guides/dns/dreamhost.md): Verify your domain on DreamHost with Resend.
-- [Gandi](https://resend.com/docs/guides/dns/gandi.md): Verify your domain on Gandi with Resend.
-- [GoDaddy](https://resend.com/docs/guides/dns/godaddy.md): Verify your domain on GoDaddy with Resend.
-- [Hetzner](https://resend.com/docs/guides/dns/hetzner.md): Verify your domain on Hetzner with Resend.
-- [Hostinger](https://resend.com/docs/guides/dns/hostinger.md): Verify your domain on Hostinger with Resend.
-- [IONOS](https://resend.com/docs/guides/dns/ionos.md): Verify your domain on IONOS with Resend.
-- [Namecheap](https://resend.com/docs/guides/dns/namecheap.md): Verify your domain on Namecheap with Resend.
-- [Porkbun](https://resend.com/docs/guides/dns/porkbun.md): Verify your domain on Porkbun with Resend.
-- [AWS Route 53](https://resend.com/docs/guides/dns/route53.md): Verify your domain on Route 53 with Resend.
-- [Squarespace](https://resend.com/docs/guides/dns/squarespace.md): Verify your domain on Squarespace with Resend.
-- [Strato](https://resend.com/docs/guides/dns/strato.md): Verify your domain on Strato with Resend.
-- [Vercel](https://resend.com/docs/guides/dns/vercel.md): Verify your domain on Vercel with Resend.
 - [How to delete your Resend team](https://resend.com/docs/knowledge-base/how-can-i-delete-my-team.md): How to request your Resend team and team data to be deleted.
 - [The Secret Endpoint](https://resend.com/docs/secret.md): Get a special gift from Resend.
 - [SupaSquad + Resend](https://resend.com/docs/supasquad.md): A quick jumpstart to using Resend with Supabase for SupaSquad members.

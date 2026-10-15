@@ -50,11 +50,11 @@ export const ResendParamField = ({children, body, path, ...props}) => {
 
   <CodeGroup>
     ```bash Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
-    npm install resend@6.32.1-preview-inboxes.6
+    npm install resend@6.33.0
     ```
 
     ```bash CLI theme={"theme":{"light":"github-light","dark":"vesper"}}
-    npm install -g resend-cli@2.22.0-preview-inboxes.9
+    npm install -g resend-cli@2.25.0
     ```
   </CodeGroup>
 </Warning>
@@ -64,18 +64,22 @@ At least one of `name` or `from_name` is required.
 ## Path Parameters
 
 <ResendParamField path="inbox_id" type="string" required>
-  The Inbox ID.
+  The Inbox ID. An email address is not accepted.
 </ResendParamField>
 
 ## Body Parameters
 
 <ParamField body="name" type="string">
-  New internal name for the inbox. Recipients do not see it.
+  New internal name for the inbox. Recipients do not see it. Between 1 and 64
+  characters after trimming.
 </ParamField>
 
 <ResendParamField body="from_name" type="string">
   The name recipients see when mail is sent from this inbox. A plain name, not
-  a `Name <email>` address.
+  a `Name <email>` address. Max 78 characters. It cannot contain a colon, `<`,
+  `>`, line breaks, or other control characters. An email address inside the
+  name must be on a domain the team has verified for sending. An empty string
+  removes it.
 </ResendParamField>
 
 <RequestExample>
@@ -103,7 +107,7 @@ At least one of `name` or `from_name` is required.
   ```bash CLI theme={"theme":{"light":"github-light","dark":"vesper"}}
   resend inboxes update b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1 \
     --name "Customer Support" \
-    --from_name "Ada from Support"
+    --from-name "Ada from Support"
   ```
 </RequestExample>
 

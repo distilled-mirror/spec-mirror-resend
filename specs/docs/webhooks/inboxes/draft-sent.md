@@ -44,11 +44,11 @@ export const ResponseBodyParameters = ({type, children}) => {
 
   <CodeGroup>
     ```bash Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
-    npm install resend@6.32.1-preview-inboxes.6
+    npm install resend@6.33.0
     ```
 
     ```bash CLI theme={"theme":{"light":"github-light","dark":"vesper"}}
-    npm install -g resend-cli@2.22.0-preview-inboxes.9
+    npm install -g resend-cli@2.25.0
     ```
   </CodeGroup>
 </Warning>
@@ -79,7 +79,7 @@ Event triggered whenever a **draft is sent**.
   </ParamField>
 
   <ParamField body="thread" type="object">
-    The thread, as it is when the webhook is sent
+    The thread, as it is when the webhook is sent. Absent when the thread no longer exists
 
     <Expandable title="thread object" defaultOpen>
       <ParamField body="object" type="string">
@@ -109,7 +109,7 @@ Event triggered whenever a **draft is sent**.
   </ParamField>
 
   <ParamField body="email" type="object">
-    The email, as it is when the webhook is sent, without `html` or `text`. Only when the email is already on the thread when the webhook is sent
+    The email, as it is when the webhook is sent, without `html` or `text`. Fetch the body with [Retrieve Thread Email](/docs/api-reference/inboxes/get-thread-email). Only when the email is already on the thread when the webhook is sent
 
     <Expandable title="email object" defaultOpen>
       <ParamField body="id" type="string">
@@ -177,7 +177,7 @@ Event triggered whenever a **draft is sent**.
   </ParamField>
 
   <ParamField body="draft" type="object">
-    The draft, as it is when the webhook is sent, without `html` or `text`. Fetch the body with [Retrieve Draft](/docs/api-reference/inboxes/get-draft)
+    The draft, as it is when the webhook is sent, without `html` or `text`. Fetch the body with [Retrieve Draft](/docs/api-reference/inboxes/get-draft). Absent when the draft no longer exists
 
     <Expandable title="draft object" defaultOpen>
       <ParamField body="object" type="string">
@@ -227,6 +227,28 @@ Event triggered whenever a **draft is sent**.
       <ParamField body="updated_at" type="string">
         ISO 8601 timestamp when the draft was last saved
       </ParamField>
+
+      <ParamField body="attachments" type="array">
+        The files stored on the draft
+
+        <Expandable title="attachment object" defaultOpen>
+          <ParamField body="id" type="string">
+            The ID of the attachment
+          </ParamField>
+
+          <ParamField body="filename" type="string">
+            The filename of the attachment
+          </ParamField>
+
+          <ParamField body="content_type" type="string">
+            The MIME type of the attachment
+          </ParamField>
+
+          <ParamField body="size" type="number">
+            The size of the attachment in bytes
+          </ParamField>
+        </Expandable>
+      </ParamField>
     </Expandable>
   </ParamField>
 </ResponseBodyParameters>
@@ -262,7 +284,8 @@ Event triggered whenever a **draft is sent**.
         "reply_to_email_id": "4ef9a417-02e9-4d39-ad75-9611e0fcc33c",
         "email_id": "81ce9b8d-1b0a-4d02-a4d9-2a91f5ab6397",
         "created_at": "2026-09-29T11:58:00.000Z",
-        "updated_at": "2026-09-29T12:00:00.000Z"
+        "updated_at": "2026-09-29T12:00:00.000Z",
+        "attachments": []
       }
     }
   }

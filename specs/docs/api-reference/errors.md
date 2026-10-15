@@ -79,8 +79,26 @@ Resend uses standard HTTP response codes for success and failure notifications, 
 ### `validation_error`
 
 * **Status:** 403
-* **Message:** You have reached the inbox limit of your plan. Upgrade to add more.
-* **Suggested action:** Enable pay-as-you-go for inboxes in your [usage settings](https://resend.com/settings/usage) to create more than the 3 included inboxes (requires a paid plan).
+* **Message:** You have reached the inboxes included in your plan. Enable pay-as-you-go for inboxes at [https://resend.com/settings/usage](https://resend.com/settings/usage) to add more.
+* **Suggested action:** Every plan includes 3 inboxes. A team admin can enable pay-as-you-go for inboxes in your [usage settings](https://resend.com/settings/usage), after which each extra inbox costs \$1 per month.
+
+### `validation_error`
+
+* **Status:** 403
+* **Message:** You have reached the inboxes included in your plan. Upgrade your Transactional plan to unlock pay-as-you-go for inboxes.
+* **Suggested action:** Every plan includes 3 inboxes, and pay-as-you-go for inboxes needs a paid Transactional plan. [Upgrade your plan](https://resend.com/settings/billing), then enable pay-as-you-go for inboxes in your [usage settings](https://resend.com/settings/usage).
+
+### `validation_error`
+
+* **Status:** 403
+* **Message:** You have reached the inboxes included in your plan. Pay-as-you-go for inboxes isn't available for your billing setup.
+* **Suggested action:** Teams billed through Vercel or Stripe Projects cannot enable pay-as-you-go for inboxes. [Contact support](https://resend.com/help) if you need more than the 3 included inboxes.
+
+### `validation_error`
+
+* **Status:** 403
+* **Message:** You have reached the inboxes included in your plan. Manage pay-as-you-go for inboxes at [https://resend.com/settings/usage](https://resend.com/settings/usage) to add more.
+* **Suggested action:** Every plan includes 3 inboxes. Open your [usage settings](https://resend.com/settings/usage) to enable pay-as-you-go for inboxes, which needs a paid Transactional plan.
 
 ### `not_found`
 

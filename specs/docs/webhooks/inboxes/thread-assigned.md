@@ -44,11 +44,11 @@ export const ResponseBodyParameters = ({type, children}) => {
 
   <CodeGroup>
     ```bash Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
-    npm install resend@6.32.1-preview-inboxes.6
+    npm install resend@6.33.0
     ```
 
     ```bash CLI theme={"theme":{"light":"github-light","dark":"vesper"}}
-    npm install -g resend-cli@2.22.0-preview-inboxes.9
+    npm install -g resend-cli@2.25.0
     ```
   </CodeGroup>
 </Warning>
@@ -61,7 +61,7 @@ Event triggered whenever a **thread is assigned or reassigned**.
   </ParamField>
 
   <ParamField body="assigned_by_email" type="string | null">
-    The email of the member who made the assignment
+    The email of the member who made the assignment. `null` when no member made it
   </ParamField>
 
   <ParamField body="previous_assignee_email" type="string | null">
@@ -81,7 +81,7 @@ Event triggered whenever a **thread is assigned or reassigned**.
   </ParamField>
 
   <ParamField body="thread" type="object">
-    The thread, as it is when the webhook is sent
+    The thread, as it is when the webhook is sent. Absent when the thread no longer exists
 
     <Expandable title="thread object" defaultOpen>
       <ParamField body="object" type="string">

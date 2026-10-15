@@ -50,33 +50,48 @@ export const ResendParamField = ({children, body, path, ...props}) => {
 
   <CodeGroup>
     ```bash Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
-    npm install resend@6.32.1-preview-inboxes.6
+    npm install resend@6.33.0
     ```
 
     ```bash CLI theme={"theme":{"light":"github-light","dark":"vesper"}}
-    npm install -g resend-cli@2.22.0-preview-inboxes.9
+    npm install -g resend-cli@2.25.0
     ```
   </CodeGroup>
 </Warning>
 
 An inbox sends and receives email at an address on one of your domains, such as
-`support@example.com`.
+`support@example.com`. The domain must belong to the team.
+
+Without `forwarding`, the domain must have receiving enabled, with DKIM and SPF
+verified and the inbound MX record verified or pending. With `forwarding` set to
+`true`, the domain only needs DKIM and SPF verified for sending.
+
+* A domain that does not meet these rules returns a `422` `validation_error`.
+* An address or receiving address that is already in use returns a `409`.
+* A team that has reached the inbox limit of its plan returns a `403`
+  `validation_error`.
+* A blocked account returns a `451`.
 
 ## Body Parameters
 
 <ResendParamField body="email_address" type="string" required>
-  The inbox email address on one of your domains. The domain must be verified to
-  send email, and verified to receive email unless `forwarding` is `true`.
+  The inbox email address on one of your domains. The API trims and lowercases
+  it. The part before the `@` is at most 64 characters and contains only
+  letters, numbers, and `. _ % + -`. It cannot start or end with a dot or
+  contain two dots in a row.
 </ResendParamField>
 
 <ParamField body="name" type="string">
-  Internal name for the inbox. Recipients do not see it. Defaults to
-  `email_address`.
+  Internal name for the inbox. Recipients do not see it. Max 64 characters.
+  Defaults to `email_address`.
 </ParamField>
 
 <ResendParamField body="from_name" type="string">
   The name recipients see when mail is sent from this inbox. A plain name, not
-  a `Name <email>` address.
+  a `Name <email>` address. Max 78 characters. It cannot contain a colon, `<`,
+  `>`, line breaks, or other control characters. An email address inside the
+  name must be on a domain the team has verified for sending. An empty string
+  leaves it unset.
 </ResendParamField>
 
 <ParamField body="forwarding" type="boolean">
@@ -111,9 +126,9 @@ An inbox sends and receives email at an address on one of your domains, such as
 
   ```bash CLI theme={"theme":{"light":"github-light","dark":"vesper"}}
   resend inboxes create \
-    --email_address support@example.com \
+    --email-address support@example.com \
     --name "Customer Support" \
-    --from_name "Ada from Support"
+    --from-name "Ada from Support"
   ```
 </RequestExample>
 

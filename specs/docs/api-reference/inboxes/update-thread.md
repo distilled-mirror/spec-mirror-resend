@@ -49,22 +49,28 @@ export const ResendParamField = ({children, body, path, ...props}) => {
   Once you have access, upgrade your Resend SDK to use the new methods:
 
   <CodeGroup>
-    ```bash Node.js theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}}
-    npm install resend@6.32.1-preview-inboxes.6
+    ```bash Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
+    npm install resend@6.33.0
     ```
 
-    ```bash CLI theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}}
-    npm install -g resend-cli@2.22.0-preview-inboxes.9
+    ```bash CLI theme={"theme":{"light":"github-light","dark":"vesper"}}
+    npm install -g resend-cli@2.25.0
     ```
   </CodeGroup>
 </Warning>
 
-At least one of `read`, `folder`, `add_label_ids`, or `remove_label_ids` is required.
+At least one of `read`, `folder`, `add_label_ids`, or `remove_label_ids` is
+required. A label ID cannot be both added and removed in the same request.
+Moving a thread out of `trash` restores it and clears its deletion deadline.
+
+The changes apply in this order: `read`, `folder`, added labels, removed labels.
+They are not atomic, so a `404` for a label leaves the earlier changes applied.
+A body with none of these keys returns a `422`, even when it has other keys.
 
 ## Path Parameters
 
 <ResendParamField path="inbox_id" type="string" required>
-  The Inbox ID.
+  The Inbox ID. An email address is not accepted.
 </ResendParamField>
 
 <ResendParamField path="thread_id" type="string" required>
@@ -78,17 +84,20 @@ At least one of `read`, `folder`, `add_label_ids`, or `remove_label_ids` is requ
 </ParamField>
 
 <ParamField body="folder" type="string">
-  Moves the thread. One of `inbox`, `archive`, `spam`, or `trash`.
+  Moves the thread to this folder. One of `inbox`, `archive`, `spam`, or
+  `trash`. `sent` is assigned automatically and cannot be set.
 </ParamField>
 
 <ResendParamField body="add_label_ids" type="string[]">
-  Applies these labels to the thread. Up to 10 label IDs per request. A label ID
-  cannot appear in both `add_label_ids` and `remove_label_ids`.
+  Applies these labels to the thread. Between 1 and 10 label IDs. A label ID
+  cannot appear in both `add_label_ids` and `remove_label_ids`. A label ID that
+  does not exist in the inbox returns a `404`.
 </ResendParamField>
 
 <ResendParamField body="remove_label_ids" type="string[]">
-  Takes these labels off the thread. Up to 10 label IDs per request. The labels
-  themselves are kept and stay on every other thread carrying them.
+  Takes these labels off the thread. Between 1 and 10 label IDs. The labels
+  themselves are kept and stay on every other thread carrying them. A label ID
+  that does not exist in the inbox returns a `404`.
 </ResendParamField>
 
 ## Folders
@@ -185,9 +194,7 @@ assigned automatically.
   ```
 
   ```bash CLI theme={"theme":{"light":"github-light","dark":"vesper"}}
-  resend inboxes threads update \
-    --inbox_id b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1 \
-    --thread_id 4d8e2a1c-9b3f-4c6d-8a21-3e5f7c9c0d12 \
+  resend inboxes threads update b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1 4d8e2a1c-9b3f-4c6d-8a21-3e5f7c9c0d12 \
     --read \
     --folder spam
   ```

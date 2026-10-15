@@ -44,11 +44,11 @@ export const ResponseBodyParameters = ({type, children}) => {
 
   <CodeGroup>
     ```bash Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
-    npm install resend@6.32.1-preview-inboxes.6
+    npm install resend@6.33.0
     ```
 
     ```bash CLI theme={"theme":{"light":"github-light","dark":"vesper"}}
-    npm install -g resend-cli@2.22.0-preview-inboxes.9
+    npm install -g resend-cli@2.25.0
     ```
   </CodeGroup>
 </Warning>
@@ -65,7 +65,7 @@ Event triggered whenever an **inbox's settings change**.
   </ParamField>
 
   <ParamField body="inbox" type="object">
-    The inbox, as it is when the webhook is sent
+    The inbox, as it is when the webhook is sent. Absent when the inbox no longer exists
 
     <Expandable title="inbox object" defaultOpen>
       <ParamField body="object" type="string">
@@ -94,11 +94,11 @@ Event triggered whenever an **inbox's settings change**.
       </ParamField>
 
       <ParamField body="from_name" type="string | null">
-        The name recipients see when mail is sent from this inbox
+        The name recipients see when mail is sent from this inbox. `null` when not set
       </ParamField>
 
       <ParamField body="unread" type="number">
-        The number of unread threads in the inbox
+        The number of unread threads in the Inbox folder
       </ParamField>
 
       <ParamField body="drafts" type="number">
@@ -106,7 +106,8 @@ Event triggered whenever an **inbox's settings change**.
       </ParamField>
 
       <ParamField body="last_received" type="string | null">
-        ISO 8601 timestamp when a thread in this inbox was last active
+        ISO 8601 timestamp of the newest received email in the Inbox folder. `null`
+        when the folder has no received email
       </ParamField>
 
       <ParamField body="created_at" type="string">
