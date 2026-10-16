@@ -10,6 +10,8 @@
 
 To balance these concerns, Resend signs outbound mail with 1024-bit DKIM keys, which are RFC-compliant, accepted by every major mailbox provider, and satisfy the bulk sender requirements that inbox service providers enforce. Resend does not support 2048-bit DKIM keys.
 
+You can't change the key length, and Resend doesn't rotate or regenerate keys on request. The key Resend creates when you add a domain stays with that domain, even if you delete the domain and add it again to that team.
+
 ## 1024-bit is RFC-compliant
 
 [RFC 8301 §3.2](https://datatracker.ietf.org/doc/html/rfc8301#section-3.2) establishes 1024 bits as the minimum length verifiers must support and recommends signers use keys of at least 1024 bits. Mailbox providers including Gmail, Outlook, Yahoo, and Apple all accept 1024-bit DKIM signatures, and 1024-bit keys remain widely used across the industry for transactional and marketing mail.

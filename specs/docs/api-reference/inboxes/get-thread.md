@@ -87,8 +87,15 @@ Thread Emails](/docs/api-reference/inboxes/list-thread-emails).
 </ParamField>
 
 <ParamField body="folder" type="string">
-  The folder the thread lives in. One of `inbox`, `archive`, `spam`, `sent`, or
-  `trash`.
+  The folder the thread lives in. Every thread sits in exactly one folder within
+  its inbox. You can move a thread to `inbox`, `archive`, `spam`, or `trash`.
+  `sent` is assigned automatically.
+
+  * `inbox`: The default. The thread holds at least one received message.
+  * `archive`: The thread was archived.
+  * `spam`: The thread was marked as spam.
+  * `trash`: The thread is scheduled for deletion in 30 days.
+  * `sent`: Threads whose messages are all outbound.
 </ParamField>
 
 <ParamField body="labels" type="array">

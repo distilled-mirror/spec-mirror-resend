@@ -27,7 +27,7 @@ Transactional Email plans are based on the number of emails sent and received ea
 
 The Free plan is limited to 100 emails per day. Paid plans have no daily sending limit, and overage rates apply only to emails sent beyond the included monthly volume.
 
-For teams sending 3 million or more emails per month, Resend offers custom Enterprise plans that include:
+For teams sending 1 million or more emails per month, Resend offers custom Enterprise plans that include:
 
 * Volume-based pricing
 * Priority support

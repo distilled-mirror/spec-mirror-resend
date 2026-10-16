@@ -30,7 +30,7 @@ Connect from the organization settings, or the first time you attach email to an
 
 Prefer a video walkthrough?
 
-<YouTube id="LuoW0h0tDOk" />
+<YouTube id="6UTw4x4VG_Q" />
 
 <Steps>
   <Step title="Open the canvas">

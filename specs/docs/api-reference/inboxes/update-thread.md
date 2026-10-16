@@ -60,12 +60,7 @@ export const ResendParamField = ({children, body, path, ...props}) => {
 </Warning>
 
 At least one of `read`, `folder`, `add_label_ids`, or `remove_label_ids` is
-required. A label ID cannot be both added and removed in the same request.
-Moving a thread out of `trash` restores it and clears its deletion deadline.
-
-The changes apply in this order: `read`, `folder`, added labels, removed labels.
-They are not atomic, so a `404` for a label leaves the earlier changes applied.
-A body with none of these keys returns a `422`, even when it has other keys.
+required.
 
 ## Path Parameters
 
@@ -84,36 +79,14 @@ A body with none of these keys returns a `422`, even when it has other keys.
 </ParamField>
 
 <ParamField body="folder" type="string">
-  Moves the thread to this folder. One of `inbox`, `archive`, `spam`, or
-  `trash`. `sent` is assigned automatically and cannot be set.
+  Moves the thread to this folder. Every thread sits in exactly one folder within
+  its inbox. `sent` is assigned automatically and cannot be set.
+
+  * `inbox`: The default. The thread holds at least one received message.
+  * `archive`: The thread was archived.
+  * `spam`: The thread was marked as spam.
+  * `trash`: The thread is scheduled for deletion in 30 days.
 </ParamField>
-
-<ResendParamField body="add_label_ids" type="string[]">
-  Applies these labels to the thread. Between 1 and 10 label IDs. A label ID
-  cannot appear in both `add_label_ids` and `remove_label_ids`. A label ID that
-  does not exist in the inbox returns a `404`.
-</ResendParamField>
-
-<ResendParamField body="remove_label_ids" type="string[]">
-  Takes these labels off the thread. Between 1 and 10 label IDs. The labels
-  themselves are kept and stay on every other thread carrying them. A label ID
-  that does not exist in the inbox returns a `404`.
-</ResendParamField>
-
-## Folders
-
-Every thread sits in exactly one folder within its inbox.
-
-| Folder | Meaning |
-| - | - |
-| `inbox` | The default. The thread holds at least one received message. |
-| `archive` | The thread was archived. |
-| `spam` | The thread was marked as spam. |
-| `trash` | The thread is scheduled for deletion in 30 days. |
-| `sent` | Threads whose messages are all outbound. |
-
-You can move a thread to `inbox`, `archive`, `spam`, or `trash`. `sent` is
-assigned automatically.
 
 ## Response Fields
 
@@ -131,6 +104,12 @@ assigned automatically.
 
 <ParamField body="folder" type="string">
   The folder the thread lives in after the update.
+
+  * `inbox`: The default. The thread holds at least one received message.
+  * `archive`: The thread was archived.
+  * `spam`: The thread was marked as spam.
+  * `trash`: The thread is scheduled for deletion in 30 days.
+  * `sent`: Threads whose messages are all outbound.
 </ParamField>
 
 <ParamField body="labels" type="array">
@@ -171,25 +150,6 @@ assigned automatically.
        -H 'Content-Type: application/json' \
        -d $'{
     "folder": "inbox"
-  }'
-  ```
-
-  ```bash Apply a label theme={"theme":{"light":"github-light","dark":"vesper"}}
-  curl -X PATCH 'https://api.resend.com/inboxes/b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1/threads/4d8e2a1c-9b3f-4c6d-8a21-3e5f7c9c0d12' \
-       -H 'Authorization: Bearer re_xxxxxxxxx' \
-       -H 'Content-Type: application/json' \
-       -d $'{
-    "add_label_ids": ["7f9c1d2e-4a6b-4c3d-8e15-9b0a7c6d5e34"]
-  }'
-  ```
-
-  ```bash Swap labels theme={"theme":{"light":"github-light","dark":"vesper"}}
-  curl -X PATCH 'https://api.resend.com/inboxes/b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1/threads/4d8e2a1c-9b3f-4c6d-8a21-3e5f7c9c0d12' \
-       -H 'Authorization: Bearer re_xxxxxxxxx' \
-       -H 'Content-Type: application/json' \
-       -d $'{
-    "add_label_ids": ["7f9c1d2e-4a6b-4c3d-8e15-9b0a7c6d5e34"],
-    "remove_label_ids": ["2c6a8e4b-1d3f-4a5c-9b7e-0f1a2b3c4d5e"]
   }'
   ```
 

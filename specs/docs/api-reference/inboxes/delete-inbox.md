@@ -59,14 +59,25 @@ export const ResendParamField = ({children, body, path, ...props}) => {
   </CodeGroup>
 </Warning>
 
-An inbox that does not exist or was already removed returns a `404`
-`not_found`.
-
 ## Path Parameters
 
 <ResendParamField path="inbox_id" type="string" required>
-  The Inbox ID. An email address is not accepted.
+  The Inbox ID or the inbox email address, such as `support@example.com`
 </ResendParamField>
+
+## Response Fields
+
+<ParamField body="object" type="string">
+  Always `inbox`.
+</ParamField>
+
+<ParamField body="id" type="string">
+  The ID of the inbox.
+</ParamField>
+
+<ParamField body="deleted" type="boolean">
+  Returns `true` when the inbox is deleted.
+</ParamField>
 
 <RequestExample>
   ```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}

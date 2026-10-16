@@ -60,8 +60,7 @@ export const ResendParamField = ({children, body, path, ...props}) => {
 </Warning>
 
 A label is a named, colored tag that belongs to one inbox. An inbox can have at
-most 100 labels. Label names are unique per inbox, compared without case. A
-duplicate name or a full inbox returns a `422` `validation_error`.
+most 100 labels. Labels names are unique per inbox.
 
 ## Path Parameters
 
@@ -72,13 +71,21 @@ duplicate name or a full inbox returns a `422` `validation_error`.
 ## Body Parameters
 
 <ParamField body="name" type="string" required>
-  The name of the label. Max 64 characters. Leading and trailing whitespace is
-  trimmed. Must not match another label on the inbox, compared without case.
+  The name of the label. Max 64 characters.
 </ParamField>
 
 <ParamField body="color" type="string">
-  The color of the label as a `#RRGGBB` hex code, like `#E93D82`. It is stored
-  in uppercase. When omitted, a random color from the dashboard palette is used.
+  The color of the label as a `#RRGGBB` hex code, like `#E93D82`.
+</ParamField>
+
+## Response Fields
+
+<ParamField body="object" type="string">
+  Always `inbox_label`.
+</ParamField>
+
+<ParamField body="id" type="string">
+  The ID of the label.
 </ParamField>
 
 <RequestExample>

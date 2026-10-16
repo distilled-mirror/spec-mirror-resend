@@ -60,13 +60,7 @@ export const ResendParamField = ({children, body, path, ...props}) => {
 </Warning>
 
 Search finds threads by the text of their emails, who sent or received them,
-whether they have attachments, and their dates. Results are ordered by
-latest activity, newest first, and paginate like [List
-Threads](/docs/api-reference/inboxes/list-threads).
-
-Search can be up to about a minute behind new emails. To browse an inbox
-exactly and up to date, use [List
-Threads](/docs/api-reference/inboxes/list-threads).
+whether they have attachments, and their dates.
 
 ## Path Parameters
 
@@ -78,35 +72,27 @@ Threads](/docs/api-reference/inboxes/list-threads).
 
 <ParamField query="query" type="string">
   Free text to search for in the subject, body, sender, recipients, and
-  attachment names. Every word must match. Wrap words in double quotes to match
-  an exact phrase, and start a word or quoted phrase with `-` to exclude it. Max
-  length is `256` characters and `32` words.
+  attachment names.
 </ParamField>
 
 <ParamField query="from" type="string">
-  Comma-separated senders. Each value matches part of the sender's address or
-  name, case-insensitive. Returns threads matching any of them. Up to `20`
-  values. Repeating the parameter returns a `422` `validation_error`.
+  Comma-separated senders. Up to `20` values.
 </ParamField>
 
 <ParamField query="to" type="string">
-  Comma-separated recipients, matched the same way as `from`. Up to `20` values.
-  Repeating the parameter returns a `422` `validation_error`.
+  Comma-separated recipients. Up to `20` values.
 </ParamField>
 
 <ParamField query="cc" type="string">
-  Comma-separated CC recipients, matched the same way as `from`. Up to `20`
-  values. Repeating the parameter returns a `422` `validation_error`.
+  Comma-separated CC recipients. Up to `20` values.
 </ParamField>
 
 <ParamField query="bcc" type="string">
-  Comma-separated BCC recipients, matched the same way as `from`. Up to `20`
-  values. Repeating the parameter returns a `422` `validation_error`.
+  Comma-separated BCC recipients. Up to `20` values.
 </ParamField>
 
 <ParamField query="has_attachment" type="boolean">
   `true` matches emails with an attachment. `false` matches emails without one.
-  Only the literal values `true` and `false` are accepted.
 </ParamField>
 
 <ParamField query="start_date" type="string">
@@ -117,29 +103,27 @@ Threads](/docs/api-reference/inboxes/list-threads).
 <ParamField query="end_date" type="string">
   Matches emails sent on or before this date. Same formats as `start_date`. A
   date covers that whole day, so `start_date=2026-09-01&end_date=2026-09-30`
-  covers all of September. A timestamp is used as given. An `end_date` before
-  `start_date` returns a `422` `validation_error`.
+  covers all of September.
 </ParamField>
 
 <ParamField query="folders" type="string">
-  Comma-separated folders to search: `inbox`, `archive`, `spam`, `sent`, or
-  `trash`. A thread is returned when any of its emails is in one of them, so a
-  thread in `inbox` with an email you sent matches both `inbox` and `sent`.
-  Defaults to `inbox`, or `inbox,archive,sent` when `labels` is set. `spam` and
-  `trash` are only included when you name them. Repeating the parameter returns
-  a `422` `validation_error`.
+  Comma-separated folders to search.
+
+  * `inbox`: The default. The thread holds at least one received message.
+  * `archive`: The thread was archived.
+  * `spam`: The thread was marked as spam.
+  * `trash`: The thread is scheduled for deletion in 30 days.
+  * `sent`: Threads whose messages are all outbound.
 </ParamField>
 
 <ParamField query="labels" type="string">
   Comma-separated label IDs. Returns threads with any of these labels. Up to
-  `50` IDs. An ID that doesn't exist in the inbox returns a `404`. Repeating the
-  parameter returns a `422` `validation_error`.
+  `50` IDs.
 </ParamField>
 
 <ParamField query="read" type="boolean">
   `true` returns threads where every email is read. `false` returns threads with
-  at least one unread email. Only the literal values `true` and `false` are
-  accepted.
+  at least one unread email.
 </ParamField>
 
 <ParamField query="limit" type="number">
@@ -173,21 +157,6 @@ Threads](/docs/api-reference/inboxes/list-threads).
   one of `folders`. For `sent`, that means an email the inbox sent.
 * When more than 10,000 threads match, search covers the 10,000 with the
   newest matching email.
-
-## Folders
-
-Every thread sits in exactly one folder within its inbox.
-
-| Folder | Meaning |
-| - | - |
-| `inbox` | The default. The thread holds at least one received message. |
-| `archive` | The thread was archived. |
-| `spam` | The thread was marked as spam. |
-| `trash` | The thread is scheduled for deletion in 30 days. |
-| `sent` | Threads whose messages are all outbound. |
-
-You can move a thread to `inbox`, `archive`, `spam`, or `trash`. `sent` is
-assigned automatically.
 
 ## Response Fields
 
@@ -256,8 +225,15 @@ assigned automatically.
     </ParamField>
 
     <ParamField body="folder" type="string">
-      The folder the thread lives in. One of `inbox`, `archive`, `spam`,
-      `sent`, or `trash`.
+      The folder the thread lives in. Every thread sits in exactly one folder
+      within its inbox. You can move a thread to `inbox`, `archive`, `spam`, or
+      `trash`. `sent` is assigned automatically.
+
+      * `inbox`: The default. The thread holds at least one received message.
+      * `archive`: The thread was archived.
+      * `spam`: The thread was marked as spam.
+      * `trash`: The thread is scheduled for deletion in 30 days.
+      * `sent`: Threads whose messages are all outbound.
     </ParamField>
 
     <ParamField body="matched_email_id" type="string | null">

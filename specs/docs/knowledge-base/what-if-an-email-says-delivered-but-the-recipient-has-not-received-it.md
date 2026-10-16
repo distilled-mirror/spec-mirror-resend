@@ -40,4 +40,4 @@ Debugging without direct contact with the user is challenging. However, there ar
 * Reduce the number of images in your email
 * Improve wording to be succinct, clear, and avoid spammy words
 
-Check out our [extensive but practical deliverability guide](/docs/knowledge-base/how-do-i-avoid-gmails-spam-folder) that covers these topics in more detail.
+Check out our [extensive but practical deliverability guide](https://resend.com/guides/email/deliverability/avoid-gmail-spam-folder) that covers these topics in more detail.

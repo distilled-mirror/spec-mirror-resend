@@ -69,10 +69,10 @@ If your emails are being blocked by a specific corporate recipient:
 
 <Tip>
   For provider-specific guidance, see [How do I avoid Gmail's spam
-  folder?](/docs/knowledge-base/how-do-i-avoid-gmails-spam-folder). For Outlook,
-  message headers include Spam Confidence Level (SCL) and Bulk Complaint Level
-  (BCL) scores. See [How do I avoid Outlook's spam
-  folder?](/docs/knowledge-base/how-do-i-avoid-outlooks-spam-folder#read-what-microsoft-told-you)
+  folder?](https://resend.com/guides/email/deliverability/avoid-gmail-spam-folder).
+  For Outlook, message headers include Spam Confidence Level (SCL) and Bulk
+  Complaint Level (BCL) scores. See [How do I avoid Outlook's spam
+  folder?](https://resend.com/guides/email/deliverability/avoid-outlook-spam-folder#read-what-microsoft-told-you)
   to read them.
 </Tip>
 

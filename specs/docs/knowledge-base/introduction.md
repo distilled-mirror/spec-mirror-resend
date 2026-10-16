@@ -230,7 +230,7 @@ Step-by-step instructions for verifying your domain with popular DNS providers.
 ## Deliverability
 
 <CardGroup cols={2}>
-  <Card title="How do I avoid Gmail's spam folder?" href="/docs/knowledge-base/how-do-i-avoid-gmails-spam-folder">
+  <Card title="How do I avoid Gmail's spam folder?" href="https://resend.com/guides/email/deliverability/avoid-gmail-spam-folder">
     Learn how to improve inbox placement in Gmail.
   </Card>
 

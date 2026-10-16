@@ -89,8 +89,8 @@ days.
 </ParamField>
 
 <ParamField body="deleted" type="boolean">
-  True when this call moved the thread to `trash`, false when the thread was
-  already there.
+  Returns `true` when the thread is moved to `trash`, and `false` when the
+  thread was already there.
 </ParamField>
 
 <RequestExample>

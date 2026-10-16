@@ -60,10 +60,6 @@ export const ResendParamField = ({children, body, path, ...props}) => {
 </Warning>
 
 A thread is a conversation within an inbox, made up of one or more messages.
-Threads are returned most recently active first. The `after` and `before`
-cursors take a thread ID, and only one of them can be passed. A date cursor
-returns a `422` `validation_error`. A cursor thread that is not in the selected
-folders returns a `404`.
 
 ## Path Parameters
 
@@ -74,24 +70,22 @@ folders returns a `404`.
 ## Query Parameters
 
 <ParamField query="folders" type="string">
-  Comma-separated folders to list: `inbox`, `archive`, `spam`, `sent`, or
-  `trash`. A thread is returned when any of its emails is in one of them, so a
-  thread in `inbox` with an email you sent matches both `inbox` and `sent`.
-  Defaults to `inbox`, or `inbox,archive,sent` when `labels` is set. `spam` and
-  `trash` are only included when you name them. Repeating the parameter returns
-  a `422` `validation_error`.
+  Comma-separated folders to list.
+
+  * `inbox`: The default. The thread holds at least one received message.
+  * `archive`: The thread was archived.
+  * `spam`: The thread was marked as spam.
+  * `trash`: The thread is scheduled for deletion in 30 days.
+  * `sent`: Threads whose messages are all outbound.
 </ParamField>
 
 <ParamField query="labels" type="string">
-  Comma-separated label IDs. Returns threads with any of these labels. Up to
-  `50` IDs. An ID that doesn't exist in the inbox returns a `404`. Repeating the
-  parameter returns a `422` `validation_error`.
+  Comma-separated label IDs.
 </ParamField>
 
 <ParamField query="read" type="boolean">
   `true` returns threads where every email is read. `false` returns threads with
-  at least one unread email. Only the literal values `true` and `false` are
-  accepted.
+  at least one unread email.
 </ParamField>
 
 <ParamField query="limit" type="number">
@@ -113,21 +107,6 @@ folders returns a `404`.
 
 To find threads by text, sender, recipient, attachment, or date, use [Search
 Threads](/docs/api-reference/inboxes/search-threads).
-
-## Folders
-
-Every thread sits in exactly one folder within its inbox.
-
-| Folder | Meaning |
-| - | - |
-| `inbox` | The default. The thread holds at least one received message. |
-| `archive` | The thread was archived. |
-| `spam` | The thread was marked as spam. |
-| `trash` | The thread is scheduled for deletion in 30 days. |
-| `sent` | Threads whose messages are all outbound. |
-
-You can move a thread to `inbox`, `archive`, `spam`, or `trash`. `sent` is
-assigned automatically.
 
 ## Response Fields
 
@@ -196,8 +175,15 @@ assigned automatically.
     </ParamField>
 
     <ParamField body="folder" type="string">
-      The folder the thread lives in. One of `inbox`, `archive`, `spam`,
-      `sent`, or `trash`.
+      The folder the thread lives in. Every thread sits in exactly one folder
+      within its inbox. You can move a thread to `inbox`, `archive`, `spam`, or
+      `trash`. `sent` is assigned automatically.
+
+      * `inbox`: The default. The thread holds at least one received message.
+      * `archive`: The thread was archived.
+      * `spam`: The thread was marked as spam.
+      * `trash`: The thread is scheduled for deletion in 30 days.
+      * `sent`: Threads whose messages are all outbound.
     </ParamField>
   </Expandable>
 </ParamField>

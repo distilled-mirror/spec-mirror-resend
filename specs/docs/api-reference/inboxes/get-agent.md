@@ -49,18 +49,15 @@ export const ResendParamField = ({children, body, path, ...props}) => {
   Once you have access, upgrade your Resend SDK to use the new methods:
 
   <CodeGroup>
-    ```bash Node.js theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}}
+    ```bash Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
     npm install resend@6.33.0
     ```
 
-    ```bash CLI theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}}
+    ```bash CLI theme={"theme":{"light":"github-light","dark":"vesper"}}
     npm install -g resend-cli@2.25.0
     ```
   </CodeGroup>
 </Warning>
-
-An inbox without a configured agent returns empty settings: `instructions` and
-`tone` are `null` and `enabled_actions` is an empty array.
 
 ## Path Parameters
 
@@ -81,12 +78,23 @@ An inbox without a configured agent returns empty settings: `instructions` and
 
 <ParamField body="tone" type="'concise_professional' | 'concise_casual' | 'expanded_professional' | 'expanded_casual' | null">
   Tone the agent writes in. `null` when no tone is set.
+
+  * `concise_professional`: Brief responses in a professional tone.
+  * `concise_casual`: Brief responses in a casual tone.
+  * `expanded_professional`: Detailed responses in a professional tone.
+  * `expanded_casual`: Detailed responses in a casual tone.
 </ParamField>
 
-<ParamField body="enabled_actions" type="string[]">
-  Actions the agent is allowed to take. Empty when no actions are enabled. Each
-  entry is one of `draft_reply`, `forward_thread`, `add_labels`,
-  `assign_thread`, `mark_as_spam`, `archive_thread`, or `delete_thread`.
+<ParamField body="actions" type="string[]">
+  Actions the agent is allowed to take.
+
+  * `draft_reply`: Draft a reply.
+  * `forward_thread`: Forward a thread.
+  * `add_labels`: Add labels to a thread.
+  * `assign_thread`: Assign a thread.
+  * `mark_as_spam`: Mark a thread as spam.
+  * `archive_thread`: Archive a thread.
+  * `delete_thread`: Delete a thread.
 </ParamField>
 
 <RequestExample>
@@ -116,7 +124,7 @@ An inbox without a configured agent returns empty settings: `instructions` and
     "object": "inbox_agent",
     "instructions": "Answer refund questions yourself. Escalate legal threats.",
     "tone": "concise_professional",
-    "enabled_actions": ["draft_reply", "add_labels"]
+    "actions": ["draft_reply", "add_labels"]
   }
   ```
 </ResponseExample>

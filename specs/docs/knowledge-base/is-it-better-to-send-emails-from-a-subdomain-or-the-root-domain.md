@@ -33,5 +33,5 @@ If you’re launching a new project or sending for a different purpose, again us
 
 <Note>
   We cover this in depth in our [deliverability
-  guide](/docs/knowledge-base/how-do-i-avoid-gmails-spam-folder#establish-sending-patterns).
+  guide](https://resend.com/guides/email/deliverability/avoid-gmail-spam-folder#establish-sending-patterns).
 </Note>

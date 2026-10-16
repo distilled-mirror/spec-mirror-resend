@@ -60,25 +60,12 @@ export const ResendParamField = ({children, body, path, ...props}) => {
 </Warning>
 
 An inbox sends and receives email at an address on one of your domains, such as
-`support@example.com`. The domain must belong to the team.
-
-Without `forwarding`, the domain must have receiving enabled, with DKIM and SPF
-verified and the inbound MX record verified or pending. With `forwarding` set to
-`true`, the domain only needs DKIM and SPF verified for sending.
-
-* A domain that does not meet these rules returns a `422` `validation_error`.
-* An address or receiving address that is already in use returns a `409`.
-* A team that has reached the inbox limit of its plan returns a `403`
-  `validation_error`.
-* A blocked account returns a `451`.
+`support@example.com`.
 
 ## Body Parameters
 
 <ResendParamField body="email_address" type="string" required>
-  The inbox email address on one of your domains. The API trims and lowercases
-  it. The part before the `@` is at most 64 characters and contains only
-  letters, numbers, and `. _ % + -`. It cannot start or end with a dot or
-  contain two dots in a row.
+  The inbox email address on one of your verified domains.
 </ResendParamField>
 
 <ParamField body="name" type="string">
@@ -87,17 +74,23 @@ verified and the inbound MX record verified or pending. With `forwarding` set to
 </ParamField>
 
 <ResendParamField body="from_name" type="string">
-  The name recipients see when mail is sent from this inbox. A plain name, not
-  a `Name <email>` address. Max 78 characters. It cannot contain a colon, `<`,
-  `>`, line breaks, or other control characters. An email address inside the
-  name must be on a domain the team has verified for sending. An empty string
-  leaves it unset.
+  The name recipients see when mail is sent from this inbox Max 78 characters.
 </ResendParamField>
 
 <ParamField body="forwarding" type="boolean">
   When `true`, Resend provisions a receiving address so you can receive mail
   without adding an MX record. Read it from `receiving_address` with [Get
   Inbox](/docs/api-reference/inboxes/get-inbox). Defaults to `false`.
+</ParamField>
+
+## Response Fields
+
+<ParamField body="object" type="string">
+  Always `inbox`.
+</ParamField>
+
+<ParamField body="id" type="string">
+  The ID of the inbox.
 </ParamField>
 
 <RequestExample>

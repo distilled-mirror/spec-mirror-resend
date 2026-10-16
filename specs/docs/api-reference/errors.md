@@ -22,10 +22,16 @@ Resend uses standard HTTP response codes for success and failure notifications, 
 * **Message:** An error was found with one or more fields in the request.
 * **Suggested action:** The message will contain more details about what field and error were found.
 
+### `validation_error`
+
+* **Status:** 400
+* **Message:** API key is invalid
+* **Suggested action:** Check the key on the [API Keys page](https://resend.com/api-keys) and create a new one if it was deleted. Every endpoint except sending returns this for a key that doesn't exist or was deleted, and every endpoint returns it when the `Authorization` header isn't a valid key.
+
 ### `missing_api_key`
 
 * **Status:** 401
-* **Message:** Missing API key in the authorization header.
+* **Message:** Missing API Key
 * **Suggested action:** Include the following header in the request: `Authorization: Bearer YOUR_API_KEY`.
 
 ### `restricted_api_key`
@@ -33,6 +39,12 @@ Resend uses standard HTTP response codes for success and failure notifications, 
 * **Status:** 401
 * **Message:** This API key is restricted to only send emails.
 * **Suggested action:** Make sure the API key has `Full access` to perform actions other than sending emails.
+
+### `validation_error`
+
+* **Status:** 401
+* **Message:** API key is invalid
+* **Suggested action:** Check the key on the [API Keys page](https://resend.com/api-keys) and create a new one if it was deleted. The sending endpoints return this for a key that doesn't exist, was deleted, or isn't active.
 
 ### `email_above_quota`
 

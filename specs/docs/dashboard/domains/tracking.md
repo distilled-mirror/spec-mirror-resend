@@ -6,26 +6,34 @@
 
 > Track open and click rates of your emails.
 
-Open and click tracking is disabled by default for all domains. We suggest only tracking open rates for [Broadcasts](/docs/dashboard/broadcasts/introduction) to ensure that inbox providers do not mistakenly identify your [transactional emails](/docs/dashboard/emails/introduction) as marketing emails.
+Open and click tracking is disabled by default for all domains. These settings apply to all emails sent from that domain.
+
+We suggest only tracking open rates for the domain (or subdomain) used to send your [Broadcasts](/docs/dashboard/broadcasts/introduction) to ensure that inbox providers do not mistakenly identify your [transactional emails](/docs/dashboard/emails/introduction) as marketing emails.
+
+<Info>
+  Learn more about why it is better to [send emails from a
+  subdomain](/docs/dashboard/domains/introduction#subdomains) than from your root
+  domain.
+</Info>
 
 You can enable tracking in the Resend Dashboard under the **Configuration** tab or programmatically when you create a new domain or update an existing domain.
 
 Once verified, all tracked links in your emails will use your tracking subdomain (e.g., `links.emails.example.com`).
 
-<Tabs>
-  <Tab title="Using the dashboard">
-    Go to the [**Domains** page](https://resend.com/domains) and click on the domain you want to configure.
+## Enable tracking using the Dashboard
 
-    In the **Configuration** tab, click **Configure** under **Enable tracking metrics**.
+<Steps>
+  <Step title="Go to the [**Domains** Dashboard page](https://resend.com/domains) and click on the domain you want to configure." />
 
+  <Step title="In the **Configuration** tab, click **Configure** under **Enable tracking metrics**.">
     <img alt="Open and Click Tracking" src="https://mintcdn.com/resend/8slja5cHAobSwGo7/images/dashboard-domains-custom-tracking-domains.png?fit=max&auto=format&n=8slja5cHAobSwGo7&q=85&s=b94c649f1c22c899c144cd73ab5a8e73" width="1869" height="959" data-path="images/dashboard-domains-custom-tracking-domains.png" />
+  </Step>
 
-    Provide a name for your tracking subdomain, enable open and/or click tracking, and click **+Add domain**.
-
+  <Step title="Provide a name for your tracking subdomain, enable open and/or click tracking, and click **+Add domain**.">
     <img alt="Verify Custom Tracking Subdomain" src="https://mintcdn.com/resend/aVe4W1upaT_ALaEY/images/dashboard-custom-tracking-domain-verify.png?fit=max&auto=format&n=aVe4W1upaT_ALaEY&q=85&s=aac30239e34f1fbf89bb9e41ba5540e8" width="3360" height="2100" data-path="images/dashboard-custom-tracking-domain-verify.png" />
+  </Step>
 
-    Add the CNAME record to your DNS settings (e.g. Cloudflare, GoDaddy, etc.) to verify your tracking subdomain.
-
+  <Step title="Add the CNAME record to your DNS settings (e.g. Cloudflare, GoDaddy, etc.) to verify your tracking subdomain.">
     <img alt="Add Custom Tracking Subdomain" src="https://mintcdn.com/resend/aVe4W1upaT_ALaEY/images/dashboard-domains-custom-tracking-domains-add.png?fit=max&auto=format&n=aVe4W1upaT_ALaEY&q=85&s=118b4d5f8269265c5eed074a52a2c9e5" width="3776" height="2096" data-path="images/dashboard-domains-custom-tracking-domains-add.png" />
 
     <Info>
@@ -33,14 +41,18 @@ Once verified, all tracked links in your emails will use your tracking subdomain
       that needs to be created. This ensures that we can issue a TLS certificate for
       your tracking subdomain.
     </Info>
+  </Step>
 
-    Click **I've added the records** to verify the domain.
+  <Step title="Click **I've added the records** to verify the domain." />
+</Steps>
 
-    Once verified, all tracked links in your emails will use your custom tracking subdomain.
-  </Tab>
+Once verified, all tracked links in your emails will use your custom tracking subdomain.
 
-  <Tab title="Using the API">
-    You can add a tracking subdomain when creating a new domain by passing the `tracking_subdomain` field along with `click_tracking` and/or `open_tracking`.
+## Enable tracking via the API
+
+<Steps>
+  <Step title="Provide the tracking subdomain">
+    When [adding a new domain](/docs/add-a-domain) to Resend, add tracking by passing the `tracking_subdomain` field along with `click_tracking` and/or `open_tracking`.
 
     <CodeGroup>
       ```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
@@ -102,16 +114,16 @@ Once verified, all tracked links in your emails will use your tracking subdomain
       import "github.com/resend/resend-go/v4"
 
       func main() {
-      	client := resend.NewClient("re_xxxxxxxxx")
+        client := resend.NewClient("re_xxxxxxxxx")
 
-      	params := &resend.CreateDomainRequest{
-      		Name:              "example.com",
-      		OpenTracking:      resend.Bool(true),
-      		ClickTracking:     resend.Bool(true),
-      		TrackingSubdomain: "links",
-      	}
+        params := &resend.CreateDomainRequest{
+          Name:              "example.com",
+          OpenTracking:      resend.Bool(true),
+          ClickTracking:     resend.Bool(true),
+          TrackingSubdomain: "links",
+        }
 
-      	client.Domains.Create(params)
+        client.Domains.Create(params)
       }
       ```
 
@@ -168,9 +180,9 @@ Once verified, all tracked links in your emails will use your tracking subdomain
 
       ```bash cURL theme={"theme":{"light":"github-light","dark":"vesper"}}
       curl -X POST 'https://api.resend.com/domains' \
-           -H 'Authorization: Bearer re_xxxxxxxxx' \
-           -H 'Content-Type: application/json' \
-           -d $'{
+          -H 'Authorization: Bearer re_xxxxxxxxx' \
+          -H 'Content-Type: application/json' \
+          -d $'{
         "name": "example.com",
         "open_tracking": true,
         "click_tracking": true,
@@ -179,7 +191,7 @@ Once verified, all tracked links in your emails will use your tracking subdomain
       ```
     </CodeGroup>
 
-    If you already have a domain, you can call the `update` endpoint to add a tracking subdomain and enable tracking.
+    If you already have a verified domain, call the `update` endpoint to add a tracking subdomain and enable tracking.
 
     <CodeGroup>
       ```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
@@ -242,15 +254,15 @@ Once verified, all tracked links in your emails will use your tracking subdomain
       import "github.com/resend/resend-go/v4"
 
       func main() {
-      	client := resend.NewClient("re_xxxxxxxxx")
+        client := resend.NewClient("re_xxxxxxxxx")
 
-      	params := &resend.UpdateDomainRequest{
-      		OpenTracking:      true,
-      		ClickTracking:     true,
-      		TrackingSubdomain: "links",
-      	}
+        params := &resend.UpdateDomainRequest{
+          OpenTracking:      true,
+          ClickTracking:     true,
+          TrackingSubdomain: "links",
+        }
 
-      	client.Domains.Update("d91cd9bd-1176-453e-8fc1-35364d380206", params)
+        client.Domains.Update("d91cd9bd-1176-453e-8fc1-35364d380206", params)
       }
       ```
 
@@ -309,15 +321,25 @@ Once verified, all tracked links in your emails will use your tracking subdomain
 
       ```bash cURL theme={"theme":{"light":"github-light","dark":"vesper"}}
       curl -X PATCH 'https://api.resend.com/domains/d91cd9bd-1176-453e-8fc1-35364d380206' \
-           -H 'Authorization: Bearer re_xxxxxxxxx' \
-           -H 'Content-Type: application/json' \
-           -d $'{
+          -H 'Authorization: Bearer re_xxxxxxxxx' \
+          -H 'Content-Type: application/json' \
+          -d $'{
         "open_tracking": true,
         "click_tracking": true,
         "tracking_subdomain": "links"
       }'
       ```
     </CodeGroup>
+  </Step>
+
+  <Step title="Add the CNAME record to your DNS settings (e.g. Cloudflare, GoDaddy, etc.) to verify your tracking subdomain.">
+    <img alt="Add Custom Tracking Subdomain" src="https://mintcdn.com/resend/aVe4W1upaT_ALaEY/images/dashboard-domains-custom-tracking-domains-add.png?fit=max&auto=format&n=aVe4W1upaT_ALaEY&q=85&s=118b4d5f8269265c5eed074a52a2c9e5" width="3776" height="2096" data-path="images/dashboard-domains-custom-tracking-domains-add.png" />
+
+    <Info>
+      If we detect CAA records on your domain, we will show an additional CAA record
+      that needs to be created. This ensures that we can issue a TLS certificate for
+      your tracking subdomain.
+    </Info>
 
     Whether creating or updating a domain, the API will return the required DNS records that need to be added to your domain provider's DNS settings. Note the `Tracking` record.
 
@@ -349,14 +371,14 @@ Once verified, all tracked links in your emails will use your tracking subdomain
     }
     ```
 
-    Add the required `CNAME` record to your domain provider's DNS settings (e.g. Cloudflare, GoDaddy, etc.).
-
     <Info>
       If we detect CAA records on your domain, we will show an additional CAA record
       that needs to be created. This ensures that we can issue a TLS certificate for
       your tracking subdomain.
     </Info>
+  </Step>
 
+  <Step title="Verify the domain">
     Once you've added the required DNS record(s), call the `verify` endpoint to verify the domain.
 
     <CodeGroup>
@@ -398,9 +420,9 @@ Once verified, all tracked links in your emails will use your tracking subdomain
       import "github.com/resend/resend-go/v4"
 
       func main() {
-      	client := resend.NewClient("re_xxxxxxxxx")
+        client := resend.NewClient("re_xxxxxxxxx")
 
-      	client.Domains.Verify("d91cd9bd-1176-453e-8fc1-35364d380206")
+        client.Domains.Verify("d91cd9bd-1176-453e-8fc1-35364d380206")
       }
       ```
 
@@ -439,31 +461,31 @@ Once verified, all tracked links in your emails will use your tracking subdomain
 
       ```bash cURL theme={"theme":{"light":"github-light","dark":"vesper"}}
       curl -X POST 'https://api.resend.com/domains/d91cd9bd-1176-453e-8fc1-35364d380206/verify' \
-           -H 'Authorization: Bearer re_xxxxxxxxx' \
-           -H 'Content-Type: application/json'
+          -H 'Authorization: Bearer re_xxxxxxxxx' \
+          -H 'Content-Type: application/json'
       ```
     </CodeGroup>
+  </Step>
+</Steps>
 
-    <Note>
-      Tracking is active only when both of these conditions are met:
+<Note>
+  Tracking is active only when both of these conditions are met:
 
-      <ol>
-        <li>
-          The `open_tracking` or `click_tracking` setting is enabled for the domain.
-        </li>
+  <ol>
+    <li>
+      The `open_tracking` or `click_tracking` setting is enabled for the domain.
+    </li>
 
-        <li>
-          A tracking subdomain is configured (e.g., `links.example.com`) and
-          successfully verified.
-        </li>
-      </ol>
-    </Note>
+    <li>
+      A tracking subdomain is configured (e.g., `links.example.com`) and
+      successfully verified.
+    </li>
+  </ol>
+</Note>
 
-    All tracked links in your emails will use your tracking subdomain.
+All tracked links in your emails will use your tracking subdomain.
 
-    View the [API reference](/docs/api-reference/domains/create-domain) for more details.
-  </Tab>
-</Tabs>
+View the [API reference](/docs/api-reference/domains/create-domain) for more details.
 
 ## How Open Tracking Works
 
@@ -475,6 +497,33 @@ the image is downloaded, Resend can tell exactly which message was opened and by
 To track clicks, Resend modifies each link in the body of the HTML email to point to your tracking subdomain.
 
 When recipients clicks a link, the request is redirected to your tracking subdomain, their click event is recorded, and they are redirected to the original URL.
+
+## Why open rates are not accurate
+
+Open tracking is generally not accurate because each inbox handles incoming email differently.
+
+**Clipped messages in Gmail** happen when you send a message over 102KB. A message over this size won’t be counted as an open unless the recipient views the entire message. Resend’s Deliverability Insights on the email will note if a message exceeds this threshold.
+
+**Some inboxes do not download images by default** or block/cache assets with a corporate firewall. This approach can prevent the open event from being tracked.
+
+**Other inboxes open the email prior to delivering** to scan for malware or to [protect user privacy](https://www.apple.com/newsroom/2021/06/apple-advances-its-privacy-leadership-with-ios-15-ipados-15-macos-monterey-and-watchos-8/). This approach can trigger an open event without the recipient reading your email.
+
+**Emails sent with only a plain text version** will not include open tracking at all. Since open tracking relies on a 1x1 pixel image, plain text emails cannot trigger open events. Only emails with an HTML version can be tracked for opens.
+
+Because of this, open tracking is **not a statistically accurate way** of detecting if your users are engaging with your content.
+
+## How open tracking impacts inbox placement
+
+Though open tracking does not impact whether your email is delivered, it most likely will impact your inbox placement. Trackers are generally **used by marketers and even spammers**. Because of this, inbox providers will often use open tracking as a signal that your email is promotional, or even spam, and categorize accordingly.
+
+**We recommend disabling open rates for transactional email**, to maximize inbox placement.
+
+## Alternatives to open tracking
+
+Instead of relying on open rates, there are a few other ways to still understand your sending.
+
+1. **Track Clicks:** Monitoring the link clicks is an even more granular way to know how a recipient engaged with your email. By knowing if they clicked, you also know that they read parts of your email and took action.
+2. **Track Outside the Inbox:** Often emails are sent as a means to an end. Maybe it's to increase page visits of an announcement or convert free users to paid. Tracking your sending by metrics outside of the inbox can be a great way to understand the true impact of your sending.
 
 ## Troubleshooting
 

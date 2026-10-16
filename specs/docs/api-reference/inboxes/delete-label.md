@@ -71,6 +71,20 @@ Deletes the label and removes it from every thread that carries it.
   The Label ID.
 </ResendParamField>
 
+## Response Fields
+
+<ParamField body="object" type="string">
+  Always `inbox_label`.
+</ParamField>
+
+<ParamField body="id" type="string">
+  The ID of the label.
+</ParamField>
+
+<ParamField body="deleted" type="boolean">
+  Returns `true` when the label is deleted.
+</ParamField>
+
 <RequestExample>
   ```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
   import { Resend } from 'resend';

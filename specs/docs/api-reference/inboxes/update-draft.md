@@ -4,7 +4,7 @@
 
 # Update Draft
 
-> Update fields on an existing draft.
+> Update an unsent draft.
 
 export const ResendParamField = ({children, body, path, ...props}) => {
   const [lang, setLang] = useState(() => {
@@ -59,20 +59,7 @@ export const ResendParamField = ({children, body, path, ...props}) => {
   </CodeGroup>
 </Warning>
 
-Updates the content of an unsent draft. Send at least one of `to`, `cc`, `bcc`,
-`subject`, `text`, `html`, or `attachments`. An empty body is rejected even when
-the draft already has files. A body with none of these keys returns a `422`, even
-when it has other keys.
-
-Fields you leave out stay as they are. `html` and `text` are the exception:
-sending either one replaces both, and the one you leave out is saved as `null`.
-For `attachments`, a present array replaces every file on the draft, `[]` or
-`null` removes them, and leaving the field out keeps them.
-
-After the update, the draft must still contain at least one non-empty field.
-Files already on the draft count toward that. The combined recipients cannot
-exceed 50. A draft that was already sent, or that changed during the request,
-returns a `409`.
+Updates the content of an unsent draft.
 
 ## Path Parameters
 
@@ -87,26 +74,23 @@ returns a `409`.
 ## Body Parameters
 
 <ParamField body="to" type="string | string[] | null">
-  Recipients. For multiple addresses, send an array of strings. Each value can
-  include a friendly name. Pass `null` to clear.
+  Recipients.
 </ParamField>
 
 <ParamField body="cc" type="string | string[] | null">
-  CC recipients. Pass `null` or `[]` to clear.
+  CC recipients.
 </ParamField>
 
 <ParamField body="bcc" type="string | string[] | null">
-  BCC recipients. Pass `null` or `[]` to clear.
+  BCC recipients.
 </ParamField>
 
 <ParamField body="subject" type="string | null">
-  The subject. Max 2000 characters. Must not contain a line break. Pass `null`
-  to clear.
+  The subject. Max 2000 characters.
 </ParamField>
 
 <ParamField body="html" type="string | null">
-  The HTML body. Pass `null` to clear. Sending `html` or `text` replaces both,
-  and the one you leave out is saved as `null`.
+  The HTML body.
 </ParamField>
 
 <ParamField body="text" type="string | null">
@@ -115,12 +99,7 @@ returns a `409`.
 </ParamField>
 
 <ParamField body="attachments" type="array | null">
-  Files to store on the draft. Each one needs `content`, `filename`, and
-  `content_type`. `path` and `content_id` return `422`. An empty file or a
-  blocked file type, such as `.exe`, returns `422`. The files on a draft can
-  total at most 25 MB. A present array
-  replaces every file on the draft. `[]` or `null` removes them. Leave the field out to
-  keep the current files.
+  Files to store on the draft.
 
   <Expandable defaultOpen="true" title="properties">
     <ParamField body="content" type="buffer | string" required>
@@ -145,78 +124,6 @@ returns a `409`.
 
 <ParamField body="id" type="string">
   The ID of the draft.
-</ParamField>
-
-<ParamField body="type" type="string">
-  `reply` when the draft replies to an email in an existing thread. `standalone`
-  when the draft starts a new thread.
-</ParamField>
-
-<ParamField body="to" type="string[] | null">
-  Recipients. `null` or empty when no recipients are set.
-</ParamField>
-
-<ParamField body="cc" type="string[]">
-  CC recipients.
-</ParamField>
-
-<ParamField body="bcc" type="string[]">
-  BCC recipients.
-</ParamField>
-
-<ParamField body="subject" type="string | null">
-  The subject.
-</ParamField>
-
-<ParamField body="html" type="string | null">
-  The HTML body.
-</ParamField>
-
-<ParamField body="text" type="string | null">
-  The plain-text body.
-</ParamField>
-
-<ParamField body="thread_id" type="string | null">
-  The Thread ID when this draft is a reply. `null` otherwise.
-</ParamField>
-
-<ParamField body="reply_to_email_id" type="string | null">
-  The Email ID being replied to. `null` otherwise.
-</ParamField>
-
-<ParamField body="email_id" type="string | null">
-  The ID of the outbound email queued when the draft was sent. `null` until the
-  draft is sent.
-</ParamField>
-
-<ParamField body="created_at" type="string">
-  ISO 8601 timestamp when the draft was created.
-</ParamField>
-
-<ParamField body="updated_at" type="string">
-  ISO 8601 timestamp when the draft was last saved.
-</ParamField>
-
-<ParamField body="attachments" type="array">
-  The files saved on the draft.
-
-  <Expandable defaultOpen="true" title="properties">
-    <ParamField body="id" type="string">
-      The ID of the attachment.
-    </ParamField>
-
-    <ParamField body="filename" type="string">
-      The filename of the attachment.
-    </ParamField>
-
-    <ParamField body="content_type" type="string">
-      The MIME type of the attachment, such as `application/pdf`.
-    </ParamField>
-
-    <ParamField body="size" type="number">
-      The size of the attachment in bytes.
-    </ParamField>
-  </Expandable>
 </ParamField>
 
 <RequestExample>
@@ -251,27 +158,7 @@ returns a `409`.
   ```json Response theme={"theme":{"light":"github-light","dark":"vesper"}}
   {
     "object": "inbox_draft",
-    "id": "c3a1e8b4-2d5f-4a7c-9e10-6b8d7f5a4c32",
-    "type": "standalone",
-    "to": ["ada@example.org"],
-    "cc": [],
-    "bcc": [],
-    "subject": "Refund issued for order 1041",
-    "html": "<p>Refund issued for order 1041.</p>",
-    "text": "Refund issued for order 1041.",
-    "thread_id": null,
-    "reply_to_email_id": null,
-    "email_id": null,
-    "created_at": "2026-08-05T14:12:04.110Z",
-    "updated_at": "2026-08-05T14:13:22.004Z",
-    "attachments": [
-      {
-        "id": "9d4f2b81-6c3a-4e7d-8b12-0a5c6d7e8f90",
-        "filename": "receipt.pdf",
-        "content_type": "application/pdf",
-        "size": 5
-      }
-    ]
+    "id": "c3a1e8b4-2d5f-4a7c-9e10-6b8d7f5a4c32"
   }
   ```
 </ResponseExample>

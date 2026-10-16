@@ -94,7 +94,7 @@ Articles on email infrastructure, developer experience, and product updates. The
 
 ## Guides
 
-Step-by-step guides for sending, receiving, and delivering email with Resend. The index enumerates every guide as a list of links grouped by category. Append `.md` to any guide or category URL, or send `Accept: text/markdown`, to receive the raw markdown source.
+Step-by-step guides for sending, receiving, and delivering email with Resend. The index enumerates every guide as a list of links grouped by category and subcategory. Append `.md` to any guide, category, or subcategory URL, or send `Accept: text/markdown`, to receive the raw markdown source.
 
 - [Guides index (Markdown)](https://resend.com/guides.md)
 - [Guides index (HTML)](https://resend.com/guides)

@@ -209,10 +209,6 @@
 - [Is it better to send emails from a subdomain or the root domain?](https://resend.com/docs/knowledge-base/is-it-better-to-send-emails-from-a-subdomain-or-the-root-domain.md): Discover why sending emails from a subdomain can be better than using a root domain.
 - [What if an email says delivered but the recipient has not received it?](https://resend.com/docs/knowledge-base/what-if-an-email-says-delivered-but-the-recipient-has-not-received-it.md): Learn the steps to take when an email is delivered, but the recipient does not receive it.
 - [Why Are My Emails Going to Spam?](https://resend.com/docs/knowledge-base/why-are-my-emails-going-to-spam.md): Troubleshoot and resolve emails landing in spam or being quarantined.
-- [How to avoid Gmail's spam folder](https://resend.com/docs/knowledge-base/how-do-i-avoid-gmails-spam-folder.md): Learn how to improve inbox placement in Gmail.
-- [How to avoid Outlook's spam folder](https://resend.com/docs/knowledge-base/how-do-i-avoid-outlooks-spam-folder.md): Learn how to improve inbox placement in Outlook.
-- [How to avoid iCloud's spam folder](https://resend.com/docs/knowledge-base/how-do-i-avoid-icloud-spam-folder.md): Learn how to improve inbox placement in iCloud Mail.
-- [How to avoid Yahoo's spam folder](https://resend.com/docs/knowledge-base/how-do-i-avoid-yahoos-spam-folder.md): Learn how to improve inbox placement in Yahoo Mail.
 - [How to prevent bounces with @privaterelay.appleid.com recipients?](https://resend.com/docs/knowledge-base/sending-apple-private-relay.md): Sending to Apple Private Email Relay requires specific configuration steps to ensure your emails get delivered
 - [Why are my open rates not accurate?](https://resend.com/docs/knowledge-base/why-are-my-open-rates-not-accurate.md): Learn why your open rate statistics are not accurate and what you can do about it.
 - [Audience Hygiene: How to keep your Audiences in good shape?](https://resend.com/docs/knowledge-base/audience-hygiene.md): Learn strategies for maintaining good audience hygiene and maximizing email deliverability.
@@ -310,11 +306,11 @@
 - [Retrieve Thread Email](https://resend.com/docs/api-reference/inboxes/get-thread-email.md): Retrieve a single message from a thread.
 - [Reply to Thread Email](https://resend.com/docs/api-reference/inboxes/reply-thread-email.md): Send a reply to a message in an inbox thread.
 - [Forward Thread Email](https://resend.com/docs/api-reference/inboxes/forward-thread-email.md): Forward a message in an inbox thread to new recipients.
-- [Create Draft](https://resend.com/docs/api-reference/inboxes/create-draft.md): Create a draft on an inbox, either as a new conversation or as a reply.
-- [List Drafts](https://resend.com/docs/api-reference/inboxes/list-drafts.md): Retrieve the drafts on an inbox.
+- [Create Draft](https://resend.com/docs/api-reference/inboxes/create-draft.md): Create a draft in an inbox, either to start a new thread or reply to an existing thread.
+- [List Drafts](https://resend.com/docs/api-reference/inboxes/list-drafts.md): Retrieve the unsent drafts in an inbox.
 - [Retrieve Draft](https://resend.com/docs/api-reference/inboxes/get-draft.md): Retrieve a single draft by its ID.
-- [Update Draft](https://resend.com/docs/api-reference/inboxes/update-draft.md): Update fields on an existing draft.
-- [Delete Draft](https://resend.com/docs/api-reference/inboxes/delete-draft.md): Discard an existing draft.
+- [Update Draft](https://resend.com/docs/api-reference/inboxes/update-draft.md): Update an unsent draft.
+- [Delete Draft](https://resend.com/docs/api-reference/inboxes/delete-draft.md): Discard an unsent draft.
 - [Send Draft](https://resend.com/docs/api-reference/inboxes/send-draft.md): Send an existing draft from the inbox address.
 - [Retrieve Agent Settings](https://resend.com/docs/api-reference/inboxes/get-agent.md): Retrieve the agent settings for an inbox.
 - [Update Agent Settings](https://resend.com/docs/api-reference/inboxes/update-agent.md): Update the agent settings for an inbox.

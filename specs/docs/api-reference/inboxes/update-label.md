@@ -59,10 +59,6 @@ export const ResendParamField = ({children, body, path, ...props}) => {
   </CodeGroup>
 </Warning>
 
-Omitted fields keep their current value. A new name must not match another
-label on the inbox, compared without case, or the request returns a `422`
-`validation_error`.
-
 ## Path Parameters
 
 <ResendParamField path="inbox_id" type="string" required>
@@ -76,13 +72,21 @@ label on the inbox, compared without case, or the request returns a `422`
 ## Body Parameters
 
 <ParamField body="name" type="string">
-  A new name for the label. Max 64 characters. Leading and trailing whitespace
-  is trimmed.
+  A new name for the label. Max 64 characters.
 </ParamField>
 
 <ParamField body="color" type="string">
-  A new color for the label as a `#RRGGBB` hex code, like `#E93D82`. It is
-  stored in uppercase.
+  A new color for the label as a `#RRGGBB` hex code, like `#E93D82`.
+</ParamField>
+
+## Response Fields
+
+<ParamField body="object" type="string">
+  Always `inbox_label`.
+</ParamField>
+
+<ParamField body="id" type="string">
+  The ID of the label.
 </ParamField>
 
 <RequestExample>

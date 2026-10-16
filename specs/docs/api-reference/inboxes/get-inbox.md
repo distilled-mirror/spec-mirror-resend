@@ -62,9 +62,7 @@ export const ResendParamField = ({children, body, path, ...props}) => {
 ## Path Parameters
 
 <ResendParamField path="inbox_id" type="string" required>
-  The Inbox ID or the inbox email address, such as `support@example.com`. A
-  value that contains `@` must be a valid email address, and the match is
-  case-insensitive. Any other value must be a UUID.
+  The Inbox ID or the inbox email address, such as `support@example.com`.
 </ResendParamField>
 
 ## Response Fields
@@ -78,8 +76,7 @@ export const ResendParamField = ({children, body, path, ...props}) => {
 </ParamField>
 
 <ParamField body="name" type="string">
-  Internal name for the inbox. Recipients do not see it. Falls back to the inbox
-  email address.
+  Internal name for the inbox. Recipients do not see it.
 </ParamField>
 
 <ParamField body="email_address" type="string">
@@ -116,6 +113,10 @@ export const ResendParamField = ({children, body, path, ...props}) => {
   ISO 8601 timestamp when the inbox was created.
 </ParamField>
 
+<ParamField body="updated_at" type="string">
+  ISO 8601 timestamp when the inbox was updated.
+</ParamField>
+
 <RequestExample>
   ```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
   import { Resend } from 'resend';
@@ -150,7 +151,8 @@ export const ResendParamField = ({children, body, path, ...props}) => {
     "unread": 3,
     "drafts": 2,
     "last_received": "2026-08-05T14:03:11.229Z",
-    "created_at": "2026-08-01T09:12:44.512Z"
+    "created_at": "2026-08-01T09:12:44.512Z",
+    "updated_at": "2026-08-03T16:20:05.004Z"
   }
   ```
 </ResponseExample>

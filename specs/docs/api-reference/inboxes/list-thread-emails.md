@@ -60,10 +60,7 @@ export const ResendParamField = ({children, body, path, ...props}) => {
 </Warning>
 
 Messages are returned oldest first. Each item has the same shape as [Retrieve
-Thread Email](/docs/api-reference/inboxes/get-thread-email). Pass the `id` of the
-last message as `after` to get the next, newer page. Pass the `id` of the first
-message as `before` to get the previous, older page. You cannot combine `after`
-and `before`. A cursor that is not a message of the thread returns a `404`.
+Thread Email](/docs/api-reference/inboxes/get-thread-email).
 
 ## Path Parameters
 

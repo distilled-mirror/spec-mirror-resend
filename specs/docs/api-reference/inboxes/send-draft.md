@@ -59,17 +59,7 @@ export const ResendParamField = ({children, body, path, ...props}) => {
   </CodeGroup>
 </Warning>
 
-Sends the draft from the inbox address. A reply draft is sent in its thread. A
-draft without a thread starts a new thread. Attachments saved on the draft are
-sent with it.
-
-The draft must have at least one `to` recipient, a non-empty `subject`, and
-`html` or `text`, or the request returns a `422`. A draft that was already sent
-returns a `409`.
-
-A reply draft is sent with the same `In-Reply-To` and `References` headers as
-[Reply to Thread Email](/docs/api-reference/inboxes/reply-thread-email). A draft for
-a new conversation has neither.
+Sends the draft from the inbox address.
 
 ## Path Parameters
 
@@ -87,11 +77,7 @@ The request body is optional and takes only `headers`. Without headers, send no
 body.
 
 <ParamField body="headers" type="object">
-  Custom headers to add to the email. Resend sets the `In-Reply-To`,
-  `References`, and `Reply-To` headers, so you cannot set them here. Sending one
-  of them, in any letter case, returns a `422`. A header name cannot be empty,
-  and names and values cannot contain line breaks or null characters, or the
-  request returns a `422`.
+  Custom headers to add to the email.
 </ParamField>
 
 ## Headers

@@ -59,8 +59,6 @@ export const ResendParamField = ({children, body, path, ...props}) => {
   </CodeGroup>
 </Warning>
 
-Returns every label on the inbox, oldest first. The list is not paginated.
-
 ## Path Parameters
 
 <ResendParamField path="inbox_id" type="string" required>
@@ -92,6 +90,10 @@ Returns every label on the inbox, oldest first. The list is not paginated.
 
     <ParamField body="created_at" type="string">
       ISO 8601 timestamp when the label was created.
+    </ParamField>
+
+    <ParamField body="updated_at" type="string">
+      ISO 8601 timestamp when the label was last updated.
     </ParamField>
   </Expandable>
 </ParamField>
@@ -126,13 +128,15 @@ Returns every label on the inbox, oldest first. The list is not paginated.
         "id": "2a8b4c6d-1e3f-4a5b-9c7d-8e0f1a2b3c4d",
         "name": "Billing",
         "color": "#00A2C7",
-        "created_at": "2026-08-01T09:12:03.004Z"
+        "created_at": "2026-08-01T09:12:03.004Z",
+        "updated_at": "2026-08-01T09:12:03.004Z"
       },
       {
         "id": "7f9c1d2e-4a6b-4c3d-8e15-9b0a7c6d5e34",
         "name": "Urgent",
         "color": "#E93D82",
-        "created_at": "2026-08-05T14:07:42.881Z"
+        "created_at": "2026-08-05T14:07:42.881Z",
+        "updated_at": "2026-08-05T14:07:42.881Z"
       }
     ]
   }

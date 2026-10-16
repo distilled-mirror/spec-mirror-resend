@@ -134,6 +134,14 @@ inbox](/docs/api-reference/inboxes/get-inbox) to get all its fields.
       ISO 8601 timestamp of the newest received email in the Inbox folder.
       `null` when the folder has no received email.
     </ParamField>
+
+    <ParamField body="created_at" type="string">
+      ISO 8601 timestamp when the inbox was created.
+    </ParamField>
+
+    <ParamField body="updated_at" type="string">
+      ISO 8601 timestamp when the inbox was updated.
+    </ParamField>
   </Expandable>
 </ParamField>
 
@@ -168,7 +176,9 @@ inbox](/docs/api-reference/inboxes/get-inbox) to get all its fields.
         "email_address": "support@example.com",
         "from_name": "Ada from Support",
         "unread": 3,
-        "last_received": "2026-08-05T14:03:11.229Z"
+        "last_received": "2026-08-05T14:03:11.229Z",
+        "created_at": "2026-08-01T09:12:44.512Z",
+        "updated_at": "2026-08-03T16:20:05.004Z"
       },
       {
         "id": "1c5e0f3a-6b21-4d9a-8e77-5c0a9d8b4e12",
@@ -176,7 +186,9 @@ inbox](/docs/api-reference/inboxes/get-inbox) to get all its fields.
         "email_address": "billing@example.com",
         "from_name": null,
         "unread": 0,
-        "last_received": null
+        "last_received": null,
+        "created_at": "2026-07-20T11:00:00.000Z",
+        "updated_at": "2026-07-20T11:00:00.318Z"
       }
     ]
   }

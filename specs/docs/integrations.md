@@ -272,6 +272,11 @@ export const CourierIcon = props => <svg className="h-6 w-6" width="68" height="
     <path d="M20.0873 32.7048C20.5224 35.6054 22.8429 44.8875 33.1402 46.5554C33.2852 46.5554 33.3578 46.3379 33.2127 46.2653C30.8197 45.1776 24.5833 41.5518 20.3773 32.5598C20.3048 32.4872 20.0873 32.5598 20.0873 32.7048Z" fill="currentColor" />
   </svg>;
 
+export const GravityFormsIcon = props => <svg className="h-6 w-6" viewBox="-0.9 0.3 20.6 20.6" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+    <title>Gravity Forms</title>
+    <path fillRule="evenodd" clipRule="evenodd" d="M18.6 14.2c0 1-.6 2-1.4 2.6L11 20.5c-1 .5-2 .5-3 0l-6.3-3.6C.8 16.3.3 15.4.2 14.3V7c0-1 .6-2 1.4-2.6L7.8.7c.9-.5 2-.5 2.9 0L17 4.3c.9.6 1.4 1.5 1.5 2.6zM7.7 8.9H16V6.5H7.7c-1.1 0-2.2.4-2.9 1.2C3 9.7 3 14.6 3 14.6h12.9v-4.5h-2.3v2.1H5.4c.1-.8.4-2.2 1.1-2.9.3-.3.7-.5 1.2-.4z" fill="currentColor" />
+  </svg>;
+
 export const AttioIcon = props => <svg className="h-6 w-6" viewBox="0 0 703 580" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
     <title>Attio</title>
     <g transform="translate(0, 580) scale(0.1, -0.1)" fill="currentColor">
@@ -874,6 +879,10 @@ export const CursorIcon = props => <svg className="h-6 w-6" viewBox="0 0 24 24" 
 
   <Card title="Attio" href="/docs/guides/attio-integration" icon={<AttioIcon />}>
     Send emails and add contacts to segments from Attio
+  </Card>
+
+  <Card title="Gravity Forms" href="https://docs.gravitysmtp.com/category/integrations/resend/" icon={<GravityFormsIcon />}>
+    Send emails from WordPress with Gravity Forms
   </Card>
 </CardGroup>
 

@@ -4,7 +4,7 @@
 
 # Delete Draft
 
-> Discard an existing draft.
+> Discard an unsent draft.
 
 export const ResendParamField = ({children, body, path, ...props}) => {
   const [lang, setLang] = useState(() => {
@@ -59,8 +59,7 @@ export const ResendParamField = ({children, body, path, ...props}) => {
   </CodeGroup>
 </Warning>
 
-Discards an unsent draft. A draft that was already sent, or that changed during
-the request, returns a `409`.
+Discards an unsent draft.
 
 ## Path Parameters
 
@@ -71,6 +70,20 @@ the request, returns a `409`.
 <ResendParamField path="draft_id" type="string" required>
   The Draft ID.
 </ResendParamField>
+
+## Response Fields
+
+<ParamField body="object" type="string">
+  Always `inbox_draft`.
+</ParamField>
+
+<ParamField body="id" type="string">
+  The ID of the draft.
+</ParamField>
+
+<ParamField body="deleted" type="boolean">
+  Returns `true` when the draft is deleted.
+</ParamField>
 
 <RequestExample>
   ```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
