@@ -65,7 +65,7 @@ whether they have attachments, and their dates.
 ## Path Parameters
 
 <ResendParamField path="inbox_id" type="string" required>
-  The Inbox ID. An email address is not accepted.
+  The Inbox ID or the inbox email address, such as `support@example.com`.
 </ResendParamField>
 
 ## Query Parameters
@@ -240,9 +240,9 @@ whether they have attachments, and their dates.
       Identifies the email in the thread that matched the search. When `query`
       has words or phrases, it's the most relevant match. Otherwise, it's the
       newest. [Retrieve Thread Email](/docs/api-reference/inboxes/get-thread-email),
-      reply, and forward accept it as `email_id`, but it is not equal to the
-      `id` those endpoints return. `null` when the search index returns no
-      matched email for the thread.
+      reply, and forward accept it as `email_id`. It is the same `id` that
+      [List Thread Emails](/docs/api-reference/inboxes/list-thread-emails) returns.
+      `null` when the search index returns no matched email for the thread.
     </ParamField>
   </Expandable>
 </ParamField>

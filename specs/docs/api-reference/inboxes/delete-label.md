@@ -64,7 +64,7 @@ Deletes the label and removes it from every thread that carries it.
 ## Path Parameters
 
 <ResendParamField path="inbox_id" type="string" required>
-  The Inbox ID. An email address is not accepted.
+  The Inbox ID or the inbox email address, such as `support@example.com`.
 </ResendParamField>
 
 <ResendParamField path="label_id" type="string" required>

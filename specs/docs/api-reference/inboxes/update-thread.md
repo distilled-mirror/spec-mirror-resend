@@ -4,7 +4,7 @@
 
 # Update Thread
 
-> Mark a thread read or unread, move it, or add and remove labels.
+> Mark a thread read or unread, or move it to another folder.
 
 export const ResendParamField = ({children, body, path, ...props}) => {
   const [lang, setLang] = useState(() => {
@@ -59,13 +59,15 @@ export const ResendParamField = ({children, body, path, ...props}) => {
   </CodeGroup>
 </Warning>
 
-At least one of `read`, `folder`, `add_label_ids`, or `remove_label_ids` is
-required.
+At least one of `read` or `folder` is required. To change a thread's labels, use
+[Add Thread Labels](/docs/api-reference/inboxes/add-thread-labels),
+[Set Thread Labels](/docs/api-reference/inboxes/set-thread-labels), or
+[Remove Thread Label](/docs/api-reference/inboxes/remove-thread-label).
 
 ## Path Parameters
 
 <ResendParamField path="inbox_id" type="string" required>
-  The Inbox ID. An email address is not accepted.
+  The Inbox ID or the inbox email address, such as `support@example.com`.
 </ResendParamField>
 
 <ResendParamField path="thread_id" type="string" required>

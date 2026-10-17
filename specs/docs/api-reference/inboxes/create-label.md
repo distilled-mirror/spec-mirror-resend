@@ -60,12 +60,12 @@ export const ResendParamField = ({children, body, path, ...props}) => {
 </Warning>
 
 A label is a named, colored tag that belongs to one inbox. An inbox can have at
-most 100 labels. Labels names are unique per inbox.
+most 100 labels. Label names are unique per inbox.
 
 ## Path Parameters
 
 <ResendParamField path="inbox_id" type="string" required>
-  The Inbox ID. An email address is not accepted.
+  The Inbox ID or the inbox email address, such as `support@example.com`.
 </ResendParamField>
 
 ## Body Parameters

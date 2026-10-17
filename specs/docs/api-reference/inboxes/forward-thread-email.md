@@ -49,11 +49,11 @@ export const ResendParamField = ({children, body, path, ...props}) => {
   Once you have access, upgrade your Resend SDK to use the new methods:
 
   <CodeGroup>
-    ```bash Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
+    ```bash Node.js theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}}
     npm install resend@6.33.0
     ```
 
-    ```bash CLI theme={"theme":{"light":"github-light","dark":"vesper"}}
+    ```bash CLI theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}}
     npm install -g resend-cli@2.25.0
     ```
   </CodeGroup>
@@ -62,8 +62,8 @@ export const ResendParamField = ({children, body, path, ...props}) => {
 Forwards a message from the inbox address.
 
 The attachments of the original message are sent with the forward, together
-with any `attachments` you add. The request fails when they exceed 10 files or
-25 MB of `content` in total. An original
+with any `attachments` you add. The request fails when they exceed 25 MB of
+`content` in total. An original
 attachment that was sent from a URL (`path`) cannot be forwarded, and the
 request returns a `422`.
 
@@ -75,7 +75,7 @@ be set or overridden.
 ## Path Parameters
 
 <ResendParamField path="inbox_id" type="string" required>
-  The Inbox ID. An email address is not accepted.
+  The Inbox ID or the inbox email address, such as `support@example.com`.
 </ResendParamField>
 
 <ResendParamField path="thread_id" type="string" required>
@@ -215,7 +215,10 @@ be set or overridden.
   ```bash CLI theme={"theme":{"light":"github-light","dark":"vesper"}}
   resend inboxes threads emails forward b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1 4d8e2a1c-9b3f-4c6d-8a21-3e5f7c9c0d12 5b1a9f47-2c8d-4e6f-9a03-1d2e3f4a5b60 \
     --to colleague@example.org \
-    --text "Flagging this refund request for you."
+    --cc billing@example.com \
+    --bcc records@example.com \
+    --text "Flagging this refund request for you." \
+    --attachment ./invoice.pdf
   ```
 </RequestExample>
 

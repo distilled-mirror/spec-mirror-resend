@@ -64,7 +64,7 @@ A thread is a conversation within an inbox, made up of one or more messages.
 ## Path Parameters
 
 <ResendParamField path="inbox_id" type="string" required>
-  The Inbox ID. An email address is not accepted.
+  The Inbox ID or the inbox email address, such as `support@example.com`.
 </ResendParamField>
 
 ## Query Parameters

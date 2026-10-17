@@ -57,7 +57,7 @@ Event triggered whenever an **outbound email is accepted for delivery** and adde
 
 *Note: `source` is always `system`, because the email pipeline sends this event, even when the API or an agent sent the email.*
 
-*Note: When the email comes from a draft, `inbox.draft.sent` fires first, from the send call. This event follows once the email is accepted for delivery.*
+*Note: When the email comes from a draft, `inbox.draft.sent` is also sent, from the send call. The two events come from separate paths, so their delivery order is not fixed.*
 
 <ResponseBodyParameters type="inbox.email.sent">
   <ParamField body="source" type="api | dashboard | agent | system">

@@ -210,7 +210,6 @@
 - [What if an email says delivered but the recipient has not received it?](https://resend.com/docs/knowledge-base/what-if-an-email-says-delivered-but-the-recipient-has-not-received-it.md): Learn the steps to take when an email is delivered, but the recipient does not receive it.
 - [Why Are My Emails Going to Spam?](https://resend.com/docs/knowledge-base/why-are-my-emails-going-to-spam.md): Troubleshoot and resolve emails landing in spam or being quarantined.
 - [How to prevent bounces with @privaterelay.appleid.com recipients?](https://resend.com/docs/knowledge-base/sending-apple-private-relay.md): Sending to Apple Private Email Relay requires specific configuration steps to ensure your emails get delivered
-- [Why are my open rates not accurate?](https://resend.com/docs/knowledge-base/why-are-my-open-rates-not-accurate.md): Learn why your open rate statistics are not accurate and what you can do about it.
 - [Audience Hygiene: How to keep your Audiences in good shape?](https://resend.com/docs/knowledge-base/audience-hygiene.md): Learn strategies for maintaining good audience hygiene and maximizing email deliverability.
 - [Domain and/or IP Warm-up Guide](https://resend.com/docs/knowledge-base/warming-up.md): Learn how to warm up a domain or IP to avoid deliverability issues.
 - [What counts as email consent?](https://resend.com/docs/knowledge-base/what-counts-as-email-consent.md): Learn what valid email permission looks like and why it matters.
@@ -300,8 +299,11 @@
 - [List Threads](https://resend.com/docs/api-reference/inboxes/list-threads.md): Retrieve the threads in an inbox, filtered by folder, label, and read status.
 - [Search Threads](https://resend.com/docs/api-reference/inboxes/search-threads.md): Find threads in an inbox by text, people, attachments, and dates.
 - [Retrieve Thread](https://resend.com/docs/api-reference/inboxes/get-thread.md): Retrieve a thread summary.
-- [Update Thread](https://resend.com/docs/api-reference/inboxes/update-thread.md): Mark a thread read or unread, move it, or add and remove labels.
+- [Update Thread](https://resend.com/docs/api-reference/inboxes/update-thread.md): Mark a thread read or unread, or move it to another folder.
 - [Delete Thread](https://resend.com/docs/api-reference/inboxes/delete-thread.md): Move a thread to the trash folder.
+- [Add Thread Labels](https://resend.com/docs/api-reference/inboxes/add-thread-labels.md): Apply one or more labels to a thread.
+- [Set Thread Labels](https://resend.com/docs/api-reference/inboxes/set-thread-labels.md): Replace every label on a thread.
+- [Remove Thread Label](https://resend.com/docs/api-reference/inboxes/remove-thread-label.md): Take one label off a thread.
 - [List Thread Emails](https://resend.com/docs/api-reference/inboxes/list-thread-emails.md): Retrieve the messages in a thread.
 - [Retrieve Thread Email](https://resend.com/docs/api-reference/inboxes/get-thread-email.md): Retrieve a single message from a thread.
 - [Reply to Thread Email](https://resend.com/docs/api-reference/inboxes/reply-thread-email.md): Send a reply to a message in an inbox thread.

@@ -62,7 +62,7 @@ export const ResendParamField = ({children, body, path, ...props}) => {
 ## Path Parameters
 
 <ResendParamField path="inbox_id" type="string" required>
-  The Inbox ID. An email address is not accepted.
+  The Inbox ID or the inbox email address, such as `support@example.com`.
 </ResendParamField>
 
 ## Response Fields
@@ -93,8 +93,8 @@ export const ResendParamField = ({children, body, path, ...props}) => {
   * `add_labels`: Add labels to a thread.
   * `assign_thread`: Assign a thread.
   * `mark_as_spam`: Mark a thread as spam.
-  * `archive_thread`: Archive a thread.
-  * `delete_thread`: Delete a thread.
+  * `archive`: Archive a thread.
+  * `move_to_trash`: Move a thread to the trash.
 </ParamField>
 
 <RequestExample>
