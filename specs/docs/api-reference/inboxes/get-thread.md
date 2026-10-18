@@ -99,7 +99,21 @@ Thread Emails](/docs/api-reference/inboxes/list-thread-emails).
 </ParamField>
 
 <ParamField body="labels" type="array">
-  The labels attached to the thread, each with an `id`, `name`, and `color`.
+  The labels attached to the thread.
+
+  <Expandable title="properties">
+    <ParamField body="id" type="string">
+      The ID of the label.
+    </ParamField>
+
+    <ParamField body="name" type="string">
+      The name of the label.
+    </ParamField>
+
+    <ParamField body="color" type="string">
+      The color of the label as an uppercase `#RRGGBB` hex code.
+    </ParamField>
+  </Expandable>
 </ParamField>
 
 <ParamField body="read" type="boolean">

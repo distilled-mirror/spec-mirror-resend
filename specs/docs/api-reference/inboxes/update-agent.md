@@ -67,9 +67,13 @@ export const ResendParamField = ({children, body, path, ...props}) => {
 
 ## Body Parameters
 
+Send at least one of `instructions`, `tone`, or `actions`. Omitted fields keep
+their current value.
+
 <ParamField body="instructions" type="string | null">
-  Instructions the agent follows when handling the inbox's threads. Max 4000
-  characters.
+  Instructions the agent follows when handling the inbox's threads. 1 to 4000
+  characters. Whitespace at the start and end does not count. Send `null` to
+  clear them.
 </ParamField>
 
 <ParamField body="tone" type="'concise_professional' | 'concise_casual' | 'expanded_professional' | 'expanded_casual' | null">
@@ -82,7 +86,8 @@ export const ResendParamField = ({children, body, path, ...props}) => {
 </ParamField>
 
 <ParamField body="actions" type="string[]">
-  Actions the agent is allowed to take.
+  Actions the agent is allowed to take. The list replaces the current actions.
+  Send an empty array to disable all actions.
 
   * `draft_reply`: Draft a reply.
   * `forward_thread`: Forward a thread.

@@ -71,8 +71,11 @@ export const ResendParamField = ({children, body, path, ...props}) => {
 
 ## Body Parameters
 
+Omitted fields keep their current value.
+
 <ParamField body="name" type="string">
-  A new name for the label. Max 64 characters.
+  A new name for the label. Max 64 characters. A name that another label in the
+  inbox already uses, compared without case, returns a `422`.
 </ParamField>
 
 <ParamField body="color" type="string">

@@ -49,11 +49,11 @@ export const ResendParamField = ({children, body, path, ...props}) => {
   Once you have access, upgrade your Resend SDK to use the new methods:
 
   <CodeGroup>
-    ```bash Node.js theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}}
+    ```bash Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
     npm install resend@6.33.0
     ```
 
-    ```bash CLI theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}}
+    ```bash CLI theme={"theme":{"light":"github-light","dark":"vesper"}}
     npm install -g resend-cli@2.25.0
     ```
   </CodeGroup>
@@ -61,7 +61,8 @@ export const ResendParamField = ({children, body, path, ...props}) => {
 
 The thread ends up with exactly the labels given, in one atomic change. Labels
 on the thread that are not listed are taken off, and the labels themselves are
-kept.
+kept. If any label ID is not found, the request returns a `404` and nothing
+changes.
 
 ## Path Parameters
 

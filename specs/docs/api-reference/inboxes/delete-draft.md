@@ -59,7 +59,7 @@ export const ResendParamField = ({children, body, path, ...props}) => {
   </CodeGroup>
 </Warning>
 
-Discards an unsent draft.
+Discards an unsent draft. A draft that was already sent returns a `409`.
 
 ## Path Parameters
 

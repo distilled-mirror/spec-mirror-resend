@@ -6,7 +6,7 @@
 
 > Send rich HTML card emails using the Chat SDK and React Email.
 
-The Chat SDK adapter renders Card elements into styled HTML emails using `@react-email/components`. This lets you send structured, branded messages without writing raw HTML.
+The Chat SDK adapter renders Card elements into styled HTML emails using `react-email`. This lets you send structured, branded messages without writing raw HTML.
 
 ## Card structure
 

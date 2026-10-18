@@ -61,6 +61,13 @@ export const ResendParamField = ({children, body, path, ...props}) => {
 
 A draft lets you prepare a message before sending it.
 
+Omit `thread_id` and `reply_to_email_id` to start a new thread. Pass both for a
+reply draft.
+
+An email can have only one unsent reply draft. A request for an email that
+already has one returns a `200` with the existing Draft ID. It changes only the
+`attachments` of that draft.
+
 ## Path Parameters
 
 <ResendParamField path="inbox_id" type="string" required>
@@ -69,9 +76,15 @@ A draft lets you prepare a message before sending it.
 
 ## Body Parameters
 
+At least one of `to`, `cc`, `bcc`, `subject`, `text`, `html`, or `attachments`
+must be non-empty. `to`, `cc`, and `bcc` combined cannot exceed 50 recipients.
+
 <ParamField body="to" type="string | string[] | null">
   Recipients. For multiple addresses, send an array of strings. Each value can
-  include a friendly name, for example `Ada Lovelace <ada@example.org>`.
+  include a friendly name, for example `Ada Lovelace <ada@example.org>`. On a
+  reply draft, when you omit `to` or send `null`, the draft gets the recipients
+  of a [reply](/docs/api-reference/inboxes/reply-thread-email). Send `[]` for no
+  recipients.
 </ParamField>
 
 <ParamField body="cc" type="string | string[] | null">
@@ -83,7 +96,7 @@ A draft lets you prepare a message before sending it.
 </ParamField>
 
 <ParamField body="subject" type="string | null">
-  The subject. Max 2000 characters.
+  The subject. 1 to 2000 characters, with no line breaks.
 </ParamField>
 
 <ParamField body="html" type="string | null">
@@ -94,8 +107,9 @@ A draft lets you prepare a message before sending it.
   The plain-text body.
 </ParamField>
 
-<ParamField body="attachments" type="array">
-  Files to store on the draft.
+<ParamField body="attachments" type="array | null">
+  Files to store on the draft, up to 25 MB in total. Drafts do not accept
+  `path` or `content_id`.
 
   <Expandable defaultOpen="true" title="properties">
     <ParamField body="content" type="buffer | string" required>
@@ -107,7 +121,8 @@ A draft lets you prepare a message before sending it.
     </ParamField>
 
     <ResendParamField body="content_type" type="string" required>
-      Content type for the attachment.
+      Content type for the attachment. Must be a valid MIME type, such as
+      `application/pdf`.
     </ResendParamField>
   </Expandable>
 </ParamField>

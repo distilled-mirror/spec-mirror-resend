@@ -108,9 +108,14 @@
         { type: 'text', content: 'Your order #1234 has been shipped.' },
         { type: 'divider' },
         {
-          type: 'link-button',
-          label: 'Track Order',
-          url: 'https://example.com/track/1234',
+          type: 'actions',
+          children: [
+            {
+              type: 'link-button',
+              label: 'Track Order',
+              url: 'https://example.com/track/1234',
+            },
+          ],
         },
       ],
     },
@@ -118,7 +123,7 @@
   });
   ```
 
-  Cards render to HTML via `@react-email/components`. Always include `fallbackText` for plain-text clients.
+  Cards render to HTML via `react-email`. Always include `fallbackText` for plain-text clients.
 
   ***
 
@@ -127,9 +132,8 @@
   Start a new email thread without waiting for inbound:
 
   ```typescript theme={"theme":{"light":"github-light","dark":"vesper"}}
-  const threadId = await chat.adapters.resend.openDM('user@example.com');
-  const thread = await chat.thread('resend', threadId);
-  await thread.post('Hello from the bot!');
+  const threadId = await resend.openDM('user@example.com');
+  await resend.postMessage(threadId, 'Hello from the bot!');
   ```
 
   ***
@@ -139,10 +143,13 @@
   Inbound email attachments are available on `message.raw.attachments`:
 
   ```typescript theme={"theme":{"light":"github-light","dark":"vesper"}}
+  import type { ResendRawMessage } from '@resend/chat-sdk-adapter';
+
   chat.onNewMention(async (thread, message) => {
-    const attachments = message.raw?.attachments ?? [];
+    const raw = message.raw as ResendRawMessage;
+    const attachments = raw.attachments ?? [];
     for (const file of attachments) {
-      console.log(file.filename, file.contentType, file.url);
+      console.log(file.filename, file.contentType);
     }
   });
   ```

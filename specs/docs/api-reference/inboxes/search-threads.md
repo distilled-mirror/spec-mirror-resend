@@ -72,7 +72,7 @@ whether they have attachments, and their dates.
 
 <ParamField query="query" type="string">
   Free text to search for in the subject, body, sender, recipients, and
-  attachment names.
+  attachment names. Max 256 characters and 32 words.
 </ParamField>
 
 <ParamField query="from" type="string">
@@ -107,7 +107,8 @@ whether they have attachments, and their dates.
 </ParamField>
 
 <ParamField query="folders" type="string">
-  Comma-separated folders to search.
+  Comma-separated folders to search. Defaults to `inbox`, or to
+  `inbox,archive,sent` when `labels` is set.
 
   * `inbox`: The default. The thread holds at least one received message.
   * `archive`: The thread was archived.
@@ -200,8 +201,21 @@ whether they have attachments, and their dates.
     </ParamField>
 
     <ParamField body="labels" type="array">
-      The labels attached to the thread, each with an `id`, `name`, and
-      `color`.
+      The labels attached to the thread.
+
+      <Expandable title="properties">
+        <ParamField body="id" type="string">
+          The ID of the label.
+        </ParamField>
+
+        <ParamField body="name" type="string">
+          The name of the label.
+        </ParamField>
+
+        <ParamField body="color" type="string">
+          The color of the label as an uppercase `#RRGGBB` hex code.
+        </ParamField>
+      </Expandable>
     </ParamField>
 
     <ParamField body="email_count" type="number">

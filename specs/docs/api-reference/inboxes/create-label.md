@@ -60,7 +60,8 @@ export const ResendParamField = ({children, body, path, ...props}) => {
 </Warning>
 
 A label is a named, colored tag that belongs to one inbox. An inbox can have at
-most 100 labels. Label names are unique per inbox.
+most 100 labels. Label names are unique per inbox, compared without case. A
+duplicate name returns a `422`.
 
 ## Path Parameters
 
@@ -75,7 +76,8 @@ most 100 labels. Label names are unique per inbox.
 </ParamField>
 
 <ParamField body="color" type="string">
-  The color of the label as a `#RRGGBB` hex code, like `#E93D82`.
+  The color of the label as a `#RRGGBB` hex code, like `#E93D82`. Defaults to a
+  random color.
 </ParamField>
 
 ## Response Fields

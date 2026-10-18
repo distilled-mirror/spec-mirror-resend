@@ -46,7 +46,7 @@ export const ResendParamField = ({children, body, path, ...props}) => {
   The API key can have full access to Resend's API or be only restricted to send emails.
 
   * `full_access`: Can create, delete, get, and update any resource.
-  * `sending_access`: Can only send emails.
+  * `sending_access`: Can only send emails. For Inboxes, it can call only [Reply to Thread Email](/docs/api-reference/inboxes/reply-thread-email), [Forward Thread Email](/docs/api-reference/inboxes/forward-thread-email), [Create Draft](/docs/api-reference/inboxes/create-draft) and [Send Draft](/docs/api-reference/inboxes/send-draft). A key restricted to a domain can use only the inboxes on that domain.
 </ParamField>
 
 <ResendParamField body="domain_id" type="string">

@@ -10,12 +10,11 @@ By default, the Chat SDK adapter responds to inbound emails. With `openDM`, you 
 
 ## Sending a proactive email
 
-Call `openDM` on the adapter to create a new thread, then post a message to it.
+Call `openDM` on the adapter from `createResendAdapter` to create a new thread. Then call `postMessage` to send a message to the thread.
 
 ```ts theme={"theme":{"light":"github-light","dark":"vesper"}}
-const threadId = await chat.adapters.resend.openDM('user@example.com');
-const thread = await chat.thread('resend', threadId);
-await thread.post('Hello from the bot!');
+const threadId = await resend.openDM('user@example.com');
+await resend.postMessage(threadId, 'Hello from the bot!');
 ```
 
 You can also send card emails in proactive threads. The same card structure from [Card Emails](/docs/chat-sdk-card-emails) works here.
@@ -25,12 +24,21 @@ You can also send card emails in proactive threads. The same card structure from
 A common pattern is exposing an HTTP endpoint that triggers outbound emails. This lets external systems (cron jobs, webhooks from other services, admin dashboards) send emails through your bot.
 
 ```ts theme={"theme":{"light":"github-light","dark":"vesper"}}
-async function handleNotify(req, res) {
+import type { IncomingMessage, ServerResponse } from 'node:http';
+
+async function readBody(req: IncomingMessage): Promise<string> {
+  const chunks: Buffer[] = [];
+  for await (const chunk of req) {
+    chunks.push(Buffer.from(chunk));
+  }
+  return Buffer.concat(chunks).toString();
+}
+
+async function handleNotify(req: IncomingMessage, res: ServerResponse) {
   const { to, message } = JSON.parse(await readBody(req));
 
-  const threadId = await chat.adapters.resend.openDM(to);
-  const thread = await chat.thread('resend', threadId);
-  await thread.post(message);
+  const threadId = await resend.openDM(to);
+  await resend.postMessage(threadId, message);
 
   res.writeHead(200, { 'Content-Type': 'application/json' });
   res.end(JSON.stringify({ ok: true, threadId }));

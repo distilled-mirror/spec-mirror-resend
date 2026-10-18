@@ -67,13 +67,19 @@ export const ResendParamField = ({children, body, path, ...props}) => {
 
 ## Body Parameters
 
+At least one of `name` or `from_name` is required. Omitted fields keep their
+current value.
+
 <ParamField body="name" type="string">
   New internal name for the inbox. Recipients do not see it. Between 1 and 64
   characters after trimming.
 </ParamField>
 
 <ResendParamField body="from_name" type="string">
-  The name recipients see when mail is sent from this inbox. Max 78 characters.
+  The name recipients see when mail is sent from this inbox. Use a plain name,
+  without `:`, `<`, `>`, or line breaks. Max 78 characters. An email address in
+  the name must be on one of your verified domains. Send an empty string to
+  remove it.
 </ResendParamField>
 
 ## Response Fields

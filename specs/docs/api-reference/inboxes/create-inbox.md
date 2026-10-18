@@ -62,10 +62,19 @@ export const ResendParamField = ({children, body, path, ...props}) => {
 An inbox sends and receives email at an address on one of your domains, such as
 `support@example.com`.
 
+Without `forwarding`, the domain must have receiving enabled, with DKIM and SPF
+verified and the inbound MX record verified or pending. With `forwarding` set to
+`true`, the domain needs only DKIM and SPF verified. Otherwise, the request
+returns a `422`. An address that is already in use
+returns a `409`. A team at the inbox limit of its plan gets a `403`.
+
 ## Body Parameters
 
 <ResendParamField body="email_address" type="string" required>
-  The inbox email address on one of your verified domains.
+  The inbox email address on one of your verified domains. The part before the
+  `@` can contain only letters, numbers, and `.`, `_`, `%`, and `-`, up to 64
+  characters. It cannot start or end with `.` or have two `.` in a row. To call
+  an inbox with a `%` in its address, use the Inbox ID in the path.
 </ResendParamField>
 
 <ParamField body="name" type="string">
@@ -74,13 +83,15 @@ An inbox sends and receives email at an address on one of your domains, such as
 </ParamField>
 
 <ResendParamField body="from_name" type="string">
-  The name recipients see when mail is sent from this inbox. Max 78 characters.
+  The name recipients see when mail is sent from this inbox. Use a plain name,
+  without `:`, `<`, `>`, or line breaks. Max 78 characters. An email address in
+  the name must be on one of your verified domains.
 </ResendParamField>
 
-<ParamField body="forwarding" type="boolean">
+<ParamField body="forwarding" type="boolean" default="false">
   When `true`, Resend provisions a receiving address so you can receive mail
   without adding an MX record. Read it from `receiving_address` with [Get
-  Inbox](/docs/api-reference/inboxes/get-inbox). Defaults to `false`.
+  Inbox](/docs/api-reference/inboxes/get-inbox).
 </ParamField>
 
 ## Response Fields

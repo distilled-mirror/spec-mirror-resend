@@ -117,7 +117,7 @@ Event triggered whenever an **inbound email is added to a thread**.
       </ParamField>
 
       <ParamField body="from" type="string">
-        Sender email address
+        Sender email address. Can include the display name.
       </ParamField>
 
       <ParamField body="to" type="string[]">

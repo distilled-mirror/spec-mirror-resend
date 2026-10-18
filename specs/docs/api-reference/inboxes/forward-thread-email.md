@@ -49,11 +49,11 @@ export const ResendParamField = ({children, body, path, ...props}) => {
   Once you have access, upgrade your Resend SDK to use the new methods:
 
   <CodeGroup>
-    ```bash Node.js theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}}
+    ```bash Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
     npm install resend@6.33.0
     ```
 
-    ```bash CLI theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}}
+    ```bash CLI theme={"theme":{"light":"github-light","dark":"vesper"}}
     npm install -g resend-cli@2.25.0
     ```
   </CodeGroup>
@@ -63,14 +63,13 @@ Forwards a message from the inbox address.
 
 The attachments of the original message are sent with the forward, together
 with any `attachments` you add. The request fails when they exceed 25 MB of
-`content` in total. An original
+`content` in total. Files you add with `path` do not count toward it. An original
 attachment that was sent from a URL (`path`) cannot be forwarded, and the
-request returns a `422`.
+request returns a `422`. The whole email can be at most 40 MB.
 
 The forward carries the same `In-Reply-To` and `References` headers as a
 [reply](/docs/api-reference/inboxes/reply-thread-email) to the original message, so
-mail clients may group it with the original conversation. These headers can't
-be set or overridden.
+mail clients may group it with the original conversation.
 
 ## Path Parameters
 
@@ -95,11 +94,11 @@ be set or overridden.
   50 recipients.
 </ParamField>
 
-<ParamField body="cc" type="string | string[]">
+<ParamField body="cc" type="string | string[] | null">
   CC recipient email address.
 </ParamField>
 
-<ParamField body="bcc" type="string | string[]">
+<ParamField body="bcc" type="string | string[] | null">
   BCC recipient email address.
 </ParamField>
 
@@ -112,10 +111,11 @@ be set or overridden.
 </ParamField>
 
 <ParamField body="subject" type="string">
-  The subject of the forward. Max 2000 characters.
+  The subject of the forward. 1 to 2000 characters, with no line breaks.
+  Defaults to the thread subject with a `Fwd:` prefix.
 </ParamField>
 
-<ParamField body="attachments" type="array">
+<ParamField body="attachments" type="array | null">
   Files to attach, as on [Send Email](/docs/api-reference/emails/send-email).
 
   <Expandable defaultOpen title="properties">
@@ -143,8 +143,9 @@ be set or overridden.
   </Expandable>
 </ParamField>
 
-<ParamField body="headers" type="object">
-  Custom headers to add to the email.
+<ParamField body="headers" type="object | null">
+  Custom headers to add to the email. You cannot set `In-Reply-To`,
+  `References`, or `Reply-To`.
 </ParamField>
 
 ## Headers
