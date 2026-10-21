@@ -20,10 +20,10 @@ Resend then returns a scheduled Broadcast to `draft`, or halts delivery to the r
 
 You can also [cancel a Broadcast via the API](/docs/api-reference/broadcasts/cancel-broadcast).
 
-<Note>
-  Canceling is only available while a Broadcast is `scheduled` or `queued`.
-  Emails that have already been sent cannot be recalled.
-</Note>
+> [!NOTE]
+>
+> Canceling is only available while a Broadcast is `scheduled` or `queued`.
+> Emails that have already been sent cannot be recalled.
 
 ## Related pages
 

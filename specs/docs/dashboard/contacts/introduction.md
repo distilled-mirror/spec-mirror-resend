@@ -21,10 +21,10 @@ Each Contact:
 * can be in zero, one, or multiple Segments
 * can opt in or out of Topics
 
-<Tip>
-  If you previously used our Audience model, learn how to [migrate to the new
-  Contacts model](/docs/dashboard/contacts/migrating-from-audiences-to-segments).
-</Tip>
+> [!TIP]
+>
+> If you previously used our Audience model, learn how to [migrate to the new
+> Contacts model](/docs/dashboard/contacts/migrating-from-audiences-to-segments).
 
 ## Contact features
 
@@ -35,7 +35,7 @@ For each Contact, you can:
 * Assign one or more Broadcast [Segments](#segments) for internal organization.
 * Maintain a list of Broadcast [Topics](#topics) they have subscribed to.
 
-<img src="https://mintcdn.com/resend/2SHIfycCcJlAJEpt/images/audiences-properties-intro.png?fit=max&auto=format&n=2SHIfycCcJlAJEpt&q=85&s=001cb276f96ad54b6a64042eada0c9c3" alt="Properties" class="extraWidth" width="3736" height="1916" data-path="images/audiences-properties-intro.png" />
+![Properties](https://mintcdn.com/resend/2SHIfycCcJlAJEpt/images/audiences-properties-intro.png?fit=max\&auto=format\&n=2SHIfycCcJlAJEpt\&q=85\&s=001cb276f96ad54b6a64042eada0c9c3)
 
 ## Quickstart
 
@@ -45,24 +45,22 @@ Add Contacts programmatically with the [Contacts API](/docs/dashboard/contacts/m
 
 To add a single Contact manually in the Dashboard:
 
-<Steps>
-  <Step title="Navigate to the Audience Dashboard page." />
+**1. Navigate to the Audience Dashboard page.**
 
-  <Step title="Select **Add contacts**." />
+**2. Select **Add contacts**.**
 
-  <Step title="Select **Add Manually** from the dropdown." />
+**3. Select **Add Manually** from the dropdown.**
 
-  <Step title="Add the email address of the Contact in the text field." />
+**4. Add the email address of the Contact in the text field.**
 
-  <Step title="Add the new Contact to an existing Segment.">
-    <Info>
-      An email address is the only required property for a new Contact. However,
-      a Contact must belong to a Segment in order to receive a Broadcast.
-    </Info>
-  </Step>
+**5. Add the new Contact to an existing Segment.**
 
-  <Step title="Confirm and click **Add**." />
-</Steps>
+> [!NOTE]
+>
+> An email address is the only required property for a new Contact. However,
+> a Contact must belong to a Segment in order to receive a Broadcast.
+
+**6. Confirm and click **Add**.**
 
 See examples of [adding Contacts using other methods](/docs/dashboard/contacts/add-contacts).
 
@@ -96,7 +94,7 @@ All Contacts require a valid email address for the `email` property. In order to
 
 You can store additional information about your Contacts by adding values for other [Contact properties](/docs/dashboard/contacts/properties), including custom defined properties. Contact properties are useful for [personalizing your Broadcasts with dynamic content](/docs/dashboard/contacts/properties#use-contact-properties-in-broadcasts), such as greeting recipients by first name.
 
-<img src="https://mintcdn.com/resend/2SHIfycCcJlAJEpt/images/contact-properties.png?fit=max&auto=format&n=2SHIfycCcJlAJEpt&q=85&s=6eb917dc7ac58dd515c033cf443e0734" alt="Properties" class="extraWidth" width="3736" height="1916" data-path="images/contact-properties.png" />
+![Properties](https://mintcdn.com/resend/2SHIfycCcJlAJEpt/images/contact-properties.png?fit=max\&auto=format\&n=2SHIfycCcJlAJEpt\&q=85\&s=6eb917dc7ac58dd515c033cf443e0734)
 
 ## Segments
 
@@ -153,19 +151,17 @@ For example, you might send a product announcement to your "Enterprise Customers
 
 See how to use Resend's Contact management features.
 
-<CardGroup cols={2}>
-  <Card title="Add Contacts" icon="user-circle-plus" href="/docs/dashboard/contacts/add-contacts" />
+> **[Add Contacts](/docs/dashboard/contacts/add-contacts)**
 
-  <Card title="Manage Contacts" icon="id-card" href="/docs/dashboard/contacts/manage-contacts" />
+> **[Manage Contacts](/docs/dashboard/contacts/manage-contacts)**
 
-  <Card title="Contact Properties" icon="memo-circle-info" href="/docs/dashboard/contacts/properties" />
+> **[Contact Properties](/docs/dashboard/contacts/properties)**
 
-  <Card title="Unsubscribe List" icon="right-to-bracket" href="/docs/dashboard/contacts/managing-unsubscribe-list" />
+> **[Unsubscribe List](/docs/dashboard/contacts/managing-unsubscribe-list)**
 
-  <Card title="Segments" icon="chart-pie" href="/docs/dashboard/contacts/manage-segments" />
+> **[Segments](/docs/dashboard/contacts/manage-segments)**
 
-  <Card title="Topics" icon="hashtag" href="/docs/dashboard/contacts/manage-topics" />
-</CardGroup>
+> **[Topics](/docs/dashboard/contacts/manage-topics)**
 
 ## Export your data
 
@@ -179,19 +175,21 @@ Admins can download your data in CSV format for the following resources:
 * Logs
 * API keys
 
-<Info>Currently, exports are limited to admin users of your team.</Info>
+> [!NOTE]
+>
+> Currently, exports are limited to admin users of your team.
 
 To start, apply filters to your data and click on the "Export" button. Confirm your filters before exporting your data.
 
-<video autoPlay muted loop playsinline className="w-full aspect-video" src="https://mintcdn.com/resend/OWNnQaVDyqcGyhhN/images/exports.mp4?fit=max&auto=format&n=OWNnQaVDyqcGyhhN&q=85&s=1149ee4e83b4414e75a0ecaa92774c38" data-path="images/exports.mp4" />
+<video autoPlay muted loop playsinline src="https://mintcdn.com/resend/OWNnQaVDyqcGyhhN/images/exports.mp4?fit=max&auto=format&n=OWNnQaVDyqcGyhhN&q=85&s=1149ee4e83b4414e75a0ecaa92774c38" />
 
 If your exported data includes 1,000 items or less, the export will download immediately. For larger exports, you'll receive an email with a link to download your data.
 
 All admins on your team can securely access the export for 7 days. Unavailable exports are marked as "Expired."
 
-<Note>
-  All exports your team creates are listed in the
-  [Exports](https://resend.com/exports) page under **Settings** > **Team** >
-  **Exports**. Select any export to view its details page. All members of your
-  team can view your exports, but only admins can download the data.
-</Note>
+> [!NOTE]
+>
+> All exports your team creates are listed in the
+> [Exports](https://resend.com/exports) page under **Settings** > **Team** >
+> **Exports**. Select any export to view its details page. All members of your
+> team can view your exports, but only admins can download the data.

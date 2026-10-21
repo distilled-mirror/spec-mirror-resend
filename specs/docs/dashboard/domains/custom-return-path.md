@@ -8,147 +8,145 @@
 
 By default, Resend uses the `send` subdomain for the Return-Path address.
 
-<Info>
-  Domains that show `CNAME` records for sending use your Return-Path subdomain
-  for one record and an `r`-prefixed sibling for the other. With a Return-Path
-  of `outbound`, you'll be shown records for both `outbound.example.com` and
-  `routbound.example.com`, and both need to be added for the domain to fully
-  verify.
-</Info>
+> [!NOTE]
+>
+> Domains that show `CNAME` records for sending use your Return-Path subdomain
+> for one record and an `r`-prefixed sibling for the other. With a Return-Path
+> of `outbound`, you'll be shown records for both `outbound.example.com` and
+> `routbound.example.com`, and both need to be added for the domain to fully
+> verify.
 
 You can provide a custom Return-Path address when you [add a new domain in the Dashboard](/docs/add-a-domain) under **Advanced options**, or by setting the optional `custom_return_path` parameter when [creating a domain via the API](/docs/api-reference/domains/create-domain) or with [the `domains create` CLI command](/docs/cli#domains).
 
-<Note>
-  The Return-Path is set when the domain is created and cannot be changed
-  afterwards, so `custom_return_path` is not accepted by the [Update
-  Domain](/docs/api-reference/domains/update-domain) endpoint. To use a different
-  Return-Path subdomain, delete the domain and add it again with the new value.
-</Note>
+> [!NOTE]
+>
+> The Return-Path is set when the domain is created and cannot be changed
+> afterwards, so `custom_return_path` is not accepted by the [Update
+> Domain](/docs/api-reference/domains/update-domain) endpoint. To use a different
+> Return-Path subdomain, delete the domain and add it again with the new value.
 
-<img alt="Custom Return Path" src="https://mintcdn.com/resend/JHWt09hsc7E33HK2/images/dashboard-domains-resend-custom-return-path.png?fit=max&auto=format&n=JHWt09hsc7E33HK2&q=85&s=569a75fc160aad18116efc93bcebe148" width="3360" height="2100" data-path="images/dashboard-domains-resend-custom-return-path.png" />
+![Custom Return Path](https://mintcdn.com/resend/JHWt09hsc7E33HK2/images/dashboard-domains-resend-custom-return-path.png?fit=max\&auto=format\&n=JHWt09hsc7E33HK2\&q=85\&s=569a75fc160aad18116efc93bcebe148)
 
 For the API, optionally pass the custom return path parameter.
 
-<CodeGroup>
-  ```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
-  import { Resend } from 'resend';
+```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
+import { Resend } from 'resend';
 
-  const resend = new Resend('re_xxxxxxxxx');
+const resend = new Resend('re_xxxxxxxxx');
 
-  resend.domains.create({ name: 'example.com', customReturnPath: 'outbound' });
-  ```
+resend.domains.create({ name: 'example.com', customReturnPath: 'outbound' });
+```
 
-  ```php PHP theme={"theme":{"light":"github-light","dark":"vesper"}}
-  $resend = Resend::client('re_xxxxxxxxx');
+```php PHP theme={"theme":{"light":"github-light","dark":"vesper"}}
+$resend = Resend::client('re_xxxxxxxxx');
 
-  $resend->domains->create([
-    'name' => 'example.com',
-    'custom_return_path' => 'outbound'
-  ]);
-  ```
+$resend->domains->create([
+  'name' => 'example.com',
+  'custom_return_path' => 'outbound'
+]);
+```
 
-  ```python Python theme={"theme":{"light":"github-light","dark":"vesper"}}
-  import resend
+```python Python theme={"theme":{"light":"github-light","dark":"vesper"}}
+import resend
 
-  resend.api_key = "re_xxxxxxxxx"
+resend.api_key = "re_xxxxxxxxx"
 
-  params: resend.Domains.CreateParams = {
-    "name": "example.com",
-    "custom_return_path": "outbound"
-  }
+params: resend.Domains.CreateParams = {
+  "name": "example.com",
+  "custom_return_path": "outbound"
+}
 
-  resend.Domains.create(params)
-  ```
+resend.Domains.create(params)
+```
 
-  ```ruby Ruby theme={"theme":{"light":"github-light","dark":"vesper"}}
-  require "resend"
+```ruby Ruby theme={"theme":{"light":"github-light","dark":"vesper"}}
+require "resend"
 
-  Resend.api_key = "re_xxxxxxxxx"
+Resend.api_key = "re_xxxxxxxxx"
 
-  params = {
-    name: "example.com",
-    custom_return_path: "outbound"
-  }
-  domain = Resend::Domains.create(params)
-  puts domain
-  ```
+params = {
+  name: "example.com",
+  custom_return_path: "outbound"
+}
+domain = Resend::Domains.create(params)
+puts domain
+```
 
-  ```go Go theme={"theme":{"light":"github-light","dark":"vesper"}}
-  package main
+```go Go theme={"theme":{"light":"github-light","dark":"vesper"}}
+package main
 
-  import "github.com/resend/resend-go/v4"
+import "github.com/resend/resend-go/v4"
 
-  func main() {
-  	client := resend.NewClient("re_xxxxxxxxx")
+func main() {
+	client := resend.NewClient("re_xxxxxxxxx")
 
-  	params := &resend.CreateDomainRequest{
-  		Name:             "example.com",
-  		CustomReturnPath: "outbound",
-  	}
+	params := &resend.CreateDomainRequest{
+		Name:             "example.com",
+		CustomReturnPath: "outbound",
+	}
 
-  	client.Domains.Create(params)
-  }
-  ```
+	client.Domains.Create(params)
+}
+```
 
-  ```rust Rust theme={"theme":{"light":"github-light","dark":"vesper"}}
-  use resend_rs::{types::CreateDomainOptions, Resend, Result};
+```rust Rust theme={"theme":{"light":"github-light","dark":"vesper"}}
+use resend_rs::{types::CreateDomainOptions, Resend, Result};
 
-  #[tokio::main]
-  async fn main() -> Result<()> {
-    let resend = Resend::new("re_xxxxxxxxx");
+#[tokio::main]
+async fn main() -> Result<()> {
+  let resend = Resend::new("re_xxxxxxxxx");
 
-    let _domain = resend
-      .domains
-      .create(CreateDomainOptions::new("example.com").with_custom_return_path("outbound"))
-      .await?;
+  let _domain = resend
+    .domains
+    .create(CreateDomainOptions::new("example.com").with_custom_return_path("outbound"))
+    .await?;
 
-    Ok(())
-  }
-  ```
+  Ok(())
+}
+```
 
-  ```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
-  import com.resend.*;
-  import com.resend.core.exception.ResendException;
-  import com.resend.services.domains.model.CreateDomainOptions;
-  import com.resend.services.domains.model.CreateDomainResponse;
+```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
+import com.resend.*;
+import com.resend.core.exception.ResendException;
+import com.resend.services.domains.model.CreateDomainOptions;
+import com.resend.services.domains.model.CreateDomainResponse;
 
-  public class Main {
-      public static void main(String[] args) throws ResendException {
-          Resend resend = new Resend("re_xxxxxxxxx");
+public class Main {
+    public static void main(String[] args) throws ResendException {
+        Resend resend = new Resend("re_xxxxxxxxx");
 
-          CreateDomainOptions params = CreateDomainOptions
-                  .builder()
-                  .name("example.com")
-                  .customReturnPath("outbound")
-                  .build();
+        CreateDomainOptions params = CreateDomainOptions
+                .builder()
+                .name("example.com")
+                .customReturnPath("outbound")
+                .build();
 
-          CreateDomainResponse domain = resend.domains().create(params);
-      }
-  }
-  ```
+        CreateDomainResponse domain = resend.domains().create(params);
+    }
+}
+```
 
-  ```csharp .NET theme={"theme":{"light":"github-light","dark":"vesper"}}
-  using Resend;
+```csharp .NET theme={"theme":{"light":"github-light","dark":"vesper"}}
+using Resend;
 
-  IResend resend = ResendClient.Create( "re_xxxxxxxxx" ); // Or from DI
+IResend resend = ResendClient.Create( "re_xxxxxxxxx" ); // Or from DI
 
-  var resp = await resend.DomainAddAsync( new DomainAddData {
-     DomainName = "example.com",
-     CustomReturnPath = "outbound"
-  } );
-  Console.WriteLine( "Domain Id={0}", resp.Content.Id );
-  ```
+var resp = await resend.DomainAddAsync( new DomainAddData {
+   DomainName = "example.com",
+   CustomReturnPath = "outbound"
+} );
+Console.WriteLine( "Domain Id={0}", resp.Content.Id );
+```
 
-  ```bash cURL theme={"theme":{"light":"github-light","dark":"vesper"}}
-  curl -X POST 'https://api.resend.com/domains' \
-       -H 'Authorization: Bearer re_xxxxxxxxx' \
-       -H 'Content-Type: application/json' \
-       -d $'{
-    "name": "example.com",
-    "custom_return_path": "outbound"
-  }'
-  ```
-</CodeGroup>
+```bash cURL theme={"theme":{"light":"github-light","dark":"vesper"}}
+curl -X POST 'https://api.resend.com/domains' \
+     -H 'Authorization: Bearer re_xxxxxxxxx' \
+     -H 'Content-Type: application/json' \
+     -d $'{
+  "name": "example.com",
+  "custom_return_path": "outbound"
+}'
+```
 
 Custom return paths must adhere to the following rules:
 

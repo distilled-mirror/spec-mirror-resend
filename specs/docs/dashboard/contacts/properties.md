@@ -38,152 +38,150 @@ Each Contact Property has a key, a value, and optional fallback value.
 * `value`: The value of the property (may be a `string` or `number`).
 * `fallback_value`: The fallback value of the property (must match the type of the property).
 
-<video src="https://mintcdn.com/resend/fJVhfUIq0WYU6NCn/images/contact-properties.mp4?fit=max&auto=format&n=fJVhfUIq0WYU6NCn&q=85&s=d99c945eacb2d13f8b76f22fdf527524" autoPlay muted loop className="w-full aspect-video" data-path="images/contact-properties.mp4" />
+<video src="https://mintcdn.com/resend/fJVhfUIq0WYU6NCn/images/contact-properties.mp4?fit=max&auto=format&n=fJVhfUIq0WYU6NCn&q=85&s=d99c945eacb2d13f8b76f22fdf527524" autoPlay muted loop />
 
 You can also create Contact properties [via the API or SDKs](/docs/api-reference/contact-properties/create-contact-property).
 
-<CodeGroup>
-  ```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
-  import { Resend } from 'resend';
+```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
+import { Resend } from 'resend';
 
-  const resend = new Resend('re_xxxxxxxxx');
+const resend = new Resend('re_xxxxxxxxx');
 
-  const { data, error } = await resend.contactProperties.create({
-    key: 'company_name',
-    type: 'string',
-    fallbackValue: 'Acme Corp',
-  });
-  ```
+const { data, error } = await resend.contactProperties.create({
+  key: 'company_name',
+  type: 'string',
+  fallbackValue: 'Acme Corp',
+});
+```
 
-  ```php PHP theme={"theme":{"light":"github-light","dark":"vesper"}}
-  $resend = Resend::client('re_xxxxxxxxx');
+```php PHP theme={"theme":{"light":"github-light","dark":"vesper"}}
+$resend = Resend::client('re_xxxxxxxxx');
 
-  $resend->contactProperties->create([
-    'key' => 'company_name',
-    'type' => 'string',
-    'fallback_value' => 'Acme Corp',
-  ]);
-  ```
+$resend->contactProperties->create([
+  'key' => 'company_name',
+  'type' => 'string',
+  'fallback_value' => 'Acme Corp',
+]);
+```
 
-  ```python Python theme={"theme":{"light":"github-light","dark":"vesper"}}
-  import resend
+```python Python theme={"theme":{"light":"github-light","dark":"vesper"}}
+import resend
 
-  resend.api_key = 're_xxxxxxxxx'
+resend.api_key = 're_xxxxxxxxx'
 
-  params: resend.ContactProperties.CreateParams = {
-      "key": "company_name",
-      "type": "string",
-      "fallback_value": "Acme Corp",
-  }
-
-  contact_property = resend.ContactProperties.create(params)
-  ```
-
-  ```ruby Ruby theme={"theme":{"light":"github-light","dark":"vesper"}}
-  require "resend"
-
-  Resend.api_key = "re_xxxxxxxxx"
-
-  property = Resend::ContactProperties.create({
-    key: "company_name",
-    type: "string",
-    fallback_value: "Acme Corp"
-  })
-  ```
-
-  ```go Go theme={"theme":{"light":"github-light","dark":"vesper"}}
-  package main
-
-  import (
-  	"context"
-  	"fmt"
-
-  	"github.com/resend/resend-go/v4"
-  )
-
-  func main() {
-  	ctx := context.TODO()
-  	apiKey := "re_xxxxxxxxx"
-
-  	client := resend.NewClient(apiKey)
-
-  	params := &resend.CreateContactPropertyRequest{
-  		Key:           "company_name",
-  		Type:          "string",
-  		FallbackValue: "Acme Corp",
-  	}
-
-  	property, err := client.ContactProperties.CreateWithContext(ctx, params)
-  	if err != nil {
-  		panic(err)
-  	}
-  	fmt.Println(property)
-  }
-  ```
-
-  ```rust Rust theme={"theme":{"light":"github-light","dark":"vesper"}}
-  use resend_rs::{
-    types::{CreateContactPropertyOptions, PropertyType},
-    Resend, Result,
-  };
-
-  #[tokio::main]
-  async fn main() -> Result<()> {
-    let resend = Resend::new("re_xxxxxxxxx");
-
-    let contact_property = CreateContactPropertyOptions::new("company_name", PropertyType::String)
-      .with_fallback("Acme Corp");
-
-    let _contact_property = resend.contacts.create_property(contact_property).await?;
-
-    Ok(())
-  }
-  ```
-
-  ```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
-  import com.resend.*;
-  import com.resend.core.exception.ResendException;
-  import com.resend.services.contactproperties.model.CreateContactPropertyOptions;
-
-  public class Main {
-    public static void main(String[] args) throws ResendException {
-      Resend resend = new Resend("re_xxxxxxxxx");
-
-      CreateContactPropertyOptions options = CreateContactPropertyOptions.builder()
-        .key("company_name")
-        .type("string")
-        .fallbackValue("Acme Corp")
-        .build();
-
-      resend.contactProperties().create(options);
-    }
-  }
-  ```
-
-  ```csharp .NET theme={"theme":{"light":"github-light","dark":"vesper"}}
-  using Resend;
-
-  IResend resend = ResendClient.Create( "re_xxxxxxxxx" ); // Or from DI
-
-  var resp = await resend.ContactPropCreateAsync( new ContactPropertyData() {
-    Key = "company_name",
-    PropertyType = ContactPropertyType.String,
-    DefaultValue = "Acme Corp",
-  } );
-  Console.WriteLine( "Prop Id={0}", resp.Content );
-  ```
-
-  ```bash cURL theme={"theme":{"light":"github-light","dark":"vesper"}}
-  curl -X POST 'https://api.resend.com/contact-properties' \
-       -H 'Authorization: Bearer re_xxxxxxxxx' \
-       -H 'Content-Type: application/json' \
-       -d $'{
+params: resend.ContactProperties.CreateParams = {
     "key": "company_name",
     "type": "string",
-    "fallback_value": "Acme Corp"
-  }'
-  ```
-</CodeGroup>
+    "fallback_value": "Acme Corp",
+}
+
+contact_property = resend.ContactProperties.create(params)
+```
+
+```ruby Ruby theme={"theme":{"light":"github-light","dark":"vesper"}}
+require "resend"
+
+Resend.api_key = "re_xxxxxxxxx"
+
+property = Resend::ContactProperties.create({
+  key: "company_name",
+  type: "string",
+  fallback_value: "Acme Corp"
+})
+```
+
+```go Go theme={"theme":{"light":"github-light","dark":"vesper"}}
+package main
+
+import (
+	"context"
+	"fmt"
+
+	"github.com/resend/resend-go/v4"
+)
+
+func main() {
+	ctx := context.TODO()
+	apiKey := "re_xxxxxxxxx"
+
+	client := resend.NewClient(apiKey)
+
+	params := &resend.CreateContactPropertyRequest{
+		Key:           "company_name",
+		Type:          "string",
+		FallbackValue: "Acme Corp",
+	}
+
+	property, err := client.ContactProperties.CreateWithContext(ctx, params)
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(property)
+}
+```
+
+```rust Rust theme={"theme":{"light":"github-light","dark":"vesper"}}
+use resend_rs::{
+  types::{CreateContactPropertyOptions, PropertyType},
+  Resend, Result,
+};
+
+#[tokio::main]
+async fn main() -> Result<()> {
+  let resend = Resend::new("re_xxxxxxxxx");
+
+  let contact_property = CreateContactPropertyOptions::new("company_name", PropertyType::String)
+    .with_fallback("Acme Corp");
+
+  let _contact_property = resend.contacts.create_property(contact_property).await?;
+
+  Ok(())
+}
+```
+
+```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
+import com.resend.*;
+import com.resend.core.exception.ResendException;
+import com.resend.services.contactproperties.model.CreateContactPropertyOptions;
+
+public class Main {
+  public static void main(String[] args) throws ResendException {
+    Resend resend = new Resend("re_xxxxxxxxx");
+
+    CreateContactPropertyOptions options = CreateContactPropertyOptions.builder()
+      .key("company_name")
+      .type("string")
+      .fallbackValue("Acme Corp")
+      .build();
+
+    resend.contactProperties().create(options);
+  }
+}
+```
+
+```csharp .NET theme={"theme":{"light":"github-light","dark":"vesper"}}
+using Resend;
+
+IResend resend = ResendClient.Create( "re_xxxxxxxxx" ); // Or from DI
+
+var resp = await resend.ContactPropCreateAsync( new ContactPropertyData() {
+  Key = "company_name",
+  PropertyType = ContactPropertyType.String,
+  DefaultValue = "Acme Corp",
+} );
+Console.WriteLine( "Prop Id={0}", resp.Content );
+```
+
+```bash cURL theme={"theme":{"light":"github-light","dark":"vesper"}}
+curl -X POST 'https://api.resend.com/contact-properties' \
+     -H 'Authorization: Bearer re_xxxxxxxxx' \
+     -H 'Content-Type: application/json' \
+     -d $'{
+  "key": "company_name",
+  "type": "string",
+  "fallback_value": "Acme Corp"
+}'
+```
 
 ## Add properties to a Contact
 
@@ -191,415 +189,409 @@ When you create a Contact property with a fallback value, that default is used f
 
 To update this value for a Contact in the [Dashboard](https://resend.com/audience):
 
-<Steps>
-  <Step title="Go to the **Contacts** Dashboard view." />
+**1. Go to the **Contacts** Dashboard view.**
 
-  <Step title="Click the **More options** button and then **Edit Contact**." />
+**2. Click the **More options** button and then **Edit Contact**.**
 
-  <Step title="Add the property key and value." />
+**3. Add the property key and value.**
 
-  <Step title="Click the **Save** button." />
-</Steps>
+**4. Click the **Save** button.**
 
-<video src="https://mintcdn.com/resend/m2xttJpF68pi6Mw0/images/add-property-to-contact.mp4?fit=max&auto=format&n=m2xttJpF68pi6Mw0&q=85&s=66865088ab3905e45e1946ad21f063ec" autoPlay muted loop className="w-full aspect-video" data-path="images/add-property-to-contact.mp4" />
+<video src="https://mintcdn.com/resend/m2xttJpF68pi6Mw0/images/add-property-to-contact.mp4?fit=max&auto=format&n=m2xttJpF68pi6Mw0&q=85&s=66865088ab3905e45e1946ad21f063ec" autoPlay muted loop />
 
 ## Add or update property values programmatically
 
 You can add custom property values to a Contact when you [create a Contact with the API](/docs/api-reference/contacts/create-contact) or [from the terminal with a CLI command](/docs/cli#contacts).
 
-<CodeGroup>
-  ```ts Node.js {10-12} theme={"theme":{"light":"github-light","dark":"vesper"}}
-  import { Resend } from 'resend';
+```ts Node.js {10-12} theme={"theme":{"light":"github-light","dark":"vesper"}}
+import { Resend } from 'resend';
 
-  const resend = new Resend('re_xxxxxxxxx');
+const resend = new Resend('re_xxxxxxxxx');
 
-  const { data, error } = await resend.contacts.create({
-    email: 'steve.wozniak@gmail.com',
-    firstName: 'Steve',
-    lastName: 'Wozniak',
-    unsubscribed: false,
-    properties: {
-      company_name: 'Acme Corp',
-    },
-  });
-  ```
+const { data, error } = await resend.contacts.create({
+  email: 'steve.wozniak@gmail.com',
+  firstName: 'Steve',
+  lastName: 'Wozniak',
+  unsubscribed: false,
+  properties: {
+    company_name: 'Acme Corp',
+  },
+});
+```
 
-  ```php PHP {9-11} theme={"theme":{"light":"github-light","dark":"vesper"}}
-  $resend = Resend::client('re_xxxxxxxxx');
+```php PHP {9-11} theme={"theme":{"light":"github-light","dark":"vesper"}}
+$resend = Resend::client('re_xxxxxxxxx');
 
-  $resend->contacts->create(
-    parameters: [
-      'email' => 'steve.wozniak@gmail.com',
-      'first_name' => 'Steve',
-      'last_name' => 'Wozniak',
-      'unsubscribed' => false,
-      'properties' => [
-        'company_name' => 'Acme Corp',
-      ]
+$resend->contacts->create(
+  parameters: [
+    'email' => 'steve.wozniak@gmail.com',
+    'first_name' => 'Steve',
+    'last_name' => 'Wozniak',
+    'unsubscribed' => false,
+    'properties' => [
+      'company_name' => 'Acme Corp',
     ]
-  );
-  ```
+  ]
+);
+```
 
-  ```python Python {10-12} theme={"theme":{"light":"github-light","dark":"vesper"}}
-  import resend
+```python Python {10-12} theme={"theme":{"light":"github-light","dark":"vesper"}}
+import resend
 
-  resend.api_key = "re_xxxxxxxxx"
+resend.api_key = "re_xxxxxxxxx"
 
-  params: resend.Contacts.CreateParams = {
-    "email": "steve.wozniak@gmail.com",
-    "first_name": "Steve",
-    "last_name": "Wozniak",
-    "unsubscribed": False,
-    "properties": {
-      "company_name": "Acme Corp"
-    }
+params: resend.Contacts.CreateParams = {
+  "email": "steve.wozniak@gmail.com",
+  "first_name": "Steve",
+  "last_name": "Wozniak",
+  "unsubscribed": False,
+  "properties": {
+    "company_name": "Acme Corp"
   }
+}
 
-  resend.Contacts.create(params)
-  ```
+resend.Contacts.create(params)
+```
 
-  ```ruby Ruby {10-12} theme={"theme":{"light":"github-light","dark":"vesper"}}
-  require "resend"
+```ruby Ruby {10-12} theme={"theme":{"light":"github-light","dark":"vesper"}}
+require "resend"
 
-  Resend.api_key = "re_xxxxxxxxx"
+Resend.api_key = "re_xxxxxxxxx"
 
-  params = {
-    "email": "steve.wozniak@gmail.com",
-    "first_name": "Steve",
-    "last_name": "Wozniak",
-    "unsubscribed": false,
-    "properties": {
-      "company_name": "Acme Corp",
-    }
+params = {
+  "email": "steve.wozniak@gmail.com",
+  "first_name": "Steve",
+  "last_name": "Wozniak",
+  "unsubscribed": false,
+  "properties": {
+    "company_name": "Acme Corp",
   }
+}
 
-  Resend::Contacts.create(params)
-  ```
+Resend::Contacts.create(params)
+```
 
-  ```go Go {10-12} theme={"theme":{"light":"github-light","dark":"vesper"}}
-  import "github.com/resend/resend-go/v4"
+```go Go {10-12} theme={"theme":{"light":"github-light","dark":"vesper"}}
+import "github.com/resend/resend-go/v4"
 
-  client := resend.NewClient("re_xxxxxxxxx")
+client := resend.NewClient("re_xxxxxxxxx")
 
-  params := &resend.CreateContactRequest{
-    Email:        "steve.wozniak@gmail.com",
-    FirstName:    "Steve",
-    LastName:     "Wozniak",
-    Unsubscribed: false,
-    Properties: map[string]interface{} {
-      "company_name": "Acme Corp",
-    },
-  }
+params := &resend.CreateContactRequest{
+  Email:        "steve.wozniak@gmail.com",
+  FirstName:    "Steve",
+  LastName:     "Wozniak",
+  Unsubscribed: false,
+  Properties: map[string]interface{} {
+    "company_name": "Acme Corp",
+  },
+}
 
-  client.Contacts.Create(params)
-  ```
+client.Contacts.Create(params)
+```
 
-  ```rust Rust {12-15} theme={"theme":{"light":"github-light","dark":"vesper"}}
-  use resend_rs::{types::CreateContactOptions, Resend, Result};
-  use std::collections::HashMap;
+```rust Rust {12-15} theme={"theme":{"light":"github-light","dark":"vesper"}}
+use resend_rs::{types::CreateContactOptions, Resend, Result};
+use std::collections::HashMap;
 
-  #[tokio::main]
-  async fn main() -> Result<()> {
-    let resend = Resend::new("re_xxxxxxxxx");
+#[tokio::main]
+async fn main() -> Result<()> {
+  let resend = Resend::new("re_xxxxxxxxx");
 
-    let contact = CreateContactOptions::new("steve.wozniak@gmail.com")
-      .with_first_name("Steve")
-      .with_last_name("Wozniak")
-      .with_unsubscribed(false)
-      .with_properties(HashMap::from([(
-        "company_name".to_string(),
-        "Acme Corp".to_string(),
-      )]));
-
-    let _contact = resend.contacts.create(contact).await?;
-
-    Ok(())
-  }
-  ```
-
-  ```java Java {15-16} theme={"theme":{"light":"github-light","dark":"vesper"}}
-  import com.resend.*;
-  import com.resend.core.exception.ResendException;
-  import com.resend.services.contacts.model.CreateContactOptions;
-  import com.resend.services.contacts.model.CreateContactResponseSuccess;
-
-  public class Main {
-      public static void main(String[] args) throws ResendException {
-          Resend resend = new Resend("re_xxxxxxxxx");
-
-          CreateContactOptions params = CreateContactOptions.builder()
-                  .email("steve.wozniak@gmail.com")
-                  .firstName("Steve")
-                  .lastName("Wozniak")
-                  .unsubscribed(false)
-                  .properties(java.util.Map.of("company_name", "Acme Corp"))
-                  .build();
-
-          CreateContactResponseSuccess data = resend.contacts().create(params);
-      }
-  }
-  ```
-
-  ```csharp .NET {12-14} theme={"theme":{"light":"github-light","dark":"vesper"}}
-  using Resend;
-
-  IResend resend = ResendClient.Create( "re_xxxxxxxxx" ); // Or from DI
-
-  var resp = await resend.ContactAddAsync(
-      new ContactData()
-      {
-          Email = "steve.wozniak@gmail.com",
-          FirstName = "Steve",
-          LastName = "Wozniak",
-          IsUnsubscribed = false,
-          Properties = new Dictionary<string, object?> {
-            { "company_name", "Acme Corp" }
-          }
-      }
-  );
-  Console.WriteLine( "Contact Id={0}", resp.Content );
-  ```
-
-  ```bash cURL {9-11} theme={"theme":{"light":"github-light","dark":"vesper"}}
-  curl -X POST 'https://api.resend.com/contacts' \
-       -H 'Authorization: Bearer re_xxxxxxxxx' \
-       -H 'Content-Type: application/json' \
-       -d $'{
-    "email": "steve.wozniak@gmail.com",
-    "first_name": "Steve",
-    "last_name": "Wozniak",
-    "unsubscribed": false,
-    "properties": {
-      "company_name": "Acme Corp",
-    }
-  }'
-  ```
-</CodeGroup>
-
-You can also update a Contact to add or change a property value [using the update Contact endpoint](/docs/api-reference/contacts/update-contact) or [CLI command](/docs/cli#contacts).
-
-<CodeGroup>
-  ```ts Node.js {8-10} theme={"theme":{"light":"github-light","dark":"vesper"}}
-  import { Resend } from 'resend';
-
-  const resend = new Resend('re_xxxxxxxxx');
-
-  const { data, error } = await resend.contacts.update({
-    id: 'e169aa45-1ecf-4183-9955-b1499d5701d3',
-    // or: email: 'acme@example.com',
-    properties: {
-      company_name: 'Acme Corp',
-    },
-  });
-  ```
-
-  ```php PHP {7-9, 17-19} theme={"theme":{"light":"github-light","dark":"vesper"}}
-  $resend = Resend::client('re_xxxxxxxxx');
-
-  // Update by contact id
-  $resend->contacts->update(
-    idOrEmail: 'e169aa45-1ecf-4183-9955-b1499d5701d3',
-    parameters: [
-      'properties' => [
-        'company_name' => 'Acme Corp',
-      ]
-    ]
-  );
-
-  // Update by contact email
-  $resend->contacts->update(
-    idOrEmail: 'acme@example.com',
-    parameters: [
-      'properties' => [
-        'company_name' => 'Acme Corp',
-      ]
-    ]
-  );
-  ```
-
-  ```python Python {8-10, 18-20} theme={"theme":{"light":"github-light","dark":"vesper"}}
-  import resend
-
-  resend.api_key = "re_xxxxxxxxx"
-
-  # Update by contact id
-  params: resend.Contacts.UpdateParams = {
-    "id": "e169aa45-1ecf-4183-9955-b1499d5701d3",
-    "properties": {
-      "company_name": "Acme Corp",
-    }
-  }
-
-  resend.Contacts.update(params)
-
-  # Update by contact email
-  params: resend.Contacts.UpdateParams = {
-    "email": "acme@example.com",
-    "properties": {
-      "company_name": "Acme Corp",
-    }
-  }
-
-  resend.Contacts.update(params)
-  ```
-
-  ```ruby Ruby {8-10, 18-20} theme={"theme":{"light":"github-light","dark":"vesper"}}
-  require "resend"
-
-  Resend.api_key = "re_xxxxxxxxx"
-
-  # Update by contact id
-  params = {
-    "id": "e169aa45-1ecf-4183-9955-b1499d5701d3",
-    "properties": {
-      "company_name": "Acme Corp",
-    }
-  }
-
-  Resend::Contacts.update(params)
-
-  # Update by contact email
-  params = {
-    "email": "acme@example.com",
-    "properties": {
-      "company_name": "Acme Corp",
-    }
-  }
-
-  Resend::Contacts.update(params)
-  ```
-
-  ```go Go {8-10, 19-21} theme={"theme":{"light":"github-light","dark":"vesper"}}
-  import "github.com/resend/resend-go/v4"
-
-  client := resend.NewClient("re_xxxxxxxxx")
-
-  // Update by contact id
-  params := &resend.UpdateContactRequest{
-    Id:           "e169aa45-1ecf-4183-9955-b1499d5701d3",
-    Properties: map[string]interface{}{
-      "company_name": "Acme Corp",
-    },
-  }
-  params.SetUnsubscribed(true)
-
-  client.Contacts.Update(params)
-
-  // Update by contact email
-  params = &resend.UpdateContactRequest{
-    Email:        "acme@example.com",
-    Properties: map[string]interface{}{
-      "company_name": "Acme Corp",
-    },
-  }
-  params.SetUnsubscribed(true)
-
-  client.Contacts.Update(params)
-  ```
-
-  ```rust Rust {8-11} theme={"theme":{"light":"github-light","dark":"vesper"}}
-  use resend_rs::{types::ContactChanges, Resend, Result};
-  use std::collections::HashMap;
-
-  #[tokio::main]
-  async fn main() -> Result<()> {
-    let resend = Resend::new("re_xxxxxxxxx");
-
-    let changes = ContactChanges::new().with_properties(HashMap::from([(
+  let contact = CreateContactOptions::new("steve.wozniak@gmail.com")
+    .with_first_name("Steve")
+    .with_last_name("Wozniak")
+    .with_unsubscribed(false)
+    .with_properties(HashMap::from([(
       "company_name".to_string(),
       "Acme Corp".to_string(),
     )]));
 
-    // Update by contact id
-    let _contact = resend
-      .contacts
-      .update("e169aa45-1ecf-4183-9955-b1499d5701d3", changes.clone())
-      .await?;
+  let _contact = resend.contacts.create(contact).await?;
 
-    // Update by contact email
-    let _contact = resend
-      .contacts
-      .update("acme@example.com", changes)
-      .await?;
+  Ok(())
+}
+```
 
-    Ok(())
-  }
-  ```
+```java Java {15-16} theme={"theme":{"light":"github-light","dark":"vesper"}}
+import com.resend.*;
+import com.resend.core.exception.ResendException;
+import com.resend.services.contacts.model.CreateContactOptions;
+import com.resend.services.contacts.model.CreateContactResponseSuccess;
 
-  ```java Java {12} theme={"theme":{"light":"github-light","dark":"vesper"}}
-  import com.resend.*;
-  import com.resend.core.exception.ResendException;
-  import com.resend.services.contacts.model.UpdateContactOptions;
-  import com.resend.services.contacts.model.UpdateContactResponseSuccess;
+public class Main {
+    public static void main(String[] args) throws ResendException {
+        Resend resend = new Resend("re_xxxxxxxxx");
 
-  public class Main {
-      public static void main(String[] args) throws ResendException {
-          Resend resend = new Resend("re_xxxxxxxxx");
+        CreateContactOptions params = CreateContactOptions.builder()
+                .email("steve.wozniak@gmail.com")
+                .firstName("Steve")
+                .lastName("Wozniak")
+                .unsubscribed(false)
+                .properties(java.util.Map.of("company_name", "Acme Corp"))
+                .build();
 
-          UpdateContactOptions params = UpdateContactOptions.builder()
-                  .id("e169aa45-1ecf-4183-9955-b1499d5701d3") // or: .email("acme@example.com")
-                  .properties(java.util.Map.of("company_name", "Acme Corp"))
-                  .build();
-
-          UpdateContactResponseSuccess data = resend.contacts().update(params);
-      }
-  }
-  ```
-
-  ```csharp .NET {12-14, 25-27} theme={"theme":{"light":"github-light","dark":"vesper"}}
-  using Resend;
-
-  IResend resend = ResendClient.Create( "re_xxxxxxxxx" ); // Or from DI
-
-  // By Id
-  await resend.ContactUpdateAsync(
-      contactId: new Guid( "e169aa45-1ecf-4183-9955-b1499d5701d3" ),
-      new ContactData()
-      {
-          FirstName = "Stevie",
-          LastName = "Wozniaks",
-          Properties = new Dictionary<string, object?> {
-            { "company_name", "Acme Corp" }
-          }
-      }
-  );
-
-  // By Email
-  await resend.ContactUpdateByEmailAsync(
-      "acme@example.com",
-      new ContactData()
-      {
-          FirstName = "Stevie",
-          LastName = "Wozniaks",
-          Properties = new Dictionary<string, object?> {
-            { "company_name", "Acme Corp" }
-          }
-      }
-  );
-  ```
-
-  ```bash cURL {6-8, 16-18} theme={"theme":{"light":"github-light","dark":"vesper"}}
-  # Update by contact id
-  curl -X PATCH 'https://api.resend.com/contacts/520784e2-887d-4c25-b53c-4ad46ad38100' \
-       -H 'Authorization: Bearer re_xxxxxxxxx' \
-       -H 'Content-Type: application/json' \
-       -d $'{
-    "properties": {
-      "company_name": "Acme Corp",
+        CreateContactResponseSuccess data = resend.contacts().create(params);
     }
-  }'
+}
+```
 
-  # Update by contact email
-  curl -X PATCH 'https://api.resend.com/contacts/acme@example.com' \
-       -H 'Authorization: Bearer re_xxxxxxxxx' \
-       -H 'Content-Type: application/json' \
-       -d $'{
-    "properties": {
-      "company_name": "Acme Corp",
+```csharp .NET {12-14} theme={"theme":{"light":"github-light","dark":"vesper"}}
+using Resend;
+
+IResend resend = ResendClient.Create( "re_xxxxxxxxx" ); // Or from DI
+
+var resp = await resend.ContactAddAsync(
+    new ContactData()
+    {
+        Email = "steve.wozniak@gmail.com",
+        FirstName = "Steve",
+        LastName = "Wozniak",
+        IsUnsubscribed = false,
+        Properties = new Dictionary<string, object?> {
+          { "company_name", "Acme Corp" }
+        }
     }
-  }'
-  ```
-</CodeGroup>
+);
+Console.WriteLine( "Contact Id={0}", resp.Content );
+```
+
+```bash cURL {9-11} theme={"theme":{"light":"github-light","dark":"vesper"}}
+curl -X POST 'https://api.resend.com/contacts' \
+     -H 'Authorization: Bearer re_xxxxxxxxx' \
+     -H 'Content-Type: application/json' \
+     -d $'{
+  "email": "steve.wozniak@gmail.com",
+  "first_name": "Steve",
+  "last_name": "Wozniak",
+  "unsubscribed": false,
+  "properties": {
+    "company_name": "Acme Corp",
+  }
+}'
+```
+
+You can also update a Contact to add or change a property value [using the update Contact endpoint](/docs/api-reference/contacts/update-contact) or [CLI command](/docs/cli#contacts).
+
+```ts Node.js {8-10} theme={"theme":{"light":"github-light","dark":"vesper"}}
+import { Resend } from 'resend';
+
+const resend = new Resend('re_xxxxxxxxx');
+
+const { data, error } = await resend.contacts.update({
+  id: 'e169aa45-1ecf-4183-9955-b1499d5701d3',
+  // or: email: 'acme@example.com',
+  properties: {
+    company_name: 'Acme Corp',
+  },
+});
+```
+
+```php PHP {7-9, 17-19} theme={"theme":{"light":"github-light","dark":"vesper"}}
+$resend = Resend::client('re_xxxxxxxxx');
+
+// Update by contact id
+$resend->contacts->update(
+  idOrEmail: 'e169aa45-1ecf-4183-9955-b1499d5701d3',
+  parameters: [
+    'properties' => [
+      'company_name' => 'Acme Corp',
+    ]
+  ]
+);
+
+// Update by contact email
+$resend->contacts->update(
+  idOrEmail: 'acme@example.com',
+  parameters: [
+    'properties' => [
+      'company_name' => 'Acme Corp',
+    ]
+  ]
+);
+```
+
+```python Python {8-10, 18-20} theme={"theme":{"light":"github-light","dark":"vesper"}}
+import resend
+
+resend.api_key = "re_xxxxxxxxx"
+
+# Update by contact id
+params: resend.Contacts.UpdateParams = {
+  "id": "e169aa45-1ecf-4183-9955-b1499d5701d3",
+  "properties": {
+    "company_name": "Acme Corp",
+  }
+}
+
+resend.Contacts.update(params)
+
+# Update by contact email
+params: resend.Contacts.UpdateParams = {
+  "email": "acme@example.com",
+  "properties": {
+    "company_name": "Acme Corp",
+  }
+}
+
+resend.Contacts.update(params)
+```
+
+```ruby Ruby {8-10, 18-20} theme={"theme":{"light":"github-light","dark":"vesper"}}
+require "resend"
+
+Resend.api_key = "re_xxxxxxxxx"
+
+# Update by contact id
+params = {
+  "id": "e169aa45-1ecf-4183-9955-b1499d5701d3",
+  "properties": {
+    "company_name": "Acme Corp",
+  }
+}
+
+Resend::Contacts.update(params)
+
+# Update by contact email
+params = {
+  "email": "acme@example.com",
+  "properties": {
+    "company_name": "Acme Corp",
+  }
+}
+
+Resend::Contacts.update(params)
+```
+
+```go Go {8-10, 19-21} theme={"theme":{"light":"github-light","dark":"vesper"}}
+import "github.com/resend/resend-go/v4"
+
+client := resend.NewClient("re_xxxxxxxxx")
+
+// Update by contact id
+params := &resend.UpdateContactRequest{
+  Id:           "e169aa45-1ecf-4183-9955-b1499d5701d3",
+  Properties: map[string]interface{}{
+    "company_name": "Acme Corp",
+  },
+}
+params.SetUnsubscribed(true)
+
+client.Contacts.Update(params)
+
+// Update by contact email
+params = &resend.UpdateContactRequest{
+  Email:        "acme@example.com",
+  Properties: map[string]interface{}{
+    "company_name": "Acme Corp",
+  },
+}
+params.SetUnsubscribed(true)
+
+client.Contacts.Update(params)
+```
+
+```rust Rust {8-11} theme={"theme":{"light":"github-light","dark":"vesper"}}
+use resend_rs::{types::ContactChanges, Resend, Result};
+use std::collections::HashMap;
+
+#[tokio::main]
+async fn main() -> Result<()> {
+  let resend = Resend::new("re_xxxxxxxxx");
+
+  let changes = ContactChanges::new().with_properties(HashMap::from([(
+    "company_name".to_string(),
+    "Acme Corp".to_string(),
+  )]));
+
+  // Update by contact id
+  let _contact = resend
+    .contacts
+    .update("e169aa45-1ecf-4183-9955-b1499d5701d3", changes.clone())
+    .await?;
+
+  // Update by contact email
+  let _contact = resend
+    .contacts
+    .update("acme@example.com", changes)
+    .await?;
+
+  Ok(())
+}
+```
+
+```java Java {12} theme={"theme":{"light":"github-light","dark":"vesper"}}
+import com.resend.*;
+import com.resend.core.exception.ResendException;
+import com.resend.services.contacts.model.UpdateContactOptions;
+import com.resend.services.contacts.model.UpdateContactResponseSuccess;
+
+public class Main {
+    public static void main(String[] args) throws ResendException {
+        Resend resend = new Resend("re_xxxxxxxxx");
+
+        UpdateContactOptions params = UpdateContactOptions.builder()
+                .id("e169aa45-1ecf-4183-9955-b1499d5701d3") // or: .email("acme@example.com")
+                .properties(java.util.Map.of("company_name", "Acme Corp"))
+                .build();
+
+        UpdateContactResponseSuccess data = resend.contacts().update(params);
+    }
+}
+```
+
+```csharp .NET {12-14, 25-27} theme={"theme":{"light":"github-light","dark":"vesper"}}
+using Resend;
+
+IResend resend = ResendClient.Create( "re_xxxxxxxxx" ); // Or from DI
+
+// By Id
+await resend.ContactUpdateAsync(
+    contactId: new Guid( "e169aa45-1ecf-4183-9955-b1499d5701d3" ),
+    new ContactData()
+    {
+        FirstName = "Stevie",
+        LastName = "Wozniaks",
+        Properties = new Dictionary<string, object?> {
+          { "company_name", "Acme Corp" }
+        }
+    }
+);
+
+// By Email
+await resend.ContactUpdateByEmailAsync(
+    "acme@example.com",
+    new ContactData()
+    {
+        FirstName = "Stevie",
+        LastName = "Wozniaks",
+        Properties = new Dictionary<string, object?> {
+          { "company_name", "Acme Corp" }
+        }
+    }
+);
+```
+
+```bash cURL {6-8, 16-18} theme={"theme":{"light":"github-light","dark":"vesper"}}
+# Update by contact id
+curl -X PATCH 'https://api.resend.com/contacts/520784e2-887d-4c25-b53c-4ad46ad38100' \
+     -H 'Authorization: Bearer re_xxxxxxxxx' \
+     -H 'Content-Type: application/json' \
+     -d $'{
+  "properties": {
+    "company_name": "Acme Corp",
+  }
+}'
+
+# Update by contact email
+curl -X PATCH 'https://api.resend.com/contacts/acme@example.com' \
+     -H 'Authorization: Bearer re_xxxxxxxxx' \
+     -H 'Content-Type: application/json' \
+     -d $'{
+  "properties": {
+    "company_name": "Acme Corp",
+  }
+}'
+```
 
 When you create or update a Contact with properties, the properties are added to the Contact only if the property key already exists and the value type is valid.
 
@@ -611,7 +603,7 @@ You can [list all Contact properties with the API](/docs/api-reference/contact-p
 
 You can use Contact properties in your Broadcasts to [personalize your emails](/docs/dashboard/broadcasts/editor#personalize-your-content).
 
-<video src="https://mintcdn.com/resend/DDdiJGHKV-ZLAZPR/images/use-properties-in-broadcasts.mp4?fit=max&auto=format&n=DDdiJGHKV-ZLAZPR&q=85&s=e33ef36ce044aed4e3685f00afd0d01b" autoPlay muted loop className="w-full aspect-video" data-path="images/use-properties-in-broadcasts.mp4" />
+<video src="https://mintcdn.com/resend/DDdiJGHKV-ZLAZPR/images/use-properties-in-broadcasts.mp4?fit=max&auto=format&n=DDdiJGHKV-ZLAZPR&q=85&s=e33ef36ce044aed4e3685f00afd0d01b" autoPlay muted loop />
 
 You can also use Contact properties in your Broadcast HTML and Text content when you [create a Broadcast using the API or SDKs](/docs/api-reference/broadcasts/create-broadcast).
 

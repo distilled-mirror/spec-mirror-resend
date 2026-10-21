@@ -29,7 +29,7 @@ You can **send** any file attachment types except for those in the following lis
 | .vss | .vst | .vsw | .vxd | .ws |
 | .wsc | .wsf | .wsh | .xnk | |
 
-<Info>
-  You can *receive* any file attachment types, including those listed above.
-  These restrictions only apply to *sending* attachments.
-</Info>
+> [!NOTE]
+>
+> You can *receive* any file attachment types, including those listed above.
+> These restrictions only apply to *sending* attachments.

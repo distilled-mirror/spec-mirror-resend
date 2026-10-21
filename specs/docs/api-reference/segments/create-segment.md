@@ -8,141 +8,137 @@
 
 ## Body Parameters
 
-<ParamField body="name" type="string" required>
-  The name of the segment you want to create.
-</ParamField>
+**name** `string` *required*
 
-<RequestExample>
-  ```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
-  import { Resend } from 'resend';
+The name of the segment you want to create.
 
-  const resend = new Resend('re_xxxxxxxxx');
+```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
+import { Resend } from 'resend';
 
-  const { data, error } = await resend.segments.create({
-    name: 'Registered Users',
-  });
-  ```
+const resend = new Resend('re_xxxxxxxxx');
 
-  ```php PHP theme={"theme":{"light":"github-light","dark":"vesper"}}
-  $resend = Resend::client('re_xxxxxxxxx');
+const { data, error } = await resend.segments.create({
+  name: 'Registered Users',
+});
+```
 
-  $resend->segments->create([
-    'name' => 'Registered Users',
-  ]);
-  ```
+```php PHP theme={"theme":{"light":"github-light","dark":"vesper"}}
+$resend = Resend::client('re_xxxxxxxxx');
 
-  ```python Python theme={"theme":{"light":"github-light","dark":"vesper"}}
-  import resend
+$resend->segments->create([
+  'name' => 'Registered Users',
+]);
+```
 
-  resend.api_key = 're_xxxxxxxxx'
+```python Python theme={"theme":{"light":"github-light","dark":"vesper"}}
+import resend
 
-  params: resend.Segments.CreateParams = {
-      "name": "Registered Users",
-  }
+resend.api_key = 're_xxxxxxxxx'
 
-  segment = resend.Segments.create(params)
-  ```
+params: resend.Segments.CreateParams = {
+    "name": "Registered Users",
+}
 
-  ```ruby Ruby theme={"theme":{"light":"github-light","dark":"vesper"}}
-  require "resend"
+segment = resend.Segments.create(params)
+```
 
-  Resend.api_key = "re_xxxxxxxxx"
+```ruby Ruby theme={"theme":{"light":"github-light","dark":"vesper"}}
+require "resend"
 
-  params = {
-    name: "Registered Users",
-  }
-  segment = Resend::Segments.create(params)
-  ```
+Resend.api_key = "re_xxxxxxxxx"
 
-  ```go Go theme={"theme":{"light":"github-light","dark":"vesper"}}
-  package main
+params = {
+  name: "Registered Users",
+}
+segment = Resend::Segments.create(params)
+```
 
-  import (
-  	"context"
-  	"fmt"
+```go Go theme={"theme":{"light":"github-light","dark":"vesper"}}
+package main
 
-  	"github.com/resend/resend-go/v4"
-  )
+import (
+	"context"
+	"fmt"
 
-  func main() {
-  	ctx := context.TODO()
-  	client := resend.NewClient("re_xxxxxxxxx")
+	"github.com/resend/resend-go/v4"
+)
 
-  	params := &resend.CreateSegmentRequest{
-  		Name: "Registered Users",
-  	}
+func main() {
+	ctx := context.TODO()
+	client := resend.NewClient("re_xxxxxxxxx")
 
-  	segment, err := client.Segments.CreateWithContext(ctx, params)
-  	if err != nil {
-  		panic(err)
-  	}
-  	fmt.Println(segment)
-  }
-  ```
+	params := &resend.CreateSegmentRequest{
+		Name: "Registered Users",
+	}
 
-  ```rust Rust theme={"theme":{"light":"github-light","dark":"vesper"}}
-  use resend_rs::{Resend, Result};
+	segment, err := client.Segments.CreateWithContext(ctx, params)
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(segment)
+}
+```
 
-  #[tokio::main]
-  async fn main() -> Result<()> {
-    let resend = Resend::new("re_xxxxxxxxx");
+```rust Rust theme={"theme":{"light":"github-light","dark":"vesper"}}
+use resend_rs::{Resend, Result};
 
-    let _segment = resend.segments.create("Registered Users").await?;
+#[tokio::main]
+async fn main() -> Result<()> {
+  let resend = Resend::new("re_xxxxxxxxx");
 
-    Ok(())
-  }
-  ```
+  let _segment = resend.segments.create("Registered Users").await?;
 
-  ```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
-  import com.resend.Resend;
-  import com.resend.core.exception.ResendException;
-  import com.resend.services.segments.model.CreateSegmentOptions;
-  import com.resend.services.segments.model.CreateSegmentResponseSuccess;
+  Ok(())
+}
+```
 
-  public class Main {
-      public static void main(String[] args) throws ResendException {
-          Resend resend = new Resend("re_xxxxxxxxx");
+```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
+import com.resend.Resend;
+import com.resend.core.exception.ResendException;
+import com.resend.services.segments.model.CreateSegmentOptions;
+import com.resend.services.segments.model.CreateSegmentResponseSuccess;
 
-          CreateSegmentOptions options = CreateSegmentOptions.builder()
-              .name("Registered Users")
-              .build();
+public class Main {
+    public static void main(String[] args) throws ResendException {
+        Resend resend = new Resend("re_xxxxxxxxx");
 
-          CreateSegmentResponseSuccess response = resend.segments().create(options);
-      }
-  }
-  ```
+        CreateSegmentOptions options = CreateSegmentOptions.builder()
+            .name("Registered Users")
+            .build();
 
-  ```csharp .NET theme={"theme":{"light":"github-light","dark":"vesper"}}
-  using Resend;
+        CreateSegmentResponseSuccess response = resend.segments().create(options);
+    }
+}
+```
 
-  IResend resend = ResendClient.Create( "re_xxxxxxxxx" ); // Or from DI
+```csharp .NET theme={"theme":{"light":"github-light","dark":"vesper"}}
+using Resend;
 
-  var resp = await resend.SegmentCreateAsync( new SegmentData() {
-    Name = "Registered Users",
-  } );
-  Console.WriteLine( "Segment Id={0}", resp.Content );
-  ```
+IResend resend = ResendClient.Create( "re_xxxxxxxxx" ); // Or from DI
 
-  ```bash cURL theme={"theme":{"light":"github-light","dark":"vesper"}}
-  curl -X POST 'https://api.resend.com/segments' \
-       -H 'Authorization: Bearer re_xxxxxxxxx' \
-       -H 'Content-Type: application/json' \
-       -d $'{
-    "name": "Registered Users"
-  }'
-  ```
+var resp = await resend.SegmentCreateAsync( new SegmentData() {
+  Name = "Registered Users",
+} );
+Console.WriteLine( "Segment Id={0}", resp.Content );
+```
 
-  ```bash CLI theme={"theme":{"light":"github-light","dark":"vesper"}}
-  resend segments create --name "Registered Users"
-  ```
-</RequestExample>
+```bash cURL theme={"theme":{"light":"github-light","dark":"vesper"}}
+curl -X POST 'https://api.resend.com/segments' \
+     -H 'Authorization: Bearer re_xxxxxxxxx' \
+     -H 'Content-Type: application/json' \
+     -d $'{
+  "name": "Registered Users"
+}'
+```
 
-<ResponseExample>
-  ```json Response theme={"theme":{"light":"github-light","dark":"vesper"}}
-  {
-    "object": "segment",
-    "id": "78261eea-8f8b-4381-83c6-79fa7120f1cf",
-    "name": "Registered Users"
-  }
-  ```
-</ResponseExample>
+```bash CLI theme={"theme":{"light":"github-light","dark":"vesper"}}
+resend segments create --name "Registered Users"
+```
+
+```json Response theme={"theme":{"light":"github-light","dark":"vesper"}}
+{
+  "object": "segment",
+  "id": "78261eea-8f8b-4381-83c6-79fa7120f1cf",
+  "name": "Registered Users"
+}
+```

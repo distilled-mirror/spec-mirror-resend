@@ -18,52 +18,50 @@ You can create a new Topic in the [Dashboard](https://resend.com/audience/topics
 
 To create a Topic in the Dashboard:
 
-<Steps>
-  <Step title="Go to the **Topics** Dashboard view and click **Create Topic**." />
+**1. Go to the **Topics** Dashboard view and click **Create Topic**.**
 
-  <Step title="Enter a name for your Topic.">
-    Choose something that will help your recipients decide whether they are
-    interested in receiving these emails, like "announcements" or "product
-    reviews."
-  </Step>
+**2. Enter a name for your Topic.**
 
-  <Step title="Optionally give your Topic a description." />
+Choose something that will help your recipients decide whether they are
+interested in receiving these emails, like "announcements" or "product
+reviews."
 
-  <Step title="Select **Opt-in** or **Opt-out** as the default subscription. This value cannot be changed later.">
-    <ul>
-      <li>
-        <b>Opt-in</b>: All Contacts will receive the email unless they have
-        explicitly unsubscribed from that Topic.
-      </li>
+**3. Optionally give your Topic a description.**
 
-      <li>
-        <b>Opt-out</b>: Subscribers will not receive the email unless they have
-        explicitly subscribed to that Topic.
-      </li>
-    </ul>
-  </Step>
+**4. Select **Opt-in** or **Opt-out** as the default subscription. This value cannot be changed later.**
 
-  <Step title="Select **Public** or **Private** as the visibility.">
-    <ul>
-      <li>
-        <b>Private</b>: Only Contacts who are opted in to the Topic can see it
-        on the unsubscribe page.
-      </li>
+<ul>
+  <li>
+    **Opt-in**: All Contacts will receive the email unless they have
+    explicitly unsubscribed from that Topic.
+  </li>
 
-      <li>
-        <b>Public</b>: All Contacts can see the Topic on the unsubscribe page.
-      </li>
-    </ul>
-  </Step>
-</Steps>
+  <li>
+    **Opt-out**: Subscribers will not receive the email unless they have
+    explicitly subscribed to that Topic.
+  </li>
+</ul>
 
-<img alt="Add Topic" src="https://mintcdn.com/resend/WTZjpSkJsZf7Ubl_/images/dashboard-topics-add.png?fit=max&auto=format&n=WTZjpSkJsZf7Ubl_&q=85&s=0f3f95d5f53d7628b164c04e28e7b4be" height={450} width={720} data-path="images/dashboard-topics-add.png" />
+**5. Select **Public** or **Private** as the visibility.**
+
+<ul>
+  <li>
+    **Private**: Only Contacts who are opted in to the Topic can see it
+    on the unsubscribe page.
+  </li>
+
+  <li>
+    **Public**: All Contacts can see the Topic on the unsubscribe page.
+  </li>
+</ul>
+
+![Add Topic](https://mintcdn.com/resend/WTZjpSkJsZf7Ubl_/images/dashboard-topics-add.png?fit=max\&auto=format\&n=WTZjpSkJsZf7Ubl_\&q=85\&s=0f3f95d5f53d7628b164c04e28e7b4be)
 
 ## View all Topics
 
 The [Topics tab of the Audience Dashboard page](https://resend.com/audience/topics) shows you all the Topics you have created along with their details.
 
-<img alt="View All Topics" src="https://mintcdn.com/resend/WTZjpSkJsZf7Ubl_/images/dashboard-topics-view-all.png?fit=max&auto=format&n=WTZjpSkJsZf7Ubl_&q=85&s=172afe116b01792855837fc4f987a4be" width="1800" height="923" data-path="images/dashboard-topics-view-all.png" />
+![View All Topics](https://mintcdn.com/resend/WTZjpSkJsZf7Ubl_/images/dashboard-topics-view-all.png?fit=max\&auto=format\&n=WTZjpSkJsZf7Ubl_\&q=85\&s=172afe116b01792855837fc4f987a4be)
 
 You can also [retrieve a single Topic](/docs/api-reference/topics/get-topic) or [list all your Topics](/docs/api-reference/topics/list-topics) via the API or [CLI](/docs/cli#topics).
 
@@ -75,21 +73,21 @@ After creating a Topic, you can edit the following details:
 * Description
 * Visibility
 
-To edit a Topic, click the **More options** <Icon icon="ellipsis" iconType="solid" /> button and then **Edit Topic**.
+To edit a Topic, click the **More options**  button and then **Edit Topic**.
 
-<img alt="View edit topic" src="https://mintcdn.com/resend/WTZjpSkJsZf7Ubl_/images/dashboard-topics-edit.png?fit=max&auto=format&n=WTZjpSkJsZf7Ubl_&q=85&s=7f683116ec1dc37aa82c33de94bbd941" width="1800" height="923" data-path="images/dashboard-topics-edit.png" />
+![View edit topic](https://mintcdn.com/resend/WTZjpSkJsZf7Ubl_/images/dashboard-topics-edit.png?fit=max\&auto=format\&n=WTZjpSkJsZf7Ubl_\&q=85\&s=7f683116ec1dc37aa82c33de94bbd941)
 
 You can also [update a Topic](/docs/api-reference/topics/update-topic) via the API.
 
-<Info>
-  You cannot edit the default subscription value after it has been created.
-</Info>
+> [!NOTE]
+>
+> You cannot edit the default subscription value after it has been created.
 
 ## Delete a Topic
 
-You can delete a Topic by clicking the **More options** <Icon icon="ellipsis" iconType="solid" /> button and then **Remove Topic**.
+You can delete a Topic by clicking the **More options**  button and then **Remove Topic**.
 
-<img alt="Delete Topic" src="https://mintcdn.com/resend/WTZjpSkJsZf7Ubl_/images/dashboard-topics-remove.png?fit=max&auto=format&n=WTZjpSkJsZf7Ubl_&q=85&s=ad5a6bf19aa0f4d858959b91792de167" width="1800" height="923" data-path="images/dashboard-topics-remove.png" />
+![Delete Topic](https://mintcdn.com/resend/WTZjpSkJsZf7Ubl_/images/dashboard-topics-remove.png?fit=max\&auto=format\&n=WTZjpSkJsZf7Ubl_\&q=85\&s=ad5a6bf19aa0f4d858959b91792de167)
 
 You can also [delete a Topic](/docs/api-reference/topics/delete-topic) via the API.
 
@@ -97,7 +95,7 @@ You can also [delete a Topic](/docs/api-reference/topics/delete-topic) via the A
 
 You can send with a Topic in the Broadcast editor from the Topics dropdown menu.
 
-<img src="https://mintcdn.com/resend/m2xttJpF68pi6Mw0/images/dashboard-broadcast-topics.png?fit=max&auto=format&n=m2xttJpF68pi6Mw0&q=85&s=95c0a3999269605a66102c15400c5a58" alt="Send emails with a Topic" width="1772" height="688" data-path="images/dashboard-broadcast-topics.png" />
+![Send emails with a Topic](https://mintcdn.com/resend/m2xttJpF68pi6Mw0/images/dashboard-broadcast-topics.png?fit=max\&auto=format\&n=m2xttJpF68pi6Mw0\&q=85\&s=95c0a3999269605a66102c15400c5a58)
 
 You can also send with a Topic via the [Broadcast API](/docs/api-reference/broadcasts/create-broadcast).
 
@@ -105,7 +103,7 @@ You can also send with a Topic via the [Broadcast API](/docs/api-reference/broad
 
 When you [view a Contact's details](/docs/dashboard/contacts/manage-contacts#view-contacts), you can see the list of Topics that they are subscribed to.
 
-<img alt="Topic Subscription Statuses" src="https://mintcdn.com/resend/m2xttJpF68pi6Mw0/images/audiences-contacts-topics.png?fit=max&auto=format&n=m2xttJpF68pi6Mw0&q=85&s=56b25853b46fec447005f7aab32796fa" width="1800" height="923" data-path="images/audiences-contacts-topics.png" />
+![Topic Subscription Statuses](https://mintcdn.com/resend/m2xttJpF68pi6Mw0/images/audiences-contacts-topics.png?fit=max\&auto=format\&n=m2xttJpF68pi6Mw0\&q=85\&s=56b25853b46fec447005f7aab32796fa)
 
 You can also check a Contact's subscribed Topics [via the API or SDKs](/docs/api-reference/contacts/get-contact-topics) or with a [Contacts CLI command](/docs/cli#contacts).
 
@@ -113,9 +111,9 @@ You can also check a Contact's subscribed Topics [via the API or SDKs](/docs/api
 
 When you [create new Topics](#create-a-topic), you can update the subscription preferences of your Contacts to include these Topics. A Contact can belong to multiple Topics, and Resend automatically provides an unsubscribe flow for users who decide to opt out of receiving these emails.
 
-You can add a Contact to a Topic via the Dashboard by expanding the **More options** <Icon icon="ellipsis" iconType="solid" /> and then **Edit Contact**. Add or remove Topics for a given Contact.
+You can add a Contact to a Topic via the Dashboard by expanding the **More options**  and then **Edit Contact**. Add or remove Topics for a given Contact.
 
-<img alt="Add Contact to Topic" src="https://mintcdn.com/resend/WTZjpSkJsZf7Ubl_/images/dashboard-save-contact-topic.png?fit=max&auto=format&n=WTZjpSkJsZf7Ubl_&q=85&s=66e212d282f450c371f42a1b214029cd" width="1800" height="923" data-path="images/dashboard-save-contact-topic.png" />
+![Add Contact to Topic](https://mintcdn.com/resend/WTZjpSkJsZf7Ubl_/images/dashboard-save-contact-topic.png?fit=max\&auto=format\&n=WTZjpSkJsZf7Ubl_\&q=85\&s=66e212d282f450c371f42a1b214029cd)
 
 You can also update a Topic subscription for a Contact [via the API or SDKs](/docs/api-reference/contacts/update-contact-topics) or with a [Contacts CLI command](/docs/cli#contacts).
 
@@ -123,19 +121,17 @@ You can also update a Topic subscription for a Contact [via the API or SDKs](/do
 
 You can subscribe multiple Contacts to Topics in the [Dashboard](https://resend.com/audience/) at once:
 
-<Steps>
-  <Step title="Go to the **Contacts** Dashboard view." />
+**1. Go to the **Contacts** Dashboard view.**
 
-  <Step title="Select multiple Contacts by clicking the checkbox next to each Contact." />
+**2. Select multiple Contacts by clicking the checkbox next to each Contact.**
 
-  <Step title="Click the **Edit** button in the bulk actions bar." />
+**3. Click the **Edit** button in the bulk actions bar.**
 
-  <Step title="Select **Subscribe to Topics**" />
+**4. Select **Subscribe to Topics****
 
-  <Step title="Choose the Topics you want to subscribe the Contacts to." />
+**5. Choose the Topics you want to subscribe the Contacts to.**
 
-  <Step title="Click **Subscribe**" />
-</Steps>
+**6. Click **Subscribe****
 
 Learn more about [bulk actions for Contacts](/docs/dashboard/contacts/manage-contacts#bulk-actions).
 

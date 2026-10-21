@@ -6,180 +6,142 @@
 
 > Queue an additional delivery attempt for a webhook event.
 
-export const ResendParamField = ({children, body, path, ...props}) => {
-  const [lang, setLang] = useState(() => {
-    return localStorage.getItem('code') || '"Node.js"';
-  });
-  useEffect(() => {
-    const onStorage = event => {
-      const key = event.detail.key;
-      if (key === 'code') {
-        setLang(event.detail.value);
-      }
-    };
-    document.addEventListener('mintlify-localstorage', onStorage);
-    return () => {
-      document.removeEventListener('mintlify-localstorage', onStorage);
-    };
-  }, []);
-  const toCamelCase = str => typeof str === 'string' ? str.replace(/[_-](\w)/g, (_, c) => c.toUpperCase()) : str;
-  const resolvedBody = useMemo(() => {
-    const value = JSON.parse(lang);
-    return value === 'Node.js' ? toCamelCase(body) : body;
-  }, [body, lang]);
-  const resolvedPath = useMemo(() => {
-    const value = JSON.parse(lang);
-    return value === 'Node.js' ? toCamelCase(path) : path;
-  }, [path, lang]);
-  return <ParamField body={resolvedBody} path={resolvedPath} {...props}>
-      {children}
-    </ParamField>;
-};
-
-<Note>
-  Replaying an event queues one additional delivery immediately. It's the same
-  action as the [dashboard's Replay
-  button](/docs/webhooks/retries-and-replays#manual-replays) and does not affect the
-  [automatic retry schedule](/docs/webhooks/retries-and-replays#automatic-retries)
-  already running for that event.
-</Note>
+> [!NOTE]
+>
+> Replaying an event queues one additional delivery immediately. It's the same
+> action as the [dashboard's Replay
+> button](/docs/webhooks/retries-and-replays#manual-replays) and does not affect the
+> [automatic retry schedule](/docs/webhooks/retries-and-replays#automatic-retries)
+> already running for that event.
 
 ## Path Parameters
 
-<ResendParamField path="webhook_id" type="string" required>
-  The Webhook ID.
-</ResendParamField>
+The Webhook ID.
 
-<ResendParamField path="event_id" type="string" required>
-  The Webhook Event ID.
-</ResendParamField>
+The Webhook Event ID.
 
 ## Response Fields
 
-<ParamField body="object" type="string">
-  Always `webhook_event`.
-</ParamField>
+**object** `string`
 
-<ParamField body="id" type="string">
-  The event ID.
-</ParamField>
+Always `webhook_event`.
 
-<RequestExample>
-  ```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
-  import { Resend } from 'resend';
+**id** `string`
 
-  const resend = new Resend('re_xxxxxxxxx');
+The event ID.
 
-  const { data, error } = await resend.webhooks.events.replay({
-    eventId: 'msg_1srOrx2ZWZBpBUvZwXKQmoEYga2',
-    webhookId: '4dd369bc-aa82-4ff3-97de-514ae3000ee0',
-  });
-  ```
+```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
+import { Resend } from 'resend';
 
-  ```php PHP theme={"theme":{"light":"github-light","dark":"vesper"}}
-  $resend = Resend::client('re_xxxxxxxxx');
+const resend = new Resend('re_xxxxxxxxx');
 
-  $event = $resend->webhooks->events->replay(
-      '4dd369bc-aa82-4ff3-97de-514ae3000ee0',
-      'msg_1srOrx2ZWZBpBUvZwXKQmoEYga2'
-  );
-  ```
+const { data, error } = await resend.webhooks.events.replay({
+  eventId: 'msg_1srOrx2ZWZBpBUvZwXKQmoEYga2',
+  webhookId: '4dd369bc-aa82-4ff3-97de-514ae3000ee0',
+});
+```
 
-  ```python Python theme={"theme":{"light":"github-light","dark":"vesper"}}
-  import resend
+```php PHP theme={"theme":{"light":"github-light","dark":"vesper"}}
+$resend = Resend::client('re_xxxxxxxxx');
 
-  resend.api_key = 're_xxxxxxxxx'
-
-  replayed = resend.Webhooks.replay_event(
-      webhook_id='4dd369bc-aa82-4ff3-97de-514ae3000ee0',
-      event_id='msg_1srOrx2ZWZBpBUvZwXKQmoEYga2',
-  )
-  ```
-
-  ```ruby Ruby theme={"theme":{"light":"github-light","dark":"vesper"}}
-  require 'resend'
-
-  Resend.api_key = 're_xxxxxxxxx'
-
-  replayed = Resend::Webhooks.replay_event(
+$event = $resend->webhooks->events->replay(
     '4dd369bc-aa82-4ff3-97de-514ae3000ee0',
     'msg_1srOrx2ZWZBpBUvZwXKQmoEYga2'
-  )
-  ```
+);
+```
 
-  ```go Go theme={"theme":{"light":"github-light","dark":"vesper"}}
-  package main
+```python Python theme={"theme":{"light":"github-light","dark":"vesper"}}
+import resend
 
-  import "github.com/resend/resend-go/v4"
+resend.api_key = 're_xxxxxxxxx'
 
-  func main() {
-  	client := resend.NewClient("re_xxxxxxxxx")
+replayed = resend.Webhooks.replay_event(
+    webhook_id='4dd369bc-aa82-4ff3-97de-514ae3000ee0',
+    event_id='msg_1srOrx2ZWZBpBUvZwXKQmoEYga2',
+)
+```
 
-  	client.Webhooks.ReplayEvent(
-  		"4dd369bc-aa82-4ff3-97de-514ae3000ee0",
-  		"msg_1srOrx2ZWZBpBUvZwXKQmoEYga2",
-  	)
-  }
-  ```
+```ruby Ruby theme={"theme":{"light":"github-light","dark":"vesper"}}
+require 'resend'
 
-  ```rust Rust theme={"theme":{"light":"github-light","dark":"vesper"}}
-  use resend_rs::{Resend, Result};
+Resend.api_key = 're_xxxxxxxxx'
 
-  #[tokio::main]
-  async fn main() -> Result<()> {
-    let resend = Resend::new("re_xxxxxxxxx");
+replayed = Resend::Webhooks.replay_event(
+  '4dd369bc-aa82-4ff3-97de-514ae3000ee0',
+  'msg_1srOrx2ZWZBpBUvZwXKQmoEYga2'
+)
+```
 
-    let _replayed = resend
-      .webhooks
-      .replay_event(
-        "4dd369bc-aa82-4ff3-97de-514ae3000ee0",
-        "msg_1srOrx2ZWZBpBUvZwXKQmoEYga2",
-      )
-      .await?;
+```go Go theme={"theme":{"light":"github-light","dark":"vesper"}}
+package main
 
-    Ok(())
-  }
-  ```
+import "github.com/resend/resend-go/v4"
 
-  ```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
-  import com.resend.Resend;
-  import com.resend.core.exception.ResendException;
-  import com.resend.services.webhooks.model.ReplayWebhookEventResponseSuccess;
+func main() {
+	client := resend.NewClient("re_xxxxxxxxx")
 
-  public class Main {
-      public static void main(String[] args) throws ResendException {
-          Resend resend = new Resend("re_xxxxxxxxx");
+	client.Webhooks.ReplayEvent(
+		"4dd369bc-aa82-4ff3-97de-514ae3000ee0",
+		"msg_1srOrx2ZWZBpBUvZwXKQmoEYga2",
+	)
+}
+```
 
-          ReplayWebhookEventResponseSuccess replayed = resend.webhooks().replayEvent(
-              "4dd369bc-aa82-4ff3-97de-514ae3000ee0",
-              "msg_1srOrx2ZWZBpBUvZwXKQmoEYga2"
-          );
-      }
-  }
-  ```
+```rust Rust theme={"theme":{"light":"github-light","dark":"vesper"}}
+use resend_rs::{Resend, Result};
 
-  ```csharp .NET theme={"theme":{"light":"github-light","dark":"vesper"}}
-  using Resend;
+#[tokio::main]
+async fn main() -> Result<()> {
+  let resend = Resend::new("re_xxxxxxxxx");
 
-  IResend resend = ResendClient.Create( "re_xxxxxxxxx" ); // Or from DI
+  let _replayed = resend
+    .webhooks
+    .replay_event(
+      "4dd369bc-aa82-4ff3-97de-514ae3000ee0",
+      "msg_1srOrx2ZWZBpBUvZwXKQmoEYga2",
+    )
+    .await?;
 
-  var resp = await resend.WebhookEventReplayAsync(
-      new Guid( "4dd369bc-aa82-4ff3-97de-514ae3000ee0" ),
-      "msg_1srOrx2ZWZBpBUvZwXKQmoEYga2"
-  );
-  ```
+  Ok(())
+}
+```
 
-  ```bash cURL theme={"theme":{"light":"github-light","dark":"vesper"}}
-  curl -X POST 'https://api.resend.com/webhooks/4dd369bc-aa82-4ff3-97de-514ae3000ee0/events/msg_1srOrx2ZWZBpBUvZwXKQmoEYga2/replay' \
-       -H 'Authorization: Bearer re_xxxxxxxxx'
-  ```
-</RequestExample>
+```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
+import com.resend.Resend;
+import com.resend.core.exception.ResendException;
+import com.resend.services.webhooks.model.ReplayWebhookEventResponseSuccess;
 
-<ResponseExample>
-  ```json Response theme={"theme":{"light":"github-light","dark":"vesper"}}
-  {
-    "object": "webhook_event",
-    "id": "msg_1srOrx2ZWZBpBUvZwXKQmoEYga2"
-  }
-  ```
-</ResponseExample>
+public class Main {
+    public static void main(String[] args) throws ResendException {
+        Resend resend = new Resend("re_xxxxxxxxx");
+
+        ReplayWebhookEventResponseSuccess replayed = resend.webhooks().replayEvent(
+            "4dd369bc-aa82-4ff3-97de-514ae3000ee0",
+            "msg_1srOrx2ZWZBpBUvZwXKQmoEYga2"
+        );
+    }
+}
+```
+
+```csharp .NET theme={"theme":{"light":"github-light","dark":"vesper"}}
+using Resend;
+
+IResend resend = ResendClient.Create( "re_xxxxxxxxx" ); // Or from DI
+
+var resp = await resend.WebhookEventReplayAsync(
+    new Guid( "4dd369bc-aa82-4ff3-97de-514ae3000ee0" ),
+    "msg_1srOrx2ZWZBpBUvZwXKQmoEYga2"
+);
+```
+
+```bash cURL theme={"theme":{"light":"github-light","dark":"vesper"}}
+curl -X POST 'https://api.resend.com/webhooks/4dd369bc-aa82-4ff3-97de-514ae3000ee0/events/msg_1srOrx2ZWZBpBUvZwXKQmoEYga2/replay' \
+     -H 'Authorization: Bearer re_xxxxxxxxx'
+```
+
+```json Response theme={"theme":{"light":"github-light","dark":"vesper"}}
+{
+  "object": "webhook_event",
+  "id": "msg_1srOrx2ZWZBpBUvZwXKQmoEYga2"
+}
+```

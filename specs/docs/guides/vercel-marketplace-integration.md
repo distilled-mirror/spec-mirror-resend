@@ -29,7 +29,7 @@ You can add Resend to a Vercel project from any of these surfaces:
 * [**Vercel CLI**](#vercel-cli)
 * [**v0**](#v0)
 
-<video src="https://mintcdn.com/resend/ZwOiKeN1JKyNwVEm/images/vercel-marketplace-integration.mp4?fit=max&auto=format&n=ZwOiKeN1JKyNwVEm&q=85&s=b315655682855d90ee08da4ca61d6b4a" autoPlay muted loop playsInline aria-label="Demonstration of installing Resend from the Vercel Marketplace" className="w-full aspect-video" data-path="images/vercel-marketplace-integration.mp4" />
+<video src="https://mintcdn.com/resend/ZwOiKeN1JKyNwVEm/images/vercel-marketplace-integration.mp4?fit=max&auto=format&n=ZwOiKeN1JKyNwVEm&q=85&s=b315655682855d90ee08da4ca61d6b4a" autoPlay muted loop playsInline aria-label="Demonstration of installing Resend from the Vercel Marketplace" />
 
 ### Vercel Dashboard
 
@@ -75,10 +75,10 @@ See [Send emails with v0 and Resend](/docs/v0-integration) for the full walkthro
 
 Accounts created from the Marketplace are billed by Vercel. Manage your account from the Vercel installation dashboard.
 
-<Warning>
-  Discounts, promo codes, and startup or partner credits do not apply to
-  Marketplace plans.
-</Warning>
+> [!WARNING]
+>
+> Discounts, promo codes, and startup or partner credits do not apply to
+> Marketplace plans.
 
 ## Next steps
 

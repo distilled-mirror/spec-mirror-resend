@@ -6,210 +6,174 @@
 
 > Update a scheduled email.
 
-export const ResendParamField = ({children, body, path, ...props}) => {
-  const [lang, setLang] = useState(() => {
-    return localStorage.getItem('code') || '"Node.js"';
-  });
-  useEffect(() => {
-    const onStorage = event => {
-      const key = event.detail.key;
-      if (key === 'code') {
-        setLang(event.detail.value);
-      }
-    };
-    document.addEventListener('mintlify-localstorage', onStorage);
-    return () => {
-      document.removeEventListener('mintlify-localstorage', onStorage);
-    };
-  }, []);
-  const toCamelCase = str => typeof str === 'string' ? str.replace(/[_-](\w)/g, (_, c) => c.toUpperCase()) : str;
-  const resolvedBody = useMemo(() => {
-    const value = JSON.parse(lang);
-    return value === 'Node.js' ? toCamelCase(body) : body;
-  }, [body, lang]);
-  const resolvedPath = useMemo(() => {
-    const value = JSON.parse(lang);
-    return value === 'Node.js' ? toCamelCase(path) : path;
-  }, [path, lang]);
-  return <ParamField body={resolvedBody} path={resolvedPath} {...props}>
-      {children}
-    </ParamField>;
-};
-
 ## Path Parameters
 
-<ParamField path="id" type="string" required>
-  The Email ID.
-</ParamField>
+**id** `string` *required*
+
+The Email ID.
 
 ## Body Parameters
 
-<ResendParamField body="scheduled_at" type="string">
-  Schedule email to be sent later. The date should be in ISO 8601 format (e.g:
-  2026-08-05T11:52:01.858Z).
-</ResendParamField>
+Schedule email to be sent later. The date should be in ISO 8601 format (e.g:
+2026-08-05T11:52:01.858Z).
 
-<RequestExample>
-  ```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
-  import { Resend } from 'resend';
+```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
+import { Resend } from 'resend';
 
-  const resend = new Resend('re_xxxxxxxxx');
+const resend = new Resend('re_xxxxxxxxx');
 
-  const oneMinuteFromNow = new Date(Date.now() + 1000 * 60).toISOString();
+const oneMinuteFromNow = new Date(Date.now() + 1000 * 60).toISOString();
 
-  const { data, error } = await resend.emails.update({
-    id: '49a3999c-0ce1-4ea6-ab68-afcd6dc2e794',
-    scheduledAt: oneMinuteFromNow,
-  });
-  ```
+const { data, error } = await resend.emails.update({
+  id: '49a3999c-0ce1-4ea6-ab68-afcd6dc2e794',
+  scheduledAt: oneMinuteFromNow,
+});
+```
 
-  ```php PHP theme={"theme":{"light":"github-light","dark":"vesper"}}
-  $resend = Resend::client('re_xxxxxxxxx');
+```php PHP theme={"theme":{"light":"github-light","dark":"vesper"}}
+$resend = Resend::client('re_xxxxxxxxx');
 
-  $oneMinuteFromNow = (new DateTime())->modify('+1 minute')->format(DateTime::ISO8601);
+$oneMinuteFromNow = (new DateTime())->modify('+1 minute')->format(DateTime::ISO8601);
 
-  $resend->emails->update('49a3999c-0ce1-4ea6-ab68-afcd6dc2e794', [
-    'scheduled_at' => $oneMinuteFromNow
-  ]);
-  ```
+$resend->emails->update('49a3999c-0ce1-4ea6-ab68-afcd6dc2e794', [
+  'scheduled_at' => $oneMinuteFromNow
+]);
+```
 
-  ```python Python theme={"theme":{"light":"github-light","dark":"vesper"}}
-  import resend
-  from datetime import datetime, timedelta
+```python Python theme={"theme":{"light":"github-light","dark":"vesper"}}
+import resend
+from datetime import datetime, timedelta
 
-  resend.api_key = "re_xxxxxxxxx"
+resend.api_key = "re_xxxxxxxxx"
 
-  one_minute_from_now = (datetime.now() + timedelta(minutes=1)).isoformat()
+one_minute_from_now = (datetime.now() + timedelta(minutes=1)).isoformat()
 
-  update_params: resend.Emails.UpdateParams = {
-    "id": "49a3999c-0ce1-4ea6-ab68-afcd6dc2e794",
-    "scheduled_at": one_minute_from_now
-  }
+update_params: resend.Emails.UpdateParams = {
+  "id": "49a3999c-0ce1-4ea6-ab68-afcd6dc2e794",
+  "scheduled_at": one_minute_from_now
+}
 
-  resend.Emails.update(params=update_params)
-  ```
+resend.Emails.update(params=update_params)
+```
 
-  ```ruby Ruby theme={"theme":{"light":"github-light","dark":"vesper"}}
-  require "resend"
+```ruby Ruby theme={"theme":{"light":"github-light","dark":"vesper"}}
+require "resend"
 
-  Resend.api_key = "re_xxxxxxxxx"
+Resend.api_key = "re_xxxxxxxxx"
 
-  one_minute_from_now = (Time.now + 1 * 60).strftime("%Y-%m-%dT%H:%M:%S.%L%z")
+one_minute_from_now = (Time.now + 1 * 60).strftime("%Y-%m-%dT%H:%M:%S.%L%z")
 
-  update_params = {
-    "email_id": "49a3999c-0ce1-4ea6-ab68-afcd6dc2e794",
-    "scheduled_at": one_minute_from_now
-  }
+update_params = {
+  "email_id": "49a3999c-0ce1-4ea6-ab68-afcd6dc2e794",
+  "scheduled_at": one_minute_from_now
+}
 
-  Resend::Emails.update(update_params)
-  ```
+Resend::Emails.update(update_params)
+```
 
-  ```go Go theme={"theme":{"light":"github-light","dark":"vesper"}}
-  package main
+```go Go theme={"theme":{"light":"github-light","dark":"vesper"}}
+package main
 
-  import (
-  	"time"
+import (
+	"time"
 
-  	"github.com/resend/resend-go/v4"
-  )
+	"github.com/resend/resend-go/v4"
+)
 
-  func main() {
-  	client := resend.NewClient("re_xxxxxxxxx")
+func main() {
+	client := resend.NewClient("re_xxxxxxxxx")
 
-  	oneMinuteFromNow := time.Now().Add(time.Minute * time.Duration(1))
-  	oneMinuteFromNowIso := oneMinuteFromNow.Format("2006-01-02T15:04:05-0700")
+	oneMinuteFromNow := time.Now().Add(time.Minute * time.Duration(1))
+	oneMinuteFromNowIso := oneMinuteFromNow.Format("2006-01-02T15:04:05-0700")
 
-  	updateParams := &resend.UpdateEmailRequest{
-  		Id:          "49a3999c-0ce1-4ea6-ab68-afcd6dc2e794",
-  		ScheduledAt: oneMinuteFromNowIso,
-  	}
+	updateParams := &resend.UpdateEmailRequest{
+		Id:          "49a3999c-0ce1-4ea6-ab68-afcd6dc2e794",
+		ScheduledAt: oneMinuteFromNowIso,
+	}
 
-  	client.Emails.Update(updateParams)
-  }
-  ```
+	client.Emails.Update(updateParams)
+}
+```
 
-  ```rust Rust theme={"theme":{"light":"github-light","dark":"vesper"}}
-  use chrono::{Local, TimeDelta};
-  use resend_rs::types::UpdateEmailOptions;
-  use resend_rs::{Resend, Result};
+```rust Rust theme={"theme":{"light":"github-light","dark":"vesper"}}
+use chrono::{Local, TimeDelta};
+use resend_rs::types::UpdateEmailOptions;
+use resend_rs::{Resend, Result};
 
-  #[tokio::main]
-  async fn main() -> Result<()> {
-    let resend = Resend::new("re_xxxxxxxxx");
+#[tokio::main]
+async fn main() -> Result<()> {
+  let resend = Resend::new("re_xxxxxxxxx");
 
-    let one_minute_from_now = Local::now()
-      .checked_add_signed(TimeDelta::minutes(1))
-      .unwrap()
-      .to_rfc3339();
+  let one_minute_from_now = Local::now()
+    .checked_add_signed(TimeDelta::minutes(1))
+    .unwrap()
+    .to_rfc3339();
 
-    let update = UpdateEmailOptions::new()
-      .with_scheduled_at(&one_minute_from_now);
+  let update = UpdateEmailOptions::new()
+    .with_scheduled_at(&one_minute_from_now);
 
-    let _email = resend
-      .emails
-      .update("49a3999c-0ce1-4ea6-ab68-afcd6dc2e794", update)
-      .await?;
+  let _email = resend
+    .emails
+    .update("49a3999c-0ce1-4ea6-ab68-afcd6dc2e794", update)
+    .await?;
 
-    Ok(())
-  }
-  ```
+  Ok(())
+}
+```
 
-  ```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
-  import com.resend.Resend;
-  import com.resend.core.exception.ResendException;
-  import com.resend.services.emails.model.UpdateEmailOptions;
-  import com.resend.services.emails.model.UpdateEmailResponse;
-  import java.time.Instant;
-  import java.time.temporal.ChronoUnit;
+```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
+import com.resend.Resend;
+import com.resend.core.exception.ResendException;
+import com.resend.services.emails.model.UpdateEmailOptions;
+import com.resend.services.emails.model.UpdateEmailResponse;
+import java.time.Instant;
+import java.time.temporal.ChronoUnit;
 
-  public class Main {
-      public static void main(String[] args) throws ResendException {
-          Resend resend = new Resend("re_xxxxxxxxx");
+public class Main {
+    public static void main(String[] args) throws ResendException {
+        Resend resend = new Resend("re_xxxxxxxxx");
 
-          String oneMinuteFromNow = Instant
-            .now()
-            .plus(1, ChronoUnit.MINUTES)
-            .toString();
+        String oneMinuteFromNow = Instant
+          .now()
+          .plus(1, ChronoUnit.MINUTES)
+          .toString();
 
-          UpdateEmailOptions updateParams = UpdateEmailOptions.builder()
-                  .scheduledAt(oneMinuteFromNow)
-                  .build();
+        UpdateEmailOptions updateParams = UpdateEmailOptions.builder()
+                .scheduledAt(oneMinuteFromNow)
+                .build();
 
-          UpdateEmailResponse data = resend.emails().update("49a3999c-0ce1-4ea6-ab68-afcd6dc2e794", updateParams);
-      }
-  }
-  ```
+        UpdateEmailResponse data = resend.emails().update("49a3999c-0ce1-4ea6-ab68-afcd6dc2e794", updateParams);
+    }
+}
+```
 
-  ```csharp .NET theme={"theme":{"light":"github-light","dark":"vesper"}}
-  using Resend;
+```csharp .NET theme={"theme":{"light":"github-light","dark":"vesper"}}
+using Resend;
 
-  IResend resend = ResendClient.Create( "re_xxxxxxxxx" ); // Or from DI
+IResend resend = ResendClient.Create( "re_xxxxxxxxx" ); // Or from DI
 
-  await resend.EmailRescheduleAsync(
-      new Guid( "49a3999c-0ce1-4ea6-ab68-afcd6dc2e794" ),
-      DateTime.UtcNow.AddMinutes( 1 ) );
-  ```
+await resend.EmailRescheduleAsync(
+    new Guid( "49a3999c-0ce1-4ea6-ab68-afcd6dc2e794" ),
+    DateTime.UtcNow.AddMinutes( 1 ) );
+```
 
-  ```bash cURL theme={"theme":{"light":"github-light","dark":"vesper"}}
-  curl -X PATCH 'https://api.resend.com/emails/49a3999c-0ce1-4ea6-ab68-afcd6dc2e794' \
-       -H 'Authorization: Bearer re_xxxxxxxxx' \
-       -H 'Content-Type: application/json' \
-       -d $'{
-    "scheduled_at": "2026-08-05T11:52:01.858Z"
-  }'
-  ```
+```bash cURL theme={"theme":{"light":"github-light","dark":"vesper"}}
+curl -X PATCH 'https://api.resend.com/emails/49a3999c-0ce1-4ea6-ab68-afcd6dc2e794' \
+     -H 'Authorization: Bearer re_xxxxxxxxx' \
+     -H 'Content-Type: application/json' \
+     -d $'{
+  "scheduled_at": "2026-08-05T11:52:01.858Z"
+}'
+```
 
-  ```bash CLI theme={"theme":{"light":"github-light","dark":"vesper"}}
-  resend emails update 49a3999c-0ce1-4ea6-ab68-afcd6dc2e794 \
-    --scheduled-at "2026-08-05T11:52:01.858Z"
-  ```
-</RequestExample>
+```bash CLI theme={"theme":{"light":"github-light","dark":"vesper"}}
+resend emails update 49a3999c-0ce1-4ea6-ab68-afcd6dc2e794 \
+  --scheduled-at "2026-08-05T11:52:01.858Z"
+```
 
-<ResponseExample>
-  ```json Response theme={"theme":{"light":"github-light","dark":"vesper"}}
-  {
-    "object": "email",
-    "id": "49a3999c-0ce1-4ea6-ab68-afcd6dc2e794"
-  }
-  ```
-</ResponseExample>
+```json Response theme={"theme":{"light":"github-light","dark":"vesper"}}
+{
+  "object": "email",
+  "id": "49a3999c-0ce1-4ea6-ab68-afcd6dc2e794"
+}
+```

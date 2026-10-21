@@ -6,207 +6,171 @@
 
 > Retrieve a list of events delivered to a webhook.
 
-export const ResendParamField = ({children, body, path, ...props}) => {
-  const [lang, setLang] = useState(() => {
-    return localStorage.getItem('code') || '"Node.js"';
-  });
-  useEffect(() => {
-    const onStorage = event => {
-      const key = event.detail.key;
-      if (key === 'code') {
-        setLang(event.detail.value);
-      }
-    };
-    document.addEventListener('mintlify-localstorage', onStorage);
-    return () => {
-      document.removeEventListener('mintlify-localstorage', onStorage);
-    };
-  }, []);
-  const toCamelCase = str => typeof str === 'string' ? str.replace(/[_-](\w)/g, (_, c) => c.toUpperCase()) : str;
-  const resolvedBody = useMemo(() => {
-    const value = JSON.parse(lang);
-    return value === 'Node.js' ? toCamelCase(body) : body;
-  }, [body, lang]);
-  const resolvedPath = useMemo(() => {
-    const value = JSON.parse(lang);
-    return value === 'Node.js' ? toCamelCase(path) : path;
-  }, [path, lang]);
-  return <ParamField body={resolvedBody} path={resolvedPath} {...props}>
-      {children}
-    </ParamField>;
-};
-
 ## Path Parameters
 
-<ResendParamField path="webhook_id" type="string" required>
-  The Webhook ID.
-</ResendParamField>
+The Webhook ID.
 
 ## Query Parameters
 
-<ParamField query="limit" type="number">
-  Number of events to return. Between `1` and `100`. Defaults to `20`.
-</ParamField>
+**limit** `number`
 
-<ParamField query="after" type="string">
-  The event ID to fetch the next page after.
+Number of events to return. Between `1` and `100`. Defaults to `20`.
 
-  The `before` parameter is not supported for this endpoint.
-</ParamField>
+**after** `string`
+
+The event ID to fetch the next page after.
+
+The `before` parameter is not supported for this endpoint.
 
 ## Response Fields
 
-<ParamField body="object" type="string">
-  Always `list`.
-</ParamField>
+**object** `string`
 
-<ParamField body="has_more" type="boolean">
-  Whether more events exist beyond this page.
-</ParamField>
+Always `list`.
 
-<ParamField body="data" type="array">
-  The events delivered to this webhook, most recent first.
+**has\_more** `boolean`
 
-  <Expandable defaultOpen="true" title="properties">
-    <ParamField body="id" type="string">
-      The event ID. Use this to [retrieve its details](/docs/api-reference/webhooks/get-event)
-      or [list its attempts](/docs/api-reference/webhooks/list-event-attempts).
-    </ParamField>
+Whether more events exist beyond this page.
 
-    <ParamField body="type" type="string">
-      The event type, for example `email.sent`.
-    </ParamField>
+**data** `array`
 
-    <ParamField body="created_at" type="string">
-      When the event was created.
-    </ParamField>
+The events delivered to this webhook, most recent first.
 
-    <ParamField body="status" type="string">
-      Delivery status of the event to this webhook: `success`, `failed`,
-      `attempting`, or `pending`.
-    </ParamField>
-  </Expandable>
-</ParamField>
+**properties**
 
-<RequestExample>
-  ```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
-  import { Resend } from 'resend';
+**id** `string`
 
-  const resend = new Resend('re_xxxxxxxxx');
+The event ID. Use this to [retrieve its details](/docs/api-reference/webhooks/get-event)
+or [list its attempts](/docs/api-reference/webhooks/list-event-attempts).
 
-  const { data, error } = await resend.webhooks.events.list({
-    webhookId: '4dd369bc-aa82-4ff3-97de-514ae3000ee0',
-  });
-  ```
+**type** `string`
 
-  ```php PHP theme={"theme":{"light":"github-light","dark":"vesper"}}
-  $resend = Resend::client('re_xxxxxxxxx');
+The event type, for example `email.sent`.
 
-  $events = $resend->webhooks->events->list(
-      '4dd369bc-aa82-4ff3-97de-514ae3000ee0'
-  );
-  ```
+**created\_at** `string`
 
-  ```python Python theme={"theme":{"light":"github-light","dark":"vesper"}}
-  import resend
+When the event was created.
 
-  resend.api_key = 're_xxxxxxxxx'
+**status** `string`
 
-  events = resend.Webhooks.list_events(
-      webhook_id='4dd369bc-aa82-4ff3-97de-514ae3000ee0'
-  )
-  ```
+Delivery status of the event to this webhook: `success`, `failed`,
+`attempting`, or `pending`.
 
-  ```ruby Ruby theme={"theme":{"light":"github-light","dark":"vesper"}}
-  require 'resend'
+```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
+import { Resend } from 'resend';
 
-  Resend.api_key = 're_xxxxxxxxx'
+const resend = new Resend('re_xxxxxxxxx');
 
-  events = Resend::Webhooks.list_events('4dd369bc-aa82-4ff3-97de-514ae3000ee0')
-  ```
+const { data, error } = await resend.webhooks.events.list({
+  webhookId: '4dd369bc-aa82-4ff3-97de-514ae3000ee0',
+});
+```
 
-  ```go Go theme={"theme":{"light":"github-light","dark":"vesper"}}
-  package main
+```php PHP theme={"theme":{"light":"github-light","dark":"vesper"}}
+$resend = Resend::client('re_xxxxxxxxx');
 
-  import "github.com/resend/resend-go/v4"
+$events = $resend->webhooks->events->list(
+    '4dd369bc-aa82-4ff3-97de-514ae3000ee0'
+);
+```
 
-  func main() {
-  	client := resend.NewClient("re_xxxxxxxxx")
+```python Python theme={"theme":{"light":"github-light","dark":"vesper"}}
+import resend
 
-  	client.Webhooks.ListEvents("4dd369bc-aa82-4ff3-97de-514ae3000ee0")
-  }
-  ```
+resend.api_key = 're_xxxxxxxxx'
 
-  ```rust Rust theme={"theme":{"light":"github-light","dark":"vesper"}}
-  use resend_rs::{list_opts::ListOptions, Resend, Result};
+events = resend.Webhooks.list_events(
+    webhook_id='4dd369bc-aa82-4ff3-97de-514ae3000ee0'
+)
+```
 
-  #[tokio::main]
-  async fn main() -> Result<()> {
-    let resend = Resend::new("re_xxxxxxxxx");
+```ruby Ruby theme={"theme":{"light":"github-light","dark":"vesper"}}
+require 'resend'
 
-    let _events = resend
-      .webhooks
-      .list_events(
-        "4dd369bc-aa82-4ff3-97de-514ae3000ee0",
-        ListOptions::default(),
-      )
-      .await?;
+Resend.api_key = 're_xxxxxxxxx'
 
-    Ok(())
-  }
-  ```
+events = Resend::Webhooks.list_events('4dd369bc-aa82-4ff3-97de-514ae3000ee0')
+```
 
-  ```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
-  import com.resend.Resend;
-  import com.resend.core.exception.ResendException;
-  import com.resend.services.webhooks.model.ListWebhookEventsResponseSuccess;
+```go Go theme={"theme":{"light":"github-light","dark":"vesper"}}
+package main
 
-  public class Main {
-      public static void main(String[] args) throws ResendException {
-          Resend resend = new Resend("re_xxxxxxxxx");
+import "github.com/resend/resend-go/v4"
 
-          ListWebhookEventsResponseSuccess events = resend.webhooks().listEvents(
-              "4dd369bc-aa82-4ff3-97de-514ae3000ee0"
-          );
-      }
-  }
-  ```
+func main() {
+	client := resend.NewClient("re_xxxxxxxxx")
 
-  ```csharp .NET theme={"theme":{"light":"github-light","dark":"vesper"}}
-  using Resend;
+	client.Webhooks.ListEvents("4dd369bc-aa82-4ff3-97de-514ae3000ee0")
+}
+```
 
-  IResend resend = ResendClient.Create( "re_xxxxxxxxx" ); // Or from DI
+```rust Rust theme={"theme":{"light":"github-light","dark":"vesper"}}
+use resend_rs::{list_opts::ListOptions, Resend, Result};
 
-  var resp = await resend.WebhookEventListAsync(
-      new Guid( "4dd369bc-aa82-4ff3-97de-514ae3000ee0" )
-  );
-  ```
+#[tokio::main]
+async fn main() -> Result<()> {
+  let resend = Resend::new("re_xxxxxxxxx");
 
-  ```bash cURL theme={"theme":{"light":"github-light","dark":"vesper"}}
-  curl -X GET 'https://api.resend.com/webhooks/4dd369bc-aa82-4ff3-97de-514ae3000ee0/events' \
-       -H 'Authorization: Bearer re_xxxxxxxxx'
-  ```
-</RequestExample>
+  let _events = resend
+    .webhooks
+    .list_events(
+      "4dd369bc-aa82-4ff3-97de-514ae3000ee0",
+      ListOptions::default(),
+    )
+    .await?;
 
-<ResponseExample>
-  ```json Response theme={"theme":{"light":"github-light","dark":"vesper"}}
-  {
-    "object": "list",
-    "has_more": false,
-    "data": [
-      {
-        "id": "msg_1srOsB4mXhCqCVwAxYRNnpFZhb3",
-        "type": "email.delivered",
-        "created_at": "2026-08-22T15:28:00.000Z",
-        "status": "failed"
-      },
-      {
-        "id": "msg_1srOrx2ZWZBpBUvZwXKQmoEYga2",
-        "type": "email.sent",
-        "created_at": "2026-08-22T15:27:42.000Z",
-        "status": "success"
-      }
-    ]
-  }
-  ```
-</ResponseExample>
+  Ok(())
+}
+```
+
+```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
+import com.resend.Resend;
+import com.resend.core.exception.ResendException;
+import com.resend.services.webhooks.model.ListWebhookEventsResponseSuccess;
+
+public class Main {
+    public static void main(String[] args) throws ResendException {
+        Resend resend = new Resend("re_xxxxxxxxx");
+
+        ListWebhookEventsResponseSuccess events = resend.webhooks().listEvents(
+            "4dd369bc-aa82-4ff3-97de-514ae3000ee0"
+        );
+    }
+}
+```
+
+```csharp .NET theme={"theme":{"light":"github-light","dark":"vesper"}}
+using Resend;
+
+IResend resend = ResendClient.Create( "re_xxxxxxxxx" ); // Or from DI
+
+var resp = await resend.WebhookEventListAsync(
+    new Guid( "4dd369bc-aa82-4ff3-97de-514ae3000ee0" )
+);
+```
+
+```bash cURL theme={"theme":{"light":"github-light","dark":"vesper"}}
+curl -X GET 'https://api.resend.com/webhooks/4dd369bc-aa82-4ff3-97de-514ae3000ee0/events' \
+     -H 'Authorization: Bearer re_xxxxxxxxx'
+```
+
+```json Response theme={"theme":{"light":"github-light","dark":"vesper"}}
+{
+  "object": "list",
+  "has_more": false,
+  "data": [
+    {
+      "id": "msg_1srOsB4mXhCqCVwAxYRNnpFZhb3",
+      "type": "email.delivered",
+      "created_at": "2026-08-22T15:28:00.000Z",
+      "status": "failed"
+    },
+    {
+      "id": "msg_1srOrx2ZWZBpBUvZwXKQmoEYga2",
+      "type": "email.sent",
+      "created_at": "2026-08-22T15:27:42.000Z",
+      "status": "success"
+    }
+  ]
+}
+```

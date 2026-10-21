@@ -6,10 +6,6 @@
 
 > Learn how to integrate Resend via SMTP.
 
-export const YouTube = ({id}) => {
-  return <iframe className="w-full aspect-video rounded-xl" src={`https://www.youtube.com/embed/${id}`} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>;
-};
-
 ## Prerequisites
 
 Before you start, you'll need:
@@ -19,7 +15,7 @@ Before you start, you'll need:
 
 Prefer watching a video? Check out our video walkthrough below.
 
-<YouTube id="MM1JE6-inmc" />
+[YouTube video player](https://www.youtube.com/embed/MM1JE6-inmc)
 
 ## SMTP Settings
 
@@ -65,19 +61,17 @@ Here are some common use cases for custom headers:
 
 Once configured, you can start sending emails via SMTP. Below are some frequently asked questions:
 
-<AccordionGroup>
-  <Accordion title="What if I need logs from the server to debug?">
-    We currently don't provide SMTP server logs for debugging. If you run into
-    issues, please [reach out to support](https://resend.com/help).
-  </Accordion>
+> **What if I need logs from the server to debug?**
+>
+> We currently don't provide SMTP server logs for debugging. If you run into
+> issues, please [reach out to support](https://resend.com/help).
 
-  <Accordion title="Where do I see the emails sent with SMTP?">
-    Emails sent with SMTP will show in your [emails
-    table](https://resend.com/emails).
-  </Accordion>
+> **Where do I see the emails sent with SMTP?**
+>
+> Emails sent with SMTP will show in your [emails
+> table](https://resend.com/emails).
 
-  <Accordion title="Does the rate limit apply when sending with SMTP?">
-    Yes, the rate limit is the [same as the
-    API](https://resend.com/docs/api-reference/introduction#rate-limit).
-  </Accordion>
-</AccordionGroup>
+> **Does the rate limit apply when sending with SMTP?**
+>
+> Yes, the rate limit is the [same as the
+> API](https://resend.com/docs/api-reference/introduction#rate-limit).

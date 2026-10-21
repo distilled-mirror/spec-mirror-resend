@@ -19,7 +19,9 @@ When testing, avoid:
 
 Use the provided `resend.dev` test email addresses to simulate different email events without damaging your domain reputation. These test emails enable the safe use of Resend's Dashboard, Webhooks, and API when developing your application.
 
-<Note>Test emails count against your account's sending quota.</Note>
+> [!NOTE]
+>
+> Test emails count against your account's sending quota.
 
 All test email addresses support labeling, which enables you to send emails to the same test address in multiple ways. You can add a label after the `+` symbol (e.g., `delivered+label1@resend.dev`) to help track and differentiate between different test scenarios in your application.
 
@@ -81,16 +83,16 @@ To test that your emails are being suppressed, you can send an email to:
 suppressed@resend.dev
 ```
 
-<Info>
-  When using this test email, the suppression reason will indicate the address
-  was previously bounced
-</Info>
+> [!NOTE]
+>
+> When using this test email, the suppression reason will indicate the address
+> was previously bounced
 
 ## Using labels effectively
 
-<Warning>
-  The suppressed test email address does not support labeling yet
-</Warning>
+> [!WARNING]
+>
+> The suppressed test email address does not support labeling yet
 
 The labeling feature allows you to use any string as a label after the `+` symbol. This is particularly useful for:
 

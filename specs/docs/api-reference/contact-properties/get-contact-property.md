@@ -6,154 +6,118 @@
 
 > Retrieve a contact property by its ID.
 
-export const ResendParamField = ({children, body, path, ...props}) => {
-  const [lang, setLang] = useState(() => {
-    return localStorage.getItem('code') || '"Node.js"';
-  });
-  useEffect(() => {
-    const onStorage = event => {
-      const key = event.detail.key;
-      if (key === 'code') {
-        setLang(event.detail.value);
-      }
-    };
-    document.addEventListener('mintlify-localstorage', onStorage);
-    return () => {
-      document.removeEventListener('mintlify-localstorage', onStorage);
-    };
-  }, []);
-  const toCamelCase = str => typeof str === 'string' ? str.replace(/[_-](\w)/g, (_, c) => c.toUpperCase()) : str;
-  const resolvedBody = useMemo(() => {
-    const value = JSON.parse(lang);
-    return value === 'Node.js' ? toCamelCase(body) : body;
-  }, [body, lang]);
-  const resolvedPath = useMemo(() => {
-    const value = JSON.parse(lang);
-    return value === 'Node.js' ? toCamelCase(path) : path;
-  }, [path, lang]);
-  return <ParamField body={resolvedBody} path={resolvedPath} {...props}>
-      {children}
-    </ParamField>;
-};
-
 ## Path Parameters
 
-<ResendParamField path="contact_property_id" type="string" required>
-  The Contact Property ID.
-</ResendParamField>
+The Contact Property ID.
 
-<RequestExample>
-  ```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
-  import { Resend } from 'resend';
+```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
+import { Resend } from 'resend';
 
-  const resend = new Resend('re_xxxxxxxxx');
+const resend = new Resend('re_xxxxxxxxx');
 
-  const { data, error } = await resend.contactProperties.get(
-    'b6d24b8e-af0b-4c3c-be0c-359bbd97381e',
-  );
-  ```
+const { data, error } = await resend.contactProperties.get(
+  'b6d24b8e-af0b-4c3c-be0c-359bbd97381e',
+);
+```
 
-  ```php PHP theme={"theme":{"light":"github-light","dark":"vesper"}}
-  $resend = Resend::client('re_xxxxxxxxx');
+```php PHP theme={"theme":{"light":"github-light","dark":"vesper"}}
+$resend = Resend::client('re_xxxxxxxxx');
 
-  $resend->contactProperties->get('b6d24b8e-af0b-4c3c-be0c-359bbd97381');
-  ```
+$resend->contactProperties->get('b6d24b8e-af0b-4c3c-be0c-359bbd97381');
+```
 
-  ```python Python theme={"theme":{"light":"github-light","dark":"vesper"}}
-  import resend
+```python Python theme={"theme":{"light":"github-light","dark":"vesper"}}
+import resend
 
-  resend.api_key = 're_xxxxxxxxx'
+resend.api_key = 're_xxxxxxxxx'
 
-  contact_property = resend.ContactProperties.get('b6d24b8e-af0b-4c3c-be0c-359bbd97381e')
-  ```
+contact_property = resend.ContactProperties.get('b6d24b8e-af0b-4c3c-be0c-359bbd97381e')
+```
 
-  ```ruby Ruby theme={"theme":{"light":"github-light","dark":"vesper"}}
-  require "resend"
+```ruby Ruby theme={"theme":{"light":"github-light","dark":"vesper"}}
+require "resend"
 
-  Resend.api_key = "re_xxxxxxxxx"
+Resend.api_key = "re_xxxxxxxxx"
 
-  property = Resend::ContactProperties.get("b6d24b8e-af0b-4c3c-be0c-359bbd97381e")
-  ```
+property = Resend::ContactProperties.get("b6d24b8e-af0b-4c3c-be0c-359bbd97381e")
+```
 
-  ```go Go theme={"theme":{"light":"github-light","dark":"vesper"}}
-  package main
+```go Go theme={"theme":{"light":"github-light","dark":"vesper"}}
+package main
 
-  import (
-  	"context"
-  	"fmt"
+import (
+	"context"
+	"fmt"
 
-  	"github.com/resend/resend-go/v4"
-  )
+	"github.com/resend/resend-go/v4"
+)
 
-  func main() {
-  	ctx := context.TODO()
-  	client := resend.NewClient("re_xxxxxxxxx")
+func main() {
+	ctx := context.TODO()
+	client := resend.NewClient("re_xxxxxxxxx")
 
-  	property, err := client.ContactProperties.GetWithContext(ctx, "b6d24b8e-af0b-4c3c-be0c-359bbd97381e")
-  	if err != nil {
-  		panic(err)
-  	}
-  	fmt.Println(property)
+	property, err := client.ContactProperties.GetWithContext(ctx, "b6d24b8e-af0b-4c3c-be0c-359bbd97381e")
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(property)
+}
+```
+
+```rust Rust theme={"theme":{"light":"github-light","dark":"vesper"}}
+use resend_rs::{Resend, Result};
+
+#[tokio::main]
+async fn main() -> Result<()> {
+  let resend = Resend::new("re_xxxxxxxxx");
+
+  let _property = resend
+    .contacts
+    .get_property("b6d24b8e-af0b-4c3c-be0c-359bbd97381e")
+    .await?;
+
+  Ok(())
+}
+```
+
+```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
+import com.resend.Resend;
+import com.resend.core.exception.ResendException;
+
+public class Main {
+  public static void main(String[] args) throws ResendException {
+    Resend resend = new Resend("re_xxxxxxxxx");
+
+    resend.contactProperties().get("b6d24b8e-af0b-4c3c-be0c-359bbd97381e");
   }
-  ```
+}
+```
 
-  ```rust Rust theme={"theme":{"light":"github-light","dark":"vesper"}}
-  use resend_rs::{Resend, Result};
+```csharp .NET theme={"theme":{"light":"github-light","dark":"vesper"}}
+using Resend;
 
-  #[tokio::main]
-  async fn main() -> Result<()> {
-    let resend = Resend::new("re_xxxxxxxxx");
+IResend resend = ResendClient.Create( "re_xxxxxxxxx" ); // Or from DI
 
-    let _property = resend
-      .contacts
-      .get_property("b6d24b8e-af0b-4c3c-be0c-359bbd97381e")
-      .await?;
+var resp = await resend.ContactPropRetrieveAsync( new Guid( "b6d24b8e-af0b-4c3c-be0c-359bbd97381e" ) );
+Console.WriteLine( "Prop Id={0}", resp.Content.Id );
+```
 
-    Ok(())
-  }
-  ```
+```bash cURL theme={"theme":{"light":"github-light","dark":"vesper"}}
+curl -X GET 'https://api.resend.com/contact-properties/b6d24b8e-af0b-4c3c-be0c-359bbd97381e' \
+     -H 'Authorization: Bearer re_xxxxxxxxx'
+```
 
-  ```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
-  import com.resend.Resend;
-  import com.resend.core.exception.ResendException;
+```bash CLI theme={"theme":{"light":"github-light","dark":"vesper"}}
+resend contact-properties get b6d24b8e-af0b-4c3c-be0c-359bbd97381e
+```
 
-  public class Main {
-    public static void main(String[] args) throws ResendException {
-      Resend resend = new Resend("re_xxxxxxxxx");
-
-      resend.contactProperties().get("b6d24b8e-af0b-4c3c-be0c-359bbd97381e");
-    }
-  }
-  ```
-
-  ```csharp .NET theme={"theme":{"light":"github-light","dark":"vesper"}}
-  using Resend;
-
-  IResend resend = ResendClient.Create( "re_xxxxxxxxx" ); // Or from DI
-
-  var resp = await resend.ContactPropRetrieveAsync( new Guid( "b6d24b8e-af0b-4c3c-be0c-359bbd97381e" ) );
-  Console.WriteLine( "Prop Id={0}", resp.Content.Id );
-  ```
-
-  ```bash cURL theme={"theme":{"light":"github-light","dark":"vesper"}}
-  curl -X GET 'https://api.resend.com/contact-properties/b6d24b8e-af0b-4c3c-be0c-359bbd97381e' \
-       -H 'Authorization: Bearer re_xxxxxxxxx'
-  ```
-
-  ```bash CLI theme={"theme":{"light":"github-light","dark":"vesper"}}
-  resend contact-properties get b6d24b8e-af0b-4c3c-be0c-359bbd97381e
-  ```
-</RequestExample>
-
-<ResponseExample>
-  ```json Response theme={"theme":{"light":"github-light","dark":"vesper"}}
-  {
-    "object": "contact_property",
-    "id": "b6d24b8e-af0b-4c3c-be0c-359bbd97381e",
-    "key": "company_name",
-    "type": "string",
-    "fallback_value": "Acme Corp",
-    "created_at": "2026-04-08 00:11:13.110779+00"
-  }
-  ```
-</ResponseExample>
+```json Response theme={"theme":{"light":"github-light","dark":"vesper"}}
+{
+  "object": "contact_property",
+  "id": "b6d24b8e-af0b-4c3c-be0c-359bbd97381e",
+  "key": "company_name",
+  "type": "string",
+  "fallback_value": "Acme Corp",
+  "created_at": "2026-04-08 00:11:13.110779+00"
+}
+```

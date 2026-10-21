@@ -14,54 +14,50 @@ Confidential clients must authenticate the same way they do at the [token endpoi
 
 ## Body Parameters
 
-<ParamField body="token" type="string" required>
-  The refresh token to revoke.
-</ParamField>
+**token** `string` *required*
 
-<ParamField body="client_id" type="string">
-  Required, except with `client_secret_basic`, where the `Authorization` header
-  already carries it.
-</ParamField>
+The refresh token to revoke.
 
-<ParamField body="client_secret" type="string">
-  Required for a confidential client using `client_secret_post`. Omit for public
-  clients and for `client_secret_basic` (send the secret in the `Authorization`
-  header instead).
-</ParamField>
+**client\_id** `string`
 
-<ParamField body="token_type_hint" type="string">
-  Optional per RFC 7009. If set to `"access_token"`, the request fails: access
-  token revocation isn't supported. Any other value (including
-  `"refresh_token"`) is accepted and ignored. Unknown hints don't affect
-  behavior.
-</ParamField>
+Required, except with `client_secret_basic`, where the `Authorization` header
+already carries it.
 
-<RequestExample>
-  ```bash Public client theme={"theme":{"light":"github-light","dark":"vesper"}}
-  curl -X POST 'https://api.resend.com/oauth/revoke' \
-       -H 'Content-Type: application/x-www-form-urlencoded' \
-       -d 'client_id=550e8400-e29b-41d4-a716-446655440000&token=JcL7aYfE7S9h3L4qv0o2e1w8m6n5b3x9RkP2tD4uV6Q&token_type_hint=refresh_token'
-  ```
+**client\_secret** `string`
 
-  ```bash Client Secret Basic theme={"theme":{"light":"github-light","dark":"vesper"}}
-  curl -X POST 'https://api.resend.com/oauth/revoke' \
-       -H 'Content-Type: application/x-www-form-urlencoded' \
-       -u '550e8400-e29b-41d4-a716-446655440000:CLIENT_SECRET' \
-       -d 'token=JcL7aYfE7S9h3L4qv0o2e1w8m6n5b3x9RkP2tD4uV6Q&token_type_hint=refresh_token'
-  ```
+Required for a confidential client using `client_secret_post`. Omit for public
+clients and for `client_secret_basic` (send the secret in the `Authorization`
+header instead).
 
-  ```bash Client Secret Post theme={"theme":{"light":"github-light","dark":"vesper"}}
-  curl -X POST 'https://api.resend.com/oauth/revoke' \
-       -H 'Content-Type: application/x-www-form-urlencoded' \
-       -d 'client_id=550e8400-e29b-41d4-a716-446655440000&client_secret=CLIENT_SECRET&token=JcL7aYfE7S9h3L4qv0o2e1w8m6n5b3x9RkP2tD4uV6Q&token_type_hint=refresh_token'
-  ```
-</RequestExample>
+**token\_type\_hint** `string`
 
-<ResponseExample>
-  ```http Response theme={"theme":{"light":"github-light","dark":"vesper"}}
-  HTTP/1.1 200 OK
-  ```
-</ResponseExample>
+Optional per RFC 7009. If set to `"access_token"`, the request fails: access
+token revocation isn't supported. Any other value (including
+`"refresh_token"`) is accepted and ignored. Unknown hints don't affect
+behavior.
+
+```bash Public client theme={"theme":{"light":"github-light","dark":"vesper"}}
+curl -X POST 'https://api.resend.com/oauth/revoke' \
+     -H 'Content-Type: application/x-www-form-urlencoded' \
+     -d 'client_id=550e8400-e29b-41d4-a716-446655440000&token=JcL7aYfE7S9h3L4qv0o2e1w8m6n5b3x9RkP2tD4uV6Q&token_type_hint=refresh_token'
+```
+
+```bash Client Secret Basic theme={"theme":{"light":"github-light","dark":"vesper"}}
+curl -X POST 'https://api.resend.com/oauth/revoke' \
+     -H 'Content-Type: application/x-www-form-urlencoded' \
+     -u '550e8400-e29b-41d4-a716-446655440000:CLIENT_SECRET' \
+     -d 'token=JcL7aYfE7S9h3L4qv0o2e1w8m6n5b3x9RkP2tD4uV6Q&token_type_hint=refresh_token'
+```
+
+```bash Client Secret Post theme={"theme":{"light":"github-light","dark":"vesper"}}
+curl -X POST 'https://api.resend.com/oauth/revoke' \
+     -H 'Content-Type: application/x-www-form-urlencoded' \
+     -d 'client_id=550e8400-e29b-41d4-a716-446655440000&client_secret=CLIENT_SECRET&token=JcL7aYfE7S9h3L4qv0o2e1w8m6n5b3x9RkP2tD4uV6Q&token_type_hint=refresh_token'
+```
+
+```http Response theme={"theme":{"light":"github-light","dark":"vesper"}}
+HTTP/1.1 200 OK
+```
 
 ## Errors
 

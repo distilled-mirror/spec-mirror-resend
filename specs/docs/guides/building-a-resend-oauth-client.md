@@ -184,38 +184,36 @@ sequenceDiagram
     AS-->>C: access_token + refresh_token
 ```
 
-<Steps>
-  <Step title="Load the pre-issued client_id and client_secret" />
+**1. Load the pre-issued client\_id and client\_secret**
 
-  <Step title="Generate PKCE and state">
-    `code_verifier`, `code_challenge`, and `state`. See
-    [above](#generating-pkce-values-and-state).
-  </Step>
+**2. Generate PKCE and state**
 
-  <Step title="Store state and code_verifier server-side">
-    Tie them to the user's session.
-  </Step>
+`code_verifier`, `code_challenge`, and `state`. See
+[above](#generating-pkce-values-and-state).
 
-  <Step title="Redirect the user's browser to /oauth/authorize" />
+**3. Store state and code\_verifier server-side**
 
-  <Step title="Handle the callback on the app's backend" />
+Tie them to the user's session.
 
-  <Step title="Reject invalid callbacks">
-    A missing `code`, mismatched or missing `state`, or an `error` query
-    parameter should all be treated as failures.
-  </Step>
+**4. Redirect the user's browser to /oauth/authorize**
 
-  <Step title="Exchange the code server-side">
-    Use the original `code_verifier`, and present the `client_secret` via HTTP
-    Basic auth.
-  </Step>
+**5. Handle the callback on the app's backend**
 
-  <Step title="Store the refresh token securely" />
+**6. Reject invalid callbacks**
 
-  <Step title="Serialize refreshes">
-    Atomically replace the stored refresh token after every refresh.
-  </Step>
-</Steps>
+A missing `code`, mismatched or missing `state`, or an `error` query
+parameter should all be treated as failures.
+
+**7. Exchange the code server-side**
+
+Use the original `code_verifier`, and present the `client_secret` via HTTP
+Basic auth.
+
+**8. Store the refresh token securely**
+
+**9. Serialize refreshes**
+
+Atomically replace the stored refresh token after every refresh.
 
 Example authorization URL:
 
@@ -267,44 +265,42 @@ sequenceDiagram
     AS-->>C: access_token + refresh_token
 ```
 
-<Steps>
-  <Step title="Bind a temporary callback server">
-    Pick a random high port and bind it to `127.0.0.1` or `[::1]`, never
-    `0.0.0.0`.
-  </Step>
+**1. Bind a temporary callback server**
 
-  <Step title="Generate PKCE and state">
-    `code_verifier`, `code_challenge`, and `state`. See
-    [above](#generating-pkce-values-and-state).
-  </Step>
+Pick a random high port and bind it to `127.0.0.1` or `[::1]`, never
+`0.0.0.0`.
 
-  <Step title="Get a client_id">
-    Use the URL of a [metadata document](#client-id-metadata-documents) that
-    lists the loopback redirect URI and the minimum required scope. If the
-    client can't host one, register dynamically with the same values instead.
-    See [Register Client](/docs/api-reference/oauth/register).
-  </Step>
+**2. Generate PKCE and state**
 
-  <Step title="Open the authorize URL in the user's browser">
-    Don't prefetch `/oauth/authorize` from your process and follow the redirect
-    yourself. The user needs to see the consent screen.
-  </Step>
+`code_verifier`, `code_challenge`, and `state`. See
+[above](#generating-pkce-values-and-state).
 
-  <Step title="Let the browser follow the redirect to the dashboard consent screen" />
+**3. Get a client\_id**
 
-  <Step title="Handle exactly one callback, then close the server" />
+Use the URL of a [metadata document](#client-id-metadata-documents) that
+lists the loopback redirect URI and the minimum required scope. If the
+client can't host one, register dynamically with the same values instead.
+See [Register Client](/docs/api-reference/oauth/register).
 
-  <Step title="Reject invalid callbacks">
-    A missing `code`, mismatched or missing `state`, or an `error` query
-    parameter should all be treated as failures.
-  </Step>
+**4. Open the authorize URL in the user's browser**
 
-  <Step title="Exchange the code">
-    Use the original `code_verifier`. See [Token](/docs/api-reference/oauth/token).
-  </Step>
+Don't prefetch `/oauth/authorize` from your process and follow the redirect
+yourself. The user needs to see the consent screen.
 
-  <Step title="Store the newest refresh token after every token response" />
-</Steps>
+**5. Let the browser follow the redirect to the dashboard consent screen**
+
+**6. Handle exactly one callback, then close the server**
+
+**7. Reject invalid callbacks**
+
+A missing `code`, mismatched or missing `state`, or an `error` query
+parameter should all be treated as failures.
+
+**8. Exchange the code**
+
+Use the original `code_verifier`. See [Token](/docs/api-reference/oauth/token).
+
+**9. Store the newest refresh token after every token response**
 
 Close the loopback server after success or timeout.
 

@@ -6,136 +6,157 @@
 
 > Take one label off a thread.
 
-export const ResendParamField = ({children, body, path, ...props}) => {
-  const [lang, setLang] = useState(() => {
-    return localStorage.getItem('code') || '"Node.js"';
-  });
-  useEffect(() => {
-    const onStorage = event => {
-      const key = event.detail.key;
-      if (key === 'code') {
-        setLang(event.detail.value);
-      }
-    };
-    document.addEventListener('mintlify-localstorage', onStorage);
-    return () => {
-      document.removeEventListener('mintlify-localstorage', onStorage);
-    };
-  }, []);
-  const toCamelCase = str => typeof str === 'string' ? str.replace(/[_-](\w)/g, (_, c) => c.toUpperCase()) : str;
-  const resolvedBody = useMemo(() => {
-    const value = JSON.parse(lang);
-    return value === 'Node.js' ? toCamelCase(body) : body;
-  }, [body, lang]);
-  const resolvedPath = useMemo(() => {
-    const value = JSON.parse(lang);
-    return value === 'Node.js' ? toCamelCase(path) : path;
-  }, [path, lang]);
-  return <ParamField body={resolvedBody} path={resolvedPath} {...props}>
-      {children}
-    </ParamField>;
-};
-
-<Warning>
-  Inboxes are currently in private beta and only available to a limited
-  number of users. The response shape might change before GA.
-
-  <span />
-
-  [Get early access](https://resend.com/settings/labs) if you're interested in testing this feature.
-
-  <span />
-
-  Once you have access, upgrade your Resend SDK to use the new methods:
-
-  <CodeGroup>
-    ```bash Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
-    npm install resend@6.33.0
-    ```
-
-    ```bash CLI theme={"theme":{"light":"github-light","dark":"vesper"}}
-    npm install -g resend-cli@2.25.0
-    ```
-  </CodeGroup>
-</Warning>
-
 The label itself is kept, and stays on every other thread that carries it. To
 delete the label everywhere, use
 [Delete Label](/docs/api-reference/inboxes/delete-label).
 
 ## Path Parameters
 
-<ResendParamField path="inbox_id" type="string" required>
-  The Inbox ID or the inbox email address, such as `support@example.com`.
-</ResendParamField>
+The Inbox ID or the inbox email address, such as `support@example.com`.
 
-<ResendParamField path="thread_id" type="string" required>
-  The Thread ID.
-</ResendParamField>
+The Thread ID.
 
-<ResendParamField path="label_id" type="string" required>
-  The Label ID.
-</ResendParamField>
+The Label ID.
 
 ## Response Fields
 
-<ParamField body="object" type="string">
-  Always `list`.
-</ParamField>
+**object** `string`
 
-<ParamField body="data" type="array">
-  Every label on the thread after the change.
+Always `list`.
 
-  <Expandable defaultOpen="true" title="properties">
-    <ParamField body="id" type="string">
-      The ID of the label.
-    </ParamField>
+**data** `array`
 
-    <ParamField body="name" type="string">
-      The name of the label.
-    </ParamField>
+Every label on the thread after the change.
 
-    <ParamField body="color" type="string">
-      The color of the label as an uppercase `#RRGGBB` hex code, like
-      `#E93D82`.
-    </ParamField>
-  </Expandable>
-</ParamField>
+**properties**
 
-<RequestExample>
-  ```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
-  import { Resend } from 'resend';
+**id** `string`
 
-  const resend = new Resend('re_xxxxxxxxx');
+The ID of the label.
 
-  const { data, error } = await resend.inboxes.threads.labels.remove({
-    inboxId: 'b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1',
-    threadId: '4d8e2a1c-9b3f-4c6d-8a21-3e5f7c9c0d12',
-    labelId: '7f9c1d2e-4a6b-4c3d-8e15-9b0a7c6d5e34',
-  });
-  ```
+**name** `string`
 
-  ```bash cURL theme={"theme":{"light":"github-light","dark":"vesper"}}
-  curl -X DELETE 'https://api.resend.com/inboxes/b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1/threads/4d8e2a1c-9b3f-4c6d-8a21-3e5f7c9c0d12/labels/7f9c1d2e-4a6b-4c3d-8e15-9b0a7c6d5e34' \
-       -H 'Authorization: Bearer re_xxxxxxxxx'
-  ```
+The name of the label.
 
-  ```bash CLI theme={"theme":{"light":"github-light","dark":"vesper"}}
-  resend inboxes threads labels remove b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1 4d8e2a1c-9b3f-4c6d-8a21-3e5f7c9c0d12 7f9c1d2e-4a6b-4c3d-8e15-9b0a7c6d5e34
-  ```
-</RequestExample>
+**color** `string`
 
-<ResponseExample>
-  ```json Response theme={"theme":{"light":"github-light","dark":"vesper"}}
-  {
-    "object": "list",
-    "data": [
-      {
-        "id": "2a8b4c6d-1e3f-4a5b-9c7d-8e0f1a2b3c4d",
-        "name": "Billing",
-        "color": "#00A2C7"
-      }
-    ]
-  }
-  ```
-</ResponseExample>
+The color of the label as an uppercase `#RRGGBB` hex code, like
+`#E93D82`.
+
+```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
+import { Resend } from 'resend';
+
+const resend = new Resend('re_xxxxxxxxx');
+
+const { data, error } = await resend.inboxes.threads.labels.remove({
+  inboxId: 'b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1',
+  threadId: '4d8e2a1c-9b3f-4c6d-8a21-3e5f7c9c0d12',
+  labelId: '7f9c1d2e-4a6b-4c3d-8e15-9b0a7c6d5e34',
+});
+```
+
+```php PHP theme={"theme":{"light":"github-light","dark":"vesper"}}
+$resend = Resend::client('re_xxxxxxxxx');
+
+$resend->inboxes->threads->labels->remove(
+  'b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1',
+  '4d8e2a1c-9b3f-4c6d-8a21-3e5f7c9c0d12',
+  '7f9c1d2e-4a6b-4c3d-8e15-9b0a7c6d5e34'
+);
+```
+
+```python Python theme={"theme":{"light":"github-light","dark":"vesper"}}
+import resend
+
+resend.api_key = "re_xxxxxxxxx"
+
+resend.Inboxes.Threads.Labels.remove(
+    inbox_id="b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1",
+    thread_id="4d8e2a1c-9b3f-4c6d-8a21-3e5f7c9c0d12",
+    label_id="7f9c1d2e-4a6b-4c3d-8e15-9b0a7c6d5e34",
+)
+```
+
+```ruby Ruby theme={"theme":{"light":"github-light","dark":"vesper"}}
+require "resend"
+
+Resend.api_key = "re_xxxxxxxxx"
+
+params = {
+  inbox_id: "b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1",
+  thread_id: "4d8e2a1c-9b3f-4c6d-8a21-3e5f7c9c0d12",
+  label_id: "7f9c1d2e-4a6b-4c3d-8e15-9b0a7c6d5e34"
+}
+
+Resend::Inboxes::Threads::Labels.remove(params)
+```
+
+```go Go theme={"theme":{"light":"github-light","dark":"vesper"}}
+package main
+
+import "github.com/resend/resend-go/v4"
+
+func main() {
+	client := resend.NewClient("re_xxxxxxxxx")
+
+	client.Inboxes.Threads.Labels.Remove(
+		"b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1",
+		"4d8e2a1c-9b3f-4c6d-8a21-3e5f7c9c0d12",
+		"7f9c1d2e-4a6b-4c3d-8e15-9b0a7c6d5e34",
+	)
+```
+
+```rust Rust theme={"theme":{"light":"github-light","dark":"vesper"}}
+use resend_rs::{Resend, Result};
+
+#[tokio::main]
+async fn main() -> Result<()> {
+  let resend = Resend::new("re_xxxxxxxxx");
+
+  let _labels = resend
+    .inboxes
+    .remove_thread_label(
+      "b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1",
+      "4d8e2a1c-9b3f-4c6d-8a21-3e5f7c9c0d12",
+      "7f9c1d2e-4a6b-4c3d-8e15-9b0a7c6d5e34",
+    )
+    .await?;
+
+  Ok(())
+}
+```
+
+```csharp .NET theme={"theme":{"light":"github-light","dark":"vesper"}}
+using Resend;
+
+IResend resend = ResendClient.Create( "re_xxxxxxxxx" ); // Or from DI
+
+var resp = await resend.InboxThreadLabelRemoveAsync(
+    new Guid( "b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1" ),
+    new Guid( "4d8e2a1c-9b3f-4c6d-8a21-3e5f7c9c0d12" ),
+    new Guid( "7f9c1d2e-4a6b-4c3d-8e15-9b0a7c6d5e34" )
+);
+Console.WriteLine( "Nr Labels={0}", resp.Content.Count );
+```
+
+```bash cURL theme={"theme":{"light":"github-light","dark":"vesper"}}
+curl -X DELETE 'https://api.resend.com/inboxes/b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1/threads/4d8e2a1c-9b3f-4c6d-8a21-3e5f7c9c0d12/labels/7f9c1d2e-4a6b-4c3d-8e15-9b0a7c6d5e34' \
+     -H 'Authorization: Bearer re_xxxxxxxxx'
+```
+
+```bash CLI theme={"theme":{"light":"github-light","dark":"vesper"}}
+resend inboxes threads labels remove b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1 4d8e2a1c-9b3f-4c6d-8a21-3e5f7c9c0d12 7f9c1d2e-4a6b-4c3d-8e15-9b0a7c6d5e34
+```
+
+```json Response theme={"theme":{"light":"github-light","dark":"vesper"}}
+{
+  "object": "list",
+  "data": [
+    {
+      "id": "2a8b4c6d-1e3f-4a5b-9c7d-8e0f1a2b3c4d",
+      "name": "Billing",
+      "color": "#00A2C7"
+    }
+  ]
+}
+```

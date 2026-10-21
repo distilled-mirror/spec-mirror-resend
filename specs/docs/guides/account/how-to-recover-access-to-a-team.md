@@ -12,10 +12,10 @@ If the email you signed in with no longer works (e.g., a former employee's mailb
 * [No admin can sign in](#no-admin-can-sign-in)
 * [You only need the domain](#you-only-need-the-domain)
 
-<Info>
-  Support cannot change the email address on an existing login, so the fix is
-  always to give a login you control access to the team.
-</Info>
+> [!NOTE]
+>
+> Support cannot change the email address on an existing login, so the fix is
+> always to give a login you control access to the team.
 
 ## An admin can still sign in
 
@@ -27,11 +27,11 @@ An admin can fix your access without contacting support:
 
 If you are already a member, an admin can change your role instead. See [Managing Teams](/docs/dashboard/settings/team).
 
-<Tip>
-  Always transfer admin access to another member if you foresee losing access to
-  your email account. Invite the new admin from
-  [Team](https://resend.com/settings/team), then leave the team.
-</Tip>
+> [!TIP]
+>
+> Always transfer admin access to another member if you foresee losing access to
+> your email account. Invite the new admin from
+> [Team](https://resend.com/settings/team), then leave the team.
 
 ## No admin can sign in
 

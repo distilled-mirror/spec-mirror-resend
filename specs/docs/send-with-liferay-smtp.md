@@ -15,39 +15,37 @@ Before you start, you'll need:
 
 ## Guide
 
-<Steps>
-  <Step title="Get the Resend SMTP credentials">
-    When configuring your SMTP integration, you'll need to use the following credentials:
+**1. Get the Resend SMTP credentials**
 
-    * **Host**: `smtp.resend.com`
-    * **Port**: `465`
-    * **Username**: `resend`
-    * **Password**: `YOUR_API_KEY`
-  </Step>
+When configuring your SMTP integration, you'll need to use the following credentials:
 
-  <Step title="Integrate with Liferay">
-    After logging into your Liferay instance as the admin user, you'll need to enable the SMTP integration.
+* **Host**: `smtp.resend.com`
+* **Port**: `465`
+* **Username**: `resend`
+* **Password**: `YOUR_API_KEY`
 
-    1. Navigate to **Control Panel** → **Server Administration** → **Mail**.
+**2. Integrate with Liferay**
 
-    <img alt="Liferay - SMTP" src="https://mintcdn.com/resend/OWNnQaVDyqcGyhhN/images/liferay-smtp-1.jpg?fit=max&auto=format&n=OWNnQaVDyqcGyhhN&q=85&s=94e43af6a43bc9fa8ce8cc486eeb4f05" width="1600" height="865" data-path="images/liferay-smtp-1.jpg" />
+After logging into your Liferay instance as the admin user, you'll need to enable the SMTP integration.
 
-    2. Copy-and-paste the SMTP credentials from Resend to Liferay.
+1. Navigate to **Control Panel** → **Server Administration** → **Mail**.
 
-    * **Outgoing SMTP Server**: `smtp.resend.com`
-    * **Outgoing Port**: `465`
-    * **Enable StartTLS**: `True`
-    * **User Name**: `resend`
-    * **Password**: `YOUR_API_KEY`
+![Liferay - SMTP](https://mintcdn.com/resend/OWNnQaVDyqcGyhhN/images/liferay-smtp-1.jpg?fit=max\&auto=format\&n=OWNnQaVDyqcGyhhN\&q=85\&s=94e43af6a43bc9fa8ce8cc486eeb4f05)
 
-    Make sure to replace `YOUR_API_KEY` with an existing key or create a new [API Key](https://resend.com/api-keys).
+2. Copy-and-paste the SMTP credentials from Resend to Liferay.
 
-    For the additional JavaMail properties, you can use:
+* **Outgoing SMTP Server**: `smtp.resend.com`
+* **Outgoing Port**: `465`
+* **Enable StartTLS**: `True`
+* **User Name**: `resend`
+* **Password**: `YOUR_API_KEY`
 
-    ```
-    mail.smtp.auth=true
-    mail.smtp.starttls.enable=true
-    mail.smtp.starttls.required=true
-    ```
-  </Step>
-</Steps>
+Make sure to replace `YOUR_API_KEY` with an existing key or create a new [API Key](https://resend.com/api-keys).
+
+For the additional JavaMail properties, you can use:
+
+```
+mail.smtp.auth=true
+mail.smtp.starttls.enable=true
+mail.smtp.starttls.required=true
+```

@@ -14,118 +14,114 @@ Alternatively, you can use Resend's code tools to create your webhook from the [
 
 To configure your webhook in the Dashboard:
 
-<Steps>
-  <Step title="Create a route to receive emails.">
-    In your application, create a new route that can accept `POST` requests.
+**1. Create a route to receive emails.**
 
-    Here's how you can implement this:
+In your application, create a new route that can accept `POST` requests.
 
-    <CodeGroup>
-      ```js Next.js theme={"theme":{"light":"github-light","dark":"vesper"}}
-      // app/api/events/route.ts
-      import type { NextRequest } from 'next/server';
-      import { NextResponse } from 'next/server';
+Here's how you can implement this:
 
-      export const POST = async (request: NextRequest) => {
-        const event = await request.json();
+```js Next.js theme={"theme":{"light":"github-light","dark":"vesper"}}
+// app/api/events/route.ts
+import type { NextRequest } from 'next/server';
+import { NextResponse } from 'next/server';
 
-        if (event.type === 'email.received') {
-          return NextResponse.json(event);
-        }
+export const POST = async (request: NextRequest) => {
+  const event = await request.json();
 
-        return NextResponse.json({});
-      };
-      ```
+  if (event.type === 'email.received') {
+    return NextResponse.json(event);
+  }
 
-      ```php Laravel theme={"theme":{"light":"github-light","dark":"vesper"}}
-      // routes/api.php
-      use Illuminate\Http\Request;
-      use Illuminate\Support\Facades\Route;
+  return NextResponse.json({});
+};
+```
 
-      Route::post('/events', function (Request $request) {
-          $event = $request->json()->all();
+```php Laravel theme={"theme":{"light":"github-light","dark":"vesper"}}
+// routes/api.php
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
 
-          if ($event['type'] === 'email.received') {
-              return response()->json($event);
-          }
+Route::post('/events', function (Request $request) {
+    $event = $request->json()->all();
 
-          return response()->json([]);
-      });
-      ```
+    if ($event['type'] === 'email.received') {
+        return response()->json($event);
+    }
 
-      ```php PHP theme={"theme":{"light":"github-light","dark":"vesper"}}
-      // index.php
-      header('Content-Type: application/json');
+    return response()->json([]);
+});
+```
 
-      if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-          http_response_code(405);
-          echo json_encode(['error' => 'Method Not Allowed']);
-          exit;
-      }
+```php PHP theme={"theme":{"light":"github-light","dark":"vesper"}}
+// index.php
+header('Content-Type: application/json');
 
-      $body = file_get_contents('php://input');
-      $event = json_decode($body, true);
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+    http_response_code(405);
+    echo json_encode(['error' => 'Method Not Allowed']);
+    exit;
+}
 
-      if (json_last_error() !== JSON_ERROR_NONE) {
-          http_response_code(400);
-          echo json_encode(['error' => 'Invalid JSON']);
-          exit;
-      }
+$body = file_get_contents('php://input');
+$event = json_decode($body, true);
 
-      if ($event['type'] === 'email.received') {
-          echo json_encode($event);
-          exit;
-      }
+if (json_last_error() !== JSON_ERROR_NONE) {
+    http_response_code(400);
+    echo json_encode(['error' => 'Invalid JSON']);
+    exit;
+}
 
-      echo json_encode([]);
-      ```
+if ($event['type'] === 'email.received') {
+    echo json_encode($event);
+    exit;
+}
 
-      ```rust Rust theme={"theme":{"light":"github-light","dark":"vesper"}}
-      #[derive(Serialize)]
-      struct Empty {}
+echo json_encode([]);
+```
 
-      async fn example(Json(event): Json<resend_rs::events::EmailEvent>) -> Response {
-          if matches!(
-              event.r#type,
-              resend_rs::events::EmailEventType::EmailReceived
-          ) {
-              Json(event).into_response()
-          } else {
-              Json(Empty {}).into_response()
-          }
-      }
-      ```
-    </CodeGroup>
+```rust Rust theme={"theme":{"light":"github-light","dark":"vesper"}}
+#[derive(Serialize)]
+struct Empty {}
 
-    Once you receive the email event, you can process the email body and attachments. You can also implement [webhook request verification](/docs/webhooks/verify-webhooks-requests) to secure your webhook endpoint.
+async fn example(Json(event): Json<resend_rs::events::EmailEvent>) -> Response {
+    if matches!(
+        event.r#type,
+        resend_rs::events::EmailEventType::EmailReceived
+    ) {
+        Json(event).into_response()
+    } else {
+        Json(Empty {}).into_response()
+    }
+}
+```
 
-    <Tip>
-      Any email sent to any username at your receiving domain will be received
-      by Resend and forwarded to your webhook. You can intelligently route based
-      on the `to` field in the webhook event to create different workflows to
-      handle different inbound emails.
-    </Tip>
-  </Step>
+Once you receive the email event, you can process the email body and attachments. You can also implement [webhook request verification](/docs/webhooks/verify-webhooks-requests) to secure your webhook endpoint.
 
-  <Step title="Go to the Webhooks page in your Resend Dashboard" />
+> [!TIP]
+>
+> Any email sent to any username at your receiving domain will be received
+> by Resend and forwarded to your webhook. You can intelligently route based
+> on the `to` field in the webhook event to create different workflows to
+> handle different inbound emails.
 
-  <Step title="Click Add Webhook." />
+**2. Go to the Webhooks page in your Resend Dashboard**
 
-  <Step title="Enter the URL of the route you created for your webhook endpoint." />
+**3. Click Add Webhook.**
 
-  <Step title="Select the event type `email.received`.">
-    <img alt="Add Webhook for Receiving Emails" src="https://mintcdn.com/resend/1QlhxulUFE6jxYM_/images/inbound-webhook-setup.jpg?fit=max&auto=format&n=1QlhxulUFE6jxYM_&q=85&s=55ae3e35788d91065d59ff4ddebff7e6" width="1110" height="1016" data-path="images/inbound-webhook-setup.jpg" />
-  </Step>
+**4. Enter the URL of the route you created for your webhook endpoint.**
 
-  <Step title="Click Add." />
-</Steps>
+**5. Select the event type `email.received`.**
 
-<Tip>
-  For development, you can create a tunnel to your localhost server using a tool like
-  [ngrok](https://ngrok.com/download) or [VS Code Port Forwarding](https://code.visualstudio.com/docs/debugtest/port-forwarding). These tools serve your local dev environment at a public URL you can use to test your local webhook endpoint.
+![Add Webhook for Receiving Emails](https://mintcdn.com/resend/1QlhxulUFE6jxYM_/images/inbound-webhook-setup.jpg?fit=max\&auto=format\&n=1QlhxulUFE6jxYM_\&q=85\&s=55ae3e35788d91065d59ff4ddebff7e6)
 
-  Example: `https://example123.ngrok.io/api/webhook`
-</Tip>
+**6. Click Add.**
+
+> [!TIP]
+>
+> For development, you can create a tunnel to your localhost server using a tool like
+> [ngrok](https://ngrok.com/download) or [VS Code Port Forwarding](https://code.visualstudio.com/docs/debugtest/port-forwarding). These tools serve your local dev environment at a public URL you can use to test your local webhook endpoint.
+>
+> Example: `https://example123.ngrok.io/api/webhook`
 
 Once you receive an email event, you can process the email body and attachments from the webhook payload.
 
@@ -156,14 +152,14 @@ Once you receive an email event, you can process the email body and attachments 
 }
 ```
 
-<Info>
-  Webhooks do not include the email body, headers, or attachments, only their
-  metadata. You must call the [Received emails
-  API](/docs/api-reference/emails/retrieve-received-email) or the [Attachments
-  API](/docs/api-reference/emails/list-received-email-attachments) to retrieve them.
-  This design choice supports large attachments in serverless environments that
-  have limited request body sizes.
-</Info>
+> [!NOTE]
+>
+> Webhooks do not include the email body, headers, or attachments, only their
+> metadata. You must call the [Received emails
+> API](/docs/api-reference/emails/retrieve-received-email) or the [Attachments
+> API](/docs/api-reference/emails/list-received-email-attachments) to retrieve them.
+> This design choice supports large attachments in serverless environments that
+> have limited request body sizes.
 
 ## API Reference
 

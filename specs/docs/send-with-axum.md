@@ -15,105 +15,101 @@ Before you start, you'll need:
 
 ## Guide
 
-<Steps>
-  <Step title="Install">
-    Get the Resend Rust SDK and the [Tokio](https://tokio.rs) runtime.
+**1. Install**
 
-    ```bash theme={"theme":{"light":"github-light","dark":"vesper"}}
-    cargo add resend-rs
-    cargo add tokio -F macros,rt-multi-thread
-    ```
-  </Step>
+Get the Resend Rust SDK and the [Tokio](https://tokio.rs) runtime.
 
-  <Step title="Send an Email">
-    ```rust theme={"theme":{"light":"github-light","dark":"vesper"}}
-    use std::sync::Arc;
+```bash theme={"theme":{"light":"github-light","dark":"vesper"}}
+cargo add resend-rs
+cargo add tokio -F macros,rt-multi-thread
+```
 
-    use axum::{extract::State, http::StatusCode, routing::get, Router};
-    use resend_rs::types::CreateEmailBaseOptions;
-    use resend_rs::{Resend, Result};
+**2. Send an Email**
 
-    // Cloning the Resend client is fine and cheap as the internal HTTP client is
-    // not cloned.
-    #[derive(Clone)]
-    struct AppState {
-      resend: Resend,
-    }
+```rust theme={"theme":{"light":"github-light","dark":"vesper"}}
+use std::sync::Arc;
 
-    #[tokio::main]
-    async fn main() {
-      let shared_state = Arc::new(AppState {
-        resend: Resend::new("re_xxxxxxxxx"),
-      });
+use axum::{extract::State, http::StatusCode, routing::get, Router};
+use resend_rs::types::CreateEmailBaseOptions;
+use resend_rs::{Resend, Result};
 
-      // build our application with a single route
-      let app = Router::new()
-        .route("/", get(endpoint))
-        // provide the state so the router can access it
-        .with_state(shared_state);
+// Cloning the Resend client is fine and cheap as the internal HTTP client is
+// not cloned.
+#[derive(Clone)]
+struct AppState {
+  resend: Resend,
+}
 
-      // run our app with hyper, listening globally on port 3000
-      let listener = tokio::net::TcpListener::bind("0.0.0.0:3000").await.unwrap();
-      axum::serve(listener, app).await.unwrap();
-    }
+#[tokio::main]
+async fn main() {
+  let shared_state = Arc::new(AppState {
+    resend: Resend::new("re_xxxxxxxxx"),
+  });
 
-    async fn endpoint(State(state): State<Arc<AppState>>) -> Result<String, StatusCode> {
-      let from = "Acme <onboarding@resend.dev>";
-      let to = ["delivered@resend.dev"];
-      let subject = "Hello World";
+  // build our application with a single route
+  let app = Router::new()
+    .route("/", get(endpoint))
+    // provide the state so the router can access it
+    .with_state(shared_state);
 
-      let email = CreateEmailBaseOptions::new(from, to, subject)
-        .with_html("<strong>It works!</strong>");
+  // run our app with hyper, listening globally on port 3000
+  let listener = tokio::net::TcpListener::bind("0.0.0.0:3000").await.unwrap();
+  axum::serve(listener, app).await.unwrap();
+}
 
-      // access the state via the `State` extractor and handle the error
-      match state.resend.emails.send(email).await {
-        Ok(email) => Ok(email.id.to_string()),
-        Err(_) => Err(StatusCode::INTERNAL_SERVER_ERROR),
-      }
-    }
-    ```
+async fn endpoint(State(state): State<Arc<AppState>>) -> Result<String, StatusCode> {
+  let from = "Acme <onboarding@resend.dev>";
+  let to = ["delivered@resend.dev"];
+  let subject = "Hello World";
 
-    Opening your browser at `http://localhost:3000` (or running `curl localhost:3000`) sends an
-    email and returns its id!
-  </Step>
-</Steps>
+  let email = CreateEmailBaseOptions::new(from, to, subject)
+    .with_html("<strong>It works!</strong>");
+
+  // access the state via the `State` extractor and handle the error
+  match state.resend.emails.send(email).await {
+    Ok(email) => Ok(email.id.to_string()),
+    Err(_) => Err(StatusCode::INTERNAL_SERVER_ERROR),
+  }
+}
+```
+
+Opening your browser at `http://localhost:3000` (or running `curl localhost:3000`) sends an
+email and returns its id!
 
 ## Examples
 
-<CardGroup cols={3}>
-  <Card title="Axum App" icon="arrow-up-right-from-square" href="https://github.com/resend/resend-examples/tree/main/rust-resend-examples/axum_app">
-    Full Axum web framework application
-  </Card>
+> **[Axum App](https://github.com/resend/resend-examples/tree/main/rust-resend-examples/axum_app)**
+>
+> Full Axum web framework application
 
-  <Card title="Basic Send" icon="arrow-up-right-from-square" href="https://github.com/resend/resend-examples/blob/main/rust-resend-examples/examples/basic_send.rs">
-    Basic email sending
-  </Card>
+> **[Basic Send](https://github.com/resend/resend-examples/blob/main/rust-resend-examples/examples/basic_send.rs)**
+>
+> Basic email sending
 
-  <Card title="Attachments" icon="arrow-up-right-from-square" href="https://github.com/resend/resend-examples/blob/main/rust-resend-examples/examples/with_attachments.rs">
-    Send emails with file attachments
-  </Card>
+> **[Attachments](https://github.com/resend/resend-examples/blob/main/rust-resend-examples/examples/with_attachments.rs)**
+>
+> Send emails with file attachments
 
-  <Card title="Templates" icon="arrow-up-right-from-square" href="https://github.com/resend/resend-examples/blob/main/rust-resend-examples/examples/with_template.rs">
-    Send emails using Resend hosted templates
-  </Card>
+> **[Templates](https://github.com/resend/resend-examples/blob/main/rust-resend-examples/examples/with_template.rs)**
+>
+> Send emails using Resend hosted templates
 
-  <Card title="Scheduling" icon="arrow-up-right-from-square" href="https://github.com/resend/resend-examples/blob/main/rust-resend-examples/examples/scheduled_send.rs">
-    Schedule emails for future delivery
-  </Card>
+> **[Scheduling](https://github.com/resend/resend-examples/blob/main/rust-resend-examples/examples/scheduled_send.rs)**
+>
+> Schedule emails for future delivery
 
-  <Card title="Audiences" icon="arrow-up-right-from-square" href="https://github.com/resend/resend-examples/blob/main/rust-resend-examples/examples/audiences.rs">
-    Manage contacts and audiences
-  </Card>
+> **[Audiences](https://github.com/resend/resend-examples/blob/main/rust-resend-examples/examples/audiences.rs)**
+>
+> Manage contacts and audiences
 
-  <Card title="Domains" icon="arrow-up-right-from-square" href="https://github.com/resend/resend-examples/blob/main/rust-resend-examples/examples/domains.rs">
-    Create and manage sending domains
-  </Card>
+> **[Domains](https://github.com/resend/resend-examples/blob/main/rust-resend-examples/examples/domains.rs)**
+>
+> Create and manage sending domains
 
-  <Card title="Inbound Webhooks" icon="arrow-up-right-from-square" href="https://github.com/resend/resend-examples/blob/main/rust-resend-examples/examples/inbound.rs">
-    Receive and process inbound emails
-  </Card>
+> **[Inbound Webhooks](https://github.com/resend/resend-examples/blob/main/rust-resend-examples/examples/inbound.rs)**
+>
+> Receive and process inbound emails
 
-  <Card title="Double Opt-in" icon="arrow-up-right-from-square" href="https://github.com/resend/resend-examples/blob/main/rust-resend-examples/examples/double_optin_subscribe.rs">
-    Double opt-in subscription flow
-  </Card>
-</CardGroup>
+> **[Double Opt-in](https://github.com/resend/resend-examples/blob/main/rust-resend-examples/examples/double_optin_subscribe.rs)**
+>
+> Double opt-in subscription flow

@@ -6,71 +6,14 @@
 
 > Update an unsent draft.
 
-export const ResendParamField = ({children, body, path, ...props}) => {
-  const [lang, setLang] = useState(() => {
-    return localStorage.getItem('code') || '"Node.js"';
-  });
-  useEffect(() => {
-    const onStorage = event => {
-      const key = event.detail.key;
-      if (key === 'code') {
-        setLang(event.detail.value);
-      }
-    };
-    document.addEventListener('mintlify-localstorage', onStorage);
-    return () => {
-      document.removeEventListener('mintlify-localstorage', onStorage);
-    };
-  }, []);
-  const toCamelCase = str => typeof str === 'string' ? str.replace(/[_-](\w)/g, (_, c) => c.toUpperCase()) : str;
-  const resolvedBody = useMemo(() => {
-    const value = JSON.parse(lang);
-    return value === 'Node.js' ? toCamelCase(body) : body;
-  }, [body, lang]);
-  const resolvedPath = useMemo(() => {
-    const value = JSON.parse(lang);
-    return value === 'Node.js' ? toCamelCase(path) : path;
-  }, [path, lang]);
-  return <ParamField body={resolvedBody} path={resolvedPath} {...props}>
-      {children}
-    </ParamField>;
-};
-
-<Warning>
-  Inboxes are currently in private beta and only available to a limited
-  number of users. The response shape might change before GA.
-
-  <span />
-
-  [Get early access](https://resend.com/settings/labs) if you're interested in testing this feature.
-
-  <span />
-
-  Once you have access, upgrade your Resend SDK to use the new methods:
-
-  <CodeGroup>
-    ```bash Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
-    npm install resend@6.33.0
-    ```
-
-    ```bash CLI theme={"theme":{"light":"github-light","dark":"vesper"}}
-    npm install -g resend-cli@2.25.0
-    ```
-  </CodeGroup>
-</Warning>
-
 Updates the content of an unsent draft. A draft that was already sent returns
 a `409`.
 
 ## Path Parameters
 
-<ResendParamField path="inbox_id" type="string" required>
-  The Inbox ID or the inbox email address, such as `support@example.com`.
-</ResendParamField>
+The Inbox ID or the inbox email address, such as `support@example.com`.
 
-<ResendParamField path="draft_id" type="string" required>
-  The Draft ID.
-</ResendParamField>
+The Draft ID.
 
 ## Body Parameters
 
@@ -79,95 +22,188 @@ with `html` or `text` replaces both, and the one you leave out is saved as
 `null`. After the update, the draft must still have at least one non-empty
 field, and `to`, `cc`, and `bcc` combined cannot exceed 50 recipients.
 
-<ParamField body="to" type="string | string[] | null">
-  Recipients. Send `null` or `[]` to clear them.
-</ParamField>
+**to** `string | string[] | null`
 
-<ParamField body="cc" type="string | string[] | null">
-  CC recipients. Send `null` or `[]` to clear them.
-</ParamField>
+Recipients. Send `null` or `[]` to clear them.
 
-<ParamField body="bcc" type="string | string[] | null">
-  BCC recipients. Send `null` or `[]` to clear them.
-</ParamField>
+**cc** `string | string[] | null`
 
-<ParamField body="subject" type="string | null">
-  The subject. 1 to 2000 characters, with no line breaks. Send `null` to clear
-  it.
-</ParamField>
+CC recipients. Send `null` or `[]` to clear them.
 
-<ParamField body="html" type="string | null">
-  The HTML body. Send `null` to clear it.
-</ParamField>
+**bcc** `string | string[] | null`
 
-<ParamField body="text" type="string | null">
-  The plain-text body. Send `null` to clear it.
-</ParamField>
+BCC recipients. Send `null` or `[]` to clear them.
 
-<ParamField body="attachments" type="array | null">
-  Files to store on the draft, up to 25 MB in total. Sending the field replaces
-  every attachment on the draft. Send `null` or `[]` to remove them all. Drafts
-  do not accept `path` or `content_id`.
+**subject** `string | null`
 
-  <Expandable defaultOpen="true" title="properties">
-    <ParamField body="content" type="buffer | string" required>
-      Content of an attached file, passed as a buffer or Base64 string.
-    </ParamField>
+The subject. 1 to 2000 characters, with no line breaks. Send `null` to clear
+it.
 
-    <ParamField body="filename" type="string" required>
-      Name of attached file.
-    </ParamField>
+**html** `string | null`
 
-    <ResendParamField body="content_type" type="string" required>
-      Content type for the attachment. Must be a valid MIME type, such as
-      `application/pdf`.
-    </ResendParamField>
-  </Expandable>
-</ParamField>
+The HTML body. Send `null` to clear it.
+
+**text** `string | null`
+
+The plain-text body. Send `null` to clear it.
+
+**attachments** `array | null`
+
+Files to store on the draft, up to 25 MB in total. Sending the field replaces
+every attachment on the draft. Send `null` or `[]` to remove them all. Drafts
+do not accept `path` or `content_id`.
+
+**properties**
+
+**content** `buffer | string` *required*
+
+Content of an attached file, passed as a buffer or Base64 string.
+
+**filename** `string` *required*
+
+Name of attached file.
+
+Content type for the attachment. Must be a valid MIME type, such as
+`application/pdf`.
 
 ## Response Fields
 
-<ParamField body="object" type="string">
-  Always `inbox_draft`.
-</ParamField>
+**object** `string`
 
-<ParamField body="id" type="string">
-  The ID of the draft.
-</ParamField>
+Always `inbox_draft`.
 
-<RequestExample>
-  ```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
-  import { Resend } from 'resend';
+**id** `string`
 
-  const resend = new Resend('re_xxxxxxxxx');
+The ID of the draft.
 
-  const { data, error } = await resend.inboxes.drafts.update({
-    inboxId: 'b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1',
-    draftId: 'c3a1e8b4-2d5f-4a7c-9e10-6b8d7f5a4c32',
-    subject: 'Refund issued for order 1041',
-  });
-  ```
+```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
+import { Resend } from 'resend';
 
-  ```bash cURL theme={"theme":{"light":"github-light","dark":"vesper"}}
-  curl -X PATCH 'https://api.resend.com/inboxes/b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1/drafts/c3a1e8b4-2d5f-4a7c-9e10-6b8d7f5a4c32' \
-       -H 'Authorization: Bearer re_xxxxxxxxx' \
-       -H 'Content-Type: application/json' \
-       -d $'{
-    "subject": "Refund issued for order 1041"
-  }'
-  ```
+const resend = new Resend('re_xxxxxxxxx');
 
-  ```bash CLI theme={"theme":{"light":"github-light","dark":"vesper"}}
-  resend inboxes drafts update b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1 c3a1e8b4-2d5f-4a7c-9e10-6b8d7f5a4c32 \
-    --subject "Refund issued for order 1041"
-  ```
-</RequestExample>
+const { data, error } = await resend.inboxes.drafts.update({
+  inboxId: 'b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1',
+  draftId: 'c3a1e8b4-2d5f-4a7c-9e10-6b8d7f5a4c32',
+  subject: 'Refund issued for order 1041',
+});
+```
 
-<ResponseExample>
-  ```json Response theme={"theme":{"light":"github-light","dark":"vesper"}}
-  {
-    "object": "inbox_draft",
-    "id": "c3a1e8b4-2d5f-4a7c-9e10-6b8d7f5a4c32"
-  }
-  ```
-</ResponseExample>
+```php PHP theme={"theme":{"light":"github-light","dark":"vesper"}}
+$resend = Resend::client('re_xxxxxxxxx');
+
+$resend->inboxes->drafts->update(
+  'b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1',
+  'c3a1e8b4-2d5f-4a7c-9e10-6b8d7f5a4c32',
+  ['subject' => 'Refund issued for order 1041']
+);
+```
+
+```python Python theme={"theme":{"light":"github-light","dark":"vesper"}}
+import resend
+
+resend.api_key = "re_xxxxxxxxx"
+
+params: resend.Inboxes.Drafts.UpdateParams = {
+    "inbox_id": "b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1",
+    "id": "c3a1e8b4-2d5f-4a7c-9e10-6b8d7f5a4c32",
+    "subject": "Refund issued for order 1041",
+}
+
+resend.Inboxes.Drafts.update(params)
+```
+
+```ruby Ruby theme={"theme":{"light":"github-light","dark":"vesper"}}
+require "resend"
+
+Resend.api_key = "re_xxxxxxxxx"
+
+params = {
+  inbox_id: "b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1",
+  draft_id: "c3a1e8b4-2d5f-4a7c-9e10-6b8d7f5a4c32",
+  subject: "Refund issued for order 1041"
+}
+
+Resend::Inboxes::Drafts.update(params)
+```
+
+```go Go theme={"theme":{"light":"github-light","dark":"vesper"}}
+package main
+
+import "github.com/resend/resend-go/v4"
+
+func main() {
+	client := resend.NewClient("re_xxxxxxxxx")
+
+	subject := "Refund issued for order 1041"
+	params := &resend.UpdateInboxDraftRequest{
+		Subject: &subject,
+	}
+
+	client.Inboxes.Drafts.Update(
+		"b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1",
+		"c3a1e8b4-2d5f-4a7c-9e10-6b8d7f5a4c32",
+		params,
+	)
+```
+
+```rust Rust theme={"theme":{"light":"github-light","dark":"vesper"}}
+use resend_rs::{
+  types::{UpdateInboxDraftOptions},
+  Resend, Result,
+};
+
+#[tokio::main]
+async fn main() -> Result<()> {
+  let resend = Resend::new("re_xxxxxxxxx");
+
+  let opts = UpdateInboxDraftOptions::new().with_subject("Refund issued for order 1041");
+
+  let _draft = resend
+    .inboxes
+    .update_draft(
+      "b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1",
+      "c3a1e8b4-2d5f-4a7c-9e10-6b8d7f5a4c32",
+      opts,
+    )
+    .await?;
+
+  Ok(())
+}
+```
+
+```csharp .NET theme={"theme":{"light":"github-light","dark":"vesper"}}
+using Resend;
+
+IResend resend = ResendClient.Create( "re_xxxxxxxxx" ); // Or from DI
+
+var resp = await resend.InboxDraftUpdateAsync(
+    new Guid( "b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1" ),
+    new Guid( "c3a1e8b4-2d5f-4a7c-9e10-6b8d7f5a4c32" ),
+    new InboxDraftUpdateData()
+    {
+        Subject = "Refund issued for order 1041",
+    }
+);
+Console.WriteLine( "Draft Id={0}", resp.Content );
+```
+
+```bash cURL theme={"theme":{"light":"github-light","dark":"vesper"}}
+curl -X PATCH 'https://api.resend.com/inboxes/b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1/drafts/c3a1e8b4-2d5f-4a7c-9e10-6b8d7f5a4c32' \
+     -H 'Authorization: Bearer re_xxxxxxxxx' \
+     -H 'Content-Type: application/json' \
+     -d $'{
+  "subject": "Refund issued for order 1041"
+}'
+```
+
+```bash CLI theme={"theme":{"light":"github-light","dark":"vesper"}}
+resend inboxes drafts update b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1 c3a1e8b4-2d5f-4a7c-9e10-6b8d7f5a4c32 \
+  --subject "Refund issued for order 1041"
+```
+
+```json Response theme={"theme":{"light":"github-light","dark":"vesper"}}
+{
+  "object": "inbox_draft",
+  "id": "c3a1e8b4-2d5f-4a7c-9e10-6b8d7f5a4c32"
+}
+```

@@ -14,18 +14,16 @@ You can create Segments in the [Dashboard](https://resend.com/audience/segments)
 
 To create a Segment in the Resend Dashboard:
 
-<Steps>
-  <Step title="Go to the **Segments** Dashboard view." />
+**1. Go to the **Segments** Dashboard view.**
 
-  <Step title="Select **Create Segment**." />
+**2. Select **Create Segment**.**
 
-  <Step title="Enter a name.">
-    Enter a name for your Segment that describes the Contacts in this group
-    (e.g., "newsletter subscribers", "free trial users").
-  </Step>
+**3. Enter a name.**
 
-  <Step title="Click **Add** to confirm." />
-</Steps>
+Enter a name for your Segment that describes the Contacts in this group
+(e.g., "newsletter subscribers", "free trial users").
+
+**4. Click **Add** to confirm.**
 
 ## View Segments
 
@@ -33,7 +31,7 @@ The [**Segments** Dashboard view](https://resend.com/audience/segments) shows a 
 
 ## Edit Segments
 
-Click the **More options** <span className="inline-block align-middle"><Icon icon="ellipsis" iconType="solid" /></span> menu next to each Segment to:
+Click the **More options**  menu next to each Segment to:
 
 * edit the Segment name
 * copy the Segment ID to your clipboard
@@ -51,11 +49,11 @@ You can add a Contact to a Segment via the Dashboard by [editing the Contact](/d
 
 You can also use the [Contacts API](/docs/api-reference/contacts/add-contact-to-segment) or [Contacts CLI commands](/docs/cli#contacts) to add or remove Segments from a Contact's profile programmatically.
 
-<Note>
-  If a Contact's unsubscribed status is `true`, or the Contact is on the [Suppression List](/docs/dashboard/emails/email-suppressions), Resend will not send any emails to them, even if you have added them to a Segment.
-
-  Regularly [review your unsubscribe list](/docs/dashboard/contacts/managing-unsubscribe-list) and remove recipients from your Contact list who no longer wish to receive your emails.
-</Note>
+> [!NOTE]
+>
+> If a Contact's unsubscribed status is `true`, or the Contact is on the [Suppression List](/docs/dashboard/emails/email-suppressions), Resend will not send any emails to them, even if you have added them to a Segment.
+>
+> Regularly [review your unsubscribe list](/docs/dashboard/contacts/managing-unsubscribe-list) and remove recipients from your Contact list who no longer wish to receive your emails.
 
 ## Delete Segments
 
@@ -65,17 +63,15 @@ You can delete Segments in the [Dashboard](https://resend.com/audience/segments)
 
 To delete one or more Segments in the Dashboard:
 
-<Steps>
-  <Step title="Go to the **Segments** Dashboard view." />
+**1. Go to the **Segments** Dashboard view.**
 
-  <Step title="Select the Segment(s) you want to delete by clicking the checkboxes next to each Segment." />
+**2. Select the Segment(s) you want to delete by clicking the checkboxes next to each Segment.**
 
-  <Step title="Click **Delete** in the bottom action bar." />
+**3. Click **Delete** in the bottom action bar.**
 
-  <Step title="Type the Segment name (for single selection) or `DELETE N SEGMENTS` (for multiple) to confirm." />
+**4. Type the Segment name (for single selection) or `DELETE N SEGMENTS` (for multiple) to confirm.**
 
-  <Step title="Press **Cmd+Enter** or click **Delete Segments** to complete." />
-</Steps>
+**5. Press **Cmd+Enter** or click **Delete Segments** to complete.**
 
 You can also use keyboard shortcuts:
 
@@ -94,22 +90,24 @@ Admins can download your data in CSV format for the following resources:
 * Logs
 * API keys
 
-<Info>Currently, exports are limited to admin users of your team.</Info>
+> [!NOTE]
+>
+> Currently, exports are limited to admin users of your team.
 
 To start, apply filters to your data and click on the "Export" button. Confirm your filters before exporting your data.
 
-<video autoPlay muted loop playsinline className="w-full aspect-video" src="https://mintcdn.com/resend/OWNnQaVDyqcGyhhN/images/exports.mp4?fit=max&auto=format&n=OWNnQaVDyqcGyhhN&q=85&s=1149ee4e83b4414e75a0ecaa92774c38" data-path="images/exports.mp4" />
+<video autoPlay muted loop playsinline src="https://mintcdn.com/resend/OWNnQaVDyqcGyhhN/images/exports.mp4?fit=max&auto=format&n=OWNnQaVDyqcGyhhN&q=85&s=1149ee4e83b4414e75a0ecaa92774c38" />
 
 If your exported data includes 1,000 items or less, the export will download immediately. For larger exports, you'll receive an email with a link to download your data.
 
 All admins on your team can securely access the export for 7 days. Unavailable exports are marked as "Expired."
 
-<Note>
-  All exports your team creates are listed in the
-  [Exports](https://resend.com/exports) page under **Settings** > **Team** >
-  **Exports**. Select any export to view its details page. All members of your
-  team can view your exports, but only admins can download the data.
-</Note>
+> [!NOTE]
+>
+> All exports your team creates are listed in the
+> [Exports](https://resend.com/exports) page under **Settings** > **Team** >
+> **Exports**. Select any export to view its details page. All members of your
+> team can view your exports, but only admins can download the data.
 
 ## API Reference
 

@@ -8,49 +8,47 @@
 
 [n8n](https://n8n.io) is a workflow automation platform that lets you connect apps and build powerful automations. The official [Resend node](https://github.com/resend/n8n-nodes-resend) (`n8n-nodes-resend`) provides full coverage of the Resend API. From within n8n, you can send emails, manage contacts, handle domains, and trigger workflows from email events.
 
-<img alt="Resend node in the n8n editor" src="https://mintcdn.com/resend/bsGJjyDJfHnB7xCx/images/n8n-integration.png?fit=max&auto=format&n=bsGJjyDJfHnB7xCx&q=85&s=ed6c44c61540d4e88607a123ffb9c1c9" width="1852" height="1089" data-path="images/n8n-integration.png" />
+![Resend node in the n8n editor](https://mintcdn.com/resend/bsGJjyDJfHnB7xCx/images/n8n-integration.png?fit=max\&auto=format\&n=bsGJjyDJfHnB7xCx\&q=85\&s=ed6c44c61540d4e88607a123ffb9c1c9)
 
 ## How to use Resend's n8n node
 
-<Steps>
-  <Step title="Install the Resend node">
-    1. Open the nodes panel by selecting **+** or pressing **Tab**
-    2. Search for **Resend**
-    3. Select **Install** to install the node for your instance
-    4. The node is now available in all your workflows
+**1. Install the Resend node**
 
-    <video autoPlay muted loop playsInline className="w-full" src="https://mintcdn.com/resend/z1A2Ch2mBjrpogJr/images/n8n-integration-install.mp4?fit=max&auto=format&n=z1A2Ch2mBjrpogJr&q=85&s=368da1206f532b6fecc21af4887a5934" data-path="images/n8n-integration-install.mp4" />
-  </Step>
+1. Open the nodes panel by selecting **+** or pressing **Tab**
+2. Search for **Resend**
+3. Select **Install** to install the node for your instance
+4. The node is now available in all your workflows
 
-  <Step title="Setup Resend">
-    1. [Create an API Key](https://resend.com/api-keys): copy this key to your clipboard
-    2. [Verify your own domain](https://resend.com/domains): to send to email addresses other than your own
-  </Step>
+<video autoPlay muted loop playsInline src="https://mintcdn.com/resend/z1A2Ch2mBjrpogJr/images/n8n-integration-install.mp4?fit=max&auto=format&n=z1A2Ch2mBjrpogJr&q=85&s=368da1206f532b6fecc21af4887a5934" />
 
-  <Step title="Add your Resend API credential">
-    1. In n8n, go to **Credentials** > **Add credential**.
-    2. Search for **Resend API** and paste your API key.
+**2. Setup Resend**
 
-    <video autoPlay muted loop playsInline className="w-full" src="https://mintcdn.com/resend/bsGJjyDJfHnB7xCx/images/n8n-integration-credential.mp4?fit=max&auto=format&n=bsGJjyDJfHnB7xCx&q=85&s=fb0b36a5de248b7a2eee873f427e4481" data-path="images/n8n-integration-credential.mp4" />
+1. [Create an API Key](https://resend.com/api-keys): copy this key to your clipboard
+2. [Verify your own domain](https://resend.com/domains): to send to email addresses other than your own
 
-    This credential is used by the main **Resend** node for all API operations.
-  </Step>
+**3. Add your Resend API credential**
 
-  <Step title="Send your first email">
-    1. Click the **+** (Add node) connector on the canvas.
-    2. Search for **Resend** in the nodes panel.
-    3. n8n displays a list of available actions — select **Send an Email**.
-    4. The Resend node is added to your workflow with the **Send** operation pre-selected.
-    5. Fill in the **From**, **To**, **Subject**, and **Email Body** fields.
-    6. Execute the node.
+1. In n8n, go to **Credentials** > **Add credential**.
+2. Search for **Resend API** and paste your API key.
 
-    <Note>
-      By default, you can only send emails to your own email address using the
-      `onboarding@resend.dev` sender domain. To send to other recipients, [add a
-      custom domain](/docs/dashboard/domains/introduction) to your Resend account.
-    </Note>
-  </Step>
-</Steps>
+<video autoPlay muted loop playsInline src="https://mintcdn.com/resend/bsGJjyDJfHnB7xCx/images/n8n-integration-credential.mp4?fit=max&auto=format&n=bsGJjyDJfHnB7xCx&q=85&s=fb0b36a5de248b7a2eee873f427e4481" />
+
+This credential is used by the main **Resend** node for all API operations.
+
+**4. Send your first email**
+
+1. Click the **+** (Add node) connector on the canvas.
+2. Search for **Resend** in the nodes panel.
+3. n8n displays a list of available actions — select **Send an Email**.
+4. The Resend node is added to your workflow with the **Send** operation pre-selected.
+5. Fill in the **From**, **To**, **Subject**, and **Email Body** fields.
+6. Execute the node.
+
+> [!NOTE]
+>
+> By default, you can only send emails to your own email address using the
+> `onboarding@resend.dev` sender domain. To send to other recipients, [add a
+> custom domain](/docs/dashboard/domains/introduction) to your Resend account.
 
 ## Human in the Loop (Send and Wait)
 
@@ -82,12 +80,12 @@ The **Resend Trigger** node lets you start workflows automatically when email ev
    * Copy the signing secret (starts with `whsec_`).
    * In n8n, go to **Credentials** > **Add credential**, search for **Resend Webhook Signing Secret**, and paste the secret.
 
-<Info>
-  Give each webhook credential a unique name (e.g., "Resend Webhook — Bounces"
-  or "Resend Webhook — Delivery Events"). This makes it much easier to identify
-  the right credential when you have multiple triggers connected to different
-  webhooks.
-</Info>
+> [!NOTE]
+>
+> Give each webhook credential a unique name (e.g., "Resend Webhook — Bounces"
+> or "Resend Webhook — Delivery Events"). This makes it much easier to identify
+> the right credential when you have multiple triggers connected to different
+> webhooks.
 
 3. Select the events you want to listen for.
 4. Copy the **webhook URL** from the Trigger node and paste it into your Resend Dashboard webhook configuration.
@@ -123,8 +121,8 @@ Here's a simple workflow you can build with the Resend nodes:
 
 The Trigger-Action pattern works for any event. For example, you can notify your team on Slack when an email bounces, or log delivery events to a spreadsheet.
 
-<Note>
-  The Resend node is also available as an [AI
-  tool](https://docs.n8n.io/integrations/builtin/cluster-nodes/sub-nodes/n8n-nodes-langchain.toolworkflow/)
-  in n8n, so you can use it inside AI agent workflows.
-</Note>
+> [!NOTE]
+>
+> The Resend node is also available as an [AI
+> tool](https://docs.n8n.io/integrations/builtin/cluster-nodes/sub-nodes/n8n-nodes-langchain.toolworkflow/)
+> in n8n, so you can use it inside AI agent workflows.

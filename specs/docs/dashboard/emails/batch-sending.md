@@ -16,253 +16,251 @@ Use batch sending when you need to:
 * Trigger emails to different recipients with unique content
 * Reduce the number of API calls to improve performance
 
-<Note>
-  For marketing campaigns, [use our no-code editor,
-  Broadcasts](/docs/dashboard/broadcasts/introduction), instead.
-</Note>
+> [!NOTE]
+>
+> For marketing campaigns, [use our no-code editor,
+> Broadcasts](/docs/dashboard/broadcasts/introduction), instead.
 
 ## Send batch emails
 
 You can send up to 100 emails in a single API call using the batch endpoint. Each email in the batch can have different recipients, subjects, and content.
 
-<CodeGroup>
-  ```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
-  import { Resend } from 'resend';
+```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
+import { Resend } from 'resend';
 
-  const resend = new Resend('re_xxxxxxxxx');
+const resend = new Resend('re_xxxxxxxxx');
 
-  const { data, error } = await resend.batch.send([
-    {
-      from: 'Acme <onboarding@resend.dev>',
-      to: ['delivered@resend.dev'],
-      subject: 'Welcome to Acme',
-      html: '<p>Thanks for signing up!</p>',
-    },
-    {
-      from: 'Acme <onboarding@resend.dev>',
-      to: ['delivered@resend.dev'],
-      subject: 'Order Confirmation',
-      html: '<p>Your order has been confirmed.</p>',
-    },
-  ]);
-
-  console.log(data);
-  ```
-
-  ```php PHP theme={"theme":{"light":"github-light","dark":"vesper"}}
-  $resend = Resend::client('re_xxxxxxxxx');
-
-  $resend->batch->send([
-    [
-      'from' => 'Acme <onboarding@resend.dev>',
-      'to' => ['delivered@resend.dev'],
-      'subject' => 'Welcome to Acme',
-      'html' => '<p>Thanks for signing up!</p>',
-    ],
-    [
-      'from' => 'Acme <onboarding@resend.dev>',
-      'to' => ['delivered@resend.dev'],
-      'subject' => 'Order Confirmation',
-      'html' => '<p>Your order has been confirmed.</p>',
-    ]
-  ]);
-  ```
-
-  ```py Python theme={"theme":{"light":"github-light","dark":"vesper"}}
-  import resend
-  from typing import List
-
-  resend.api_key = "re_xxxxxxxxx"
-
-  params: List[resend.Emails.SendParams] = [
-    {
-      "from": "Acme <onboarding@resend.dev>",
-      "to": ["delivered@resend.dev"],
-      "subject": "Welcome to Acme",
-      "html": "<p>Thanks for signing up!</p>",
-    },
-    {
-      "from": "Acme <onboarding@resend.dev>",
-      "to": ["delivered@resend.dev"],
-      "subject": "Order Confirmation",
-      "html": "<p>Your order has been confirmed.</p>",
-    }
-  ]
-
-  resend.Batch.send(params)
-  ```
-
-  ```rb Ruby theme={"theme":{"light":"github-light","dark":"vesper"}}
-  require "resend"
-
-  Resend.api_key = 're_xxxxxxxxx'
-
-  params = [
-    {
-      "from": "Acme <onboarding@resend.dev>",
-      "to": ["delivered@resend.dev"],
-      "subject": "Welcome to Acme",
-      "html": "<p>Thanks for signing up!</p>",
-    },
-    {
-      "from": "Acme <onboarding@resend.dev>",
-      "to": ["delivered@resend.dev"],
-      "subject": "Order Confirmation",
-      "html": "<p>Your order has been confirmed.</p>",
-    }
-  ]
-
-  Resend::Batch.send(params)
-  ```
-
-  ```go Go theme={"theme":{"light":"github-light","dark":"vesper"}}
-  package main
-
-  import (
-  	"context"
-  	"fmt"
-
-  	"github.com/resend/resend-go/v4"
-  )
-
-  func main() {
-    ctx := context.TODO()
-    client := resend.NewClient("re_xxxxxxxxx")
-
-    var batchEmails = []*resend.SendEmailRequest{
-      {
-        From:    "Acme <onboarding@resend.dev>",
-        To:      []string{"delivered@resend.dev"},
-        Subject: "Welcome to Acme",
-        Html:    "<p>Thanks for signing up!</p>",
-      },
-      {
-        From:    "Acme <onboarding@resend.dev>",
-        To:      []string{"delivered@resend.dev"},
-        Subject: "Order Confirmation",
-        Html:    "<p>Your order has been confirmed.</p>",
-      },
-    }
-
-    sent, err := client.Batch.SendWithContext(ctx, batchEmails)
-
-    if err != nil {
-      panic(err)
-    }
-    fmt.Println(sent.Data)
-  }
-  ```
-
-  ```rust Rust theme={"theme":{"light":"github-light","dark":"vesper"}}
-  use resend_rs::types::CreateEmailBaseOptions;
-  use resend_rs::{Resend, Result};
-
-  #[tokio::main]
-  async fn main() -> Result<()> {
-    let resend = Resend::new("re_xxxxxxxxx");
-
-    let emails = vec![
-      CreateEmailBaseOptions::new(
-        "Acme <onboarding@resend.dev>",
-        vec!["delivered@resend.dev"],
-        "Welcome to Acme",
-      )
-      .with_html("<p>Thanks for signing up!</p>"),
-      CreateEmailBaseOptions::new(
-        "Acme <onboarding@resend.dev>",
-        vec!["delivered@resend.dev"],
-        "Order Confirmation",
-      )
-      .with_html("<p>Your order has been confirmed.</p>"),
-    ];
-
-    let _emails = resend.batch.send(emails).await?;
-
-    Ok(())
-  }
-  ```
-
-  ```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
-  import com.resend.*;
-  import com.resend.core.exception.ResendException;
-  import com.resend.services.batch.model.CreateBatchEmailsResponse;
-  import com.resend.services.emails.model.CreateEmailOptions;
-  import java.util.Arrays;
-
-  public class Main {
-      public static void main(String[] args) throws ResendException {
-          Resend resend = new Resend("re_xxxxxxxxx");
-
-          CreateEmailOptions firstEmail = CreateEmailOptions.builder()
-              .from("Acme <onboarding@resend.dev>")
-              .to("delivered@resend.dev")
-              .subject("Welcome to Acme")
-              .html("<p>Thanks for signing up!</p>")
-              .build();
-
-          CreateEmailOptions secondEmail = CreateEmailOptions.builder()
-              .from("Acme <onboarding@resend.dev>")
-              .to("delivered@resend.dev")
-              .subject("Order Confirmation")
-              .html("<p>Your order has been confirmed.</p>")
-              .build();
-
-          CreateBatchEmailsResponse data = resend.batch().send(
-              Arrays.asList(firstEmail, secondEmail)
-          );
-      }
-  }
-  ```
-
-  ```csharp .NET theme={"theme":{"light":"github-light","dark":"vesper"}}
-  using Resend;
-
-  IResend resend = ResendClient.Create("re_xxxxxxxxx");
-
-  var mail1 = new EmailMessage()
+const { data, error } = await resend.batch.send([
   {
-      From = "Acme <onboarding@resend.dev>",
-      To = "delivered@resend.dev",
-      Subject = "Welcome to Acme",
-      HtmlBody = "<p>Thanks for signing up!</p>",
-  };
-
-  var mail2 = new EmailMessage()
+    from: 'Acme <onboarding@resend.dev>',
+    to: ['delivered@resend.dev'],
+    subject: 'Welcome to Acme',
+    html: '<p>Thanks for signing up!</p>',
+  },
   {
-      From = "Acme <onboarding@resend.dev>",
-      To = "delivered@resend.dev",
-      Subject = "Order Confirmation",
-      HtmlBody = "<p>Your order has been confirmed.</p>",
-  };
+    from: 'Acme <onboarding@resend.dev>',
+    to: ['delivered@resend.dev'],
+    subject: 'Order Confirmation',
+    html: '<p>Your order has been confirmed.</p>',
+  },
+]);
 
-  var resp = await resend.EmailBatchAsync([mail1, mail2]);
-  Console.WriteLine("Nr Emails={0}", resp.Content.Count);
-  ```
+console.log(data);
+```
 
-  ```bash cURL theme={"theme":{"light":"github-light","dark":"vesper"}}
-  curl -X POST 'https://api.resend.com/emails/batch' \
-       -H 'Authorization: Bearer re_xxxxxxxxx' \
-       -H 'Content-Type: application/json' \
-       -d $'[
+```php PHP theme={"theme":{"light":"github-light","dark":"vesper"}}
+$resend = Resend::client('re_xxxxxxxxx');
+
+$resend->batch->send([
+  [
+    'from' => 'Acme <onboarding@resend.dev>',
+    'to' => ['delivered@resend.dev'],
+    'subject' => 'Welcome to Acme',
+    'html' => '<p>Thanks for signing up!</p>',
+  ],
+  [
+    'from' => 'Acme <onboarding@resend.dev>',
+    'to' => ['delivered@resend.dev'],
+    'subject' => 'Order Confirmation',
+    'html' => '<p>Your order has been confirmed.</p>',
+  ]
+]);
+```
+
+```py Python theme={"theme":{"light":"github-light","dark":"vesper"}}
+import resend
+from typing import List
+
+resend.api_key = "re_xxxxxxxxx"
+
+params: List[resend.Emails.SendParams] = [
+  {
+    "from": "Acme <onboarding@resend.dev>",
+    "to": ["delivered@resend.dev"],
+    "subject": "Welcome to Acme",
+    "html": "<p>Thanks for signing up!</p>",
+  },
+  {
+    "from": "Acme <onboarding@resend.dev>",
+    "to": ["delivered@resend.dev"],
+    "subject": "Order Confirmation",
+    "html": "<p>Your order has been confirmed.</p>",
+  }
+]
+
+resend.Batch.send(params)
+```
+
+```rb Ruby theme={"theme":{"light":"github-light","dark":"vesper"}}
+require "resend"
+
+Resend.api_key = 're_xxxxxxxxx'
+
+params = [
+  {
+    "from": "Acme <onboarding@resend.dev>",
+    "to": ["delivered@resend.dev"],
+    "subject": "Welcome to Acme",
+    "html": "<p>Thanks for signing up!</p>",
+  },
+  {
+    "from": "Acme <onboarding@resend.dev>",
+    "to": ["delivered@resend.dev"],
+    "subject": "Order Confirmation",
+    "html": "<p>Your order has been confirmed.</p>",
+  }
+]
+
+Resend::Batch.send(params)
+```
+
+```go Go theme={"theme":{"light":"github-light","dark":"vesper"}}
+package main
+
+import (
+	"context"
+	"fmt"
+
+	"github.com/resend/resend-go/v4"
+)
+
+func main() {
+  ctx := context.TODO()
+  client := resend.NewClient("re_xxxxxxxxx")
+
+  var batchEmails = []*resend.SendEmailRequest{
     {
-      "from": "Acme <onboarding@resend.dev>",
-      "to": ["delivered@resend.dev"],
-      "subject": "Welcome to Acme",
-      "html": "<p>Thanks for signing up!</p>"
+      From:    "Acme <onboarding@resend.dev>",
+      To:      []string{"delivered@resend.dev"},
+      Subject: "Welcome to Acme",
+      Html:    "<p>Thanks for signing up!</p>",
     },
     {
-      "from": "Acme <onboarding@resend.dev>",
-      "to": ["delivered@resend.dev"],
-      "subject": "Order Confirmation",
-      "html": "<p>Your order has been confirmed.</p>"
-    }
-  ]'
-  ```
+      From:    "Acme <onboarding@resend.dev>",
+      To:      []string{"delivered@resend.dev"},
+      Subject: "Order Confirmation",
+      Html:    "<p>Your order has been confirmed.</p>",
+    },
+  }
 
-  ```bash CLI theme={"theme":{"light":"github-light","dark":"vesper"}}
-  resend emails batch --file ./path/to/emails.json
-  ```
-</CodeGroup>
+  sent, err := client.Batch.SendWithContext(ctx, batchEmails)
+
+  if err != nil {
+    panic(err)
+  }
+  fmt.Println(sent.Data)
+}
+```
+
+```rust Rust theme={"theme":{"light":"github-light","dark":"vesper"}}
+use resend_rs::types::CreateEmailBaseOptions;
+use resend_rs::{Resend, Result};
+
+#[tokio::main]
+async fn main() -> Result<()> {
+  let resend = Resend::new("re_xxxxxxxxx");
+
+  let emails = vec![
+    CreateEmailBaseOptions::new(
+      "Acme <onboarding@resend.dev>",
+      vec!["delivered@resend.dev"],
+      "Welcome to Acme",
+    )
+    .with_html("<p>Thanks for signing up!</p>"),
+    CreateEmailBaseOptions::new(
+      "Acme <onboarding@resend.dev>",
+      vec!["delivered@resend.dev"],
+      "Order Confirmation",
+    )
+    .with_html("<p>Your order has been confirmed.</p>"),
+  ];
+
+  let _emails = resend.batch.send(emails).await?;
+
+  Ok(())
+}
+```
+
+```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
+import com.resend.*;
+import com.resend.core.exception.ResendException;
+import com.resend.services.batch.model.CreateBatchEmailsResponse;
+import com.resend.services.emails.model.CreateEmailOptions;
+import java.util.Arrays;
+
+public class Main {
+    public static void main(String[] args) throws ResendException {
+        Resend resend = new Resend("re_xxxxxxxxx");
+
+        CreateEmailOptions firstEmail = CreateEmailOptions.builder()
+            .from("Acme <onboarding@resend.dev>")
+            .to("delivered@resend.dev")
+            .subject("Welcome to Acme")
+            .html("<p>Thanks for signing up!</p>")
+            .build();
+
+        CreateEmailOptions secondEmail = CreateEmailOptions.builder()
+            .from("Acme <onboarding@resend.dev>")
+            .to("delivered@resend.dev")
+            .subject("Order Confirmation")
+            .html("<p>Your order has been confirmed.</p>")
+            .build();
+
+        CreateBatchEmailsResponse data = resend.batch().send(
+            Arrays.asList(firstEmail, secondEmail)
+        );
+    }
+}
+```
+
+```csharp .NET theme={"theme":{"light":"github-light","dark":"vesper"}}
+using Resend;
+
+IResend resend = ResendClient.Create("re_xxxxxxxxx");
+
+var mail1 = new EmailMessage()
+{
+    From = "Acme <onboarding@resend.dev>",
+    To = "delivered@resend.dev",
+    Subject = "Welcome to Acme",
+    HtmlBody = "<p>Thanks for signing up!</p>",
+};
+
+var mail2 = new EmailMessage()
+{
+    From = "Acme <onboarding@resend.dev>",
+    To = "delivered@resend.dev",
+    Subject = "Order Confirmation",
+    HtmlBody = "<p>Your order has been confirmed.</p>",
+};
+
+var resp = await resend.EmailBatchAsync([mail1, mail2]);
+Console.WriteLine("Nr Emails={0}", resp.Content.Count);
+```
+
+```bash cURL theme={"theme":{"light":"github-light","dark":"vesper"}}
+curl -X POST 'https://api.resend.com/emails/batch' \
+     -H 'Authorization: Bearer re_xxxxxxxxx' \
+     -H 'Content-Type: application/json' \
+     -d $'[
+  {
+    "from": "Acme <onboarding@resend.dev>",
+    "to": ["delivered@resend.dev"],
+    "subject": "Welcome to Acme",
+    "html": "<p>Thanks for signing up!</p>"
+  },
+  {
+    "from": "Acme <onboarding@resend.dev>",
+    "to": ["delivered@resend.dev"],
+    "subject": "Order Confirmation",
+    "html": "<p>Your order has been confirmed.</p>"
+  }
+]'
+```
+
+```bash CLI theme={"theme":{"light":"github-light","dark":"vesper"}}
+resend emails batch --file ./path/to/emails.json
+```
 
 ## Response format
 

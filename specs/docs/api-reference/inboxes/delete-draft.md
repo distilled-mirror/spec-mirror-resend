@@ -6,114 +6,130 @@
 
 > Discard an unsent draft.
 
-export const ResendParamField = ({children, body, path, ...props}) => {
-  const [lang, setLang] = useState(() => {
-    return localStorage.getItem('code') || '"Node.js"';
-  });
-  useEffect(() => {
-    const onStorage = event => {
-      const key = event.detail.key;
-      if (key === 'code') {
-        setLang(event.detail.value);
-      }
-    };
-    document.addEventListener('mintlify-localstorage', onStorage);
-    return () => {
-      document.removeEventListener('mintlify-localstorage', onStorage);
-    };
-  }, []);
-  const toCamelCase = str => typeof str === 'string' ? str.replace(/[_-](\w)/g, (_, c) => c.toUpperCase()) : str;
-  const resolvedBody = useMemo(() => {
-    const value = JSON.parse(lang);
-    return value === 'Node.js' ? toCamelCase(body) : body;
-  }, [body, lang]);
-  const resolvedPath = useMemo(() => {
-    const value = JSON.parse(lang);
-    return value === 'Node.js' ? toCamelCase(path) : path;
-  }, [path, lang]);
-  return <ParamField body={resolvedBody} path={resolvedPath} {...props}>
-      {children}
-    </ParamField>;
-};
-
-<Warning>
-  Inboxes are currently in private beta and only available to a limited
-  number of users. The response shape might change before GA.
-
-  <span />
-
-  [Get early access](https://resend.com/settings/labs) if you're interested in testing this feature.
-
-  <span />
-
-  Once you have access, upgrade your Resend SDK to use the new methods:
-
-  <CodeGroup>
-    ```bash Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
-    npm install resend@6.33.0
-    ```
-
-    ```bash CLI theme={"theme":{"light":"github-light","dark":"vesper"}}
-    npm install -g resend-cli@2.25.0
-    ```
-  </CodeGroup>
-</Warning>
-
 Discards an unsent draft. A draft that was already sent returns a `409`.
 
 ## Path Parameters
 
-<ResendParamField path="inbox_id" type="string" required>
-  The Inbox ID or the inbox email address, such as `support@example.com`.
-</ResendParamField>
+The Inbox ID or the inbox email address, such as `support@example.com`.
 
-<ResendParamField path="draft_id" type="string" required>
-  The Draft ID.
-</ResendParamField>
+The Draft ID.
 
 ## Response Fields
 
-<ParamField body="object" type="string">
-  Always `inbox_draft`.
-</ParamField>
+**object** `string`
 
-<ParamField body="id" type="string">
-  The ID of the draft.
-</ParamField>
+Always `inbox_draft`.
 
-<ParamField body="deleted" type="boolean">
-  Returns `true` when the draft is deleted.
-</ParamField>
+**id** `string`
 
-<RequestExample>
-  ```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
-  import { Resend } from 'resend';
+The ID of the draft.
 
-  const resend = new Resend('re_xxxxxxxxx');
+**deleted** `boolean`
 
-  const { data, error } = await resend.inboxes.drafts.remove({
-    inboxId: 'b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1',
-    draftId: 'c3a1e8b4-2d5f-4a7c-9e10-6b8d7f5a4c32',
-  });
-  ```
+Returns `true` when the draft is deleted.
 
-  ```bash cURL theme={"theme":{"light":"github-light","dark":"vesper"}}
-  curl -X DELETE 'https://api.resend.com/inboxes/b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1/drafts/c3a1e8b4-2d5f-4a7c-9e10-6b8d7f5a4c32' \
-       -H 'Authorization: Bearer re_xxxxxxxxx'
-  ```
+```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
+import { Resend } from 'resend';
 
-  ```bash CLI theme={"theme":{"light":"github-light","dark":"vesper"}}
-  resend inboxes drafts delete b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1 c3a1e8b4-2d5f-4a7c-9e10-6b8d7f5a4c32 \
-    --yes
-  ```
-</RequestExample>
+const resend = new Resend('re_xxxxxxxxx');
 
-<ResponseExample>
-  ```json Response theme={"theme":{"light":"github-light","dark":"vesper"}}
-  {
-    "object": "inbox_draft",
-    "id": "c3a1e8b4-2d5f-4a7c-9e10-6b8d7f5a4c32",
-    "deleted": true
-  }
-  ```
-</ResponseExample>
+const { data, error } = await resend.inboxes.drafts.remove({
+  inboxId: 'b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1',
+  draftId: 'c3a1e8b4-2d5f-4a7c-9e10-6b8d7f5a4c32',
+});
+```
+
+```php PHP theme={"theme":{"light":"github-light","dark":"vesper"}}
+$resend = Resend::client('re_xxxxxxxxx');
+
+$resend->inboxes->drafts->remove(
+  'b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1',
+  'c3a1e8b4-2d5f-4a7c-9e10-6b8d7f5a4c32'
+);
+```
+
+```python Python theme={"theme":{"light":"github-light","dark":"vesper"}}
+import resend
+
+resend.api_key = "re_xxxxxxxxx"
+
+resend.Inboxes.Drafts.remove(
+    inbox_id="b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1",
+    draft_id="c3a1e8b4-2d5f-4a7c-9e10-6b8d7f5a4c32",
+)
+```
+
+```ruby Ruby theme={"theme":{"light":"github-light","dark":"vesper"}}
+require "resend"
+
+Resend.api_key = "re_xxxxxxxxx"
+
+params = {
+  inbox_id: "b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1",
+  draft_id: "c3a1e8b4-2d5f-4a7c-9e10-6b8d7f5a4c32"
+}
+
+Resend::Inboxes::Drafts.remove(params)
+```
+
+```go Go theme={"theme":{"light":"github-light","dark":"vesper"}}
+package main
+
+import "github.com/resend/resend-go/v4"
+
+func main() {
+	client := resend.NewClient("re_xxxxxxxxx")
+
+	client.Inboxes.Drafts.Remove(
+		"b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1",
+		"c3a1e8b4-2d5f-4a7c-9e10-6b8d7f5a4c32",
+	)
+```
+
+```rust Rust theme={"theme":{"light":"github-light","dark":"vesper"}}
+use resend_rs::{Resend, Result};
+
+#[tokio::main]
+async fn main() -> Result<()> {
+  let resend = Resend::new("re_xxxxxxxxx");
+
+  let _deleted = resend
+    .inboxes
+    .delete_draft(
+      "b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1",
+      "c3a1e8b4-2d5f-4a7c-9e10-6b8d7f5a4c32",
+    )
+    .await?;
+
+  Ok(())
+}
+```
+
+```csharp .NET theme={"theme":{"light":"github-light","dark":"vesper"}}
+using Resend;
+
+IResend resend = ResendClient.Create( "re_xxxxxxxxx" ); // Or from DI
+
+await resend.InboxDraftDeleteAsync(
+    new Guid( "b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1" ),
+    new Guid( "c3a1e8b4-2d5f-4a7c-9e10-6b8d7f5a4c32" )
+);
+```
+
+```bash cURL theme={"theme":{"light":"github-light","dark":"vesper"}}
+curl -X DELETE 'https://api.resend.com/inboxes/b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1/drafts/c3a1e8b4-2d5f-4a7c-9e10-6b8d7f5a4c32' \
+     -H 'Authorization: Bearer re_xxxxxxxxx'
+```
+
+```bash CLI theme={"theme":{"light":"github-light","dark":"vesper"}}
+resend inboxes drafts delete b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1 c3a1e8b4-2d5f-4a7c-9e10-6b8d7f5a4c32 \
+  --yes
+```
+
+```json Response theme={"theme":{"light":"github-light","dark":"vesper"}}
+{
+  "object": "inbox_draft",
+  "id": "c3a1e8b4-2d5f-4a7c-9e10-6b8d7f5a4c32",
+  "deleted": true
+}
+```

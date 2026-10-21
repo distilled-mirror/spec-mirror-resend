@@ -6,212 +6,178 @@
 
 > Remove an existing contact.
 
-export const ResendParamField = ({children, body, path, ...props}) => {
-  const [lang, setLang] = useState(() => {
-    return localStorage.getItem('code') || '"Node.js"';
-  });
-  useEffect(() => {
-    const onStorage = event => {
-      const key = event.detail.key;
-      if (key === 'code') {
-        setLang(event.detail.value);
-      }
-    };
-    document.addEventListener('mintlify-localstorage', onStorage);
-    return () => {
-      document.removeEventListener('mintlify-localstorage', onStorage);
-    };
-  }, []);
-  const toCamelCase = str => typeof str === 'string' ? str.replace(/[_-](\w)/g, (_, c) => c.toUpperCase()) : str;
-  const resolvedBody = useMemo(() => {
-    const value = JSON.parse(lang);
-    return value === 'Node.js' ? toCamelCase(body) : body;
-  }, [body, lang]);
-  const resolvedPath = useMemo(() => {
-    const value = JSON.parse(lang);
-    return value === 'Node.js' ? toCamelCase(path) : path;
-  }, [path, lang]);
-  return <ParamField body={resolvedBody} path={resolvedPath} {...props}>
-      {children}
-    </ParamField>;
-};
-
 ## Path Parameters
 
 Either `id` or `email` must be provided.
 
-<ParamField path="id" type="string">
-  The Contact ID.
-</ParamField>
+**id** `string`
 
-<ParamField path="email" type="string">
-  The Contact email.
-</ParamField>
+The Contact ID.
 
-<RequestExample>
-  ```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
-  import { Resend } from 'resend';
+**email** `string`
 
-  const resend = new Resend('re_xxxxxxxxx');
+The Contact email.
 
-  const { data, error } = await resend.contacts.remove({
-    id: '520784e2-887d-4c25-b53c-4ad46ad38100',
-    // or: email: 'acme@example.com',
-  });
-  ```
+```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
+import { Resend } from 'resend';
 
-  ```php PHP theme={"theme":{"light":"github-light","dark":"vesper"}}
-  $resend = Resend::client('re_xxxxxxxxx');
+const resend = new Resend('re_xxxxxxxxx');
+
+const { data, error } = await resend.contacts.remove({
+  id: '520784e2-887d-4c25-b53c-4ad46ad38100',
+  // or: email: 'acme@example.com',
+});
+```
+
+```php PHP theme={"theme":{"light":"github-light","dark":"vesper"}}
+$resend = Resend::client('re_xxxxxxxxx');
+
+// Delete by contact id
+$resend->contacts->remove(
+  idOrEmail: '520784e2-887d-4c25-b53c-4ad46ad38100'
+);
+
+// Delete by contact email
+$resend->contacts->remove(
+  idOrEmail: 'acme@example.com'
+);
+```
+
+```python Python theme={"theme":{"light":"github-light","dark":"vesper"}}
+import resend
+
+resend.api_key = "re_xxxxxxxxx"
+
+# Delete by contact id
+resend.Contacts.remove(
+  id="520784e2-887d-4c25-b53c-4ad46ad38100"
+)
+
+# Delete by contact email
+resend.Contacts.remove(
+  email="acme@example.com"
+)
+```
+
+```ruby Ruby theme={"theme":{"light":"github-light","dark":"vesper"}}
+require "resend"
+
+Resend.api_key = "re_xxxxxxxxx"
+
+# Delete by contact id
+Resend::Contacts.remove(
+  id: "520784e2-887d-4c25-b53c-4ad46ad38100"
+)
+
+# Delete by contact email
+Resend::Contacts.remove(
+  email: "acme@example.com"
+)
+```
+
+```go Go theme={"theme":{"light":"github-light","dark":"vesper"}}
+package main
+
+import "github.com/resend/resend-go/v4"
+
+func main() {
+	client := resend.NewClient("re_xxxxxxxxx")
+
+	// Delete by contact id
+	client.Contacts.Remove(&resend.RemoveContactOptions{
+		Id: "520784e2-887d-4c25-b53c-4ad46ad38100",
+	})
+
+	// Delete by contact email
+	client.Contacts.Remove(&resend.RemoveContactOptions{
+		Id: "acme@example.com",
+	})
+}
+```
+
+```rust Rust theme={"theme":{"light":"github-light","dark":"vesper"}}
+use resend_rs::{Resend, Result};
+
+#[tokio::main]
+async fn main() -> Result<()> {
+  let resend = Resend::new("re_xxxxxxxxx");
 
   // Delete by contact id
-  $resend->contacts->remove(
-    idOrEmail: '520784e2-887d-4c25-b53c-4ad46ad38100'
-  );
+  let _deleted = resend
+    .contacts
+    .delete("520784e2-887d-4c25-b53c-4ad46ad38100")
+    .await?;
 
   // Delete by contact email
-  $resend->contacts->remove(
-    idOrEmail: 'acme@example.com'
-  );
-  ```
+  let _deleted = resend
+    .contacts
+    .delete("acme@example.com")
+    .await?;
 
-  ```python Python theme={"theme":{"light":"github-light","dark":"vesper"}}
-  import resend
+  Ok(())
+}
+```
 
-  resend.api_key = "re_xxxxxxxxx"
+```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
+import com.resend.Resend;
+import com.resend.core.exception.ResendException;
+import com.resend.services.contacts.model.RemoveContactOptions;
 
-  # Delete by contact id
-  resend.Contacts.remove(
-    id="520784e2-887d-4c25-b53c-4ad46ad38100"
-  )
+public class Main {
+    public static void main(String[] args) throws ResendException {
+        Resend resend = new Resend("re_xxxxxxxxx");
 
-  # Delete by contact email
-  resend.Contacts.remove(
-    email="acme@example.com"
-  )
-  ```
+        // Delete by contact id
+        resend.contacts().remove(RemoveContactOptions.builder()
+                        .id("520784e2-887d-4c25-b53c-4ad46ad38100")
+                        .build());
 
-  ```ruby Ruby theme={"theme":{"light":"github-light","dark":"vesper"}}
-  require "resend"
+        // Delete by contact email
+        resend.contacts().remove(RemoveContactOptions.builder()
+                        .email("acme@example.com")
+                        .build());
+    }
+}
+```
 
-  Resend.api_key = "re_xxxxxxxxx"
+```csharp .NET theme={"theme":{"light":"github-light","dark":"vesper"}}
+using Resend;
 
-  # Delete by contact id
-  Resend::Contacts.remove(
-    id: "520784e2-887d-4c25-b53c-4ad46ad38100"
-  )
+IResend resend = ResendClient.Create( "re_xxxxxxxxx" ); // Or from DI
 
-  # Delete by contact email
-  Resend::Contacts.remove(
-    email: "acme@example.com"
-  )
-  ```
+// By Id
+await resend.ContactDeleteAsync(
+    contactId: new Guid( "520784e2-887d-4c25-b53c-4ad46ad38100" )
+);
 
-  ```go Go theme={"theme":{"light":"github-light","dark":"vesper"}}
-  package main
+// By Email
+await resend.ContactDeleteByEmailAsync(
+    "acme@example.com"
+);
+```
 
-  import "github.com/resend/resend-go/v4"
+```bash cURL theme={"theme":{"light":"github-light","dark":"vesper"}}
+# Delete by contact id
+curl -X DELETE 'https://api.resend.com/contacts/520784e2-887d-4c25-b53c-4ad46ad38100' \
+     -H 'Authorization: Bearer re_xxxxxxxxx'
 
-  func main() {
-  	client := resend.NewClient("re_xxxxxxxxx")
+# Deleted by contact email
+curl -X DELETE 'https://api.resend.com/contacts/acme@example.com' \
+     -H 'Authorization: Bearer re_xxxxxxxxx'
+```
 
-  	// Delete by contact id
-  	client.Contacts.Remove(&resend.RemoveContactOptions{
-  		Id: "520784e2-887d-4c25-b53c-4ad46ad38100",
-  	})
+```bash CLI theme={"theme":{"light":"github-light","dark":"vesper"}}
+# Delete by contact id
+resend contacts delete 520784e2-887d-4c25-b53c-4ad46ad38100
 
-  	// Delete by contact email
-  	client.Contacts.Remove(&resend.RemoveContactOptions{
-  		Id: "acme@example.com",
-  	})
-  }
-  ```
+# Delete by contact email
+resend contacts delete acme@example.com
+```
 
-  ```rust Rust theme={"theme":{"light":"github-light","dark":"vesper"}}
-  use resend_rs::{Resend, Result};
-
-  #[tokio::main]
-  async fn main() -> Result<()> {
-    let resend = Resend::new("re_xxxxxxxxx");
-
-    // Delete by contact id
-    let _deleted = resend
-      .contacts
-      .delete("520784e2-887d-4c25-b53c-4ad46ad38100")
-      .await?;
-
-    // Delete by contact email
-    let _deleted = resend
-      .contacts
-      .delete("acme@example.com")
-      .await?;
-
-    Ok(())
-  }
-  ```
-
-  ```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
-  import com.resend.Resend;
-  import com.resend.core.exception.ResendException;
-  import com.resend.services.contacts.model.RemoveContactOptions;
-
-  public class Main {
-      public static void main(String[] args) throws ResendException {
-          Resend resend = new Resend("re_xxxxxxxxx");
-
-          // Delete by contact id
-          resend.contacts().remove(RemoveContactOptions.builder()
-                          .id("520784e2-887d-4c25-b53c-4ad46ad38100")
-                          .build());
-
-          // Delete by contact email
-          resend.contacts().remove(RemoveContactOptions.builder()
-                          .email("acme@example.com")
-                          .build());
-      }
-  }
-  ```
-
-  ```csharp .NET theme={"theme":{"light":"github-light","dark":"vesper"}}
-  using Resend;
-
-  IResend resend = ResendClient.Create( "re_xxxxxxxxx" ); // Or from DI
-
-  // By Id
-  await resend.ContactDeleteAsync(
-      contactId: new Guid( "520784e2-887d-4c25-b53c-4ad46ad38100" )
-  );
-
-  // By Email
-  await resend.ContactDeleteByEmailAsync(
-      "acme@example.com"
-  );
-  ```
-
-  ```bash cURL theme={"theme":{"light":"github-light","dark":"vesper"}}
-  # Delete by contact id
-  curl -X DELETE 'https://api.resend.com/contacts/520784e2-887d-4c25-b53c-4ad46ad38100' \
-       -H 'Authorization: Bearer re_xxxxxxxxx'
-
-  # Deleted by contact email
-  curl -X DELETE 'https://api.resend.com/contacts/acme@example.com' \
-       -H 'Authorization: Bearer re_xxxxxxxxx'
-  ```
-
-  ```bash CLI theme={"theme":{"light":"github-light","dark":"vesper"}}
-  # Delete by contact id
-  resend contacts delete 520784e2-887d-4c25-b53c-4ad46ad38100
-
-  # Delete by contact email
-  resend contacts delete acme@example.com
-  ```
-</RequestExample>
-
-<ResponseExample>
-  ```json Response theme={"theme":{"light":"github-light","dark":"vesper"}}
-  {
-    "object": "contact",
-    "contact": "520784e2-887d-4c25-b53c-4ad46ad38100",
-    "deleted": true
-  }
-  ```
-</ResponseExample>
+```json Response theme={"theme":{"light":"github-light","dark":"vesper"}}
+{
+  "object": "contact",
+  "contact": "520784e2-887d-4c25-b53c-4ad46ad38100",
+  "deleted": true
+}
+```

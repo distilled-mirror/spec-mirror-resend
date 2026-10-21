@@ -85,10 +85,10 @@ A branded unsubscribe page looks more professional and trustworthy, which can en
 
 Learn more about [customizing your unsubscribe page](/docs/dashboard/settings/unsubscribe-page).
 
-<Note>
-  Pro plan users or higher can remove the "Powered by Resend" footer from the
-  unsubscribe page.
-</Note>
+> [!NOTE]
+>
+> Pro plan users or higher can remove the "Powered by Resend" footer from the
+> unsubscribe page.
 
 ## Opt-in vs Opt-out Topics
 
@@ -99,9 +99,9 @@ When creating a Topic, choose between two default subscription behaviors:
 
 Use **Opt-in** for content that's broadly relevant to your audience (like product updates). Use **Opt-out** for niche content that only some users will want (like a beta program or developer-focused updates).
 
-<Warning>
-  You cannot change the default subscription type after creating a Topic.
-</Warning>
+> [!WARNING]
+>
+> You cannot change the default subscription type after creating a Topic.
 
 ## Public vs Private Topics
 
@@ -133,11 +133,11 @@ Whenever you send a Broadcast, label it with a Topic. This ensures:
 1. Recipients who declined that content type won't receive the email.
 2. If someone unsubscribes, they can opt out of that Topic only, rather than unsubscribe from all your emails.
 
-<Info>
-  If you send a Broadcast without a Topic and someone unsubscribes, they'll be
-  unsubscribed from all your emails. Labeling your content protects both you and
-  your recipients.
-</Info>
+> [!NOTE]
+>
+> If you send a Broadcast without a Topic and someone unsubscribes, they'll be
+> unsubscribed from all your emails. Labeling your content protects both you and
+> your recipients.
 
 ## Getting started with Topics
 

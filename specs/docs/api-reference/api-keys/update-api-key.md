@@ -6,178 +6,142 @@
 
 > Update the name of an existing API key.
 
-export const ResendParamField = ({children, body, path, ...props}) => {
-  const [lang, setLang] = useState(() => {
-    return localStorage.getItem('code') || '"Node.js"';
-  });
-  useEffect(() => {
-    const onStorage = event => {
-      const key = event.detail.key;
-      if (key === 'code') {
-        setLang(event.detail.value);
-      }
-    };
-    document.addEventListener('mintlify-localstorage', onStorage);
-    return () => {
-      document.removeEventListener('mintlify-localstorage', onStorage);
-    };
-  }, []);
-  const toCamelCase = str => typeof str === 'string' ? str.replace(/[_-](\w)/g, (_, c) => c.toUpperCase()) : str;
-  const resolvedBody = useMemo(() => {
-    const value = JSON.parse(lang);
-    return value === 'Node.js' ? toCamelCase(body) : body;
-  }, [body, lang]);
-  const resolvedPath = useMemo(() => {
-    const value = JSON.parse(lang);
-    return value === 'Node.js' ? toCamelCase(path) : path;
-  }, [path, lang]);
-  return <ParamField body={resolvedBody} path={resolvedPath} {...props}>
-      {children}
-    </ParamField>;
-};
-
-<Info>
-  This endpoint only updates the API key's name. To change an API key's
-  [permission or domain](/docs/dashboard/api-keys/introduction#edit-api-key-details),
-  edit the key in the [Resend Dashboard](https://resend.com/api-keys).
-</Info>
+> [!NOTE]
+>
+> This endpoint only updates the API key's name. To change an API key's
+> [permission or domain](/docs/dashboard/api-keys/introduction#edit-api-key-details),
+> edit the key in the [Resend Dashboard](https://resend.com/api-keys).
 
 ## Path Parameters
 
-<ResendParamField path="api_key_id" type="string" required>
-  The API key ID.
-</ResendParamField>
+The API key ID.
 
 ## Body Parameters
 
-<ParamField body="name" type="string" required>
-  The API key name. Maximum 50 characters.
-</ParamField>
+**name** `string` *required*
 
-<RequestExample>
-  ```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
-  import { Resend } from 'resend';
+The API key name. Maximum 50 characters.
 
-  const resend = new Resend('re_xxxxxxxxx');
+```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
+import { Resend } from 'resend';
 
-  const { data, error } = await resend.apiKeys.update(
-    'b6d24b8e-af0b-4c3c-be0c-359bbd97381e',
-    { name: 'Production' },
-  );
-  ```
+const resend = new Resend('re_xxxxxxxxx');
 
-  ```php PHP theme={"theme":{"light":"github-light","dark":"vesper"}}
-  $resend = Resend::client('re_xxxxxxxxx');
+const { data, error } = await resend.apiKeys.update(
+  'b6d24b8e-af0b-4c3c-be0c-359bbd97381e',
+  { name: 'Production' },
+);
+```
 
-  $resend->apiKeys->update('b6d24b8e-af0b-4c3c-be0c-359bbd97381e', [
-    'name' => 'Production'
-  ]);
-  ```
+```php PHP theme={"theme":{"light":"github-light","dark":"vesper"}}
+$resend = Resend::client('re_xxxxxxxxx');
 
-  ```python Python theme={"theme":{"light":"github-light","dark":"vesper"}}
-  import resend
+$resend->apiKeys->update('b6d24b8e-af0b-4c3c-be0c-359bbd97381e', [
+  'name' => 'Production'
+]);
+```
 
-  resend.api_key = "re_xxxxxxxxx"
+```python Python theme={"theme":{"light":"github-light","dark":"vesper"}}
+import resend
 
-  params: resend.ApiKeys.UpdateParams = {
-    "id": "b6d24b8e-af0b-4c3c-be0c-359bbd97381e",
-    "name": "Production",
-  }
+resend.api_key = "re_xxxxxxxxx"
 
-  resend.ApiKeys.update(params)
-  ```
+params: resend.ApiKeys.UpdateParams = {
+  "id": "b6d24b8e-af0b-4c3c-be0c-359bbd97381e",
+  "name": "Production",
+}
 
-  ```ruby Ruby theme={"theme":{"light":"github-light","dark":"vesper"}}
-  require "resend"
+resend.ApiKeys.update(params)
+```
 
-  Resend.api_key = "re_xxxxxxxxx"
+```ruby Ruby theme={"theme":{"light":"github-light","dark":"vesper"}}
+require "resend"
 
-  params = {
-    id: "b6d24b8e-af0b-4c3c-be0c-359bbd97381e",
-    name: "Production"
-  }
-  Resend::ApiKeys.update(params)
-  ```
+Resend.api_key = "re_xxxxxxxxx"
 
-  ```go Go theme={"theme":{"light":"github-light","dark":"vesper"}}
-  package main
+params = {
+  id: "b6d24b8e-af0b-4c3c-be0c-359bbd97381e",
+  name: "Production"
+}
+Resend::ApiKeys.update(params)
+```
 
-  import "github.com/resend/resend-go/v4"
+```go Go theme={"theme":{"light":"github-light","dark":"vesper"}}
+package main
 
-  func main() {
-  	client := resend.NewClient("re_xxxxxxxxx")
-  	params := &resend.UpdateApiKeyRequest{
-  		Name: "Production",
-  	}
-  	client.ApiKeys.Update("b6d24b8e-af0b-4c3c-be0c-359bbd97381e", params)
-  }
-  ```
+import "github.com/resend/resend-go/v4"
 
-  ```rust Rust theme={"theme":{"light":"github-light","dark":"vesper"}}
-  use resend_rs::{types::UpdateApiKeyOptions, Resend, Result};
+func main() {
+	client := resend.NewClient("re_xxxxxxxxx")
+	params := &resend.UpdateApiKeyRequest{
+		Name: "Production",
+	}
+	client.ApiKeys.Update("b6d24b8e-af0b-4c3c-be0c-359bbd97381e", params)
+}
+```
 
-  #[tokio::main]
-  async fn main() -> Result<()> {
-    let resend = Resend::new("re_xxxxxxxxx");
+```rust Rust theme={"theme":{"light":"github-light","dark":"vesper"}}
+use resend_rs::{types::UpdateApiKeyOptions, Resend, Result};
 
-    let _api_key = resend
-      .api_keys
-      .update(
-        "b6d24b8e-af0b-4c3c-be0c-359bbd97381e",
-        UpdateApiKeyOptions::new("Production"),
-      )
-      .await?;
+#[tokio::main]
+async fn main() -> Result<()> {
+  let resend = Resend::new("re_xxxxxxxxx");
 
-    Ok(())
-  }
-  ```
+  let _api_key = resend
+    .api_keys
+    .update(
+      "b6d24b8e-af0b-4c3c-be0c-359bbd97381e",
+      UpdateApiKeyOptions::new("Production"),
+    )
+    .await?;
 
-  ```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
-  import com.resend.Resend;
-  import com.resend.core.exception.ResendException;
-  import com.resend.services.apikeys.model.UpdateApiKeyOptions;
-  import com.resend.services.apikeys.model.UpdateApiKeyResponseSuccess;
+  Ok(())
+}
+```
 
-  public class Main {
-      public static void main(String[] args) throws ResendException {
-          Resend resend = new Resend("re_xxxxxxxxx");
+```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
+import com.resend.Resend;
+import com.resend.core.exception.ResendException;
+import com.resend.services.apikeys.model.UpdateApiKeyOptions;
+import com.resend.services.apikeys.model.UpdateApiKeyResponseSuccess;
 
-          UpdateApiKeyOptions params = UpdateApiKeyOptions
-                  .builder()
-                  .name("Production").build();
+public class Main {
+    public static void main(String[] args) throws ResendException {
+        Resend resend = new Resend("re_xxxxxxxxx");
 
-          UpdateApiKeyResponseSuccess apiKey = resend.apiKeys().update("b6d24b8e-af0b-4c3c-be0c-359bbd97381e", params);
-      }
-  }
-  ```
+        UpdateApiKeyOptions params = UpdateApiKeyOptions
+                .builder()
+                .name("Production").build();
 
-  ```csharp .NET theme={"theme":{"light":"github-light","dark":"vesper"}}
-  using Resend;
+        UpdateApiKeyResponseSuccess apiKey = resend.apiKeys().update("b6d24b8e-af0b-4c3c-be0c-359bbd97381e", params);
+    }
+}
+```
 
-  IResend resend = ResendClient.Create( "re_xxxxxxxxx" ); // Or from DI
+```csharp .NET theme={"theme":{"light":"github-light","dark":"vesper"}}
+using Resend;
 
-  var resp = await resend.ApiKeyUpdateAsync( new Guid( "b6d24b8e-af0b-4c3c-be0c-359bbd97381e" ), "Production" );
-  ```
+IResend resend = ResendClient.Create( "re_xxxxxxxxx" ); // Or from DI
 
-  ```bash cURL theme={"theme":{"light":"github-light","dark":"vesper"}}
-  curl -X PATCH 'https://api.resend.com/api-keys/b6d24b8e-af0b-4c3c-be0c-359bbd97381e' \
-       -H 'Authorization: Bearer re_xxxxxxxxx' \
-       -H 'Content-Type: application/json' \
-       -d $'{
-    "name": "Production"
-  }'
-  ```
+var resp = await resend.ApiKeyUpdateAsync( new Guid( "b6d24b8e-af0b-4c3c-be0c-359bbd97381e" ), "Production" );
+```
 
-  ```bash CLI theme={"theme":{"light":"github-light","dark":"vesper"}}
-  resend api-keys update b6d24b8e-af0b-4c3c-be0c-359bbd97381e --name Production
-  ```
-</RequestExample>
+```bash cURL theme={"theme":{"light":"github-light","dark":"vesper"}}
+curl -X PATCH 'https://api.resend.com/api-keys/b6d24b8e-af0b-4c3c-be0c-359bbd97381e' \
+     -H 'Authorization: Bearer re_xxxxxxxxx' \
+     -H 'Content-Type: application/json' \
+     -d $'{
+  "name": "Production"
+}'
+```
 
-<ResponseExample>
-  ```json Response theme={"theme":{"light":"github-light","dark":"vesper"}}
-  {
-    "object": "api_key",
-    "id": "b6d24b8e-af0b-4c3c-be0c-359bbd97381e"
-  }
-  ```
-</ResponseExample>
+```bash CLI theme={"theme":{"light":"github-light","dark":"vesper"}}
+resend api-keys update b6d24b8e-af0b-4c3c-be0c-359bbd97381e --name Production
+```
+
+```json Response theme={"theme":{"light":"github-light","dark":"vesper"}}
+{
+  "object": "api_key",
+  "id": "b6d24b8e-af0b-4c3c-be0c-359bbd97381e"
+}
+```

@@ -44,10 +44,10 @@ resend.emails.send({
 1. Delete the domain you've added in Resend
 2. Add and verify the domain that matches what you're using in your API request
 
-<Warning>
-  Make sure the domain in your API request exactly matches the domain you've
-  verified in Resend, including any subdomains.
-</Warning>
+> [!WARNING]
+>
+> Make sure the domain in your API request exactly matches the domain you've
+> verified in Resend, including any subdomains.
 
 ## If You're Still Having Issues
 

@@ -43,6 +43,6 @@ This is particularly useful for testing different email flows, tracking webhook 
 
 Whether you need to confirm that an email has been sent, track engagement events, or simulate a bounce scenario, these addresses provide a controlled and predictable way to test your email integration with Resend.
 
-<Warning>
-  The suppressed test email address does not support labeling yet
-</Warning>
+> [!WARNING]
+>
+> The suppressed test email address does not support labeling yet

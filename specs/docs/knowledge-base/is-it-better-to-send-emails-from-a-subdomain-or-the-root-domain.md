@@ -31,7 +31,7 @@ Never use domains that look like your main brand but aren’t actually your main
 
 If you’re launching a new project or sending for a different purpose, again use a subdomain of your main domain. Sticking with clear, consistent subdomains helps reinforce your brand identity and builds trust with inbox providers and recipients alike.
 
-<Note>
-  We cover this in depth in our [deliverability
-  guide](https://resend.com/guides/email/deliverability/avoid-gmail-spam-folder#establish-sending-patterns).
-</Note>
+> [!NOTE]
+>
+> We cover this in depth in our [deliverability
+> guide](https://resend.com/guides/email/deliverability/avoid-gmail-spam-folder#establish-sending-patterns).

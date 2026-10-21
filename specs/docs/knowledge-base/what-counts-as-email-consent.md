@@ -62,7 +62,7 @@ The easiest way to get consent is to **ask for it clearly and separately**. Add 
 * Place it outside of your Terms of Service
 * Include a one-click unsubscribe link in every email
 
-<img alt="Example of a consent checkbox and unsubscribe link" src="https://mintcdn.com/resend/lyl6PQTYhtWhUjuS/images/what-counts-as-email-consent.jpeg?fit=max&auto=format&n=lyl6PQTYhtWhUjuS&q=85&s=db80d9ae5b8eae269c0f7237d0f92ef0" width="1606" height="757" data-path="images/what-counts-as-email-consent.jpeg" />
+![Example of a consent checkbox and unsubscribe link](https://mintcdn.com/resend/lyl6PQTYhtWhUjuS/images/what-counts-as-email-consent.jpeg?fit=max\&auto=format\&n=lyl6PQTYhtWhUjuS\&q=85\&s=db80d9ae5b8eae269c0f7237d0f92ef0)
 
 ## Get more help
 

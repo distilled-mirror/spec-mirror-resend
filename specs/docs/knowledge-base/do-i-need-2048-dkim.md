@@ -39,7 +39,7 @@ The 2024 bulk sender requirements from Google, Yahoo, and Microsoft (which apply
 
 For transactional and marketing mail, **1024-bit DKIM is the right choice.** It meets the RFC, satisfies bulk sender requirements from every major inbox provider, and keeps DNS setup simple and reliable.
 
-<Note>
-  If your security or compliance team has a specific requirement for 2048-bit
-  DKIM, [let us know](https://resend.com/help).
-</Note>
+> [!NOTE]
+>
+> If your security or compliance team has a specific requirement for 2048-bit
+> DKIM, [let us know](https://resend.com/help).

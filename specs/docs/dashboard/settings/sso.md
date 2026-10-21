@@ -16,52 +16,50 @@ Single Sign-On (SSO) lets everyone with an email address on your organization's 
 
 ## Set up SSO
 
-<Steps>
-  <Step title="Start the setup from Team Settings">
-    Navigate to your [**Team Settings**](https://resend.com/settings/team) and click **Enable SSO**.
+**1. Start the setup from Team Settings**
 
-    <img src="https://mintcdn.com/resend/QCXwWXz0oyMSY7ls/images/sso-enable.png?fit=max&auto=format&n=QCXwWXz0oyMSY7ls&q=85&s=8a21c9080d4719fc1cf1ca04a56617f3" alt="Enable SSO button highlighted in team settings" width="1868" height="958" data-path="images/sso-enable.png" />
+Navigate to your [**Team Settings**](https://resend.com/settings/team) and click **Enable SSO**.
 
-    <Note>
-      If you are on a Scale plan and don't see the option to enable SSO, add the SSO
-      add-on from your [**Usage**](https://resend.com/settings/usage) page first.
-    </Note>
-  </Step>
+![Enable SSO button highlighted in team settings](https://mintcdn.com/resend/QCXwWXz0oyMSY7ls/images/sso-enable.png?fit=max\&auto=format\&n=QCXwWXz0oyMSY7ls\&q=85\&s=8a21c9080d4719fc1cf1ca04a56617f3)
 
-  <Step title="Enter your organization domain">
-    This is the email domain your team members use to log in. It doesn't have to match the domains you use to send or receive email.
+> [!NOTE]
+>
+> If you are on a Scale plan and don't see the option to enable SSO, add the SSO
+> add-on from your [**Usage**](https://resend.com/settings/usage) page first.
 
-    <img src="https://mintcdn.com/resend/QCXwWXz0oyMSY7ls/images/sso-domain.png?fit=max&auto=format&n=QCXwWXz0oyMSY7ls&q=85&s=cc0e416311ad5047b3650cb4e3798c88" alt="Domain step with the organization domain field" width="1868" height="958" data-path="images/sso-domain.png" />
-  </Step>
+**2. Enter your organization domain**
 
-  <Step title="Add the TXT record to your DNS">
-    Resend issues a `TXT` record that proves you own the domain. Add it at the apex of your domain:
+This is the email domain your team members use to log in. It doesn't have to match the domains you use to send or receive email.
 
-    | Type | Name | Content | TTL |
-    | - | - | - | - |
-    | TXT | @ | `resend-domain-verification=<value>` | Auto |
+![Domain step with the organization domain field](https://mintcdn.com/resend/QCXwWXz0oyMSY7ls/images/sso-domain.png?fit=max\&auto=format\&n=QCXwWXz0oyMSY7ls\&q=85\&s=cc0e416311ad5047b3650cb4e3798c88)
 
-    Copy the value from the Dashboard rather than typing it, since it's unique to your domain.
+**3. Add the TXT record to your DNS**
 
-    <img src="https://mintcdn.com/resend/QCXwWXz0oyMSY7ls/images/sso-records.png?fit=max&auto=format&n=QCXwWXz0oyMSY7ls&q=85&s=fb43fd3ccabf902b9a63b2e2fdf3de1e" alt="DNS record step showing the TXT record table" width="1868" height="958" data-path="images/sso-records.png" />
+Resend issues a `TXT` record that proves you own the domain. Add it at the apex of your domain:
 
-    If the domain is already verified for sending in Resend, it's verified for SSO right away. This step and the next one are marked complete for you, so continue from **Configure SSO**.
+| Type | Name | Content | TTL |
+| - | - | - | - |
+| TXT | @ | `resend-domain-verification=<value>` | Auto |
 
-    <Tip>
-      If you don't manage DNS yourself, use **Copy instructions** to email the record to your DNS administrator. For security, instructions can only be sent to your own address or to an address on the domain you're verifying.
-    </Tip>
-  </Step>
+Copy the value from the Dashboard rather than typing it, since it's unique to your domain.
 
-  <Step title="Wait for verification">
-    Click **I've added the record**. Resend checks your DNS repeatedly for up to an hour and updates the page as it goes. DNS changes usually propagate within a few minutes.
-  </Step>
+![DNS record step showing the TXT record table](https://mintcdn.com/resend/QCXwWXz0oyMSY7ls/images/sso-records.png?fit=max\&auto=format\&n=QCXwWXz0oyMSY7ls\&q=85\&s=fb43fd3ccabf902b9a63b2e2fdf3de1e)
 
-  <Step title="Connect your identity provider">
-    Once the domain is verified, click **Finish setup**. A new tab opens where you configure the connection to your identity provider.
+If the domain is already verified for sending in Resend, it's verified for SSO right away. This step and the next one are marked complete for you, so continue from **Configure SSO**.
 
-    When you return to Resend, the Single Sign-On section of your [**Team Settings**](https://resend.com/settings/team) shows SSO as enabled.
-  </Step>
-</Steps>
+> [!TIP]
+>
+> If you don't manage DNS yourself, use **Copy instructions** to email the record to your DNS administrator. For security, instructions can only be sent to your own address or to an address on the domain you're verifying.
+
+**4. Wait for verification**
+
+Click **I've added the record**. Resend checks your DNS repeatedly for up to an hour and updates the page as it goes. DNS changes usually propagate within a few minutes.
+
+**5. Connect your identity provider**
+
+Once the domain is verified, click **Finish setup**. A new tab opens where you configure the connection to your identity provider.
+
+When you return to Resend, the Single Sign-On section of your [**Team Settings**](https://resend.com/settings/team) shows SSO as enabled.
 
 If you leave the setup before finishing, your progress is kept. Return to [**Team Settings**](https://resend.com/settings/team) and click **Continue SSO setup** to pick up where you left off.
 
@@ -81,12 +79,12 @@ By default, members can still sign in with a password, Google, or GitHub. Turn o
 
 When enforcement is on, anyone whose email address is on your SSO domain is redirected to your identity provider, including attempts to sign in with a password, Google, or GitHub. Only Admins can change this setting.
 
-<Warning>
-  Complete at least one successful SSO sign-in before turning on enforcement. If
-  your identity provider becomes unreachable while enforcement is on, accounts
-  on the SSO domain can't sign in. Keeping one Admin account on an email address
-  outside the SSO domain gives you a way back in.
-</Warning>
+> [!WARNING]
+>
+> Complete at least one successful SSO sign-in before turning on enforcement. If
+> your identity provider becomes unreachable while enforcement is on, accounts
+> on the SSO domain can't sign in. Keeping one Admin account on an email address
+> outside the SSO domain gives you a way back in.
 
 ## Restrict joining other teams
 
@@ -105,10 +103,10 @@ This isn't a self-serve setting. [Contact support](https://resend.com/help) if y
 
 This permanently removes your team's SSO configuration, including the verified SSO domain. Your sending and receiving domains aren't affected. Team members sign in with a password until you set SSO up again.
 
-<Note>
-  The SSO domain can't be edited after setup. To use a different domain, disable
-  SSO and set it up again.
-</Note>
+> [!NOTE]
+>
+> The SSO domain can't be edited after setup. To use a different domain, disable
+> SSO and set it up again.
 
 ## Troubleshooting
 

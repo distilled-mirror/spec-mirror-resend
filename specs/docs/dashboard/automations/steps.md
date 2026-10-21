@@ -27,42 +27,42 @@ Every step in an automation has common base properties: `key`, `type`, and a `co
 
 ### `key`
 
-<ParamField body="key" type="string" required>
-  A unique identifier for the step. Used in connection definitions to connect
-  steps.
-</ParamField>
+**key** `string` *required*
+
+A unique identifier for the step. Used in connection definitions to connect
+steps.
 
 ### `type`
 
-<ParamField body="type" type="string" required>
-  The type of step. Possible values:
+**type** `string` *required*
 
-  * `trigger`
-  * `condition`
-  * `delay`
-  * `wait_for_event`
-  * `send_email`
-  * `add_to_segment`
-  * `contact_update`
-  * `contact_delete`
-</ParamField>
+The type of step. Possible values:
+
+* `trigger`
+* `condition`
+* `delay`
+* `wait_for_event`
+* `send_email`
+* `add_to_segment`
+* `contact_update`
+* `contact_delete`
 
 ### `config`
 
-<ParamField body="config" type="object" required>
-  The configuration object for the step. The shape depends on the step `type`.
+**config** `object` *required*
 
-  See the configuration for each step `type`:
+The configuration object for the step. The shape depends on the step `type`.
 
-  * [`trigger`](#trigger)
-  * [`condition`](#condition)
-  * [`delay`](#delay)
-  * [`wait_for_event`](#wait_for_event)
-  * [`send_email`](#send_email)
-  * [`add_to_segment`](#add_to_segment)
-  * [`contact_update`](#contact_update)
-  * [`contact_delete`](#contact_delete)
-</ParamField>
+See the configuration for each step `type`:
+
+* [`trigger`](#trigger)
+* [`condition`](#condition)
+* [`delay`](#delay)
+* [`wait_for_event`](#wait_for_event)
+* [`send_email`](#send_email)
+* [`add_to_segment`](#add_to_segment)
+* [`contact_update`](#contact_update)
+* [`contact_delete`](#contact_delete)
 
 ## Step configuration
 
@@ -72,9 +72,9 @@ Below is a list of all the possible step types and their configurations.
 
 The trigger step starts the automation when a matching event is received.
 
-<ParamField body="config.event_name" type="string" required>
-  The name of the event that triggers the automation.
-</ParamField>
+**config.event\_name** `string` *required*
+
+The name of the event that triggers the automation.
 
 ```json theme={"theme":{"light":"github-light","dark":"vesper"}}
 {
@@ -90,53 +90,53 @@ The trigger step starts the automation when a matching event is received.
 
 Branches the workflow based on rules. Condition configs can be a single rule or a logical group (`and`/`or`) of rules.
 
-<ParamField body="config.type" type="string" required>
-  The type of condition node. Possible values:
+**config.type** `string` *required*
 
-  * `rule`
-  * `and`
-  * `or`
-</ParamField>
+The type of condition node. Possible values:
+
+* `rule`
+* `and`
+* `or`
 
 For `rule` type:
 
-<ParamField body="config.field" type="string" required>
-  The field to evaluate on a condition step. Use `event.` for the event that
-  triggered the Automation, `contact.` for the contact, or `wait_events.` for an
-  event received by a preceding wait for event step (for example,
-  `event.amount`, `contact.email`, or `wait_events.order.shipped.order_id`). A
-  wait for event `filter_rule` cannot use `wait_events.`.
-</ParamField>
+**config.field** `string` *required*
 
-<ParamField body="config.operator" type="string" required>
-  The comparison operator. Possible values:
+The field to evaluate on a condition step. Use `event.` for the event that
+triggered the Automation, `contact.` for the contact, or `wait_events.` for an
+event received by a preceding wait for event step (for example,
+`event.amount`, `contact.email`, or `wait_events.order.shipped.order_id`). A
+wait for event `filter_rule` cannot use `wait_events.`.
 
-  * `eq`: equals
-  * `neq`: not equals
-  * `gt`: greater than
-  * `gte`: greater than or equal to
-  * `lt`: less than
-  * `lte`: less than or equal to
-  * `contains`: contains a given value
-  * `starts_with`: starts with a given value
-  * `ends_with`: ends with a given value
-  * `exists`: field exists
-  * `is_empty`: field is empty
-</ParamField>
+**config.operator** `string` *required*
 
-<ParamField body="config.value" type="string | number | boolean | null | object">
-  The value to compare against on a condition step. Either a fixed value or a
-  variable reference such as `{ "var": "event.order_id" }`, using the
-  condition namespaces: `event.` (the triggering event), `contact.`, or
-  `wait_events.` (a preceding wait for event). Not required for `exists` and
-  `is_empty` operators.
-</ParamField>
+The comparison operator. Possible values:
+
+* `eq`: equals
+* `neq`: not equals
+* `gt`: greater than
+* `gte`: greater than or equal to
+* `lt`: less than
+* `lte`: less than or equal to
+* `contains`: contains a given value
+* `starts_with`: starts with a given value
+* `ends_with`: ends with a given value
+* `exists`: field exists
+* `is_empty`: field is empty
+
+**config.value** `string | number | boolean | null | object`
+
+The value to compare against on a condition step. Either a fixed value or a
+variable reference such as `{ "var": "event.order_id" }`, using the
+condition namespaces: `event.` (the triggering event), `contact.`, or
+`wait_events.` (a preceding wait for event). Not required for `exists` and
+`is_empty` operators.
 
 For `and` / `or` types:
 
-<ParamField body="config.rules" type="object[]" required>
-  An array of nested condition config objects. Must contain at least one item.
-</ParamField>
+**config.rules** `object[]` *required*
+
+An array of nested condition config objects. Must contain at least one item.
 
 Single rule example:
 
@@ -183,10 +183,10 @@ Use `and` or `or` to combine multiple rules into a single branch:
 
 Pauses execution for a specified duration.
 
-<ParamField body="config.duration" type="string" required>
-  The delay duration in natural language (e.g. `"1 hour"`, `"3 days"`). Maximum:
-  30 days.
-</ParamField>
+**config.duration** `string` *required*
+
+The delay duration in natural language (e.g. `"1 hour"`, `"3 days"`). Maximum:
+30 days.
 
 ```json Example theme={"theme":{"light":"github-light","dark":"vesper"}}
 {
@@ -202,63 +202,63 @@ Pauses execution for a specified duration.
 
 Pauses execution until a specific event is received or a timeout is reached.
 
-<ParamField body="config.event_name" type="string" required>
-  The name of the event to wait for.
-</ParamField>
+**config.event\_name** `string` *required*
 
-<ParamField body="config.timeout" type="string">
-  The maximum time to wait before timing out (e.g. `"3 days"`, `"1 hour"`).
-  Maximum: 30 days.
-</ParamField>
+The name of the event to wait for.
 
-<ParamField body="config.filter_rule" type="object">
-  An optional rule that filters which incoming events resume the step.
-  `wait_events.` is not available.
+**config.timeout** `string`
 
-  <Expandable title="properties" defaultOpen>
-    <ParamField body="type" type="string" required>
-      The type of filter rule. Possible values:
+The maximum time to wait before timing out (e.g. `"3 days"`, `"1 hour"`).
+Maximum: 30 days.
 
-      * `rule`
-      * `and`
-      * `or`
-    </ParamField>
+**config.filter\_rule** `object`
 
-    <ParamField body="field" type="string">
-      Required when `type` is `rule`. The payload field to evaluate. Use
-      `event.` for the incoming event or `contact.` for the Automation's contact
-      (for example, `event.status` or `contact.email`).
-    </ParamField>
+An optional rule that filters which incoming events resume the step.
+`wait_events.` is not available.
 
-    <ParamField body="operator" type="string">
-      Required when `type` is `rule`. The comparison operator. Possible values:
+**properties**
 
-      * `eq`: equals
-      * `neq`: not equals
-      * `gt`: greater than
-      * `gte`: greater than or equal to
-      * `lt`: less than
-      * `lte`: less than or equal to
-      * `contains`: contains a given value
-      * `starts_with`: starts with a given value
-      * `ends_with`: ends with a given value
-      * `exists`: field exists
-      * `is_empty`: field is empty
-    </ParamField>
+**type** `string` *required*
 
-    <ParamField body="value" type="string | number | boolean | null | object">
-      Used when `type` is `rule`. The value to compare against. A fixed value,
-      or a variable reference such as `{ "var": "event.order_id" }`. `event.`
-      is the event that triggered the Automation. `contact.` is the
-      Automation's contact. Not required for `exists` and `is_empty`.
-    </ParamField>
+The type of filter rule. Possible values:
 
-    <ParamField body="rules" type="object[]">
-      Required when `type` is `and` or `or`. An array of nested filter rules.
-      Must contain at least one item.
-    </ParamField>
-  </Expandable>
-</ParamField>
+* `rule`
+* `and`
+* `or`
+
+**field** `string`
+
+Required when `type` is `rule`. The payload field to evaluate. Use
+`event.` for the incoming event or `contact.` for the Automation's contact
+(for example, `event.status` or `contact.email`).
+
+**operator** `string`
+
+Required when `type` is `rule`. The comparison operator. Possible values:
+
+* `eq`: equals
+* `neq`: not equals
+* `gt`: greater than
+* `gte`: greater than or equal to
+* `lt`: less than
+* `lte`: less than or equal to
+* `contains`: contains a given value
+* `starts_with`: starts with a given value
+* `ends_with`: ends with a given value
+* `exists`: field exists
+* `is_empty`: field is empty
+
+**value** `string | number | boolean | null | object`
+
+Used when `type` is `rule`. The value to compare against. A fixed value,
+or a variable reference such as `{ "var": "event.order_id" }`. `event.`
+is the event that triggered the Automation. `contact.` is the
+Automation's contact. Not required for `exists` and `is_empty`.
+
+**rules** `object[]`
+
+Required when `type` is `and` or `or`. An array of nested filter rules.
+Must contain at least one item.
 
 This waits for `order.paid` only when it is the order that started the Automation. `field` reads `order_id` on the incoming event. `value` reads `order_id` on the triggering event.
 
@@ -283,37 +283,37 @@ This waits for `order.paid` only when it is the order that started the Automatio
 
 Sends an email using a template.
 
-<ParamField body="config.template" type="object" required>
-  The published template to send. Provide `id` and optionally `variables`.
+**config.template** `object` *required*
 
-  <Expandable defaultOpen title="properties">
-    <ParamField body="config.template.id" type="string" required>
-      The ID or alias of the template to send.
-    </ParamField>
+The published template to send. Provide `id` and optionally `variables`.
 
-    <ParamField body="config.template.variables" type="object">
-      A key-value map of template variables. Each value can be a static string or a variable reference object (`{ "var": "event.fieldName" }`) that resolves dynamically from the `event.*`, `contact.*`, or `wait_events.*` namespaces.
-    </ParamField>
-  </Expandable>
-</ParamField>
+**properties**
 
-<ParamField body="config.from" type="string">
-  The sender email address.
+**config.template.id** `string` *required*
 
-  If provided, this value will override the template's default value.
-</ParamField>
+The ID or alias of the template to send.
 
-<ParamField body="config.subject" type="string">
-  The email subject line.
+**config.template.variables** `object`
 
-  If provided, this value will override the template's default value.
-</ParamField>
+A key-value map of template variables. Each value can be a static string or a variable reference object (`{ "var": "event.fieldName" }`) that resolves dynamically from the `event.*`, `contact.*`, or `wait_events.*` namespaces.
 
-<ParamField body="config.reply_to" type="string">
-  Reply-to email address.
+**config.from** `string`
 
-  If provided, this value will override the template's default value.
-</ParamField>
+The sender email address.
+
+If provided, this value will override the template's default value.
+
+**config.subject** `string`
+
+The email subject line.
+
+If provided, this value will override the template's default value.
+
+**config.reply\_to** `string`
+
+Reply-to email address.
+
+If provided, this value will override the template's default value.
 
 ```json theme={"theme":{"light":"github-light","dark":"vesper"}}
 {
@@ -337,9 +337,9 @@ Sends an email using a template.
 
 Adds the contact to a segment.
 
-<ParamField body="config.segment_id" type="string" required>
-  The ID of the segment to add the contact to.
-</ParamField>
+**config.segment\_id** `string` *required*
+
+The ID of the segment to add the contact to.
 
 ```json Example theme={"theme":{"light":"github-light","dark":"vesper"}}
 {
@@ -360,23 +360,23 @@ Variable references use dot-notation with one of these scopes:
 * `event.*`: references a field from the triggering event payload (e.g., `event.firstName`).
 * `contact.*`: references a field from the current contact (e.g., `contact.last_name`, `contact.properties.company`).
 
-<ParamField body="config.first_name" type="string | object">
-  The contact's first name. Accepts a hardcoded string or a variable reference.
-</ParamField>
+**config.first\_name** `string | object`
 
-<ParamField body="config.last_name" type="string | object">
-  The contact's last name. Accepts a hardcoded string or a variable reference.
-</ParamField>
+The contact's first name. Accepts a hardcoded string or a variable reference.
 
-<ParamField body="config.unsubscribed" type="boolean | object">
-  The contact's unsubscribed status. Accepts a boolean or a variable reference.
-</ParamField>
+**config.last\_name** `string | object`
 
-<ParamField body="config.properties" type="object">
-  A map of custom contact properties to update. Keys correspond to your [Contact
-  Custom Properties](/docs/dashboard/audiences/properties). Each value can be a
-  hardcoded value (string, number, boolean) or a variable reference.
-</ParamField>
+The contact's last name. Accepts a hardcoded string or a variable reference.
+
+**config.unsubscribed** `boolean | object`
+
+The contact's unsubscribed status. Accepts a boolean or a variable reference.
+
+**config.properties** `object`
+
+A map of custom contact properties to update. Keys correspond to your [Contact
+Custom Properties](/docs/dashboard/audiences/properties). Each value can be a
+hardcoded value (string, number, boolean) or a variable reference.
 
 ```json Example theme={"theme":{"light":"github-light","dark":"vesper"}}
 {

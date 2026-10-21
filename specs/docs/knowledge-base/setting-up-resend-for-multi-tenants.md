@@ -8,11 +8,11 @@
 
 Many SaaS platforms need to send emails on behalf of their tenants: whether it's transactional notifications, onboarding sequences, or marketing campaigns from a tenant's own domain. This guide walks through the two main approaches to configuring Resend for multi-tenant email sending.
 
-<Info>
-  There is no single "right" approach. Both options described below are valid
-  and widely used. The best choice depends on your product's requirements, how
-  much control you want over the sending experience, and your tenants' needs.
-</Info>
+> [!NOTE]
+>
+> There is no single "right" approach. Both options described below are valid
+> and widely used. The best choice depends on your product's requirements, how
+> much control you want over the sending experience, and your tenants' needs.
 
 ## At a glance
 
@@ -44,11 +44,11 @@ const domain = await resend.domains.create({ name: 'tenant-domain.com' });
 await resend.domains.verify(domain.id);
 ```
 
-<Note>
-  Domain verification is asynchronous: DNS records need to propagate before
-  verification succeeds. You can use [webhooks](/docs/webhooks/introduction) to
-  listen for `domain.verified` events instead of polling.
-</Note>
+> [!NOTE]
+>
+> Domain verification is asynchronous: DNS records need to propagate before
+> verification succeeds. You can use [webhooks](/docs/webhooks/introduction) to
+> listen for `domain.verified` events instead of polling.
 
 ### Creating a domain-scoped API key
 
@@ -62,10 +62,10 @@ const apiKey = await resend.apiKeys.create({
 });
 ```
 
-<Warning>
-  The API key token is only returned once at creation time. Store it securely:
-  you will not be able to retrieve it again.
-</Warning>
+> [!WARNING]
+>
+> The API key token is only returned once at creation time. Store it securely:
+> you will not be able to retrieve it again.
 
 ### Pros
 
@@ -80,11 +80,11 @@ const apiKey = await resend.apiKeys.create({
 * Aggregate sending volume will likely require a [rate-limit increase](/docs/knowledge-base/account-quotas-and-limits) as you onboard tenants
 * Each tenant domain counts toward your team's domain limit, which you can raise with the [domains add-on](/docs/knowledge-base/how-to-add-more-domains)
 
-<Warning>
-  If one tenant engages in poor sending practices (spam, high bounce rates), it
-  can affect deliverability for all tenants on your account. In severe cases,
-  the entire account may be suspended.
-</Warning>
+> [!WARNING]
+>
+> If one tenant engages in poor sending practices (spam, high bounce rates), it
+> can affect deliverability for all tenants on your account. In severe cases,
+> the entire account may be suspended.
 
 ## Option B: Separate accounts (BYOK)
 
@@ -117,11 +117,11 @@ await resend.emails.send({
 * Requires each tenant to create a Resend account and manage their own plan
 * More onboarding friction for tenants unfamiliar with email infrastructure
 
-<Note>
-  Team creation is not currently available via the API. Each tenant will need to
-  create their Resend account manually through the
-  [dashboard](https://resend.com/signup).
-</Note>
+> [!NOTE]
+>
+> Team creation is not currently available via the API. Each tenant will need to
+> create their Resend account manually through the
+> [dashboard](https://resend.com/signup).
 
 ## Billing implications
 
@@ -179,37 +179,35 @@ If your needs change, you can migrate from one approach to the other.
 * Update your application to use the new keys
 * Tenants can deactivate their individual accounts
 
-<Warning>
-  When moving a domain between accounts, it will need to be deleted from the
-  original account before being re-verified in the second account. Plan for
-  potential sending interruptions during the DNS propagation window.
-</Warning>
+> [!WARNING]
+>
+> When moving a domain between accounts, it will need to be deleted from the
+> original account before being re-verified in the second account. Plan for
+> potential sending interruptions during the DNS propagation window.
 
 ## Share your feedback
 
 Please share any feedback on your experience using Resend for your multi-tenant application to help us better serve this use case.
 
-<Info>
-  We're tracking interest for improved multi-tenant capabilities. Share your use
-  case at [support@resend.com](mailto:support@resend.com).
-</Info>
+> [!NOTE]
+>
+> We're tracking interest for improved multi-tenant capabilities. Share your use
+> case at [support@resend.com](mailto:support@resend.com).
 
 ## Related resources
 
-<CardGroup cols={2}>
-  <Card title="Create Domain API" href="/docs/api-reference/domains/create-domain">
-    Add and verify tenant domains programmatically.
-  </Card>
+> **[Create Domain API](/docs/api-reference/domains/create-domain)**
+>
+> Add and verify tenant domains programmatically.
 
-  <Card title="Create API Key API" href="/docs/api-reference/api-keys/create-api-key">
-    Create domain-scoped API keys for tenant isolation.
-  </Card>
+> **[Create API Key API](/docs/api-reference/api-keys/create-api-key)**
+>
+> Create domain-scoped API keys for tenant isolation.
 
-  <Card title="Webhooks" href="/docs/webhooks/introduction">
-    Set up webhooks to receive real-time email event notifications.
-  </Card>
+> **[Webhooks](/docs/webhooks/introduction)**
+>
+> Set up webhooks to receive real-time email event notifications.
 
-  <Card title="Managing Tags" href="/docs/dashboard/emails/tags">
-    Use tags to organize emails and route webhook events by tenant.
-  </Card>
-</CardGroup>
+> **[Managing Tags](/docs/dashboard/emails/tags)**
+>
+> Use tags to organize emails and route webhook events by tenant.

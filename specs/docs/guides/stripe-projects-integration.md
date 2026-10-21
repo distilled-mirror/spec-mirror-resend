@@ -32,11 +32,11 @@ Then, run:
 stripe projects add resend/email
 ```
 
-<Tip>
-  You can also ask your coding agent to run these steps. `stripe projects init`
-  writes Stripe Projects skills into the project, and `add resend/email` adds a
-  Resend skill, so the agent knows the CLI commands and the Resend API.
-</Tip>
+> [!TIP]
+>
+> You can also ask your coding agent to run these steps. `stripe projects init`
+> writes Stripe Projects skills into the project, and `add resend/email` adds a
+> Resend skill, so the agent knows the CLI commands and the Resend API.
 
 The CLI asks you to pick a plan (Free or Pro), provisions the account, and writes the API key to your local `.env` as `RESEND_API_KEY`. Run `stripe projects env` to list the variables with their values hidden.
 
@@ -69,243 +69,239 @@ Install the SDK and read the key from the environment. Replace `you@example.com`
 
 The SDKs read the process environment, not the `.env` file. Load it first, for example with `node --env-file=.env send.mjs`, or with your language's dotenv package.
 
-<CodeGroup>
-  ```bash Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
-  npm install resend
-  ```
+```bash Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
+npm install resend
+```
 
-  ```bash PHP theme={"theme":{"light":"github-light","dark":"vesper"}}
-  composer require resend/resend-php
-  ```
+```bash PHP theme={"theme":{"light":"github-light","dark":"vesper"}}
+composer require resend/resend-php
+```
 
-  ```bash Python theme={"theme":{"light":"github-light","dark":"vesper"}}
-  pip install resend
-  ```
+```bash Python theme={"theme":{"light":"github-light","dark":"vesper"}}
+pip install resend
+```
 
-  ```bash Ruby theme={"theme":{"light":"github-light","dark":"vesper"}}
-  gem install resend
-  ```
+```bash Ruby theme={"theme":{"light":"github-light","dark":"vesper"}}
+gem install resend
+```
 
-  ```bash Go theme={"theme":{"light":"github-light","dark":"vesper"}}
-  go get github.com/resend/resend-go/v4
-  ```
+```bash Go theme={"theme":{"light":"github-light","dark":"vesper"}}
+go get github.com/resend/resend-go/v4
+```
 
-  ```bash Rust theme={"theme":{"light":"github-light","dark":"vesper"}}
-  cargo add resend-rs
-  cargo add tokio -F macros,rt-multi-thread
-  ```
+```bash Rust theme={"theme":{"light":"github-light","dark":"vesper"}}
+cargo add resend-rs
+cargo add tokio -F macros,rt-multi-thread
+```
 
-  ```bash Java theme={"theme":{"light":"github-light","dark":"vesper"}}
-  implementation 'com.resend:resend-java:+'
-  ```
+```bash Java theme={"theme":{"light":"github-light","dark":"vesper"}}
+implementation 'com.resend:resend-java:+'
+```
 
-  ```bash .NET theme={"theme":{"light":"github-light","dark":"vesper"}}
-  dotnet add package Resend
-  ```
+```bash .NET theme={"theme":{"light":"github-light","dark":"vesper"}}
+dotnet add package Resend
+```
 
-  ```elixir Elixir theme={"theme":{"light":"github-light","dark":"vesper"}}
-  def deps do
-    [
-      {:resend, "~> 0.4.0"}
-    ]
-  end
-  ```
-</CodeGroup>
+```elixir Elixir theme={"theme":{"light":"github-light","dark":"vesper"}}
+def deps do
+  [
+    {:resend, "~> 0.4.0"}
+  ]
+end
+```
 
 Then send an email:
 
-<CodeGroup>
-  ```js Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
-  import { Resend } from 'resend';
+```js Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
+import { Resend } from 'resend';
 
-  const resend = new Resend(process.env.RESEND_API_KEY);
+const resend = new Resend(process.env.RESEND_API_KEY);
 
-  const { data, error } = await resend.emails.send({
-    from: 'onboarding@resend.dev',
-    to: ['you@example.com'],
-    subject: 'Hello from Stripe Projects',
-    html: '<strong>It works!</strong>',
-  });
+const { data, error } = await resend.emails.send({
+  from: 'onboarding@resend.dev',
+  to: ['you@example.com'],
+  subject: 'Hello from Stripe Projects',
+  html: '<strong>It works!</strong>',
+});
 
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('Email sent:', data);
-  }
-  ```
+if (error) {
+  console.error(error);
+} else {
+  console.log('Email sent:', data);
+}
+```
 
-  ```php PHP theme={"theme":{"light":"github-light","dark":"vesper"}}
-  <?php
+```php PHP theme={"theme":{"light":"github-light","dark":"vesper"}}
+<?php
 
-  require __DIR__ . '/vendor/autoload.php';
+require __DIR__ . '/vendor/autoload.php';
 
-  $resend = Resend::client(getenv('RESEND_API_KEY'));
+$resend = Resend::client(getenv('RESEND_API_KEY'));
 
-  try {
-      $result = $resend->emails->send([
-          'from' => 'onboarding@resend.dev',
-          'to' => ['you@example.com'],
-          'subject' => 'Hello from Stripe Projects',
-          'html' => '<strong>It works!</strong>',
-      ]);
-      echo 'Email sent: ' . $result['id'];
-  } catch (Exception $e) {
-      echo 'Error: ' . $e->getMessage();
-  }
-  ```
+try {
+    $result = $resend->emails->send([
+        'from' => 'onboarding@resend.dev',
+        'to' => ['you@example.com'],
+        'subject' => 'Hello from Stripe Projects',
+        'html' => '<strong>It works!</strong>',
+    ]);
+    echo 'Email sent: ' . $result['id'];
+} catch (Exception $e) {
+    echo 'Error: ' . $e->getMessage();
+}
+```
 
-  ```python Python theme={"theme":{"light":"github-light","dark":"vesper"}}
-  import os
-  import resend
-  from resend.exceptions import ResendError
+```python Python theme={"theme":{"light":"github-light","dark":"vesper"}}
+import os
+import resend
+from resend.exceptions import ResendError
 
-  resend.api_key = os.environ["RESEND_API_KEY"]
+resend.api_key = os.environ["RESEND_API_KEY"]
 
-  params: resend.Emails.SendParams = {
-      "from": "onboarding@resend.dev",
-      "to": ["you@example.com"],
-      "subject": "Hello from Stripe Projects",
-      "html": "<strong>It works!</strong>",
-  }
-
-  try:
-      email = resend.Emails.send(params)
-      print("Email sent:", email)
-  except ResendError as error:
-      print(error)
-  ```
-
-  ```ruby Ruby theme={"theme":{"light":"github-light","dark":"vesper"}}
-  require "resend"
-
-  Resend.api_key = ENV["RESEND_API_KEY"]
-
-  params = {
+params: resend.Emails.SendParams = {
     "from": "onboarding@resend.dev",
     "to": ["you@example.com"],
     "subject": "Hello from Stripe Projects",
-    "html": "<strong>It works!</strong>"
-  }
+    "html": "<strong>It works!</strong>",
+}
 
-  sent = Resend::Emails.send(params)
-  puts "Email sent: #{sent[:id]}"
-  ```
+try:
+    email = resend.Emails.send(params)
+    print("Email sent:", email)
+except ResendError as error:
+    print(error)
+```
 
-  ```go Go theme={"theme":{"light":"github-light","dark":"vesper"}}
-  package main
+```ruby Ruby theme={"theme":{"light":"github-light","dark":"vesper"}}
+require "resend"
 
-  import (
-  	"fmt"
-  	"os"
+Resend.api_key = ENV["RESEND_API_KEY"]
 
-  	"github.com/resend/resend-go/v4"
-  )
+params = {
+  "from": "onboarding@resend.dev",
+  "to": ["you@example.com"],
+  "subject": "Hello from Stripe Projects",
+  "html": "<strong>It works!</strong>"
+}
 
-  func main() {
-  	client := resend.NewClient(os.Getenv("RESEND_API_KEY"))
+sent = Resend::Emails.send(params)
+puts "Email sent: #{sent[:id]}"
+```
 
-  	params := &resend.SendEmailRequest{
-  		From:    "onboarding@resend.dev",
-  		To:      []string{"you@example.com"},
-  		Subject: "Hello from Stripe Projects",
-  		Html:    "<strong>It works!</strong>",
-  	}
+```go Go theme={"theme":{"light":"github-light","dark":"vesper"}}
+package main
 
-  	sent, err := client.Emails.Send(params)
-  	if err != nil {
-  		fmt.Println(err.Error())
-  		return
-  	}
-  	fmt.Println("Email sent:", sent.Id)
-  }
-  ```
+import (
+	"fmt"
+	"os"
 
-  ```rust Rust theme={"theme":{"light":"github-light","dark":"vesper"}}
-  use resend_rs::types::CreateEmailBaseOptions;
-  use resend_rs::{Resend, Result};
+	"github.com/resend/resend-go/v4"
+)
 
-  #[tokio::main]
-  async fn main() -> Result<()> {
-      let api_key = std::env::var("RESEND_API_KEY")
-          .expect("RESEND_API_KEY not set");
-      let resend = Resend::new(&api_key);
+func main() {
+	client := resend.NewClient(os.Getenv("RESEND_API_KEY"))
 
-      let email = CreateEmailBaseOptions::new(
-          "onboarding@resend.dev",
-          ["you@example.com"],
-          "Hello from Stripe Projects"
-      ).with_html("<strong>It works!</strong>");
+	params := &resend.SendEmailRequest{
+		From:    "onboarding@resend.dev",
+		To:      []string{"you@example.com"},
+		Subject: "Hello from Stripe Projects",
+		Html:    "<strong>It works!</strong>",
+	}
 
-      match resend.emails.send(email).await {
-          Ok(data) => println!("Email sent: {:?}", data),
-          Err(e) => eprintln!("Error: {}", e),
-      }
+	sent, err := client.Emails.Send(params)
+	if err != nil {
+		fmt.Println(err.Error())
+		return
+	}
+	fmt.Println("Email sent:", sent.Id)
+}
+```
 
-      Ok(())
-  }
-  ```
+```rust Rust theme={"theme":{"light":"github-light","dark":"vesper"}}
+use resend_rs::types::CreateEmailBaseOptions;
+use resend_rs::{Resend, Result};
 
-  ```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
-  import com.resend.*;
-  import com.resend.core.exception.ResendException;
-  import com.resend.services.emails.model.*;
+#[tokio::main]
+async fn main() -> Result<()> {
+    let api_key = std::env::var("RESEND_API_KEY")
+        .expect("RESEND_API_KEY not set");
+    let resend = Resend::new(&api_key);
 
-  public class Main {
-      public static void main(String[] args) {
-          Resend resend = new Resend(System.getenv("RESEND_API_KEY"));
+    let email = CreateEmailBaseOptions::new(
+        "onboarding@resend.dev",
+        ["you@example.com"],
+        "Hello from Stripe Projects"
+    ).with_html("<strong>It works!</strong>");
 
-          CreateEmailOptions params = CreateEmailOptions.builder()
-              .from("onboarding@resend.dev")
-              .to("you@example.com")
-              .subject("Hello from Stripe Projects")
-              .html("<strong>It works!</strong>")
-              .build();
+    match resend.emails.send(email).await {
+        Ok(data) => println!("Email sent: {:?}", data),
+        Err(e) => eprintln!("Error: {}", e),
+    }
 
-          try {
-              CreateEmailResponse data = resend.emails().send(params);
-              System.out.println("Email sent: " + data.getId());
-          } catch (ResendException e) {
-              e.printStackTrace();
-          }
-      }
-  }
-  ```
+    Ok(())
+}
+```
 
-  ```csharp .NET theme={"theme":{"light":"github-light","dark":"vesper"}}
-  using Resend;
+```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
+import com.resend.*;
+import com.resend.core.exception.ResendException;
+import com.resend.services.emails.model.*;
 
-  IResend resend = ResendClient.Create( Environment.GetEnvironmentVariable( "RESEND_API_KEY" )! );
+public class Main {
+    public static void main(String[] args) {
+        Resend resend = new Resend(System.getenv("RESEND_API_KEY"));
 
-  try
-  {
-      var resp = await resend.EmailSendAsync( new EmailMessage()
-      {
-          From = "onboarding@resend.dev",
-          To = "you@example.com",
-          Subject = "Hello from Stripe Projects",
-          HtmlBody = "<strong>It works!</strong>",
-      } );
-      Console.WriteLine( "Email sent: {0}", resp.Content );
-  }
-  catch ( ResendException ex )
-  {
-      Console.WriteLine( "Error: {0}", ex.Message );
-  }
-  ```
+        CreateEmailOptions params = CreateEmailOptions.builder()
+            .from("onboarding@resend.dev")
+            .to("you@example.com")
+            .subject("Hello from Stripe Projects")
+            .html("<strong>It works!</strong>")
+            .build();
 
-  ```elixir Elixir theme={"theme":{"light":"github-light","dark":"vesper"}}
-  client = Resend.client(api_key: System.get_env("RESEND_API_KEY"))
+        try {
+            CreateEmailResponse data = resend.emails().send(params);
+            System.out.println("Email sent: " + data.getId());
+        } catch (ResendException e) {
+            e.printStackTrace();
+        }
+    }
+}
+```
 
-  {:ok, result} = Resend.Emails.send(client, %{
-    from: "onboarding@resend.dev",
-    to: ["you@example.com"],
-    subject: "Hello from Stripe Projects",
-    html: "<strong>It works!</strong>"
-  })
+```csharp .NET theme={"theme":{"light":"github-light","dark":"vesper"}}
+using Resend;
 
-  IO.inspect(result)
-  ```
-</CodeGroup>
+IResend resend = ResendClient.Create( Environment.GetEnvironmentVariable( "RESEND_API_KEY" )! );
+
+try
+{
+    var resp = await resend.EmailSendAsync( new EmailMessage()
+    {
+        From = "onboarding@resend.dev",
+        To = "you@example.com",
+        Subject = "Hello from Stripe Projects",
+        HtmlBody = "<strong>It works!</strong>",
+    } );
+    Console.WriteLine( "Email sent: {0}", resp.Content );
+}
+catch ( ResendException ex )
+{
+    Console.WriteLine( "Error: {0}", ex.Message );
+}
+```
+
+```elixir Elixir theme={"theme":{"light":"github-light","dark":"vesper"}}
+client = Resend.client(api_key: System.get_env("RESEND_API_KEY"))
+
+{:ok, result} = Resend.Emails.send(client, %{
+  from: "onboarding@resend.dev",
+  to: ["you@example.com"],
+  subject: "Hello from Stripe Projects",
+  html: "<strong>It works!</strong>"
+})
+
+IO.inspect(result)
+```
 
 See the full quickstart for [Node.js](/docs/send-with-nodejs), [PHP](/docs/send-with-php), [Python](/docs/send-with-python), [Ruby](/docs/send-with-ruby), [Go](/docs/send-with-go), [Rust](/docs/send-with-rust), [Java](/docs/send-with-java), [.NET](/docs/send-with-dotnet), or [Elixir](/docs/send-with-elixir).
 
@@ -333,11 +329,11 @@ stripe projects upgrade resend/free resend/pro --json
 
 If Stripe has no payment method for you yet, the CLI stops and gives you a Checkout link to add one. The higher quota activates when the first payment confirms. To go back to the free plan, run `stripe projects downgrade resend/pro resend/free`. The paid quota stays until the billing period ends.
 
-<Warning>
-  The Stripe Projects integration does not have paid marketing plans yet, only
-  Transactional Pro. Discounts, promo codes, and startup or partner credits do
-  not apply to Stripe Projects plans.
-</Warning>
+> [!WARNING]
+>
+> The Stripe Projects integration does not have paid marketing plans yet, only
+> Transactional Pro. Discounts, promo codes, and startup or partner credits do
+> not apply to Stripe Projects plans.
 
 ## Next steps
 

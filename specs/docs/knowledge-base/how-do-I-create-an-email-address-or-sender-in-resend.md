@@ -10,10 +10,10 @@ Resend does not require you to “create an email address”, “set up a sender
 
 Once a domain is verified in your Resend account, you can send from any email address at that domain.
 
-<Info>
-  The email address you send from does not need to exist in another system.
-  However, we recommend using addresses that can receive replies.
-</Info>
+> [!NOTE]
+>
+> The email address you send from does not need to exist in another system.
+> However, we recommend using addresses that can receive replies.
 
 ## How to add the sender address
 
@@ -21,169 +21,167 @@ You add the sender address in the `from` field when you send the email.
 
 To include a friendly name, use the format `"Your Name <sender@example.com>"`.
 
-<CodeGroup>
-  ```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
-  import { Resend } from 'resend';
+```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
+import { Resend } from 'resend';
 
-  const resend = new Resend('re_xxxxxxxxx');
+const resend = new Resend('re_xxxxxxxxx');
 
-  await resend.emails.send({
-    from: 'Acme <onboarding@example.com>',
-    to: ['customer@example.com'],
-    subject: 'Welcome to Acme',
-    html: '<p>Thanks for signing up!</p>',
-  });
-  ```
+await resend.emails.send({
+  from: 'Acme <onboarding@example.com>',
+  to: ['customer@example.com'],
+  subject: 'Welcome to Acme',
+  html: '<p>Thanks for signing up!</p>',
+});
+```
 
-  ```php PHP theme={"theme":{"light":"github-light","dark":"vesper"}}
-  $resend = Resend::client('re_xxxxxxxxx');
+```php PHP theme={"theme":{"light":"github-light","dark":"vesper"}}
+$resend = Resend::client('re_xxxxxxxxx');
 
-  $resend->emails->send([
-    'from' => 'Acme <onboarding@example.com>',
-    'to' => ['customer@example.com'],
-    'subject' => 'Welcome to Acme',
-    'html' => '<p>Thanks for signing up!</p>'
-  ]);
-  ```
+$resend->emails->send([
+  'from' => 'Acme <onboarding@example.com>',
+  'to' => ['customer@example.com'],
+  'subject' => 'Welcome to Acme',
+  'html' => '<p>Thanks for signing up!</p>'
+]);
+```
 
-  ```python Python theme={"theme":{"light":"github-light","dark":"vesper"}}
-  import resend
+```python Python theme={"theme":{"light":"github-light","dark":"vesper"}}
+import resend
 
-  resend.api_key = "re_xxxxxxxxx"
+resend.api_key = "re_xxxxxxxxx"
 
-  params: resend.Emails.SendParams = {
-    "from": "Acme <onboarding@example.com>",
-    "to": ["customer@example.com"],
-    "subject": "Welcome to Acme",
-    "html": "<p>Thanks for signing up!</p>"
+params: resend.Emails.SendParams = {
+  "from": "Acme <onboarding@example.com>",
+  "to": ["customer@example.com"],
+  "subject": "Welcome to Acme",
+  "html": "<p>Thanks for signing up!</p>"
+}
+
+email = resend.Emails.send(params)
+print(email)
+```
+
+```rb Ruby theme={"theme":{"light":"github-light","dark":"vesper"}}
+require "resend"
+
+Resend.api_key = "re_xxxxxxxxx"
+
+params = {
+  "from": "Acme <onboarding@example.com>",
+  "to": ["customer@example.com"],
+  "subject": "Welcome to Acme",
+  "html": "<p>Thanks for signing up!</p>"
+}
+
+sent = Resend::Emails.send(params)
+puts sent
+```
+
+```go Go theme={"theme":{"light":"github-light","dark":"vesper"}}
+package main
+
+import (
+	"context"
+	"fmt"
+
+	"github.com/resend/resend-go/v4"
+)
+
+func main() {
+  ctx := context.TODO()
+  client := resend.NewClient("re_xxxxxxxxx")
+
+  params := &resend.SendEmailRequest{
+      From:    "Acme <onboarding@example.com>",
+      To:      []string{"customer@example.com"},
+      Subject: "Welcome to Acme",
+      Html:    "<p>Thanks for signing up!</p>",
   }
 
-  email = resend.Emails.send(params)
-  print(email)
-  ```
+  sent, err := client.Emails.SendWithContext(ctx, params)
 
-  ```rb Ruby theme={"theme":{"light":"github-light","dark":"vesper"}}
-  require "resend"
-
-  Resend.api_key = "re_xxxxxxxxx"
-
-  params = {
-    "from": "Acme <onboarding@example.com>",
-    "to": ["customer@example.com"],
-    "subject": "Welcome to Acme",
-    "html": "<p>Thanks for signing up!</p>"
+  if err != nil {
+    panic(err)
   }
+  fmt.Println(sent.Id)
+}
+```
 
-  sent = Resend::Emails.send(params)
-  puts sent
-  ```
+```rust Rust theme={"theme":{"light":"github-light","dark":"vesper"}}
+use resend_rs::types::CreateEmailBaseOptions;
+use resend_rs::{Resend, Result};
 
-  ```go Go theme={"theme":{"light":"github-light","dark":"vesper"}}
-  package main
+#[tokio::main]
+async fn main() -> Result<()> {
+  let resend = Resend::new("re_xxxxxxxxx");
 
-  import (
-  	"context"
-  	"fmt"
+  let from = "Acme <onboarding@example.com>";
+  let to = ["customer@example.com"];
+  let subject = "Welcome to Acme";
+  let html = "<p>Thanks for signing up!</p>";
 
-  	"github.com/resend/resend-go/v4"
-  )
+  let email = CreateEmailBaseOptions::new(from, to, subject)
+    .with_html(html);
 
-  func main() {
-    ctx := context.TODO()
-    client := resend.NewClient("re_xxxxxxxxx")
+  let _email = resend.emails.send(email).await?;
 
-    params := &resend.SendEmailRequest{
-        From:    "Acme <onboarding@example.com>",
-        To:      []string{"customer@example.com"},
-        Subject: "Welcome to Acme",
-        Html:    "<p>Thanks for signing up!</p>",
+  Ok(())
+}
+```
+
+```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
+import com.resend.*;
+
+public class Main {
+    public static void main(String[] args) {
+        Resend resend = new Resend("re_xxxxxxxxx");
+
+        CreateEmailOptions params = CreateEmailOptions.builder()
+                .from("Acme <onboarding@example.com>")
+                .to("customer@example.com")
+                .subject("Welcome to Acme")
+                .html("<p>Thanks for signing up!</p>")
+                .build();
+
+        CreateEmailResponse data = resend.emails().send(params);
     }
+}
+```
 
-    sent, err := client.Emails.SendWithContext(ctx, params)
+```csharp .NET theme={"theme":{"light":"github-light","dark":"vesper"}}
+using Resend;
 
-    if err != nil {
-      panic(err)
-    }
-    fmt.Println(sent.Id)
-  }
-  ```
+IResend resend = ResendClient.Create( "re_xxxxxxxxx" ); // Or from DI
 
-  ```rust Rust theme={"theme":{"light":"github-light","dark":"vesper"}}
-  use resend_rs::types::CreateEmailBaseOptions;
-  use resend_rs::{Resend, Result};
+var resp = await resend.EmailSendAsync( new EmailMessage()
+{
+    From = "Acme <onboarding@example.com>",
+    To = "customer@example.com",
+    Subject = "Welcome to Acme",
+    HtmlBody = "<p>Thanks for signing up!</p>",
+} );
+Console.WriteLine( "Email Id={0}", resp.Content );
+```
 
-  #[tokio::main]
-  async fn main() -> Result<()> {
-    let resend = Resend::new("re_xxxxxxxxx");
+```bash cURL theme={"theme":{"light":"github-light","dark":"vesper"}}
+curl -X POST 'https://api.resend.com/emails' \
+     -H 'Authorization: Bearer re_xxxxxxxxx' \
+     -H 'Content-Type: application/json' \
+     -d $'{
+  "from": "Acme <onboarding@example.com>",
+  "to": ["customer@example.com"],
+  "subject": "Welcome to Acme",
+  "html": "<p>Thanks for signing up!</p>"
+}'
+```
 
-    let from = "Acme <onboarding@example.com>";
-    let to = ["customer@example.com"];
-    let subject = "Welcome to Acme";
-    let html = "<p>Thanks for signing up!</p>";
-
-    let email = CreateEmailBaseOptions::new(from, to, subject)
-      .with_html(html);
-
-    let _email = resend.emails.send(email).await?;
-
-    Ok(())
-  }
-  ```
-
-  ```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
-  import com.resend.*;
-
-  public class Main {
-      public static void main(String[] args) {
-          Resend resend = new Resend("re_xxxxxxxxx");
-
-          CreateEmailOptions params = CreateEmailOptions.builder()
-                  .from("Acme <onboarding@example.com>")
-                  .to("customer@example.com")
-                  .subject("Welcome to Acme")
-                  .html("<p>Thanks for signing up!</p>")
-                  .build();
-
-          CreateEmailResponse data = resend.emails().send(params);
-      }
-  }
-  ```
-
-  ```csharp .NET theme={"theme":{"light":"github-light","dark":"vesper"}}
-  using Resend;
-
-  IResend resend = ResendClient.Create( "re_xxxxxxxxx" ); // Or from DI
-
-  var resp = await resend.EmailSendAsync( new EmailMessage()
-  {
-      From = "Acme <onboarding@example.com>",
-      To = "customer@example.com",
-      Subject = "Welcome to Acme",
-      HtmlBody = "<p>Thanks for signing up!</p>",
-  } );
-  Console.WriteLine( "Email Id={0}", resp.Content );
-  ```
-
-  ```bash cURL theme={"theme":{"light":"github-light","dark":"vesper"}}
-  curl -X POST 'https://api.resend.com/emails' \
-       -H 'Authorization: Bearer re_xxxxxxxxx' \
-       -H 'Content-Type: application/json' \
-       -d $'{
-    "from": "Acme <onboarding@example.com>",
-    "to": ["customer@example.com"],
-    "subject": "Welcome to Acme",
-    "html": "<p>Thanks for signing up!</p>"
-  }'
-  ```
-
-  ```bash CLI theme={"theme":{"light":"github-light","dark":"vesper"}}
-  resend emails send \
-    --from "Acme <onboarding@example.com>" \
-    --to customer@example.com \
-    --subject "Welcome to Acme" \
-    --html "<p>Thanks for signing up!</p>"
-  ```
-</CodeGroup>
+```bash CLI theme={"theme":{"light":"github-light","dark":"vesper"}}
+resend emails send \
+  --from "Acme <onboarding@example.com>" \
+  --to customer@example.com \
+  --subject "Welcome to Acme" \
+  --html "<p>Thanks for signing up!</p>"
+```
 
 In this example, `onboarding@example.com` is the sender address. As long as `example.com` is verified in Resend, you can use that address in `from` without creating it first.
 

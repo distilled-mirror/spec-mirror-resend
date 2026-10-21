@@ -15,21 +15,21 @@ Verifying a domain involves a few steps:
 
 When this process is completed correctly, your domain will often verify within 15 minutes of adding the DNS records.
 
-<Tip>
-  If you are having any conflict issues with the `MX` records, [check out this
-  guide](/docs/knowledge-base/how-do-i-avoid-conflicting-with-my-mx-records).
-</Tip>
+> [!TIP]
+>
+> If you are having any conflict issues with the `MX` records, [check out this
+> guide](/docs/knowledge-base/how-do-i-avoid-conflicting-with-my-mx-records).
 
 ## Common verification issues
 
 When your domain doesn't verify as expected, it's typically due to DNS configuration issues. This guide will help you troubleshoot and resolve common verification problems.
 
-<Tip>
-  Resend provides real-time DNS validation when viewing your domain details.
-  When viewing your domain, you'll see specific error messages and visual
-  indicators highlighting any issues with your DNS records in case you've added
-  them incorrectly.
-</Tip>
+> [!TIP]
+>
+> Resend provides real-time DNS validation when viewing your domain details.
+> When viewing your domain, you'll see specific error messages and visual
+> indicators highlighting any issues with your DNS records in case you've added
+> them incorrectly.
 
 ### Incorrect DNS records
 
@@ -40,17 +40,17 @@ Usually when a domain doesn't verify, it's because the DNS records were not adde
 3. Check that record values match exactly what Resend generated for you
 4. Look for red wavy underlines on the domain details page (these indicate specific DNS record errors)
 
-<img src="https://mintcdn.com/resend/bOYCnBDaGARkhUDn/images/domain-not-verifying-3.png?fit=max&auto=format&n=bOYCnBDaGARkhUDn&q=85&s=f86be9e2a150af3c29aca6c69689842a" alt="Check for errors in the domain details page" width="2344" height="1666" data-path="images/domain-not-verifying-3.png" />
+![Check for errors in the domain details page](https://mintcdn.com/resend/bOYCnBDaGARkhUDn/images/domain-not-verifying-3.png?fit=max\&auto=format\&n=bOYCnBDaGARkhUDn\&q=85\&s=f86be9e2a150af3c29aca6c69689842a)
 
-<Info>
-  The exact set of records depends on when your domain was created. Older
-  domains show a `TXT` and an `MX` record for SPF, and both must be correct for
-  SPF to verify at all. Domains created after August 2026 may show `CNAME`
-  records instead. If you are shown two `CNAME` records, each is verified on its
-  own, so one can verify while the other doesn't: your domain then shows as
-  `partially_verified`, and you can still send, but without a fallback sending
-  server.
-</Info>
+> [!NOTE]
+>
+> The exact set of records depends on when your domain was created. Older
+> domains show a `TXT` and an `MX` record for SPF, and both must be correct for
+> SPF to verify at all. Domains created after August 2026 may show `CNAME`
+> records instead. If you are shown two `CNAME` records, each is verified on its
+> own, so one can verify while the other doesn't: your domain then shows as
+> `partially_verified`, and you can still send, but without a fallback sending
+> server.
 
 ### Proxied CNAME records
 
@@ -85,11 +85,11 @@ In your DNS provider, add a trailing period (dot) at the end of the record value
 
 The trailing period tells your DNS provider that this is a fully qualified domain name that must not be modified.
 
-<Tip>
-  Note: The region your domain is added to is in this MX record. It may be
-  `us-east-1`, `eu-west-1`, `ap-northeast-1`, or `sa-east-1` depending on the
-  region.
-</Tip>
+> [!TIP]
+>
+> Note: The region your domain is added to is in this MX record. It may be
+> `us-east-1`, `eu-west-1`, `ap-northeast-1`, or `sa-east-1` depending on the
+> region.
 
 The same applies to the `CNAME` records shown for newer domains: if the value in your DNS provider shows the Resend host followed by your own domain name, add a trailing period to the value.
 
@@ -114,11 +114,11 @@ If you have multiple MX records pointing to different AWS regions, you'll see a 
 
 **Solution:** Remove any MX records pointing to incorrect regions, keeping only the one that matches your domain's configured region.
 
-<Info>
-  Both region errors only apply to domains that show an `MX` record for SPF. If
-  your domain shows `CNAME` records instead, the region is handled by the Resend
-  host the record points to, so there's nothing to match.
-</Info>
+> [!NOTE]
+>
+> Both region errors only apply to domains that show an `MX` record for SPF. If
+> your domain shows `CNAME` records instead, the region is handled by the Resend
+> host the record points to, so there's nothing to match.
 
 ### DKIM record value mismatches
 
@@ -148,51 +148,49 @@ If you've followed all the steps above and your domain still isn't verifying, co
 
 Our team will help identify any remaining issues preventing successful verification.
 
-<AccordionGroup>
-  <Accordion title="Check your records in the browser">
-    Tools like [dns.email](https://dns.email) allow you to check your DNS records in the browser.
+> **Check your records in the browser**
+>
+> Tools like [dns.email](https://dns.email) allow you to check your DNS records in the browser.
+>
+> Go to this URL and replace `example.com` with the domain you added in Resend.
+>
+> ![Check domain records with dns.email](https://mintcdn.com/resend/OWNnQaVDyqcGyhhN/images/domain-not-verifying-1.png?fit=max\&auto=format\&n=OWNnQaVDyqcGyhhN\&q=85\&s=0eb947321d0b35119432dab44d756260)
+>
+> You are looking to see the same values that you see in Resend.
 
-    Go to this URL and replace `example.com` with the domain you added in Resend.
-
-    <img src="https://mintcdn.com/resend/OWNnQaVDyqcGyhhN/images/domain-not-verifying-1.png?fit=max&auto=format&n=OWNnQaVDyqcGyhhN&q=85&s=0eb947321d0b35119432dab44d756260" alt="Check domain records with dns.email" width="3516" height="2380" data-path="images/domain-not-verifying-1.png" />
-
-    You are looking to see the same values that you see in Resend.
-  </Accordion>
-
-  <Accordion title="Check your records in the terminal">
-    Checking your DNS records in the terminal is just as easy. You can use the `nslookup` command and a record type flag to get the same information.
-
-    Replace `example.com` with whatever you added as the domain in Resend:
-
-    Check your DKIM `TXT` record:
-
-    ```
-    nslookup -type=TXT resend._domainkey.example.com
-    ```
-
-    Check your SPF `TXT` record:
-
-    ```
-    nslookup -type=TXT send.example.com
-    ```
-
-    Check your SPF `MX` record:
-
-    ```
-    nslookup -type=MX send.example.com
-    ```
-
-    If your domain shows `CNAME` records for sending instead, check each of the shown CNAME records by name, as shown below:
-
-    ```
-    # If your domain shows two CNAME records, check both
-    # Otherwise, only check the one that is shown in the Resend dashboard
-    nslookup -type=CNAME send.example.com
-    nslookup -type=CNAME rsend.example.com
-    ```
-
-    <img src="https://mintcdn.com/resend/OWNnQaVDyqcGyhhN/images/domain-not-verifying-2.png?fit=max&auto=format&n=OWNnQaVDyqcGyhhN&q=85&s=e48a16939eebfc986f9216a2cfd49b08" alt="Check domain records with nslookup" width="1924" height="1202" data-path="images/domain-not-verifying-2.png" />
-
-    You are looking to see the same values that you see in Resend.
-  </Accordion>
-</AccordionGroup>
+> **Check your records in the terminal**
+>
+> Checking your DNS records in the terminal is just as easy. You can use the `nslookup` command and a record type flag to get the same information.
+>
+> Replace `example.com` with whatever you added as the domain in Resend:
+>
+> Check your DKIM `TXT` record:
+>
+> ```
+> nslookup -type=TXT resend._domainkey.example.com
+> ```
+>
+> Check your SPF `TXT` record:
+>
+> ```
+> nslookup -type=TXT send.example.com
+> ```
+>
+> Check your SPF `MX` record:
+>
+> ```
+> nslookup -type=MX send.example.com
+> ```
+>
+> If your domain shows `CNAME` records for sending instead, check each of the shown CNAME records by name, as shown below:
+>
+> ```
+> # If your domain shows two CNAME records, check both
+> # Otherwise, only check the one that is shown in the Resend dashboard
+> nslookup -type=CNAME send.example.com
+> nslookup -type=CNAME rsend.example.com
+> ```
+>
+> ![Check domain records with nslookup](https://mintcdn.com/resend/OWNnQaVDyqcGyhhN/images/domain-not-verifying-2.png?fit=max\&auto=format\&n=OWNnQaVDyqcGyhhN\&q=85\&s=e48a16939eebfc986f9216a2cfd49b08)
+>
+> You are looking to see the same values that you see in Resend.

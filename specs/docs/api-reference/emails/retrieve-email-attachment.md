@@ -8,147 +8,143 @@
 
 ## Path Parameters
 
-<ParamField path="id" type="string" required>
-  The Attachment ID.
-</ParamField>
+**id** `string` *required*
 
-<ParamField path="email_id" type="string" required>
-  The Email ID.
-</ParamField>
+The Attachment ID.
 
-<RequestExample>
-  ```js Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
-  import { Resend } from 'resend';
+**email\_id** `string` *required*
 
-  const resend = new Resend('re_xxxxxxxxx');
+The Email ID.
 
-  const { data, error } = await resend.emails.attachments.get({
-    id: '2a0c9ce0-3112-4728-976e-47ddcd16a318',
-    emailId: '4ef9a417-02e9-4d39-ad75-9611e0fcc33c',
-  });
-  ```
+```js Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
+import { Resend } from 'resend';
 
-  ```php PHP theme={"theme":{"light":"github-light","dark":"vesper"}}
-  $resend = Resend::client('re_xxxxxxxxx');
+const resend = new Resend('re_xxxxxxxxx');
 
-  $resend->emails->attachments->get(
-    id: '2a0c9ce0-3112-4728-976e-47ddcd16a318',
-    emailId: '4ef9a417-02e9-4d39-ad75-9611e0fcc33c'
-  );
-  ```
+const { data, error } = await resend.emails.attachments.get({
+  id: '2a0c9ce0-3112-4728-976e-47ddcd16a318',
+  emailId: '4ef9a417-02e9-4d39-ad75-9611e0fcc33c',
+});
+```
 
-  ```python Python theme={"theme":{"light":"github-light","dark":"vesper"}}
-  import resend
+```php PHP theme={"theme":{"light":"github-light","dark":"vesper"}}
+$resend = Resend::client('re_xxxxxxxxx');
 
-  resend.api_key = 're_xxxxxxxxx'
+$resend->emails->attachments->get(
+  id: '2a0c9ce0-3112-4728-976e-47ddcd16a318',
+  emailId: '4ef9a417-02e9-4d39-ad75-9611e0fcc33c'
+);
+```
 
-  attachment = resend.Emails.Attachments.get(
-    email_id='4ef9a417-02e9-4d39-ad75-9611e0fcc33c',
-    attachment_id='2a0c9ce0-3112-4728-976e-47ddcd16a318'
-  )
-  ```
+```python Python theme={"theme":{"light":"github-light","dark":"vesper"}}
+import resend
 
-  ```ruby Ruby theme={"theme":{"light":"github-light","dark":"vesper"}}
-  require 'resend'
+resend.api_key = 're_xxxxxxxxx'
 
-  Resend.api_key = 're_xxxxxxxxx'
+attachment = resend.Emails.Attachments.get(
+  email_id='4ef9a417-02e9-4d39-ad75-9611e0fcc33c',
+  attachment_id='2a0c9ce0-3112-4728-976e-47ddcd16a318'
+)
+```
 
-  Resend::Emails::Attachments.get(
-    id: "2a0c9ce0-3112-4728-976e-47ddcd16a318",
-    email_id: "4ef9a417-02e9-4d39-ad75-9611e0fcc33c"
-  )
-  ```
+```ruby Ruby theme={"theme":{"light":"github-light","dark":"vesper"}}
+require 'resend'
 
-  ```go Go theme={"theme":{"light":"github-light","dark":"vesper"}}
-  package main
+Resend.api_key = 're_xxxxxxxxx'
 
-  import (
-  	"context"
+Resend::Emails::Attachments.get(
+  id: "2a0c9ce0-3112-4728-976e-47ddcd16a318",
+  email_id: "4ef9a417-02e9-4d39-ad75-9611e0fcc33c"
+)
+```
 
-  	"github.com/resend/resend-go/v4"
-  )
+```go Go theme={"theme":{"light":"github-light","dark":"vesper"}}
+package main
 
-  func main() {
-  	client := resend.NewClient("re_xxxxxxxxx")
+import (
+	"context"
 
-  	client.Emails.GetAttachmentWithContext(
-  		context.TODO(),
-  		"4ef9a417-02e9-4d39-ad75-9611e0fcc33c",
-  		"2a0c9ce0-3112-4728-976e-47ddcd16a318",
-  	)
+	"github.com/resend/resend-go/v4"
+)
+
+func main() {
+	client := resend.NewClient("re_xxxxxxxxx")
+
+	client.Emails.GetAttachmentWithContext(
+		context.TODO(),
+		"4ef9a417-02e9-4d39-ad75-9611e0fcc33c",
+		"2a0c9ce0-3112-4728-976e-47ddcd16a318",
+	)
+}
+```
+
+```rust Rust theme={"theme":{"light":"github-light","dark":"vesper"}}
+use resend_rs::{Resend, Result};
+
+#[tokio::main]
+async fn main() -> Result<()> {
+  let resend = Resend::new("re_xxxxxxxxx");
+
+  let _email = resend
+    .emails
+    .get_attachment(
+      "2a0c9ce0-3112-4728-976e-47ddcd16a318",
+      "4ef9a417-02e9-4d39-ad75-9611e0fcc33c",
+    )
+    .await?;
+
+  Ok(())
+}
+```
+
+```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
+import com.resend.Resend;
+import com.resend.core.exception.ResendException;
+import com.resend.services.emails.model.AttachmentResponse;
+
+public class Main {
+  public static void main(String[] args) throws ResendException {
+    Resend resend = new Resend("re_xxxxxxxxx");
+
+    AttachmentResponse attachment = resend.emails().getAttachment(
+      "4ef9a417-02e9-4d39-ad75-9611e0fcc33c",
+      "2a0c9ce0-3112-4728-976e-47ddcd16a318"
+    );
   }
-  ```
+}
+```
 
-  ```rust Rust theme={"theme":{"light":"github-light","dark":"vesper"}}
-  use resend_rs::{Resend, Result};
+```csharp .NET theme={"theme":{"light":"github-light","dark":"vesper"}}
+using Resend;
 
-  #[tokio::main]
-  async fn main() -> Result<()> {
-    let resend = Resend::new("re_xxxxxxxxx");
+IResend resend = ResendClient.Create( "re_xxxxxxxxx" ); // Or from DI
 
-    let _email = resend
-      .emails
-      .get_attachment(
-        "2a0c9ce0-3112-4728-976e-47ddcd16a318",
-        "4ef9a417-02e9-4d39-ad75-9611e0fcc33c",
-      )
-      .await?;
+var resp = await resend.EmailAttachmentRetrieveAsync(
+  emailId: new Guid( "4ef9a417-02e9-4d39-ad75-9611e0fcc33c" ),
+  attachmentId: new Guid( "2a0c9ce0-3112-4728-976e-47ddcd16a318" )
+);
+Console.WriteLine( "URL={0}", resp.Content.DownloadUrl );
+```
 
-    Ok(())
-  }
-  ```
+```bash cURL theme={"theme":{"light":"github-light","dark":"vesper"}}
+curl -X GET 'https://api.resend.com/emails/4ef9a417-02e9-4d39-ad75-9611e0fcc33c/attachments/2a0c9ce0-3112-4728-976e-47ddcd16a318' \
+     -H 'Authorization: Bearer re_xxxxxxxxx'
+```
 
-  ```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
-  import com.resend.Resend;
-  import com.resend.core.exception.ResendException;
-  import com.resend.services.emails.model.AttachmentResponse;
+```bash CLI theme={"theme":{"light":"github-light","dark":"vesper"}}
+resend emails attachment 4ef9a417-02e9-4d39-ad75-9611e0fcc33c 2a0c9ce0-3112-4728-976e-47ddcd16a318
+```
 
-  public class Main {
-    public static void main(String[] args) throws ResendException {
-      Resend resend = new Resend("re_xxxxxxxxx");
-
-      AttachmentResponse attachment = resend.emails().getAttachment(
-        "4ef9a417-02e9-4d39-ad75-9611e0fcc33c",
-        "2a0c9ce0-3112-4728-976e-47ddcd16a318"
-      );
-    }
-  }
-  ```
-
-  ```csharp .NET theme={"theme":{"light":"github-light","dark":"vesper"}}
-  using Resend;
-
-  IResend resend = ResendClient.Create( "re_xxxxxxxxx" ); // Or from DI
-
-  var resp = await resend.EmailAttachmentRetrieveAsync(
-    emailId: new Guid( "4ef9a417-02e9-4d39-ad75-9611e0fcc33c" ),
-    attachmentId: new Guid( "2a0c9ce0-3112-4728-976e-47ddcd16a318" )
-  );
-  Console.WriteLine( "URL={0}", resp.Content.DownloadUrl );
-  ```
-
-  ```bash cURL theme={"theme":{"light":"github-light","dark":"vesper"}}
-  curl -X GET 'https://api.resend.com/emails/4ef9a417-02e9-4d39-ad75-9611e0fcc33c/attachments/2a0c9ce0-3112-4728-976e-47ddcd16a318' \
-       -H 'Authorization: Bearer re_xxxxxxxxx'
-  ```
-
-  ```bash CLI theme={"theme":{"light":"github-light","dark":"vesper"}}
-  resend emails attachment 4ef9a417-02e9-4d39-ad75-9611e0fcc33c 2a0c9ce0-3112-4728-976e-47ddcd16a318
-  ```
-</RequestExample>
-
-<ResponseExample>
-  ```json Response theme={"theme":{"light":"github-light","dark":"vesper"}}
-  {
-    "object": "attachment",
-    "id": "2a0c9ce0-3112-4728-976e-47ddcd16a318",
-    "filename": "avatar.png",
-    "size": 4096,
-    "content_type": "image/png",
-    "content_disposition": "inline",
-    "content_id": "img001",
-    "download_url": "https://outbound-cdn.resend.com/4ef9a417-02e9-4d39-ad75-9611e0fcc33c/attachments/2a0c9ce0-3112-4728-976e-47ddcd16a318?some-params=example&signature=sig-123",
-    "expires_at": "2026-10-17T14:29:41.521Z"
-  }
-  ```
-</ResponseExample>
+```json Response theme={"theme":{"light":"github-light","dark":"vesper"}}
+{
+  "object": "attachment",
+  "id": "2a0c9ce0-3112-4728-976e-47ddcd16a318",
+  "filename": "avatar.png",
+  "size": 4096,
+  "content_type": "image/png",
+  "content_disposition": "inline",
+  "content_id": "img001",
+  "download_url": "https://outbound-cdn.resend.com/4ef9a417-02e9-4d39-ad75-9611e0fcc33c/attachments/2a0c9ce0-3112-4728-976e-47ddcd16a318?some-params=example&signature=sig-123",
+  "expires_at": "2026-10-17T14:29:41.521Z"
+}
+```

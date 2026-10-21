@@ -6,87 +6,78 @@
 
 > Received when a contact is updated.
 
-export const ResponseBodyParameters = ({type, children}) => {
-  return <div>
-      <h2>Response Body Parameters</h2>
-      <p>
-        All webhook payloads follow a consistent top-level structure with
-        event-specific data nested within the <code>data</code> object.
-      </p>
-      <ParamField body="type" type="string">
-        The event type that triggered the webhook (e.g., <code>{type}</code>).
-      </ParamField>
-      <ParamField body="created_at" type="string">
-        ISO 8601 timestamp when the webhook event was created.
-      </ParamField>
-      <ParamField body="data" type="object">
-        Event-specific data containing detailed information about the event. The
-        data object for the <code>{type}</code> event contains the following
-        parameters:
-        <Expandable defaultOpen title="object parameters">
-          {children}
-        </Expandable>
-      </ParamField>
-    </div>;
-};
-
 Event triggered whenever a **contact was successfully updated**.
 
-<ResponseBodyParameters type="contact.updated">
-  <ParamField body="id" type="string" required>
-    Unique identifier for the contact
-  </ParamField>
+## Response Body Parameters
 
-  <ParamField body="audience_id" type="string">
-    Unique identifier for the audience this contact belongs to
-  </ParamField>
+All webhook payloads follow a consistent top-level structure with
+event-specific data nested within the `data` object.
 
-  <ParamField body="segment_ids" type="array">
-    Array of segment IDs the contact belongs to
-  </ParamField>
+**type** `string`
 
-  <ParamField body="created_at" type="string" required>
-    ISO 8601 timestamp when the contact was created
-  </ParamField>
+The event type that triggered the webhook (e.g., `contact.updated`).
+**created\_at** `string`
 
-  <ParamField body="updated_at" type="string" required>
-    ISO 8601 timestamp when the contact was last updated
-  </ParamField>
+ISO 8601 timestamp when the webhook event was created.
+**data** `object`
 
-  <ParamField body="email" type="string" required>
-    Contact's email address
-  </ParamField>
+Event-specific data containing detailed information about the event. The
+data object for the `contact.updated` event contains the following
+parameters:
 
-  <ParamField body="first_name" type="string | null">
-    Contact's first name. May be absent from the payload
-  </ParamField>
+**object parameters**
 
-  <ParamField body="last_name" type="string | null">
-    Contact's last name. May be absent from the payload
-  </ParamField>
+**id** `string` *required*
 
-  <ParamField body="unsubscribed" type="boolean" required>
-    Whether the contact has unsubscribed from all Broadcasts and Automation emails
-    sent from your team
-  </ParamField>
-</ResponseBodyParameters>
+Unique identifier for the contact
 
-<ResponseExample>
-  ```json theme={"theme":{"light":"github-light","dark":"vesper"}}
-  {
-    "type": "contact.updated",
-    "created_at": "2026-10-11T23:47:56.678Z",
-    "data": {
-      "id": "e169aa45-1ecf-4183-9955-b1499d5701d3",
-      "audience_id": "78261eea-8f8b-4381-83c6-79fa7120f1cf",
-      "segment_ids": ["78261eea-8f8b-4381-83c6-79fa7120f1cf"],
-      "created_at": "2026-10-10T15:11:54.110Z",
-      "updated_at": "2026-10-11T23:47:56.678Z",
-      "email": "steve.wozniak@gmail.com",
-      "first_name": "Steve",
-      "last_name": "Wozniak",
-      "unsubscribed": false
-    }
+**audience\_id** `string`
+
+Unique identifier for the audience this contact belongs to
+
+**segment\_ids** `array`
+
+Array of segment IDs the contact belongs to
+
+**created\_at** `string` *required*
+
+ISO 8601 timestamp when the contact was created
+
+**updated\_at** `string` *required*
+
+ISO 8601 timestamp when the contact was last updated
+
+**email** `string` *required*
+
+Contact's email address
+
+**first\_name** `string | null`
+
+Contact's first name. May be absent from the payload
+
+**last\_name** `string | null`
+
+Contact's last name. May be absent from the payload
+
+**unsubscribed** `boolean` *required*
+
+Whether the contact has unsubscribed from all Broadcasts and Automation emails
+sent from your team
+
+```json theme={"theme":{"light":"github-light","dark":"vesper"}}
+{
+  "type": "contact.updated",
+  "created_at": "2026-10-11T23:47:56.678Z",
+  "data": {
+    "id": "e169aa45-1ecf-4183-9955-b1499d5701d3",
+    "audience_id": "78261eea-8f8b-4381-83c6-79fa7120f1cf",
+    "segment_ids": ["78261eea-8f8b-4381-83c6-79fa7120f1cf"],
+    "created_at": "2026-10-10T15:11:54.110Z",
+    "updated_at": "2026-10-11T23:47:56.678Z",
+    "email": "steve.wozniak@gmail.com",
+    "first_name": "Steve",
+    "last_name": "Wozniak",
+    "unsubscribed": false
   }
-  ```
-</ResponseExample>
+}
+```

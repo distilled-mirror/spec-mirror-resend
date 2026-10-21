@@ -6,126 +6,158 @@
 
 > Update the internal inbox name or the name recipients see when sending.
 
-export const ResendParamField = ({children, body, path, ...props}) => {
-  const [lang, setLang] = useState(() => {
-    return localStorage.getItem('code') || '"Node.js"';
-  });
-  useEffect(() => {
-    const onStorage = event => {
-      const key = event.detail.key;
-      if (key === 'code') {
-        setLang(event.detail.value);
-      }
-    };
-    document.addEventListener('mintlify-localstorage', onStorage);
-    return () => {
-      document.removeEventListener('mintlify-localstorage', onStorage);
-    };
-  }, []);
-  const toCamelCase = str => typeof str === 'string' ? str.replace(/[_-](\w)/g, (_, c) => c.toUpperCase()) : str;
-  const resolvedBody = useMemo(() => {
-    const value = JSON.parse(lang);
-    return value === 'Node.js' ? toCamelCase(body) : body;
-  }, [body, lang]);
-  const resolvedPath = useMemo(() => {
-    const value = JSON.parse(lang);
-    return value === 'Node.js' ? toCamelCase(path) : path;
-  }, [path, lang]);
-  return <ParamField body={resolvedBody} path={resolvedPath} {...props}>
-      {children}
-    </ParamField>;
-};
-
-<Warning>
-  Inboxes are currently in private beta and only available to a limited
-  number of users. The response shape might change before GA.
-
-  <span />
-
-  [Get early access](https://resend.com/settings/labs) if you're interested in testing this feature.
-
-  <span />
-
-  Once you have access, upgrade your Resend SDK to use the new methods:
-
-  <CodeGroup>
-    ```bash Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
-    npm install resend@6.33.0
-    ```
-
-    ```bash CLI theme={"theme":{"light":"github-light","dark":"vesper"}}
-    npm install -g resend-cli@2.25.0
-    ```
-  </CodeGroup>
-</Warning>
-
 ## Path Parameters
 
-<ResendParamField path="inbox_id" type="string" required>
-  The Inbox ID or the inbox email address, such as `support@example.com`.
-</ResendParamField>
+The Inbox ID or the inbox email address, such as `support@example.com`.
 
 ## Body Parameters
 
 At least one of `name` or `from_name` is required. Omitted fields keep their
 current value.
 
-<ParamField body="name" type="string">
-  New internal name for the inbox. Recipients do not see it. Between 1 and 64
-  characters after trimming.
-</ParamField>
+**name** `string`
 
-<ResendParamField body="from_name" type="string">
-  The name recipients see when mail is sent from this inbox. Use a plain name,
-  without `:`, `<`, `>`, or line breaks. Max 78 characters. An email address in
-  the name must be on one of your verified domains. Send an empty string to
-  remove it.
-</ResendParamField>
+New internal name for the inbox. Recipients do not see it. Between 1 and 64
+characters after trimming.
+
+The name recipients see when mail is sent from this inbox. Use a plain name,
+without `:`, `<`, `>`, or line breaks. Max 78 characters. An email address in
+the name must be on one of your verified domains. Send an empty string to
+remove it.
 
 ## Response Fields
 
-<ParamField body="object" type="string">
-  Always `inbox`.
-</ParamField>
+**object** `string`
 
-<ParamField body="id" type="string">
-  The ID of the inbox.
-</ParamField>
+Always `inbox`.
 
-<RequestExample>
-  ```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
-  import { Resend } from 'resend';
+**id** `string`
 
-  const resend = new Resend('re_xxxxxxxxx');
+The ID of the inbox.
 
-  const { data, error } = await resend.inboxes.update(
-    'b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1',
-    { name: 'Customer Support', fromName: 'Ada from Support' },
-  );
-  ```
+```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
+import { Resend } from 'resend';
 
-  ```bash cURL theme={"theme":{"light":"github-light","dark":"vesper"}}
-  curl -X PATCH 'https://api.resend.com/inboxes/b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1' \
-       -H 'Authorization: Bearer re_xxxxxxxxx' \
-       -H 'Content-Type: application/json' \
-       -d $'{
+const resend = new Resend('re_xxxxxxxxx');
+
+const { data, error } = await resend.inboxes.update(
+  'b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1',
+  { name: 'Customer Support', fromName: 'Ada from Support' },
+);
+```
+
+```php PHP theme={"theme":{"light":"github-light","dark":"vesper"}}
+$resend = Resend::client('re_xxxxxxxxx');
+
+$resend->inboxes->update('b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1', [
+  'name' => 'Customer Support',
+  'from_name' => 'Ada from Support',
+]);
+```
+
+```python Python theme={"theme":{"light":"github-light","dark":"vesper"}}
+import resend
+
+resend.api_key = "re_xxxxxxxxx"
+
+params: resend.Inboxes.UpdateParams = {
+    "id": "b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1",
     "name": "Customer Support",
-    "from_name": "Ada from Support"
-  }'
-  ```
+    "from_name": "Ada from Support",
+}
 
-  ```bash CLI theme={"theme":{"light":"github-light","dark":"vesper"}}
-  resend inboxes update b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1 \
-    --name "Customer Support" \
-    --from-name "Ada from Support"
-  ```
-</RequestExample>
+resend.Inboxes.update(params)
+```
 
-<ResponseExample>
-  ```json Response theme={"theme":{"light":"github-light","dark":"vesper"}}
-  {
-    "object": "inbox",
-    "id": "b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1"
-  }
-  ```
-</ResponseExample>
+```ruby Ruby theme={"theme":{"light":"github-light","dark":"vesper"}}
+require "resend"
+
+Resend.api_key = "re_xxxxxxxxx"
+
+params = {
+  inbox_id: "b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1",
+  name: "Customer Support",
+  from_name: "Ada from Support"
+}
+
+Resend::Inboxes.update(params)
+```
+
+```go Go theme={"theme":{"light":"github-light","dark":"vesper"}}
+package main
+
+import "github.com/resend/resend-go/v4"
+
+func main() {
+	client := resend.NewClient("re_xxxxxxxxx")
+
+	fromName := "Ada from Support"
+	params := &resend.UpdateInboxRequest{
+		Name:     "Customer Support",
+		FromName: &fromName,
+	}
+
+	client.Inboxes.Update("b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1", params)
+```
+
+```rust Rust theme={"theme":{"light":"github-light","dark":"vesper"}}
+use resend_rs::{
+  types::{UpdateInboxOptions},
+  Resend, Result,
+};
+
+#[tokio::main]
+async fn main() -> Result<()> {
+  let resend = Resend::new("re_xxxxxxxxx");
+
+  let opts = UpdateInboxOptions::new()
+    .with_name("Customer Support")
+    .with_from_name("Ada from Support");
+
+  let _inbox = resend
+    .inboxes
+    .update("b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1", opts)
+    .await?;
+
+  Ok(())
+}
+```
+
+```csharp .NET theme={"theme":{"light":"github-light","dark":"vesper"}}
+using Resend;
+
+IResend resend = ResendClient.Create( "re_xxxxxxxxx" ); // Or from DI
+
+var resp = await resend.InboxUpdateAsync(
+    new Guid( "b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1" ),
+    new InboxUpdateData()
+    {
+        Name = "Customer Support",
+        FromName = "Ada from Support",
+    }
+);
+Console.WriteLine( "Inbox Id={0}", resp.Content );
+```
+
+```bash cURL theme={"theme":{"light":"github-light","dark":"vesper"}}
+curl -X PATCH 'https://api.resend.com/inboxes/b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1' \
+     -H 'Authorization: Bearer re_xxxxxxxxx' \
+     -H 'Content-Type: application/json' \
+     -d $'{
+  "name": "Customer Support",
+  "from_name": "Ada from Support"
+}'
+```
+
+```bash CLI theme={"theme":{"light":"github-light","dark":"vesper"}}
+resend inboxes update b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1 \
+  --name "Customer Support" \
+  --from-name "Ada from Support"
+```
+
+```json Response theme={"theme":{"light":"github-light","dark":"vesper"}}
+{
+  "object": "inbox",
+  "id": "b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1"
+}
+```

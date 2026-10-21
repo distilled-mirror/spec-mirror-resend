@@ -6,12 +6,12 @@
 
 > Learn how to send your first email using Phoenix and the Resend Elixir SDK.
 
-<Info>
-  This guides utilizes an [open source
-  library](https://github.com/elixir-saas/resend-elixir) contributed by a
-  community member. It's not developed, maintained, or supported by Resend
-  directly.
-</Info>
+> [!NOTE]
+>
+> This guides utilizes an [open source
+> library](https://github.com/elixir-saas/resend-elixir) contributed by a
+> community member. It's not developed, maintained, or supported by Resend
+> directly.
 
 ## Prerequisites
 
@@ -22,80 +22,72 @@ Before you start, you'll need:
 
 ## Guide
 
-<Steps>
-  <Step title="Install">
-    Install by adding `resend` to your list of dependencies in `mix.exs`:
+**1. Install**
 
-    <CodeGroup>
-      ```elixir mix.exs theme={"theme":{"light":"github-light","dark":"vesper"}}
-      def deps do
-        [
-          {:resend, "~> 0.4.5"}
-        ]
-      end
-      ```
-    </CodeGroup>
-  </Step>
+Install by adding `resend` to your list of dependencies in `mix.exs`:
 
-  <Step title="Send email using Swoosh">
-    This library includes a Swoosh adapter to make using Resend with a new Phoenix project straightforward. Configure your Mailer:
+```elixir mix.exs theme={"theme":{"light":"github-light","dark":"vesper"}}
+def deps do
+  [
+    {:resend, "~> 0.4.5"}
+  ]
+end
+```
 
-    ```elixir theme={"theme":{"light":"github-light","dark":"vesper"}}
-    config :my_app, MyApp.Mailer,
-      adapter: Resend.Swoosh.Adapter,
-      api_key: System.fetch_env!("RESEND_API_KEY")
-    ```
+**2. Send email using Swoosh**
 
-    If you're configuring your app for production, configure your adapter in `prod.exs`, and your API key from the environment in `runtime.exs`:
+This library includes a Swoosh adapter to make using Resend with a new Phoenix project straightforward. Configure your Mailer:
 
-    <CodeGroup>
-      ```elixir prod.exs theme={"theme":{"light":"github-light","dark":"vesper"}}
-      config :my_app, MyApp.Mailer, adapter: Resend.Swoosh.Adapter
-      ```
+```elixir theme={"theme":{"light":"github-light","dark":"vesper"}}
+config :my_app, MyApp.Mailer,
+  adapter: Resend.Swoosh.Adapter,
+  api_key: System.fetch_env!("RESEND_API_KEY")
+```
 
-      ```elixir runtime.exs theme={"theme":{"light":"github-light","dark":"vesper"}}
-      config :my_app, MyApp.Mailer, api_key: "re_xxxxxxxxx"
-      ```
-    </CodeGroup>
-  </Step>
-</Steps>
+If you're configuring your app for production, configure your adapter in `prod.exs`, and your API key from the environment in `runtime.exs`:
+
+```elixir prod.exs theme={"theme":{"light":"github-light","dark":"vesper"}}
+config :my_app, MyApp.Mailer, adapter: Resend.Swoosh.Adapter
+```
+
+```elixir runtime.exs theme={"theme":{"light":"github-light","dark":"vesper"}}
+config :my_app, MyApp.Mailer, api_key: "re_xxxxxxxxx"
+```
 
 ## Examples
 
-<CardGroup cols={3}>
-  <Card title="Phoenix App" icon="arrow-up-right-from-square" href="https://github.com/resend/resend-examples/tree/main/elixir-resend-examples/phoenix_app">
-    Full Phoenix web framework application
-  </Card>
+> **[Phoenix App](https://github.com/resend/resend-examples/tree/main/elixir-resend-examples/phoenix_app)**
+>
+> Full Phoenix web framework application
 
-  <Card title="Basic Send" icon="arrow-up-right-from-square" href="https://github.com/resend/resend-examples/blob/main/elixir-resend-examples/examples/basic_send.exs">
-    Basic email sending
-  </Card>
+> **[Basic Send](https://github.com/resend/resend-examples/blob/main/elixir-resend-examples/examples/basic_send.exs)**
+>
+> Basic email sending
 
-  <Card title="Attachments" icon="arrow-up-right-from-square" href="https://github.com/resend/resend-examples/blob/main/elixir-resend-examples/examples/with_attachments.exs">
-    Send emails with file attachments
-  </Card>
+> **[Attachments](https://github.com/resend/resend-examples/blob/main/elixir-resend-examples/examples/with_attachments.exs)**
+>
+> Send emails with file attachments
 
-  <Card title="Templates" icon="arrow-up-right-from-square" href="https://github.com/resend/resend-examples/blob/main/elixir-resend-examples/examples/with_template.exs">
-    Send emails using Resend hosted templates
-  </Card>
+> **[Templates](https://github.com/resend/resend-examples/blob/main/elixir-resend-examples/examples/with_template.exs)**
+>
+> Send emails using Resend hosted templates
 
-  <Card title="Scheduling" icon="arrow-up-right-from-square" href="https://github.com/resend/resend-examples/blob/main/elixir-resend-examples/examples/scheduled_send.exs">
-    Schedule emails for future delivery
-  </Card>
+> **[Scheduling](https://github.com/resend/resend-examples/blob/main/elixir-resend-examples/examples/scheduled_send.exs)**
+>
+> Schedule emails for future delivery
 
-  <Card title="Audiences" icon="arrow-up-right-from-square" href="https://github.com/resend/resend-examples/blob/main/elixir-resend-examples/examples/audiences.exs">
-    Manage contacts and audiences
-  </Card>
+> **[Audiences](https://github.com/resend/resend-examples/blob/main/elixir-resend-examples/examples/audiences.exs)**
+>
+> Manage contacts and audiences
 
-  <Card title="Domains" icon="arrow-up-right-from-square" href="https://github.com/resend/resend-examples/blob/main/elixir-resend-examples/examples/domains.exs">
-    Create and manage sending domains
-  </Card>
+> **[Domains](https://github.com/resend/resend-examples/blob/main/elixir-resend-examples/examples/domains.exs)**
+>
+> Create and manage sending domains
 
-  <Card title="Inbound Webhooks" icon="arrow-up-right-from-square" href="https://github.com/resend/resend-examples/blob/main/elixir-resend-examples/examples/inbound.exs">
-    Receive and process inbound emails
-  </Card>
+> **[Inbound Webhooks](https://github.com/resend/resend-examples/blob/main/elixir-resend-examples/examples/inbound.exs)**
+>
+> Receive and process inbound emails
 
-  <Card title="Double Opt-in" icon="arrow-up-right-from-square" href="https://github.com/resend/resend-examples/tree/main/elixir-resend-examples/examples/double_optin">
-    Double opt-in subscription flow
-  </Card>
-</CardGroup>
+> **[Double Opt-in](https://github.com/resend/resend-examples/tree/main/elixir-resend-examples/examples/double_optin)**
+>
+> Double opt-in subscription flow

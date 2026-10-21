@@ -8,10 +8,10 @@
 
 The Resend Webhook Ingester is an open-source Next.js application that receives, verifies, and stores all your webhook events in your own database. Deploy it to your infrastructure and gain full control over your email event data.
 
-<Info>
-  For more details on why you should store your webhook data, see the [data
-  storage guide](/docs/webhooks/how-to-store-webhooks-data).
-</Info>
+> [!NOTE]
+>
+> For more details on why you should store your webhook data, see the [data
+> storage guide](/docs/webhooks/how-to-store-webhooks-data).
 
 ## Why use the Webhook Ingester
 
@@ -22,15 +22,13 @@ While you can build your own webhook handler, the Webhook Ingester provides a pr
 * **Multiple database support** including PostgreSQL, MySQL, MongoDB, and data warehouses
 * **One-click deployment** to Vercel, Railway, or Render
 
-<CardGroup cols={2}>
-  <Card title="GitHub Repository" icon="github" href="https://github.com/resend/resend-webhooks-ingester">
-    View the source code and contribute
-  </Card>
+> **[GitHub Repository](https://github.com/resend/resend-webhooks-ingester)**
+>
+> View the source code and contribute
 
-  <Card title="Docker Image" icon="docker" href="https://ghcr.io/resend/resend-webhooks-ingester">
-    Pull the official Docker image
-  </Card>
-</CardGroup>
+> **[Docker Image](https://ghcr.io/resend/resend-webhooks-ingester)**
+>
+> Pull the official Docker image
 
 ## Deploy
 
@@ -62,55 +60,53 @@ docker pull ghcr.io/resend/resend-webhooks-ingester
 
 ## Quick Start
 
-<Steps>
-  <Step title="Clone and install">
-    ```bash theme={"theme":{"light":"github-light","dark":"vesper"}}
-    git clone https://github.com/resend/resend-webhooks-ingester.git
-    cd resend-webhooks-ingester
-    pnpm install
-    ```
-  </Step>
+**1. Clone and install**
 
-  <Step title="Configure environment variables">
-    Copy the example environment file and add your credentials:
+```bash theme={"theme":{"light":"github-light","dark":"vesper"}}
+git clone https://github.com/resend/resend-webhooks-ingester.git
+cd resend-webhooks-ingester
+pnpm install
+```
 
-    ```bash theme={"theme":{"light":"github-light","dark":"vesper"}}
-    cp .env.example .env.local
-    ```
+**2. Configure environment variables**
 
-    At minimum, you need:
+Copy the example environment file and add your credentials:
 
-    ```env .env.local theme={"theme":{"light":"github-light","dark":"vesper"}}
-    # Required: Your Resend webhook signing secret
-    RESEND_WEBHOOK_SECRET=whsec_xxxxxxxxxxxxxxxxxxxxx
+```bash theme={"theme":{"light":"github-light","dark":"vesper"}}
+cp .env.example .env.local
+```
 
-    # Database credentials (example for PostgreSQL)
-    POSTGRESQL_URL=postgresql://user:password@host:5432/database
-    ```
+At minimum, you need:
 
-    <Info>
-      Get your webhook signing secret from the [Resend
-      Dashboard](https://resend.com/webhooks) when creating a webhook.
-    </Info>
-  </Step>
+```env .env.local theme={"theme":{"light":"github-light","dark":"vesper"}}
+# Required: Your Resend webhook signing secret
+RESEND_WEBHOOK_SECRET=whsec_xxxxxxxxxxxxxxxxxxxxx
 
-  <Step title="Set up your database">
-    Set up your database and run the provided schema for your database. The ingester supports PostgreSQL, MySQL, MongoDB, and several data warehouses. Schema files can be found in the `schemas/` directory.
+# Database credentials (example for PostgreSQL)
+POSTGRESQL_URL=postgresql://user:password@host:5432/database
+```
 
-    ```bash theme={"theme":{"light":"github-light","dark":"vesper"}}
-    pnpm db:setup --postgresql
-    # or use a different flag for a different database
-    ```
-  </Step>
+> [!NOTE]
+>
+> Get your webhook signing secret from the [Resend
+> Dashboard](https://resend.com/webhooks) when creating a webhook.
 
-  <Step title="Deploy and register webhook">
-    Deploy to your preferred platform, then register your webhook endpoint in the [Resend Dashboard](https://resend.com/webhooks) and select all the events you'd like to store.
+**3. Set up your database**
 
-    Your endpoint URL will be: `https://example.com/{connector}`
+Set up your database and run the provided schema for your database. The ingester supports PostgreSQL, MySQL, MongoDB, and several data warehouses. Schema files can be found in the `schemas/` directory.
 
-    For example: `https://your-app.vercel.app/postgresql`
-  </Step>
-</Steps>
+```bash theme={"theme":{"light":"github-light","dark":"vesper"}}
+pnpm db:setup --postgresql
+# or use a different flag for a different database
+```
+
+**4. Deploy and register webhook**
+
+Deploy to your preferred platform, then register your webhook endpoint in the [Resend Dashboard](https://resend.com/webhooks) and select all the events you'd like to store.
+
+Your endpoint URL will be: `https://example.com/{connector}`
+
+For example: `https://your-app.vercel.app/postgresql`
 
 ## Database Schemas
 
@@ -146,124 +142,120 @@ If Resend retries a webhook delivery (due to a temporary failure), the duplicate
 
 ### Database-Specific Variables
 
-<AccordionGroup>
-  <Accordion title="Supabase">
-    ```env theme={"theme":{"light":"github-light","dark":"vesper"}}
-    SUPABASE_URL=https://your-project.supabase.co
-    SUPABASE_SERVICE_ROLE_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
-    ```
-  </Accordion>
+> **Supabase**
+>
+> ```env theme={"theme":{"light":"github-light","dark":"vesper"}}
+> SUPABASE_URL=https://your-project.supabase.co
+> SUPABASE_SERVICE_ROLE_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+> ```
 
-  <Accordion title="Neon">
-    ```env theme={"theme":{"light":"github-light","dark":"vesper"}}
-    NEON_DATABASE_URL=postgresql://user:password@ep-xyz.us-east-1.aws.neon.tech/database?sslmode=require
-    ```
-  </Accordion>
+> **Neon**
+>
+> ```env theme={"theme":{"light":"github-light","dark":"vesper"}}
+> NEON_DATABASE_URL=postgresql://user:password@ep-xyz.us-east-1.aws.neon.tech/database?sslmode=require
+> ```
 
-  <Accordion title="PostgreSQL">
-    ```env theme={"theme":{"light":"github-light","dark":"vesper"}}
-    POSTGRESQL_URL=postgresql://user:password@host:5432/database
-    ```
-  </Accordion>
+> **PostgreSQL**
+>
+> ```env theme={"theme":{"light":"github-light","dark":"vesper"}}
+> POSTGRESQL_URL=postgresql://user:password@host:5432/database
+> ```
 
-  <Accordion title="MySQL">
-    ```env theme={"theme":{"light":"github-light","dark":"vesper"}}
-    MYSQL_URL=mysql://user:password@host:3306/database
-    ```
-  </Accordion>
+> **MySQL**
+>
+> ```env theme={"theme":{"light":"github-light","dark":"vesper"}}
+> MYSQL_URL=mysql://user:password@host:3306/database
+> ```
 
-  <Accordion title="PlanetScale">
-    ```env theme={"theme":{"light":"github-light","dark":"vesper"}}
-    PLANETSCALE_URL=mysql://username:password@host/database?ssl={"rejectUnauthorized":true}
-    ```
-  </Accordion>
+> **PlanetScale**
+>
+> ```env theme={"theme":{"light":"github-light","dark":"vesper"}}
+> PLANETSCALE_URL=mysql://username:password@host/database?ssl={"rejectUnauthorized":true}
+> ```
 
-  <Accordion title="MongoDB">
-    ```env theme={"theme":{"light":"github-light","dark":"vesper"}}
-    MONGODB_URI=mongodb+srv://username:password@cluster.mongodb.net/
-    MONGODB_DATABASE=resend_webhooks
-    ```
-  </Accordion>
+> **MongoDB**
+>
+> ```env theme={"theme":{"light":"github-light","dark":"vesper"}}
+> MONGODB_URI=mongodb+srv://username:password@cluster.mongodb.net/
+> MONGODB_DATABASE=resend_webhooks
+> ```
 
-  <Accordion title="Snowflake">
-    ```env theme={"theme":{"light":"github-light","dark":"vesper"}}
-    SNOWFLAKE_ACCOUNT=your-account-identifier
-    SNOWFLAKE_USERNAME=your-username
-    SNOWFLAKE_PASSWORD=your-password
-    SNOWFLAKE_DATABASE=your-database
-    SNOWFLAKE_SCHEMA=your-schema
-    SNOWFLAKE_WAREHOUSE=your-warehouse
-    ```
-  </Accordion>
+> **Snowflake**
+>
+> ```env theme={"theme":{"light":"github-light","dark":"vesper"}}
+> SNOWFLAKE_ACCOUNT=your-account-identifier
+> SNOWFLAKE_USERNAME=your-username
+> SNOWFLAKE_PASSWORD=your-password
+> SNOWFLAKE_DATABASE=your-database
+> SNOWFLAKE_SCHEMA=your-schema
+> SNOWFLAKE_WAREHOUSE=your-warehouse
+> ```
 
-  <Accordion title="BigQuery">
-    ```env theme={"theme":{"light":"github-light","dark":"vesper"}}
-    BIGQUERY_PROJECT_ID=your-project-id
-    BIGQUERY_DATASET_ID=your-dataset-id
-    BIGQUERY_CREDENTIALS={"type":"service_account","project_id":"..."}
-    ```
-  </Accordion>
+> **BigQuery**
+>
+> ```env theme={"theme":{"light":"github-light","dark":"vesper"}}
+> BIGQUERY_PROJECT_ID=your-project-id
+> BIGQUERY_DATASET_ID=your-dataset-id
+> BIGQUERY_CREDENTIALS={"type":"service_account","project_id":"..."}
+> ```
 
-  <Accordion title="ClickHouse">
-    ```env theme={"theme":{"light":"github-light","dark":"vesper"}}
-    CLICKHOUSE_URL=https://your-instance.clickhouse.cloud:8443
-    CLICKHOUSE_USERNAME=default
-    CLICKHOUSE_PASSWORD=your-password
-    CLICKHOUSE_DATABASE=default
-    ```
-  </Accordion>
-</AccordionGroup>
+> **ClickHouse**
+>
+> ```env theme={"theme":{"light":"github-light","dark":"vesper"}}
+> CLICKHOUSE_URL=https://your-instance.clickhouse.cloud:8443
+> CLICKHOUSE_USERNAME=default
+> CLICKHOUSE_PASSWORD=your-password
+> CLICKHOUSE_DATABASE=default
+> ```
 
 ## Example Queries
 
 Once your data is stored, you can run analytics queries. Here's an example to get email status counts by day:
 
-<CodeGroup>
-  ```sql PostgreSQL theme={"theme":{"light":"github-light","dark":"vesper"}}
-  SELECT
-    DATE(event_created_at) AS day,
-    event_type,
-    COUNT(*) AS count
-  FROM resend_wh_emails
-  GROUP BY DATE(event_created_at), event_type
-  ORDER BY day DESC, event_type;
-  ```
+```sql PostgreSQL theme={"theme":{"light":"github-light","dark":"vesper"}}
+SELECT
+  DATE(event_created_at) AS day,
+  event_type,
+  COUNT(*) AS count
+FROM resend_wh_emails
+GROUP BY DATE(event_created_at), event_type
+ORDER BY day DESC, event_type;
+```
 
-  ```javascript MongoDB theme={"theme":{"light":"github-light","dark":"vesper"}}
-  db.resend_wh_emails.aggregate([
-    {
-      $group: {
-        _id: {
-          day: {
-            $dateToString: { format: '%Y-%m-%d', date: '$event_created_at' },
-          },
-          event_type: '$event_type',
+```javascript MongoDB theme={"theme":{"light":"github-light","dark":"vesper"}}
+db.resend_wh_emails.aggregate([
+  {
+    $group: {
+      _id: {
+        day: {
+          $dateToString: { format: '%Y-%m-%d', date: '$event_created_at' },
         },
-        count: { $sum: 1 },
+        event_type: '$event_type',
       },
+      count: { $sum: 1 },
     },
-    { $sort: { '_id.day': -1 } },
-  ]);
-  ```
+  },
+  { $sort: { '_id.day': -1 } },
+]);
+```
 
-  ```sql ClickHouse theme={"theme":{"light":"github-light","dark":"vesper"}}
-  SELECT
-    toDate(event_created_at) AS day,
-    event_type,
-    count() AS count
-  FROM resend_wh_emails
-  FINAL
-  GROUP BY day, event_type
-  ORDER BY day DESC, event_type;
-  ```
-</CodeGroup>
+```sql ClickHouse theme={"theme":{"light":"github-light","dark":"vesper"}}
+SELECT
+  toDate(event_created_at) AS day,
+  event_type,
+  count() AS count
+FROM resend_wh_emails
+FINAL
+GROUP BY day, event_type
+ORDER BY day DESC, event_type;
+```
 
-<Info>
-  See the
-  [queries\_examples.md](https://github.com/resend/resend-webhooks-ingester/blob/main/queries_examples.md)
-  file in the repository for more analytics queries including bounce rates, open
-  rates, and click-through rates.
-</Info>
+> [!NOTE]
+>
+> See the
+> [queries\_examples.md](https://github.com/resend/resend-webhooks-ingester/blob/main/queries_examples.md)
+> file in the repository for more analytics queries including bounce rates, open
+> rates, and click-through rates.
 
 ## Data Retention
 
@@ -276,53 +268,49 @@ DELETE FROM resend_wh_emails
 WHERE event_created_at < NOW() - INTERVAL '90 days';
 ```
 
-<Tip>
-  For Supabase, use
-  [pg\_cron](https://supabase.com/docs/guides/database/extensions/pg_cron) to
-  schedule cleanup queries. For MongoDB, consider using [TTL
-  indexes](https://www.mongodb.com/docs/manual/core/index-ttl/) or [Atlas
-  scheduled
-  triggers](https://www.mongodb.com/docs/atlas/app-services/triggers/scheduled-triggers/).
-</Tip>
+> [!TIP]
+>
+> For Supabase, use
+> [pg\_cron](https://supabase.com/docs/guides/database/extensions/pg_cron) to
+> schedule cleanup queries. For MongoDB, consider using [TTL
+> indexes](https://www.mongodb.com/docs/manual/core/index-ttl/) or [Atlas
+> scheduled
+> triggers](https://www.mongodb.com/docs/atlas/app-services/triggers/scheduled-triggers/).
 
 ## Troubleshooting
 
-<AccordionGroup>
-  <Accordion title="Webhook signature verification failing">
-    * Ensure `RESEND_WEBHOOK_SECRET` matches the signing secret in your Resend
-      Dashboard - Make sure you're using the raw request body for verification -
-      Check that the secret hasn't been rotated in Resend
-  </Accordion>
+> **Webhook signature verification failing**
+>
+> * Ensure `RESEND_WEBHOOK_SECRET` matches the signing secret in your Resend
+>   Dashboard - Make sure you're using the raw request body for verification -
+>   Check that the secret hasn't been rotated in Resend
 
-  <Accordion title="Database connection errors">
-    * Verify your database credentials are correct - Check that the schema has
-      been applied to your database - Ensure your database is accessible from your
-      deployment (check firewall rules)
-  </Accordion>
+> **Database connection errors**
+>
+> * Verify your database credentials are correct - Check that the schema has
+>   been applied to your database - Ensure your database is accessible from your
+>   deployment (check firewall rules)
 
-  <Accordion title="Webhooks not being received">
-    * Verify your endpoint URL is publicly accessible - Check the webhook status
-      in your [Resend Dashboard](https://resend.com/webhooks) - Ensure your server
-      responds with HTTP 200 for successful requests
-  </Accordion>
-</AccordionGroup>
+> **Webhooks not being received**
+>
+> * Verify your endpoint URL is publicly accessible - Check the webhook status
+>   in your [Resend Dashboard](https://resend.com/webhooks) - Ensure your server
+>   responds with HTTP 200 for successful requests
 
 ## Learn More
 
-<CardGroup cols={2}>
-  <Card title="Webhook Event Types" icon="list" href="/docs/webhooks/event-types">
-    View all available webhook event types and their payloads
-  </Card>
+> **[Webhook Event Types](/docs/webhooks/event-types)**
+>
+> View all available webhook event types and their payloads
 
-  <Card title="Verify Webhooks" icon="shield-check" href="/docs/webhooks/verify-webhooks-requests">
-    Learn how webhook signature verification works
-  </Card>
+> **[Verify Webhooks](/docs/webhooks/verify-webhooks-requests)**
+>
+> Learn how webhook signature verification works
 
-  <Card title="Retries and Replays" icon="rotate" href="/docs/webhooks/retries-and-replays">
-    Understand webhook retry behavior
-  </Card>
+> **[Retries and Replays](/docs/webhooks/retries-and-replays)**
+>
+> Understand webhook retry behavior
 
-  <Card title="Storing Webhooks Data" icon="database" href="/docs/webhooks/how-to-store-webhooks-data">
-    Learn why and how to store your webhook data
-  </Card>
-</CardGroup>
+> **[Storing Webhooks Data](/docs/webhooks/how-to-store-webhooks-data)**
+>
+> Learn why and how to store your webhook data

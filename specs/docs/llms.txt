@@ -167,6 +167,14 @@
 - [inbox.draft.updated](https://resend.com/docs/webhooks/inboxes/draft-updated.md): Received when a draft is edited.
 - [inbox.draft.sent](https://resend.com/docs/webhooks/inboxes/draft-sent.md): Received when a draft is sent.
 - [inbox.draft.deleted](https://resend.com/docs/webhooks/inboxes/draft-deleted.md): Received when a draft is discarded.
+- [Inboxes](https://resend.com/docs/dashboard/inboxes/introduction.md): An introduction to sending, receiving, and managing email conversations with Inboxes.
+- [Creating Inboxes](https://resend.com/docs/dashboard/inboxes/create-inboxes.md): Learn how to create inboxes in Resend.
+- [Managing Inboxes](https://resend.com/docs/dashboard/inboxes/manage-inboxes.md): Learn how to rename, update and delete inboxes in Resend.
+- [Managing Threads](https://resend.com/docs/dashboard/inboxes/threads.md): Learn how to read, organize, search, and respond to threads.
+- [Inbox Drafts](https://resend.com/docs/dashboard/inboxes/drafts.md): Learn how to create, update, and send draft emails in the inbox.
+- [Manage Labels](https://resend.com/docs/dashboard/inboxes/labels.md): Learn how to organize threads with inbox labels.
+- [Inbox Agent](https://resend.com/docs/dashboard/inboxes/agent.md): Learn how to configure and use the built-in Inbox agent.
+- [Resend Forge](https://resend.com/docs/forge.md): Send and receive your email through Resend's new infrastructure.
 - [Official SDKs](https://resend.com/docs/sdks.md): Open source client libraries for your favorite platforms.
 - [Resend CLI](https://resend.com/docs/cli.md): The official command-line tool for Resend. Send emails, manage your account, and develop locally from the terminal.
 - [MCP Server](https://resend.com/docs/mcp-server.md): Connect your AI agent to Resend using the hosted MCP server.

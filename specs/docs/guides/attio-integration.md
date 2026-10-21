@@ -14,27 +14,25 @@ The app is available on every Attio plan. A workspace admin connects one API key
 
 ## Connect Resend
 
-<Steps>
-  <Step title="Create an API key">
-    [Create an API key](https://resend.com/api-keys) in Resend.
+**1. Create an API key**
 
-    * Use **Full access** when workflows create contacts or add people to segments.
-    * Use **Sending access** when you only send email. That permission can't create contacts or update segments.
+[Create an API key](https://resend.com/api-keys) in Resend.
 
-    You can change the permission later in the [API keys Dashboard](/docs/dashboard/api-keys/introduction).
-  </Step>
+* Use **Full access** when workflows create contacts or add people to segments.
+* Use **Sending access** when you only send email. That permission can't create contacts or update segments.
 
-  <Step title="Install the app in Attio">
-    1. In Attio, click your workspace name, then click **Apps and integrations**.
-    2. Search for **Resend**, open the app, and click **Install**.
-    3. Under **Workspace connection**, click **Connect**.
-    4. Paste the API key and click **Add connection**.
+You can change the permission later in the [API keys Dashboard](/docs/dashboard/api-keys/introduction).
 
-    Attio doesn't check the key when you connect it. An invalid key or a missing permission appears when a step or the record action runs.
+**2. Install the app in Attio**
 
-    Attio documents this setup in the [Resend app article](https://attio.com/help/reference/apps/communication-apps/resend-app).
-  </Step>
-</Steps>
+1. In Attio, click your workspace name, then click **Apps and integrations**.
+2. Search for **Resend**, open the app, and click **Install**.
+3. Under **Workspace connection**, click **Connect**.
+4. Paste the API key and click **Add connection**.
+
+Attio doesn't check the key when you connect it. An invalid key or a missing permission appears when a step or the record action runs.
+
+Attio documents this setup in the [Resend app article](https://attio.com/help/reference/apps/communication-apps/resend-app).
 
 ## Use Resend in a workflow
 
@@ -86,17 +84,17 @@ Fill in plain text or a template. If you select a template, Attio ignores the pl
 
 On success, the step returns the email ID. Run the same step again and Attio doesn't send a second copy.
 
-<Note>
-  The From address has to use a domain you verified in Resend. With the test
-  sender `onboarding@resend.dev`, you can only email your own address. [Add a
-  domain](/docs/add-a-domain) to email anyone else.
-</Note>
+> [!NOTE]
+>
+> The From address has to use a domain you verified in Resend. With the test
+> sender `onboarding@resend.dev`, you can only email your own address. [Add a
+> domain](/docs/add-a-domain) to email anyone else.
 
-<Note>
-  If you edit a template in Resend after you configure the step, and the
-  template needs a variable you haven't set, the step fails and names the
-  missing variable. Open the step and fill in that variable.
-</Note>
+> [!NOTE]
+>
+> If you edit a template in Resend after you configure the step, and the
+> template needs a variable you haven't set, the step fails and names the
+> missing variable. Open the step and fill in that variable.
 
 ## Add a person to a segment
 

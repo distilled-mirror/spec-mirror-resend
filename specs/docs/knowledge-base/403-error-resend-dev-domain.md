@@ -37,11 +37,11 @@ To send emails to recipients other than your own email address, you need to add 
 4. Follow the verification steps to add the required DNS records
 5. Once verified, update your API request to use your verified domain
 
-<Info>
-  For detailed instructions on verifying your domain, check out our [domain
-  verification guide](/docs/dashboard/domains/introduction) or the DNS guide for your
-  specific provider.
-</Info>
+> [!NOTE]
+>
+> For detailed instructions on verifying your domain, check out our [domain
+> verification guide](/docs/dashboard/domains/introduction) or the DNS guide for your
+> specific provider.
 
 ## If You're Still Having Issues
 

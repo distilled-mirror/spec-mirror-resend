@@ -6,12 +6,12 @@
 
 > Learn how to send your first email using the Resend Elixir SDK.
 
-<Info>
-  This guides utilizes an [open source
-  library](https://github.com/elixir-saas/resend-elixir) contributed by a
-  community member. It's not developed, maintained, or supported by Resend
-  directly.
-</Info>
+> [!NOTE]
+>
+> This guides utilizes an [open source
+> library](https://github.com/elixir-saas/resend-elixir) contributed by a
+> community member. It's not developed, maintained, or supported by Resend
+> directly.
 
 ## Prerequisites
 
@@ -22,73 +22,67 @@ Before you start, you'll need:
 
 ## Guide
 
-<Steps>
-  <Step title="Install">
-    Install by adding `resend` to your list of dependencies in `mix.exs`:
+**1. Install**
 
-    <CodeGroup>
-      ```elixir mix.exs theme={"theme":{"light":"github-light","dark":"vesper"}}
-      def deps do
-        [
-          {:resend, "~> 0.4.0"}
-        ]
-      end
-      ```
-    </CodeGroup>
-  </Step>
+Install by adding `resend` to your list of dependencies in `mix.exs`:
 
-  <Step title="Send email using HTML">
-    The easiest way to send an email is by using the `html` parameter.
+```elixir mix.exs theme={"theme":{"light":"github-light","dark":"vesper"}}
+def deps do
+  [
+    {:resend, "~> 0.4.0"}
+  ]
+end
+```
 
-    ```elixir send.exs theme={"theme":{"light":"github-light","dark":"vesper"}}
-    client = Resend.client(api_key: System.get_env("RESEND_API_KEY"))
+**2. Send email using HTML**
 
-    Resend.Emails.send(client, %{
-      from: "Acme <onboarding@resend.dev>",
-      to: ["delivered@resend.dev"],
-      subject: "hello world",
-      html: "<strong>it works!</strong>"
-    })
-    ```
-  </Step>
-</Steps>
+The easiest way to send an email is by using the `html` parameter.
+
+```elixir send.exs theme={"theme":{"light":"github-light","dark":"vesper"}}
+client = Resend.client(api_key: System.get_env("RESEND_API_KEY"))
+
+Resend.Emails.send(client, %{
+  from: "Acme <onboarding@resend.dev>",
+  to: ["delivered@resend.dev"],
+  subject: "hello world",
+  html: "<strong>it works!</strong>"
+})
+```
 
 ## Examples
 
-<CardGroup cols={3}>
-  <Card title="Basic Send" icon="arrow-up-right-from-square" href="https://github.com/resend/resend-examples/blob/main/elixir-resend-examples/examples/basic_send.exs">
-    Basic email sending
-  </Card>
+> **[Basic Send](https://github.com/resend/resend-examples/blob/main/elixir-resend-examples/examples/basic_send.exs)**
+>
+> Basic email sending
 
-  <Card title="Attachments" icon="arrow-up-right-from-square" href="https://github.com/resend/resend-examples/blob/main/elixir-resend-examples/examples/with_attachments.exs">
-    Send emails with file attachments
-  </Card>
+> **[Attachments](https://github.com/resend/resend-examples/blob/main/elixir-resend-examples/examples/with_attachments.exs)**
+>
+> Send emails with file attachments
 
-  <Card title="Templates" icon="arrow-up-right-from-square" href="https://github.com/resend/resend-examples/blob/main/elixir-resend-examples/examples/with_template.exs">
-    Send emails using Resend hosted templates
-  </Card>
+> **[Templates](https://github.com/resend/resend-examples/blob/main/elixir-resend-examples/examples/with_template.exs)**
+>
+> Send emails using Resend hosted templates
 
-  <Card title="Scheduling" icon="arrow-up-right-from-square" href="https://github.com/resend/resend-examples/blob/main/elixir-resend-examples/examples/scheduled_send.exs">
-    Schedule emails for future delivery
-  </Card>
+> **[Scheduling](https://github.com/resend/resend-examples/blob/main/elixir-resend-examples/examples/scheduled_send.exs)**
+>
+> Schedule emails for future delivery
 
-  <Card title="Audiences" icon="arrow-up-right-from-square" href="https://github.com/resend/resend-examples/blob/main/elixir-resend-examples/examples/audiences.exs">
-    Manage contacts and audiences
-  </Card>
+> **[Audiences](https://github.com/resend/resend-examples/blob/main/elixir-resend-examples/examples/audiences.exs)**
+>
+> Manage contacts and audiences
 
-  <Card title="Domains" icon="arrow-up-right-from-square" href="https://github.com/resend/resend-examples/blob/main/elixir-resend-examples/examples/domains.exs">
-    Create and manage sending domains
-  </Card>
+> **[Domains](https://github.com/resend/resend-examples/blob/main/elixir-resend-examples/examples/domains.exs)**
+>
+> Create and manage sending domains
 
-  <Card title="Inbound Webhooks" icon="arrow-up-right-from-square" href="https://github.com/resend/resend-examples/blob/main/elixir-resend-examples/examples/inbound.exs">
-    Receive and process inbound emails
-  </Card>
+> **[Inbound Webhooks](https://github.com/resend/resend-examples/blob/main/elixir-resend-examples/examples/inbound.exs)**
+>
+> Receive and process inbound emails
 
-  <Card title="Double Opt-in" icon="arrow-up-right-from-square" href="https://github.com/resend/resend-examples/tree/main/elixir-resend-examples/examples/double_optin">
-    Double opt-in subscription flow
-  </Card>
+> **[Double Opt-in](https://github.com/resend/resend-examples/tree/main/elixir-resend-examples/examples/double_optin)**
+>
+> Double opt-in subscription flow
 
-  <Card title="Phoenix App" icon="arrow-up-right-from-square" href="https://github.com/resend/resend-examples/tree/main/elixir-resend-examples/phoenix_app">
-    Full Phoenix web framework application
-  </Card>
-</CardGroup>
+> **[Phoenix App](https://github.com/resend/resend-examples/tree/main/elixir-resend-examples/phoenix_app)**
+>
+> Full Phoenix web framework application

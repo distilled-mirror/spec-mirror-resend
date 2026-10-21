@@ -23,10 +23,10 @@ You'll also need an [Appwrite project](https://cloud.appwrite.io) with at least 
 
 In the Appwrite Console, navigate to **Messaging** > **Providers** > **Add provider** > **Email**. Give your provider a name, choose **Resend**, and click **Save and continue**.
 
-<Note>
-  The provider will be saved to your project, but not enabled until you complete
-  its configuration.
-</Note>
+> [!NOTE]
+>
+> The provider will be saved to your project, but not enabled until you complete
+> its configuration.
 
 In the **Configure** step, you will need to provide details from your Resend dashboard to connect your Appwrite project:
 

@@ -16,286 +16,282 @@ Common use cases:
 
 ## How it works
 
-<Tabs>
-  <Tab title="Using the dashboard">
-    Define a **Add to segment** step and select the segment from the dropdown.
+**Using the dashboard**
 
-    <img alt="Automation Add to Segment" src="https://mintcdn.com/resend/C4ZmHxGOgdpKqZkf/images/automations-add-to-segment.png?fit=max&auto=format&n=C4ZmHxGOgdpKqZkf&q=85&s=4f48bf99d7854095810c5510a8605c99" width="4009" height="2216" data-path="images/automations-add-to-segment.png" />
-  </Tab>
+Define a **Add to segment** step and select the segment from the dropdown.
 
-  <Tab title="Using the API">
-    The `add_to_segment` step accepts a single `segment_id` field.
+![Automation Add to Segment](https://mintcdn.com/resend/C4ZmHxGOgdpKqZkf/images/automations-add-to-segment.png?fit=max\&auto=format\&n=C4ZmHxGOgdpKqZkf\&q=85\&s=4f48bf99d7854095810c5510a8605c99)
 
-    <CodeGroup>
-      ```ts Node.js {13-19} theme={"theme":{"light":"github-light","dark":"vesper"}}
-      import { Resend } from 'resend';
+**Using the API**
 
-      const resend = new Resend('re_xxxxxxxxx');
+The `add_to_segment` step accepts a single `segment_id` field.
 
-      const { data, error } = await resend.automations.create({
-        name: 'Tag VIP Users',
-        steps: [
-          {
-            key: 'start',
-            type: 'trigger',
-            config: { eventName: 'purchase.completed' },
-          },
-          {
-            key: 'vip_users',
-            type: 'add_to_segment',
-            config: {
-              segmentId: '83a1e324-26dc-47eb-9b28-ba8b6d1fe808',
-            },
-          },
-        ],
-        connections: [{ from: 'start', to: 'vip_users', type: 'default' }],
-      });
-      ```
+```ts Node.js {13-19} theme={"theme":{"light":"github-light","dark":"vesper"}}
+import { Resend } from 'resend';
 
-      ```php PHP {11-17} theme={"theme":{"light":"github-light","dark":"vesper"}}
-      $resend = Resend::client('re_xxxxxxxxx');
+const resend = new Resend('re_xxxxxxxxx');
 
-      $resend->automations->create([
-        'name' => 'Tag VIP Users',
-        'steps' => [
-          [
-            'key' => 'start',
-            'type' => 'trigger',
-            'config' => ['event_name' => 'purchase.completed'],
-          ],
-          [
-            'key' => 'vip_users',
-            'type' => 'add_to_segment',
-            'config' => [
-              'segment_id' => '83a1e324-26dc-47eb-9b28-ba8b6d1fe808',
-            ],
-          ],
-        ],
-        'connections' => [['from' => 'start', 'to' => 'vip_users', 'type' => 'default']],
-      ]);
-      ```
+const { data, error } = await resend.automations.create({
+  name: 'Tag VIP Users',
+  steps: [
+    {
+      key: 'start',
+      type: 'trigger',
+      config: { eventName: 'purchase.completed' },
+    },
+    {
+      key: 'vip_users',
+      type: 'add_to_segment',
+      config: {
+        segmentId: '83a1e324-26dc-47eb-9b28-ba8b6d1fe808',
+      },
+    },
+  ],
+  connections: [{ from: 'start', to: 'vip_users', type: 'default' }],
+});
+```
 
-      ```python Python {13-19} theme={"theme":{"light":"github-light","dark":"vesper"}}
-      import resend
+```php PHP {11-17} theme={"theme":{"light":"github-light","dark":"vesper"}}
+$resend = Resend::client('re_xxxxxxxxx');
 
-      resend.api_key = "re_xxxxxxxxx"
+$resend->automations->create([
+  'name' => 'Tag VIP Users',
+  'steps' => [
+    [
+      'key' => 'start',
+      'type' => 'trigger',
+      'config' => ['event_name' => 'purchase.completed'],
+    ],
+    [
+      'key' => 'vip_users',
+      'type' => 'add_to_segment',
+      'config' => [
+        'segment_id' => '83a1e324-26dc-47eb-9b28-ba8b6d1fe808',
+      ],
+    ],
+  ],
+  'connections' => [['from' => 'start', 'to' => 'vip_users', 'type' => 'default']],
+]);
+```
 
-      params: resend.Automations.CreateParams = {
-        "name": "Tag VIP Users",
-        "steps": [
-          {
-            "key": "start",
-            "type": "trigger",
-            "config": {"event_name": "purchase.completed"},
-          },
-          {
-            "key": "vip_users",
-            "type": "add_to_segment",
-            "config": {
-              "segment_id": "83a1e324-26dc-47eb-9b28-ba8b6d1fe808",
-            },
-          },
-        ],
-        "connections": [{"from": "start", "to": "vip_users", "type": "default"}],
-      }
+```python Python {13-19} theme={"theme":{"light":"github-light","dark":"vesper"}}
+import resend
 
-      resend.Automations.create(params)
-      ```
+resend.api_key = "re_xxxxxxxxx"
 
-      ```ruby Ruby {13-19} theme={"theme":{"light":"github-light","dark":"vesper"}}
-      require "resend"
+params: resend.Automations.CreateParams = {
+  "name": "Tag VIP Users",
+  "steps": [
+    {
+      "key": "start",
+      "type": "trigger",
+      "config": {"event_name": "purchase.completed"},
+    },
+    {
+      "key": "vip_users",
+      "type": "add_to_segment",
+      "config": {
+        "segment_id": "83a1e324-26dc-47eb-9b28-ba8b6d1fe808",
+      },
+    },
+  ],
+  "connections": [{"from": "start", "to": "vip_users", "type": "default"}],
+}
 
-      Resend.api_key = "re_xxxxxxxxx"
+resend.Automations.create(params)
+```
 
-      params = {
-        name: "Tag VIP Users",
-        steps: [
-          {
-            key: "start",
-            type: "trigger",
-            config: { event_name: "purchase.completed" },
-          },
-          {
-            key: "vip_users",
-            type: "add_to_segment",
-            config: {
-              segment_id: "83a1e324-26dc-47eb-9b28-ba8b6d1fe808",
-            },
-          },
-        ],
-        connections: [{ from: "start", to: "vip_users", type: "default" }],
-      }
+```ruby Ruby {13-19} theme={"theme":{"light":"github-light","dark":"vesper"}}
+require "resend"
 
-      Resend::Automations.create(params)
-      ```
+Resend.api_key = "re_xxxxxxxxx"
 
-      ```go Go {18-24} theme={"theme":{"light":"github-light","dark":"vesper"}}
-      package main
+params = {
+  name: "Tag VIP Users",
+  steps: [
+    {
+      key: "start",
+      type: "trigger",
+      config: { event_name: "purchase.completed" },
+    },
+    {
+      key: "vip_users",
+      type: "add_to_segment",
+      config: {
+        segment_id: "83a1e324-26dc-47eb-9b28-ba8b6d1fe808",
+      },
+    },
+  ],
+  connections: [{ from: "start", to: "vip_users", type: "default" }],
+}
 
-      import "github.com/resend/resend-go/v4"
+Resend::Automations.create(params)
+```
 
-      func main() {
-      	client := resend.NewClient("re_xxxxxxxxx")
+```go Go {18-24} theme={"theme":{"light":"github-light","dark":"vesper"}}
+package main
 
-      	params := &resend.CreateAutomationRequest{
-      		Name: "Tag VIP Users",
-      		Steps: []resend.AutomationStep{
-      			{
-      				Key:  "start",
-      				Type: resend.AutomationStepTypeTrigger,
-      				Config: map[string]any{
-      					"event_name": "purchase.completed",
-      				},
-      			},
-      			{
-      				Key:  "vip_users",
-      				Type: resend.AutomationStepTypeAddToSegment,
-      				Config: map[string]any{
-      					"segment_id": "83a1e324-26dc-47eb-9b28-ba8b6d1fe808",
-      				},
-      			},
-      		},
-      		Connections: []resend.AutomationConnection{
-      			{From: "start", To: "vip_users", Type: resend.AutomationConnectionTypeDefault},
-      		},
-      	}
+import "github.com/resend/resend-go/v4"
 
-      	client.Automations.Create(params)
-      }
-      ```
+func main() {
+	client := resend.NewClient("re_xxxxxxxxx")
 
-      ```rust Rust {22-27} theme={"theme":{"light":"github-light","dark":"vesper"}}
-      use resend_rs::{
-        types::{
-          AddToSegmentStepConfig, AutomationStatus, Connection, ConnectionType, CreateAutomationOptions,
-          Step, TriggerStepConfig,
+	params := &resend.CreateAutomationRequest{
+		Name: "Tag VIP Users",
+		Steps: []resend.AutomationStep{
+			{
+				Key:  "start",
+				Type: resend.AutomationStepTypeTrigger,
+				Config: map[string]any{
+					"event_name": "purchase.completed",
+				},
+			},
+			{
+				Key:  "vip_users",
+				Type: resend.AutomationStepTypeAddToSegment,
+				Config: map[string]any{
+					"segment_id": "83a1e324-26dc-47eb-9b28-ba8b6d1fe808",
+				},
+			},
+		},
+		Connections: []resend.AutomationConnection{
+			{From: "start", To: "vip_users", Type: resend.AutomationConnectionTypeDefault},
+		},
+	}
+
+	client.Automations.Create(params)
+}
+```
+
+```rust Rust {22-27} theme={"theme":{"light":"github-light","dark":"vesper"}}
+use resend_rs::{
+  types::{
+    AddToSegmentStepConfig, AutomationStatus, Connection, ConnectionType, CreateAutomationOptions,
+    Step, TriggerStepConfig,
+  },
+  Resend, Result,
+};
+
+#[tokio::main]
+async fn main() -> Result<()> {
+  let resend = Resend::new("re_xxxxxxxxx");
+
+  let opts = CreateAutomationOptions {
+    name: "Tag VIP Users".to_owned(),
+    steps: vec![
+      Step::Trigger {
+        key: "start".to_owned(),
+        config: TriggerStepConfig {
+          event_name: "purchase.completed".to_owned(),
         },
-        Resend, Result,
-      };
+      },
+      Step::AddToSegment {
+        key: "vip_users".to_owned(),
+        config: AddToSegmentStepConfig {
+          segment_id: "83a1e324-26dc-47eb-9b28-ba8b6d1fe808".to_owned(),
+        },
+      },
+    ],
+    connections: vec![Connection::new("start", "vip_users").with_type(ConnectionType::Default)],
+    status: AutomationStatus::Disabled,
+  };
+  let _automation = resend.automations.create(opts).await?;
 
-      #[tokio::main]
-      async fn main() -> Result<()> {
-        let resend = Resend::new("re_xxxxxxxxx");
+  Ok(())
+}
+```
 
-        let opts = CreateAutomationOptions {
-          name: "Tag VIP Users".to_owned(),
-          steps: vec![
-            Step::Trigger {
-              key: "start".to_owned(),
-              config: TriggerStepConfig {
-                event_name: "purchase.completed".to_owned(),
-              },
-            },
-            Step::AddToSegment {
-              key: "vip_users".to_owned(),
-              config: AddToSegmentStepConfig {
-                segment_id: "83a1e324-26dc-47eb-9b28-ba8b6d1fe808".to_owned(),
-              },
-            },
-          ],
-          connections: vec![Connection::new("start", "vip_users").with_type(ConnectionType::Default)],
-          status: AutomationStatus::Disabled,
-        };
-        let _automation = resend.automations.create(opts).await?;
+```java Java {20-24} theme={"theme":{"light":"github-light","dark":"vesper"}}
+import com.resend.*;
+import com.resend.core.exception.ResendException;
+import com.resend.services.automations.model.AutomationConnection;
+import com.resend.services.automations.model.AutomationStep;
+import com.resend.services.automations.model.ConnectionType;
+import com.resend.services.automations.model.CreateAutomationOptions;
+import com.resend.services.automations.model.CreateAutomationResponseSuccess;
 
-        Ok(())
-      }
-      ```
+public class Main {
+    public static void main(String[] args) throws ResendException {
+        Resend resend = new Resend("re_xxxxxxxxx");
 
-      ```java Java {20-24} theme={"theme":{"light":"github-light","dark":"vesper"}}
-      import com.resend.*;
-      import com.resend.core.exception.ResendException;
-      import com.resend.services.automations.model.AutomationConnection;
-      import com.resend.services.automations.model.AutomationStep;
-      import com.resend.services.automations.model.ConnectionType;
-      import com.resend.services.automations.model.CreateAutomationOptions;
-      import com.resend.services.automations.model.CreateAutomationResponseSuccess;
+        CreateAutomationOptions options = CreateAutomationOptions.builder()
+                .name("Tag VIP Users")
+                .steps(
+                    AutomationStep.trigger("start")
+                        .eventName("purchase.completed")
+                        .build(),
+                    AutomationStep.addToSegment("vip_users")
+                        .segmentId("83a1e324-26dc-47eb-9b28-ba8b6d1fe808")
+                        .build()
+                )
+                .connections(
+                    AutomationConnection.builder()
+                        .from("start")
+                        .to("vip_users")
+                        .type(ConnectionType.DEFAULT)
+                        .build()
+                )
+                .build();
 
-      public class Main {
-          public static void main(String[] args) throws ResendException {
-              Resend resend = new Resend("re_xxxxxxxxx");
+        CreateAutomationResponseSuccess data = resend.automations().create(options);
+    }
+}
+```
 
-              CreateAutomationOptions options = CreateAutomationOptions.builder()
-                      .name("Tag VIP Users")
-                      .steps(
-                          AutomationStep.trigger("start")
-                              .eventName("purchase.completed")
-                              .build(),
-                          AutomationStep.addToSegment("vip_users")
-                              .segmentId("83a1e324-26dc-47eb-9b28-ba8b6d1fe808")
-                              .build()
-                      )
-                      .connections(
-                          AutomationConnection.builder()
-                              .from("start")
-                              .to("vip_users")
-                              .type(ConnectionType.DEFAULT)
-                              .build()
-                      )
-                      .build();
+```csharp .NET {7,15} theme={"theme":{"light":"github-light","dark":"vesper"}}
+using Resend;
+using System.Text.Json;
 
-              CreateAutomationResponseSuccess data = resend.automations().create(options);
-          }
-      }
-      ```
+IResend resend = ResendClient.Create( "re_xxxxxxxxx" );
 
-      ```csharp .NET {7,15} theme={"theme":{"light":"github-light","dark":"vesper"}}
-      using Resend;
-      using System.Text.Json;
+var startConfig = JsonSerializer.SerializeToElement( new { event_name = "purchase.completed" } );
+var segmentConfig = JsonSerializer.SerializeToElement( new { segment_id = "83a1e324-26dc-47eb-9b28-ba8b6d1fe808" } );
 
-      IResend resend = ResendClient.Create( "re_xxxxxxxxx" );
+var resp = await resend.AutomationCreateAsync( new AutomationCreateData()
+{
+    Name = "Tag VIP Users",
+    Steps = new List<AutomationStepData>
+    {
+        new AutomationStepData { Ref = "start", Type = "trigger", Config = startConfig },
+        new AutomationStepData { Ref = "vip_users", Type = "add_to_segment", Config = segmentConfig },
+    },
+    Connections = new List<AutomationEdge>
+    {
+        new AutomationEdge { From = "start", To = "vip_users", EdgeType = "default" },
+    },
+} );
+```
 
-      var startConfig = JsonSerializer.SerializeToElement( new { event_name = "purchase.completed" } );
-      var segmentConfig = JsonSerializer.SerializeToElement( new { segment_id = "83a1e324-26dc-47eb-9b28-ba8b6d1fe808" } );
+```bash cURL {10-14} theme={"theme":{"light":"github-light","dark":"vesper"}}
+curl -X POST 'https://api.resend.com/automations' \
+     -H 'Authorization: Bearer re_xxxxxxxxx' \
+     -H 'Content-Type: application/json' \
+     -d '{
+  "name": "Tag VIP Users",
+  "steps": [{
+    "key": "start",
+    "type": "trigger",
+    "config": { "event_name": "purchase.completed" }
+  }, {
+    "key": "vip_users",
+    "type": "add_to_segment",
+    "config": { "segment_id": "83a1e324-26dc-47eb-9b28-ba8b6d1fe808" }
+  }],
+  "connections": [
+    { "from": "start", "to": "vip_users", "type": "default" }
+  ]
+}'
+```
 
-      var resp = await resend.AutomationCreateAsync( new AutomationCreateData()
-      {
-          Name = "Tag VIP Users",
-          Steps = new List<AutomationStepData>
-          {
-              new AutomationStepData { Ref = "start", Type = "trigger", Config = startConfig },
-              new AutomationStepData { Ref = "vip_users", Type = "add_to_segment", Config = segmentConfig },
-          },
-          Connections = new List<AutomationEdge>
-          {
-              new AutomationEdge { From = "start", To = "vip_users", EdgeType = "default" },
-          },
-      } );
-      ```
-
-      ```bash cURL {10-14} theme={"theme":{"light":"github-light","dark":"vesper"}}
-      curl -X POST 'https://api.resend.com/automations' \
-           -H 'Authorization: Bearer re_xxxxxxxxx' \
-           -H 'Content-Type: application/json' \
-           -d '{
-        "name": "Tag VIP Users",
-        "steps": [{
-          "key": "start",
-          "type": "trigger",
-          "config": { "event_name": "purchase.completed" }
-        }, {
-          "key": "vip_users",
-          "type": "add_to_segment",
-          "config": { "segment_id": "83a1e324-26dc-47eb-9b28-ba8b6d1fe808" }
-        }],
-        "connections": [
-          { "from": "start", "to": "vip_users", "type": "default" }
-        ]
-      }'
-      ```
-
-      ```bash CLI theme={"theme":{"light":"github-light","dark":"vesper"}}
-      resend automations create --name "Tag VIP Users" --file ./automation.json
-      ```
-    </CodeGroup>
-  </Tab>
-</Tabs>
+```bash CLI theme={"theme":{"light":"github-light","dark":"vesper"}}
+resend automations create --name "Tag VIP Users" --file ./automation.json
+```
 
 ## Configuration
 
-<ParamField body="config.segment_id" type="string" required>
-  The ID of the segment to add the contact to.
-</ParamField>
+**config.segment\_id** `string` *required*
+
+The ID of the segment to add the contact to.
 
 ```json Example theme={"theme":{"light":"github-light","dark":"vesper"}}
 {

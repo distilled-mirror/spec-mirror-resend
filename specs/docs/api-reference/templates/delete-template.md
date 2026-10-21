@@ -8,117 +8,113 @@
 
 ## Path Parameters
 
-<ParamField body="id | alias" type="string">
-  The ID or alias of the template to delete.
-</ParamField>
+**id | alias** `string`
 
-<RequestExample>
-  ```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
-  import { Resend } from 'resend';
+The ID or alias of the template to delete.
 
-  const resend = new Resend('re_xxxxxxxxx');
+```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
+import { Resend } from 'resend';
 
-  const { data, error } = await resend.templates.remove(
-    '34a080c9-b17d-4187-ad80-5af20266e535',
-  );
-  ```
+const resend = new Resend('re_xxxxxxxxx');
 
-  ```php PHP theme={"theme":{"light":"github-light","dark":"vesper"}}
-  $resend = Resend::client('re_xxxxxxxxx');
+const { data, error } = await resend.templates.remove(
+  '34a080c9-b17d-4187-ad80-5af20266e535',
+);
+```
 
-  $resend->templates->remove('34a080c9-b17d-4187-ad80-5af20266e535');
-  ```
+```php PHP theme={"theme":{"light":"github-light","dark":"vesper"}}
+$resend = Resend::client('re_xxxxxxxxx');
 
-  ```py Python theme={"theme":{"light":"github-light","dark":"vesper"}}
-  import resend
+$resend->templates->remove('34a080c9-b17d-4187-ad80-5af20266e535');
+```
 
-  resend.api_key = "re_xxxxxxxxx"
+```py Python theme={"theme":{"light":"github-light","dark":"vesper"}}
+import resend
 
-  resend.Templates.remove("34a080c9-b17d-4187-ad80-5af20266e535")
-  ```
+resend.api_key = "re_xxxxxxxxx"
 
-  ```ruby Ruby theme={"theme":{"light":"github-light","dark":"vesper"}}
-  require "resend"
+resend.Templates.remove("34a080c9-b17d-4187-ad80-5af20266e535")
+```
 
-  Resend.api_key = "re_xxxxxxxxx"
+```ruby Ruby theme={"theme":{"light":"github-light","dark":"vesper"}}
+require "resend"
 
-  Resend::Templates.remove("34a080c9-b17d-4187-ad80-5af20266e535")
-  ```
+Resend.api_key = "re_xxxxxxxxx"
 
-  ```go Go theme={"theme":{"light":"github-light","dark":"vesper"}}
-  package main
+Resend::Templates.remove("34a080c9-b17d-4187-ad80-5af20266e535")
+```
 
-  import (
-  	"context"
+```go Go theme={"theme":{"light":"github-light","dark":"vesper"}}
+package main
 
-  	"github.com/resend/resend-go/v4"
-  )
+import (
+	"context"
 
-  func main() {
-  	client := resend.NewClient("re_xxxxxxxxx")
+	"github.com/resend/resend-go/v4"
+)
 
-  	client.Templates.RemoveWithContext(
-  		context.TODO(),
-  		"34a080c9-b17d-4187-ad80-5af20266e535",
-  	)
-  }
-  ```
+func main() {
+	client := resend.NewClient("re_xxxxxxxxx")
 
-  ```rust Rust theme={"theme":{"light":"github-light","dark":"vesper"}}
-  use resend_rs::{Resend, Result};
+	client.Templates.RemoveWithContext(
+		context.TODO(),
+		"34a080c9-b17d-4187-ad80-5af20266e535",
+	)
+}
+```
 
-  #[tokio::main]
-  async fn main() -> Result<()> {
-    let resend = Resend::new("re_xxxxxxxxx");
+```rust Rust theme={"theme":{"light":"github-light","dark":"vesper"}}
+use resend_rs::{Resend, Result};
 
-    let _deleted = resend
-      .templates
-      .delete("34a080c9-b17d-4187-ad80-5af20266e535")
-      .await?;
+#[tokio::main]
+async fn main() -> Result<()> {
+  let resend = Resend::new("re_xxxxxxxxx");
 
-    Ok(())
-  }
-  ```
+  let _deleted = resend
+    .templates
+    .delete("34a080c9-b17d-4187-ad80-5af20266e535")
+    .await?;
 
-  ```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
-  import com.resend.Resend;
-  import com.resend.core.exception.ResendException;
-  import com.resend.services.templates.model.DeleteTemplateResponseSuccess;
+  Ok(())
+}
+```
 
-  public class Main {
-      public static void main(String[] args) throws ResendException {
-          Resend resend = new Resend("re_xxxxxxxxx");
+```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
+import com.resend.Resend;
+import com.resend.core.exception.ResendException;
+import com.resend.services.templates.model.DeleteTemplateResponseSuccess;
 
-          DeleteTemplateResponseSuccess data = resend.templates().remove("34a080c9-b17d-4187-ad80-5af20266e535");
-      }
-  }
-  ```
+public class Main {
+    public static void main(String[] args) throws ResendException {
+        Resend resend = new Resend("re_xxxxxxxxx");
 
-  ```csharp .NET theme={"theme":{"light":"github-light","dark":"vesper"}}
-  using Resend;
+        DeleteTemplateResponseSuccess data = resend.templates().remove("34a080c9-b17d-4187-ad80-5af20266e535");
+    }
+}
+```
 
-  IResend resend = ResendClient.Create( "re_xxxxxxxxx" ); // Or from DI
+```csharp .NET theme={"theme":{"light":"github-light","dark":"vesper"}}
+using Resend;
 
-  await resend.TemplateDeleteAsync( new Guid( "34a080c9-b17d-4187-ad80-5af20266e535" ) );
-  ```
+IResend resend = ResendClient.Create( "re_xxxxxxxxx" ); // Or from DI
 
-  ```bash cURL theme={"theme":{"light":"github-light","dark":"vesper"}}
-  curl -X DELETE 'https://api.resend.com/templates/34a080c9-b17d-4187-ad80-5af20266e535' \
-       -H 'Authorization: Bearer re_xxxxxxxxx' \
-       -H 'Content-Type: application/json'
-  ```
+await resend.TemplateDeleteAsync( new Guid( "34a080c9-b17d-4187-ad80-5af20266e535" ) );
+```
 
-  ```bash CLI theme={"theme":{"light":"github-light","dark":"vesper"}}
-  resend templates delete 34a080c9-b17d-4187-ad80-5af20266e535
-  ```
-</RequestExample>
+```bash cURL theme={"theme":{"light":"github-light","dark":"vesper"}}
+curl -X DELETE 'https://api.resend.com/templates/34a080c9-b17d-4187-ad80-5af20266e535' \
+     -H 'Authorization: Bearer re_xxxxxxxxx' \
+     -H 'Content-Type: application/json'
+```
 
-<ResponseExample>
-  ```json Response theme={"theme":{"light":"github-light","dark":"vesper"}}
-  {
-    "object": "template",
-    "id": "34a080c9-b17d-4187-ad80-5af20266e535",
-    "deleted": true
-  }
-  ```
-</ResponseExample>
+```bash CLI theme={"theme":{"light":"github-light","dark":"vesper"}}
+resend templates delete 34a080c9-b17d-4187-ad80-5af20266e535
+```
+
+```json Response theme={"theme":{"light":"github-light","dark":"vesper"}}
+{
+  "object": "template",
+  "id": "34a080c9-b17d-4187-ad80-5af20266e535",
+  "deleted": true
+}
+```

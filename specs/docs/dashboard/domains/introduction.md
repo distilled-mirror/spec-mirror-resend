@@ -47,20 +47,18 @@ Learn more about [managing your domains](/docs/dashboard/domains/manage-domains)
 
 See how to use Resend's verified domain features.
 
-<CardGroup cols={2}>
-  <Card title="Manage domains" icon="gear" href="/docs/dashboard/domains/manage-domains" />
+> **[Manage domains](/docs/dashboard/domains/manage-domains)**
 
-  <Card title="Implement DMARC" icon="key" href="/docs/dashboard/domains/dmarc" />
+> **[Implement DMARC](/docs/dashboard/domains/dmarc)**
 
-  <Card title="Enable Tracking" icon="chart-line-up-down" href="/docs/dashboard/domains/tracking" />
+> **[Enable Tracking](/docs/dashboard/domains/tracking)**
 
-  <Card title="Enforced TLS" icon="binary-lock" href="/docs/dashboard/domains/tls" />
+> **[Enforced TLS](/docs/dashboard/domains/tls)**
 
-  <Card title="Custom return path" icon="code-simple" href="/docs/dashboard/domains/custom-return-path" />
+> **[Custom return path](/docs/dashboard/domains/custom-return-path)**
 
-  <Card title="Choose region" icon="globe" href="/docs/dashboard/domains/regions" />
+> **[Choose region](/docs/dashboard/domains/regions)**
 
-  <Card title="Claim a domain" icon="bell-concierge" href="/docs/dashboard/domains/claim" />
+> **[Claim a domain](/docs/dashboard/domains/claim)**
 
-  <Card title="DNS provider guides" icon="book-atlas" href="/docs/knowledge-base/introduction#dns-guides" />
-</CardGroup>
+> **[DNS provider guides](/docs/knowledge-base/introduction#dns-guides)**

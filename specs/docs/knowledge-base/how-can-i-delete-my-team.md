@@ -13,13 +13,13 @@ To request your Resend team and team data to be deleted:
 
 Upon confirmation, Resend will delete your team and all your team data.
 
-<Note>
-  If you are the last member of a team, you can also delete it by selecting
-  **Leave Team** instead. The system will automatically delete the team when the
-  last member leaves.
-</Note>
+> [!NOTE]
+>
+> If you are the last member of a team, you can also delete it by selecting
+> **Leave Team** instead. The system will automatically delete the team when the
+> last member leaves.
 
-<Warning>
-  Please note that this action is not reversible, so please proceed with
-  caution.
-</Warning>
+> [!WARNING]
+>
+> Please note that this action is not reversible, so please proceed with
+> caution.

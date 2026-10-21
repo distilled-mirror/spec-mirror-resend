@@ -8,140 +8,136 @@
 
 ## Path Parameters
 
-<ParamField body="id | alias" type="string">
-  The ID or alias of the template to retrieve.
-</ParamField>
+**id | alias** `string`
 
-<RequestExample>
-  ```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
-  import { Resend } from 'resend';
+The ID or alias of the template to retrieve.
 
-  const resend = new Resend('re_xxxxxxxxx');
+```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
+import { Resend } from 'resend';
 
-  const { data, error } = await resend.templates.get(
-    '34a080c9-b17d-4187-ad80-5af20266e535',
-  );
-  ```
+const resend = new Resend('re_xxxxxxxxx');
 
-  ```php PHP theme={"theme":{"light":"github-light","dark":"vesper"}}
-  $resend = Resend::client('re_xxxxxxxxx');
+const { data, error } = await resend.templates.get(
+  '34a080c9-b17d-4187-ad80-5af20266e535',
+);
+```
 
-  $resend->templates->get('34a080c9-b17d-4187-ad80-5af20266e535');
-  ```
+```php PHP theme={"theme":{"light":"github-light","dark":"vesper"}}
+$resend = Resend::client('re_xxxxxxxxx');
 
-  ```py Python theme={"theme":{"light":"github-light","dark":"vesper"}}
-  import resend
+$resend->templates->get('34a080c9-b17d-4187-ad80-5af20266e535');
+```
 
-  resend.api_key = "re_xxxxxxxxx"
+```py Python theme={"theme":{"light":"github-light","dark":"vesper"}}
+import resend
 
-  resend.Templates.get("34a080c9-b17d-4187-ad80-5af20266e535")
-  ```
+resend.api_key = "re_xxxxxxxxx"
 
-  ```ruby Ruby theme={"theme":{"light":"github-light","dark":"vesper"}}
-  require "resend"
+resend.Templates.get("34a080c9-b17d-4187-ad80-5af20266e535")
+```
 
-  Resend.api_key = "re_xxxxxxxxx"
+```ruby Ruby theme={"theme":{"light":"github-light","dark":"vesper"}}
+require "resend"
 
-  Resend::Templates.get("34a080c9-b17d-4187-ad80-5af20266e535")
-  ```
+Resend.api_key = "re_xxxxxxxxx"
 
-  ```go Go theme={"theme":{"light":"github-light","dark":"vesper"}}
-  package main
+Resend::Templates.get("34a080c9-b17d-4187-ad80-5af20266e535")
+```
 
-  import (
-  	"context"
+```go Go theme={"theme":{"light":"github-light","dark":"vesper"}}
+package main
 
-  	"github.com/resend/resend-go/v4"
-  )
+import (
+	"context"
 
-  func main() {
-  	client := resend.NewClient("re_xxxxxxxxx")
+	"github.com/resend/resend-go/v4"
+)
 
-  	client.Templates.GetWithContext(
-  		context.TODO(),
-  		"34a080c9-b17d-4187-ad80-5af20266e535",
-  	)
-  }
-  ```
+func main() {
+	client := resend.NewClient("re_xxxxxxxxx")
 
-  ```rust Rust theme={"theme":{"light":"github-light","dark":"vesper"}}
-  use resend_rs::{Resend, Result};
+	client.Templates.GetWithContext(
+		context.TODO(),
+		"34a080c9-b17d-4187-ad80-5af20266e535",
+	)
+}
+```
 
-  #[tokio::main]
-  async fn main() -> Result<()> {
-    let resend = Resend::new("re_xxxxxxxxx");
+```rust Rust theme={"theme":{"light":"github-light","dark":"vesper"}}
+use resend_rs::{Resend, Result};
 
-    let _template = resend
-      .templates
-      .get("34a080c9-b17d-4187-ad80-5af20266e535")
-      .await?;
+#[tokio::main]
+async fn main() -> Result<()> {
+  let resend = Resend::new("re_xxxxxxxxx");
 
-    Ok(())
-  }
-  ```
+  let _template = resend
+    .templates
+    .get("34a080c9-b17d-4187-ad80-5af20266e535")
+    .await?;
 
-  ```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
-  import com.resend.Resend;
-  import com.resend.core.exception.ResendException;
-  import com.resend.services.templates.model.GetTemplateResponseSuccess;
+  Ok(())
+}
+```
 
-  public class Main {
-      public static void main(String[] args) throws ResendException {
-          Resend resend = new Resend("re_xxxxxxxxx");
+```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
+import com.resend.Resend;
+import com.resend.core.exception.ResendException;
+import com.resend.services.templates.model.GetTemplateResponseSuccess;
 
-          GetTemplateResponseSuccess data = resend.templates().get("34a080c9-b17d-4187-ad80-5af20266e535");
-      }
-  }
-  ```
+public class Main {
+    public static void main(String[] args) throws ResendException {
+        Resend resend = new Resend("re_xxxxxxxxx");
 
-  ```csharp .NET theme={"theme":{"light":"github-light","dark":"vesper"}}
-  using Resend;
+        GetTemplateResponseSuccess data = resend.templates().get("34a080c9-b17d-4187-ad80-5af20266e535");
+    }
+}
+```
 
-  IResend resend = ResendClient.Create( "re_xxxxxxxxx" ); // Or from DI
+```csharp .NET theme={"theme":{"light":"github-light","dark":"vesper"}}
+using Resend;
 
-  var res = await resend.TemplateRetrieveAsync( new Guid( "34a080c9-b17d-4187-ad80-5af20266e535" ) );
-  Console.WriteLine( "Template Name={0}", res.Content.Name );
-  ```
+IResend resend = ResendClient.Create( "re_xxxxxxxxx" ); // Or from DI
 
-  ```bash cURL theme={"theme":{"light":"github-light","dark":"vesper"}}
-  curl -X GET 'https://api.resend.com/templates/34a080c9-b17d-4187-ad80-5af20266e535' \
-       -H 'Authorization: Bearer re_xxxxxxxxx' \
-       -H 'Content-Type: application/json'
-  ```
+var res = await resend.TemplateRetrieveAsync( new Guid( "34a080c9-b17d-4187-ad80-5af20266e535" ) );
+Console.WriteLine( "Template Name={0}", res.Content.Name );
+```
 
-  ```bash CLI theme={"theme":{"light":"github-light","dark":"vesper"}}
-  resend templates get 34a080c9-b17d-4187-ad80-5af20266e535
-  ```
-</RequestExample>
+```bash cURL theme={"theme":{"light":"github-light","dark":"vesper"}}
+curl -X GET 'https://api.resend.com/templates/34a080c9-b17d-4187-ad80-5af20266e535' \
+     -H 'Authorization: Bearer re_xxxxxxxxx' \
+     -H 'Content-Type: application/json'
+```
 
-<ResponseExample>
-  ```json Response theme={"theme":{"light":"github-light","dark":"vesper"}}
-  {
-    "object": "template",
-    "id": "34a080c9-b17d-4187-ad80-5af20266e535",
-    "current_version_id": "b2693018-7abb-4b4b-b4cb-aadf72dc06bd",
-    "alias": "reset-password",
-    "name": "reset-password",
-    "created_at": "2026-10-06 23:47:56.678+00",
-    "updated_at": "2026-10-06 23:47:56.678+00",
-    "status": "published",
-    "published_at": "2026-10-06 23:47:56.678+00",
-    "from": "John Doe <john.doe@example.com>",
-    "subject": "Hello, world!",
-    "reply_to": null,
-    "html": "<h1>Hello, world!</h1>",
-    "text": "Hello, world!",
-    "variables": [
-      {
-        "id": "e169aa45-1ecf-4183-9955-b1499d5701d3",
-        "key": "user_name",
-        "type": "string",
-        "fallback_value": "John Doe",
-        "created_at": "2026-10-06 23:47:56.678+00",
-        "updated_at": "2026-10-06 23:47:56.678+00"
-      }
-    ],
-    "has_unpublished_versions": true
-  }
-  ```
-</ResponseExample>
+```bash CLI theme={"theme":{"light":"github-light","dark":"vesper"}}
+resend templates get 34a080c9-b17d-4187-ad80-5af20266e535
+```
+
+```json Response theme={"theme":{"light":"github-light","dark":"vesper"}}
+{
+  "object": "template",
+  "id": "34a080c9-b17d-4187-ad80-5af20266e535",
+  "current_version_id": "b2693018-7abb-4b4b-b4cb-aadf72dc06bd",
+  "alias": "reset-password",
+  "name": "reset-password",
+  "created_at": "2026-10-06 23:47:56.678+00",
+  "updated_at": "2026-10-06 23:47:56.678+00",
+  "status": "published",
+  "published_at": "2026-10-06 23:47:56.678+00",
+  "from": "John Doe <john.doe@example.com>",
+  "subject": "Hello, world!",
+  "reply_to": null,
+  "html": "<h1>Hello, world!</h1>",
+  "text": "Hello, world!",
+  "variables": [
+    {
+      "id": "e169aa45-1ecf-4183-9955-b1499d5701d3",
+      "key": "user_name",
+      "type": "string",
+      "fallback_value": "John Doe",
+      "created_at": "2026-10-06 23:47:56.678+00",
+      "updated_at": "2026-10-06 23:47:56.678+00"
+    }
+  ],
+  "has_unpublished_versions": true
+}
+```

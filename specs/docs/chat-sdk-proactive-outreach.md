@@ -64,6 +64,6 @@ If the recipient replies, the response arrives through the normal `onNewMention`
 
 ## Try it yourself
 
-<Card title="Notifications Example" icon="arrow-up-right-from-square" href="https://github.com/resend/resend-chat-sdk/tree/main/examples/notifications">
-  Proactive outbound emails via openDM and an HTTP POST endpoint
-</Card>
+> **[Notifications Example](https://github.com/resend/resend-chat-sdk/tree/main/examples/notifications)**
+>
+> Proactive outbound emails via openDM and an HTTP POST endpoint

@@ -8,7 +8,7 @@
 
 When you view your email within Resend, there is a "Insights" option. When selected, this will run deliverability best practice checks on your email and recommend possible changes to improve deliverability.
 
-<img alt="Deliverability Insights" src="https://mintcdn.com/resend/OWNnQaVDyqcGyhhN/images/deliverability-insights-1.jpg?fit=max&auto=format&n=OWNnQaVDyqcGyhhN&q=85&s=78f3941a7a90d4546200c6cba6607270" width="3357" height="2101" data-path="images/deliverability-insights-1.jpg" />
+![Deliverability Insights](https://mintcdn.com/resend/OWNnQaVDyqcGyhhN/images/deliverability-insights-1.jpg?fit=max\&auto=format\&n=OWNnQaVDyqcGyhhN\&q=85\&s=78f3941a7a90d4546200c6cba6607270)
 
 If a check passes, you'll get a nice green check. If a check fails, you'll get advice broken into two categories: Attention and Improvements.
 
@@ -16,7 +16,7 @@ If a check passes, you'll get a nice green check. If a check fails, you'll get a
 
 Changes to your email that can improve deliverability.
 
-<img alt="Attention Insights" src="https://mintcdn.com/resend/OWNnQaVDyqcGyhhN/images/deliverability-insights-2.jpg?fit=max&auto=format&n=OWNnQaVDyqcGyhhN&q=85&s=158b0b42d45e7172f150a8818671a03e" width="2058" height="714" data-path="images/deliverability-insights-2.jpg" />
+![Attention Insights](https://mintcdn.com/resend/OWNnQaVDyqcGyhhN/images/deliverability-insights-2.jpg?fit=max\&auto=format\&n=OWNnQaVDyqcGyhhN\&q=85\&s=158b0b42d45e7172f150a8818671a03e)
 
 #### Ensure link URLs match sending domain
 
@@ -58,7 +58,7 @@ For example, instead of using `https://youtu.be/abc123`, use `https://www.youtub
 
 If you're diagnosing a deliverability issue, changing your email practices may help.
 
-<img alt="Improvement Insights" src="https://mintcdn.com/resend/OWNnQaVDyqcGyhhN/images/deliverability-insights-3.jpg?fit=max&auto=format&n=OWNnQaVDyqcGyhhN&q=85&s=64e4640b71c022a296f423ce4afdfbc8" width="2058" height="844" data-path="images/deliverability-insights-3.jpg" />
+![Improvement Insights](https://mintcdn.com/resend/OWNnQaVDyqcGyhhN/images/deliverability-insights-3.jpg?fit=max\&auto=format\&n=OWNnQaVDyqcGyhhN\&q=85\&s=64e4640b71c022a296f423ce4afdfbc8)
 
 #### Use a Subdomain
 
@@ -76,7 +76,7 @@ You're using a shared tracking domain for open tracking. Spam filters are sensit
 
 Learn how to [configure a custom tracking subdomain](/docs/dashboard/domains/tracking).
 
-<Info>
-  Open rates are not always accurate. Learn more about [why open rates may not
-  be accurate](/docs/knowledge-base/why-are-my-open-rates-not-accurate).
-</Info>
+> [!NOTE]
+>
+> Open rates are not always accurate. Learn more about [why open rates may not
+> be accurate](/docs/knowledge-base/why-are-my-open-rates-not-accurate).

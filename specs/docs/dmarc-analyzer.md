@@ -22,10 +22,10 @@ When you [set up a DMARC policy](/docs/dashboard/domains/dmarc), mailbox provide
 * Self-host with automated report ingestion via [Resend Receiving](/docs/dashboard/receiving/introduction)
 * Receive email digests summarizing your DMARC reports
 
-<Info>
-  For more details on understanding DMARC reports, see our [guide on how to read
-  a DMARC report](https://resend.com/blog/how-to-read-a-dmarc-report).
-</Info>
+> [!NOTE]
+>
+> For more details on understanding DMARC reports, see our [guide on how to read
+> a DMARC report](https://resend.com/blog/how-to-read-a-dmarc-report).
 
 ## How to use
 
@@ -37,7 +37,7 @@ The quickest way to get started, with no setup required.
 2. Paste your DMARC XML report (or upload the XML file)
 3. View the parsed results instantly
 
-<video src="https://mintcdn.com/resend/IprKFnTRa5k2DXX0/images/dmarc-analyzer.mp4?fit=max&auto=format&n=IprKFnTRa5k2DXX0&q=85&s=eaa56c455d88bc14dfe361a130d0e842" autoPlay muted loop playsInline className="w-full aspect-video" data-path="images/dmarc-analyzer.mp4" />
+<video src="https://mintcdn.com/resend/IprKFnTRa5k2DXX0/images/dmarc-analyzer.mp4?fit=max&auto=format&n=IprKFnTRa5k2DXX0&q=85&s=eaa56c455d88bc14dfe361a130d0e842" autoPlay muted loop playsInline />
 
 ### Self-hosted with automated reports
 
@@ -45,72 +45,88 @@ For ongoing monitoring, deploy your own instance. This connects to Resend Receiv
 
 ## Getting started (self-hosted)
 
-<Steps>
-  <Step title="Clone the repository">
-    ```bash theme={"theme":{"light":"github-light","dark":"vesper"}}
-    git clone https://github.com/resend/resend-dmarc-analyzer.git
-    cd resend-dmarc-analyzer
-    ```
-  </Step>
+**1. Clone the repository**
 
-  <Step title="Install dependencies">
-    <Tabs>
-      <Tab title="pnpm">`bash pnpm install `</Tab>
-      <Tab title="npm">`bash npm install `</Tab>
-      <Tab title="yarn">`bash yarn install `</Tab>
-      <Tab title="bun">`bash bun install `</Tab>
-    </Tabs>
-  </Step>
+```bash theme={"theme":{"light":"github-light","dark":"vesper"}}
+git clone https://github.com/resend/resend-dmarc-analyzer.git
+cd resend-dmarc-analyzer
+```
 
-  <Step title="Configure environment variables">
-    Copy the example environment file and fill in the required values:
+**2. Install dependencies**
 
-    ```bash theme={"theme":{"light":"github-light","dark":"vesper"}}
-    cp .env.example .env.local
-    ```
+**pnpm**
 
-    | Variable | Description |
-    | - | - |
-    | `RESEND_API_KEY` | Your [Resend API key](https://resend.com/api-keys) |
-    | `RESEND_WEBHOOK_SECRET` | Signing secret from your [Resend webhook](https://resend.com/webhooks) endpoint set up below |
-    | `EMAIL_FROM` | Sender address for digest emails (must be from a [verified domain](https://resend.com/domains)) |
-    | `EMAIL_TO` | Recipient address for digest emails |
-  </Step>
+`bash pnpm install `
 
-  <Step title="Test the application">
-    Start the development server:
+**npm**
 
-    <Tabs>
-      <Tab title="pnpm">`bash pnpm run dev `</Tab>
-      <Tab title="npm">`bash npm run dev `</Tab>
-      <Tab title="yarn">`bash yarn run dev `</Tab>
-      <Tab title="bun">`bash bun run dev `</Tab>
-    </Tabs>
+`bash npm install `
 
-    Register your publicly accessible HTTPS URL in the Resend dashboard and enable the `email.received` event.
+**yarn**
 
-    * For `rua` reports: `https://example123.ngrok.io/api/webhooks/dmarc/rua`
-    * For `ruf` report: `https://example123.ngrok.io/api/webhooks/dmarc/ruf`
+`bash yarn install `
 
-    Copy the signing secret from the webhook details page to the `RESEND_WEBHOOK_SECRET` environment variable.
+**bun**
 
-    <Tip>
-      For development, you can create a tunnel to your localhost server using a tool like
-      [ngrok](https://ngrok.com/download) or [VS Code Port Forwarding](https://code.visualstudio.com/docs/debugtest/port-forwarding). These tools serve your local dev environment at a public URL you can use to test your local webhook endpoint.
+`bash bun install `
 
-      Example: `https://example123.ngrok.io/api/webhook`
-    </Tip>
-  </Step>
+**3. Configure environment variables**
 
-  <Step title="Deploy">
-    Deploy the application to your preferred hosting platform and update the webhook endpoint(s) in the Resend dashboard.
+Copy the example environment file and fill in the required values:
 
-    * For `rua` reports: `https://example.com/api/webhooks/dmarc/rua`
-    * For `ruf` reports: `https://example.com/api/webhooks/dmarc/ruf`
+```bash theme={"theme":{"light":"github-light","dark":"vesper"}}
+cp .env.example .env.local
+```
 
-    The project is built with [Next.js](https://nextjs.org) so it works with any platform that supports it (e.g., [Vercel](https://vercel.com)).
-  </Step>
-</Steps>
+| Variable | Description |
+| - | - |
+| `RESEND_API_KEY` | Your [Resend API key](https://resend.com/api-keys) |
+| `RESEND_WEBHOOK_SECRET` | Signing secret from your [Resend webhook](https://resend.com/webhooks) endpoint set up below |
+| `EMAIL_FROM` | Sender address for digest emails (must be from a [verified domain](https://resend.com/domains)) |
+| `EMAIL_TO` | Recipient address for digest emails |
+
+**4. Test the application**
+
+Start the development server:
+
+**pnpm**
+
+`bash pnpm run dev `
+
+**npm**
+
+`bash npm run dev `
+
+**yarn**
+
+`bash yarn run dev `
+
+**bun**
+
+`bash bun run dev `
+
+Register your publicly accessible HTTPS URL in the Resend dashboard and enable the `email.received` event.
+
+* For `rua` reports: `https://example123.ngrok.io/api/webhooks/dmarc/rua`
+* For `ruf` report: `https://example123.ngrok.io/api/webhooks/dmarc/ruf`
+
+Copy the signing secret from the webhook details page to the `RESEND_WEBHOOK_SECRET` environment variable.
+
+> [!TIP]
+>
+> For development, you can create a tunnel to your localhost server using a tool like
+> [ngrok](https://ngrok.com/download) or [VS Code Port Forwarding](https://code.visualstudio.com/docs/debugtest/port-forwarding). These tools serve your local dev environment at a public URL you can use to test your local webhook endpoint.
+>
+> Example: `https://example123.ngrok.io/api/webhook`
+
+**5. Deploy**
+
+Deploy the application to your preferred hosting platform and update the webhook endpoint(s) in the Resend dashboard.
+
+* For `rua` reports: `https://example.com/api/webhooks/dmarc/rua`
+* For `ruf` reports: `https://example.com/api/webhooks/dmarc/ruf`
+
+The project is built with [Next.js](https://nextjs.org) so it works with any platform that supports it (e.g., [Vercel](https://vercel.com)).
 
 ## Tech stack
 

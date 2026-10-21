@@ -6,184 +6,150 @@
 
 > Show all suppressions.
 
-export const QueryParams = ({type, isRequired}) => {
-  return <>
-      <h2>Query Parameters</h2>
+## Query Parameters
 
-      {isRequired ? <ParamField query="limit" type="number">
-          Number of {type} to retrieve.
-          <ul>
-            <li>
-              Default value: <code>20</code>
-            </li>
-            <li>
-              Maximum value: <code>100</code>
-            </li>
-            <li>
-              Minimum value: <code>1</code>
-            </li>
-          </ul>
-        </ParamField> : <>
-          <p>
-            Note that the <code>limit</code> parameter is <em>optional</em>. If
-            you do not provide a <code>limit</code>, all {type} will be returned
-            in a single response.
-          </p>
-          <ParamField query="limit" type="number">
-            Number of {type} to retrieve.
-            <ul>
-              <li>
-                Maximum value: <code>100</code>
-              </li>
-              <li>
-                Minimum value: <code>1</code>
-              </li>
-            </ul>
-          </ParamField>
-        </>}
+**limit** `number`
 
-      <ParamField query="after" type="string">
-        The ID <em>after</em> which we'll retrieve more {type} (for pagination).
-        This ID will <em>not</em> be included in the returned list. Cannot be
-        used with the
-        <code>before</code> parameter.
-      </ParamField>
-      <ParamField query="before" type="string">
-        The ID <em>before</em> which we'll retrieve more {type} (for
-        pagination). This ID will <em>not</em> be included in the returned list.
-        Cannot be used with the <code>after</code> parameter.
-      </ParamField>
-      <Info>
-        You can only use either <code>after</code> or <code>before</code>{' '}
-        parameter, not both. See our{' '}
-        <a href="/docs/api-reference/pagination">pagination guide</a> for more
-        information.
-      </Info>
-    </>;
-};
+Number of suppressions to retrieve.
+<ul><li>Default value: `20`</li>
+<li>Maximum value: `100`</li>
+<li>Minimum value: `1`</li></ul>
 
-<QueryParams type="suppressions" isRequired={true} />
+**after** `string`
 
-<ParamField query="origin" type="bounce | complaint | manual">
-  Filter suppressions by origin.
+The ID *after* which we'll retrieve more suppressions (for pagination).
+This ID will *not* be included in the returned list. Cannot be
+used with the
+`before` parameter.
+**before** `string`
 
-  Possible values:
+The ID *before* which we'll retrieve more suppressions (for
+pagination). This ID will *not* be included in the returned list.
+Cannot be used with the `after` parameter.
 
-  * `bounce`: emails suppressed automatically after a bounce
-  * `complaint`: emails suppressed due to a user complaint
-  * `manual`: emails suppressed by your team manually
-</ParamField>
+> [!NOTE]
+>
+> You can only use either `after` or `before`
+> parameter, not both. See our
+> [pagination guide](/docs/api-reference/pagination) for more
+> information.
 
-<RequestExample>
-  ```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
-  import { Resend } from 'resend';
+**origin** `bounce | complaint | manual`
 
-  const resend = new Resend('re_xxxxxxxxx');
+Filter suppressions by origin.
 
-  const { data, error } = await resend.suppressions.list();
-  ```
+Possible values:
 
-  ```php PHP theme={"theme":{"light":"github-light","dark":"vesper"}}
-  $resend = Resend::client('re_xxxxxxxxx');
+* `bounce`: emails suppressed automatically after a bounce
+* `complaint`: emails suppressed due to a user complaint
+* `manual`: emails suppressed by your team manually
 
-  $resend->suppressions->list();
-  ```
+```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
+import { Resend } from 'resend';
 
-  ```python Python theme={"theme":{"light":"github-light","dark":"vesper"}}
-  import resend
+const resend = new Resend('re_xxxxxxxxx');
 
-  resend.api_key = "re_xxxxxxxxx"
+const { data, error } = await resend.suppressions.list();
+```
 
-  resend.Suppressions.list()
-  ```
+```php PHP theme={"theme":{"light":"github-light","dark":"vesper"}}
+$resend = Resend::client('re_xxxxxxxxx');
 
-  ```ruby Ruby theme={"theme":{"light":"github-light","dark":"vesper"}}
-  require "resend"
+$resend->suppressions->list();
+```
 
-  Resend.api_key = "re_xxxxxxxxx"
+```python Python theme={"theme":{"light":"github-light","dark":"vesper"}}
+import resend
 
-  Resend::Suppressions.list
-  ```
+resend.api_key = "re_xxxxxxxxx"
 
-  ```go Go theme={"theme":{"light":"github-light","dark":"vesper"}}
-  package main
+resend.Suppressions.list()
+```
 
-  import "github.com/resend/resend-go/v4"
+```ruby Ruby theme={"theme":{"light":"github-light","dark":"vesper"}}
+require "resend"
 
-  func main() {
-  	client := resend.NewClient("re_xxxxxxxxx")
+Resend.api_key = "re_xxxxxxxxx"
 
-  	client.Suppressions.List(&resend.ListSuppressionsOptions{})
-  }
-  ```
+Resend::Suppressions.list
+```
 
-  ```rust Rust theme={"theme":{"light":"github-light","dark":"vesper"}}
-  use resend_rs::{Resend, Result, list_opts::ListOptions};
+```go Go theme={"theme":{"light":"github-light","dark":"vesper"}}
+package main
 
-  #[tokio::main]
-  async fn main() -> Result<()> {
-    let resend = Resend::new("re_xxxxxxxxx");
+import "github.com/resend/resend-go/v4"
 
-    let _data = resend.suppressions.list(ListOptions::default()).await?;
+func main() {
+	client := resend.NewClient("re_xxxxxxxxx")
 
-    Ok(())
-  }
-  ```
+	client.Suppressions.List(&resend.ListSuppressionsOptions{})
+}
+```
 
-  ```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
-  import com.resend.Resend;
-  import com.resend.core.exception.ResendException;
+```rust Rust theme={"theme":{"light":"github-light","dark":"vesper"}}
+use resend_rs::{Resend, Result, list_opts::ListOptions};
 
-  public class Main {
-      public static void main(String[] args) throws ResendException {
-          Resend resend = new Resend("re_xxxxxxxxx");
+#[tokio::main]
+async fn main() -> Result<()> {
+  let resend = Resend::new("re_xxxxxxxxx");
 
-          resend.suppressions().list();
-      }
-  }
-  ```
+  let _data = resend.suppressions.list(ListOptions::default()).await?;
 
-  ```csharp .NET theme={"theme":{"light":"github-light","dark":"vesper"}}
-  using Resend;
+  Ok(())
+}
+```
 
-  IResend resend = ResendClient.Create( "re_xxxxxxxxx" );
+```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
+import com.resend.Resend;
+import com.resend.core.exception.ResendException;
 
-  await resend.SuppressionListAsync();
-  ```
+public class Main {
+    public static void main(String[] args) throws ResendException {
+        Resend resend = new Resend("re_xxxxxxxxx");
 
-  ```bash cURL theme={"theme":{"light":"github-light","dark":"vesper"}}
-  curl -X GET 'https://api.resend.com/suppressions' \
-       -H 'Authorization: Bearer re_xxxxxxxxx'
-  ```
+        resend.suppressions().list();
+    }
+}
+```
 
-  ```bash CLI theme={"theme":{"light":"github-light","dark":"vesper"}}
-  resend suppressions list
-  ```
-</RequestExample>
+```csharp .NET theme={"theme":{"light":"github-light","dark":"vesper"}}
+using Resend;
 
-<ResponseExample>
-  ```json Response theme={"theme":{"light":"github-light","dark":"vesper"}}
-  {
-    "object": "list",
-    "has_more": false,
-    "data": [
-      {
-        "id": "e169aa45-1ecf-4183-9955-b1499d5701d3",
-        "email": "steve.wozniak@example.com",
-        "origin": "manual",
-        "source_id": null,
-        "created_at": "2026-10-06 23:47:56.678+00"
-      },
-      {
-        "id": "520784e2-887d-4c25-b53c-4ad46ad38100",
-        "email": "susan.kare@example.com",
-        "origin": "bounce",
-        "source_id": "4ef9a417-02e9-4d39-ad75-9611e0fcc33c",
-        "created_at": "2026-10-07 08:12:03.412+00"
-      }
-    ]
-  }
+IResend resend = ResendClient.Create( "re_xxxxxxxxx" );
 
-  // The `source_id` in the response references the email that triggered the suppression. For suppressions with a `manual` origin, `source_id` is `null`.
-  ```
-</ResponseExample>
+await resend.SuppressionListAsync();
+```
+
+```bash cURL theme={"theme":{"light":"github-light","dark":"vesper"}}
+curl -X GET 'https://api.resend.com/suppressions' \
+     -H 'Authorization: Bearer re_xxxxxxxxx'
+```
+
+```bash CLI theme={"theme":{"light":"github-light","dark":"vesper"}}
+resend suppressions list
+```
+
+```json Response theme={"theme":{"light":"github-light","dark":"vesper"}}
+{
+  "object": "list",
+  "has_more": false,
+  "data": [
+    {
+      "id": "e169aa45-1ecf-4183-9955-b1499d5701d3",
+      "email": "steve.wozniak@example.com",
+      "origin": "manual",
+      "source_id": null,
+      "created_at": "2026-10-06 23:47:56.678+00"
+    },
+    {
+      "id": "520784e2-887d-4c25-b53c-4ad46ad38100",
+      "email": "susan.kare@example.com",
+      "origin": "bounce",
+      "source_id": "4ef9a417-02e9-4d39-ad75-9611e0fcc33c",
+      "created_at": "2026-10-07 08:12:03.412+00"
+    }
+  ]
+}
+
+// The `source_id` in the response references the email that triggered the suppression. For suppressions with a `manual` origin, `source_id` is `null`.
+```

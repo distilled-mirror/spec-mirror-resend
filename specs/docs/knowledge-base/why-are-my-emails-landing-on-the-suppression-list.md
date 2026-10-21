@@ -8,11 +8,11 @@
 
 When sending to an email address results in a hard bounce or spam complaint, Resend places this address on the Suppression List. Future emails to addresses on the list will be marked as `suppressed` and won't be delivered until the address is removed.
 
-<Info>
-  We place emails on the Suppression List to protect domain reputation, both
-  yours and ours. Sending an email to a known hard bounce recipient can damage
-  domain reputation and affect email deliverability.
-</Info>
+> [!NOTE]
+>
+> We place emails on the Suppression List to protect domain reputation, both
+> yours and ours. Sending an email to a known hard bounce recipient can damage
+> domain reputation and affect email deliverability.
 
 ## Reasons emails are placed on the Suppression List
 
@@ -29,7 +29,7 @@ Whenever you send an email with Resend, the recipient is checked against the sup
 
 Suppressed emails will appear with a `suppressed` status in your [Emails](https://resend.com/emails) dashboard:
 
-<img src="https://mintcdn.com/resend/Nyu32IXsxRkmP92c/images/email-suppression-visibility-1.png?fit=max&auto=format&n=Nyu32IXsxRkmP92c&q=85&s=a40d291604cd8ddcc40f962e0b488da6" alt="Email Suppression in Dashboard" class="extraWidth" width="1778" height="1088" data-path="images/email-suppression-visibility-1.png" />
+![Email Suppression in Dashboard](https://mintcdn.com/resend/Nyu32IXsxRkmP92c/images/email-suppression-visibility-1.png?fit=max\&auto=format\&n=Nyu32IXsxRkmP92c\&q=85\&s=a40d291604cd8ddcc40f962e0b488da6)
 
 ## View suppression details
 
@@ -39,16 +39,16 @@ You can view the reason an email was suppressed on the [Emails](https://resend.c
 2. Click on the email to view its details.
 3. The suppression details will show suggested fixes to help you resolve the issue.
 
-<video src="https://mintcdn.com/resend/pSrJMzMw3NZ5HeOx/images/email-suppression-visibility-2.mp4?fit=max&auto=format&n=pSrJMzMw3NZ5HeOx&q=85&s=381c6bd7a7b056dc760266f2d3b69afe" autoPlay loop muted playsInline class="extraWidth" data-path="images/email-suppression-visibility-2.mp4" />
+<video src="https://mintcdn.com/resend/pSrJMzMw3NZ5HeOx/images/email-suppression-visibility-2.mp4?fit=max&auto=format&n=pSrJMzMw3NZ5HeOx&q=85&s=381c6bd7a7b056dc760266f2d3b69afe" autoPlay loop muted playsInline />
 
 ## Removing an email address from the Suppression List
 
 You may be able to send a message to the same recipient in the future if the issue that caused the original bounce or complaint is resolved and the email address is removed from the Suppression List.
 
-<Warning>
-  Remember, if you do not address the issue that caused the email to bounce, the
-  email address will return to the Suppression List the next time you attempt to
-  send to it.
-</Warning>
+> [!WARNING]
+>
+> Remember, if you do not address the issue that caused the email to bounce, the
+> email address will return to the Suppression List the next time you attempt to
+> send to it.
 
 To remove your recipient from the Suppression List, click on the suppressed email in the [emails dashboard](https://resend.com/emails), and click **Remove from suppression list**.

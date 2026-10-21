@@ -27,7 +27,7 @@ Claim a domain by adding a TXT record to your DNS, or do it in one click via Dom
 
 This record is provided along with the alert in your Dashboard, or when you [use the Domains API](#using-the-domains-API) and call the [**Claim Domain** API endpoint](/docs/api-reference/domains/claim-domain).
 
-<img alt="Domain claim" src="https://mintcdn.com/resend/zovbQ7LtiJotsf8X/images/claim-domain-1.png?fit=max&auto=format&n=zovbQ7LtiJotsf8X&q=85&s=e585d0a2eb204c15fa59b3998b6bd581" width="1920" height="1080" data-path="images/claim-domain-1.png" />
+![Domain claim](https://mintcdn.com/resend/zovbQ7LtiJotsf8X/images/claim-domain-1.png?fit=max\&auto=format\&n=zovbQ7LtiJotsf8X\&q=85\&s=e585d0a2eb204c15fa59b3998b6bd581)
 
 After adding the TXT record, return to the dashboard and click **I've added the records**.
 
@@ -35,29 +35,27 @@ Resend verifies the domain ownership, releases the domain from the previous team
 
 ## Using the Domains API
 
-<Steps>
-  <Step title="Start a claim">
-    Call [Claim Domain](/docs/api-reference/domains/claim-domain) with the domain
-    name. Resend creates a placeholder domain on your team and returns a
-    `domain_claim` containing a TXT `record` to add to your DNS.
-  </Step>
+**1. Start a claim**
 
-  <Step title="Add the TXT record">
-    Add the returned TXT record at your DNS provider. It proves you control the
-    domain.
-  </Step>
+Call [Claim Domain](/docs/api-reference/domains/claim-domain) with the domain
+name. Resend creates a placeholder domain on your team and returns a
+`domain_claim` containing a TXT `record` to add to your DNS.
 
-  <Step title="Verify the claim">
-    Call [Verify Domain Claim](/docs/api-reference/domains/verify-domain-claim).
-    Resend checks the TXT record and runs ownership-safety checks before
-    transferring the domain.
-  </Step>
+**2. Add the TXT record**
 
-  <Step title="Track the status">
-    Poll [Retrieve Domain Claim](/docs/api-reference/domains/get-domain-claim) until
-    the claim reaches `completed`.
-  </Step>
-</Steps>
+Add the returned TXT record at your DNS provider. It proves you control the
+domain.
+
+**3. Verify the claim**
+
+Call [Verify Domain Claim](/docs/api-reference/domains/verify-domain-claim).
+Resend checks the TXT record and runs ownership-safety checks before
+transferring the domain.
+
+**4. Track the status**
+
+Poll [Retrieve Domain Claim](/docs/api-reference/domains/get-domain-claim) until
+the claim reaches `completed`.
 
 ## Claim status
 

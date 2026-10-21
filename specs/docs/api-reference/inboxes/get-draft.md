@@ -6,198 +6,215 @@
 
 > Retrieve a single draft by its ID.
 
-export const ResendParamField = ({children, body, path, ...props}) => {
-  const [lang, setLang] = useState(() => {
-    return localStorage.getItem('code') || '"Node.js"';
-  });
-  useEffect(() => {
-    const onStorage = event => {
-      const key = event.detail.key;
-      if (key === 'code') {
-        setLang(event.detail.value);
-      }
-    };
-    document.addEventListener('mintlify-localstorage', onStorage);
-    return () => {
-      document.removeEventListener('mintlify-localstorage', onStorage);
-    };
-  }, []);
-  const toCamelCase = str => typeof str === 'string' ? str.replace(/[_-](\w)/g, (_, c) => c.toUpperCase()) : str;
-  const resolvedBody = useMemo(() => {
-    const value = JSON.parse(lang);
-    return value === 'Node.js' ? toCamelCase(body) : body;
-  }, [body, lang]);
-  const resolvedPath = useMemo(() => {
-    const value = JSON.parse(lang);
-    return value === 'Node.js' ? toCamelCase(path) : path;
-  }, [path, lang]);
-  return <ParamField body={resolvedBody} path={resolvedPath} {...props}>
-      {children}
-    </ParamField>;
-};
-
-<Warning>
-  Inboxes are currently in private beta and only available to a limited
-  number of users. The response shape might change before GA.
-
-  <span />
-
-  [Get early access](https://resend.com/settings/labs) if you're interested in testing this feature.
-
-  <span />
-
-  Once you have access, upgrade your Resend SDK to use the new methods:
-
-  <CodeGroup>
-    ```bash Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
-    npm install resend@6.33.0
-    ```
-
-    ```bash CLI theme={"theme":{"light":"github-light","dark":"vesper"}}
-    npm install -g resend-cli@2.25.0
-    ```
-  </CodeGroup>
-</Warning>
-
 ## Path Parameters
 
-<ResendParamField path="inbox_id" type="string" required>
-  The Inbox ID or the inbox email address, such as `support@example.com`.
-</ResendParamField>
+The Inbox ID or the inbox email address, such as `support@example.com`.
 
-<ResendParamField path="draft_id" type="string" required>
-  The Draft ID.
-</ResendParamField>
+The Draft ID.
 
 ## Response Fields
 
-<ParamField body="object" type="string">
-  Always `inbox_draft`.
-</ParamField>
+**object** `string`
 
-<ParamField body="id" type="string">
-  The ID of the draft.
-</ParamField>
+Always `inbox_draft`.
 
-<ParamField body="type" type="string">
-  `reply` when the draft replies to an email in an existing thread. `standalone`
-  when the draft starts a new thread.
-</ParamField>
+**id** `string`
 
-<ParamField body="to" type="string[] | null">
-  Recipients. `null` or empty when no recipients are set.
-</ParamField>
+The ID of the draft.
 
-<ParamField body="cc" type="string[]">
-  CC recipients.
-</ParamField>
+**type** `string`
 
-<ParamField body="bcc" type="string[]">
-  BCC recipients.
-</ParamField>
+`reply` when the draft replies to an email in an existing thread. `standalone`
+when the draft starts a new thread.
 
-<ParamField body="subject" type="string | null">
-  The subject.
-</ParamField>
+**to** `string[] | null`
 
-<ParamField body="html" type="string | null">
-  The HTML body.
-</ParamField>
+Recipients. `null` or empty when no recipients are set.
 
-<ParamField body="text" type="string | null">
-  The plain-text body.
-</ParamField>
+**cc** `string[]`
 
-<ParamField body="thread_id" type="string | null">
-  The Thread ID when this draft is a reply. `null` otherwise.
-</ParamField>
+CC recipients.
 
-<ParamField body="reply_to_email_id" type="string | null">
-  The Email ID being replied to. `null` otherwise.
-</ParamField>
+**bcc** `string[]`
 
-<ParamField body="email_id" type="string | null">
-  The ID of the outbound email queued when the draft was sent. `null` until the
-  draft is sent.
-</ParamField>
+BCC recipients.
 
-<ParamField body="created_at" type="string">
-  ISO 8601 timestamp when the draft was created.
-</ParamField>
+**subject** `string | null`
 
-<ParamField body="updated_at" type="string">
-  ISO 8601 timestamp when the draft was last saved.
-</ParamField>
+The subject.
 
-<ParamField body="attachments" type="array">
-  The files saved on the draft.
+**html** `string | null`
 
-  <Expandable defaultOpen="true" title="properties">
-    <ParamField body="id" type="string">
-      The ID of the attachment.
-    </ParamField>
+The HTML body.
 
-    <ParamField body="filename" type="string">
-      The filename of the attachment.
-    </ParamField>
+**text** `string | null`
 
-    <ParamField body="content_type" type="string">
-      The MIME type of the attachment, such as `application/pdf`.
-    </ParamField>
+The plain-text body.
 
-    <ParamField body="size" type="number">
-      The size of the attachment in bytes.
-    </ParamField>
-  </Expandable>
-</ParamField>
+**thread\_id** `string | null`
 
-<RequestExample>
-  ```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
-  import { Resend } from 'resend';
+The Thread ID when this draft is a reply. `null` otherwise.
 
-  const resend = new Resend('re_xxxxxxxxx');
+**reply\_to\_email\_id** `string | null`
 
-  const { data, error } = await resend.inboxes.drafts.get({
-    inboxId: 'b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1',
-    draftId: 'c3a1e8b4-2d5f-4a7c-9e10-6b8d7f5a4c32',
-  });
-  ```
+The Email ID being replied to. `null` otherwise.
 
-  ```bash cURL theme={"theme":{"light":"github-light","dark":"vesper"}}
-  curl -X GET 'https://api.resend.com/inboxes/b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1/drafts/c3a1e8b4-2d5f-4a7c-9e10-6b8d7f5a4c32' \
-       -H 'Authorization: Bearer re_xxxxxxxxx'
-  ```
+**email\_id** `string | null`
 
-  ```bash CLI theme={"theme":{"light":"github-light","dark":"vesper"}}
-  resend inboxes drafts get b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1 c3a1e8b4-2d5f-4a7c-9e10-6b8d7f5a4c32
-  ```
-</RequestExample>
+The ID of the outbound email queued when the draft was sent. `null` until the
+draft is sent.
 
-<ResponseExample>
-  ```json Response theme={"theme":{"light":"github-light","dark":"vesper"}}
-  {
-    "object": "inbox_draft",
-    "id": "c3a1e8b4-2d5f-4a7c-9e10-6b8d7f5a4c32",
-    "type": "standalone",
-    "to": ["ada@example.org"],
-    "cc": [],
-    "bcc": [],
-    "subject": "Refund for order 1041",
-    "html": "<p>Refund issued for order 1041.</p>",
-    "text": "Refund issued for order 1041.",
-    "thread_id": null,
-    "reply_to_email_id": null,
-    "email_id": null,
-    "created_at": "2026-08-05T14:12:04.110Z",
-    "updated_at": "2026-08-05T14:12:04.110Z",
-    "attachments": [
-      {
-        "id": "9d4f2b81-6c3a-4e7d-8b12-0a5c6d7e8f90",
-        "filename": "note.txt",
-        "content_type": "text/plain",
-        "size": 5
-      }
-    ]
-  }
-  ```
-</ResponseExample>
+**created\_at** `string`
+
+ISO 8601 timestamp when the draft was created.
+
+**updated\_at** `string`
+
+ISO 8601 timestamp when the draft was last saved.
+
+**attachments** `array`
+
+The files saved on the draft.
+
+**properties**
+
+**id** `string`
+
+The ID of the attachment.
+
+**filename** `string`
+
+The filename of the attachment.
+
+**content\_type** `string`
+
+The MIME type of the attachment, such as `application/pdf`.
+
+**size** `number`
+
+The size of the attachment in bytes.
+
+```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
+import { Resend } from 'resend';
+
+const resend = new Resend('re_xxxxxxxxx');
+
+const { data, error } = await resend.inboxes.drafts.get({
+  inboxId: 'b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1',
+  draftId: 'c3a1e8b4-2d5f-4a7c-9e10-6b8d7f5a4c32',
+});
+```
+
+```php PHP theme={"theme":{"light":"github-light","dark":"vesper"}}
+$resend = Resend::client('re_xxxxxxxxx');
+
+$resend->inboxes->drafts->get(
+  'b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1',
+  'c3a1e8b4-2d5f-4a7c-9e10-6b8d7f5a4c32'
+);
+```
+
+```python Python theme={"theme":{"light":"github-light","dark":"vesper"}}
+import resend
+
+resend.api_key = "re_xxxxxxxxx"
+
+resend.Inboxes.Drafts.get(
+    inbox_id="b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1",
+    draft_id="c3a1e8b4-2d5f-4a7c-9e10-6b8d7f5a4c32",
+)
+```
+
+```ruby Ruby theme={"theme":{"light":"github-light","dark":"vesper"}}
+require "resend"
+
+Resend.api_key = "re_xxxxxxxxx"
+
+params = {
+  inbox_id: "b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1",
+  draft_id: "c3a1e8b4-2d5f-4a7c-9e10-6b8d7f5a4c32"
+}
+
+Resend::Inboxes::Drafts.get(params)
+```
+
+```go Go theme={"theme":{"light":"github-light","dark":"vesper"}}
+package main
+
+import "github.com/resend/resend-go/v4"
+
+func main() {
+	client := resend.NewClient("re_xxxxxxxxx")
+
+	client.Inboxes.Drafts.Get(
+		"b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1",
+		"c3a1e8b4-2d5f-4a7c-9e10-6b8d7f5a4c32",
+	)
+```
+
+```rust Rust theme={"theme":{"light":"github-light","dark":"vesper"}}
+use resend_rs::{Resend, Result};
+
+#[tokio::main]
+async fn main() -> Result<()> {
+  let resend = Resend::new("re_xxxxxxxxx");
+
+  let _draft = resend
+    .inboxes
+    .get_draft(
+      "b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1",
+      "c3a1e8b4-2d5f-4a7c-9e10-6b8d7f5a4c32",
+    )
+    .await?;
+
+  Ok(())
+}
+```
+
+```csharp .NET theme={"theme":{"light":"github-light","dark":"vesper"}}
+using Resend;
+
+IResend resend = ResendClient.Create( "re_xxxxxxxxx" ); // Or from DI
+
+var resp = await resend.InboxDraftRetrieveAsync(
+    new Guid( "b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1" ),
+    new Guid( "c3a1e8b4-2d5f-4a7c-9e10-6b8d7f5a4c32" )
+);
+Console.WriteLine( "Draft subject={0}", resp.Content.Subject );
+```
+
+```bash cURL theme={"theme":{"light":"github-light","dark":"vesper"}}
+curl -X GET 'https://api.resend.com/inboxes/b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1/drafts/c3a1e8b4-2d5f-4a7c-9e10-6b8d7f5a4c32' \
+     -H 'Authorization: Bearer re_xxxxxxxxx'
+```
+
+```bash CLI theme={"theme":{"light":"github-light","dark":"vesper"}}
+resend inboxes drafts get b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1 c3a1e8b4-2d5f-4a7c-9e10-6b8d7f5a4c32
+```
+
+```json Response theme={"theme":{"light":"github-light","dark":"vesper"}}
+{
+  "object": "inbox_draft",
+  "id": "c3a1e8b4-2d5f-4a7c-9e10-6b8d7f5a4c32",
+  "type": "standalone",
+  "to": ["ada@example.org"],
+  "cc": [],
+  "bcc": [],
+  "subject": "Refund for order 1041",
+  "html": "<p>Refund issued for order 1041.</p>",
+  "text": "Refund issued for order 1041.",
+  "thread_id": null,
+  "reply_to_email_id": null,
+  "email_id": null,
+  "created_at": "2026-08-05T14:12:04.110Z",
+  "updated_at": "2026-08-05T14:12:04.110Z",
+  "attachments": [
+    {
+      "id": "9d4f2b81-6c3a-4e7d-8b12-0a5c6d7e8f90",
+      "filename": "note.txt",
+      "content_type": "text/plain",
+      "size": 5
+    }
+  ]
+}
+```

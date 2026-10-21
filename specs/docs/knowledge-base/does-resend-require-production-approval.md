@@ -12,11 +12,11 @@ No, Resend does not require production approval. All accounts, including free ac
 
 Free accounts on Resend have full production access immediately. There is no sandbox mode, no approval process, and no waiting period. You can start sending transactional emails to your customers right away.
 
-<Info>
-  Resend does not limit free accounts or require authorization to send
-  production emails. All accounts have the same production capabilities from day
-  one.
-</Info>
+> [!NOTE]
+>
+> Resend does not limit free accounts or require authorization to send
+> production emails. All accounts have the same production capabilities from day
+> one.
 
 ## Common misconceptions
 

@@ -6,148 +6,114 @@
 
 > Publish a template.
 
-export const ResendParamField = ({children, body, path, ...props}) => {
-  const [lang, setLang] = useState(() => {
-    return localStorage.getItem('code') || '"Node.js"';
-  });
-  useEffect(() => {
-    const onStorage = event => {
-      const key = event.detail.key;
-      if (key === 'code') {
-        setLang(event.detail.value);
-      }
-    };
-    document.addEventListener('mintlify-localstorage', onStorage);
-    return () => {
-      document.removeEventListener('mintlify-localstorage', onStorage);
-    };
-  }, []);
-  const toCamelCase = str => typeof str === 'string' ? str.replace(/[_-](\w)/g, (_, c) => c.toUpperCase()) : str;
-  const resolvedBody = useMemo(() => {
-    const value = JSON.parse(lang);
-    return value === 'Node.js' ? toCamelCase(body) : body;
-  }, [body, lang]);
-  const resolvedPath = useMemo(() => {
-    const value = JSON.parse(lang);
-    return value === 'Node.js' ? toCamelCase(path) : path;
-  }, [path, lang]);
-  return <ParamField body={resolvedBody} path={resolvedPath} {...props}>
-      {children}
-    </ParamField>;
-};
-
 ## Path Parameters
 
-<ParamField body="id | alias" type="string">
-  The ID or alias of the template to publish.
-</ParamField>
+**id | alias** `string`
 
-<RequestExample>
-  ```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
-  import { Resend } from 'resend';
+The ID or alias of the template to publish.
 
-  const resend = new Resend('re_xxxxxxxxx');
+```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
+import { Resend } from 'resend';
 
-  const { data, error } = await resend.templates.publish(
-    '34a080c9-b17d-4187-ad80-5af20266e535',
-  );
-  ```
+const resend = new Resend('re_xxxxxxxxx');
 
-  ```php PHP theme={"theme":{"light":"github-light","dark":"vesper"}}
-  $resend = Resend::client('re_xxxxxxxxx');
+const { data, error } = await resend.templates.publish(
+  '34a080c9-b17d-4187-ad80-5af20266e535',
+);
+```
 
-  $resend->templates->publish('34a080c9-b17d-4187-ad80-5af20266e535');
-  ```
+```php PHP theme={"theme":{"light":"github-light","dark":"vesper"}}
+$resend = Resend::client('re_xxxxxxxxx');
 
-  ```py Python theme={"theme":{"light":"github-light","dark":"vesper"}}
-  import resend
+$resend->templates->publish('34a080c9-b17d-4187-ad80-5af20266e535');
+```
 
-  resend.api_key = "re_xxxxxxxxx"
+```py Python theme={"theme":{"light":"github-light","dark":"vesper"}}
+import resend
 
-  resend.Templates.publish("34a080c9-b17d-4187-ad80-5af20266e535")
-  ```
+resend.api_key = "re_xxxxxxxxx"
 
-  ```ruby Ruby theme={"theme":{"light":"github-light","dark":"vesper"}}
-  require "resend"
+resend.Templates.publish("34a080c9-b17d-4187-ad80-5af20266e535")
+```
 
-  Resend.api_key = "re_xxxxxxxxx"
+```ruby Ruby theme={"theme":{"light":"github-light","dark":"vesper"}}
+require "resend"
 
-  Resend::Templates.publish("34a080c9-b17d-4187-ad80-5af20266e535")
-  ```
+Resend.api_key = "re_xxxxxxxxx"
 
-  ```go Go theme={"theme":{"light":"github-light","dark":"vesper"}}
-  package main
+Resend::Templates.publish("34a080c9-b17d-4187-ad80-5af20266e535")
+```
 
-  import (
-  	"context"
+```go Go theme={"theme":{"light":"github-light","dark":"vesper"}}
+package main
 
-  	"github.com/resend/resend-go/v4"
-  )
+import (
+	"context"
 
-  func main() {
-  	client := resend.NewClient("re_xxxxxxxxx")
+	"github.com/resend/resend-go/v4"
+)
 
-  	client.Templates.PublishWithContext(
-  		context.TODO(),
-  		"34a080c9-b17d-4187-ad80-5af20266e535",
-  	)
-  }
-  ```
+func main() {
+	client := resend.NewClient("re_xxxxxxxxx")
 
-  ```rust Rust theme={"theme":{"light":"github-light","dark":"vesper"}}
-  use resend_rs::{Resend, Result};
+	client.Templates.PublishWithContext(
+		context.TODO(),
+		"34a080c9-b17d-4187-ad80-5af20266e535",
+	)
+}
+```
 
-  #[tokio::main]
-  async fn main() -> Result<()> {
-    let resend = Resend::new("re_xxxxxxxxx");
+```rust Rust theme={"theme":{"light":"github-light","dark":"vesper"}}
+use resend_rs::{Resend, Result};
 
-    let _published = resend
-      .templates
-      .publish("34a080c9-b17d-4187-ad80-5af20266e535")
-      .await?;
+#[tokio::main]
+async fn main() -> Result<()> {
+  let resend = Resend::new("re_xxxxxxxxx");
 
-    Ok(())
-  }
-  ```
+  let _published = resend
+    .templates
+    .publish("34a080c9-b17d-4187-ad80-5af20266e535")
+    .await?;
 
-  ```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
-  import com.resend.Resend;
-  import com.resend.core.exception.ResendException;
-  import com.resend.services.templates.model.PublishTemplateResponseSuccess;
+  Ok(())
+}
+```
 
-  public class Main {
-      public static void main(String[] args) throws ResendException {
-          Resend resend = new Resend("re_xxxxxxxxx");
+```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
+import com.resend.Resend;
+import com.resend.core.exception.ResendException;
+import com.resend.services.templates.model.PublishTemplateResponseSuccess;
 
-          PublishTemplateResponseSuccess data = resend.templates().publish("34a080c9-b17d-4187-ad80-5af20266e535");
-      }
-  }
-  ```
+public class Main {
+    public static void main(String[] args) throws ResendException {
+        Resend resend = new Resend("re_xxxxxxxxx");
 
-  ```csharp .NET theme={"theme":{"light":"github-light","dark":"vesper"}}
-  using Resend;
+        PublishTemplateResponseSuccess data = resend.templates().publish("34a080c9-b17d-4187-ad80-5af20266e535");
+    }
+}
+```
 
-  IResend resend = ResendClient.Create( "re_xxxxxxxxx" ); // Or from DI
+```csharp .NET theme={"theme":{"light":"github-light","dark":"vesper"}}
+using Resend;
 
-  await resend.TemplatePublishAsync( new Guid( "34a080c9-b17d-4187-ad80-5af20266e535" ) );
-  ```
+IResend resend = ResendClient.Create( "re_xxxxxxxxx" ); // Or from DI
 
-  ```bash cURL theme={"theme":{"light":"github-light","dark":"vesper"}}
-  curl -X POST 'https://api.resend.com/templates/34a080c9-b17d-4187-ad80-5af20266e535/publish' \
-       -H 'Authorization: Bearer re_xxxxxxxxx' \
-       -H 'Content-Type: application/json'
-  ```
+await resend.TemplatePublishAsync( new Guid( "34a080c9-b17d-4187-ad80-5af20266e535" ) );
+```
 
-  ```bash CLI theme={"theme":{"light":"github-light","dark":"vesper"}}
-  resend templates publish 34a080c9-b17d-4187-ad80-5af20266e535
-  ```
-</RequestExample>
+```bash cURL theme={"theme":{"light":"github-light","dark":"vesper"}}
+curl -X POST 'https://api.resend.com/templates/34a080c9-b17d-4187-ad80-5af20266e535/publish' \
+     -H 'Authorization: Bearer re_xxxxxxxxx' \
+     -H 'Content-Type: application/json'
+```
 
-<ResponseExample>
-  ```json Response theme={"theme":{"light":"github-light","dark":"vesper"}}
-  {
-    "object": "template",
-    "id": "34a080c9-b17d-4187-ad80-5af20266e535"
-  }
-  ```
-</ResponseExample>
+```bash CLI theme={"theme":{"light":"github-light","dark":"vesper"}}
+resend templates publish 34a080c9-b17d-4187-ad80-5af20266e535
+```
+
+```json Response theme={"theme":{"light":"github-light","dark":"vesper"}}
+{
+  "object": "template",
+  "id": "34a080c9-b17d-4187-ad80-5af20266e535"
+}
+```

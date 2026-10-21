@@ -13,7 +13,7 @@
 * Boosts purchase likelihood by 34%.
 * Reinforces confidence in email by 90%.
 
-<img src="https://mintcdn.com/resend/OWNnQaVDyqcGyhhN/images/sender-avatar.png?fit=max&auto=format&n=OWNnQaVDyqcGyhhN&q=85&s=af9242870f3967aaed057cb3f5f44c20" alt="Email with an avatar" width="1368" height="488" data-path="images/sender-avatar.png" />
+![Email with an avatar](https://mintcdn.com/resend/OWNnQaVDyqcGyhhN/images/sender-avatar.png?fit=max\&auto=format\&n=OWNnQaVDyqcGyhhN\&q=85\&s=af9242870f3967aaed057cb3f5f44c20)
 
 ## Gmail
 
@@ -63,6 +63,6 @@ This means **you can only**:
 
 The way around this is [BIMI (Brand Indicators for Message Identification)](/docs/dashboard/domains/bimi). BIMI now supports Common Mark Certificates (CMC) in addition to Verified Mark Certificates (VMC), making it more accessible. It is supported by nearly all major providers and allows you to send from any address on that domain.
 
-<Note>
-  Need assistance setting up BIMI? [We can help](https://resend.com/help).
-</Note>
+> [!NOTE]
+>
+> Need assistance setting up BIMI? [We can help](https://resend.com/help).

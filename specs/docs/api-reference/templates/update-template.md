@@ -6,268 +6,230 @@
 
 > Update a template.
 
-export const ResendParamField = ({children, body, path, ...props}) => {
-  const [lang, setLang] = useState(() => {
-    return localStorage.getItem('code') || '"Node.js"';
-  });
-  useEffect(() => {
-    const onStorage = event => {
-      const key = event.detail.key;
-      if (key === 'code') {
-        setLang(event.detail.value);
-      }
-    };
-    document.addEventListener('mintlify-localstorage', onStorage);
-    return () => {
-      document.removeEventListener('mintlify-localstorage', onStorage);
-    };
-  }, []);
-  const toCamelCase = str => typeof str === 'string' ? str.replace(/[_-](\w)/g, (_, c) => c.toUpperCase()) : str;
-  const resolvedBody = useMemo(() => {
-    const value = JSON.parse(lang);
-    return value === 'Node.js' ? toCamelCase(body) : body;
-  }, [body, lang]);
-  const resolvedPath = useMemo(() => {
-    const value = JSON.parse(lang);
-    return value === 'Node.js' ? toCamelCase(path) : path;
-  }, [path, lang]);
-  return <ParamField body={resolvedBody} path={resolvedPath} {...props}>
-      {children}
-    </ParamField>;
-};
-
 ## Path Parameters
 
-<ParamField body="id | alias" type="string">
-  The ID or alias of the template to duplicate.
-</ParamField>
+**id | alias** `string`
+
+The ID or alias of the template to duplicate.
 
 ## Body Parameters
 
-<ParamField body="name" type="string">
-  The name of the template.
-</ParamField>
+**name** `string`
 
-<ParamField body="html" type="string">
-  The HTML version of the template.
-</ParamField>
+The name of the template.
 
-<ParamField body="alias" type="string">
-  The alias of the template.
-</ParamField>
+**html** `string`
 
-<ParamField body="from" type="string">
-  Sender email address.
+The HTML version of the template.
 
-  To include a friendly name, use the format `"Your Name <sender@domain.com>"`.
+**alias** `string`
 
-  If provided, this value can be overridden when sending an email using the template.
-</ParamField>
+The alias of the template.
 
-<ParamField body="subject" type="string">
-  Default email subject.
+**from** `string`
 
-  This value can be overridden when sending an email using the template.
-</ParamField>
+Sender email address.
 
-<ResendParamField body="reply_to" type="string | string[]">
-  Default Reply-to email address. For multiple addresses, send as an array of strings.
+To include a friendly name, use the format `"Your Name <sender@domain.com>"`.
 
-  This value can be overridden when sending an email using the template.
-</ResendParamField>
+If provided, this value can be overridden when sending an email using the template.
 
-<ParamField body="text" type="string">
-  The plain text version of the message.
+**subject** `string`
 
-  <Info>
-    If not provided, the HTML will be used to generate a plain text version. You can opt out of this behavior by setting value to an empty string.
-  </Info>
-</ParamField>
+Default email subject.
 
-<ParamField body="react" type="React.ReactNode">
-  The React component used to write the template. *Only available in the Node.js
-  SDK.*
-</ParamField>
+This value can be overridden when sending an email using the template.
 
-<ParamField body="variables" type="array">
-  The array of variables used in the template. Each template may contain up to 50 variables.
+Default Reply-to email address. For multiple addresses, send as an array of strings.
 
-  Each variable is an object with the following properties:
+This value can be overridden when sending an email using the template.
 
-  <Expandable defaultOpen title="properties">
-    <ParamField body="key" type="string" required>
-      The key of the variable. We recommend capitalizing the key (e.g. `PRODUCT_NAME`). The following variable names are reserved and cannot be used:
-      `FIRST_NAME`, `LAST_NAME`, `EMAIL`, `RESEND_UNSUBSCRIBE_URL`, `contact`, and `this`.
-    </ParamField>
+**text** `string`
 
-    <ParamField body="type" type="'string' | 'number'" required>
-      The type of the variable.
+The plain text version of the message.
 
-      Can be `'string'` or `'number'`
-    </ParamField>
+> [!NOTE]
+>
+> If not provided, the HTML will be used to generate a plain text version. You can opt out of this behavior by setting value to an empty string.
 
-    <ResendParamField body="fallback_value" type="string | number">
-      The fallback value of the variable. The value must match the type of the variable.
+**react** `React.ReactNode`
 
-      If no fallback value is provided, you must provide a value for the variable when sending an email using the template.
-    </ResendParamField>
-  </Expandable>
+The React component used to write the template. *Only available in the Node.js
+SDK.*
 
-  <Info>
-    Before you can use a template, you must publish it first. To publish a
-    template, use the [Templates dashboard](https://resend.com/templates) or
-    [publish template API](/docs/api-reference/templates/publish-template).
+**variables** `array`
 
-    [Learn more about Templates](/docs/dashboard/templates/introduction).
-  </Info>
-</ParamField>
+The array of variables used in the template. Each template may contain up to 50 variables.
 
-<RequestExample>
-  ```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
-  import { Resend } from 'resend';
+Each variable is an object with the following properties:
 
-  const resend = new Resend('re_xxxxxxxxx');
+**properties**
 
-  const { data, error } = await resend.templates.update(
-    '34a080c9-b17d-4187-ad80-5af20266e535',
-    {
-      name: 'order-confirmation',
-      html: '<p>Total: {{{PRICE}}}</p><p>Name: {{{PRODUCT}}}</p>',
-    },
-  );
-  ```
+**key** `string` *required*
 
-  ```php PHP theme={"theme":{"light":"github-light","dark":"vesper"}}
-  $resend = Resend::client('re_xxxxxxxxx');
+The key of the variable. We recommend capitalizing the key (e.g. `PRODUCT_NAME`). The following variable names are reserved and cannot be used:
+`FIRST_NAME`, `LAST_NAME`, `EMAIL`, `RESEND_UNSUBSCRIBE_URL`, `contact`, and `this`.
 
-  $resend->templates->update('34a080c9-b17d-4187-ad80-5af20266e535', [
-    'name' => 'order-confirmation',
-    'html' => '<p>Total: {{{PRICE}}}</p><p>Name: {{{PRODUCT}}}</p>',
-  ]);
-  ```
+**type** `'string' | 'number'` *required*
 
-  ```py Python theme={"theme":{"light":"github-light","dark":"vesper"}}
-  import resend
+The type of the variable.
 
-  resend.api_key = "re_xxxxxxxxx"
+Can be `'string'` or `'number'`
 
-  resend.Templates.update({
-      "id": "34a080c9-b17d-4187-ad80-5af20266e535",
-      "name": "order-confirmation",
-      "html": "<p>Total: {{{PRICE}}}</p><p>Name: {{{PRODUCT}}}</p>",
-  })
-  ```
+The fallback value of the variable. The value must match the type of the variable.
 
-  ```ruby Ruby theme={"theme":{"light":"github-light","dark":"vesper"}}
-  require "resend"
+If no fallback value is provided, you must provide a value for the variable when sending an email using the template.
 
-  Resend.api_key = "re_xxxxxxxxx"
+> [!NOTE]
+>
+> Before you can use a template, you must publish it first. To publish a
+> template, use the [Templates dashboard](https://resend.com/templates) or
+> [publish template API](/docs/api-reference/templates/publish-template).
+>
+> [Learn more about Templates](/docs/dashboard/templates/introduction).
 
-  Resend::Templates.update("34a080c9-b17d-4187-ad80-5af20266e535", {
-    name: "order-confirmation",
-    html: "<p>Total: {{{PRICE}}}</p><p>Name: {{{PRODUCT}}}</p>"
-  })
-  ```
+```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
+import { Resend } from 'resend';
 
-  ```go Go theme={"theme":{"light":"github-light","dark":"vesper"}}
-  package main
+const resend = new Resend('re_xxxxxxxxx');
 
-  import (
-  	"context"
-
-  	"github.com/resend/resend-go/v4"
-  )
-
-  func main() {
-  	client := resend.NewClient("re_xxxxxxxxx")
-
-  	client.Templates.UpdateWithContext(context.TODO(), "34a080c9-b17d-4187-ad80-5af20266e535", &resend.UpdateTemplateRequest{
-  		Name: "order-confirmation",
-  		Html: "<p>Total: {{{PRICE}}}</p><p>Name: {{{PRODUCT}}}</p>",
-  	})
-  }
-  ```
-
-  ```rust Rust theme={"theme":{"light":"github-light","dark":"vesper"}}
-  use resend_rs::{
-    types::UpdateTemplateOptions,
-    Resend, Result,
-  };
-
-  #[tokio::main]
-  async fn main() -> Result<()> {
-    let resend = Resend::new("re_xxxxxxxxx");
-
-    let name = "order-confirmation";
-    let html = "<p>Total: {{{PRICE}}}</p><p>Name: {{{PRODUCT}}}</p>";
-
-    let update = UpdateTemplateOptions::new(name, html);
-
-    let _template = resend
-      .templates
-      .update("34a080c9-b17d-4187-ad80-5af20266e535", update)
-      .await?;
-
-    Ok(())
-  }
-  ```
-
-  ```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
-  import com.resend.Resend;
-  import com.resend.core.exception.ResendException;
-  import com.resend.services.templates.model.UpdateTemplateOptions;
-  import com.resend.services.templates.model.UpdateTemplateResponseSuccess;
-
-  public class Main {
-      public static void main(String[] args) throws ResendException {
-          Resend resend = new Resend("re_xxxxxxxxx");
-
-          UpdateTemplateOptions params = UpdateTemplateOptions.builder()
-                  .name("order-confirmation")
-                  .html("<p>Total: {{{PRICE}}}</p><p>Name: {{{PRODUCT}}}</p>")
-                  .build();
-
-          UpdateTemplateResponseSuccess data = resend.templates().update("34a080c9-b17d-4187-ad80-5af20266e535", params);
-      }
-  }
-  ```
-
-  ```csharp .NET theme={"theme":{"light":"github-light","dark":"vesper"}}
-  using Resend;
-
-  IResend resend = ResendClient.Create( "re_xxxxxxxxx" ); // Or from DI
-
-  await resend.TemplateUpdateAsync(
-      templateId: new Guid( "e169aa45-1ecf-4183-9955-b1499d5701d3" ),
-      new TemplateData()
-      {
-          HtmlBody = "<p>Total: {{{PRICE}}}</p><p>Name: {{{PRODUCT}}}</p>",
-      }
-  );
-  ```
-
-  ```bash cURL theme={"theme":{"light":"github-light","dark":"vesper"}}
-  curl -X PATCH 'https://api.resend.com/templates/34a080c9-b17d-4187-ad80-5af20266e535' \
-       -H 'Authorization: Bearer re_xxxxxxxxx' \
-       -H 'Content-Type: application/json' \
-       -d $'{
-    "name": "order-confirmation",
-    "html": "<p>Total: {{{PRICE}}}</p><p>Name: {{{PRODUCT}}}</p>"
-  }'
-  ```
-
-  ```bash CLI theme={"theme":{"light":"github-light","dark":"vesper"}}
-  resend templates update 34a080c9-b17d-4187-ad80-5af20266e535 \
-    --name order-confirmation \
-    --html "<p>Total: {{{PRICE}}}</p><p>Name: {{{PRODUCT}}}</p>"
-  ```
-</RequestExample>
-
-<ResponseExample>
-  ```json Response theme={"theme":{"light":"github-light","dark":"vesper"}}
+const { data, error } = await resend.templates.update(
+  '34a080c9-b17d-4187-ad80-5af20266e535',
   {
-    "object": "template",
-    "id": "34a080c9-b17d-4187-ad80-5af20266e535"
-  }
-  ```
-</ResponseExample>
+    name: 'order-confirmation',
+    html: '<p>Total: {{{PRICE}}}</p><p>Name: {{{PRODUCT}}}</p>',
+  },
+);
+```
+
+```php PHP theme={"theme":{"light":"github-light","dark":"vesper"}}
+$resend = Resend::client('re_xxxxxxxxx');
+
+$resend->templates->update('34a080c9-b17d-4187-ad80-5af20266e535', [
+  'name' => 'order-confirmation',
+  'html' => '<p>Total: {{{PRICE}}}</p><p>Name: {{{PRODUCT}}}</p>',
+]);
+```
+
+```py Python theme={"theme":{"light":"github-light","dark":"vesper"}}
+import resend
+
+resend.api_key = "re_xxxxxxxxx"
+
+resend.Templates.update({
+    "id": "34a080c9-b17d-4187-ad80-5af20266e535",
+    "name": "order-confirmation",
+    "html": "<p>Total: {{{PRICE}}}</p><p>Name: {{{PRODUCT}}}</p>",
+})
+```
+
+```ruby Ruby theme={"theme":{"light":"github-light","dark":"vesper"}}
+require "resend"
+
+Resend.api_key = "re_xxxxxxxxx"
+
+Resend::Templates.update("34a080c9-b17d-4187-ad80-5af20266e535", {
+  name: "order-confirmation",
+  html: "<p>Total: {{{PRICE}}}</p><p>Name: {{{PRODUCT}}}</p>"
+})
+```
+
+```go Go theme={"theme":{"light":"github-light","dark":"vesper"}}
+package main
+
+import (
+	"context"
+
+	"github.com/resend/resend-go/v4"
+)
+
+func main() {
+	client := resend.NewClient("re_xxxxxxxxx")
+
+	client.Templates.UpdateWithContext(context.TODO(), "34a080c9-b17d-4187-ad80-5af20266e535", &resend.UpdateTemplateRequest{
+		Name: "order-confirmation",
+		Html: "<p>Total: {{{PRICE}}}</p><p>Name: {{{PRODUCT}}}</p>",
+	})
+}
+```
+
+```rust Rust theme={"theme":{"light":"github-light","dark":"vesper"}}
+use resend_rs::{
+  types::UpdateTemplateOptions,
+  Resend, Result,
+};
+
+#[tokio::main]
+async fn main() -> Result<()> {
+  let resend = Resend::new("re_xxxxxxxxx");
+
+  let name = "order-confirmation";
+  let html = "<p>Total: {{{PRICE}}}</p><p>Name: {{{PRODUCT}}}</p>";
+
+  let update = UpdateTemplateOptions::new(name, html);
+
+  let _template = resend
+    .templates
+    .update("34a080c9-b17d-4187-ad80-5af20266e535", update)
+    .await?;
+
+  Ok(())
+}
+```
+
+```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
+import com.resend.Resend;
+import com.resend.core.exception.ResendException;
+import com.resend.services.templates.model.UpdateTemplateOptions;
+import com.resend.services.templates.model.UpdateTemplateResponseSuccess;
+
+public class Main {
+    public static void main(String[] args) throws ResendException {
+        Resend resend = new Resend("re_xxxxxxxxx");
+
+        UpdateTemplateOptions params = UpdateTemplateOptions.builder()
+                .name("order-confirmation")
+                .html("<p>Total: {{{PRICE}}}</p><p>Name: {{{PRODUCT}}}</p>")
+                .build();
+
+        UpdateTemplateResponseSuccess data = resend.templates().update("34a080c9-b17d-4187-ad80-5af20266e535", params);
+    }
+}
+```
+
+```csharp .NET theme={"theme":{"light":"github-light","dark":"vesper"}}
+using Resend;
+
+IResend resend = ResendClient.Create( "re_xxxxxxxxx" ); // Or from DI
+
+await resend.TemplateUpdateAsync(
+    templateId: new Guid( "e169aa45-1ecf-4183-9955-b1499d5701d3" ),
+    new TemplateData()
+    {
+        HtmlBody = "<p>Total: {{{PRICE}}}</p><p>Name: {{{PRODUCT}}}</p>",
+    }
+);
+```
+
+```bash cURL theme={"theme":{"light":"github-light","dark":"vesper"}}
+curl -X PATCH 'https://api.resend.com/templates/34a080c9-b17d-4187-ad80-5af20266e535' \
+     -H 'Authorization: Bearer re_xxxxxxxxx' \
+     -H 'Content-Type: application/json' \
+     -d $'{
+  "name": "order-confirmation",
+  "html": "<p>Total: {{{PRICE}}}</p><p>Name: {{{PRODUCT}}}</p>"
+}'
+```
+
+```bash CLI theme={"theme":{"light":"github-light","dark":"vesper"}}
+resend templates update 34a080c9-b17d-4187-ad80-5af20266e535 \
+  --name order-confirmation \
+  --html "<p>Total: {{{PRICE}}}</p><p>Name: {{{PRODUCT}}}</p>"
+```
+
+```json Response theme={"theme":{"light":"github-light","dark":"vesper"}}
+{
+  "object": "template",
+  "id": "34a080c9-b17d-4187-ad80-5af20266e535"
+}
+```

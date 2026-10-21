@@ -36,25 +36,25 @@ Get started by [creating an automation](/docs/dashboard/automations/create-autom
 
 The Automation process involves the following steps:
 
-<Steps>
-  <Step title="Create Automation">
-    Start a new Automation and give it a descriptive name.
-  </Step>
+**1. Create Automation**
 
-  <Step title="Add Trigger">
-    Define the event that will trigger the Automation.
-  </Step>
+Start a new Automation and give it a descriptive name.
 
-  <Step title="Define Steps">Configure the steps to be executed.</Step>
+**2. Add Trigger**
 
-  <Step title="Send an Event">
-    Trigger the Automation by sending an event from your application.
-  </Step>
+Define the event that will trigger the Automation.
 
-  <Step title="Monitor Runs">
-    Track and debug your Automation executions using runs.
-  </Step>
-</Steps>
+**3. Define Steps**
+
+Configure the steps to be executed.
+
+**4. Send an Event**
+
+Trigger the Automation by sending an event from your application.
+
+**5. Monitor Runs**
+
+Track and debug your Automation executions using runs.
 
 See step-by-step examples of [creating an automation](/docs/dashboard/automations/create-automation) through the Dashboard and using the API.
 
@@ -90,12 +90,10 @@ You can also retrieve and monitor runs with the [Automation API](/docs/api-refer
 
 See how to use Resend's automation features.
 
-<CardGroup>
-  <Card title="Create automations" icon="cards-blank" href="/docs/dashboard/automations/create-automation" />
+> **[Create automations](/docs/dashboard/automations/create-automation)**
 
-  <Card title="Custom triggers" icon="hand-point-right" href="/docs/dashboard/automations/custom-events" />
+> **[Custom triggers](/docs/dashboard/automations/custom-events)**
 
-  <Card title="Steps reference" icon="gear-code" href="/docs/dashboard/automations/steps" />
+> **[Steps reference](/docs/dashboard/automations/steps)**
 
-  <Card title="Monitor execution runs" icon="tower-control" href="/docs/dashboard/automations/runs" />
-</CardGroup>
+> **[Monitor execution runs](/docs/dashboard/automations/runs)**

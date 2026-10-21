@@ -15,127 +15,123 @@ Before you start, you'll need:
 
 ## Guide
 
-<Steps>
-  <Step title="Install">
-    First, create a rust project with cargo and `cd` into it.
+**1. Install**
 
-    ```bash theme={"theme":{"light":"github-light","dark":"vesper"}}
-    cargo init resend-rust-example
-    cd resend-rust-example
-    ```
+First, create a rust project with cargo and `cd` into it.
 
-    Next, add add the Rust Resend SDK as well as [Tokio](https://tokio.rs):
+```bash theme={"theme":{"light":"github-light","dark":"vesper"}}
+cargo init resend-rust-example
+cd resend-rust-example
+```
 
-    ```bash theme={"theme":{"light":"github-light","dark":"vesper"}}
-    cargo add resend-rs
-    cargo add tokio -F macros,rt-multi-thread
-    ```
+Next, add add the Rust Resend SDK as well as [Tokio](https://tokio.rs):
 
-    The Rust SDK is Async-first so Tokio is needed.
-  </Step>
+```bash theme={"theme":{"light":"github-light","dark":"vesper"}}
+cargo add resend-rs
+cargo add tokio -F macros,rt-multi-thread
+```
 
-  <Step title="Send email">
-    ```rust theme={"theme":{"light":"github-light","dark":"vesper"}}
-    use resend_rs::types::CreateEmailBaseOptions;
-    use resend_rs::{Resend, Result};
+The Rust SDK is Async-first so Tokio is needed.
 
-    #[tokio::main]
-    async fn main() -> Result<()> {
-      let resend = Resend::new("re_xxxxxxxxx");
+**2. Send email**
 
-      let from = "Acme <onboarding@resend.dev>";
-      let to = ["delivered@resend.dev"];
-      let subject = "Hello World";
+```rust theme={"theme":{"light":"github-light","dark":"vesper"}}
+use resend_rs::types::CreateEmailBaseOptions;
+use resend_rs::{Resend, Result};
 
-      let email = CreateEmailBaseOptions::new(from, to, subject)
-        .with_html("<strong>It works!</strong>");
+#[tokio::main]
+async fn main() -> Result<()> {
+  let resend = Resend::new("re_xxxxxxxxx");
 
-      let _email = resend.emails.send(email).await?;
+  let from = "Acme <onboarding@resend.dev>";
+  let to = ["delivered@resend.dev"];
+  let subject = "Hello World";
 
-      Ok(())
-    }
-    ```
-  </Step>
+  let email = CreateEmailBaseOptions::new(from, to, subject)
+    .with_html("<strong>It works!</strong>");
 
-  <Step title="Reading the API key">
-    Instead of using `Resend::new` and hardcoding the API key, the `RESEND_API_KEY` environment variable
-    can be used instead. Use `Resend::default()` in that scenario instead.
+  let _email = resend.emails.send(email).await?;
 
-    Another popular option is to use a `.env` file for environment variables. You can use the
-    [`dotenvy`](https://crates.io/crates/dotenvy) crate for that:
+  Ok(())
+}
+```
 
-    ```bash theme={"theme":{"light":"github-light","dark":"vesper"}}
-    cargo add dotenvy
-    ```
+**3. Reading the API key**
 
-    ```rust theme={"theme":{"light":"github-light","dark":"vesper"}}
-    // main.rs
-    use dotenvy::dotenv;
-    use resend_rs::types::CreateEmailBaseOptions;
-    use resend_rs::{Resend, Result};
+Instead of using `Resend::new` and hardcoding the API key, the `RESEND_API_KEY` environment variable
+can be used instead. Use `Resend::default()` in that scenario instead.
 
-    #[tokio::main]
-    async fn main() -> Result<()> {
-      let _env = dotenv().unwrap();
+Another popular option is to use a `.env` file for environment variables. You can use the
+[`dotenvy`](https://crates.io/crates/dotenvy) crate for that:
 
-      let resend = Resend::default();
+```bash theme={"theme":{"light":"github-light","dark":"vesper"}}
+cargo add dotenvy
+```
 
-      let from = "Acme <onboarding@resend.dev>";
-      let to = ["delivered@resend.dev"];
-      let subject = "Hello World";
+```rust theme={"theme":{"light":"github-light","dark":"vesper"}}
+// main.rs
+use dotenvy::dotenv;
+use resend_rs::types::CreateEmailBaseOptions;
+use resend_rs::{Resend, Result};
 
-      let email = CreateEmailBaseOptions::new(from, to, subject)
-        .with_html("<strong>It works!</strong>");
+#[tokio::main]
+async fn main() -> Result<()> {
+  let _env = dotenv().unwrap();
 
-      let _email = resend.emails.send(email).await?;
+  let resend = Resend::default();
 
-      Ok(())
-    }
-    ```
+  let from = "Acme <onboarding@resend.dev>";
+  let to = ["delivered@resend.dev"];
+  let subject = "Hello World";
 
-    ```toml theme={"theme":{"light":"github-light","dark":"vesper"}}
-    # .env
-    RESEND_API_KEY=re_xxxxxxxxx
-    ```
-  </Step>
-</Steps>
+  let email = CreateEmailBaseOptions::new(from, to, subject)
+    .with_html("<strong>It works!</strong>");
+
+  let _email = resend.emails.send(email).await?;
+
+  Ok(())
+}
+```
+
+```toml theme={"theme":{"light":"github-light","dark":"vesper"}}
+# .env
+RESEND_API_KEY=re_xxxxxxxxx
+```
 
 ## Examples
 
-<CardGroup cols={3}>
-  <Card title="Basic Send" icon="arrow-up-right-from-square" href="https://github.com/resend/resend-examples/blob/main/rust-resend-examples/examples/basic_send.rs">
-    Basic email sending
-  </Card>
+> **[Basic Send](https://github.com/resend/resend-examples/blob/main/rust-resend-examples/examples/basic_send.rs)**
+>
+> Basic email sending
 
-  <Card title="Attachments" icon="arrow-up-right-from-square" href="https://github.com/resend/resend-examples/blob/main/rust-resend-examples/examples/with_attachments.rs">
-    Send emails with file attachments
-  </Card>
+> **[Attachments](https://github.com/resend/resend-examples/blob/main/rust-resend-examples/examples/with_attachments.rs)**
+>
+> Send emails with file attachments
 
-  <Card title="Templates" icon="arrow-up-right-from-square" href="https://github.com/resend/resend-examples/blob/main/rust-resend-examples/examples/with_template.rs">
-    Send emails using Resend hosted templates
-  </Card>
+> **[Templates](https://github.com/resend/resend-examples/blob/main/rust-resend-examples/examples/with_template.rs)**
+>
+> Send emails using Resend hosted templates
 
-  <Card title="Scheduling" icon="arrow-up-right-from-square" href="https://github.com/resend/resend-examples/blob/main/rust-resend-examples/examples/scheduled_send.rs">
-    Schedule emails for future delivery
-  </Card>
+> **[Scheduling](https://github.com/resend/resend-examples/blob/main/rust-resend-examples/examples/scheduled_send.rs)**
+>
+> Schedule emails for future delivery
 
-  <Card title="Audiences" icon="arrow-up-right-from-square" href="https://github.com/resend/resend-examples/blob/main/rust-resend-examples/examples/audiences.rs">
-    Manage contacts and audiences
-  </Card>
+> **[Audiences](https://github.com/resend/resend-examples/blob/main/rust-resend-examples/examples/audiences.rs)**
+>
+> Manage contacts and audiences
 
-  <Card title="Domains" icon="arrow-up-right-from-square" href="https://github.com/resend/resend-examples/blob/main/rust-resend-examples/examples/domains.rs">
-    Create and manage sending domains
-  </Card>
+> **[Domains](https://github.com/resend/resend-examples/blob/main/rust-resend-examples/examples/domains.rs)**
+>
+> Create and manage sending domains
 
-  <Card title="Inbound Webhooks" icon="arrow-up-right-from-square" href="https://github.com/resend/resend-examples/blob/main/rust-resend-examples/examples/inbound.rs">
-    Receive and process inbound emails
-  </Card>
+> **[Inbound Webhooks](https://github.com/resend/resend-examples/blob/main/rust-resend-examples/examples/inbound.rs)**
+>
+> Receive and process inbound emails
 
-  <Card title="Double Opt-in" icon="arrow-up-right-from-square" href="https://github.com/resend/resend-examples/blob/main/rust-resend-examples/examples/double_optin_subscribe.rs">
-    Double opt-in subscription flow
-  </Card>
+> **[Double Opt-in](https://github.com/resend/resend-examples/blob/main/rust-resend-examples/examples/double_optin_subscribe.rs)**
+>
+> Double opt-in subscription flow
 
-  <Card title="Axum App" icon="arrow-up-right-from-square" href="https://github.com/resend/resend-examples/tree/main/rust-resend-examples/axum_app">
-    Full Axum web framework application
-  </Card>
-</CardGroup>
+> **[Axum App](https://github.com/resend/resend-examples/tree/main/rust-resend-examples/axum_app)**
+>
+> Full Axum web framework application

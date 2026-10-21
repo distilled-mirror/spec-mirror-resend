@@ -6,7 +6,9 @@
 
 > Give your AI agent a secure email inbox to receive and act on inbound emails.
 
-The Agent Email Inbox skill enables AI agents to securely receive and respond to emails through Resend's webhook-based architecture. It provides security patterns that prevent untrusted email content from controlling your agent, including sender allowlists, content filtering, and sandboxed processing.
+The Agent Email Inbox skill enables AI agents to securely receive and respond to emails through a Resend [Inbox](/docs/api-reference/inboxes/create-inbox). It provides security patterns that prevent untrusted email content from controlling your agent, including sender allowlists, content filtering, and sandboxed processing.
+
+The inbox groups each conversation into a thread, and your agent replies in the thread with one call. Without a custom domain, or when your plan has no inbox available, the skill falls back to [Receiving](/docs/dashboard/receiving/introduction) with the same security levels.
 
 ## Why your agent needs a secure inbox
 
@@ -26,16 +28,17 @@ npx skills add resend/resend-skills
 
 * **5 security levels**: From strict sender allowlists to human-in-the-loop approval, choose the right level of security for your use case.
 * **Real-time webhook architecture**: Event-driven design means your agent reacts to emails in seconds, not minutes.
+* **Threaded replies**: Your agent replies inside the conversation, and Resend sets the recipients and threading headers.
 * **Webhook signature verification**: Built-in patterns for verifying Resend webhook signatures to prevent spoofed events.
-* **Multi-language SDK support**: Works with Node.js, Python, Go, Ruby, PHP, Rust, Java, and .NET.
+* **Multi-language SDK support**: The inbox examples use the Node.js SDK. The Receiving fallback works with Node.js, Python, Go, Ruby, PHP, Rust, Java, and .NET.
 * **Common threat protection**: Built-in guidance for handling prompt injection, sender spoofing, and email flooding.
 
 ## Architecture
 
 ```
-Email → Resend → Webhook → Your Server → Validate
-                                             ↓
-                                     Process or Reject
+Email → Resend Inbox → Webhook → Your Server → Validate
+                                                   ↓
+                                   Process or Reject → Reply in the thread
 ```
 
 Your agent only processes emails that pass your chosen security level. Rejected emails are logged and silently acknowledged to prevent retries.
@@ -56,13 +59,19 @@ Each level includes full implementation code in the skill. After installation, y
 
 ## Example
 
-A minimal webhook handler that verifies the signature, checks the sender against an allowlist, and retrieves the full email content:
+A minimal webhook handler that verifies the signature, checks the sender against an allowlist, retrieves the full email, and replies in its thread:
 
 ```js theme={"theme":{"light":"github-light","dark":"vesper"}}
 import { Resend } from 'resend';
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 const ALLOWED_SENDERS = ['your@email.com'];
+
+// `from` can be `Name <address>`, so compare the address only
+const senderAddress = (from) => {
+  const match = from.match(/<([^<>]+)>\s*$/);
+  return (match ? match[1] : from).trim().toLowerCase();
+};
 
 async function handler(req) {
   const payload = await req.text();
@@ -74,34 +83,41 @@ async function handler(req) {
       timestamp: req.headers.get('svix-timestamp'),
       signature: req.headers.get('svix-signature'),
     },
-    secret: process.env.RESEND_WEBHOOK_SECRET,
+    webhookSecret: process.env.RESEND_WEBHOOK_SECRET,
   });
 
-  if (event.type === 'email.received') {
-    if (!ALLOWED_SENDERS.includes(event.data.from.toLowerCase())) {
+  if (event.type === 'inbox.email.received') {
+    const { inbox_id, thread_id, email_id, email } = event.data;
+
+    if (!email || !ALLOWED_SENDERS.includes(senderAddress(email.from))) {
       return new Response('OK', { status: 200 });
     }
 
-    const { data: email } = await resend.emails.receiving.get(
-      event.data.email_id,
-    );
+    const thread = {
+      inboxId: inbox_id,
+      threadId: thread_id,
+      emailId: email_id,
+    };
+    const { data: fullEmail } = await resend.inboxes.threads.emails.get(thread);
 
-    await processEmailForAgent(email);
+    const answer = await processEmailForAgent(fullEmail);
+
+    await resend.inboxes.threads.emails.reply({ ...thread, text: answer });
   }
 
   return new Response('OK', { status: 200 });
 }
 ```
 
+The inbox methods need `resend` 6.34.1 or later.
+
 ## Learn More
 
-<CardGroup cols={2}>
-  <Card title="OpenClaw Setup Guide" icon="robot" href="/docs/openclaw-guide">
-    Step-by-step guide for giving an OpenClaw agent a fully functional email
-    inbox.
-  </Card>
+> **[OpenClaw Setup Guide](/docs/openclaw-guide)**
+>
+> Step-by-step guide for giving an OpenClaw agent a fully functional email
+> inbox.
 
-  <Card title="View on GitHub" icon="arrow-up-right-from-square" href="https://github.com/resend/resend-skills/tree/main/skills/agent-email-inbox">
-    See the full source code, security patterns, and documentation.
-  </Card>
-</CardGroup>
+> **[View on GitHub](https://github.com/resend/resend-skills/tree/main/skills/agent-email-inbox)**
+>
+> See the full source code, security patterns, and documentation.

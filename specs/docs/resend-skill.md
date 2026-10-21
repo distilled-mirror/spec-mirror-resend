@@ -30,12 +30,10 @@ Build with our official recommendations for sending emails with Resend.
 
 ## Learn More
 
-<CardGroup cols={2}>
-  <Card title="Agent Email Inbox" icon="inbox" href="/docs/agent-email-inbox-skill">
-    Give your agent a secure inbox to receive and act on inbound emails.
-  </Card>
+> **[Agent Email Inbox](/docs/agent-email-inbox-skill)**
+>
+> Give your agent a secure inbox to receive and act on inbound emails.
 
-  <Card title="View on GitHub" icon="arrow-up-right-from-square" href="https://github.com/resend/resend-skills">
-    See the full source code and documentation.
-  </Card>
-</CardGroup>
+> **[View on GitHub](https://github.com/resend/resend-skills)**
+>
+> See the full source code and documentation.

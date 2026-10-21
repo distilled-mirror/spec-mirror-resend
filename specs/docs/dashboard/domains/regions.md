@@ -15,7 +15,7 @@ Resend users have the option to send transactional and marketing emails from fou
 
 No matter where your users are, you can ensure that they receive your emails in a timely and efficient manner. You can visualize the different regions in the Resend dashboard:
 
-<img alt="Multi Region Domains" src="https://mintcdn.com/resend/OWNnQaVDyqcGyhhN/images/multi-region-1.png?fit=max&auto=format&n=OWNnQaVDyqcGyhhN&q=85&s=0572cd0780bdcfc50ad558666dd8d7a5" width="1680" height="1050" data-path="images/multi-region-1.png" />
+![Multi Region Domains](https://mintcdn.com/resend/OWNnQaVDyqcGyhhN/images/multi-region-1.png?fit=max\&auto=format\&n=OWNnQaVDyqcGyhhN\&q=85\&s=0572cd0780bdcfc50ad558666dd8d7a5)
 
 ## Data Residency
 

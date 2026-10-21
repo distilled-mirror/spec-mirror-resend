@@ -8,10 +8,10 @@
 
 Resend keeps your account's compliance and tax documents in one place: [Settings → Documents](https://resend.com/settings/documents).
 
-<Info>
-  You must be logged in to your Resend account to access the
-  [Documents](https://resend.com/settings/documents) page.
-</Info>
+> [!NOTE]
+>
+> You must be logged in to your Resend account to access the
+> [Documents](https://resend.com/settings/documents) page.
 
 ## What's on the page
 

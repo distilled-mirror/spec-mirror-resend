@@ -10,203 +10,199 @@
 
 Provide either `emails` or `ids`, but not both.
 
-<ParamField body="emails" type="array">
-  The email addresses to remove from the suppression list. Must contain between
-  1 and 100 email addresses.
-</ParamField>
+**emails** `array`
 
-<ParamField body="ids" type="array">
-  The suppression IDs to remove from the suppression list. Must contain between
-  1 and 100 IDs.
-</ParamField>
+The email addresses to remove from the suppression list. Must contain between
+1 and 100 email addresses.
 
-<RequestExample>
-  ```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
-  import { Resend } from 'resend';
+**ids** `array`
 
-  const resend = new Resend('re_xxxxxxxxx');
+The suppression IDs to remove from the suppression list. Must contain between
+1 and 100 IDs.
 
-  const { data, error } = await resend.suppressions.batch.remove({
-    ids: ['e169aa45-1ecf-4183-9955-b1499d5701d3'],
-    // or: emails: ['steve.wozniak@example.com', 'susan.kare@example.com'],
-  });
-  ```
+```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
+import { Resend } from 'resend';
 
-  ```php PHP theme={"theme":{"light":"github-light","dark":"vesper"}}
-  $resend = Resend::client('re_xxxxxxxxx');
+const resend = new Resend('re_xxxxxxxxx');
 
-  // Remove by suppression ids
-  $resend->suppressions->batch->remove([
-    'ids' => ['e169aa45-1ecf-4183-9955-b1499d5701d3'],
-  ]);
+const { data, error } = await resend.suppressions.batch.remove({
+  ids: ['e169aa45-1ecf-4183-9955-b1499d5701d3'],
+  // or: emails: ['steve.wozniak@example.com', 'susan.kare@example.com'],
+});
+```
 
-  // Remove by emails
-  $resend->suppressions->batch->remove([
-    'emails' => ['steve.wozniak@example.com', 'susan.kare@example.com'],
-  ]);
-  ```
+```php PHP theme={"theme":{"light":"github-light","dark":"vesper"}}
+$resend = Resend::client('re_xxxxxxxxx');
 
-  ```python Python theme={"theme":{"light":"github-light","dark":"vesper"}}
-  import resend
+// Remove by suppression ids
+$resend->suppressions->batch->remove([
+  'ids' => ['e169aa45-1ecf-4183-9955-b1499d5701d3'],
+]);
 
-  resend.api_key = "re_xxxxxxxxx"
+// Remove by emails
+$resend->suppressions->batch->remove([
+  'emails' => ['steve.wozniak@example.com', 'susan.kare@example.com'],
+]);
+```
 
-  # Remove by suppression ids
-  ids_params: resend.Suppressions.Batch.RemoveParams = {
-    "ids": ["e169aa45-1ecf-4183-9955-b1499d5701d3"],
-  }
+```python Python theme={"theme":{"light":"github-light","dark":"vesper"}}
+import resend
 
-  resend.Suppressions.Batch.remove(ids_params)
+resend.api_key = "re_xxxxxxxxx"
 
-  # Remove by emails
-  emails_params: resend.Suppressions.Batch.RemoveParams = {
-    "emails": ["steve.wozniak@example.com", "susan.kare@example.com"],
-  }
+# Remove by suppression ids
+ids_params: resend.Suppressions.Batch.RemoveParams = {
+  "ids": ["e169aa45-1ecf-4183-9955-b1499d5701d3"],
+}
 
-  resend.Suppressions.Batch.remove(emails_params)
-  ```
+resend.Suppressions.Batch.remove(ids_params)
 
-  ```ruby Ruby theme={"theme":{"light":"github-light","dark":"vesper"}}
-  require "resend"
+# Remove by emails
+emails_params: resend.Suppressions.Batch.RemoveParams = {
+  "emails": ["steve.wozniak@example.com", "susan.kare@example.com"],
+}
 
-  Resend.api_key = "re_xxxxxxxxx"
+resend.Suppressions.Batch.remove(emails_params)
+```
 
-  # Remove by suppression ids
-  Resend::Suppressions::Batch.remove(
-    ids: ["e169aa45-1ecf-4183-9955-b1499d5701d3"]
-  )
+```ruby Ruby theme={"theme":{"light":"github-light","dark":"vesper"}}
+require "resend"
 
-  # Remove by emails
-  Resend::Suppressions::Batch.remove(
-    emails: ["steve.wozniak@example.com", "susan.kare@example.com"]
-  )
-  ```
+Resend.api_key = "re_xxxxxxxxx"
 
-  ```go Go theme={"theme":{"light":"github-light","dark":"vesper"}}
-  package main
+# Remove by suppression ids
+Resend::Suppressions::Batch.remove(
+  ids: ["e169aa45-1ecf-4183-9955-b1499d5701d3"]
+)
 
-  import "github.com/resend/resend-go/v4"
+# Remove by emails
+Resend::Suppressions::Batch.remove(
+  emails: ["steve.wozniak@example.com", "susan.kare@example.com"]
+)
+```
 
-  func main() {
-  	client := resend.NewClient("re_xxxxxxxxx")
+```go Go theme={"theme":{"light":"github-light","dark":"vesper"}}
+package main
 
-  	// Remove by suppression ids
-  	client.Suppressions.Batch.Remove(&resend.BatchRemoveSuppressionsRequest{
-  		Ids: []string{"e169aa45-1ecf-4183-9955-b1499d5701d3"},
-  	})
+import "github.com/resend/resend-go/v4"
 
-  	// Remove by emails
-  	client.Suppressions.Batch.Remove(&resend.BatchRemoveSuppressionsRequest{
-  		Emails: []string{"steve.wozniak@example.com", "susan.kare@example.com"},
-  	})
-  }
-  ```
+func main() {
+	client := resend.NewClient("re_xxxxxxxxx")
 
-  ```rust Rust theme={"theme":{"light":"github-light","dark":"vesper"}}
-  use resend_rs::{Resend, Result, types::BatchRemoveSuppressionOptions};
+	// Remove by suppression ids
+	client.Suppressions.Batch.Remove(&resend.BatchRemoveSuppressionsRequest{
+		Ids: []string{"e169aa45-1ecf-4183-9955-b1499d5701d3"},
+	})
 
-  #[tokio::main]
-  async fn main() -> Result<()> {
-    let resend = Resend::new("re_xxxxxxxxx");
+	// Remove by emails
+	client.Suppressions.Batch.Remove(&resend.BatchRemoveSuppressionsRequest{
+		Emails: []string{"steve.wozniak@example.com", "susan.kare@example.com"},
+	})
+}
+```
 
-    // Remove by email
-    let opt_emails = BatchRemoveSuppressionOptions::new()
-      .add_emails(vec!["steve.wozniak@example.com", "susan.kare@example.com"]);
-    let _data = resend.suppressions.batch_remove(opt_emails).await?;
+```rust Rust theme={"theme":{"light":"github-light","dark":"vesper"}}
+use resend_rs::{Resend, Result, types::BatchRemoveSuppressionOptions};
 
-    // Remove by id
-    let opt_ids =
-      BatchRemoveSuppressionOptions::new().add_ids(vec!["e169aa45-1ecf-4183-9955-b1499d5701d3"]);
+#[tokio::main]
+async fn main() -> Result<()> {
+  let resend = Resend::new("re_xxxxxxxxx");
 
-    let _data = resend.suppressions.batch_remove(opt_ids).await?;
+  // Remove by email
+  let opt_emails = BatchRemoveSuppressionOptions::new()
+    .add_emails(vec!["steve.wozniak@example.com", "susan.kare@example.com"]);
+  let _data = resend.suppressions.batch_remove(opt_emails).await?;
 
-    Ok(())
-  }
-  ```
+  // Remove by id
+  let opt_ids =
+    BatchRemoveSuppressionOptions::new().add_ids(vec!["e169aa45-1ecf-4183-9955-b1499d5701d3"]);
 
-  ```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
-  import com.resend.Resend;
-  import com.resend.core.exception.ResendException;
-  import com.resend.services.suppressions.model.RemoveSuppressionsOptions;
-  import java.util.List;
+  let _data = resend.suppressions.batch_remove(opt_ids).await?;
 
-  public class Main {
-      public static void main(String[] args) throws ResendException {
-          Resend resend = new Resend("re_xxxxxxxxx");
+  Ok(())
+}
+```
 
-          // Remove by suppression ids
-          RemoveSuppressionsOptions byIds = RemoveSuppressionsOptions.builder()
-                  .ids(List.of("e169aa45-1ecf-4183-9955-b1499d5701d3"))
-                  .build();
+```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
+import com.resend.Resend;
+import com.resend.core.exception.ResendException;
+import com.resend.services.suppressions.model.RemoveSuppressionsOptions;
+import java.util.List;
 
-          resend.suppressions().batch().remove(byIds);
+public class Main {
+    public static void main(String[] args) throws ResendException {
+        Resend resend = new Resend("re_xxxxxxxxx");
 
-          // Remove by emails
-          RemoveSuppressionsOptions byEmails = RemoveSuppressionsOptions.builder()
-                  .emails(List.of("steve.wozniak@example.com", "susan.kare@example.com"))
-                  .build();
+        // Remove by suppression ids
+        RemoveSuppressionsOptions byIds = RemoveSuppressionsOptions.builder()
+                .ids(List.of("e169aa45-1ecf-4183-9955-b1499d5701d3"))
+                .build();
 
-          resend.suppressions().batch().remove(byEmails);
-      }
-  }
-  ```
+        resend.suppressions().batch().remove(byIds);
 
-  ```csharp .NET theme={"theme":{"light":"github-light","dark":"vesper"}}
-  using Resend;
+        // Remove by emails
+        RemoveSuppressionsOptions byEmails = RemoveSuppressionsOptions.builder()
+                .emails(List.of("steve.wozniak@example.com", "susan.kare@example.com"))
+                .build();
 
-  IResend resend = ResendClient.Create( "re_xxxxxxxxx" );
+        resend.suppressions().batch().remove(byEmails);
+    }
+}
+```
 
-  // Remove by suppression ids
-  await resend.SuppressionBatchRemoveAsync( new[]
-  {
-      new Guid( "e169aa45-1ecf-4183-9955-b1499d5701d3" ),
-  } );
+```csharp .NET theme={"theme":{"light":"github-light","dark":"vesper"}}
+using Resend;
 
-  // Remove by emails
-  await resend.SuppressionBatchRemoveAsync( new[]
-  {
-      "steve.wozniak@example.com",
-      "susan.kare@example.com",
-  } );
-  ```
+IResend resend = ResendClient.Create( "re_xxxxxxxxx" );
 
-  ```bash cURL theme={"theme":{"light":"github-light","dark":"vesper"}}
-  # Remove by suppression ids
-  curl -X POST 'https://api.resend.com/suppressions/batch/remove' \
-       -H 'Authorization: Bearer re_xxxxxxxxx' \
-       -H 'Content-Type: application/json' \
-       -d $'{
-    "ids": ["e169aa45-1ecf-4183-9955-b1499d5701d3"]
-  }'
+// Remove by suppression ids
+await resend.SuppressionBatchRemoveAsync( new[]
+{
+    new Guid( "e169aa45-1ecf-4183-9955-b1499d5701d3" ),
+} );
 
-  # Remove by emails
-  curl -X POST 'https://api.resend.com/suppressions/batch/remove' \
-       -H 'Authorization: Bearer re_xxxxxxxxx' \
-       -H 'Content-Type: application/json' \
-       -d $'{
-    "emails": ["steve.wozniak@example.com", "susan.kare@example.com"]
-  }'
-  ```
+// Remove by emails
+await resend.SuppressionBatchRemoveAsync( new[]
+{
+    "steve.wozniak@example.com",
+    "susan.kare@example.com",
+} );
+```
 
-  ```bash CLI theme={"theme":{"light":"github-light","dark":"vesper"}}
-  # Remove by email
-  resend suppressions batch remove --file suppressions.json
+```bash cURL theme={"theme":{"light":"github-light","dark":"vesper"}}
+# Remove by suppression ids
+curl -X POST 'https://api.resend.com/suppressions/batch/remove' \
+     -H 'Authorization: Bearer re_xxxxxxxxx' \
+     -H 'Content-Type: application/json' \
+     -d $'{
+  "ids": ["e169aa45-1ecf-4183-9955-b1499d5701d3"]
+}'
 
-  # Remove by id
-  resend suppressions batch remove --file suppression-ids.json --ids
-  ```
-</RequestExample>
+# Remove by emails
+curl -X POST 'https://api.resend.com/suppressions/batch/remove' \
+     -H 'Authorization: Bearer re_xxxxxxxxx' \
+     -H 'Content-Type: application/json' \
+     -d $'{
+  "emails": ["steve.wozniak@example.com", "susan.kare@example.com"]
+}'
+```
 
-<ResponseExample>
-  ```json Response theme={"theme":{"light":"github-light","dark":"vesper"}}
-  {
-    "data": [
-      {
-        "object": "suppression",
-        "id": "e169aa45-1ecf-4183-9955-b1499d5701d3",
-        "deleted": true
-      }
-    ]
-  }
-  ```
-</ResponseExample>
+```bash CLI theme={"theme":{"light":"github-light","dark":"vesper"}}
+# Remove by email
+resend suppressions batch remove --file suppressions.json
+
+# Remove by id
+resend suppressions batch remove --file suppression-ids.json --ids
+```
+
+```json Response theme={"theme":{"light":"github-light","dark":"vesper"}}
+{
+  "data": [
+    {
+      "object": "suppression",
+      "id": "e169aa45-1ecf-4183-9955-b1499d5701d3",
+      "deleted": true
+    }
+  ]
+}
+```

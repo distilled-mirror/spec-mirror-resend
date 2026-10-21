@@ -15,101 +15,95 @@ Before you start, you'll need:
 
 ## Guide
 
-<Steps>
-  <Step title="Install">
-    Get the Resend Go SDK.
+**1. Install**
 
-    <CodeGroup>
-      ```bash bash theme={"theme":{"light":"github-light","dark":"vesper"}}
-      go get github.com/resend/resend-go/v4
-      ```
-    </CodeGroup>
-  </Step>
+Get the Resend Go SDK.
 
-  <Step title="Send email using HTML">
-    The easiest way to send an email is by using the `html` parameter.
+```bash bash theme={"theme":{"light":"github-light","dark":"vesper"}}
+go get github.com/resend/resend-go/v4
+```
 
-    ```Go main.go theme={"theme":{"light":"github-light","dark":"vesper"}}
-    package main
+**2. Send email using HTML**
 
-    import (
-    	"fmt"
+The easiest way to send an email is by using the `html` parameter.
 
-    	"github.com/resend/resend-go/v4"
-    )
+```Go main.go theme={"theme":{"light":"github-light","dark":"vesper"}}
+package main
 
-    func main() {
-        client := resend.NewClient("re_xxxxxxxxx")
+import (
+	"fmt"
 
-        params := &resend.SendEmailRequest{
-            From:    "Acme <onboarding@resend.dev>",
-            To:      []string{"delivered@resend.dev"},
-            Html:    "<strong>hello world</strong>",
-            Subject: "Hello from Golang",
-            Cc:      []string{"cc@example.com"},
-            Bcc:     []string{"bcc@example.com"},
-            ReplyTo: "replyto@example.com",
-        }
+	"github.com/resend/resend-go/v4"
+)
 
-        sent, err := client.Emails.Send(params)
-        if err != nil {
-            fmt.Println(err.Error())
-            return
-        }
-        fmt.Println(sent.Id)
+func main() {
+    client := resend.NewClient("re_xxxxxxxxx")
+
+    params := &resend.SendEmailRequest{
+        From:    "Acme <onboarding@resend.dev>",
+        To:      []string{"delivered@resend.dev"},
+        Html:    "<strong>hello world</strong>",
+        Subject: "Hello from Golang",
+        Cc:      []string{"cc@example.com"},
+        Bcc:     []string{"bcc@example.com"},
+        ReplyTo: "replyto@example.com",
     }
-    ```
-  </Step>
-</Steps>
+
+    sent, err := client.Emails.Send(params)
+    if err != nil {
+        fmt.Println(err.Error())
+        return
+    }
+    fmt.Println(sent.Id)
+}
+```
 
 ## Examples
 
-<CardGroup cols={3}>
-  <Card title="Basic Send" icon="arrow-up-right-from-square" href="https://github.com/resend/resend-examples/tree/main/go-resend-examples/examples/basic_send">
-    Basic email sending
-  </Card>
+> **[Basic Send](https://github.com/resend/resend-examples/tree/main/go-resend-examples/examples/basic_send)**
+>
+> Basic email sending
 
-  <Card title="Attachments" icon="arrow-up-right-from-square" href="https://github.com/resend/resend-examples/tree/main/go-resend-examples/examples/with_attachments">
-    Send emails with file attachments
-  </Card>
+> **[Attachments](https://github.com/resend/resend-examples/tree/main/go-resend-examples/examples/with_attachments)**
+>
+> Send emails with file attachments
 
-  <Card title="Inline Images (CID)" icon="arrow-up-right-from-square" href="https://github.com/resend/resend-examples/tree/main/go-resend-examples/examples/with_cid_attachments">
-    Embed inline images using CID
-  </Card>
+> **[Inline Images (CID)](https://github.com/resend/resend-examples/tree/main/go-resend-examples/examples/with_cid_attachments)**
+>
+> Embed inline images using CID
 
-  <Card title="Templates" icon="arrow-up-right-from-square" href="https://github.com/resend/resend-examples/tree/main/go-resend-examples/examples/with_template">
-    Send emails using Resend hosted templates
-  </Card>
+> **[Templates](https://github.com/resend/resend-examples/tree/main/go-resend-examples/examples/with_template)**
+>
+> Send emails using Resend hosted templates
 
-  <Card title="Scheduling" icon="arrow-up-right-from-square" href="https://github.com/resend/resend-examples/tree/main/go-resend-examples/examples/scheduled_send">
-    Schedule emails for future delivery
-  </Card>
+> **[Scheduling](https://github.com/resend/resend-examples/tree/main/go-resend-examples/examples/scheduled_send)**
+>
+> Schedule emails for future delivery
 
-  <Card title="Prevent Threading" icon="arrow-up-right-from-square" href="https://github.com/resend/resend-examples/tree/main/go-resend-examples/examples/prevent_threading">
-    Prevent email threading on Gmail
-  </Card>
+> **[Prevent Threading](https://github.com/resend/resend-examples/tree/main/go-resend-examples/examples/prevent_threading)**
+>
+> Prevent email threading on Gmail
 
-  <Card title="Audiences" icon="arrow-up-right-from-square" href="https://github.com/resend/resend-examples/tree/main/go-resend-examples/examples/audiences">
-    Manage contacts and audiences
-  </Card>
+> **[Audiences](https://github.com/resend/resend-examples/tree/main/go-resend-examples/examples/audiences)**
+>
+> Manage contacts and audiences
 
-  <Card title="Domains" icon="arrow-up-right-from-square" href="https://github.com/resend/resend-examples/tree/main/go-resend-examples/examples/domains">
-    Create and manage sending domains
-  </Card>
+> **[Domains](https://github.com/resend/resend-examples/tree/main/go-resend-examples/examples/domains)**
+>
+> Create and manage sending domains
 
-  <Card title="Inbound Webhooks" icon="arrow-up-right-from-square" href="https://github.com/resend/resend-examples/tree/main/go-resend-examples/examples/inbound">
-    Receive and process inbound emails
-  </Card>
+> **[Inbound Webhooks](https://github.com/resend/resend-examples/tree/main/go-resend-examples/examples/inbound)**
+>
+> Receive and process inbound emails
 
-  <Card title="Double Opt-in" icon="arrow-up-right-from-square" href="https://github.com/resend/resend-examples/tree/main/go-resend-examples/examples/double_optin">
-    Double opt-in subscription flow
-  </Card>
+> **[Double Opt-in](https://github.com/resend/resend-examples/tree/main/go-resend-examples/examples/double_optin)**
+>
+> Double opt-in subscription flow
 
-  <Card title="Chi App" icon="arrow-up-right-from-square" href="https://github.com/resend/resend-examples/tree/main/go-resend-examples/chi_app">
-    Full Chi web framework application
-  </Card>
+> **[Chi App](https://github.com/resend/resend-examples/tree/main/go-resend-examples/chi_app)**
+>
+> Full Chi web framework application
 
-  <Card title="Gin App" icon="arrow-up-right-from-square" href="https://github.com/resend/resend-examples/tree/main/go-resend-examples/gin_app">
-    Full Gin web framework application
-  </Card>
-</CardGroup>
+> **[Gin App](https://github.com/resend/resend-examples/tree/main/go-resend-examples/gin_app)**
+>
+> Full Gin web framework application

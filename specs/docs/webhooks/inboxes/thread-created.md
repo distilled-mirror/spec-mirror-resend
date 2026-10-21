@@ -6,212 +6,180 @@
 
 > Received when the first email of a thread lands in an inbox.
 
-export const ResponseBodyParameters = ({type, children}) => {
-  return <div>
-      <h2>Response Body Parameters</h2>
-      <p>
-        All webhook payloads follow a consistent top-level structure with
-        event-specific data nested within the <code>data</code> object.
-      </p>
-      <ParamField body="type" type="string">
-        The event type that triggered the webhook (e.g., <code>{type}</code>).
-      </ParamField>
-      <ParamField body="created_at" type="string">
-        ISO 8601 timestamp when the webhook event was created.
-      </ParamField>
-      <ParamField body="data" type="object">
-        Event-specific data containing detailed information about the event. The
-        data object for the <code>{type}</code> event contains the following
-        parameters:
-        <Expandable defaultOpen title="object parameters">
-          {children}
-        </Expandable>
-      </ParamField>
-    </div>;
-};
-
-<Warning>
-  Inboxes are currently in private beta and only available to a limited
-  number of users. The response shape might change before GA.
-
-  <span />
-
-  [Get early access](https://resend.com/settings/labs) if you're interested in testing this feature.
-
-  <span />
-
-  Once you have access, upgrade your Resend SDK to use the new methods:
-
-  <CodeGroup>
-    ```bash Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
-    npm install resend@6.33.0
-    ```
-
-    ```bash CLI theme={"theme":{"light":"github-light","dark":"vesper"}}
-    npm install -g resend-cli@2.25.0
-    ```
-  </CodeGroup>
-</Warning>
-
 Event triggered whenever the **first email of a thread** lands in the inbox, inbound or outbound.
 
 *Note: `source` is always `system`, because the email pipeline sends this event, even when the API or an agent sent the email.*
 
-<ResponseBodyParameters type="inbox.thread.created">
-  <ParamField body="source" type="api | dashboard | agent | system">
-    What made the change
-  </ParamField>
+## Response Body Parameters
 
-  <ParamField body="inbox_id" type="string">
-    The ID of the inbox
-  </ParamField>
+All webhook payloads follow a consistent top-level structure with
+event-specific data nested within the `data` object.
 
-  <ParamField body="thread_id" type="string">
-    The ID of the thread
-  </ParamField>
+**type** `string`
 
-  <ParamField body="email_id" type="string">
-    The ID of the email
-  </ParamField>
+The event type that triggered the webhook (e.g., `inbox.thread.created`).
+**created\_at** `string`
 
-  <ParamField body="thread" type="object">
-    The thread, as it is when the webhook is sent. Absent when the thread no longer exists
+ISO 8601 timestamp when the webhook event was created.
+**data** `object`
 
-    <Expandable title="thread object" defaultOpen>
-      <ParamField body="object" type="string">
-        Always `inbox_thread`
-      </ParamField>
+Event-specific data containing detailed information about the event. The
+data object for the `inbox.thread.created` event contains the following
+parameters:
 
-      <ParamField body="id" type="string">
-        The ID of the thread
-      </ParamField>
+**object parameters**
 
-      <ParamField body="subject" type="string | null">
-        The subject of the thread
-      </ParamField>
+**source** `api | dashboard | agent | system`
 
-      <ParamField body="folder" type="inbox | archive | spam | sent | trash">
-        The folder the thread lives in
-      </ParamField>
+What made the change
 
-      <ParamField body="labels" type="array">
-        The labels attached to the thread, each with an `id`, `name`, and `color`
-      </ParamField>
+**inbox\_id** `string`
 
-      <ParamField body="read" type="boolean">
-        True only when every message in the thread is read
-      </ParamField>
-    </Expandable>
-  </ParamField>
+The ID of the inbox
 
-  <ParamField body="email" type="object">
-    The email, as it is when the webhook is sent, without `html` or `text`. Fetch the body with [Retrieve Thread Email](/docs/api-reference/inboxes/get-thread-email). Absent when the email no longer exists
+**thread\_id** `string`
 
-    <Expandable title="email object" defaultOpen>
-      <ParamField body="id" type="string">
-        The ID of the email
-      </ParamField>
+The ID of the thread
 
-      <ParamField body="direction" type="inbound | outbound">
-        Whether the email was received by the inbox or sent from it
-      </ParamField>
+**email\_id** `string`
 
-      <ParamField body="from" type="string">
-        Sender email address. Can include the display name.
-      </ParamField>
+The ID of the email
 
-      <ParamField body="to" type="string[]">
-        The recipients of the email
-      </ParamField>
+**thread** `object`
 
-      <ParamField body="cc" type="string[]">
-        The CC recipients of the email
-      </ParamField>
+The thread, as it is when the webhook is sent. Absent when the thread no longer exists
 
-      <ParamField body="bcc" type="string[]">
-        The BCC recipients of the email
-      </ParamField>
+**thread object**
 
-      <ParamField body="reply_to" type="string[]">
-        The Reply-To addresses
-      </ParamField>
+**object** `string`
 
-      <ParamField body="subject" type="string | null">
-        The subject of the email
-      </ParamField>
+Always `inbox_thread`
 
-      <ParamField body="message_id" type="string | null">
-        The Message-ID header of the email
-      </ParamField>
+**id** `string`
 
-      <ParamField body="attachments" type="array">
-        The attachments on the email
+The ID of the thread
 
-        <Expandable title="attachment object" defaultOpen>
-          <ParamField body="id" type="string">
-            The ID of the attachment
-          </ParamField>
+**subject** `string | null`
 
-          <ParamField body="filename" type="string | null">
-            The filename of the attachment
-          </ParamField>
+The subject of the thread
 
-          <ParamField body="size" type="number | null">
-            The size of the attachment in bytes
-          </ParamField>
-        </Expandable>
-      </ParamField>
+**folder** `inbox | archive | spam | sent | trash`
 
-      <ParamField body="read" type="boolean">
-        Whether the email has been read
-      </ParamField>
+The folder the thread lives in
 
-      <ParamField body="received_at" type="string">
-        ISO 8601 timestamp when the email arrived or was sent
-      </ParamField>
-    </Expandable>
-  </ParamField>
-</ResponseBodyParameters>
+**labels** `array`
 
-<ResponseExample>
-  ```json theme={"theme":{"light":"github-light","dark":"vesper"}}
-  {
-    "type": "inbox.thread.created",
-    "created_at": "2026-09-29T12:00:00.000Z",
-    "data": {
-      "source": "system",
-      "inbox_id": "b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1",
-      "thread_id": "7c1f0a2e-5d3b-4e8a-9f61-2b8d4c6e1a90",
-      "email_id": "4ef9a417-02e9-4d39-ad75-9611e0fcc33c",
-      "thread": {
-        "object": "inbox_thread",
-        "id": "7c1f0a2e-5d3b-4e8a-9f61-2b8d4c6e1a90",
-        "subject": "Question about my invoice",
-        "folder": "inbox",
-        "labels": [],
-        "read": false
-      },
-      "email": {
-        "id": "4ef9a417-02e9-4d39-ad75-9611e0fcc33c",
-        "direction": "inbound",
-        "from": "Steve Wozniak <steve.wozniak@gmail.com>",
-        "to": ["support@example.com"],
-        "cc": [],
-        "bcc": [],
-        "reply_to": [],
-        "subject": "Question about my invoice",
-        "message_id": "<CAF7c1f0a2e5d3b@mail.gmail.com>",
-        "attachments": [
-          {
-            "id": "2a0c9ce0-3112-4728-976e-47ddcd16a318",
-            "filename": "invoice.pdf",
-            "size": 48213
-          }
-        ],
-        "read": false,
-        "received_at": "2026-09-29T12:00:00.000Z"
-      }
+The labels attached to the thread, each with an `id`, `name`, and `color`
+
+**read** `boolean`
+
+True only when every message in the thread is read
+
+**email** `object`
+
+The email, as it is when the webhook is sent, without `html` or `text`. Fetch the body with [Retrieve Thread Email](/docs/api-reference/inboxes/get-thread-email). Absent when the email no longer exists
+
+**email object**
+
+**id** `string`
+
+The ID of the email
+
+**direction** `inbound | outbound`
+
+Whether the email was received by the inbox or sent from it
+
+**from** `string`
+
+Sender email address. Can include the display name.
+
+**to** `string[]`
+
+The recipients of the email
+
+**cc** `string[]`
+
+The CC recipients of the email
+
+**bcc** `string[]`
+
+The BCC recipients of the email
+
+**reply\_to** `string[]`
+
+The Reply-To addresses
+
+**subject** `string | null`
+
+The subject of the email
+
+**message\_id** `string | null`
+
+The Message-ID header of the email
+
+**attachments** `array`
+
+The attachments on the email
+
+**attachment object**
+
+**id** `string`
+
+The ID of the attachment
+
+**filename** `string | null`
+
+The filename of the attachment
+
+**size** `number | null`
+
+The size of the attachment in bytes
+
+**read** `boolean`
+
+Whether the email has been read
+
+**received\_at** `string`
+
+ISO 8601 timestamp when the email arrived or was sent
+
+```json theme={"theme":{"light":"github-light","dark":"vesper"}}
+{
+  "type": "inbox.thread.created",
+  "created_at": "2026-09-29T12:00:00.000Z",
+  "data": {
+    "source": "system",
+    "inbox_id": "b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1",
+    "thread_id": "7c1f0a2e-5d3b-4e8a-9f61-2b8d4c6e1a90",
+    "email_id": "4ef9a417-02e9-4d39-ad75-9611e0fcc33c",
+    "thread": {
+      "object": "inbox_thread",
+      "id": "7c1f0a2e-5d3b-4e8a-9f61-2b8d4c6e1a90",
+      "subject": "Question about my invoice",
+      "folder": "inbox",
+      "labels": [],
+      "read": false
+    },
+    "email": {
+      "id": "4ef9a417-02e9-4d39-ad75-9611e0fcc33c",
+      "direction": "inbound",
+      "from": "Steve Wozniak <steve.wozniak@gmail.com>",
+      "to": ["support@example.com"],
+      "cc": [],
+      "bcc": [],
+      "reply_to": [],
+      "subject": "Question about my invoice",
+      "message_id": "<CAF7c1f0a2e5d3b@mail.gmail.com>",
+      "attachments": [
+        {
+          "id": "2a0c9ce0-3112-4728-976e-47ddcd16a318",
+          "filename": "invoice.pdf",
+          "size": 48213
+        }
+      ],
+      "read": false,
+      "received_at": "2026-09-29T12:00:00.000Z"
     }
   }
-  ```
-</ResponseExample>
+}
+```

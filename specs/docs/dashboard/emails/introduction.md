@@ -14,10 +14,10 @@ Resend provides all the tools you need to send [transactional emails](/docs/emai
 * password reset emails
 * account notifications
 
-<Tip>
-  To send bulk marketing emails, use the
-  [Broadcasts](/docs/dashboard/broadcasts/introduction) feature.
-</Tip>
+> [!TIP]
+>
+> To send bulk marketing emails, use the
+> [Broadcasts](/docs/dashboard/broadcasts/introduction) feature.
 
 Once you [verify a domain](/docs/add-a-domain) in your Resend account, you can send from any email address at that domain. You do not need to “create an email address,” “set up a sender identity,” or “add a from-address” before sending.
 
@@ -66,24 +66,22 @@ Learn more about [managing your sent emails](/docs/dashboard/emails/manage-email
 
 See how to use Resend's sending features.
 
-<CardGroup cols={2}>
-  <Card title="View and manage sent emails" icon="envelope" href="/docs/dashboard/emails/manage-emails" />
+> **[View and manage sent emails](/docs/dashboard/emails/manage-emails)**
 
-  <Card title="Send test emails" icon="flask-gear" href="/docs/dashboard/emails/send-test-emails" />
+> **[Send test emails](/docs/dashboard/emails/send-test-emails)**
 
-  <Card title="Include attachments" icon="file-plus" href="/docs/dashboard/emails/attachments" />
+> **[Include attachments](/docs/dashboard/emails/attachments)**
 
-  <Card title="Embed inline images" icon="image" href="/docs/dashboard/emails/embed-inline-images" />
+> **[Embed inline images](/docs/dashboard/emails/embed-inline-images)**
 
-  <Card title="Schedule emails" icon="clock" href="/docs/dashboard/emails/schedule-email" />
+> **[Schedule emails](/docs/dashboard/emails/schedule-email)**
 
-  <Card title="Batch sending" icon="envelopes" href="/docs/dashboard/emails/batch-sending" />
+> **[Batch sending](/docs/dashboard/emails/batch-sending)**
 
-  <Card title="Customize headers" icon="rectangle-history-circle-user" href="/docs/dashboard/emails/custom-headers" />
+> **[Customize headers](/docs/dashboard/emails/custom-headers)**
 
-  <Card title="Prevent duplicate emails" icon="key" href="/docs/dashboard/emails/idempotency-keys" />
+> **[Prevent duplicate emails](/docs/dashboard/emails/idempotency-keys)**
 
-  <Card title="Add an unsubscribe link" icon="person-from-portal" href="/docs/dashboard/emails/add-unsubscribe-to-transactional-emails" />
+> **[Add an unsubscribe link](/docs/dashboard/emails/add-unsubscribe-to-transactional-emails)**
 
-  <Card title="Add identifier tags" icon="tags" href="/docs/dashboard/emails/tags" />
-</CardGroup>
+> **[Add identifier tags](/docs/dashboard/emails/tags)**

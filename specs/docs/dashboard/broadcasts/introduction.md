@@ -18,10 +18,10 @@ Resend provides all the tools you need to send bulk marketing emails to your Con
 
 Resend's Broadcast features include tools for content creation, contact management, and performance tracking while handling queuing, throttling, and scheduling for you so that you don't have to roll your own infrastructure.
 
-<Tip>
-  To send transactional emails, use the
-  [Sending](/docs/dashboard/emails/introduction) feature.
-</Tip>
+> [!TIP]
+>
+> To send transactional emails, use the
+> [Sending](/docs/dashboard/emails/introduction) feature.
 
 ## Broadcast features
 
@@ -37,37 +37,35 @@ With Resend's Broadcast features, you can:
 
 You can send bulk marketing emails from [a verified domain](/docs/dashboard/domains/introduction) to a [segment](/docs/dashboard/segments/introduction) of your contact list.
 
-<Tip>
-  You can create a draft Broadcast and send a test email to preview your content
-  even before you add any contacts. However, you will need to create a segment
-  before you can send your Broadcast.
-</Tip>
+> [!TIP]
+>
+> You can create a draft Broadcast and send a test email to preview your content
+> even before you add any contacts. However, you will need to create a segment
+> before you can send your Broadcast.
 
-<Steps>
-  <Step title="Add contacts.">
-    [Add or import contacts](/docs/dashboard/contacts/add-contacts) manually or
-    programmatically. You can also upload a `.csv` file of existing contacts.
-  </Step>
+**1. Add contacts.**
 
-  <Step title="Create a segment and add contacts.">
-    Broadcasts are sent to a [segment](/docs/dashboard/segments/introduction) of your
-    audience.
-  </Step>
+[Add or import contacts](/docs/dashboard/contacts/add-contacts) manually or
+programmatically. You can also upload a `.csv` file of existing contacts.
 
-  <Step title="Write and send your Broadcast.">
-    [Create and send a Broadcast entirely using the no-code
-    editor](/docs/dashboard/broadcasts/editor). Alternatively, you can [use the
-    Broadcast API to build and distribute your
-    Broadcast](/docs/dashboard/broadcasts/send-broadcast-with-api) from your
-    application.
-  </Step>
+**2. Create a segment and add contacts.**
 
-  <Step title="Check your performance.">
-    View the details of any sent Broadcast in the [**Broadcasts Dashboard
-    Page**](https://resend.com/broadcasts) to see real-time deliverability
-    metrics, open and click tracking (if enabled), and subscriber actions.
-  </Step>
-</Steps>
+Broadcasts are sent to a [segment](/docs/dashboard/segments/introduction) of your
+audience.
+
+**3. Write and send your Broadcast.**
+
+[Create and send a Broadcast entirely using the no-code
+editor](/docs/dashboard/broadcasts/editor). Alternatively, you can [use the
+Broadcast API to build and distribute your
+Broadcast](/docs/dashboard/broadcasts/send-broadcast-with-api) from your
+application.
+
+**4. Check your performance.**
+
+View the details of any sent Broadcast in the [**Broadcasts Dashboard
+Page**](https://resend.com/broadcasts) to see real-time deliverability
+metrics, open and click tracking (if enabled), and subscriber actions.
 
 ## Choose your infrastructure
 
@@ -81,13 +79,13 @@ To create, send, and manage Broadcasts from your application, you can also use a
 * [CLI](/docs/cli#emails): send emails from the terminal
 * [MCP](/docs/mcp-server): send through your agent with MCP
 
-<Info>
-  {' '}
-
-  You can also create [automations](/docs/dashboard/automations/introduction) for
-  repeatable transactional emails like welcoming new subscribers, and Broadcast
-  needs like updating your contact list.
-</Info>
+> [!NOTE]
+>
+> &#x20;
+>
+> You can also create [automations](/docs/dashboard/automations/introduction) for
+> repeatable transactional emails like welcoming new subscribers, and Broadcast
+> needs like updating your contact list.
 
 See how to use Resend's Broadcast and contact management features in the [related guides](#related-guides).
 
@@ -111,41 +109,41 @@ Admins can download your data in CSV format for the following resources:
 * Logs
 * API keys
 
-<Info>Currently, exports are limited to admin users of your team.</Info>
+> [!NOTE]
+>
+> Currently, exports are limited to admin users of your team.
 
 To start, apply filters to your data and click on the "Export" button. Confirm your filters before exporting your data.
 
-<video autoPlay muted loop playsinline className="w-full aspect-video" src="https://mintcdn.com/resend/OWNnQaVDyqcGyhhN/images/exports.mp4?fit=max&auto=format&n=OWNnQaVDyqcGyhhN&q=85&s=1149ee4e83b4414e75a0ecaa92774c38" data-path="images/exports.mp4" />
+<video autoPlay muted loop playsinline src="https://mintcdn.com/resend/OWNnQaVDyqcGyhhN/images/exports.mp4?fit=max&auto=format&n=OWNnQaVDyqcGyhhN&q=85&s=1149ee4e83b4414e75a0ecaa92774c38" />
 
 If your exported data includes 1,000 items or less, the export will download immediately. For larger exports, you'll receive an email with a link to download your data.
 
 All admins on your team can securely access the export for 7 days. Unavailable exports are marked as "Expired."
 
-<Note>
-  All exports your team creates are listed in the
-  [Exports](https://resend.com/exports) page under **Settings** > **Team** >
-  **Exports**. Select any export to view its details page. All members of your
-  team can view your exports, but only admins can download the data.
-</Note>
+> [!NOTE]
+>
+> All exports your team creates are listed in the
+> [Exports](https://resend.com/exports) page under **Settings** > **Team** >
+> **Exports**. Select any export to view its details page. All members of your
+> team can view your exports, but only admins can download the data.
 
 ## Related Guides
 
 See how to use Resend's Broadcast features.
 
-<CardGroup cols={2}>
-  <Card title="No-code editor" icon="pen-line" href="/docs/dashboard/broadcasts/editor" />
+> **[No-code editor](/docs/dashboard/broadcasts/editor)**
 
-  <Card title="Send with API" icon="paper-plane-top" href="/docs/dashboard/broadcasts/send-broadcast-with-api" />
+> **[Send with API](/docs/dashboard/broadcasts/send-broadcast-with-api)**
 
-  <Card title="Manage Broadcasts" icon="envelopes-bulk" href="/docs/dashboard/broadcasts/manage-broadcasts" />
+> **[Manage Broadcasts](/docs/dashboard/broadcasts/manage-broadcasts)**
 
-  <Card title="Contacts" icon="id-card" href="/docs/dashboard/contacts/introduction" />
+> **[Contacts](/docs/dashboard/contacts/introduction)**
 
-  <Card title="Segments" icon="chart-pie" href="/docs/dashboard/segments/introduction" />
+> **[Segments](/docs/dashboard/segments/introduction)**
 
-  <Card title="Topics" icon="hashtag" href="/docs/dashboard/topics/introduction" />
+> **[Topics](/docs/dashboard/topics/introduction)**
 
-  <Card title="Track performance" icon="chart-column" href="/docs/dashboard/broadcasts/performance-tracking" />
+> **[Track performance](/docs/dashboard/broadcasts/performance-tracking)**
 
-  <Card title="Handle unsubscribes" icon="right-to-bracket" href="/docs/dashboard/audiences/managing-unsubscribe-list" />
-</CardGroup>
+> **[Handle unsubscribes](/docs/dashboard/audiences/managing-unsubscribe-list)**

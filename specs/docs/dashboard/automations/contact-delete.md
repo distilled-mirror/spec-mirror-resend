@@ -16,277 +16,273 @@ Common use cases:
 
 ## How it works
 
-<Tabs>
-  <Tab title="Using the dashboard">
-    Include the **Delete contact** step to your Automation.
+**Using the dashboard**
 
-    <img alt="Automation Contact Delete" src="https://mintcdn.com/resend/GClVSBUDv2Z8C3Ae/images/automations-contact-delete.png?fit=max&auto=format&n=GClVSBUDv2Z8C3Ae&q=85&s=57ab7ffaa985a85df04deab53f9dc27a" width="4008" height="2216" data-path="images/automations-contact-delete.png" />
+Include the **Delete contact** step to your Automation.
 
-    No configuration required. It is ready as soon as you add it.
-  </Tab>
+![Automation Contact Delete](https://mintcdn.com/resend/GClVSBUDv2Z8C3Ae/images/automations-contact-delete.png?fit=max\&auto=format\&n=GClVSBUDv2Z8C3Ae\&q=85\&s=57ab7ffaa985a85df04deab53f9dc27a)
 
-  <Tab title="Using the API">
-    Add a `contact_delete` step to your Automation's `steps` array.
+No configuration required. It is ready as soon as you add it.
 
-    <CodeGroup>
-      ```ts Node.js {13-17} theme={"theme":{"light":"github-light","dark":"vesper"}}
-      import { Resend } from 'resend';
+**Using the API**
 
-      const resend = new Resend('re_xxxxxxxxx');
+Add a `contact_delete` step to your Automation's `steps` array.
 
-      const { data, error } = await resend.automations.create({
-        name: 'Remove churned users',
-        steps: [
-          {
-            key: 'start',
-            type: 'trigger',
-            config: { eventName: 'user.deleted' },
-          },
-          {
-            key: 'remove',
-            type: 'contact_delete',
-            config: {},
-          },
-        ],
-        connections: [{ from: 'start', to: 'remove', type: 'default' }],
-      });
-      ```
+```ts Node.js {13-17} theme={"theme":{"light":"github-light","dark":"vesper"}}
+import { Resend } from 'resend';
 
-      ```php PHP {11-15} theme={"theme":{"light":"github-light","dark":"vesper"}}
-      $resend = Resend::client('re_xxxxxxxxx');
+const resend = new Resend('re_xxxxxxxxx');
 
-      $resend->automations->create([
-        'name' => 'Remove churned users',
-        'steps' => [
-          [
-            'key' => 'start',
-            'type' => 'trigger',
-            'config' => ['event_name' => 'user.deleted'],
-          ],
-          [
-            'key' => 'remove',
-            'type' => 'contact_delete',
-            'config' => [],
-          ],
-        ],
-        'connections' => [['from' => 'start', 'to' => 'remove', 'type' => 'default']],
-      ]);
-      ```
+const { data, error } = await resend.automations.create({
+  name: 'Remove churned users',
+  steps: [
+    {
+      key: 'start',
+      type: 'trigger',
+      config: { eventName: 'user.deleted' },
+    },
+    {
+      key: 'remove',
+      type: 'contact_delete',
+      config: {},
+    },
+  ],
+  connections: [{ from: 'start', to: 'remove', type: 'default' }],
+});
+```
 
-      ```python Python {13-17} theme={"theme":{"light":"github-light","dark":"vesper"}}
-      import resend
+```php PHP {11-15} theme={"theme":{"light":"github-light","dark":"vesper"}}
+$resend = Resend::client('re_xxxxxxxxx');
 
-      resend.api_key = "re_xxxxxxxxx"
+$resend->automations->create([
+  'name' => 'Remove churned users',
+  'steps' => [
+    [
+      'key' => 'start',
+      'type' => 'trigger',
+      'config' => ['event_name' => 'user.deleted'],
+    ],
+    [
+      'key' => 'remove',
+      'type' => 'contact_delete',
+      'config' => [],
+    ],
+  ],
+  'connections' => [['from' => 'start', 'to' => 'remove', 'type' => 'default']],
+]);
+```
 
-      params: resend.Automations.CreateParams = {
-        "name": "Remove churned users",
-        "steps": [
-          {
-            "key": "start",
-            "type": "trigger",
-            "config": {"event_name": "user.deleted"},
-          },
-          {
-            "key": "remove",
-            "type": "contact_delete",
-            "config": {},
-          },
-        ],
-        "connections": [{"from": "start", "to": "remove", "type": "default"}],
-      }
+```python Python {13-17} theme={"theme":{"light":"github-light","dark":"vesper"}}
+import resend
 
-      resend.Automations.create(params)
-      ```
+resend.api_key = "re_xxxxxxxxx"
 
-      ```ruby Ruby {13-17} theme={"theme":{"light":"github-light","dark":"vesper"}}
-      require "resend"
+params: resend.Automations.CreateParams = {
+  "name": "Remove churned users",
+  "steps": [
+    {
+      "key": "start",
+      "type": "trigger",
+      "config": {"event_name": "user.deleted"},
+    },
+    {
+      "key": "remove",
+      "type": "contact_delete",
+      "config": {},
+    },
+  ],
+  "connections": [{"from": "start", "to": "remove", "type": "default"}],
+}
 
-      Resend.api_key = "re_xxxxxxxxx"
+resend.Automations.create(params)
+```
 
-      params = {
-        name: "Remove churned users",
-        steps: [
-          {
-            key: "start",
-            type: "trigger",
-            config: { event_name: "user.deleted" },
-          },
-          {
-            key: "remove",
-            type: "contact_delete",
-            config: {},
-          },
-        ],
-        connections: [{ from: "start", to: "remove", type: "default" }],
-      }
+```ruby Ruby {13-17} theme={"theme":{"light":"github-light","dark":"vesper"}}
+require "resend"
 
-      Resend::Automations.create(params)
-      ```
+Resend.api_key = "re_xxxxxxxxx"
 
-      ```go Go {18-22} theme={"theme":{"light":"github-light","dark":"vesper"}}
-      package main
+params = {
+  name: "Remove churned users",
+  steps: [
+    {
+      key: "start",
+      type: "trigger",
+      config: { event_name: "user.deleted" },
+    },
+    {
+      key: "remove",
+      type: "contact_delete",
+      config: {},
+    },
+  ],
+  connections: [{ from: "start", to: "remove", type: "default" }],
+}
 
-      import "github.com/resend/resend-go/v4"
+Resend::Automations.create(params)
+```
 
-      func main() {
-      	client := resend.NewClient("re_xxxxxxxxx")
+```go Go {18-22} theme={"theme":{"light":"github-light","dark":"vesper"}}
+package main
 
-      	params := &resend.CreateAutomationRequest{
-      		Name: "Remove churned users",
-      		Steps: []resend.AutomationStep{
-      			{
-      				Key:  "start",
-      				Type: resend.AutomationStepTypeTrigger,
-      				Config: map[string]any{
-      					"event_name": "user.deleted",
-      				},
-      			},
-      			{
-      				Key:    "remove",
-      				Type:   resend.AutomationStepTypeContactDelete,
-      				Config: map[string]any{},
-      			},
-      		},
-      		Connections: []resend.AutomationConnection{
-      			{From: "start", To: "remove", Type: resend.AutomationConnectionTypeDefault},
-      		},
-      	}
+import "github.com/resend/resend-go/v4"
 
-      	client.Automations.Create(params)
-      }
-      ```
+func main() {
+	client := resend.NewClient("re_xxxxxxxxx")
 
-      ```rust Rust {22-25} theme={"theme":{"light":"github-light","dark":"vesper"}}
-      use resend_rs::{
-        json,
-        types::{
-          AutomationStatus, Connection, ConnectionType, CreateAutomationOptions, Step, TriggerStepConfig,
+	params := &resend.CreateAutomationRequest{
+		Name: "Remove churned users",
+		Steps: []resend.AutomationStep{
+			{
+				Key:  "start",
+				Type: resend.AutomationStepTypeTrigger,
+				Config: map[string]any{
+					"event_name": "user.deleted",
+				},
+			},
+			{
+				Key:    "remove",
+				Type:   resend.AutomationStepTypeContactDelete,
+				Config: map[string]any{},
+			},
+		},
+		Connections: []resend.AutomationConnection{
+			{From: "start", To: "remove", Type: resend.AutomationConnectionTypeDefault},
+		},
+	}
+
+	client.Automations.Create(params)
+}
+```
+
+```rust Rust {22-25} theme={"theme":{"light":"github-light","dark":"vesper"}}
+use resend_rs::{
+  json,
+  types::{
+    AutomationStatus, Connection, ConnectionType, CreateAutomationOptions, Step, TriggerStepConfig,
+  },
+  Resend, Result,
+};
+
+#[tokio::main]
+async fn main() -> Result<()> {
+  let resend = Resend::new("re_xxxxxxxxx");
+
+  let opts = CreateAutomationOptions {
+    name: "Remove churned users".to_owned(),
+    steps: vec![
+      Step::Trigger {
+        key: "start".to_owned(),
+        config: TriggerStepConfig {
+          event_name: "user.deleted".to_owned(),
         },
-        Resend, Result,
-      };
+      },
+      Step::ContactDelete {
+        key: "remove".to_owned(),
+        config: json!("{}"),
+      },
+    ],
+    connections: vec![Connection::new("start", "remove").with_type(ConnectionType::Default)],
+    status: AutomationStatus::Disabled,
+  };
+  let _automation = resend.automations.create(opts).await?;
 
-      #[tokio::main]
-      async fn main() -> Result<()> {
-        let resend = Resend::new("re_xxxxxxxxx");
+  Ok(())
+}
+```
 
-        let opts = CreateAutomationOptions {
-          name: "Remove churned users".to_owned(),
-          steps: vec![
-            Step::Trigger {
-              key: "start".to_owned(),
-              config: TriggerStepConfig {
-                event_name: "user.deleted".to_owned(),
-              },
-            },
-            Step::ContactDelete {
-              key: "remove".to_owned(),
-              config: json!("{}"),
-            },
-          ],
-          connections: vec![Connection::new("start", "remove").with_type(ConnectionType::Default)],
-          status: AutomationStatus::Disabled,
-        };
-        let _automation = resend.automations.create(opts).await?;
+```java Java {20-23} theme={"theme":{"light":"github-light","dark":"vesper"}}
+import com.resend.*;
+import com.resend.core.exception.ResendException;
+import com.resend.services.automations.model.AutomationConnection;
+import com.resend.services.automations.model.AutomationStep;
+import com.resend.services.automations.model.ConnectionType;
+import com.resend.services.automations.model.CreateAutomationOptions;
+import com.resend.services.automations.model.CreateAutomationResponseSuccess;
 
-        Ok(())
-      }
-      ```
+public class Main {
+    public static void main(String[] args) throws ResendException {
+        Resend resend = new Resend("re_xxxxxxxxx");
 
-      ```java Java {20-23} theme={"theme":{"light":"github-light","dark":"vesper"}}
-      import com.resend.*;
-      import com.resend.core.exception.ResendException;
-      import com.resend.services.automations.model.AutomationConnection;
-      import com.resend.services.automations.model.AutomationStep;
-      import com.resend.services.automations.model.ConnectionType;
-      import com.resend.services.automations.model.CreateAutomationOptions;
-      import com.resend.services.automations.model.CreateAutomationResponseSuccess;
+        CreateAutomationOptions options = CreateAutomationOptions.builder()
+                .name("Remove churned users")
+                .steps(
+                    AutomationStep.trigger("start")
+                        .eventName("user.deleted")
+                        .build(),
+                    AutomationStep.contactDelete("remove")
+                        .build()
+                )
+                .connections(
+                    AutomationConnection.builder()
+                        .from("start")
+                        .to("remove")
+                        .type(ConnectionType.DEFAULT)
+                        .build()
+                )
+                .build();
 
-      public class Main {
-          public static void main(String[] args) throws ResendException {
-              Resend resend = new Resend("re_xxxxxxxxx");
+        CreateAutomationResponseSuccess data = resend.automations().create(options);
+    }
+}
+```
 
-              CreateAutomationOptions options = CreateAutomationOptions.builder()
-                      .name("Remove churned users")
-                      .steps(
-                          AutomationStep.trigger("start")
-                              .eventName("user.deleted")
-                              .build(),
-                          AutomationStep.contactDelete("remove")
-                              .build()
-                      )
-                      .connections(
-                          AutomationConnection.builder()
-                              .from("start")
-                              .to("remove")
-                              .type(ConnectionType.DEFAULT)
-                              .build()
-                      )
-                      .build();
+```csharp .NET {7,15} theme={"theme":{"light":"github-light","dark":"vesper"}}
+using Resend;
+using System.Text.Json;
 
-              CreateAutomationResponseSuccess data = resend.automations().create(options);
-          }
-      }
-      ```
+IResend resend = ResendClient.Create( "re_xxxxxxxxx" );
 
-      ```csharp .NET {7,15} theme={"theme":{"light":"github-light","dark":"vesper"}}
-      using Resend;
-      using System.Text.Json;
+var startConfig = JsonSerializer.SerializeToElement( new { event_name = "user.deleted" } );
+var removeConfig = JsonSerializer.SerializeToElement( new { } );
 
-      IResend resend = ResendClient.Create( "re_xxxxxxxxx" );
+var resp = await resend.AutomationCreateAsync( new AutomationCreateData()
+{
+    Name = "Remove churned users",
+    Steps = new List<AutomationStepData>
+    {
+        new AutomationStepData { Ref = "start", Type = "trigger", Config = startConfig },
+        new AutomationStepData { Ref = "remove", Type = "contact_delete", Config = removeConfig },
+    },
+    Connections = new List<AutomationEdge>
+    {
+        new AutomationEdge { From = "start", To = "remove", EdgeType = "default" },
+    },
+} );
+```
 
-      var startConfig = JsonSerializer.SerializeToElement( new { event_name = "user.deleted" } );
-      var removeConfig = JsonSerializer.SerializeToElement( new { } );
+```bash cURL {10-14} theme={"theme":{"light":"github-light","dark":"vesper"}}
+curl -X POST 'https://api.resend.com/automations' \
+     -H 'Authorization: Bearer re_xxxxxxxxx' \
+     -H 'Content-Type: application/json' \
+     -d '{
+  "name": "Remove churned users",
+  "steps": [{
+    "key": "start",
+    "type": "trigger",
+    "config": { "event_name": "user.deleted" }
+  }, {
+    "key": "remove",
+    "type": "contact_delete",
+    "config": {}
+  }],
+  "connections": [
+    { "from": "start", "to": "remove", "type": "default" }
+  ]
+}'
+```
 
-      var resp = await resend.AutomationCreateAsync( new AutomationCreateData()
-      {
-          Name = "Remove churned users",
-          Steps = new List<AutomationStepData>
-          {
-              new AutomationStepData { Ref = "start", Type = "trigger", Config = startConfig },
-              new AutomationStepData { Ref = "remove", Type = "contact_delete", Config = removeConfig },
-          },
-          Connections = new List<AutomationEdge>
-          {
-              new AutomationEdge { From = "start", To = "remove", EdgeType = "default" },
-          },
-      } );
-      ```
+```bash CLI theme={"theme":{"light":"github-light","dark":"vesper"}}
+resend automations create --name "Remove churned users" --file ./automation.json
+```
 
-      ```bash cURL {10-14} theme={"theme":{"light":"github-light","dark":"vesper"}}
-      curl -X POST 'https://api.resend.com/automations' \
-           -H 'Authorization: Bearer re_xxxxxxxxx' \
-           -H 'Content-Type: application/json' \
-           -d '{
-        "name": "Remove churned users",
-        "steps": [{
-          "key": "start",
-          "type": "trigger",
-          "config": { "event_name": "user.deleted" }
-        }, {
-          "key": "remove",
-          "type": "contact_delete",
-          "config": {}
-        }],
-        "connections": [
-          { "from": "start", "to": "remove", "type": "default" }
-        ]
-      }'
-      ```
+The `config` object is empty, so no additional fields are required.
 
-      ```bash CLI theme={"theme":{"light":"github-light","dark":"vesper"}}
-      resend automations create --name "Remove churned users" --file ./automation.json
-      ```
-    </CodeGroup>
-
-    The `config` object is empty, so no additional fields are required.
-  </Tab>
-</Tabs>
-
-<Warning>
-  Deleting a contact is **permanent**. The contact and all of its properties are
-  removed from the audience. If the contact needs to be re-added later, it must
-  be created again.
-</Warning>
+> [!WARNING]
+>
+> Deleting a contact is **permanent**. The contact and all of its properties are
+> removed from the audience. If the contact needs to be re-added later, it must
+> be created again.
 
 ## Configuration
 

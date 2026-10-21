@@ -22,8 +22,8 @@ You can customize the following:
 * **Text Color**: The text color of the unsubscribe page.
 * **Accent Color**: The accent color of the unsubscribe page.
 
-<video autoPlay muted loop playsinline className="w-full aspect-video" src="https://mintcdn.com/resend/OWNnQaVDyqcGyhhN/images/unsubscribe-page.mp4?fit=max&auto=format&n=OWNnQaVDyqcGyhhN&q=85&s=266f1b0fcd095ad8bb79cfb70ce6fb52" data-path="images/unsubscribe-page.mp4" />
+<video autoPlay muted loop playsinline src="https://mintcdn.com/resend/OWNnQaVDyqcGyhhN/images/unsubscribe-page.mp4?fit=max&auto=format&n=OWNnQaVDyqcGyhhN&q=85&s=266f1b0fcd095ad8bb79cfb70ce6fb52" />
 
-<Note>
-  Pro plan users or higher can also remove the “Powered by Resend” footer.
-</Note>
+> [!NOTE]
+>
+> Pro plan users or higher can also remove the “Powered by Resend” footer.

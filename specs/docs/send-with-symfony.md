@@ -15,144 +15,140 @@ Before you start, you'll need:
 
 ## Guide
 
-<Steps>
-  <Step title="Install">
-    Get the Resend Mailer Bridge package.
+**1. Install**
 
-    ```bash Composer theme={"theme":{"light":"github-light","dark":"vesper"}}
-    composer require symfony/resend-mailer
-    ```
+Get the Resend Mailer Bridge package.
 
-    If your application relies on Resend webhook events, also install the Symfony Webhook Component.
+```bash Composer theme={"theme":{"light":"github-light","dark":"vesper"}}
+composer require symfony/resend-mailer
+```
 
-    ```bash Composer theme={"theme":{"light":"github-light","dark":"vesper"}}
-    composer require symfony/webhook
-    ```
-  </Step>
+If your application relies on Resend webhook events, also install the Symfony Webhook Component.
 
-  <Step title="Configuring Mailer">
-    In your `.env.local` file, which you can create if needed, add the following:
+```bash Composer theme={"theme":{"light":"github-light","dark":"vesper"}}
+composer require symfony/webhook
+```
 
-    ```sh theme={"theme":{"light":"github-light","dark":"vesper"}}
-    MAILER_DSN=resend+api://API_KEY@default
-    MAILER_RESEND_SECRET=SIGNING_SECRET
-    ```
+**2. Configuring Mailer**
 
-    Replace `API_KEY` with your Resend API key, and `SIGNING_SECRET` with your webhook secret, which can be retrieved from the Resend dashboard after creating a new webhook endpoint (see below).
-  </Step>
+In your `.env.local` file, which you can create if needed, add the following:
 
-  <Step title="Send your first email">
-    In a controller, inject the `Mailer`:
+```sh theme={"theme":{"light":"github-light","dark":"vesper"}}
+MAILER_DSN=resend+api://API_KEY@default
+MAILER_RESEND_SECRET=SIGNING_SECRET
+```
 
-    ```php theme={"theme":{"light":"github-light","dark":"vesper"}}
+Replace `API_KEY` with your Resend API key, and `SIGNING_SECRET` with your webhook secret, which can be retrieved from the Resend dashboard after creating a new webhook endpoint (see below).
+
+**3. Send your first email**
+
+In a controller, inject the `Mailer`:
+
+```php theme={"theme":{"light":"github-light","dark":"vesper"}}
+public function __construct(
+    private readonly MailerInterface $mailer,
+) {
+}
+```
+
+In a controller action, use the `$this->mailer` to send your email:
+
+```php theme={"theme":{"light":"github-light","dark":"vesper"}}
+$this->mailer->send(
+    (new Email())
+        ->from('Acme <onboarding@resend.dev>')
+        ->to('delivered@resend.dev')
+        ->subject('Hello world')
+        ->html('<strong>it works!</strong>')
+);
+```
+
+Learn more about sending emails with Mailer Component in [Symfony's documentation](https://symfony.com/doc/current/mailer.html#creating-sending-messages).
+
+**4. Receive and handle webhooks**
+
+Thanks to the Webhook Component, you can create a webhook listener.
+
+```php src/Webhook/ResendWebhookListener.php theme={"theme":{"light":"github-light","dark":"vesper"}}
+#[AsRemoteEventConsumer('mailer_resend')]
+readonly class ResendWebhookListener implements ConsumerInterface
+{
     public function __construct(
-        private readonly MailerInterface $mailer,
+        #[Autowire(param: 'kernel.project_dir')] private string $projectDir,
     ) {
     }
-    ```
 
-    In a controller action, use the `$this->mailer` to send your email:
-
-    ```php theme={"theme":{"light":"github-light","dark":"vesper"}}
-    $this->mailer->send(
-        (new Email())
-            ->from('Acme <onboarding@resend.dev>')
-            ->to('delivered@resend.dev')
-            ->subject('Hello world')
-            ->html('<strong>it works!</strong>')
-    );
-    ```
-
-    Learn more about sending emails with Mailer Component in [Symfony's documentation](https://symfony.com/doc/current/mailer.html#creating-sending-messages).
-  </Step>
-
-  <Step title="Receive and handle webhooks">
-    Thanks to the Webhook Component, you can create a webhook listener.
-
-    ```php src/Webhook/ResendWebhookListener.php theme={"theme":{"light":"github-light","dark":"vesper"}}
-    #[AsRemoteEventConsumer('mailer_resend')]
-    readonly class ResendWebhookListener implements ConsumerInterface
+    public function consume(RemoteEvent $event): void
     {
-        public function __construct(
-            #[Autowire(param: 'kernel.project_dir')] private string $projectDir,
-        ) {
-        }
-
-        public function consume(RemoteEvent $event): void
-        {
-            if ($event instanceof MailerDeliveryEvent) {
-                $this->handleMailDelivery($event);
-            } elseif ($event instanceof MailerEngagementEvent) {
-                $this->handleMailEngagement($event);
-            } else {
-                // This is not an email event
-                return;
-            }
-        }
-
-        private function handleMailDelivery(MailerDeliveryEvent $event): void
-        {
-            // Todo
-        }
-
-        private function handleMailEngagement(MailerEngagementEvent $event): void
-        {
-            // Todo
+        if ($event instanceof MailerDeliveryEvent) {
+            $this->handleMailDelivery($event);
+        } elseif ($event instanceof MailerEngagementEvent) {
+            $this->handleMailEngagement($event);
+        } else {
+            // This is not an email event
+            return;
         }
     }
-    ```
 
-    Bind your listener to the Webhook routing config:
+    private function handleMailDelivery(MailerDeliveryEvent $event): void
+    {
+        // Todo
+    }
 
-    ```yaml config/packages/webhook.yaml theme={"theme":{"light":"github-light","dark":"vesper"}}
-    framework:
-      webhook:
-        routing:
-          mailer_resend:
-            service: 'mailer.webhook.request_parser.resend'
-            secret: '%env(MAILER_RESEND_SECRET)%'
-    ```
+    private function handleMailEngagement(MailerEngagementEvent $event): void
+    {
+        // Todo
+    }
+}
+```
 
-    Next, register your application's webhook endpoint URL (example: `https://{app_domain}/webhook/mailer_resend`) in the [Resend Dashboard](https://resend.com/webhooks):
-  </Step>
-</Steps>
+Bind your listener to the Webhook routing config:
+
+```yaml config/packages/webhook.yaml theme={"theme":{"light":"github-light","dark":"vesper"}}
+framework:
+  webhook:
+    routing:
+      mailer_resend:
+        service: 'mailer.webhook.request_parser.resend'
+        secret: '%env(MAILER_RESEND_SECRET)%'
+```
+
+Next, register your application's webhook endpoint URL (example: `https://{app_domain}/webhook/mailer_resend`) in the [Resend Dashboard](https://resend.com/webhooks):
 
 ## Examples
 
-<CardGroup cols={3}>
-  <Card title="Symfony App" icon="arrow-up-right-from-square" href="https://github.com/resend/resend-examples/tree/main/php-resend-examples/symfony_app">
-    Full Symfony web application
-  </Card>
+> **[Symfony App](https://github.com/resend/resend-examples/tree/main/php-resend-examples/symfony_app)**
+>
+> Full Symfony web application
 
-  <Card title="Basic Send" icon="arrow-up-right-from-square" href="https://github.com/resend/resend-examples/tree/main/php-resend-examples/src/send">
-    Basic, batch, and prevent-threading send
-  </Card>
+> **[Basic Send](https://github.com/resend/resend-examples/tree/main/php-resend-examples/src/send)**
+>
+> Basic, batch, and prevent-threading send
 
-  <Card title="Attachments" icon="arrow-up-right-from-square" href="https://github.com/resend/resend-examples/tree/main/php-resend-examples/src/attachments">
-    File attachments and inline images (CID)
-  </Card>
+> **[Attachments](https://github.com/resend/resend-examples/tree/main/php-resend-examples/src/attachments)**
+>
+> File attachments and inline images (CID)
 
-  <Card title="Scheduling" icon="arrow-up-right-from-square" href="https://github.com/resend/resend-examples/tree/main/php-resend-examples/src/scheduling">
-    Schedule emails for future delivery
-  </Card>
+> **[Scheduling](https://github.com/resend/resend-examples/tree/main/php-resend-examples/src/scheduling)**
+>
+> Schedule emails for future delivery
 
-  <Card title="Templates" icon="arrow-up-right-from-square" href="https://github.com/resend/resend-examples/tree/main/php-resend-examples/src/templates">
-    Send emails using Resend hosted templates
-  </Card>
+> **[Templates](https://github.com/resend/resend-examples/tree/main/php-resend-examples/src/templates)**
+>
+> Send emails using Resend hosted templates
 
-  <Card title="Double Opt-in" icon="arrow-up-right-from-square" href="https://github.com/resend/resend-examples/tree/main/php-resend-examples/src/double-optin">
-    Double opt-in subscription flow
-  </Card>
+> **[Double Opt-in](https://github.com/resend/resend-examples/tree/main/php-resend-examples/src/double-optin)**
+>
+> Double opt-in subscription flow
 
-  <Card title="Inbound Webhooks" icon="arrow-up-right-from-square" href="https://github.com/resend/resend-examples/tree/main/php-resend-examples/src/inbound">
-    Receive and process inbound emails
-  </Card>
+> **[Inbound Webhooks](https://github.com/resend/resend-examples/tree/main/php-resend-examples/src/inbound)**
+>
+> Receive and process inbound emails
 
-  <Card title="Audiences" icon="arrow-up-right-from-square" href="https://github.com/resend/resend-examples/tree/main/php-resend-examples/src/audiences">
-    Manage contacts and audiences
-  </Card>
+> **[Audiences](https://github.com/resend/resend-examples/tree/main/php-resend-examples/src/audiences)**
+>
+> Manage contacts and audiences
 
-  <Card title="Domains" icon="arrow-up-right-from-square" href="https://github.com/resend/resend-examples/tree/main/php-resend-examples/src/domains">
-    Create and manage sending domains
-  </Card>
-</CardGroup>
+> **[Domains](https://github.com/resend/resend-examples/tree/main/php-resend-examples/src/domains)**
+>
+> Create and manage sending domains

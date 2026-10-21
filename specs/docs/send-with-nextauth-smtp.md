@@ -15,86 +15,80 @@ Before you start, you'll need:
 
 ## Guide
 
-<Steps>
-  <Step title="Install">
-    Install the [NextAuth](https://next-auth.js.org/getting-started/example#install-nextauth) package.
+**1. Install**
 
-    <CodeGroup>
-      ```bash npm theme={"theme":{"light":"github-light","dark":"vesper"}}
-      npm install next-auth
-      ```
+Install the [NextAuth](https://next-auth.js.org/getting-started/example#install-nextauth) package.
 
-      ```bash yarn theme={"theme":{"light":"github-light","dark":"vesper"}}
-      yarn add next-auth
-      ```
+```bash npm theme={"theme":{"light":"github-light","dark":"vesper"}}
+npm install next-auth
+```
 
-      ```bash pnpm theme={"theme":{"light":"github-light","dark":"vesper"}}
-      pnpm add next-auth
-      ```
+```bash yarn theme={"theme":{"light":"github-light","dark":"vesper"}}
+yarn add next-auth
+```
 
-      ```bash bun theme={"theme":{"light":"github-light","dark":"vesper"}}
-      bun add next-auth
-      ```
-    </CodeGroup>
+```bash pnpm theme={"theme":{"light":"github-light","dark":"vesper"}}
+pnpm add next-auth
+```
 
-    Then, install the [Nodemailer](https://www.npmjs.com/package/nodemailer) package.
+```bash bun theme={"theme":{"light":"github-light","dark":"vesper"}}
+bun add next-auth
+```
 
-    <CodeGroup>
-      ```bash npm theme={"theme":{"light":"github-light","dark":"vesper"}}
-      npm install nodemailer
-      ```
+Then, install the [Nodemailer](https://www.npmjs.com/package/nodemailer) package.
 
-      ```bash yarn theme={"theme":{"light":"github-light","dark":"vesper"}}
-      yarn add nodemailer
-      ```
+```bash npm theme={"theme":{"light":"github-light","dark":"vesper"}}
+npm install nodemailer
+```
 
-      ```bash pnpm theme={"theme":{"light":"github-light","dark":"vesper"}}
-      pnpm add nodemailer
-      ```
+```bash yarn theme={"theme":{"light":"github-light","dark":"vesper"}}
+yarn add nodemailer
+```
 
-      ```bash bun theme={"theme":{"light":"github-light","dark":"vesper"}}
-      bun add nodemailer
-      ```
-    </CodeGroup>
-  </Step>
+```bash pnpm theme={"theme":{"light":"github-light","dark":"vesper"}}
+pnpm add nodemailer
+```
 
-  <Step title="Configure SMTP credentials">
-    Add your Resend SMTP crendentials in your application's `.env` file:
+```bash bun theme={"theme":{"light":"github-light","dark":"vesper"}}
+bun add nodemailer
+```
 
-    ```ini .env theme={"theme":{"light":"github-light","dark":"vesper"}}
-    EMAIL_SERVER_USER=resend
-    EMAIL_SERVER_PASSWORD=YOUR_API_KEY
-    EMAIL_SERVER_HOST=smtp.resend.com
-    EMAIL_SERVER_PORT=465
-    EMAIL_FROM=onboarding@resend.dev
-    ```
-  </Step>
+**2. Configure SMTP credentials**
 
-  <Step title="Configure Email Provider">
-    Finally, in your \[...nextauth].js file (typically located in pages/api/auth), configure the Email provider with your SMTP settings:
+Add your Resend SMTP crendentials in your application's `.env` file:
 
-    ```js index.ts theme={"theme":{"light":"github-light","dark":"vesper"}}
-    import NextAuth from 'next-auth';
-    import EmailProvider from 'next-auth/providers/email';
-    import nodemailer from 'nodemailer';
+```ini .env theme={"theme":{"light":"github-light","dark":"vesper"}}
+EMAIL_SERVER_USER=resend
+EMAIL_SERVER_PASSWORD=YOUR_API_KEY
+EMAIL_SERVER_HOST=smtp.resend.com
+EMAIL_SERVER_PORT=465
+EMAIL_FROM=onboarding@resend.dev
+```
 
-    export default NextAuth({
-      providers: [
-        EmailProvider({
-          server: {
-            host: process.env.EMAIL_SERVER_HOST,
-            port: process.env.EMAIL_SERVER_PORT,
-            auth: {
-              user: process.env.EMAIL_SERVER_USER,
-              pass: process.env.EMAIL_SERVER_PASSWORD,
-            },
-          },
-          from: process.env.EMAIL_FROM,
-        }),
-        // ... other providers as needed
-      ],
-      // ... any other NextAuth.js configs
-    });
-    ```
-  </Step>
-</Steps>
+**3. Configure Email Provider**
+
+Finally, in your \[...nextauth].js file (typically located in pages/api/auth), configure the Email provider with your SMTP settings:
+
+```js index.ts theme={"theme":{"light":"github-light","dark":"vesper"}}
+import NextAuth from 'next-auth';
+import EmailProvider from 'next-auth/providers/email';
+import nodemailer from 'nodemailer';
+
+export default NextAuth({
+  providers: [
+    EmailProvider({
+      server: {
+        host: process.env.EMAIL_SERVER_HOST,
+        port: process.env.EMAIL_SERVER_PORT,
+        auth: {
+          user: process.env.EMAIL_SERVER_USER,
+          pass: process.env.EMAIL_SERVER_PASSWORD,
+        },
+      },
+      from: process.env.EMAIL_FROM,
+    }),
+    // ... other providers as needed
+  ],
+  // ... any other NextAuth.js configs
+});
+```

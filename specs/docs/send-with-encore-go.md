@@ -8,247 +8,245 @@
 
 [Encore](https://encore.dev) is an open-source Go framework that provisions infrastructure directly from your application code, with built-in observability and cloud deployment.
 
-<Prompt description="Use this pre-built prompt to get started faster." icon="microchip" iconType="solid" actions={["copy", "cursor"]}>
-  # Send Email with Resend and Encore Go
+# Send Email with Resend and Encore Go
 
-  **Purpose:** Enforce only the **current** and **correct** instructions for sending emails using [Resend](https://resend.com/) with the [Encore Go](https://encore.dev) backend framework.
-  **Scope:** All AI-generated advice or code related to sending email with Resend inside an Encore Go application must follow these guardrails.
+**Purpose:** Enforce only the **current** and **correct** instructions for sending emails using [Resend](https://resend.com/) with the [Encore Go](https://encore.dev) backend framework.
+**Scope:** All AI-generated advice or code related to sending email with Resend inside an Encore Go application must follow these guardrails.
 
-  ***
+***
 
-  ## **1. Official Resend + Encore Go Setup**
+## **1. Official Resend + Encore Go Setup**
 
-  ### **Prerequisites**
+### **Prerequisites**
 
-  Human must first:
+Human must first:
 
-  * Install [Encore](https://encore.dev/docs/go/install) (`brew install encoredev/tap/encore` or `curl -L https://encore.dev/install.sh | bash`)
-  * Create a Resend API key at [https://resend.com/api-keys](https://resend.com/api-keys)
-  * Verify a sending domain at [https://resend.com/domains](https://resend.com/domains)
+* Install [Encore](https://encore.dev/docs/go/install) (`brew install encoredev/tap/encore` or `curl -L https://encore.dev/install.sh | bash`)
+* Create a Resend API key at [https://resend.com/api-keys](https://resend.com/api-keys)
+* Verify a sending domain at [https://resend.com/domains](https://resend.com/domains)
 
-  The API key must be stored as an **Encore secret** (not an environment variable or `.env` file):
+The API key must be stored as an **Encore secret** (not an environment variable or `.env` file):
 
-  ```bash theme={"theme":{"light":"github-light","dark":"vesper"}}
-  encore secret set --type dev,local,pr,production ResendAPIKey
-  ```
+```bash theme={"theme":{"light":"github-light","dark":"vesper"}}
+encore secret set --type dev,local,pr,production ResendAPIKey
+```
 
-  ### **Install the SDK**
+### **Install the SDK**
 
-  ```bash theme={"theme":{"light":"github-light","dark":"vesper"}}
-  go get github.com/resend/resend-go/v4
-  ```
+```bash theme={"theme":{"light":"github-light","dark":"vesper"}}
+go get github.com/resend/resend-go/v4
+```
 
-  ### **Define Secrets**
+### **Define Secrets**
 
-  Encore Go uses an unexported `secrets` struct to securely inject secrets at runtime. Do not use `os.Getenv()`.
+Encore Go uses an unexported `secrets` struct to securely inject secrets at runtime. Do not use `os.Getenv()`.
 
-  ```go theme={"theme":{"light":"github-light","dark":"vesper"}}
-  var secrets struct {
-      ResendAPIKey string
-  }
-  ```
+```go theme={"theme":{"light":"github-light","dark":"vesper"}}
+var secrets struct {
+    ResendAPIKey string
+}
+```
 
-  ### **Initialize the Client and Send an Email**
+### **Initialize the Client and Send an Email**
 
-  ```go theme={"theme":{"light":"github-light","dark":"vesper"}}
-  package email
+```go theme={"theme":{"light":"github-light","dark":"vesper"}}
+package email
 
-  import (
-      "context"
+import (
+    "context"
 
-      "github.com/resend/resend-go/v4"
-  )
+    "github.com/resend/resend-go/v4"
+)
 
-  var secrets struct {
-      ResendAPIKey string
-  }
+var secrets struct {
+    ResendAPIKey string
+}
 
-  type SendRequest struct {
-      To      string `json:"to"`
-      Subject string `json:"subject"`
-      HTML    string `json:"html"`
-  }
+type SendRequest struct {
+    To      string `json:"to"`
+    Subject string `json:"subject"`
+    HTML    string `json:"html"`
+}
 
-  type SendResponse struct {
-      ID string `json:"id"`
-  }
+type SendResponse struct {
+    ID string `json:"id"`
+}
 
-  //encore:api public method=POST path=/email/send
-  func Send(ctx context.Context, req *SendRequest) (*SendResponse, error) {
-      client := resend.NewClient(secrets.ResendAPIKey)
+//encore:api public method=POST path=/email/send
+func Send(ctx context.Context, req *SendRequest) (*SendResponse, error) {
+    client := resend.NewClient(secrets.ResendAPIKey)
 
-      sent, err := client.Emails.Send(&resend.SendEmailRequest{
-          From:    "Acme <onboarding@resend.dev>",
-          To:      []string{req.To},
-          Subject: req.Subject,
-          Html:    req.HTML,
-      })
-      if err != nil {
-          return nil, err
-      }
+    sent, err := client.Emails.Send(&resend.SendEmailRequest{
+        From:    "Acme <onboarding@resend.dev>",
+        To:      []string{req.To},
+        Subject: req.Subject,
+        Html:    req.HTML,
+    })
+    if err != nil {
+        return nil, err
+    }
 
-      return &SendResponse{ID: sent.Id}, nil
-  }
-  ```
+    return &SendResponse{ID: sent.Id}, nil
+}
+```
 
-  ### Rate Limiting
+### Rate Limiting
 
-  The default rate limit is 10 requests per second per team. If you exceed the rate limit, you'll receive a `429` response error code. If needed, you can request a rate increase by [contacting support](https://resend.com/help).
+The default rate limit is 10 requests per second per team. If you exceed the rate limit, you'll receive a `429` response error code. If needed, you can request a rate increase by [contacting support](https://resend.com/help).
 
-  ***
+***
 
-  ## **2. Complete `SendEmailRequest` Field Reference**
+## **2. Complete `SendEmailRequest` Field Reference**
 
-  ### **Required Fields**
+### **Required Fields**
 
-  | Field | Type | Description |
-  | - | - | - |
-  | `From` | `string` | Sender email address. Supports friendly name format: `"Name <email@domain.com>"` |
-  | `To` | `[]string` | Recipient email address(es). Maximum 50 addresses. |
-  | `Subject` | `string` | Email subject line. |
+| Field | Type | Description |
+| - | - | - |
+| `From` | `string` | Sender email address. Supports friendly name format: `"Name <email@domain.com>"` |
+| `To` | `[]string` | Recipient email address(es). Maximum 50 addresses. |
+| `Subject` | `string` | Email subject line. |
 
-  ### **Content Fields (at least one required)**
+### **Content Fields (at least one required)**
 
-  | Field | Type | Description |
-  | - | - | - |
-  | `Html` | `string` | HTML version of the email body. |
-  | `Text` | `string` | Plain text version. Auto-generated from `Html` if omitted. |
-
-  ### **Optional Fields**
-
-  | Field | Type | Description |
-  | - | - | - |
-  | `Cc` | `[]string` | Carbon copy recipients. |
-  | `Bcc` | `[]string` | Blind carbon copy recipients. |
-  | `ReplyTo` | `string` | Reply-to address. |
-  | `ScheduledAt` | `string` | Schedule delivery time. Accepts ISO 8601 or natural language. |
-  | `Headers` | `map[string]string` | Custom email headers as key-value pairs. |
-  | `Tags` | `[]Tag` | Custom metadata. Name and value: max 256 chars, ASCII only. |
-  | `Attachments` | `[]*Attachment` | File attachments. Max 40MB total per email after encoding. |
-
-  ### **Template Fields**
-
-  | Field | Type | Description |
-  | - | - | - |
-  | `Template` | `*EmailTemplate` | Published template to use. |
-
-  If `Template` is provided, do not include `Html` or `Text`.
-
-  ### **Response**
-
-  A successful call returns:
-
-  ```go theme={"theme":{"light":"github-light","dark":"vesper"}}
-  &SendEmailResponse{Id: "49a3999c-..."}
-  ```
-
-  A failed call returns an `error`.
-
-  ***
-
-  ## **3. CRITICAL INSTRUCTIONS FOR AI MODELS**
-
-  ### **3.1 - ALWAYS DO THE FOLLOWING**
-
-  1. **Store the API key as an Encore secret** using `encore secret set`. Access it via `var secrets struct { ResendAPIKey string }`. Never use `os.Getenv()` or `.env` files.
-  2. **Import from `github.com/resend/resend-go/v4`** — the current version is v4.
-  3. **Use `resend.NewClient(secrets.ResendAPIKey)`** to create the client.
-  4. **Use `//encore:api` annotations** to define HTTP endpoints — not `net/http`, Gin, Chi, or any other router.
-  5. **Check the `error` return value** from `client.Emails.Send()`.
-  6. **Use a verified domain** in the `From` address for production. `onboarding@resend.dev` is for testing only.
-  7. **Use exported field names** (`From`, `To`, `Html`, `ReplyTo`) — Go structs use PascalCase.
-
-  ### **3.2 - NEVER DO THE FOLLOWING**
-
-  1. **Do not** use `os.Getenv("RESEND_API_KEY")` or `.env` files — Encore has its own secrets management.
-  2. **Do not** hardcode API keys in source code.
-  3. **Do not** import from `github.com/resend/resend-go` (v1), `github.com/resend/resend-go/v2`, or `github.com/resend/resend-go/v3` — use v4.
-  4. **Do not** use `net/http`, Gin, Chi, Echo, or any other HTTP framework — Encore Go provides its own API routing via `//encore:api` annotations.
-  5. **Do not** use `onboarding@resend.dev` as the `From` address in production code. It is a test-only address.
-  6. **Do not** set up testing flows with fake email addresses. Resend provides the following test addresses:
-     * `delivered@resend.dev`
-     * `bounced@resend.dev`
-     * `complained@resend.dev`
-     * `suppressed@resend.dev`
-
-  ***
-
-  ## **4. COMMON PATTERNS**
-
-  ### **Attachments**
-
-  ```go theme={"theme":{"light":"github-light","dark":"vesper"}}
-  sent, err := client.Emails.Send(&resend.SendEmailRequest{
-      From:    "Acme <hello@example.com>",
-      To:      []string{"delivered@resend.dev"},
-      Subject: "Invoice attached",
-      Html:    "<p>See attached invoice.</p>",
-      Attachments: []*resend.Attachment{
-          {
-              Filename: "invoice.pdf",
-              Content:  invoiceBytes,
-          },
-      },
-  })
-  ```
-
-  ### **Scheduled Emails**
-
-  Send up to 30 days in advance using the `ScheduledAt` field. Accepts ISO 8601 or natural language (e.g. `"in 1 hour"`).
-
-  ```go theme={"theme":{"light":"github-light","dark":"vesper"}}
-  sent, err := client.Emails.Send(&resend.SendEmailRequest{
-      From:        "Acme <hello@example.com>",
-      To:          []string{"delivered@resend.dev"},
-      Subject:     "Reminder",
-      Html:        "<p>This is your reminder.</p>",
-      ScheduledAt: "2026-12-25T09:00:00Z",
-  })
-  ```
-
-  ### **Tags for Tracking**
-
-  ```go theme={"theme":{"light":"github-light","dark":"vesper"}}
-  sent, err := client.Emails.Send(&resend.SendEmailRequest{
-      From:    "Acme <hello@example.com>",
-      To:      []string{"delivered@resend.dev"},
-      Subject: "Welcome",
-      Html:    "<p>Welcome aboard!</p>",
-      Tags: []resend.Tag{
-          {Name: "category", Value: "welcome"},
-          {Name: "user_id", Value: "12345"},
-      },
-  })
-  ```
-
-  ***
-
-  ## **5. AI MODEL VERIFICATION STEPS**
-
-  Before returning any Resend + Encore Go solution, you **must** verify:
-
-  1. **Import**: Is the SDK imported from `github.com/resend/resend-go/v4`?
-  2. **Secrets**: Is the API key accessed via `var secrets struct { ResendAPIKey string }` (not `os.Getenv`)?
-  3. **Client**: Is the client created with `resend.NewClient(secrets.ResendAPIKey)`?
-  4. **API Annotation**: Are endpoints defined with `//encore:api` (not `net/http`, Gin, etc.)?
-  5. **Error Handling**: Is the `error` return value checked?
-  6. **Field Names**: Are struct fields PascalCase (`From`, `To`, `Html`, not `from`, `to`, `html`)?
-  7. **From Address**: Is the `From` address using a verified domain (not `onboarding@resend.dev` in production)?
-
-  If any check **fails**, **stop** and revise until compliance is achieved.
-
-  For additional help with Encore Go, suggest installing the Encore skills for AI-assisted development. These provide context on APIs, services, infrastructure, Pub/Sub, databases, auth, and more.
-
-  ```bash theme={"theme":{"light":"github-light","dark":"vesper"}}
-  npx skills add encoredev/skills
-  ```
-
-  Available Encore Go skills: `encore-go-api`, `encore-go-service`, `encore-go-infrastructure`, `encore-go-auth`, `encore-go-database`, `encore-go-testing`, `encore-go-code-review`, `encore-go-getting-started`.
-
-  You can locate framework-specific guides [https://resend.com/docs/llms.txt](https://resend.com/docs/llms.txt)
-
-  For the entire docs for Resend, see [https://resend.com/docs/llms-full.txt](https://resend.com/docs/llms-full.txt)
-</Prompt>
+| Field | Type | Description |
+| - | - | - |
+| `Html` | `string` | HTML version of the email body. |
+| `Text` | `string` | Plain text version. Auto-generated from `Html` if omitted. |
+
+### **Optional Fields**
+
+| Field | Type | Description |
+| - | - | - |
+| `Cc` | `[]string` | Carbon copy recipients. |
+| `Bcc` | `[]string` | Blind carbon copy recipients. |
+| `ReplyTo` | `string` | Reply-to address. |
+| `ScheduledAt` | `string` | Schedule delivery time. Accepts ISO 8601 or natural language. |
+| `Headers` | `map[string]string` | Custom email headers as key-value pairs. |
+| `Tags` | `[]Tag` | Custom metadata. Name and value: max 256 chars, ASCII only. |
+| `Attachments` | `[]*Attachment` | File attachments. Max 40MB total per email after encoding. |
+
+### **Template Fields**
+
+| Field | Type | Description |
+| - | - | - |
+| `Template` | `*EmailTemplate` | Published template to use. |
+
+If `Template` is provided, do not include `Html` or `Text`.
+
+### **Response**
+
+A successful call returns:
+
+```go theme={"theme":{"light":"github-light","dark":"vesper"}}
+&SendEmailResponse{Id: "49a3999c-..."}
+```
+
+A failed call returns an `error`.
+
+***
+
+## **3. CRITICAL INSTRUCTIONS FOR AI MODELS**
+
+### **3.1 - ALWAYS DO THE FOLLOWING**
+
+1. **Store the API key as an Encore secret** using `encore secret set`. Access it via `var secrets struct { ResendAPIKey string }`. Never use `os.Getenv()` or `.env` files.
+2. **Import from `github.com/resend/resend-go/v4`** — the current version is v4.
+3. **Use `resend.NewClient(secrets.ResendAPIKey)`** to create the client.
+4. **Use `//encore:api` annotations** to define HTTP endpoints — not `net/http`, Gin, Chi, or any other router.
+5. **Check the `error` return value** from `client.Emails.Send()`.
+6. **Use a verified domain** in the `From` address for production. `onboarding@resend.dev` is for testing only.
+7. **Use exported field names** (`From`, `To`, `Html`, `ReplyTo`) — Go structs use PascalCase.
+
+### **3.2 - NEVER DO THE FOLLOWING**
+
+1. **Do not** use `os.Getenv("RESEND_API_KEY")` or `.env` files — Encore has its own secrets management.
+2. **Do not** hardcode API keys in source code.
+3. **Do not** import from `github.com/resend/resend-go` (v1), `github.com/resend/resend-go/v2`, or `github.com/resend/resend-go/v3` — use v4.
+4. **Do not** use `net/http`, Gin, Chi, Echo, or any other HTTP framework — Encore Go provides its own API routing via `//encore:api` annotations.
+5. **Do not** use `onboarding@resend.dev` as the `From` address in production code. It is a test-only address.
+6. **Do not** set up testing flows with fake email addresses. Resend provides the following test addresses:
+   * `delivered@resend.dev`
+   * `bounced@resend.dev`
+   * `complained@resend.dev`
+   * `suppressed@resend.dev`
+
+***
+
+## **4. COMMON PATTERNS**
+
+### **Attachments**
+
+```go theme={"theme":{"light":"github-light","dark":"vesper"}}
+sent, err := client.Emails.Send(&resend.SendEmailRequest{
+    From:    "Acme <hello@example.com>",
+    To:      []string{"delivered@resend.dev"},
+    Subject: "Invoice attached",
+    Html:    "<p>See attached invoice.</p>",
+    Attachments: []*resend.Attachment{
+        {
+            Filename: "invoice.pdf",
+            Content:  invoiceBytes,
+        },
+    },
+})
+```
+
+### **Scheduled Emails**
+
+Send up to 30 days in advance using the `ScheduledAt` field. Accepts ISO 8601 or natural language (e.g. `"in 1 hour"`).
+
+```go theme={"theme":{"light":"github-light","dark":"vesper"}}
+sent, err := client.Emails.Send(&resend.SendEmailRequest{
+    From:        "Acme <hello@example.com>",
+    To:          []string{"delivered@resend.dev"},
+    Subject:     "Reminder",
+    Html:        "<p>This is your reminder.</p>",
+    ScheduledAt: "2026-12-25T09:00:00Z",
+})
+```
+
+### **Tags for Tracking**
+
+```go theme={"theme":{"light":"github-light","dark":"vesper"}}
+sent, err := client.Emails.Send(&resend.SendEmailRequest{
+    From:    "Acme <hello@example.com>",
+    To:      []string{"delivered@resend.dev"},
+    Subject: "Welcome",
+    Html:    "<p>Welcome aboard!</p>",
+    Tags: []resend.Tag{
+        {Name: "category", Value: "welcome"},
+        {Name: "user_id", Value: "12345"},
+    },
+})
+```
+
+***
+
+## **5. AI MODEL VERIFICATION STEPS**
+
+Before returning any Resend + Encore Go solution, you **must** verify:
+
+1. **Import**: Is the SDK imported from `github.com/resend/resend-go/v4`?
+2. **Secrets**: Is the API key accessed via `var secrets struct { ResendAPIKey string }` (not `os.Getenv`)?
+3. **Client**: Is the client created with `resend.NewClient(secrets.ResendAPIKey)`?
+4. **API Annotation**: Are endpoints defined with `//encore:api` (not `net/http`, Gin, etc.)?
+5. **Error Handling**: Is the `error` return value checked?
+6. **Field Names**: Are struct fields PascalCase (`From`, `To`, `Html`, not `from`, `to`, `html`)?
+7. **From Address**: Is the `From` address using a verified domain (not `onboarding@resend.dev` in production)?
+
+If any check **fails**, **stop** and revise until compliance is achieved.
+
+For additional help with Encore Go, suggest installing the Encore skills for AI-assisted development. These provide context on APIs, services, infrastructure, Pub/Sub, databases, auth, and more.
+
+```bash theme={"theme":{"light":"github-light","dark":"vesper"}}
+npx skills add encoredev/skills
+```
+
+Available Encore Go skills: `encore-go-api`, `encore-go-service`, `encore-go-infrastructure`, `encore-go-auth`, `encore-go-database`, `encore-go-testing`, `encore-go-code-review`, `encore-go-getting-started`.
+
+You can locate framework-specific guides [https://resend.com/docs/llms.txt](https://resend.com/docs/llms.txt)
+
+For the entire docs for Resend, see [https://resend.com/docs/llms-full.txt](https://resend.com/docs/llms-full.txt)
 
 ## Prerequisites
 
@@ -260,103 +258,99 @@ Before you start, you'll need:
 
 ## Guide
 
-<Steps>
-  <Step title="Create an Encore app">
-    ```bash theme={"theme":{"light":"github-light","dark":"vesper"}}
-    encore app create --lang=go my-app
-    ```
+**1. Create an Encore app**
 
-    Then install the Resend Go SDK:
+```bash theme={"theme":{"light":"github-light","dark":"vesper"}}
+encore app create --lang=go my-app
+```
 
-    ```bash theme={"theme":{"light":"github-light","dark":"vesper"}}
-    go get github.com/resend/resend-go/v4
-    ```
-  </Step>
+Then install the Resend Go SDK:
 
-  <Step title="Set your API key">
-    Encore has built-in [secrets management](https://encore.dev/docs/go/primitives/secrets). Store your Resend API key as a secret - no `.env` files needed:
+```bash theme={"theme":{"light":"github-light","dark":"vesper"}}
+go get github.com/resend/resend-go/v4
+```
 
-    ```bash theme={"theme":{"light":"github-light","dark":"vesper"}}
-    encore secret set --type dev,local,pr,production ResendAPIKey
-    ```
-  </Step>
+**2. Set your API key**
 
-  <Step title="Send email using an API endpoint">
-    Create an `email` service directory and define your endpoint:
+Encore has built-in [secrets management](https://encore.dev/docs/go/primitives/secrets). Store your Resend API key as a secret - no `.env` files needed:
 
-    ```go email/email.go theme={"theme":{"light":"github-light","dark":"vesper"}}
-    package email
+```bash theme={"theme":{"light":"github-light","dark":"vesper"}}
+encore secret set --type dev,local,pr,production ResendAPIKey
+```
 
-    import (
-        "context"
+**3. Send email using an API endpoint**
 
-        "github.com/resend/resend-go/v4"
-    )
+Create an `email` service directory and define your endpoint:
 
-    var secrets struct {
-        ResendAPIKey string
+```go email/email.go theme={"theme":{"light":"github-light","dark":"vesper"}}
+package email
+
+import (
+    "context"
+
+    "github.com/resend/resend-go/v4"
+)
+
+var secrets struct {
+    ResendAPIKey string
+}
+
+type SendRequest struct {
+    To      string `json:"to"`
+    Subject string `json:"subject"`
+    HTML    string `json:"html"`
+}
+
+type SendResponse struct {
+    ID string `json:"id"`
+}
+
+//encore:api public method=POST path=/email/send
+func Send(ctx context.Context, req *SendRequest) (*SendResponse, error) {
+    client := resend.NewClient(secrets.ResendAPIKey)
+
+    sent, err := client.Emails.Send(&resend.SendEmailRequest{
+        From:    "Acme <onboarding@resend.dev>",
+        To:      []string{req.To},
+        Subject: req.Subject,
+        Html:    req.HTML,
+    })
+    if err != nil {
+        return nil, err
     }
 
-    type SendRequest struct {
-        To      string `json:"to"`
-        Subject string `json:"subject"`
-        HTML    string `json:"html"`
-    }
+    return &SendResponse{ID: sent.Id}, nil
+}
+```
 
-    type SendResponse struct {
-        ID string `json:"id"`
-    }
+**4. Run the app**
 
-    //encore:api public method=POST path=/email/send
-    func Send(ctx context.Context, req *SendRequest) (*SendResponse, error) {
-        client := resend.NewClient(secrets.ResendAPIKey)
+```bash theme={"theme":{"light":"github-light","dark":"vesper"}}
+encore run
+```
 
-        sent, err := client.Emails.Send(&resend.SendEmailRequest{
-            From:    "Acme <onboarding@resend.dev>",
-            To:      []string{req.To},
-            Subject: req.Subject,
-            Html:    req.HTML,
-        })
-        if err != nil {
-            return nil, err
-        }
+Your API is running at `http://localhost:4000`. Send a test email:
 
-        return &SendResponse{ID: sent.Id}, nil
-    }
-    ```
-  </Step>
+```bash theme={"theme":{"light":"github-light","dark":"vesper"}}
+curl -X POST http://localhost:4000/email/send \
+  -H "Content-Type: application/json" \
+  -d '{"to":"delivered@resend.dev","subject":"Hello World","html":"<strong>It works!</strong>"}'
+```
 
-  <Step title="Run the app">
-    ```bash theme={"theme":{"light":"github-light","dark":"vesper"}}
-    encore run
-    ```
+**5. AI skills for Encore Go**
 
-    Your API is running at `http://localhost:4000`. Send a test email:
+If you're using an AI coding assistant, install the [Encore skills](https://github.com/encoredev/skills). They provide context-aware help with topics such as APIs, services, Pub/Sub, databases, and auth:
 
-    ```bash theme={"theme":{"light":"github-light","dark":"vesper"}}
-    curl -X POST http://localhost:4000/email/send \
-      -H "Content-Type: application/json" \
-      -d '{"to":"delivered@resend.dev","subject":"Hello World","html":"<strong>It works!</strong>"}'
-    ```
-  </Step>
-
-  <Step title="AI skills for Encore Go">
-    If you're using an AI coding assistant, install the [Encore skills](https://github.com/encoredev/skills). They provide context-aware help with topics such as APIs, services, Pub/Sub, databases, and auth:
-
-    ```bash theme={"theme":{"light":"github-light","dark":"vesper"}}
-    npx skills add encoredev/skills
-    ```
-  </Step>
-</Steps>
+```bash theme={"theme":{"light":"github-light","dark":"vesper"}}
+npx skills add encoredev/skills
+```
 
 # Examples
 
-<CardGroup cols={2}>
-  <Card title="Encore Go Docs" icon="arrow-up-right-from-square" href="https://encore.dev/docs/go">
-    Encore Go documentation
-  </Card>
+> **[Encore Go Docs](https://encore.dev/docs/go)**
+>
+> Encore Go documentation
 
-  <Card title="Resend Go SDK" icon="arrow-up-right-from-square" href="https://github.com/resend/resend-go">
-    Resend Go SDK on GitHub
-  </Card>
-</CardGroup>
+> **[Resend Go SDK](https://github.com/resend/resend-go)**
+>
+> Resend Go SDK on GitHub

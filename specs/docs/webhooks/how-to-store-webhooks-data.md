@@ -55,9 +55,9 @@ You can get started quickly with the [Resend Webhook Ingester](/docs/webhooks/in
 * **Idempotent storage** that handles duplicate deliveries
 * **8 database connectors** including PostgreSQL, MySQL, MongoDB, and data warehouses
 
-<Card title="Webhook Ingester" icon="database" href="/docs/webhooks/ingester">
-  Deploy a production-ready webhook storage solution in minutes
-</Card>
+> **[Webhook Ingester](/docs/webhooks/ingester)**
+>
+> Deploy a production-ready webhook storage solution in minutes
 
 ## Data Storage Considerations
 
@@ -75,10 +75,10 @@ The right database depends on your use case:
 | Data warehouse integration | [Snowflake](https://www.snowflake.com/) or [BigQuery](https://cloud.google.com/bigquery) |
 | Serverless architecture | [Neon](https://neon.com/), [PlanetScale](https://planetscale.com/), or [Supabase](https://supabase.com/) |
 
-<Tip>
-  If you're unsure, start with [Supabase](https://supabase.com/) which has a
-  generous free tier.
-</Tip>
+> [!TIP]
+>
+> If you're unsure, start with [Supabase](https://supabase.com/) which has a
+> generous free tier.
 
 ### What Data to Store
 
@@ -97,10 +97,10 @@ For deeper analytics, also consider storing:
 * **Bounce details** - To understand delivery issues
 * **Click URLs** - To track which links perform best
 
-<Info>
-  The Webhook Ingester stores all available fields automatically, so you don't
-  have to decide upfront what you might need later.
-</Info>
+> [!NOTE]
+>
+> The Webhook Ingester stores all available fields automatically, so you don't
+> have to decide upfront what you might need later.
 
 ## Data Retention Considerations
 
@@ -128,57 +128,53 @@ High-volume senders can generate significant data. Plan for:
 * Query performance as data grows
 * Archival strategies for old data
 
-<Tip>
-  Most databases support partitioning by date, making it easy to drop old
-  partitions when data ages out of your retention window.
-</Tip>
+> [!TIP]
+>
+> Most databases support partitioning by date, making it easy to drop old
+> partitions when data ages out of your retention window.
 
 ## FAQ
 
-<AccordionGroup>
-  <Accordion title="How much data will I generate?">
-    Each email can generate multiple events (sent, delivered, opened, clicked).
-    A rough estimate: if you send 10,000 emails/month with average engagement,
-    expect 30,000-50,000 events/month. Each event is typically 1-2 KB, so about
-    50-100 MB/month of raw data.
-  </Accordion>
+> **How much data will I generate?**
+>
+> Each email can generate multiple events (sent, delivered, opened, clicked).
+> A rough estimate: if you send 10,000 emails/month with average engagement,
+> expect 30,000-50,000 events/month. Each event is typically 1-2 KB, so about
+> 50-100 MB/month of raw data.
 
-  <Accordion title="Will storing webhooks slow down my application?">
-    No. Webhook processing happens asynchronously. Your email sending is not
-    affected by how you handle webhooks. If you use the Webhook Ingester, it
-    runs as a separate service.
-  </Accordion>
+> **Will storing webhooks slow down my application?**
+>
+> No. Webhook processing happens asynchronously. Your email sending is not
+> affected by how you handle webhooks. If you use the Webhook Ingester, it
+> runs as a separate service.
 
-  <Accordion title="What if I miss a webhook?">
-    Resend automatically retries failed webhook deliveries for up to 24 hours.
-    If your endpoint returns a 5xx error, we'll retry. If you need to recover
-    older events, check the [Resend Dashboard](https://resend.com/webhooks)
-    where you can manually replay recent events.
-  </Accordion>
+> **What if I miss a webhook?**
+>
+> Resend automatically retries failed webhook deliveries for up to 24 hours.
+> If your endpoint returns a 5xx error, we'll retry. If you need to recover
+> older events, check the [Resend Dashboard](https://resend.com/webhooks)
+> where you can manually replay recent events.
 
-  <Accordion title="Can I store webhooks in multiple databases?">
-    The Webhook Ingester supports one database per deployment. If you need to
-    store in multiple databases, you can either deploy multiple instances or
-    build a custom handler that writes to multiple destinations.
-  </Accordion>
-</AccordionGroup>
+> **Can I store webhooks in multiple databases?**
+>
+> The Webhook Ingester supports one database per deployment. If you need to
+> store in multiple databases, you can either deploy multiple instances or
+> build a custom handler that writes to multiple destinations.
 
 ## Learn More
 
-<CardGroup cols={2}>
-  <Card title="Webhook Ingester" icon="database" href="/docs/webhooks/ingester">
-    Deploy a production-ready webhook storage solution
-  </Card>
+> **[Webhook Ingester](/docs/webhooks/ingester)**
+>
+> Deploy a production-ready webhook storage solution
 
-  <Card title="Webhook Event Types" icon="list" href="/docs/webhooks/event-types">
-    See all available event types and their payloads
-  </Card>
+> **[Webhook Event Types](/docs/webhooks/event-types)**
+>
+> See all available event types and their payloads
 
-  <Card title="Verify Webhooks" icon="shield-check" href="/docs/webhooks/verify-webhooks-requests">
-    Learn about webhook signature verification
-  </Card>
+> **[Verify Webhooks](/docs/webhooks/verify-webhooks-requests)**
+>
+> Learn about webhook signature verification
 
-  <Card title="Webhook Introduction" icon="webhook" href="/docs/webhooks/introduction">
-    Get started with webhooks in your application
-  </Card>
-</CardGroup>
+> **[Webhook Introduction](/docs/webhooks/introduction)**
+>
+> Get started with webhooks in your application

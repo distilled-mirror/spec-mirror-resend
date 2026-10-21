@@ -6,13 +6,13 @@
 
 > Verify your domain on Vercel with Resend.
 
-<Note>
-  This guide helps you verify your domain on Vercel with Resend. We also have
-  [an official integration for
-  Vercel](https://resend.com/blog/vercel-integration) that helps you set up your
-  API keys on Vercel projects so you can start sending emails with Resend. [View
-  the integration here](https://vercel.com/resend/~/integrations/resend).
-</Note>
+> [!NOTE]
+>
+> This guide helps you verify your domain on Vercel with Resend. We also have
+> [an official integration for
+> Vercel](https://resend.com/blog/vercel-integration) that helps you set up your
+> API keys on Vercel projects so you can start sending emails with Resend. [View
+> the integration here](https://vercel.com/resend/~/integrations/resend).
 
 ## Vercel Marketplace integration
 
@@ -22,15 +22,15 @@ If you installed Resend through the [Vercel Marketplace](https://vercel.com/mark
 
 First, log in to your [Resend Account](https://resend.com/login) and [add a domain](https://resend.com/domains).
 
-<img alt="Domain Details" src="https://mintcdn.com/resend/JHWt09hsc7E33HK2/images/dashboard-domains-resend-add-domain.png?fit=max&auto=format&n=JHWt09hsc7E33HK2&q=85&s=418dd93c2f2ead0b0d83d1b7c2fb0970" width="3360" height="2100" data-path="images/dashboard-domains-resend-add-domain.png" />
+![Domain Details](https://mintcdn.com/resend/JHWt09hsc7E33HK2/images/dashboard-domains-resend-add-domain.png?fit=max\&auto=format\&n=JHWt09hsc7E33HK2\&q=85\&s=418dd93c2f2ead0b0d83d1b7c2fb0970)
 
-<Tip>
-  It is [best practice to use a
-  subdomain](/docs/knowledge-base/is-it-better-to-send-emails-from-a-subdomain-or-the-root-domain)
-  (updates.example.com) instead of the root domain (example.com). Using a
-  subdomain allows for proper reputation segmentation based on topics or purpose
-  (e.g. marketing) and is especially important if receiving emails with Resend.
-</Tip>
+> [!TIP]
+>
+> It is [best practice to use a
+> subdomain](/docs/knowledge-base/is-it-better-to-send-emails-from-a-subdomain-or-the-root-domain)
+> (updates.example.com) instead of the root domain (example.com). Using a
+> subdomain allows for proper reputation segmentation based on topics or purpose
+> (e.g. marketing) and is especially important if receiving emails with Resend.
 
 ## Automatic Setup (Recommended)
 
@@ -42,7 +42,7 @@ The fastest way to verify your domain on Vercel is using the **Auto Configure** 
 4. Authorize Resend to access your Vercel DNS settings.
 5. The DNS records will be added automatically.
 
-<video autoPlay loop src="https://mintcdn.com/resend/jXEQ5zNvzPmslxXc/images/vercel-domain-connect.mp4?fit=max&auto=format&n=jXEQ5zNvzPmslxXc&q=85&s=60b091caaaf0aa56f322e3a7bd5b03c1" aria-label="Vercel Domain Connect Setup" data-path="images/vercel-domain-connect.mp4" />
+<video autoPlay loop src="https://mintcdn.com/resend/jXEQ5zNvzPmslxXc/images/vercel-domain-connect.mp4?fit=max&auto=format&n=jXEQ5zNvzPmslxXc&q=85&s=60b091caaaf0aa56f322e3a7bd5b03c1" aria-label="Vercel Domain Connect Setup" />
 
 That's it. Your domain will be verified within a few minutes.
 
@@ -54,7 +54,7 @@ If you prefer to add DNS records manually, follow these steps.
 
 Log in to your [Vercel account](https://vercel.com/login) and select the `Domains` tab.
 
-<img alt="Domain Details" src="https://mintcdn.com/resend/JHWt09hsc7E33HK2/images/dashboard-domains-vercel-domains.png?fit=max&auto=format&n=JHWt09hsc7E33HK2&q=85&s=4b4ab73110a36775175b39587eea68f0" width="1200" height="676" data-path="images/dashboard-domains-vercel-domains.png" />
+![Domain Details](https://mintcdn.com/resend/JHWt09hsc7E33HK2/images/dashboard-domains-vercel-domains.png?fit=max\&auto=format\&n=JHWt09hsc7E33HK2\&q=85\&s=4b4ab73110a36775175b39587eea68f0)
 
 ## Add MX SPF Record
 
@@ -66,15 +66,15 @@ Copy and paste the values in Resend to Vercel.
 4. Add `10` for the `Priority`.
 5. Select `Add`.
 
-<Info>
-  Omit your domain from the record values in Resend when you paste. Instead of
-  `send.example.com`, paste only `send` (or `send.subdomain` if you're using a
-  subdomain).
-</Info>
+> [!NOTE]
+>
+> Omit your domain from the record values in Resend when you paste. Instead of
+> `send.example.com`, paste only `send` (or `send.subdomain` if you're using a
+> subdomain).
 
-<img alt="Domain Details" src="https://mintcdn.com/resend/JHWt09hsc7E33HK2/images/dashboard-domains-resend-spf-mx.png?fit=max&auto=format&n=JHWt09hsc7E33HK2&q=85&s=bb0db2dd2809135194cfb62b695225cd" width="3024" height="1888" data-path="images/dashboard-domains-resend-spf-mx.png" />
+![Domain Details](https://mintcdn.com/resend/JHWt09hsc7E33HK2/images/dashboard-domains-resend-spf-mx.png?fit=max\&auto=format\&n=JHWt09hsc7E33HK2\&q=85\&s=bb0db2dd2809135194cfb62b695225cd)
 
-<img alt="Domain Details" src="https://mintcdn.com/resend/JHWt09hsc7E33HK2/images/dashboard-domains-vercel-spf-mx.png?fit=max&auto=format&n=JHWt09hsc7E33HK2&q=85&s=9d91de47106d0bd4005bac0cfe68779e" width="1200" height="676" data-path="images/dashboard-domains-vercel-spf-mx.png" />
+![Domain Details](https://mintcdn.com/resend/JHWt09hsc7E33HK2/images/dashboard-domains-vercel-spf-mx.png?fit=max\&auto=format\&n=JHWt09hsc7E33HK2\&q=85\&s=9d91de47106d0bd4005bac0cfe68779e)
 
 Below is a mapping of the record fields from Resend to Vercel:
 
@@ -86,10 +86,10 @@ Below is a mapping of the record fields from Resend to Vercel:
 | TTL | TTL | `Use Vercel default (60)` |
 | Priority | Priority | `10` |
 
-<Info>
-  Do not use the same priority for multiple records. If Priority `10` is already
-  in use on another record, try a higher value `20` or `30`.
-</Info>
+> [!NOTE]
+>
+> Do not use the same priority for multiple records. If Priority `10` is already
+> in use on another record, try a higher value `20` or `30`.
 
 ## Add TXT SPF Record
 
@@ -101,15 +101,15 @@ In the same section, add another record in Vercel.
 4. Use the default TTL of `60`.
 5. Select `Add`.
 
-<Info>
-  Omit your domain from the record values in Resend when you paste. Instead of
-  `send.example.com`, paste only `send` (or `send.subdomain` if you're using a
-  subdomain).
-</Info>
+> [!NOTE]
+>
+> Omit your domain from the record values in Resend when you paste. Instead of
+> `send.example.com`, paste only `send` (or `send.subdomain` if you're using a
+> subdomain).
 
-<img alt="Domain Details" src="https://mintcdn.com/resend/JHWt09hsc7E33HK2/images/dashboard-domains-resend-spf-txt.png?fit=max&auto=format&n=JHWt09hsc7E33HK2&q=85&s=747425d0a224baeee2846c9a707d5bbc" width="3024" height="1888" data-path="images/dashboard-domains-resend-spf-txt.png" />
+![Domain Details](https://mintcdn.com/resend/JHWt09hsc7E33HK2/images/dashboard-domains-resend-spf-txt.png?fit=max\&auto=format\&n=JHWt09hsc7E33HK2\&q=85\&s=747425d0a224baeee2846c9a707d5bbc)
 
-<img alt="Domain Details" src="https://mintcdn.com/resend/JHWt09hsc7E33HK2/images/dashboard-domains-vercel-spf-txt.png?fit=max&auto=format&n=JHWt09hsc7E33HK2&q=85&s=27b350fc1a7745dd47c623fdaf9a2df4" width="1200" height="676" data-path="images/dashboard-domains-vercel-spf-txt.png" />
+![Domain Details](https://mintcdn.com/resend/JHWt09hsc7E33HK2/images/dashboard-domains-vercel-spf-txt.png?fit=max\&auto=format\&n=JHWt09hsc7E33HK2\&q=85\&s=27b350fc1a7745dd47c623fdaf9a2df4)
 
 Below is a mapping of the record fields from Resend to Vercel:
 
@@ -128,15 +128,15 @@ In the same section, add another record in Vercel.
 2. Expand the `Type` dropdown and select `TXT`.
 3. Copy the record value from Resend into the `Value` field in Vercel.
 
-<Info>
-  Omit your domain from the record values in Resend when you paste. Instead of
-  `resend._domainkey.example.com`, paste only `resend._domainkey` (or
-  `resend._domainkey.subdomain` if you're using a subdomain).
-</Info>
+> [!NOTE]
+>
+> Omit your domain from the record values in Resend when you paste. Instead of
+> `resend._domainkey.example.com`, paste only `resend._domainkey` (or
+> `resend._domainkey.subdomain` if you're using a subdomain).
 
-<img alt="Domain Details" src="https://mintcdn.com/resend/JHWt09hsc7E33HK2/images/dashboard-domains-resend-dkim.png?fit=max&auto=format&n=JHWt09hsc7E33HK2&q=85&s=345d1dc6b7c138dbd92bd6928c634bd9" width="2992" height="1868" data-path="images/dashboard-domains-resend-dkim.png" />
+![Domain Details](https://mintcdn.com/resend/JHWt09hsc7E33HK2/images/dashboard-domains-resend-dkim.png?fit=max\&auto=format\&n=JHWt09hsc7E33HK2\&q=85\&s=345d1dc6b7c138dbd92bd6928c634bd9)
 
-<img alt="Domain Details" src="https://mintcdn.com/resend/JHWt09hsc7E33HK2/images/dashboard-domains-vercel-dkim-txt.png?fit=max&auto=format&n=JHWt09hsc7E33HK2&q=85&s=8553d093e572970b0335c1fe9b83e003" width="1200" height="676" data-path="images/dashboard-domains-vercel-dkim-txt.png" />
+![Domain Details](https://mintcdn.com/resend/JHWt09hsc7E33HK2/images/dashboard-domains-vercel-dkim-txt.png?fit=max\&auto=format\&n=JHWt09hsc7E33HK2\&q=85\&s=8553d093e572970b0335c1fe9b83e003)
 
 Below is a mapping of the record fields from Resend to Vercel:
 
@@ -151,16 +151,23 @@ Below is a mapping of the record fields from Resend to Vercel:
 
 If you want to receive emails at your domain, toggle the "Receiving" switch on the domain details page.
 
-<img alt="Enable Receiving Emails for a verified domain" src="https://mintcdn.com/resend/B7wTVm7aKL5pNT-6/images/inbound-domain-toggle.png?fit=max&auto=format&n=B7wTVm7aKL5pNT-6&q=85&s=46f6b4c142fb90e04b57861e338ed2d0" width="1980" height="1244" data-path="images/inbound-domain-toggle.png" />
+![Enable Receiving Emails for a verified domain](https://mintcdn.com/resend/B7wTVm7aKL5pNT-6/images/inbound-domain-toggle.png?fit=max\&auto=format\&n=B7wTVm7aKL5pNT-6\&q=85\&s=46f6b4c142fb90e04b57861e338ed2d0)
 
-<Warning>
-  When you enable Inbound on a domain, Resend receives *all emails* sent to that
-  specific domain depending on the priority of the MX record. For this reason,
-  we strongly recommend verifying a subdomain (`subdomain.example.com`) instead
-  of the root domain (`example.com`). Learn more about [avoiding conflicts with
-  your existing MX
-  records](/docs/knowledge-base/how-do-i-avoid-conflicting-with-my-mx-records).
-</Warning>
+> [!WARNING]
+>
+> When you enable Inbound on a domain, Resend receives *all emails* sent to that
+> specific domain depending on the priority of the MX record. For this reason,
+> we strongly recommend verifying a subdomain (`subdomain.example.com`) instead
+> of the root domain (`example.com`). Learn more about [avoiding conflicts with
+> your existing MX
+> records](/docs/knowledge-base/how-do-i-avoid-conflicting-with-my-mx-records).
+
+> [!NOTE]
+>
+> Always copy the MX record value shown on your domain's page in Resend. The
+> values in this guide are examples. Depending on your domain you will see
+> `receive.forge.rmta.net`, a regional variant such as
+> `receive-euw1.forge.rmta.net`, or `inbound-smtp.<region>.amazonaws.com`.
 
 Copy and paste the values in Resend to Vercel:
 
@@ -190,12 +197,10 @@ Now click [Verify DNS Records](https://resend.com/domains) on your Domain in Res
 
 If your domain is not successfully verified, these are some common troubleshooting methods.
 
-<AccordionGroup>
-  <Accordion title="Resend shows my domain verification failed.">
-    Review the records you added to Vercel to rule out copy and paste errors.
-  </Accordion>
+> **Resend shows my domain verification failed.**
+>
+> Review the records you added to Vercel to rule out copy and paste errors.
 
-  <Accordion title="It has been longer than 72 hours and my domain is still Pending.">
-    [Review our guide on a domain not verifying](/docs/knowledge-base/what-if-my-domain-is-not-verifying).
-  </Accordion>
-</AccordionGroup>
+> **It has been longer than 72 hours and my domain is still Pending.**
+>
+> [Review our guide on a domain not verifying](/docs/knowledge-base/what-if-my-domain-is-not-verifying).

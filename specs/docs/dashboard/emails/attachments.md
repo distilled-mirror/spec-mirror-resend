@@ -11,10 +11,10 @@ There are two ways to send attachments:
 1. [From a remote file](#send-attachments-from-a-remote-file)
 2. [From a local file](#send-attachments-from-a-local-file)
 
-<Info>
-  We currently do not support sending attachments [when using our batch
-  endpoint](/docs/api-reference/emails/send-batch-emails).
-</Info>
+> [!NOTE]
+>
+> We currently do not support sending attachments [when using our batch
+> endpoint](/docs/api-reference/emails/send-batch-emails).
 
 ## Send attachments from a remote file
 
@@ -22,217 +22,215 @@ Include the `path` parameter to send attachments from a remote file. This parame
 
 Define the file name that will be attached using the `filename` parameter.
 
-<CodeGroup>
-  ```ts Node.js {12-13} theme={"theme":{"light":"github-light","dark":"vesper"}}
-  import { Resend } from 'resend';
+```ts Node.js {12-13} theme={"theme":{"light":"github-light","dark":"vesper"}}
+import { Resend } from 'resend';
 
-  const resend = new Resend('re_xxxxxxxxx');
+const resend = new Resend('re_xxxxxxxxx');
 
-  await resend.emails.send({
-    from: 'Acme <onboarding@resend.dev>',
-    to: ['delivered@resend.dev'],
-    subject: 'Receipt for your payment',
-    html: '<p>Thanks for the payment</p>',
-    attachments: [
-      {
-        path: 'https://resend.com/static/sample/invoice.pdf',
-        filename: 'invoice.pdf',
-      },
-    ],
-  });
-  ```
+await resend.emails.send({
+  from: 'Acme <onboarding@resend.dev>',
+  to: ['delivered@resend.dev'],
+  subject: 'Receipt for your payment',
+  html: '<p>Thanks for the payment</p>',
+  attachments: [
+    {
+      path: 'https://resend.com/static/sample/invoice.pdf',
+      filename: 'invoice.pdf',
+    },
+  ],
+});
+```
 
-  ```php PHP {10-11} theme={"theme":{"light":"github-light","dark":"vesper"}}
-  $resend = Resend::client('re_xxxxxxxxx');
+```php PHP {10-11} theme={"theme":{"light":"github-light","dark":"vesper"}}
+$resend = Resend::client('re_xxxxxxxxx');
 
-  $resend->emails->send([
-    'from' => 'Acme <onboarding@resend.dev>',
-    'to' => ['delivered@resend.dev'],
-    'subject' => 'Receipt for your payment',
-    'html' => '<p>Thanks for the payment</p>',
-    'attachments' => [
-      [
-        'path' => 'https://resend.com/static/sample/invoice.pdf',
-        'filename' => 'invoice.pdf'
-      ]
+$resend->emails->send([
+  'from' => 'Acme <onboarding@resend.dev>',
+  'to' => ['delivered@resend.dev'],
+  'subject' => 'Receipt for your payment',
+  'html' => '<p>Thanks for the payment</p>',
+  'attachments' => [
+    [
+      'path' => 'https://resend.com/static/sample/invoice.pdf',
+      'filename' => 'invoice.pdf'
     ]
-  ]);
-  ```
+  ]
+]);
+```
 
-  ```python Python {6-7} theme={"theme":{"light":"github-light","dark":"vesper"}}
-  import resend
+```python Python {6-7} theme={"theme":{"light":"github-light","dark":"vesper"}}
+import resend
 
-  resend.api_key = "re_xxxxxxxxx"
+resend.api_key = "re_xxxxxxxxx"
 
-  attachment: resend.RemoteAttachment = {
-    "path": "https://resend.com/static/sample/invoice.pdf",
-    "filename": "invoice.pdf",
-  }
+attachment: resend.RemoteAttachment = {
+  "path": "https://resend.com/static/sample/invoice.pdf",
+  "filename": "invoice.pdf",
+}
 
-  params: resend.Emails.SendParams = {
-    "from": "Acme <onboarding@resend.dev>",
-    "to": ["delivered@resend.dev"],
-    "subject": "Receipt for your payment",
-    "html": "<p>Thanks for the payment</p>",
-    "attachments": [attachment],
-  }
+params: resend.Emails.SendParams = {
+  "from": "Acme <onboarding@resend.dev>",
+  "to": ["delivered@resend.dev"],
+  "subject": "Receipt for your payment",
+  "html": "<p>Thanks for the payment</p>",
+  "attachments": [attachment],
+}
 
-  resend.Emails.send(params)
-  ```
+resend.Emails.send(params)
+```
 
-  ```rb Ruby {12-13} theme={"theme":{"light":"github-light","dark":"vesper"}}
-  require "resend"
+```rb Ruby {12-13} theme={"theme":{"light":"github-light","dark":"vesper"}}
+require "resend"
 
-  Resend.api_key = "re_xxxxxxxxx"
+Resend.api_key = "re_xxxxxxxxx"
 
-  params = {
-    "from": "Acme <onboarding@resend.dev>",
-    "to": ["delivered@resend.dev"],
-    "subject": "Receipt for your payment",
-    "html": "<p>Thanks for the payment</p>",
-    "attachments": [
-      {
-        "path": "https://resend.com/static/sample/invoice.pdf",
-        "filename": 'invoice.pdf',
-      }
-    ]
-  }
-
-  Resend::Emails.send(params)
-  ```
-
-  ```go Go {15-16} theme={"theme":{"light":"github-light","dark":"vesper"}}
-  package main
-
-  import (
-  	"context"
-  	"fmt"
-
-  	"github.com/resend/resend-go/v4"
-  )
-
-  func main() {
-    ctx := context.TODO()
-    client := resend.NewClient("re_xxxxxxxxx")
-
-    attachment := &resend.Attachment{
-      Path:  "https://resend.com/static/sample/invoice.pdf",
-      Filename: "invoice.pdf",
+params = {
+  "from": "Acme <onboarding@resend.dev>",
+  "to": ["delivered@resend.dev"],
+  "subject": "Receipt for your payment",
+  "html": "<p>Thanks for the payment</p>",
+  "attachments": [
+    {
+      "path": "https://resend.com/static/sample/invoice.pdf",
+      "filename": 'invoice.pdf',
     }
+  ]
+}
 
-    params := &resend.SendEmailRequest{
-        From:        "Acme <onboarding@resend.dev>",
-        To:          []string{"delivered@resend.dev"},
-        Subject:     "Receipt for your payment",
-        Html:        "<p>Thanks for the payment</p>",
-        Attachments: []*resend.Attachment{attachment},
+Resend::Emails.send(params)
+```
+
+```go Go {15-16} theme={"theme":{"light":"github-light","dark":"vesper"}}
+package main
+
+import (
+	"context"
+	"fmt"
+
+	"github.com/resend/resend-go/v4"
+)
+
+func main() {
+  ctx := context.TODO()
+  client := resend.NewClient("re_xxxxxxxxx")
+
+  attachment := &resend.Attachment{
+    Path:  "https://resend.com/static/sample/invoice.pdf",
+    Filename: "invoice.pdf",
+  }
+
+  params := &resend.SendEmailRequest{
+      From:        "Acme <onboarding@resend.dev>",
+      To:          []string{"delivered@resend.dev"},
+      Subject:     "Receipt for your payment",
+      Html:        "<p>Thanks for the payment</p>",
+      Attachments: []*resend.Attachment{attachment},
+  }
+
+  sent, err := client.Emails.SendWithContext(ctx, params)
+
+  if err != nil {
+    panic(err)
+  }
+  fmt.Println(sent.Id)
+}
+```
+
+```rust Rust {12-13} theme={"theme":{"light":"github-light","dark":"vesper"}}
+use resend_rs::types::{CreateAttachment, CreateEmailBaseOptions};
+use resend_rs::{Resend, Result};
+
+#[tokio::main]
+async fn main() -> Result<()> {
+  let resend = Resend::new("re_xxxxxxxxx");
+
+  let from = "Acme <onboarding@resend.dev>";
+  let to = ["delivered@resend.dev"];
+  let subject = "Receipt for your payment";
+
+  let path = "https://resend.com/static/sample/invoice.pdf";
+  let filename = "invoice.pdf";
+
+  let email = CreateEmailBaseOptions::new(from, to, subject)
+    .with_html("<p>Thanks for the payment</p>")
+    .with_attachment(CreateAttachment::from_path(path).with_filename(filename));
+
+  let _email = resend.emails.send(email).await?;
+
+  Ok(())
+}
+```
+
+```java Java {12-13} theme={"theme":{"light":"github-light","dark":"vesper"}}
+import com.resend.*;
+import com.resend.core.exception.ResendException;
+import com.resend.services.emails.model.Attachment;
+import com.resend.services.emails.model.CreateEmailOptions;
+import com.resend.services.emails.model.CreateEmailResponse;
+
+public class Main {
+    public static void main(String[] args) throws ResendException {
+        Resend resend = new Resend("re_xxxxxxxxx");
+
+        Attachment att = Attachment.builder()
+                .path("https://resend.com/static/sample/invoice.pdf")
+                .fileName("invoice.pdf")
+                .build();
+
+        CreateEmailOptions params = CreateEmailOptions.builder()
+                .from("Acme <onboarding@resend.dev>")
+                .to("delivered@resend.dev")
+                .subject("Receipt for your payment")
+                .html("<p>Thanks for the payment</p>")
+                .attachments(att)
+                .build();
+
+        CreateEmailResponse data = resend.emails().send(params);
     }
+}
+```
 
-    sent, err := client.Emails.SendWithContext(ctx, params)
+```csharp .NET {14-18} theme={"theme":{"light":"github-light","dark":"vesper"}}
+using Resend;
+using System.Collections.Generic;
 
-    if err != nil {
-      panic(err)
+IResend resend = ResendClient.Create( "re_xxxxxxxxx" ); // Or from DI
+
+var message = new EmailMessage()
+{
+    From = "Acme <onboarding@resend.dev>",
+    To = "delivered@resend.dev",
+    Subject = "Receipt for your payment",
+    HtmlBody = "<p>Thanks for the payment</p>",
+};
+
+message.Attachments = new List<EmailAttachment>();
+message.Attachments.Add( new EmailAttachment() {
+  Filename = "invoice.pdf",
+  Path = "https://resend.com/static/sample/invoice.pdf",
+} );
+
+var resp = await resend.EmailSendAsync( message );
+Console.WriteLine( "Email Id={0}", resp.Content );
+```
+
+```bash cURL {11-12} theme={"theme":{"light":"github-light","dark":"vesper"}}
+curl -X POST 'https://api.resend.com/emails' \
+     -H 'Authorization: Bearer re_xxxxxxxxx' \
+     -H 'Content-Type: application/json' \
+     -d $'{
+  "from": "Acme <onboarding@resend.dev>",
+  "to": ["delivered@resend.dev"],
+  "subject": "Receipt for your payment",
+  "html": "<p>Thanks for the payment</p>",
+  "attachments": [
+    {
+      "path": "https://resend.com/static/sample/invoice.pdf",
+      "filename": "invoice.pdf"
     }
-    fmt.Println(sent.Id)
-  }
-  ```
-
-  ```rust Rust {12-13} theme={"theme":{"light":"github-light","dark":"vesper"}}
-  use resend_rs::types::{CreateAttachment, CreateEmailBaseOptions};
-  use resend_rs::{Resend, Result};
-
-  #[tokio::main]
-  async fn main() -> Result<()> {
-    let resend = Resend::new("re_xxxxxxxxx");
-
-    let from = "Acme <onboarding@resend.dev>";
-    let to = ["delivered@resend.dev"];
-    let subject = "Receipt for your payment";
-
-    let path = "https://resend.com/static/sample/invoice.pdf";
-    let filename = "invoice.pdf";
-
-    let email = CreateEmailBaseOptions::new(from, to, subject)
-      .with_html("<p>Thanks for the payment</p>")
-      .with_attachment(CreateAttachment::from_path(path).with_filename(filename));
-
-    let _email = resend.emails.send(email).await?;
-
-    Ok(())
-  }
-  ```
-
-  ```java Java {12-13} theme={"theme":{"light":"github-light","dark":"vesper"}}
-  import com.resend.*;
-  import com.resend.core.exception.ResendException;
-  import com.resend.services.emails.model.Attachment;
-  import com.resend.services.emails.model.CreateEmailOptions;
-  import com.resend.services.emails.model.CreateEmailResponse;
-
-  public class Main {
-      public static void main(String[] args) throws ResendException {
-          Resend resend = new Resend("re_xxxxxxxxx");
-
-          Attachment att = Attachment.builder()
-                  .path("https://resend.com/static/sample/invoice.pdf")
-                  .fileName("invoice.pdf")
-                  .build();
-
-          CreateEmailOptions params = CreateEmailOptions.builder()
-                  .from("Acme <onboarding@resend.dev>")
-                  .to("delivered@resend.dev")
-                  .subject("Receipt for your payment")
-                  .html("<p>Thanks for the payment</p>")
-                  .attachments(att)
-                  .build();
-
-          CreateEmailResponse data = resend.emails().send(params);
-      }
-  }
-  ```
-
-  ```csharp .NET {14-18} theme={"theme":{"light":"github-light","dark":"vesper"}}
-  using Resend;
-  using System.Collections.Generic;
-
-  IResend resend = ResendClient.Create( "re_xxxxxxxxx" ); // Or from DI
-
-  var message = new EmailMessage()
-  {
-      From = "Acme <onboarding@resend.dev>",
-      To = "delivered@resend.dev",
-      Subject = "Receipt for your payment",
-      HtmlBody = "<p>Thanks for the payment</p>",
-  };
-
-  message.Attachments = new List<EmailAttachment>();
-  message.Attachments.Add( new EmailAttachment() {
-    Filename = "invoice.pdf",
-    Path = "https://resend.com/static/sample/invoice.pdf",
-  } );
-
-  var resp = await resend.EmailSendAsync( message );
-  Console.WriteLine( "Email Id={0}", resp.Content );
-  ```
-
-  ```bash cURL {11-12} theme={"theme":{"light":"github-light","dark":"vesper"}}
-  curl -X POST 'https://api.resend.com/emails' \
-       -H 'Authorization: Bearer re_xxxxxxxxx' \
-       -H 'Content-Type: application/json' \
-       -d $'{
-    "from": "Acme <onboarding@resend.dev>",
-    "to": ["delivered@resend.dev"],
-    "subject": "Receipt for your payment",
-    "html": "<p>Thanks for the payment</p>",
-    "attachments": [
-      {
-        "path": "https://resend.com/static/sample/invoice.pdf",
-        "filename": "invoice.pdf"
-      }
-    ]
-  }'
-  ```
-</CodeGroup>
+  ]
+}'
+```
 
 ## Send attachments from a local file
 
@@ -240,249 +238,247 @@ Include the `content` parameter to send attachments from a local file. This para
 
 Define the file name that will be attached using the `filename` parameter.
 
-<CodeGroup>
-  ```ts Node.js {16-17} theme={"theme":{"light":"github-light","dark":"vesper"}}
-  import { Resend } from 'resend';
-  import fs from 'fs';
+```ts Node.js {16-17} theme={"theme":{"light":"github-light","dark":"vesper"}}
+import { Resend } from 'resend';
+import fs from 'fs';
 
-  const resend = new Resend('re_xxxxxxxxx');
+const resend = new Resend('re_xxxxxxxxx');
 
-  const filepath = `${__dirname}/static/invoice.pdf`;
-  const attachment = fs.readFileSync(filepath).toString('base64');
+const filepath = `${__dirname}/static/invoice.pdf`;
+const attachment = fs.readFileSync(filepath).toString('base64');
 
-  await resend.emails.send({
-    from: 'Acme <onboarding@resend.dev>',
-    to: ['delivered@resend.dev'],
-    subject: 'Receipt for your payment',
-    text: '<p>Thanks for the payment</p>',
-    attachments: [
-      {
-        content: attachment,
-        filename: 'invoice.pdf',
-      },
-    ],
-  });
-  ```
+await resend.emails.send({
+  from: 'Acme <onboarding@resend.dev>',
+  to: ['delivered@resend.dev'],
+  subject: 'Receipt for your payment',
+  text: '<p>Thanks for the payment</p>',
+  attachments: [
+    {
+      content: attachment,
+      filename: 'invoice.pdf',
+    },
+  ],
+});
+```
 
-  ```php PHP {12-13} theme={"theme":{"light":"github-light","dark":"vesper"}}
-  $resend = Resend::client('re_xxxxxxxxx');
+```php PHP {12-13} theme={"theme":{"light":"github-light","dark":"vesper"}}
+$resend = Resend::client('re_xxxxxxxxx');
 
-  $attachment = base64_encode(file_get_contents(__DIR__ . '/static/invoice.pdf'));
+$attachment = base64_encode(file_get_contents(__DIR__ . '/static/invoice.pdf'));
 
-  $resend->emails->send([
-    'from' => 'Acme <onboarding@resend.dev>',
-    'to' => ['delivered@resend.dev'],
-    'subject' => 'Receipt for your payment',
-    'html' => '<p>Thanks for the payment</p>',
-    'attachments' => [
-      [
-        'filename' => 'invoice.pdf',
-        'content' => $attachment
-      ]
+$resend->emails->send([
+  'from' => 'Acme <onboarding@resend.dev>',
+  'to' => ['delivered@resend.dev'],
+  'subject' => 'Receipt for your payment',
+  'html' => '<p>Thanks for the payment</p>',
+  'attachments' => [
+    [
+      'filename' => 'invoice.pdf',
+      'content' => $attachment
     ]
-  ]);
-  ```
+  ]
+]);
+```
 
-  ```python Python {10} theme={"theme":{"light":"github-light","dark":"vesper"}}
-  import os
-  import resend
+```python Python {10} theme={"theme":{"light":"github-light","dark":"vesper"}}
+import os
+import resend
 
-  resend.api_key = "re_xxxxxxxxx"
+resend.api_key = "re_xxxxxxxxx"
 
-  f: bytes = open(
-    os.path.join(os.path.dirname(__file__), "../static/invoice.pdf"), "rb"
-  ).read()
+f: bytes = open(
+  os.path.join(os.path.dirname(__file__), "../static/invoice.pdf"), "rb"
+).read()
 
-  attachment: resend.Attachment = {"content": list(f), "filename": "invoice.pdf"}
+attachment: resend.Attachment = {"content": list(f), "filename": "invoice.pdf"}
 
-  params: resend.Emails.SendParams = {
-    "from": "Acme <onboarding@resend.dev>",
-    "to": ["delivered@resend.dev"],
-    "subject": "Receipt for your payment",
-    "html": "<p>Thanks for the payment</p>",
-    "attachments": [attachment],
-  }
+params: resend.Emails.SendParams = {
+  "from": "Acme <onboarding@resend.dev>",
+  "to": ["delivered@resend.dev"],
+  "subject": "Receipt for your payment",
+  "html": "<p>Thanks for the payment</p>",
+  "attachments": [attachment],
+}
 
-  resend.Emails.send(params)
-  ```
+resend.Emails.send(params)
+```
 
-  ```rb Ruby {14-15} theme={"theme":{"light":"github-light","dark":"vesper"}}
-  require "resend"
+```rb Ruby {14-15} theme={"theme":{"light":"github-light","dark":"vesper"}}
+require "resend"
 
-  Resend.api_key = "re_xxxxxxxxx"
+Resend.api_key = "re_xxxxxxxxx"
 
-  file = IO.read("invoice.pdf")
+file = IO.read("invoice.pdf")
 
-  params = {
-    "from": "Acme <onboarding@resend.dev>",
-    "to": ["delivered@resend.dev"],
-    "subject": "Receipt for your payment",
-    "html": "<p>Thanks for the payment</p>",
-    "attachments": [
-      {
-        "content": file.bytes,
-        "filename": 'invoice.pdf',
-      }
-    ]
-  }
-
-  Resend::Emails.send(params)
-  ```
-
-  ```go Go {22-23} theme={"theme":{"light":"github-light","dark":"vesper"}}
-  package main
-
-  import (
-  	"context"
-  	"fmt"
-  	"os"
-
-  	"github.com/resend/resend-go/v4"
-  )
-
-  func main() {
-    ctx := context.TODO()
-    client := resend.NewClient("re_xxxxxxxxx")
-
-    pwd, _ := os.Getwd()
-    f, err := os.ReadFile(pwd + "/static/invoice.pdf")
-    if err != nil {
-      panic(err)
+params = {
+  "from": "Acme <onboarding@resend.dev>",
+  "to": ["delivered@resend.dev"],
+  "subject": "Receipt for your payment",
+  "html": "<p>Thanks for the payment</p>",
+  "attachments": [
+    {
+      "content": file.bytes,
+      "filename": 'invoice.pdf',
     }
+  ]
+}
 
-    attachment := &resend.Attachment{
-      Content:  f,
-      Filename: "invoice.pdf",
-    }
+Resend::Emails.send(params)
+```
 
-    params := &resend.SendEmailRequest{
-        From:        "Acme <onboarding@resend.dev>",
-        To:          []string{"delivered@resend.dev"},
-        Subject:     "Receipt for your payment",
-        Html:        "<p>Thanks for the payment</p>",
-        Attachments: []*resend.Attachment{attachment},
-    }
+```go Go {22-23} theme={"theme":{"light":"github-light","dark":"vesper"}}
+package main
 
-    sent, err := client.Emails.SendWithContext(ctx, params)
+import (
+	"context"
+	"fmt"
+	"os"
 
-    if err != nil {
-      panic(err)
-    }
-    fmt.Println(sent.Id)
+	"github.com/resend/resend-go/v4"
+)
+
+func main() {
+  ctx := context.TODO()
+  client := resend.NewClient("re_xxxxxxxxx")
+
+  pwd, _ := os.Getwd()
+  f, err := os.ReadFile(pwd + "/static/invoice.pdf")
+  if err != nil {
+    panic(err)
   }
-  ```
 
-  ```rust Rust {22} theme={"theme":{"light":"github-light","dark":"vesper"}}
-  use std::fs::File;
-  use std::io::Read;
-
-  use resend_rs::types::{CreateAttachment, CreateEmailBaseOptions};
-  use resend_rs::{Resend, Result};
-
-  #[tokio::main]
-  async fn main() -> Result<()> {
-    let resend = Resend::new("re_xxxxxxxxx");
-
-    let from = "Acme <onboarding@resend.dev>";
-    let to = ["delivered@resend.dev"];
-    let subject = "Receipt for your payment";
-
-    let filename = "invoice.pdf";
-    let mut f = File::open(filename).unwrap();
-    let mut invoice = Vec::new();
-    f.read_to_end(&mut invoice).unwrap();
-
-    let email = CreateEmailBaseOptions::new(from, to, subject)
-      .with_html("<p>Thanks for the payment</p>")
-      .with_attachment(CreateAttachment::from_content(invoice).with_filename(filename));
-
-    let _email = resend.emails.send(email).await?;
-
-    Ok(())
+  attachment := &resend.Attachment{
+    Content:  f,
+    Filename: "invoice.pdf",
   }
-  ```
 
-  ```java Java {12-13} theme={"theme":{"light":"github-light","dark":"vesper"}}
-  import com.resend.*;
-  import com.resend.core.exception.ResendException;
-  import com.resend.services.emails.model.Attachment;
-  import com.resend.services.emails.model.CreateEmailOptions;
-  import com.resend.services.emails.model.CreateEmailResponse;
-
-  public class Main {
-      public static void main(String[] args) throws ResendException {
-          Resend resend = new Resend("re_xxxxxxxxx");
-
-          Attachment att = Attachment.builder()
-                  .fileName("invoice.pdf")
-                  .content("invoiceBuffer")
-                  .build();
-
-          CreateEmailOptions params = CreateEmailOptions.builder()
-                  .from("Acme <onboarding@resend.dev>")
-                  .to("delivered@resend.dev")
-                  .subject("Receipt for your payment")
-                  .html("<p>Thanks for the payment</p>")
-                  .attachments(att)
-                  .build();
-
-          CreateEmailResponse data = resend.emails().send(params);
-      }
+  params := &resend.SendEmailRequest{
+      From:        "Acme <onboarding@resend.dev>",
+      To:          []string{"delivered@resend.dev"},
+      Subject:     "Receipt for your payment",
+      Html:        "<p>Thanks for the payment</p>",
+      Attachments: []*resend.Attachment{attachment},
   }
-  ```
 
-  ```csharp .NET {15-19} theme={"theme":{"light":"github-light","dark":"vesper"}}
-  using Resend;
-  using System.Collections.Generic;
-  using System.IO;
+  sent, err := client.Emails.SendWithContext(ctx, params)
 
-  IResend resend = ResendClient.Create( "re_xxxxxxxxx" ); // Or from DI
+  if err != nil {
+    panic(err)
+  }
+  fmt.Println(sent.Id)
+}
+```
 
-  var message = new EmailMessage()
-  {
-      From = "Acme <onboarding@resend.dev>",
-      To = "delivered@resend.dev",
-      Subject = "Receipt for your payment",
-      HtmlBody = "<p>Thanks for the payment</p>",
-  };
+```rust Rust {22} theme={"theme":{"light":"github-light","dark":"vesper"}}
+use std::fs::File;
+use std::io::Read;
 
-  message.Attachments = new List<EmailAttachment>();
-  message.Attachments.Add( new EmailAttachment() {
-    Filename = "invoice.pdf",
-    Content = await File.ReadAllBytesAsync( "invoice.pdf" ),
-  } );
+use resend_rs::types::{CreateAttachment, CreateEmailBaseOptions};
+use resend_rs::{Resend, Result};
 
-  var resp = await resend.EmailSendAsync( message );
-  Console.WriteLine( "Email Id={0}", resp.Content );
-  ```
+#[tokio::main]
+async fn main() -> Result<()> {
+  let resend = Resend::new("re_xxxxxxxxx");
 
-  ```bash cURL {11-12} theme={"theme":{"light":"github-light","dark":"vesper"}}
-  curl -X POST 'https://api.resend.com/emails' \
-       -H 'Authorization: Bearer re_xxxxxxxxx' \
-       -H 'Content-Type: application/json' \
-       -d $'{
-    "from": "Acme <onboarding@resend.dev>",
-    "to": ["delivered@resend.dev"],
-    "subject": "Receipt for your payment",
-    "html": "<p>Thanks for the payment</p>",
-    "attachments": [
-      {
-        "content": "UmVzZW5kIGF0dGFjaG1lbnQgZXhhbXBsZS4gTmljZSBqb2Igc2VuZGluZyB0aGUgZW1haWwh%",
-        "filename": "invoice.txt"
-      }
-    ]
-  }'
-  ```
+  let from = "Acme <onboarding@resend.dev>";
+  let to = ["delivered@resend.dev"];
+  let subject = "Receipt for your payment";
 
-  ```bash CLI {6} theme={"theme":{"light":"github-light","dark":"vesper"}}
-  resend emails send \
-    --from "Acme <onboarding@resend.dev>" \
-    --to delivered@resend.dev \
-    --subject "Receipt for your payment" \
-    --html "<p>Thanks for the payment</p>" \
-    --attachment ./static/invoice.pdf
-  ```
-</CodeGroup>
+  let filename = "invoice.pdf";
+  let mut f = File::open(filename).unwrap();
+  let mut invoice = Vec::new();
+  f.read_to_end(&mut invoice).unwrap();
+
+  let email = CreateEmailBaseOptions::new(from, to, subject)
+    .with_html("<p>Thanks for the payment</p>")
+    .with_attachment(CreateAttachment::from_content(invoice).with_filename(filename));
+
+  let _email = resend.emails.send(email).await?;
+
+  Ok(())
+}
+```
+
+```java Java {12-13} theme={"theme":{"light":"github-light","dark":"vesper"}}
+import com.resend.*;
+import com.resend.core.exception.ResendException;
+import com.resend.services.emails.model.Attachment;
+import com.resend.services.emails.model.CreateEmailOptions;
+import com.resend.services.emails.model.CreateEmailResponse;
+
+public class Main {
+    public static void main(String[] args) throws ResendException {
+        Resend resend = new Resend("re_xxxxxxxxx");
+
+        Attachment att = Attachment.builder()
+                .fileName("invoice.pdf")
+                .content("invoiceBuffer")
+                .build();
+
+        CreateEmailOptions params = CreateEmailOptions.builder()
+                .from("Acme <onboarding@resend.dev>")
+                .to("delivered@resend.dev")
+                .subject("Receipt for your payment")
+                .html("<p>Thanks for the payment</p>")
+                .attachments(att)
+                .build();
+
+        CreateEmailResponse data = resend.emails().send(params);
+    }
+}
+```
+
+```csharp .NET {15-19} theme={"theme":{"light":"github-light","dark":"vesper"}}
+using Resend;
+using System.Collections.Generic;
+using System.IO;
+
+IResend resend = ResendClient.Create( "re_xxxxxxxxx" ); // Or from DI
+
+var message = new EmailMessage()
+{
+    From = "Acme <onboarding@resend.dev>",
+    To = "delivered@resend.dev",
+    Subject = "Receipt for your payment",
+    HtmlBody = "<p>Thanks for the payment</p>",
+};
+
+message.Attachments = new List<EmailAttachment>();
+message.Attachments.Add( new EmailAttachment() {
+  Filename = "invoice.pdf",
+  Content = await File.ReadAllBytesAsync( "invoice.pdf" ),
+} );
+
+var resp = await resend.EmailSendAsync( message );
+Console.WriteLine( "Email Id={0}", resp.Content );
+```
+
+```bash cURL {11-12} theme={"theme":{"light":"github-light","dark":"vesper"}}
+curl -X POST 'https://api.resend.com/emails' \
+     -H 'Authorization: Bearer re_xxxxxxxxx' \
+     -H 'Content-Type: application/json' \
+     -d $'{
+  "from": "Acme <onboarding@resend.dev>",
+  "to": ["delivered@resend.dev"],
+  "subject": "Receipt for your payment",
+  "html": "<p>Thanks for the payment</p>",
+  "attachments": [
+    {
+      "content": "UmVzZW5kIGF0dGFjaG1lbnQgZXhhbXBsZS4gTmljZSBqb2Igc2VuZGluZyB0aGUgZW1haWwh%",
+      "filename": "invoice.txt"
+    }
+  ]
+}'
+```
+
+```bash CLI {6} theme={"theme":{"light":"github-light","dark":"vesper"}}
+resend emails send \
+  --from "Acme <onboarding@resend.dev>" \
+  --to delivered@resend.dev \
+  --subject "Receipt for your payment" \
+  --html "<p>Thanks for the payment</p>" \
+  --attachment ./static/invoice.pdf
+```
 
 ## Embed Images using CID
 
@@ -502,230 +498,228 @@ Use the prefix `cid:` to reference the ID in the `src` attribute of an image tag
 
 The content id is an arbitrary string set by you, and must be less than 128 characters.
 
-<CodeGroup>
-  ```ts Node.js {9, 14} theme={"theme":{"light":"github-light","dark":"vesper"}}
-  import { Resend } from 'resend';
+```ts Node.js {9, 14} theme={"theme":{"light":"github-light","dark":"vesper"}}
+import { Resend } from 'resend';
 
-  const resend = new Resend('re_xxxxxxxxx');
+const resend = new Resend('re_xxxxxxxxx');
 
-  await resend.emails.send({
-    from: 'Acme <onboarding@resend.dev>',
-    to: ['delivered@resend.dev'],
-    subject: 'Thank you for contacting us',
-    html: '<p>Here is our <img src="cid:logo-image"/> inline logo</p>',
-    attachments: [
-      {
-        path: 'https://resend.com/static/sample/logo.png',
-        filename: 'logo.png',
-        contentId: 'logo-image',
-      },
-    ],
-  });
-  ```
+await resend.emails.send({
+  from: 'Acme <onboarding@resend.dev>',
+  to: ['delivered@resend.dev'],
+  subject: 'Thank you for contacting us',
+  html: '<p>Here is our <img src="cid:logo-image"/> inline logo</p>',
+  attachments: [
+    {
+      path: 'https://resend.com/static/sample/logo.png',
+      filename: 'logo.png',
+      contentId: 'logo-image',
+    },
+  ],
+});
+```
 
-  ```php PHP {7,12} theme={"theme":{"light":"github-light","dark":"vesper"}}
-  $resend = Resend::client('re_xxxxxxxxx');
+```php PHP {7,12} theme={"theme":{"light":"github-light","dark":"vesper"}}
+$resend = Resend::client('re_xxxxxxxxx');
 
-  $resend->emails->send([
-    'from' => 'Acme <onboarding@resend.dev>',
-    'to' => ['delivered@resend.dev'],
-    'subject' => 'Thank you for contacting us',
-    'html' => '<p>Here is our <img src="cid:logo-image"/> inline logo</p>',
-    'attachments' => [
-      [
-        'path' => 'https://resend.com/static/sample/logo.png',
-        'filename' => 'logo.png',
-        'content_id' => 'logo-image',
-      ]
+$resend->emails->send([
+  'from' => 'Acme <onboarding@resend.dev>',
+  'to' => ['delivered@resend.dev'],
+  'subject' => 'Thank you for contacting us',
+  'html' => '<p>Here is our <img src="cid:logo-image"/> inline logo</p>',
+  'attachments' => [
+    [
+      'path' => 'https://resend.com/static/sample/logo.png',
+      'filename' => 'logo.png',
+      'content_id' => 'logo-image',
     ]
-  ]);
-  ```
+  ]
+]);
+```
 
-  ```python Python {8,15} theme={"theme":{"light":"github-light","dark":"vesper"}}
-  import resend
+```python Python {8,15} theme={"theme":{"light":"github-light","dark":"vesper"}}
+import resend
 
-  resend.api_key = "re_xxxxxxxxx"
+resend.api_key = "re_xxxxxxxxx"
 
-  attachment: resend.RemoteAttachment = {
-    "path": "https://resend.com/static/sample/logo.png",
-    "filename": "logo.png",
-    "content_id": "logo-image",
-  }
+attachment: resend.RemoteAttachment = {
+  "path": "https://resend.com/static/sample/logo.png",
+  "filename": "logo.png",
+  "content_id": "logo-image",
+}
 
-  params: resend.Emails.SendParams = {
-    "from": "Acme <onboarding@resend.dev>",
-    "to": ["delivered@resend.dev"],
-    "subject": "Thank you for contacting us",
-    "html": "<p>Here is our <img src=\"cid:logo-image\"/> inline logo</p>",
-    "attachments": [attachment],
-  }
+params: resend.Emails.SendParams = {
+  "from": "Acme <onboarding@resend.dev>",
+  "to": ["delivered@resend.dev"],
+  "subject": "Thank you for contacting us",
+  "html": "<p>Here is our <img src=\"cid:logo-image\"/> inline logo</p>",
+  "attachments": [attachment],
+}
 
-  resend.Emails.send(params)
-  ```
+resend.Emails.send(params)
+```
 
-  ```rb Ruby {9, 14} theme={"theme":{"light":"github-light","dark":"vesper"}}
-  require "resend"
+```rb Ruby {9, 14} theme={"theme":{"light":"github-light","dark":"vesper"}}
+require "resend"
 
-  Resend.api_key = "re_xxxxxxxxx"
+Resend.api_key = "re_xxxxxxxxx"
 
-  params = {
-    "from": "Acme <onboarding@resend.dev>",
-    "to": ["delivered@resend.dev"],
-    "subject": "Thank you for contacting us",
-    "html": "<p>Here is our <img src=\"cid:logo-image\"/> inline logo</p>",
-    "attachments": [
-      {
-        "path": "https://resend.com/static/sample/logo.png",
-        "filename": 'logo.png',
-        "content_id": "logo-image",
-      }
-    ]
-  }
-
-  Resend::Emails.send(params)
-  ```
-
-  ```go Go {17, 24} theme={"theme":{"light":"github-light","dark":"vesper"}}
-  package main
-
-  import (
-  	"context"
-  	"fmt"
-
-  	"github.com/resend/resend-go/v4"
-  )
-
-  func main() {
-    ctx := context.TODO()
-    client := resend.NewClient("re_xxxxxxxxx")
-
-    attachment := &resend.Attachment{
-      Path:  "https://resend.com/static/sample/logo.png",
-      Filename: "logo.png",
-      ContentId: "logo-image",
+params = {
+  "from": "Acme <onboarding@resend.dev>",
+  "to": ["delivered@resend.dev"],
+  "subject": "Thank you for contacting us",
+  "html": "<p>Here is our <img src=\"cid:logo-image\"/> inline logo</p>",
+  "attachments": [
+    {
+      "path": "https://resend.com/static/sample/logo.png",
+      "filename": 'logo.png',
+      "content_id": "logo-image",
     }
+  ]
+}
 
-    params := &resend.SendEmailRequest{
-        From:        "Acme <onboarding@resend.dev>",
-        To:          []string{"delivered@resend.dev"},
-        Subject:     "Thank you for contacting us",
-        Html:        "<p>Here is our <img src=\"cid:logo-image\"/> inline logo</p>",
-        Attachments: []*resend.Attachment{attachment},
+Resend::Emails.send(params)
+```
+
+```go Go {17, 24} theme={"theme":{"light":"github-light","dark":"vesper"}}
+package main
+
+import (
+	"context"
+	"fmt"
+
+	"github.com/resend/resend-go/v4"
+)
+
+func main() {
+  ctx := context.TODO()
+  client := resend.NewClient("re_xxxxxxxxx")
+
+  attachment := &resend.Attachment{
+    Path:  "https://resend.com/static/sample/logo.png",
+    Filename: "logo.png",
+    ContentId: "logo-image",
+  }
+
+  params := &resend.SendEmailRequest{
+      From:        "Acme <onboarding@resend.dev>",
+      To:          []string{"delivered@resend.dev"},
+      Subject:     "Thank you for contacting us",
+      Html:        "<p>Here is our <img src=\"cid:logo-image\"/> inline logo</p>",
+      Attachments: []*resend.Attachment{attachment},
+  }
+
+  sent, err := client.Emails.SendWithContext(ctx, params)
+
+  if err != nil {
+    panic(err)
+  }
+  fmt.Println(sent.Id)
+}
+```
+
+```rust Rust {14, 17} theme={"theme":{"light":"github-light","dark":"vesper"}}
+use resend_rs::types::{CreateAttachment, CreateEmailBaseOptions};
+use resend_rs::{Resend, Result};
+
+#[tokio::main]
+async fn main() -> Result<()> {
+  let resend = Resend::new("re_xxxxxxxxx");
+
+  let from = "Acme <onboarding@resend.dev>";
+  let to = ["delivered@resend.dev"];
+  let subject = "Thank you for contacting us";
+
+  let path = "https://resend.com/static/sample/logo.png";
+  let filename = "logo.png";
+  let content_id = "logo-image";
+
+  let email = CreateEmailBaseOptions::new(from, to, subject)
+    .with_html("<p>Here is our <img src=\"cid:logo-image\"/> inline logo</p>")
+    .with_attachment(
+      CreateAttachment::from_path(path)
+        .with_filename(filename)
+        .with_content_id(content_id),
+    );
+
+  let _email = resend.emails.send(email).await?;
+
+  Ok(())
+}
+```
+
+```java Java {14, 21} theme={"theme":{"light":"github-light","dark":"vesper"}}
+import com.resend.*;
+import com.resend.core.exception.ResendException;
+import com.resend.services.emails.model.Attachment;
+import com.resend.services.emails.model.CreateEmailOptions;
+import com.resend.services.emails.model.CreateEmailResponse;
+
+public class Main {
+    public static void main(String[] args) throws ResendException {
+        Resend resend = new Resend("re_xxxxxxxxx");
+
+        Attachment att = Attachment.builder()
+                .path("https://resend.com/static/sample/logo.png")
+                .fileName("logo.png")
+                .contentId("logo-image")
+                .build();
+
+        CreateEmailOptions params = CreateEmailOptions.builder()
+                .from("Acme <onboarding@resend.dev>")
+                .to("delivered@resend.dev")
+                .subject("Thank you for contacting us")
+                .html("<p>Here is our <img src=\"cid:logo-image\"/> inline logo</p>")
+                .attachments(att)
+                .build();
+
+        CreateEmailResponse data = resend.emails().send(params);
     }
+}
+```
 
-    sent, err := client.Emails.SendWithContext(ctx, params)
+```csharp .NET {11, 18} theme={"theme":{"light":"github-light","dark":"vesper"}}
+using Resend;
+using System.Collections.Generic;
 
-    if err != nil {
-      panic(err)
+IResend resend = ResendClient.Create( "re_xxxxxxxxx" ); // Or from DI
+
+var message = new EmailMessage()
+{
+    From = "Acme <onboarding@resend.dev>",
+    To = "delivered@resend.dev",
+    Subject = "Thank you for contacting us",
+    HtmlBody = "<p>Here is our <img src=\"cid:logo-image\"/> inline logo</p>",
+};
+
+message.Attachments = new List<EmailAttachment>();
+message.Attachments.Add( new EmailAttachment() {
+  Filename = "logo.png",
+  Path = "https://resend.com/static/sample/logo.png",
+  ContentId = "logo-image",
+} );
+
+var resp = await resend.EmailSendAsync( message );
+Console.WriteLine( "Email Id={0}", resp.Content );
+```
+
+```bash cURL {8,13} theme={"theme":{"light":"github-light","dark":"vesper"}}
+curl -X POST 'https://api.resend.com/emails' \
+     -H 'Authorization: Bearer re_xxxxxxxxx' \
+     -H 'Content-Type: application/json' \
+     -d $'{
+  "from": "Acme <onboarding@resend.dev>",
+  "to": ["delivered@resend.dev"],
+  "subject": "Thank you for contacting us",
+  "html": "<p>Here is our <img src=\"cid:logo-image\"/> inline logo</p>",
+  "attachments": [
+    {
+      "path": "https://resend.com/static/sample/logo.png",
+      "filename": "logo.png",
+      "content_id": "logo-image"
     }
-    fmt.Println(sent.Id)
-  }
-  ```
-
-  ```rust Rust {14, 17} theme={"theme":{"light":"github-light","dark":"vesper"}}
-  use resend_rs::types::{CreateAttachment, CreateEmailBaseOptions};
-  use resend_rs::{Resend, Result};
-
-  #[tokio::main]
-  async fn main() -> Result<()> {
-    let resend = Resend::new("re_xxxxxxxxx");
-
-    let from = "Acme <onboarding@resend.dev>";
-    let to = ["delivered@resend.dev"];
-    let subject = "Thank you for contacting us";
-
-    let path = "https://resend.com/static/sample/logo.png";
-    let filename = "logo.png";
-    let content_id = "logo-image";
-
-    let email = CreateEmailBaseOptions::new(from, to, subject)
-      .with_html("<p>Here is our <img src=\"cid:logo-image\"/> inline logo</p>")
-      .with_attachment(
-        CreateAttachment::from_path(path)
-          .with_filename(filename)
-          .with_content_id(content_id),
-      );
-
-    let _email = resend.emails.send(email).await?;
-
-    Ok(())
-  }
-  ```
-
-  ```java Java {14, 21} theme={"theme":{"light":"github-light","dark":"vesper"}}
-  import com.resend.*;
-  import com.resend.core.exception.ResendException;
-  import com.resend.services.emails.model.Attachment;
-  import com.resend.services.emails.model.CreateEmailOptions;
-  import com.resend.services.emails.model.CreateEmailResponse;
-
-  public class Main {
-      public static void main(String[] args) throws ResendException {
-          Resend resend = new Resend("re_xxxxxxxxx");
-
-          Attachment att = Attachment.builder()
-                  .path("https://resend.com/static/sample/logo.png")
-                  .fileName("logo.png")
-                  .contentId("logo-image")
-                  .build();
-
-          CreateEmailOptions params = CreateEmailOptions.builder()
-                  .from("Acme <onboarding@resend.dev>")
-                  .to("delivered@resend.dev")
-                  .subject("Thank you for contacting us")
-                  .html("<p>Here is our <img src=\"cid:logo-image\"/> inline logo</p>")
-                  .attachments(att)
-                  .build();
-
-          CreateEmailResponse data = resend.emails().send(params);
-      }
-  }
-  ```
-
-  ```csharp .NET {11, 18} theme={"theme":{"light":"github-light","dark":"vesper"}}
-  using Resend;
-  using System.Collections.Generic;
-
-  IResend resend = ResendClient.Create( "re_xxxxxxxxx" ); // Or from DI
-
-  var message = new EmailMessage()
-  {
-      From = "Acme <onboarding@resend.dev>",
-      To = "delivered@resend.dev",
-      Subject = "Thank you for contacting us",
-      HtmlBody = "<p>Here is our <img src=\"cid:logo-image\"/> inline logo</p>",
-  };
-
-  message.Attachments = new List<EmailAttachment>();
-  message.Attachments.Add( new EmailAttachment() {
-    Filename = "logo.png",
-    Path = "https://resend.com/static/sample/logo.png",
-    ContentId = "logo-image",
-  } );
-
-  var resp = await resend.EmailSendAsync( message );
-  Console.WriteLine( "Email Id={0}", resp.Content );
-  ```
-
-  ```bash cURL {8,13} theme={"theme":{"light":"github-light","dark":"vesper"}}
-  curl -X POST 'https://api.resend.com/emails' \
-       -H 'Authorization: Bearer re_xxxxxxxxx' \
-       -H 'Content-Type: application/json' \
-       -d $'{
-    "from": "Acme <onboarding@resend.dev>",
-    "to": ["delivered@resend.dev"],
-    "subject": "Thank you for contacting us",
-    "html": "<p>Here is our <img src=\"cid:logo-image\"/> inline logo</p>",
-    "attachments": [
-      {
-        "path": "https://resend.com/static/sample/logo.png",
-        "filename": "logo.png",
-        "content_id": "logo-image"
-      }
-    ]
-  }'
-  ```
-</CodeGroup>
+  ]
+}'
+```
 
 Learn more about [embedding images](/docs/dashboard/emails/embed-inline-images).
 
@@ -760,56 +754,52 @@ Use [List Attachments](/docs/api-reference/emails/list-email-attachments) to fet
 
 ### Attachments
 
-<CardGroup>
-  <Card title="Next.js (TypeScript)" icon="arrow-up-right-from-square" href="https://github.com/resend/resend-examples/tree/main/nextjs-resend-examples/typescript/src/app/attachments">
-    See the full source code.
-  </Card>
+> **[Next.js (TypeScript)](https://github.com/resend/resend-examples/tree/main/nextjs-resend-examples/typescript/src/app/attachments)**
+>
+> See the full source code.
 
-  <Card title="Next.js (JavaScript)" icon="arrow-up-right-from-square" href="https://github.com/resend/resend-examples/tree/main/nextjs-resend-examples/javascript/src/app/attachments">
-    See the full source code.
-  </Card>
+> **[Next.js (JavaScript)](https://github.com/resend/resend-examples/tree/main/nextjs-resend-examples/javascript/src/app/attachments)**
+>
+> See the full source code.
 
-  <Card title="PHP" icon="arrow-up-right-from-square" href="https://github.com/resend/resend-examples/tree/main/php-resend-examples/src/attachments">
-    See the full source code.
-  </Card>
+> **[PHP](https://github.com/resend/resend-examples/tree/main/php-resend-examples/src/attachments)**
+>
+> See the full source code.
 
-  <Card title="Laravel" icon="arrow-up-right-from-square" href="https://github.com/resend/resend-examples/tree/main/laravel-resend-examples">
-    See the full source code.
-  </Card>
+> **[Laravel](https://github.com/resend/resend-examples/tree/main/laravel-resend-examples)**
+>
+> See the full source code.
 
-  <Card title="Python" icon="arrow-up-right-from-square" href="https://github.com/resend/resend-examples/tree/main/python-resend-examples/examples">
-    See the full source code.
-  </Card>
+> **[Python](https://github.com/resend/resend-examples/tree/main/python-resend-examples/examples)**
+>
+> See the full source code.
 
-  <Card title="Ruby" icon="arrow-up-right-from-square" href="https://github.com/resend/resend-examples/tree/main/ruby-resend-examples/examples">
-    See the full source code.
-  </Card>
-</CardGroup>
+> **[Ruby](https://github.com/resend/resend-examples/tree/main/ruby-resend-examples/examples)**
+>
+> See the full source code.
 
 ### Inline Images (CID)
 
-<CardGroup>
-  <Card title="Next.js (TypeScript)" icon="arrow-up-right-from-square" href="https://github.com/resend/resend-examples/tree/main/nextjs-resend-examples/typescript/src/app/cid-attachments">
-    See the full source code.
-  </Card>
+> **[Next.js (TypeScript)](https://github.com/resend/resend-examples/tree/main/nextjs-resend-examples/typescript/src/app/cid-attachments)**
+>
+> See the full source code.
 
-  <Card title="Next.js (JavaScript)" icon="arrow-up-right-from-square" href="https://github.com/resend/resend-examples/tree/main/nextjs-resend-examples/javascript/src/app/cid-attachments">
-    See the full source code.
-  </Card>
+> **[Next.js (JavaScript)](https://github.com/resend/resend-examples/tree/main/nextjs-resend-examples/javascript/src/app/cid-attachments)**
+>
+> See the full source code.
 
-  <Card title="PHP" icon="arrow-up-right-from-square" href="https://github.com/resend/resend-examples/tree/main/php-resend-examples/src/attachments">
-    See the full source code.
-  </Card>
+> **[PHP](https://github.com/resend/resend-examples/tree/main/php-resend-examples/src/attachments)**
+>
+> See the full source code.
 
-  <Card title="Laravel" icon="arrow-up-right-from-square" href="https://github.com/resend/resend-examples/tree/main/laravel-resend-examples">
-    See the full source code.
-  </Card>
+> **[Laravel](https://github.com/resend/resend-examples/tree/main/laravel-resend-examples)**
+>
+> See the full source code.
 
-  <Card title="Python" icon="arrow-up-right-from-square" href="https://github.com/resend/resend-examples/tree/main/python-resend-examples/examples">
-    See the full source code.
-  </Card>
+> **[Python](https://github.com/resend/resend-examples/tree/main/python-resend-examples/examples)**
+>
+> See the full source code.
 
-  <Card title="Ruby" icon="arrow-up-right-from-square" href="https://github.com/resend/resend-examples/tree/main/ruby-resend-examples/examples">
-    See the full source code.
-  </Card>
-</CardGroup>
+> **[Ruby](https://github.com/resend/resend-examples/tree/main/ruby-resend-examples/examples)**
+>
+> See the full source code.

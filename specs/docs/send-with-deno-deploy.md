@@ -15,55 +15,53 @@ Before you start, you'll need:
 
 ## Guide
 
-<Steps>
-  <Step title="Create a Deno Deploy project">
-    Go to [dash.deno.com/projects](https://dash.deno.com/projects) and create a new playground project.
+**1. Create a Deno Deploy project**
 
-    <img alt="Deno Deploy - New Project" src="https://mintcdn.com/resend/OWNnQaVDyqcGyhhN/images/deno-deploy-new-project.png?fit=max&auto=format&n=OWNnQaVDyqcGyhhN&q=85&s=634d342d6e542f4c82eb9c013bfcc817" width="3414" height="1886" data-path="images/deno-deploy-new-project.png" />
-  </Step>
+Go to [dash.deno.com/projects](https://dash.deno.com/projects) and create a new playground project.
 
-  <Step title="Edit the handler function">
-    Paste the following code into the browser editor:
+![Deno Deploy - New Project](https://mintcdn.com/resend/OWNnQaVDyqcGyhhN/images/deno-deploy-new-project.png?fit=max\&auto=format\&n=OWNnQaVDyqcGyhhN\&q=85\&s=634d342d6e542f4c82eb9c013bfcc817)
 
-    ```ts main.ts theme={"theme":{"light":"github-light","dark":"vesper"}}
-    import { Resend } from 'npm:resend';
+**2. Edit the handler function**
 
-    const resend = new Resend('re_123456789');
+Paste the following code into the browser editor:
 
-    Deno.serve(async () => {
-      try {
-        const response = await resend.emails.send({
-          from: 'Acme <onboarding@resend.dev>',
-          to: ['delivered@resend.dev'],
-          subject: 'Hello World',
-          html: '<strong>It works!</strong>',
-        });
+```ts main.ts theme={"theme":{"light":"github-light","dark":"vesper"}}
+import { Resend } from 'npm:resend';
 
-        return new Response(JSON.stringify(response), {
-          status: response.error ? 500 : 200,
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        });
-      } catch (error) {
-        console.error(error);
-        return new Response(null, {
-          status: 500,
-        });
-      }
+const resend = new Resend('re_123456789');
+
+Deno.serve(async () => {
+  try {
+    const response = await resend.emails.send({
+      from: 'Acme <onboarding@resend.dev>',
+      to: ['delivered@resend.dev'],
+      subject: 'Hello World',
+      html: '<strong>It works!</strong>',
     });
-    ```
-  </Step>
 
-  <Step title="Deploy and send email">
-    Click on `Save & Deploy` at the top of the screen.
+    return new Response(JSON.stringify(response), {
+      status: response.error ? 500 : 200,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+  } catch (error) {
+    console.error(error);
+    return new Response(null, {
+      status: 500,
+    });
+  }
+});
+```
 
-    <img alt="Deno Deploy - Playground" src="https://mintcdn.com/resend/OWNnQaVDyqcGyhhN/images/deno-deploy-playground.png?fit=max&auto=format&n=OWNnQaVDyqcGyhhN&q=85&s=fb62c969114e48e5401fecc67f5a4d76" width="3414" height="1886" data-path="images/deno-deploy-playground.png" />
-  </Step>
-</Steps>
+**3. Deploy and send email**
+
+Click on `Save & Deploy` at the top of the screen.
+
+![Deno Deploy - Playground](https://mintcdn.com/resend/OWNnQaVDyqcGyhhN/images/deno-deploy-playground.png?fit=max\&auto=format\&n=OWNnQaVDyqcGyhhN\&q=85\&s=fb62c969114e48e5401fecc67f5a4d76)
 
 ## Examples
 
-<Card title="Deno Deploy Example" icon="arrow-up-right-from-square" href="https://github.com/resend/resend-deno-deploy-example">
-  See the full source code.
-</Card>
+> **[Deno Deploy Example](https://github.com/resend/resend-deno-deploy-example)**
+>
+> See the full source code.

@@ -6,153 +6,152 @@
 
 > Retrieve a single inbox by its ID or email address.
 
-export const ResendParamField = ({children, body, path, ...props}) => {
-  const [lang, setLang] = useState(() => {
-    return localStorage.getItem('code') || '"Node.js"';
-  });
-  useEffect(() => {
-    const onStorage = event => {
-      const key = event.detail.key;
-      if (key === 'code') {
-        setLang(event.detail.value);
-      }
-    };
-    document.addEventListener('mintlify-localstorage', onStorage);
-    return () => {
-      document.removeEventListener('mintlify-localstorage', onStorage);
-    };
-  }, []);
-  const toCamelCase = str => typeof str === 'string' ? str.replace(/[_-](\w)/g, (_, c) => c.toUpperCase()) : str;
-  const resolvedBody = useMemo(() => {
-    const value = JSON.parse(lang);
-    return value === 'Node.js' ? toCamelCase(body) : body;
-  }, [body, lang]);
-  const resolvedPath = useMemo(() => {
-    const value = JSON.parse(lang);
-    return value === 'Node.js' ? toCamelCase(path) : path;
-  }, [path, lang]);
-  return <ParamField body={resolvedBody} path={resolvedPath} {...props}>
-      {children}
-    </ParamField>;
-};
-
-<Warning>
-  Inboxes are currently in private beta and only available to a limited
-  number of users. The response shape might change before GA.
-
-  <span />
-
-  [Get early access](https://resend.com/settings/labs) if you're interested in testing this feature.
-
-  <span />
-
-  Once you have access, upgrade your Resend SDK to use the new methods:
-
-  <CodeGroup>
-    ```bash Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
-    npm install resend@6.33.0
-    ```
-
-    ```bash CLI theme={"theme":{"light":"github-light","dark":"vesper"}}
-    npm install -g resend-cli@2.25.0
-    ```
-  </CodeGroup>
-</Warning>
-
 ## Path Parameters
 
-<ResendParamField path="inbox_id" type="string" required>
-  The Inbox ID or the inbox email address, such as `support@example.com`.
-</ResendParamField>
+The Inbox ID or the inbox email address, such as `support@example.com`.
 
 ## Response Fields
 
-<ParamField body="object" type="string">
-  Always `inbox`.
-</ParamField>
+**object** `string`
 
-<ParamField body="id" type="string">
-  The ID of the inbox.
-</ParamField>
+Always `inbox`.
 
-<ParamField body="name" type="string">
-  Internal name for the inbox. Recipients do not see it.
-</ParamField>
+**id** `string`
 
-<ParamField body="email_address" type="string">
-  The address of the inbox.
-</ParamField>
+The ID of the inbox.
 
-<ParamField body="domain_id" type="string">
-  The ID of the domain that owns the address.
-</ParamField>
+**name** `string`
 
-<ParamField body="receiving_address" type="string | null">
-  The address to forward mail to when forwarding is enabled. `null` otherwise.
-</ParamField>
+Internal name for the inbox. Recipients do not see it.
 
-<ParamField body="from_name" type="string | null">
-  The name recipients see when mail is sent from this inbox. `null` when not
-  set.
-</ParamField>
+**email\_address** `string`
 
-<ParamField body="unread" type="number">
-  The number of unread threads in the Inbox folder.
-</ParamField>
+The address of the inbox.
 
-<ParamField body="drafts" type="number">
-  The number of unsent drafts.
-</ParamField>
+**domain\_id** `string`
 
-<ParamField body="last_received" type="string | null">
-  ISO 8601 timestamp of the newest received email in the Inbox folder. `null`
-  when the folder has no received email.
-</ParamField>
+The ID of the domain that owns the address.
 
-<ParamField body="created_at" type="string">
-  ISO 8601 timestamp when the inbox was created.
-</ParamField>
+**receiving\_address** `string | null`
 
-<ParamField body="updated_at" type="string">
-  ISO 8601 timestamp when the inbox was updated.
-</ParamField>
+The address to forward mail to when forwarding is enabled. `null` otherwise.
 
-<RequestExample>
-  ```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
-  import { Resend } from 'resend';
+**from\_name** `string | null`
 
-  const resend = new Resend('re_xxxxxxxxx');
+The name recipients see when mail is sent from this inbox. `null` when not
+set.
 
-  const { data, error } = await resend.inboxes.get(
-    'b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1',
-  );
-  ```
+**unread** `number`
 
-  ```bash cURL theme={"theme":{"light":"github-light","dark":"vesper"}}
-  curl -X GET 'https://api.resend.com/inboxes/b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1' \
-       -H 'Authorization: Bearer re_xxxxxxxxx'
-  ```
+The number of unread threads in the Inbox folder.
 
-  ```bash CLI theme={"theme":{"light":"github-light","dark":"vesper"}}
-  resend inboxes get b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1
-  ```
-</RequestExample>
+**drafts** `number`
 
-<ResponseExample>
-  ```json Response theme={"theme":{"light":"github-light","dark":"vesper"}}
-  {
-    "object": "inbox",
-    "id": "b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1",
-    "name": "Customer Support",
-    "email_address": "support@example.com",
-    "domain_id": "d91cd9bd-1176-453e-8fc1-35364d380206",
-    "receiving_address": null,
-    "from_name": "Ada from Support",
-    "unread": 3,
-    "drafts": 2,
-    "last_received": "2026-08-05T14:03:11.229Z",
-    "created_at": "2026-08-01T09:12:44.512Z",
-    "updated_at": "2026-08-03T16:20:05.004Z"
-  }
-  ```
-</ResponseExample>
+The number of unsent drafts.
+
+**last\_received** `string | null`
+
+ISO 8601 timestamp of the newest received email in the Inbox folder. `null`
+when the folder has no received email.
+
+**created\_at** `string`
+
+ISO 8601 timestamp when the inbox was created.
+
+**updated\_at** `string`
+
+ISO 8601 timestamp when the inbox was updated.
+
+```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
+import { Resend } from 'resend';
+
+const resend = new Resend('re_xxxxxxxxx');
+
+const { data, error } = await resend.inboxes.get(
+  'b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1',
+);
+```
+
+```php PHP theme={"theme":{"light":"github-light","dark":"vesper"}}
+$resend = Resend::client('re_xxxxxxxxx');
+
+$resend->inboxes->get('b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1');
+```
+
+```python Python theme={"theme":{"light":"github-light","dark":"vesper"}}
+import resend
+
+resend.api_key = "re_xxxxxxxxx"
+
+resend.Inboxes.get("b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1")
+```
+
+```ruby Ruby theme={"theme":{"light":"github-light","dark":"vesper"}}
+require "resend"
+
+Resend.api_key = "re_xxxxxxxxx"
+
+Resend::Inboxes.get("b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1")
+```
+
+```go Go theme={"theme":{"light":"github-light","dark":"vesper"}}
+package main
+
+import "github.com/resend/resend-go/v4"
+
+func main() {
+	client := resend.NewClient("re_xxxxxxxxx")
+
+	client.Inboxes.Get("b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1")
+```
+
+```rust Rust theme={"theme":{"light":"github-light","dark":"vesper"}}
+use resend_rs::{Resend, Result};
+
+#[tokio::main]
+async fn main() -> Result<()> {
+  let resend = Resend::new("re_xxxxxxxxx");
+
+  let _inbox = resend
+    .inboxes
+    .get("b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1")
+    .await?;
+
+  Ok(())
+}
+```
+
+```csharp .NET theme={"theme":{"light":"github-light","dark":"vesper"}}
+using Resend;
+
+IResend resend = ResendClient.Create( "re_xxxxxxxxx" ); // Or from DI
+
+var resp = await resend.InboxRetrieveAsync( new Guid( "b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1" ) );
+Console.WriteLine( "Inbox address={0}", resp.Content.EmailAddress );
+```
+
+```bash cURL theme={"theme":{"light":"github-light","dark":"vesper"}}
+curl -X GET 'https://api.resend.com/inboxes/b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1' \
+     -H 'Authorization: Bearer re_xxxxxxxxx'
+```
+
+```bash CLI theme={"theme":{"light":"github-light","dark":"vesper"}}
+resend inboxes get b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1
+```
+
+```json Response theme={"theme":{"light":"github-light","dark":"vesper"}}
+{
+  "object": "inbox",
+  "id": "b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1",
+  "name": "Customer Support",
+  "email_address": "support@example.com",
+  "domain_id": "d91cd9bd-1176-453e-8fc1-35364d380206",
+  "receiving_address": null,
+  "from_name": "Ada from Support",
+  "unread": 3,
+  "drafts": 2,
+  "last_received": "2026-08-05T14:03:11.229Z",
+  "created_at": "2026-08-01T09:12:44.512Z",
+  "updated_at": "2026-08-03T16:20:05.004Z"
+}
+```

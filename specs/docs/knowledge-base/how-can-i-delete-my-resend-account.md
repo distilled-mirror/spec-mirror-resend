@@ -12,9 +12,9 @@ If you're associated with any teams, you'll be automatically prompted to leave o
 
 After confirmation, your account and all associated data will be queued for permanent deletion.
 
-<Warning>
-  This action is not reversible, so please proceed with caution.
-</Warning>
+> [!WARNING]
+>
+> This action is not reversible, so please proceed with caution.
 
 ## Understanding Accounts vs Teams
 

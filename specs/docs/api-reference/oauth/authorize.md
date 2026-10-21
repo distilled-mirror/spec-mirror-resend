@@ -17,26 +17,26 @@ The flow:
 
 ## Query Parameters
 
-<ParamField query="client_id" type="string" required>
-  The `client_id` from [registration](/docs/api-reference/oauth/register), or the
-  HTTPS URL of a [Client ID Metadata Document](#client-id-metadata-documents).
-  Resend tells the two apart by the `https://` prefix.
-</ParamField>
+**client\_id** `string` *required*
 
-<ParamField query="response_type" type="string" required>
-  Must be `"code"`.
-</ParamField>
+The `client_id` from [registration](/docs/api-reference/oauth/register), or the
+HTTPS URL of a [Client ID Metadata Document](#client-id-metadata-documents).
+Resend tells the two apart by the `https://` prefix.
 
-<ParamField query="redirect_uri" type="string" required>
-  Must exactly match one of the client's registered redirect URIs. The only
-  exception is loopback URIs (`127.0.0.1`, `localhost`, `[::1]`), where the port
-  is allowed to differ from what was registered.
-</ParamField>
+**response\_type** `string` *required*
 
-<ParamField query="scope" type="string">
-  Space-delimited list of requested scopes. If omitted, defaults to the client's
-  full registered scope set.
-</ParamField>
+Must be `"code"`.
+
+**redirect\_uri** `string` *required*
+
+Must exactly match one of the client's registered redirect URIs. The only
+exception is loopback URIs (`127.0.0.1`, `localhost`, `[::1]`), where the port
+is allowed to differ from what was registered.
+
+**scope** `string`
+
+Space-delimited list of requested scopes. If omitted, defaults to the client's
+full registered scope set.
 
 ### Scopes
 
@@ -46,27 +46,27 @@ The flow:
 * `full_access` is required for every other API route. Also satisfies any
   `emails:send`-scoped check.
 
-<ParamField query="state" type="string">
-  An opaque value round-tripped back on the callback unchanged. Use it to bind
-  the callback to the request that started the flow. Recommended, not required
-  by the server, but a client that skips it can't detect CSRF on the callback.
-  Maximum 1024 characters.
-</ParamField>
+**state** `string`
 
-<ParamField query="code_challenge" type="string" required>
-  Base64url-encoded SHA-256 hash of a
-  [code\_verifier](/docs/api-reference/oauth/token#param-code-verifier) your client
-  generates.
-</ParamField>
+An opaque value round-tripped back on the callback unchanged. Use it to bind
+the callback to the request that started the flow. Recommended, not required
+by the server, but a client that skips it can't detect CSRF on the callback.
+Maximum 1024 characters.
 
-<ParamField query="code_challenge_method" type="string" required>
-  Must be `"S256"`. Resend does not support the `plain` method.
-</ParamField>
+**code\_challenge** `string` *required*
 
-<Info>
-  A `resource` parameter (RFC 8707) is accepted but ignored. Resend does not
-  support resource indicators yet.
-</Info>
+Base64url-encoded SHA-256 hash of a
+[code\_verifier](/docs/api-reference/oauth/token#param-code-verifier) your client
+generates.
+
+**code\_challenge\_method** `string` *required*
+
+Must be `"S256"`. Resend does not support the `plain` method.
+
+> [!NOTE]
+>
+> A `resource` parameter (RFC 8707) is accepted but ignored. Resend does not
+> support resource indicators yet.
 
 ### Client ID Metadata Documents
 
@@ -74,18 +74,14 @@ A `client_id` that starts with `https://` is read as the URL of a JSON document 
 
 This is the only endpoint that fetches the document. See [Client ID Metadata Documents](/docs/guides/building-a-resend-oauth-client#client-id-metadata-documents) for the document fields and for how Resend fetches and caches it.
 
-<RequestExample>
-  ```bash Browser navigation theme={"theme":{"light":"github-light","dark":"vesper"}}
-  GET https://api.resend.com/oauth/authorize?client_id=550e8400-e29b-41d4-a716-446655440000&response_type=code&redirect_uri=http%3A%2F%2F127.0.0.1%3A49152%2Foauth%2Fcallback&scope=emails%3Asend&state=STATE_VALUE&code_challenge=CODE_CHALLENGE_VALUE&code_challenge_method=S256
-  ```
-</RequestExample>
+```bash Browser navigation theme={"theme":{"light":"github-light","dark":"vesper"}}
+GET https://api.resend.com/oauth/authorize?client_id=550e8400-e29b-41d4-a716-446655440000&response_type=code&redirect_uri=http%3A%2F%2F127.0.0.1%3A49152%2Foauth%2Fcallback&scope=emails%3Asend&state=STATE_VALUE&code_challenge=CODE_CHALLENGE_VALUE&code_challenge_method=S256
+```
 
-<ResponseExample>
-  ```http Response theme={"theme":{"light":"github-light","dark":"vesper"}}
-  HTTP/1.1 302 Found
-  Location: https://resend.com/oauth/authorize/3f9c1e2a-...
-  ```
-</ResponseExample>
+```http Response theme={"theme":{"light":"github-light","dark":"vesper"}}
+HTTP/1.1 302 Found
+Location: https://resend.com/oauth/authorize/3f9c1e2a-...
+```
 
 ## Errors
 

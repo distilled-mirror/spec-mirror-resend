@@ -17,12 +17,14 @@ Here are some general guidelines:
 * Never hard-code API keys in your code or share them publicly.
 * Rotate API keys regularly. If an API key hasn't been used in the last 30 days, consider deleting it to keep your account secure.
 
-<Info>You can view an API key only once after you create it.</Info>
+> [!NOTE]
+>
+> You can view an API key only once after you create it.
 
-<Warning>
-  If a key has already been exposed or used without your authorization, see [how
-  to handle a leaked API key](/docs/knowledge-base/how-to-handle-a-leaked-api-key).
-</Warning>
+> [!WARNING]
+>
+> If a key has already been exposed or used without your authorization, see [how
+> to handle a leaked API key](/docs/knowledge-base/how-to-handle-a-leaked-api-key).
 
 ## Key Rotation
 
@@ -35,14 +37,14 @@ To rotate an API key:
 3. **Verify the new key is working** by [filtering by API key on the **Logs** Dashboard page](https://resend.com/logs) and checking for recent requests.
 4. **Delete the old key** once you've confirmed the new key is active across all services.
 
-<Warning>
-  Don't delete the old key before the new key is deployed everywhere. Both keys
-  will work simultaneously, so ensure your new key is working before deleting
-  your old key so you don't experience downtime during the transition. You can
-  programmatically [create](/docs/api-reference/api-keys/create-api-key),
-  [list](/docs/api-reference/api-keys/list-api-keys), and
-  [delete](/docs/api-reference/api-keys/delete-api-key) API keys to rotate keys.
-</Warning>
+> [!WARNING]
+>
+> Don't delete the old key before the new key is deployed everywhere. Both keys
+> will work simultaneously, so ensure your new key is working before deleting
+> your old key so you don't experience downtime during the transition. You can
+> programmatically [create](/docs/api-reference/api-keys/create-api-key),
+> [list](/docs/api-reference/api-keys/list-api-keys), and
+> [delete](/docs/api-reference/api-keys/delete-api-key) API keys to rotate keys.
 
 Rotate keys at least every 90 days, or immediately if you suspect a key has been compromised. Resend flags keys unused for 30 or more days in the Dashboard to help you identify keys to review or delete.
 

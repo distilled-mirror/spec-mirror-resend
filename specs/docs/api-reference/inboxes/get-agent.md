@@ -6,125 +6,124 @@
 
 > Retrieve the agent settings for an inbox.
 
-export const ResendParamField = ({children, body, path, ...props}) => {
-  const [lang, setLang] = useState(() => {
-    return localStorage.getItem('code') || '"Node.js"';
-  });
-  useEffect(() => {
-    const onStorage = event => {
-      const key = event.detail.key;
-      if (key === 'code') {
-        setLang(event.detail.value);
-      }
-    };
-    document.addEventListener('mintlify-localstorage', onStorage);
-    return () => {
-      document.removeEventListener('mintlify-localstorage', onStorage);
-    };
-  }, []);
-  const toCamelCase = str => typeof str === 'string' ? str.replace(/[_-](\w)/g, (_, c) => c.toUpperCase()) : str;
-  const resolvedBody = useMemo(() => {
-    const value = JSON.parse(lang);
-    return value === 'Node.js' ? toCamelCase(body) : body;
-  }, [body, lang]);
-  const resolvedPath = useMemo(() => {
-    const value = JSON.parse(lang);
-    return value === 'Node.js' ? toCamelCase(path) : path;
-  }, [path, lang]);
-  return <ParamField body={resolvedBody} path={resolvedPath} {...props}>
-      {children}
-    </ParamField>;
-};
-
-<Warning>
-  Inboxes are currently in private beta and only available to a limited
-  number of users. The response shape might change before GA.
-
-  <span />
-
-  [Get early access](https://resend.com/settings/labs) if you're interested in testing this feature.
-
-  <span />
-
-  Once you have access, upgrade your Resend SDK to use the new methods:
-
-  <CodeGroup>
-    ```bash Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
-    npm install resend@6.33.0
-    ```
-
-    ```bash CLI theme={"theme":{"light":"github-light","dark":"vesper"}}
-    npm install -g resend-cli@2.25.0
-    ```
-  </CodeGroup>
-</Warning>
-
 ## Path Parameters
 
-<ResendParamField path="inbox_id" type="string" required>
-  The Inbox ID or the inbox email address, such as `support@example.com`.
-</ResendParamField>
+The Inbox ID or the inbox email address, such as `support@example.com`.
 
 ## Response Fields
 
-<ParamField body="object" type="string">
-  Always `inbox_agent`.
-</ParamField>
+**object** `string`
 
-<ParamField body="instructions" type="string | null">
-  Instructions the agent follows when handling the inbox's threads. `null` when
-  no instructions are set.
-</ParamField>
+Always `inbox_agent`.
 
-<ParamField body="tone" type="'concise_professional' | 'concise_casual' | 'expanded_professional' | 'expanded_casual' | null">
-  Tone the agent writes in. `null` when no tone is set.
+**instructions** `string | null`
 
-  * `concise_professional`: Brief responses in a professional tone.
-  * `concise_casual`: Brief responses in a casual tone.
-  * `expanded_professional`: Detailed responses in a professional tone.
-  * `expanded_casual`: Detailed responses in a casual tone.
-</ParamField>
+Instructions the agent follows when handling the inbox's threads. `null` when
+no instructions are set.
 
-<ParamField body="actions" type="string[]">
-  Actions the agent is allowed to take.
+**tone** `'concise_professional' | 'concise_casual' | 'expanded_professional' | 'expanded_casual' | null`
 
-  * `draft_reply`: Draft a reply.
-  * `forward_thread`: Forward a thread.
-  * `add_labels`: Add labels to a thread.
-  * `assign_thread`: Assign a thread.
-  * `mark_as_spam`: Mark a thread as spam.
-  * `archive`: Archive a thread.
-  * `move_to_trash`: Move a thread to the trash.
-</ParamField>
+Tone the agent writes in. `null` when no tone is set.
 
-<RequestExample>
-  ```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
-  import { Resend } from 'resend';
+* `concise_professional`: Brief responses in a professional tone.
+* `concise_casual`: Brief responses in a casual tone.
+* `expanded_professional`: Detailed responses in a professional tone.
+* `expanded_casual`: Detailed responses in a casual tone.
 
-  const resend = new Resend('re_xxxxxxxxx');
+**actions** `string[]`
 
-  const { data, error } = await resend.inboxes.agent.get({
-    inboxId: 'b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1',
-  });
-  ```
+Actions the agent is allowed to take.
 
-  ```bash cURL theme={"theme":{"light":"github-light","dark":"vesper"}}
-  curl -X GET 'https://api.resend.com/inboxes/b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1/agent' \
-       -H 'Authorization: Bearer re_xxxxxxxxx'
-  ```
+* `draft_reply`: Draft a reply.
+* `forward_thread`: Forward a thread.
+* `add_labels`: Add labels to a thread.
+* `assign_thread`: Assign a thread.
+* `mark_as_spam`: Mark a thread as spam.
+* `archive`: Archive a thread.
+* `move_to_trash`: Move a thread to the trash.
 
-  ```bash CLI theme={"theme":{"light":"github-light","dark":"vesper"}}
-  resend inboxes agent get b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1
-  ```
-</RequestExample>
+```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
+import { Resend } from 'resend';
 
-<ResponseExample>
-  ```json Response theme={"theme":{"light":"github-light","dark":"vesper"}}
-  {
-    "object": "inbox_agent",
-    "instructions": "Answer refund questions yourself. Escalate legal threats.",
-    "tone": "concise_professional",
-    "actions": ["draft_reply", "add_labels"]
-  }
-  ```
-</ResponseExample>
+const resend = new Resend('re_xxxxxxxxx');
+
+const { data, error } = await resend.inboxes.agent.get({
+  inboxId: 'b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1',
+});
+```
+
+```php PHP theme={"theme":{"light":"github-light","dark":"vesper"}}
+$resend = Resend::client('re_xxxxxxxxx');
+
+$resend->inboxes->agent->get('b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1');
+```
+
+```python Python theme={"theme":{"light":"github-light","dark":"vesper"}}
+import resend
+
+resend.api_key = "re_xxxxxxxxx"
+
+resend.Inboxes.Agent.get("b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1")
+```
+
+```ruby Ruby theme={"theme":{"light":"github-light","dark":"vesper"}}
+require "resend"
+
+Resend.api_key = "re_xxxxxxxxx"
+
+Resend::Inboxes::Agent.get({ inbox_id: "b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1" })
+```
+
+```go Go theme={"theme":{"light":"github-light","dark":"vesper"}}
+package main
+
+import "github.com/resend/resend-go/v4"
+
+func main() {
+	client := resend.NewClient("re_xxxxxxxxx")
+
+	client.Inboxes.Agent.Get("b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1")
+```
+
+```rust Rust theme={"theme":{"light":"github-light","dark":"vesper"}}
+use resend_rs::{Resend, Result};
+
+#[tokio::main]
+async fn main() -> Result<()> {
+  let resend = Resend::new("re_xxxxxxxxx");
+
+  let _agent = resend
+    .inboxes
+    .get_agent("b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1")
+    .await?;
+
+  Ok(())
+}
+```
+
+```csharp .NET theme={"theme":{"light":"github-light","dark":"vesper"}}
+using Resend;
+
+IResend resend = ResendClient.Create( "re_xxxxxxxxx" ); // Or from DI
+
+var resp = await resend.InboxAgentRetrieveAsync( new Guid( "b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1" ) );
+Console.WriteLine( "Agent tone={0}", resp.Content.Tone );
+```
+
+```bash cURL theme={"theme":{"light":"github-light","dark":"vesper"}}
+curl -X GET 'https://api.resend.com/inboxes/b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1/agent' \
+     -H 'Authorization: Bearer re_xxxxxxxxx'
+```
+
+```bash CLI theme={"theme":{"light":"github-light","dark":"vesper"}}
+resend inboxes agent get b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1
+```
+
+```json Response theme={"theme":{"light":"github-light","dark":"vesper"}}
+{
+  "object": "inbox_agent",
+  "instructions": "Answer refund questions yourself. Escalate legal threats.",
+  "tone": "concise_professional",
+  "actions": ["draft_reply", "add_labels"]
+}
+```

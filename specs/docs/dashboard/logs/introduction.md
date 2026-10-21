@@ -10,311 +10,305 @@
 
 Logs are a powerful tool for monitoring activity and troubleshooting issues.
 
-<Tabs>
-  <Tab title="Using the dashboard">
-    Access your logs from the [Logs page](https://resend.com/logs) in the dashboard.
+**Using the dashboard**
 
-    <img alt="Logs" src="https://mintcdn.com/resend/jNLP19MmH13tZf-I/images/logs-page.png?fit=max&auto=format&n=jNLP19MmH13tZf-I&q=85&s=c6255bb12281961d20606de92a778b99" width="3360" height="2100" data-path="images/logs-page.png" />
+Access your logs from the [Logs page](https://resend.com/logs) in the dashboard.
 
-    Each log entry shows:
+![Logs](https://mintcdn.com/resend/jNLP19MmH13tZf-I/images/logs-page.png?fit=max\&auto=format\&n=jNLP19MmH13tZf-I\&q=85\&s=c6255bb12281961d20606de92a778b99)
 
-    * **Endpoint** - The API endpoint called (e.g., `/domains`, `/api-keys`, `/contacts`)
-    * **Status** - The HTTP response status code (200, 201, etc.)
-    * **Method** - The HTTP method used (GET, POST, DELETE, etc.)
-    * **Created** - When the request was made (displayed as relative time)
+Each log entry shows:
 
-    ## Searching Logs
+* **Endpoint** - The API endpoint called (e.g., `/domains`, `/api-keys`, `/contacts`)
+* **Status** - The HTTP response status code (200, 201, etc.)
+* **Method** - The HTTP method used (GET, POST, DELETE, etc.)
+* **Created** - When the request was made (displayed as relative time)
 
-    Use the search bar to find specific logs. This is useful when tracking down a particular request or debugging an issue.
+## Searching Logs
 
-    ## Filtering Logs
+Use the search bar to find specific logs. This is useful when tracking down a particular request or debugging an issue.
 
-    Filter logs by response status to quickly identify issues:
+## Filtering Logs
 
-    * **All Statuses** - View all logs
-    * **Successes** - Show only successful requests (2xx status codes)
-    * **Errors** - Show only failed requests (4xx and 5xx status codes)
-    * **Specific codes** - Select one or more specific HTTP status codes (200, 201, 403, 429, etc.)
+Filter logs by response status to quickly identify issues:
 
-    You can select multiple status codes to create custom filters.
+* **All Statuses** - View all logs
+* **Successes** - Show only successful requests (2xx status codes)
+* **Errors** - Show only failed requests (4xx and 5xx status codes)
+* **Specific codes** - Select one or more specific HTTP status codes (200, 201, 403, 429, etc.)
 
-    * **Date range** - Adjust the time period for logs (e.g., Last 15 days)
-    * **User Agents** - Filter by SDK or client
-    * **API Keys** - Filter by specific API key
+You can select multiple status codes to create custom filters.
 
-    ## Log details
+* **Date range** - Adjust the time period for logs (e.g., Last 15 days)
+* **User Agents** - Filter by SDK or client
+* **API Keys** - Filter by specific API key
 
-    Click any log entry to view complete details.
+## Log details
 
-    <img alt="Logs" src="https://mintcdn.com/resend/jNLP19MmH13tZf-I/images/logs-page-details.png?fit=max&auto=format&n=jNLP19MmH13tZf-I&q=85&s=dd6d948f384d6b90e8a5bed33ec237f0" width="3360" height="2100" data-path="images/logs-page-details.png" />
+Click any log entry to view complete details.
 
-    ### Request information
+![Logs](https://mintcdn.com/resend/jNLP19MmH13tZf-I/images/logs-page-details.png?fit=max\&auto=format\&n=jNLP19MmH13tZf-I\&q=85\&s=dd6d948f384d6b90e8a5bed33ec237f0)
 
-    * **Request body** - The full JSON payload sent to the API (with copyable code blocks)
-    * **HTTP method** - GET, POST, etc.
-    * **Endpoint** - The API endpoint called
-    * **User-Agent** - The client or SDK used, with automatic SDK detection showing name and version
+### Request information
 
-    ### Response information
+* **Request body** - The full JSON payload sent to the API (with copyable code blocks)
+* **HTTP method** - GET, POST, etc.
+* **Endpoint** - The API endpoint called
+* **User-Agent** - The client or SDK used, with automatic SDK detection showing name and version
 
-    * **Response body** - The complete API response (with copyable code blocks)
-    * **Status code** - The HTTP status code returned
-    * **Timestamp** - When the request was processed
+### Response information
 
-    ### Related emails
+* **Response body** - The complete API response (with copyable code blocks)
+* **Status code** - The HTTP status code returned
+* **Timestamp** - When the request was processed
 
-    When a log entry is associated with one or more email sends, an Email field appears in the log details, linking directly to the corresponding email records. The corresponding email's detail page includes a Log field linking to the API request log that triggered it, so you can trace the full request-to-delivery flow in both directions.
+### Related emails
 
-    ### SDK detection
+When a log entry is associated with one or more email sends, an Email field appears in the log details, linking directly to the corresponding email records. The corresponding email's detail page includes a Log field linking to the API request log that triggered it, so you can trace the full request-to-delivery flow in both directions.
 
-    The dashboard automatically detects and displays Resend SDK information from the User-Agent header, showing:
+### SDK detection
 
-    * SDK name (e.g., "Resend Node.js")
-    * Version number
-    * Update notification when a newer SDK version is available
+The dashboard automatically detects and displays Resend SDK information from the User-Agent header, showing:
 
-    ## Troubleshooting errors
+* SDK name (e.g., "Resend Node.js")
+* Version number
+* Update notification when a newer SDK version is available
 
-    For supported error types, click the **Help me fix** button to open a troubleshooting drawer.
+## Troubleshooting errors
 
-    <img alt="Logs" src="https://mintcdn.com/resend/jNLP19MmH13tZf-I/images/logs-page-error.png?fit=max&auto=format&n=jNLP19MmH13tZf-I&q=85&s=60e6190acbb51c2d97a08f0bac177d74" width="3360" height="2100" data-path="images/logs-page-error.png" />
+For supported error types, click the **Help me fix** button to open a troubleshooting drawer.
 
-    The drawer includes:
+![Logs](https://mintcdn.com/resend/jNLP19MmH13tZf-I/images/logs-page-error.png?fit=max\&auto=format\&n=jNLP19MmH13tZf-I\&q=85\&s=60e6190acbb51c2d97a08f0bac177d74)
 
-    * **Raw response** - The complete API response
-    * **Detailed guidance** - Step-by-step instructions to resolve the issue
-    * **Relevant links** - Documentation and knowledge base articles
-    * **Contextual information** - Your current rate limits, verified domains, and other relevant data
+The drawer includes:
 
-    ## Copy for AI
+* **Raw response** - The complete API response
+* **Detailed guidance** - Step-by-step instructions to resolve the issue
+* **Relevant links** - Documentation and knowledge base articles
+* **Contextual information** - Your current rate limits, verified domains, and other relevant data
 
-    For error logs (4xx and 5xx status codes), use the **Copy for AI** dropdown to get help debugging:
+## Copy for AI
 
-    * **Copy log** - Copy the log details as Markdown formatted for AI tools
-    * **Open in ChatGPT** - Open ChatGPT with the log prefilled for analysis
-    * **Open in Claude** - Open Claude with the log prefilled for analysis
+For error logs (4xx and 5xx status codes), use the **Copy for AI** dropdown to get help debugging:
 
-    The copied content includes the request method, endpoint, request body, response status, and response body to help AI assistants understand and troubleshoot the issue.
-  </Tab>
+* **Copy log** - Copy the log details as Markdown formatted for AI tools
+* **Open in ChatGPT** - Open ChatGPT with the log prefilled for analysis
+* **Open in Claude** - Open Claude with the log prefilled for analysis
 
-  <Tab title="Using the API">
-    The Logs API allows you to **programmatically retrieve logs**. This is useful for integrating with your own systems, automating tasks, and equipping your AI agents with the ability to troubleshoot issues.
+The copied content includes the request method, endpoint, request body, response status, and response body to help AI assistants understand and troubleshoot the issue.
 
-    ## List logs
+**Using the API**
 
-    Retrieve a list of API request logs.
+The Logs API allows you to **programmatically retrieve logs**. This is useful for integrating with your own systems, automating tasks, and equipping your AI agents with the ability to troubleshoot issues.
 
-    The response includes details such as:
+## List logs
 
-    * The **endpoint** called
-    * The response **status code**
-    * The **user agent**
+Retrieve a list of API request logs.
 
-    <CodeGroup>
-      ```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
-      import { Resend } from 'resend';
+The response includes details such as:
 
-      const resend = new Resend('re_xxxxxxxxx');
+* The **endpoint** called
+* The response **status code**
+* The **user agent**
 
-      const { data, error } = await resend.logs.list();
-      ```
+```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
+import { Resend } from 'resend';
 
-      ```php PHP theme={"theme":{"light":"github-light","dark":"vesper"}}
-      $resend = Resend::client('re_xxxxxxxxx');
+const resend = new Resend('re_xxxxxxxxx');
 
-      $resend->logs->list();
-      ```
+const { data, error } = await resend.logs.list();
+```
 
-      ```python Python theme={"theme":{"light":"github-light","dark":"vesper"}}
-      import resend
+```php PHP theme={"theme":{"light":"github-light","dark":"vesper"}}
+$resend = Resend::client('re_xxxxxxxxx');
 
-      resend.api_key = "re_xxxxxxxxx"
+$resend->logs->list();
+```
 
-      resend.Logs.list()
-      ```
+```python Python theme={"theme":{"light":"github-light","dark":"vesper"}}
+import resend
 
-      ```ruby Ruby theme={"theme":{"light":"github-light","dark":"vesper"}}
-      require "resend"
+resend.api_key = "re_xxxxxxxxx"
 
-      Resend.api_key = "re_xxxxxxxxx"
+resend.Logs.list()
+```
 
-      logs = Resend::Logs.list
-      puts logs
-      ```
+```ruby Ruby theme={"theme":{"light":"github-light","dark":"vesper"}}
+require "resend"
 
-      ```go Go theme={"theme":{"light":"github-light","dark":"vesper"}}
-      package main
+Resend.api_key = "re_xxxxxxxxx"
 
-      import (
-        "context"
+logs = Resend::Logs.list
+puts logs
+```
 
-        "github.com/resend/resend-go/v4"
-      )
+```go Go theme={"theme":{"light":"github-light","dark":"vesper"}}
+package main
 
-      func main() {
-        ctx := context.TODO()
-        client := resend.NewClient("re_xxxxxxxxx")
+import (
+  "context"
 
-        logs, err := client.Logs.ListWithOptions(ctx, nil)
-        if err != nil {
-          panic(err)
-        }
+  "github.com/resend/resend-go/v4"
+)
 
-        if logs.HasMore {
-          opts := &resend.ListOptions{
-            After: &logs.Data[len(logs.Data)-1].Id,
-          }
-          client.Logs.ListWithOptions(ctx, opts)
-        }
-      }
-      ```
+func main() {
+  ctx := context.TODO()
+  client := resend.NewClient("re_xxxxxxxxx")
 
-      ```rust Rust theme={"theme":{"light":"github-light","dark":"vesper"}}
-      use resend_rs::{Resend, Result, list_opts::ListOptions};
+  logs, err := client.Logs.ListWithOptions(ctx, nil)
+  if err != nil {
+    panic(err)
+  }
 
-      #[tokio::main]
-      async fn main() -> Result<()> {
-        let resend = Resend::new("re_xxxxxxxxx");
+  if logs.HasMore {
+    opts := &resend.ListOptions{
+      After: &logs.Data[len(logs.Data)-1].Id,
+    }
+    client.Logs.ListWithOptions(ctx, opts)
+  }
+}
+```
 
-        let _logs = resend
-          .logs
-          .list(ListOptions::default())
-          .await?;
+```rust Rust theme={"theme":{"light":"github-light","dark":"vesper"}}
+use resend_rs::{Resend, Result, list_opts::ListOptions};
 
-        Ok(())
-      }
-      ```
+#[tokio::main]
+async fn main() -> Result<()> {
+  let resend = Resend::new("re_xxxxxxxxx");
 
-      ```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
-      import com.resend.*;
-      import com.resend.core.exception.ResendException;
+  let _logs = resend
+    .logs
+    .list(ListOptions::default())
+    .await?;
 
-      public class Main {
-          public static void main(String[] args) throws ResendException {
-              Resend resend = new Resend("re_xxxxxxxxx");
+  Ok(())
+}
+```
 
-              resend.logs().list();
-          }
-      }
-      ```
+```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
+import com.resend.*;
+import com.resend.core.exception.ResendException;
 
-      ```csharp .NET theme={"theme":{"light":"github-light","dark":"vesper"}}
-      // C# SDK is not available yet
-      ```
+public class Main {
+    public static void main(String[] args) throws ResendException {
+        Resend resend = new Resend("re_xxxxxxxxx");
 
-      ```bash cURL theme={"theme":{"light":"github-light","dark":"vesper"}}
-      curl -X GET 'https://api.resend.com/logs' \
-          -H 'Authorization: Bearer re_xxxxxxxxx'
-      ```
+        resend.logs().list();
+    }
+}
+```
 
-      ```bash CLI theme={"theme":{"light":"github-light","dark":"vesper"}}
-      resend logs list
-      ```
-    </CodeGroup>
+```csharp .NET theme={"theme":{"light":"github-light","dark":"vesper"}}
+// C# SDK is not available yet
+```
 
-    ## Retrieve log
+```bash cURL theme={"theme":{"light":"github-light","dark":"vesper"}}
+curl -X GET 'https://api.resend.com/logs' \
+    -H 'Authorization: Bearer re_xxxxxxxxx'
+```
 
-    Once you're ready to inspect a log in greater detail, you can use the [Retrieve Log](/docs/api-reference/logs/retrieve-log) endpoint.
+```bash CLI theme={"theme":{"light":"github-light","dark":"vesper"}}
+resend logs list
+```
 
-    This endpoint returns the full request body and response, as well as the endpoint, status code, and user agent.
+## Retrieve log
 
-    <CodeGroup>
-      ```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
-      import { Resend } from 'resend';
+Once you're ready to inspect a log in greater detail, you can use the [Retrieve Log](/docs/api-reference/logs/retrieve-log) endpoint.
 
-      const resend = new Resend('re_xxxxxxxxx');
+This endpoint returns the full request body and response, as well as the endpoint, status code, and user agent.
 
-      const { data, error } = await resend.logs.get(
-        '37e4414c-5e25-4dbc-a071-43552a4bd53b',
-      );
-      ```
+```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
+import { Resend } from 'resend';
 
-      ```php PHP theme={"theme":{"light":"github-light","dark":"vesper"}}
-      $resend = Resend::client('re_xxxxxxxxx');
+const resend = new Resend('re_xxxxxxxxx');
 
-      $resend->logs->get('37e4414c-5e25-4dbc-a071-43552a4bd53b');
-      ```
+const { data, error } = await resend.logs.get(
+  '37e4414c-5e25-4dbc-a071-43552a4bd53b',
+);
+```
 
-      ```python Python theme={"theme":{"light":"github-light","dark":"vesper"}}
-      import resend
+```php PHP theme={"theme":{"light":"github-light","dark":"vesper"}}
+$resend = Resend::client('re_xxxxxxxxx');
 
-      resend.api_key = "re_xxxxxxxxx"
+$resend->logs->get('37e4414c-5e25-4dbc-a071-43552a4bd53b');
+```
 
-      resend.Logs.get("37e4414c-5e25-4dbc-a071-43552a4bd53b")
-      ```
+```python Python theme={"theme":{"light":"github-light","dark":"vesper"}}
+import resend
 
-      ```ruby Ruby theme={"theme":{"light":"github-light","dark":"vesper"}}
-      require "resend"
+resend.api_key = "re_xxxxxxxxx"
 
-      Resend.api_key = "re_xxxxxxxxx"
+resend.Logs.get("37e4414c-5e25-4dbc-a071-43552a4bd53b")
+```
 
-      log = Resend::Logs.get("37e4414c-5e25-4dbc-a071-43552a4bd53b")
-      puts log
-      ```
+```ruby Ruby theme={"theme":{"light":"github-light","dark":"vesper"}}
+require "resend"
 
-      ```go Go theme={"theme":{"light":"github-light","dark":"vesper"}}
-      package main
+Resend.api_key = "re_xxxxxxxxx"
 
-      import "github.com/resend/resend-go/v4"
+log = Resend::Logs.get("37e4414c-5e25-4dbc-a071-43552a4bd53b")
+puts log
+```
 
-      func main() {
-        client := resend.NewClient("re_xxxxxxxxx")
+```go Go theme={"theme":{"light":"github-light","dark":"vesper"}}
+package main
 
-        client.Logs.Get("37e4414c-5e25-4dbc-a071-43552a4bd53b")
-      }
-      ```
+import "github.com/resend/resend-go/v4"
 
-      ```rust Rust theme={"theme":{"light":"github-light","dark":"vesper"}}
-      use resend_rs::{Resend, Result};
+func main() {
+  client := resend.NewClient("re_xxxxxxxxx")
 
-      #[tokio::main]
-      async fn main() -> Result<()> {
-        let resend = Resend::new("re_xxxxxxxxx");
+  client.Logs.Get("37e4414c-5e25-4dbc-a071-43552a4bd53b")
+}
+```
 
-        let _logs = resend
-          .logs
-          .get("37e4414c-5e25-4dbc-a071-43552a4bd53b")
-          .await?;
+```rust Rust theme={"theme":{"light":"github-light","dark":"vesper"}}
+use resend_rs::{Resend, Result};
 
-        Ok(())
-      }
-      ```
+#[tokio::main]
+async fn main() -> Result<()> {
+  let resend = Resend::new("re_xxxxxxxxx");
 
-      ```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
-      import com.resend.*;
-      import com.resend.core.exception.ResendException;
+  let _logs = resend
+    .logs
+    .get("37e4414c-5e25-4dbc-a071-43552a4bd53b")
+    .await?;
 
-      public class Main {
-          public static void main(String[] args) throws ResendException {
-              Resend resend = new Resend("re_xxxxxxxxx");
+  Ok(())
+}
+```
 
-              resend.logs().get("37e4414c-5e25-4dbc-a071-43552a4bd53b");
-          }
-      }
-      ```
+```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
+import com.resend.*;
+import com.resend.core.exception.ResendException;
 
-      ```csharp .NET theme={"theme":{"light":"github-light","dark":"vesper"}}
-      // C# SDK is not available yet
-      ```
+public class Main {
+    public static void main(String[] args) throws ResendException {
+        Resend resend = new Resend("re_xxxxxxxxx");
 
-      ```bash cURL theme={"theme":{"light":"github-light","dark":"vesper"}}
-      curl -X GET 'https://api.resend.com/logs/37e4414c-5e25-4dbc-a071-43552a4bd53b' \
-          -H 'Authorization: Bearer re_xxxxxxxxx'
-      ```
+        resend.logs().get("37e4414c-5e25-4dbc-a071-43552a4bd53b");
+    }
+}
+```
 
-      ```bash CLI theme={"theme":{"light":"github-light","dark":"vesper"}}
-      resend logs get 37e4414c-5e25-4dbc-a071-43552a4bd53b
-      ```
-    </CodeGroup>
-  </Tab>
-</Tabs>
+```csharp .NET theme={"theme":{"light":"github-light","dark":"vesper"}}
+// C# SDK is not available yet
+```
+
+```bash cURL theme={"theme":{"light":"github-light","dark":"vesper"}}
+curl -X GET 'https://api.resend.com/logs/37e4414c-5e25-4dbc-a071-43552a4bd53b' \
+    -H 'Authorization: Bearer re_xxxxxxxxx'
+```
+
+```bash CLI theme={"theme":{"light":"github-light","dark":"vesper"}}
+resend logs get 37e4414c-5e25-4dbc-a071-43552a4bd53b
+```
 
 ***
 
-<Note>
-  View a comprehensive list of error codes and their meanings in the [Resend API
-  Reference](/docs/api-reference/errors).
-</Note>
+> [!NOTE]
+>
+> View a comprehensive list of error codes and their meanings in the [Resend API
+> Reference](/docs/api-reference/errors).
 
 ## Export your data
 
@@ -328,19 +322,21 @@ Admins can download your data in CSV format for the following resources:
 * Logs
 * API keys
 
-<Info>Currently, exports are limited to admin users of your team.</Info>
+> [!NOTE]
+>
+> Currently, exports are limited to admin users of your team.
 
 To start, apply filters to your data and click on the "Export" button. Confirm your filters before exporting your data.
 
-<video autoPlay muted loop playsinline className="w-full aspect-video" src="https://mintcdn.com/resend/OWNnQaVDyqcGyhhN/images/exports.mp4?fit=max&auto=format&n=OWNnQaVDyqcGyhhN&q=85&s=1149ee4e83b4414e75a0ecaa92774c38" data-path="images/exports.mp4" />
+<video autoPlay muted loop playsinline src="https://mintcdn.com/resend/OWNnQaVDyqcGyhhN/images/exports.mp4?fit=max&auto=format&n=OWNnQaVDyqcGyhhN&q=85&s=1149ee4e83b4414e75a0ecaa92774c38" />
 
 If your exported data includes 1,000 items or less, the export will download immediately. For larger exports, you'll receive an email with a link to download your data.
 
 All admins on your team can securely access the export for 7 days. Unavailable exports are marked as "Expired."
 
-<Note>
-  All exports your team creates are listed in the
-  [Exports](https://resend.com/exports) page under **Settings** > **Team** >
-  **Exports**. Select any export to view its details page. All members of your
-  team can view your exports, but only admins can download the data.
-</Note>
+> [!NOTE]
+>
+> All exports your team creates are listed in the
+> [Exports](https://resend.com/exports) page under **Settings** > **Team** >
+> **Exports**. Select any export to view its details page. All members of your
+> team can view your exports, but only admins can download the data.

@@ -15,86 +15,80 @@ Before you start, you'll need:
 
 ## Guide
 
-<Steps>
-  <Step title="Install">
-    Get the Resend Ruby SDK.
+**1. Install**
 
-    <CodeGroup>
-      ```bash RubyGems theme={"theme":{"light":"github-light","dark":"vesper"}}
-      gem install resend
-      ```
+Get the Resend Ruby SDK.
 
-      ```bash Gemfile theme={"theme":{"light":"github-light","dark":"vesper"}}
-      gem 'resend'
-      ```
-    </CodeGroup>
-  </Step>
+```bash RubyGems theme={"theme":{"light":"github-light","dark":"vesper"}}
+gem install resend
+```
 
-  <Step title="Send email using HTML">
-    The easiest way to send an email is by using the `html` parameter.
+```bash Gemfile theme={"theme":{"light":"github-light","dark":"vesper"}}
+gem 'resend'
+```
 
-    ```rb index.rb theme={"theme":{"light":"github-light","dark":"vesper"}}
-    require "sinatra"
-    require "resend"
+**2. Send email using HTML**
 
-    set :port, 5000
-    set :bind, "0.0.0.0"
+The easiest way to send an email is by using the `html` parameter.
 
-    Resend.api_key = ENV["RESEND_API_KEY"]
+```rb index.rb theme={"theme":{"light":"github-light","dark":"vesper"}}
+require "sinatra"
+require "resend"
 
-    get "/" do
+set :port, 5000
+set :bind, "0.0.0.0"
 
-      content_type :json
+Resend.api_key = ENV["RESEND_API_KEY"]
 
-      params = {
-        from: 'Acme <onboarding@resend.dev>',
-        to: ['delivered@resend.dev'],
-        subject: 'hello world',
-        html: '<strong>it works!</strong>',
-      }
+get "/" do
 
-      Resend::Emails.send(params).to_hash.to_json
-    end
-    ```
-  </Step>
-</Steps>
+  content_type :json
+
+  params = {
+    from: 'Acme <onboarding@resend.dev>',
+    to: ['delivered@resend.dev'],
+    subject: 'hello world',
+    html: '<strong>it works!</strong>',
+  }
+
+  Resend::Emails.send(params).to_hash.to_json
+end
+```
 
 ## Examples
 
-<CardGroup cols={3}>
-  <Card title="Sinatra App" icon="arrow-up-right-from-square" href="https://github.com/resend/resend-examples/tree/main/ruby-resend-examples/sinatra_app">
-    Full Sinatra web application
-  </Card>
+> **[Sinatra App](https://github.com/resend/resend-examples/tree/main/ruby-resend-examples/sinatra_app)**
+>
+> Full Sinatra web application
 
-  <Card title="Basic Send" icon="arrow-up-right-from-square" href="https://github.com/resend/resend-examples/blob/main/ruby-resend-examples/examples/basic_send.rb">
-    Basic email sending
-  </Card>
+> **[Basic Send](https://github.com/resend/resend-examples/blob/main/ruby-resend-examples/examples/basic_send.rb)**
+>
+> Basic email sending
 
-  <Card title="Attachments" icon="arrow-up-right-from-square" href="https://github.com/resend/resend-examples/blob/main/ruby-resend-examples/examples/with_attachments.rb">
-    Send emails with file attachments
-  </Card>
+> **[Attachments](https://github.com/resend/resend-examples/blob/main/ruby-resend-examples/examples/with_attachments.rb)**
+>
+> Send emails with file attachments
 
-  <Card title="Templates" icon="arrow-up-right-from-square" href="https://github.com/resend/resend-examples/blob/main/ruby-resend-examples/examples/with_template.rb">
-    Send emails using Resend hosted templates
-  </Card>
+> **[Templates](https://github.com/resend/resend-examples/blob/main/ruby-resend-examples/examples/with_template.rb)**
+>
+> Send emails using Resend hosted templates
 
-  <Card title="Scheduling" icon="arrow-up-right-from-square" href="https://github.com/resend/resend-examples/blob/main/ruby-resend-examples/examples/scheduled_send.rb">
-    Schedule emails for future delivery
-  </Card>
+> **[Scheduling](https://github.com/resend/resend-examples/blob/main/ruby-resend-examples/examples/scheduled_send.rb)**
+>
+> Schedule emails for future delivery
 
-  <Card title="Audiences" icon="arrow-up-right-from-square" href="https://github.com/resend/resend-examples/blob/main/ruby-resend-examples/examples/audiences.rb">
-    Manage contacts and audiences
-  </Card>
+> **[Audiences](https://github.com/resend/resend-examples/blob/main/ruby-resend-examples/examples/audiences.rb)**
+>
+> Manage contacts and audiences
 
-  <Card title="Domains" icon="arrow-up-right-from-square" href="https://github.com/resend/resend-examples/blob/main/ruby-resend-examples/examples/domains.rb">
-    Create and manage sending domains
-  </Card>
+> **[Domains](https://github.com/resend/resend-examples/blob/main/ruby-resend-examples/examples/domains.rb)**
+>
+> Create and manage sending domains
 
-  <Card title="Inbound Webhooks" icon="arrow-up-right-from-square" href="https://github.com/resend/resend-examples/blob/main/ruby-resend-examples/examples/inbound.rb">
-    Receive and process inbound emails
-  </Card>
+> **[Inbound Webhooks](https://github.com/resend/resend-examples/blob/main/ruby-resend-examples/examples/inbound.rb)**
+>
+> Receive and process inbound emails
 
-  <Card title="Double Opt-in" icon="arrow-up-right-from-square" href="https://github.com/resend/resend-examples/tree/main/ruby-resend-examples/examples/double_optin">
-    Double opt-in subscription flow
-  </Card>
-</CardGroup>
+> **[Double Opt-in](https://github.com/resend/resend-examples/tree/main/ruby-resend-examples/examples/double_optin)**
+>
+> Double opt-in subscription flow

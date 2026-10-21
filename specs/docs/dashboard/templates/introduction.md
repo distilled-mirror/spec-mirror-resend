@@ -47,48 +47,184 @@ When you send a transactional email from your application, you can reference a [
 
 Specify the Template ID and include any [Template variables](/docs/dashboard/templates/template-variables) in your API endpoint or CLI command. Resend will replace the Template variables with the actual variables specified in your code.
 
-<CodeGroup>
-  ```ts Node.js {8-14} theme={"theme":{"light":"github-light","dark":"vesper"}}
-  import { Resend } from 'resend';
+```ts Node.js {8-14} theme={"theme":{"light":"github-light","dark":"vesper"}}
+import { Resend } from 'resend';
 
-  const resend = new Resend('re_xxxxxxxxx');
+const resend = new Resend('re_xxxxxxxxx');
 
-  await resend.emails.send({
-    from: 'Acme <onboarding@resend.dev>',
-    to: 'delivered@resend.dev',
-    template: {
-      id: 'order-confirmation',
-      variables: {
-        PRODUCT: 'Vintage Macintosh',
-        PRICE: 499,
-      },
+await resend.emails.send({
+  from: 'Acme <onboarding@resend.dev>',
+  to: 'delivered@resend.dev',
+  template: {
+    id: 'order-confirmation',
+    variables: {
+      PRODUCT: 'Vintage Macintosh',
+      PRICE: 499,
     },
-  });
-  ```
+  },
+});
+```
 
-  ```php PHP {7-12} theme={"theme":{"light":"github-light","dark":"vesper"}}
-  $resend = Resend::client('re_xxxxxxxxx');
+```php PHP {7-12} theme={"theme":{"light":"github-light","dark":"vesper"}}
+$resend = Resend::client('re_xxxxxxxxx');
 
-  $resend->emails->send([
-    'from' => 'Acme <onboarding@resend.dev>',
-    'to' => ['delivered@resend.dev'],
-    'subject' => 'hello world',
-    'template'=> [
-      'id' => 'f3b9756c-f4f4-44da-bc00-9f7903c8a83f',
-      'variables' => [
-        'PRODUCT' => 'Vintage Macintosh',
-        'PRICE' => 499,
-      ]
+$resend->emails->send([
+  'from' => 'Acme <onboarding@resend.dev>',
+  'to' => ['delivered@resend.dev'],
+  'subject' => 'hello world',
+  'template'=> [
+    'id' => 'f3b9756c-f4f4-44da-bc00-9f7903c8a83f',
+    'variables' => [
+      'PRODUCT' => 'Vintage Macintosh',
+      'PRICE' => 499,
     ]
-  ]);
-  ```
+  ]
+]);
+```
 
-  ```python Python {8-14} theme={"theme":{"light":"github-light","dark":"vesper"}}
-  import resend
+```python Python {8-14} theme={"theme":{"light":"github-light","dark":"vesper"}}
+import resend
 
-  resend.api_key = "re_xxxxxxxxx"
+resend.api_key = "re_xxxxxxxxx"
 
-  resend.Emails.send({
+resend.Emails.send({
+  "from": "Acme <onboarding@resend.dev>",
+  "to": "delivered@resend.dev",
+  "template": {
+    "id": "order-confirmation",
+    "variables": {
+      "PRODUCT": "Vintage Macintosh",
+      "PRICE": 499
+    }
+  }
+})
+```
+
+```ruby Ruby {8-14} theme={"theme":{"light":"github-light","dark":"vesper"}}
+require "resend"
+
+Resend.api_key = "re_xxxxxxxxx"
+
+Resend::Emails.send({
+  from: "Acme <onboarding@resend.dev>",
+  to: "delivered@resend.dev",
+  template: {
+    id: "order-confirmation",
+    variables: {
+      PRODUCT: "Vintage Macintosh",
+      PRICE: 499
+    }
+  }
+})
+```
+
+```go Go {8-14} theme={"theme":{"light":"github-light","dark":"vesper"}}
+import "github.com/resend/resend-go/v4"
+
+client := resend.NewClient("re_xxxxxxxxx")
+
+params := &resend.SendEmailRequest{
+  From: "Acme <onboarding@resend.dev>",
+  To: []string{"delivered@resend.dev"},
+  Template: &resend.EmailTemplate{
+    Id: "order-confirmation",
+    Variables: map[string]interface{}{
+      "PRODUCT": "Vintage Macintosh",
+      "PRICE": 499,
+    },
+  },
+}
+
+client.Emails.Send(params)
+```
+
+```rust Rust {11-13,20} theme={"theme":{"light":"github-light","dark":"vesper"}}
+use resend_rs::{
+  json,
+  types::{CreateEmailBaseOptions, EmailTemplate},
+  Resend, Result,
+};
+
+#[tokio::main]
+async fn main() -> Result<()> {
+  let resend = Resend::new("re_xxxxxxxxx");
+
+  let template = EmailTemplate::new("order-confirmation")
+    .with_variable("PRODUCT", json!("Vintage Macintosh"))
+    .with_variable("PRICE", json!(499));
+
+  let email = CreateEmailBaseOptions::new(
+    "Acme <onboarding@resend.dev>",
+    ["delivered@resend.dev"],
+    "hello world",
+  )
+  .with_template(template);
+
+  let _email = resend.emails.send(email).await?;
+
+  Ok(())
+}
+```
+
+```java Java {11-13,18-21} theme={"theme":{"light":"github-light","dark":"vesper"}}
+import com.resend.*;
+import com.resend.services.emails.model.CreateEmailOptions;
+import com.resend.services.emails.model.CreateEmailResponse;
+import com.resend.services.emails.model.Template;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+
+Resend resend = new Resend("re_xxxxxxxxx");
+
+Map<String, Object> variables = new HashMap<>();
+variables.put("PRODUCT", "Vintage Macintosh");
+variables.put("PRICE", 499);
+
+CreateEmailOptions params = CreateEmailOptions.builder()
+  .from("Acme <onboarding@resend.dev>")
+  .to(Arrays.asList("customer@email.com"))
+  .template(Template.builder()
+    .id("order-confirmation")
+    .variables(variables)
+    .build())
+  .build();
+
+CreateEmailResponse data = resend.emails().send(params);
+```
+
+```csharp .NET {5-9,17-20} theme={"theme":{"light":"github-light","dark":"vesper"}}
+using Resend;
+
+IResend resend = ResendClient.Create("re_xxxxxxxxx");
+
+var variables = new Dictionary<string, object>
+{
+  { "PRODUCT", "Vintage Macintosh" },
+  { "PRICE", 499 }
+};
+
+var resp = await resend.EmailSendAsync(
+  new EmailMessage()
+  {
+    From = "Acme <onboarding@resend.dev>",
+    To = new[] { "delivered@resend.dev" },
+    Template = new EmailMessageTemplate()
+    {
+      TemplateId = "b6d24b8e-af0b-4c3c-be0c-359bbd97381e",
+      Variables = variables
+    }
+  }
+);
+
+Console.WriteLine($"Email Id={resp.Content}");
+```
+
+```bash cURL {7-13} theme={"theme":{"light":"github-light","dark":"vesper"}}
+curl -X POST 'https://api.resend.com/emails' \
+  -H 'Authorization: Bearer re_xxxxxxxxx' \
+  -H 'Content-Type: application/json' \
+  -d $'{
     "from": "Acme <onboarding@resend.dev>",
     "to": "delivered@resend.dev",
     "template": {
@@ -98,161 +234,21 @@ Specify the Template ID and include any [Template variables](/docs/dashboard/tem
         "PRICE": 499
       }
     }
-  })
-  ```
-
-  ```ruby Ruby {8-14} theme={"theme":{"light":"github-light","dark":"vesper"}}
-  require "resend"
-
-  Resend.api_key = "re_xxxxxxxxx"
-
-  Resend::Emails.send({
-    from: "Acme <onboarding@resend.dev>",
-    to: "delivered@resend.dev",
-    template: {
-      id: "order-confirmation",
-      variables: {
-        PRODUCT: "Vintage Macintosh",
-        PRICE: 499
-      }
-    }
-  })
-  ```
-
-  ```go Go {8-14} theme={"theme":{"light":"github-light","dark":"vesper"}}
-  import "github.com/resend/resend-go/v4"
-
-  client := resend.NewClient("re_xxxxxxxxx")
-
-  params := &resend.SendEmailRequest{
-    From: "Acme <onboarding@resend.dev>",
-    To: []string{"delivered@resend.dev"},
-    Template: &resend.EmailTemplate{
-      Id: "order-confirmation",
-      Variables: map[string]interface{}{
-        "PRODUCT": "Vintage Macintosh",
-        "PRICE": 499,
-      },
-    },
-  }
-
-  client.Emails.Send(params)
-  ```
-
-  ```rust Rust {11-13,20} theme={"theme":{"light":"github-light","dark":"vesper"}}
-  use resend_rs::{
-    json,
-    types::{CreateEmailBaseOptions, EmailTemplate},
-    Resend, Result,
-  };
-
-  #[tokio::main]
-  async fn main() -> Result<()> {
-    let resend = Resend::new("re_xxxxxxxxx");
-
-    let template = EmailTemplate::new("order-confirmation")
-      .with_variable("PRODUCT", json!("Vintage Macintosh"))
-      .with_variable("PRICE", json!(499));
-
-    let email = CreateEmailBaseOptions::new(
-      "Acme <onboarding@resend.dev>",
-      ["delivered@resend.dev"],
-      "hello world",
-    )
-    .with_template(template);
-
-    let _email = resend.emails.send(email).await?;
-
-    Ok(())
-  }
-  ```
-
-  ```java Java {11-13,18-21} theme={"theme":{"light":"github-light","dark":"vesper"}}
-  import com.resend.*;
-  import com.resend.services.emails.model.CreateEmailOptions;
-  import com.resend.services.emails.model.CreateEmailResponse;
-  import com.resend.services.emails.model.Template;
-  import java.util.Arrays;
-  import java.util.HashMap;
-  import java.util.Map;
-
-  Resend resend = new Resend("re_xxxxxxxxx");
-
-  Map<String, Object> variables = new HashMap<>();
-  variables.put("PRODUCT", "Vintage Macintosh");
-  variables.put("PRICE", 499);
-
-  CreateEmailOptions params = CreateEmailOptions.builder()
-    .from("Acme <onboarding@resend.dev>")
-    .to(Arrays.asList("customer@email.com"))
-    .template(Template.builder()
-      .id("order-confirmation")
-      .variables(variables)
-      .build())
-    .build();
-
-  CreateEmailResponse data = resend.emails().send(params);
-  ```
-
-  ```csharp .NET {5-9,17-20} theme={"theme":{"light":"github-light","dark":"vesper"}}
-  using Resend;
-
-  IResend resend = ResendClient.Create("re_xxxxxxxxx");
-
-  var variables = new Dictionary<string, object>
-  {
-    { "PRODUCT", "Vintage Macintosh" },
-    { "PRICE", 499 }
-  };
-
-  var resp = await resend.EmailSendAsync(
-    new EmailMessage()
-    {
-      From = "Acme <onboarding@resend.dev>",
-      To = new[] { "delivered@resend.dev" },
-      Template = new EmailMessageTemplate()
-      {
-        TemplateId = "b6d24b8e-af0b-4c3c-be0c-359bbd97381e",
-        Variables = variables
-      }
-    }
-  );
-
-  Console.WriteLine($"Email Id={resp.Content}");
-  ```
-
-  ```bash cURL {7-13} theme={"theme":{"light":"github-light","dark":"vesper"}}
-  curl -X POST 'https://api.resend.com/emails' \
-    -H 'Authorization: Bearer re_xxxxxxxxx' \
-    -H 'Content-Type: application/json' \
-    -d $'{
-      "from": "Acme <onboarding@resend.dev>",
-      "to": "delivered@resend.dev",
-      "template": {
-        "id": "order-confirmation",
-        "variables": {
-          "PRODUCT": "Vintage Macintosh",
-          "PRICE": 499
-        }
-      }
-  }'
-  ```
-</CodeGroup>
+}'
+```
 
 ## Related Guides
 
 See how to use Resend's email Template features.
 
-<CardGroup>
-  <Card title="Create Templates" icon="cards-blank" href="/docs/dashboard/templates/create-template" />
+> **[Create Templates](/docs/dashboard/templates/create-template)**
 
-  <Card title="Editor" icon="pencil" href="/docs/dashboard/templates/template-editor" />
+> **[Editor](/docs/dashboard/templates/template-editor)**
 
-  <Card title="Template variables" icon="swap" href="/docs/dashboard/templates/template-variables" />
+> **[Template variables](/docs/dashboard/templates/template-variables)**
 
-  <Card title="Version history" icon="code-compare" href="/docs/dashboard/templates/version-history" />
+> **[Version history](/docs/dashboard/templates/version-history)**
 
-  <Card title="React Email Templates" icon="react" href="/docs/knowledge-base/template-emails-with-react-email" />
+> **[React Email Templates](/docs/knowledge-base/template-emails-with-react-email)**
 
-  <Card title="Embed Email Editor" icon="picture-in-picture" href="/docs/knowledge-base/embed-react-email-editor" />
-</CardGroup>
+> **[Embed Email Editor](/docs/knowledge-base/embed-react-email-editor)**

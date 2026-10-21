@@ -19,32 +19,30 @@ If your authenticator app still has a Resend entry but the codes are rejected:
 
 Your recovery code is the single code Resend showed when you turned on MFA. It has ten characters split by a dash, in the format `XXXXX-XXXXX`.
 
-<Steps>
-  <Step title="Turn off MFA with your recovery code">
-    Using your recovery code turns off MFA and allows you to sign in with your usual method.
+**1. Turn off MFA with your recovery code**
 
-    <Info>
-      If you also lost access to the email address you sign in with, see our
-      [recover access to a team](/docs/guides/account/how-to-recover-access-to-a-team)
-      support article.
-    </Info>
+Using your recovery code turns off MFA and allows you to sign in with your usual method.
 
-    To use your recovery code, sign in with your usual method and enter your recovery code when Resend asks for your authenticator code. ([View help](#if-you-do-not-have-a-recovery-code) if you do not have a recovery code.)
+> [!NOTE]
+>
+> If you also lost access to the email address you sign in with, see our
+> [recover access to a team](/docs/guides/account/how-to-recover-access-to-a-team)
+> support article.
 
-    The recovery code works once. Using it also:
+To use your recovery code, sign in with your usual method and enter your recovery code when Resend asks for your authenticator code. ([View help](#if-you-do-not-have-a-recovery-code) if you do not have a recovery code.)
 
-    * Signs out every other active session on your account.
-    * Sends an email titled "Your Resend two-factor authentication was reset" to your email address.
+The recovery code works once. Using it also:
 
-    Removing MFA only removes the authenticator factor. The domains and API keys on the account stay untouched.
-  </Step>
+* Signs out every other active session on your account.
+* Sends an email titled "Your Resend two-factor authentication was reset" to your email address.
 
-  <Step title="Turn on MFA again">
-    Enable MFA on again from your [Profile](https://resend.com/profile) with your new device. Resend shows you a new recovery code when you do. Save it before you close the dialog. See [how to add MFA](/docs/knowledge-base/how-can-i-add-mfa) for more details.
+Removing MFA only removes the authenticator factor. The domains and API keys on the account stay untouched.
 
-    If you receive that email and did not use your recovery code, reset your password and [contact support](https://resend.com/help) immediately.
-  </Step>
-</Steps>
+**2. Turn on MFA again**
+
+Enable MFA on again from your [Profile](https://resend.com/profile) with your new device. Resend shows you a new recovery code when you do. Save it before you close the dialog. See [how to add MFA](/docs/knowledge-base/how-can-i-add-mfa) for more details.
+
+If you receive that email and did not use your recovery code, reset your password and [contact support](https://resend.com/help) immediately.
 
 ## MFC recovery code security
 

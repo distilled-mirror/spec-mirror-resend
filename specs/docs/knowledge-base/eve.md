@@ -21,87 +21,83 @@ To get started, you'll need to:
 
 ## Guide
 
-<Steps>
-  <Step title="Install">
-    Create a new project with eve and then install the Chat SDK, the Resend adapter, and the development state adapter.
+**1. Install**
 
-    <CodeGroup>
-      ```bash npm theme={"theme":{"light":"github-light","dark":"vesper"}}
-      npx eve@latest init my-agent
-      cd my-agent
-      npm install @resend/chat-sdk-adapter chat @chat-adapter/state-memory
-      ```
+Create a new project with eve and then install the Chat SDK, the Resend adapter, and the development state adapter.
 
-      ```bash yarn theme={"theme":{"light":"github-light","dark":"vesper"}}
-      yarn dlx eve@latest init my-agent
-      cd my-agent
-      yarn add @resend/chat-sdk-adapter chat @chat-adapter/state-memory
-      ```
+```bash npm theme={"theme":{"light":"github-light","dark":"vesper"}}
+npx eve@latest init my-agent
+cd my-agent
+npm install @resend/chat-sdk-adapter chat @chat-adapter/state-memory
+```
 
-      ```bash pnpm theme={"theme":{"light":"github-light","dark":"vesper"}}
-      pnpm dlx eve@latest init my-agent
-      cd my-agent
-      pnpm add @resend/chat-sdk-adapter chat @chat-adapter/state-memory
-      ```
+```bash yarn theme={"theme":{"light":"github-light","dark":"vesper"}}
+yarn dlx eve@latest init my-agent
+cd my-agent
+yarn add @resend/chat-sdk-adapter chat @chat-adapter/state-memory
+```
 
-      ```bash bun theme={"theme":{"light":"github-light","dark":"vesper"}}
-      bunx eve@latest init my-agent
-      cd my-agent
-      bun add @resend/chat-sdk-adapter chat @chat-adapter/state-memory
-      ```
-    </CodeGroup>
-  </Step>
+```bash pnpm theme={"theme":{"light":"github-light","dark":"vesper"}}
+pnpm dlx eve@latest init my-agent
+cd my-agent
+pnpm add @resend/chat-sdk-adapter chat @chat-adapter/state-memory
+```
 
-  <Step title="Configure the adapter">
-    Create the Resend adapter with the [adapter configuration options](#configuration-options). Then create a Chat SDK channel with the adapter, a username for the bot, and an adapter state. `streaming` should be set to false as emails can only deliver one message per turn.
+```bash bun theme={"theme":{"light":"github-light","dark":"vesper"}}
+bunx eve@latest init my-agent
+cd my-agent
+bun add @resend/chat-sdk-adapter chat @chat-adapter/state-memory
+```
 
-    Export the `channel` object and the framework will integrate it automatically.
+**2. Configure the adapter**
 
-    ```ts theme={"theme":{"light":"github-light","dark":"vesper"}}
-    import { createResendAdapter } from '@resend/chat-sdk-adapter';
-    import { chatSdkChannel } from 'eve/channels/chat-sdk';
-    import { createMemoryState } from '@chat-adapter/state-memory';
+Create the Resend adapter with the [adapter configuration options](#configuration-options). Then create a Chat SDK channel with the adapter, a username for the bot, and an adapter state. `streaming` should be set to false as emails can only deliver one message per turn.
 
-    export const resendAdapter = createResendAdapter({
-      fromAddress: 'bot@example.com',
-      fromName: 'My Bot',
-    });
+Export the `channel` object and the framework will integrate it automatically.
 
-    export const { bot, channel, send } = chatSdkChannel({
-      adapters: { resend: resendAdapter },
-      userName: 'My Bot',
-      state: createMemoryState(),
-      streaming: false,
-    });
+```ts theme={"theme":{"light":"github-light","dark":"vesper"}}
+import { createResendAdapter } from '@resend/chat-sdk-adapter';
+import { chatSdkChannel } from 'eve/channels/chat-sdk';
+import { createMemoryState } from '@chat-adapter/state-memory';
 
-    export default channel;
-    ```
+export const resendAdapter = createResendAdapter({
+  fromAddress: 'bot@example.com',
+  fromName: 'My Bot',
+});
 
-    <Info>
-      Set `RESEND_API_KEY` and `RESEND_WEBHOOK_SECRET` as environment variables. You can also pass `apiKey` and `webhookSecret` directly in the config passed to `createResendAdapter` — explicit values take precedence over env vars.
-    </Info>
-  </Step>
+export const { bot, channel, send } = chatSdkChannel({
+  adapters: { resend: resendAdapter },
+  userName: 'My Bot',
+  state: createMemoryState(),
+  streaming: false,
+});
 
-  <Step title="Handle new messages">
-    Register handlers for incoming messages. `onNewMention` event fires when a new thread starts and `onSubscribedMessage` fires for follow-up emails in threads you are already subscribed to.
+export default channel;
+```
 
-    ```ts theme={"theme":{"light":"github-light","dark":"vesper"}}
-    bot.onNewMention(async (thread, message) => {
-      await thread.subscribe();
-      await send(message.text, { thread });
-    });
-    bot.onSubscribedMessage(async (thread, message) => {
-      await send(message.text, { thread });
-    });
-    ```
+> [!NOTE]
+>
+> Set `RESEND_API_KEY` and `RESEND_WEBHOOK_SECRET` as environment variables. You can also pass `apiKey` and `webhookSecret` directly in the config passed to `createResendAdapter` — explicit values take precedence over env vars.
 
-    Threading is handled by the [Chat SDK adapter](/docs/chat-sdk#how-threading-works).
-  </Step>
+**3. Handle new messages**
 
-  <Step title="Configure webhooks">
-    Eve registers adapter endpoints at `/eve/v1/resend`. [Edit your webhook](/docs/webhooks/introduction) for `email.received` events to point to this endpoint.
-  </Step>
-</Steps>
+Register handlers for incoming messages. `onNewMention` event fires when a new thread starts and `onSubscribedMessage` fires for follow-up emails in threads you are already subscribed to.
+
+```ts theme={"theme":{"light":"github-light","dark":"vesper"}}
+bot.onNewMention(async (thread, message) => {
+  await thread.subscribe();
+  await send(message.text, { thread });
+});
+bot.onSubscribedMessage(async (thread, message) => {
+  await send(message.text, { thread });
+});
+```
+
+Threading is handled by the [Chat SDK adapter](/docs/chat-sdk#how-threading-works).
+
+**4. Configure webhooks**
+
+Eve registers adapter endpoints at `/eve/v1/resend`. [Edit your webhook](/docs/webhooks/introduction) for `email.received` events to point to this endpoint.
 
 ## Configuration options
 

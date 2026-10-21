@@ -16,74 +16,72 @@ Before you start, you'll need:
 
 ## Guide
 
-<Steps>
-  <Step title="Setup your environment">
-    Create and activate your new virtualenv.
+**1. Setup your environment**
 
-    ```bash theme={"theme":{"light":"github-light","dark":"vesper"}}
-    virtualenv venv
-    source venv/bin/activate
-    ```
+Create and activate your new virtualenv.
 
-    Install dependencies.
+```bash theme={"theme":{"light":"github-light","dark":"vesper"}}
+virtualenv venv
+source venv/bin/activate
+```
 
-    ```sh theme={"theme":{"light":"github-light","dark":"vesper"}}
-    pip install -r requirements.txt
-    ```
+Install dependencies.
 
-    Set your `RESEND_API_KEY` environment variable by running.
+```sh theme={"theme":{"light":"github-light","dark":"vesper"}}
+pip install -r requirements.txt
+```
 
-    ```sh theme={"theme":{"light":"github-light","dark":"vesper"}}
-    export RESEND_API_KEY="re_xxxxxxxxx"
-    ```
-  </Step>
+Set your `RESEND_API_KEY` environment variable by running.
 
-  <Step title="Send email using Django's SMTP EmailMessage">
-    Set the necessary attributes in your `settings.py` file.
+```sh theme={"theme":{"light":"github-light","dark":"vesper"}}
+export RESEND_API_KEY="re_xxxxxxxxx"
+```
 
-    ```py theme={"theme":{"light":"github-light","dark":"vesper"}}
-    EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-    RESEND_SMTP_PORT = 587
-    RESEND_SMTP_USERNAME = 'resend'
-    RESEND_SMTP_HOST = 'smtp.resend.com'
-    ```
+**2. Send email using Django's SMTP EmailMessage**
 
-    Use Django's `get_connection` and `EmailMessage`
+Set the necessary attributes in your `settings.py` file.
 
-    ```py theme={"theme":{"light":"github-light","dark":"vesper"}}
-    import os
-    from django.conf import settings
-    from django.http import JsonResponse
-    from django.core.mail import EmailMessage, get_connection
+```py theme={"theme":{"light":"github-light","dark":"vesper"}}
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+RESEND_SMTP_PORT = 587
+RESEND_SMTP_USERNAME = 'resend'
+RESEND_SMTP_HOST = 'smtp.resend.com'
+```
 
-    # Sample Django view
-    def index(request):
+Use Django's `get_connection` and `EmailMessage`
 
-        subject = "Hello from Django SMTP"
-        recipient_list = ["delivered@resend.dev"]
-        from_email = "onboarding@resend.dev"
-        message = "<strong>it works!</strong>"
+```py theme={"theme":{"light":"github-light","dark":"vesper"}}
+import os
+from django.conf import settings
+from django.http import JsonResponse
+from django.core.mail import EmailMessage, get_connection
 
-        with get_connection(
-            host=settings.RESEND_SMTP_HOST,
-            port=settings.RESEND_SMTP_PORT,
-            username=settings.RESEND_SMTP_USERNAME,
-            password=os.environ["RESEND_API_KEY"],
-            use_tls=True,
-            ) as connection:
-                r = EmailMessage(
-                      subject=subject,
-                      body=message,
-                      to=recipient_list,
-                      from_email=from_email,
-                      connection=connection).send()
-        return JsonResponse({"status": "ok"})
-    ```
-  </Step>
-</Steps>
+# Sample Django view
+def index(request):
+
+    subject = "Hello from Django SMTP"
+    recipient_list = ["delivered@resend.dev"]
+    from_email = "onboarding@resend.dev"
+    message = "<strong>it works!</strong>"
+
+    with get_connection(
+        host=settings.RESEND_SMTP_HOST,
+        port=settings.RESEND_SMTP_PORT,
+        username=settings.RESEND_SMTP_USERNAME,
+        password=os.environ["RESEND_API_KEY"],
+        use_tls=True,
+        ) as connection:
+            r = EmailMessage(
+                  subject=subject,
+                  body=message,
+                  to=recipient_list,
+                  from_email=from_email,
+                  connection=connection).send()
+    return JsonResponse({"status": "ok"})
+```
 
 ## Examples
 
-<Card title="Django SMTP Example" icon="arrow-up-right-from-square" href="https://github.com/resend/resend-django-smtp-example">
-  See the full source code.
-</Card>
+> **[Django SMTP Example](https://github.com/resend/resend-django-smtp-example)**
+>
+> See the full source code.

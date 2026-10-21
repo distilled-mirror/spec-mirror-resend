@@ -10,21 +10,21 @@
 
 First, log in to your [Resend Account](https://resend.com/login) and [add a domain](https://resend.com/domains).
 
-<img alt="Domain Details" src="https://mintcdn.com/resend/JHWt09hsc7E33HK2/images/dashboard-domains-resend-add-domain.png?fit=max&auto=format&n=JHWt09hsc7E33HK2&q=85&s=418dd93c2f2ead0b0d83d1b7c2fb0970" width="3360" height="2100" data-path="images/dashboard-domains-resend-add-domain.png" />
+![Domain Details](https://mintcdn.com/resend/JHWt09hsc7E33HK2/images/dashboard-domains-resend-add-domain.png?fit=max\&auto=format\&n=JHWt09hsc7E33HK2\&q=85\&s=418dd93c2f2ead0b0d83d1b7c2fb0970)
 
-<Tip>
-  It is [best practice to use a
-  subdomain](/docs/knowledge-base/is-it-better-to-send-emails-from-a-subdomain-or-the-root-domain)
-  (updates.example.com) instead of the root domain (example.com). Using a
-  subdomain allows for proper reputation segmentation based on topics or purpose
-  (e.g. marketing) and is especially important if receiving emails with Resend.
-</Tip>
+> [!TIP]
+>
+> It is [best practice to use a
+> subdomain](/docs/knowledge-base/is-it-better-to-send-emails-from-a-subdomain-or-the-root-domain)
+> (updates.example.com) instead of the root domain (example.com). Using a
+> subdomain allows for proper reputation segmentation based on topics or purpose
+> (e.g. marketing) and is especially important if receiving emails with Resend.
 
 ## Log in to Squarespace
 
 Log in to your [Squarespace domains page](https://account.squarespace.com/domains) and click on your domain.
 
-<img alt="Domain Details" src="https://mintcdn.com/resend/OWNnQaVDyqcGyhhN/images/squarespace-domains-main.png?fit=max&auto=format&n=OWNnQaVDyqcGyhhN&q=85&s=8362f1932f033cb983149883a9a459b6" width="3808" height="2128" data-path="images/squarespace-domains-main.png" />
+![Domain Details](https://mintcdn.com/resend/OWNnQaVDyqcGyhhN/images/squarespace-domains-main.png?fit=max\&auto=format\&n=OWNnQaVDyqcGyhhN\&q=85\&s=8362f1932f033cb983149883a9a459b6)
 
 ## Add MX SPF Record
 
@@ -37,9 +37,9 @@ Scroll down to the **Custom records** section and select `Add record` on Squares
 5. Copy the MX Value from Resend into the `Mail Server` field
 6. Select `Save`.
 
-<img alt="Domain Details" src="https://mintcdn.com/resend/JHWt09hsc7E33HK2/images/dashboard-domains-resend-spf-mx.png?fit=max&auto=format&n=JHWt09hsc7E33HK2&q=85&s=bb0db2dd2809135194cfb62b695225cd" width="3024" height="1888" data-path="images/dashboard-domains-resend-spf-mx.png" />
+![Domain Details](https://mintcdn.com/resend/JHWt09hsc7E33HK2/images/dashboard-domains-resend-spf-mx.png?fit=max\&auto=format\&n=JHWt09hsc7E33HK2\&q=85\&s=bb0db2dd2809135194cfb62b695225cd)
 
-<img alt="Domain Details" src="https://mintcdn.com/resend/OWNnQaVDyqcGyhhN/images/squarespace-spf-mx.png?fit=max&auto=format&n=OWNnQaVDyqcGyhhN&q=85&s=1222dfd2f85a612e61a52f15c2ac9818" width="3760" height="2080" data-path="images/squarespace-spf-mx.png" />
+![Domain Details](https://mintcdn.com/resend/OWNnQaVDyqcGyhhN/images/squarespace-spf-mx.png?fit=max\&auto=format\&n=OWNnQaVDyqcGyhhN\&q=85\&s=1222dfd2f85a612e61a52f15c2ac9818)
 
 Below is a mapping of the record fields from Resend to Squarespace:
 
@@ -51,16 +51,16 @@ Below is a mapping of the record fields from Resend to Squarespace:
 | Mail Server | Content | `feedback-smtp.us-east-1.amazonses.com` |
 | Priority | Priority | `10` |
 
-<Info>
-  Omit your domain from the record values in Resend when you paste. Instead of
-  `send.example.com`, paste only `send` (or `send.subdomain` if you're using a
-  subdomain).
-</Info>
+> [!NOTE]
+>
+> Omit your domain from the record values in Resend when you paste. Instead of
+> `send.example.com`, paste only `send` (or `send.subdomain` if you're using a
+> subdomain).
 
-<Info>
-  Do not use the same priority for multiple records. If Priority `10` is already
-  in use, try a higher value `20` or `30`.
-</Info>
+> [!NOTE]
+>
+> Do not use the same priority for multiple records. If Priority `10` is already
+> in use, try a higher value `20` or `30`.
 
 ## Add TXT SPF Record
 
@@ -74,11 +74,9 @@ In the same **Custom records** section, select `Add Record` on Squarespace.
 
 Add the **TXT Record** from your domain in Resend to Squarespace and click "Save".
 
-<img alt="Domain Details" src="https://mintcdn.com/resend/JHWt09hsc7E33HK2/images/dashboard-domains-resend-spf-txt.png?fit=max&auto=format&n=JHWt09hsc7E33HK2&q=85&s=747425d0a224baeee2846c9a707d5bbc" width="3024" height="1888" data-path="images/dashboard-domains-resend-spf-txt.png" />
+![Domain Details](https://mintcdn.com/resend/JHWt09hsc7E33HK2/images/dashboard-domains-resend-spf-txt.png?fit=max\&auto=format\&n=JHWt09hsc7E33HK2\&q=85\&s=747425d0a224baeee2846c9a707d5bbc)
 
-<br />
-
-<img alt="Domain Details" src="https://mintcdn.com/resend/OWNnQaVDyqcGyhhN/images/squarespace-spf-txt.png?fit=max&auto=format&n=OWNnQaVDyqcGyhhN&q=85&s=13d1b0604c22b16161d1b99e9bc2f8d8" width="3808" height="2128" data-path="images/squarespace-spf-txt.png" />
+![Domain Details](https://mintcdn.com/resend/OWNnQaVDyqcGyhhN/images/squarespace-spf-txt.png?fit=max\&auto=format\&n=OWNnQaVDyqcGyhhN\&q=85\&s=13d1b0604c22b16161d1b99e9bc2f8d8)
 
 Below is a mapping of the record fields from Resend to Squarespace:
 
@@ -89,11 +87,11 @@ Below is a mapping of the record fields from Resend to Squarespace:
 | TTL | TTL | `4 hrs` (default) |
 | Text | Content | `"v=spf1 include:amazonses.com ~all"` |
 
-<Info>
-  Omit your domain from the record values in Resend when you paste. Instead of
-  `send.example.com`, paste only `send` (or `send.subdomain` if you're using a
-  subdomain).
-</Info>
+> [!NOTE]
+>
+> Omit your domain from the record values in Resend when you paste. Instead of
+> `send.example.com`, paste only `send` (or `send.subdomain` if you're using a
+> subdomain).
 
 ## Add TXT DKIM Records
 
@@ -105,9 +103,9 @@ In the same **Custom records** section, select `Add Record` on Squarespace.
 4. Copy the TXT Value from Resend into the `Text` field
 5. Select `Save`.
 
-<img alt="Domain Details" src="https://mintcdn.com/resend/JHWt09hsc7E33HK2/images/dashboard-domains-resend-dkim.png?fit=max&auto=format&n=JHWt09hsc7E33HK2&q=85&s=345d1dc6b7c138dbd92bd6928c634bd9" width="2992" height="1868" data-path="images/dashboard-domains-resend-dkim.png" />
+![Domain Details](https://mintcdn.com/resend/JHWt09hsc7E33HK2/images/dashboard-domains-resend-dkim.png?fit=max\&auto=format\&n=JHWt09hsc7E33HK2\&q=85\&s=345d1dc6b7c138dbd92bd6928c634bd9)
 
-<img alt="Domain Details" src="https://mintcdn.com/resend/OWNnQaVDyqcGyhhN/images/squarespace-dkim-txt.png?fit=max&auto=format&n=OWNnQaVDyqcGyhhN&q=85&s=119a6ade9688e65297e2dbff30e8256d" width="3808" height="2128" data-path="images/squarespace-dkim-txt.png" />
+![Domain Details](https://mintcdn.com/resend/OWNnQaVDyqcGyhhN/images/squarespace-dkim-txt.png?fit=max\&auto=format\&n=OWNnQaVDyqcGyhhN\&q=85\&s=119a6ade9688e65297e2dbff30e8256d)
 
 Below is a mapping of the record fields from Resend to Squarespace:
 
@@ -118,26 +116,33 @@ Below is a mapping of the record fields from Resend to Squarespace:
 | TTL | TTL | `4 hrs` (default) |
 | Text | Content | `p=example_domain_key_value` |
 
-<Info>
-  Omit your domain from the record values in Resend when you paste. Instead of
-  `resend._domainkey.example.com`, paste only `resend._domainkey` (or
-  `resend._domainkey.subdomain` if you're using a subdomain).
-</Info>
+> [!NOTE]
+>
+> Omit your domain from the record values in Resend when you paste. Instead of
+> `resend._domainkey.example.com`, paste only `resend._domainkey` (or
+> `resend._domainkey.subdomain` if you're using a subdomain).
 
 ## Receiving Emails
 
 If you want to receive emails at your domain, toggle the "Receiving" switch on the domain details page.
 
-<img alt="Enable Receiving Emails for a verified domain" src="https://mintcdn.com/resend/B7wTVm7aKL5pNT-6/images/inbound-domain-toggle.png?fit=max&auto=format&n=B7wTVm7aKL5pNT-6&q=85&s=46f6b4c142fb90e04b57861e338ed2d0" width="1980" height="1244" data-path="images/inbound-domain-toggle.png" />
+![Enable Receiving Emails for a verified domain](https://mintcdn.com/resend/B7wTVm7aKL5pNT-6/images/inbound-domain-toggle.png?fit=max\&auto=format\&n=B7wTVm7aKL5pNT-6\&q=85\&s=46f6b4c142fb90e04b57861e338ed2d0)
 
-<Warning>
-  When you enable Inbound on a domain, Resend receives *all emails* sent to that
-  specific domain depending on the priority of the MX record. For this reason,
-  we strongly recommend verifying a subdomain (`subdomain.example.com`) instead
-  of the root domain (`example.com`). Learn more about [avoiding conflicts with
-  your existing MX
-  records](/docs/knowledge-base/how-do-i-avoid-conflicting-with-my-mx-records).
-</Warning>
+> [!WARNING]
+>
+> When you enable Inbound on a domain, Resend receives *all emails* sent to that
+> specific domain depending on the priority of the MX record. For this reason,
+> we strongly recommend verifying a subdomain (`subdomain.example.com`) instead
+> of the root domain (`example.com`). Learn more about [avoiding conflicts with
+> your existing MX
+> records](/docs/knowledge-base/how-do-i-avoid-conflicting-with-my-mx-records).
+
+> [!NOTE]
+>
+> Always copy the MX record value shown on your domain's page in Resend. The
+> values in this guide are examples. Depending on your domain you will see
+> `receive.forge.rmta.net`, a regional variant such as
+> `receive-euw1.forge.rmta.net`, or `inbound-smtp.<region>.amazonaws.com`.
 
 Scroll down to the **Custom records** section and select `Add record` on Squarespace:
 
@@ -168,12 +173,10 @@ Now click [Verify DNS Records](https://resend.com/domains) on your Domain in Res
 
 If your domain is not successfully verified, these are some common troubleshooting methods.
 
-<AccordionGroup>
-  <Accordion title="Resend shows my domain verification failed.">
-    Review the records you added to Squarespace to rule out copy and paste errors.
-  </Accordion>
+> **Resend shows my domain verification failed.**
+>
+> Review the records you added to Squarespace to rule out copy and paste errors.
 
-  <Accordion title="It has been longer than 72 hours and my domain is still Pending.">
-    [Review our guide on a domain not verifying](/docs/knowledge-base/what-if-my-domain-is-not-verifying).
-  </Accordion>
-</AccordionGroup>
+> **It has been longer than 72 hours and my domain is still Pending.**
+>
+> [Review our guide on a domain not verifying](/docs/knowledge-base/what-if-my-domain-is-not-verifying).

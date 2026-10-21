@@ -8,118 +8,114 @@
 
 ## Path Parameters
 
-<ParamField path="id" type="string" required>
-  The Email ID.
-</ParamField>
+**id** `string` *required*
 
-<RequestExample>
-  ```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
-  import { Resend } from 'resend';
+The Email ID.
 
-  const resend = new Resend('re_xxxxxxxxx');
+```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
+import { Resend } from 'resend';
 
-  const { data, error } = await resend.emails.cancel(
-    '49a3999c-0ce1-4ea6-ab68-afcd6dc2e794',
-  );
-  ```
+const resend = new Resend('re_xxxxxxxxx');
 
-  ```php PHP theme={"theme":{"light":"github-light","dark":"vesper"}}
-  $resend = Resend::client('re_xxxxxxxxx');
+const { data, error } = await resend.emails.cancel(
+  '49a3999c-0ce1-4ea6-ab68-afcd6dc2e794',
+);
+```
 
-  $resend->emails->cancel('49a3999c-0ce1-4ea6-ab68-afcd6dc2e794');
-  ```
+```php PHP theme={"theme":{"light":"github-light","dark":"vesper"}}
+$resend = Resend::client('re_xxxxxxxxx');
 
-  ```python Python theme={"theme":{"light":"github-light","dark":"vesper"}}
-  import resend
+$resend->emails->cancel('49a3999c-0ce1-4ea6-ab68-afcd6dc2e794');
+```
 
-  resend.api_key = "re_xxxxxxxxx"
-  resend.Emails.cancel(email_id="49a3999c-0ce1-4ea6-ab68-afcd6dc2e794")
-  ```
+```python Python theme={"theme":{"light":"github-light","dark":"vesper"}}
+import resend
 
-  ```ruby Ruby theme={"theme":{"light":"github-light","dark":"vesper"}}
-  require "resend"
+resend.api_key = "re_xxxxxxxxx"
+resend.Emails.cancel(email_id="49a3999c-0ce1-4ea6-ab68-afcd6dc2e794")
+```
 
-  Resend.api_key = "re_xxxxxxxxx"
+```ruby Ruby theme={"theme":{"light":"github-light","dark":"vesper"}}
+require "resend"
 
-  Resend::Emails.cancel("49a3999c-0ce1-4ea6-ab68-afcd6dc2e794")
-  ```
+Resend.api_key = "re_xxxxxxxxx"
 
-  ```go Go theme={"theme":{"light":"github-light","dark":"vesper"}}
-  package main
+Resend::Emails.cancel("49a3999c-0ce1-4ea6-ab68-afcd6dc2e794")
+```
 
-  import (
-  	"fmt"
+```go Go theme={"theme":{"light":"github-light","dark":"vesper"}}
+package main
 
-  	"github.com/resend/resend-go/v4"
-  )
+import (
+	"fmt"
 
-  func main() {
-  	client := resend.NewClient("re_xxxxxxxxx")
+	"github.com/resend/resend-go/v4"
+)
 
-  	canceled, err := client.Emails.Cancel("49a3999c-0ce1-4ea6-ab68-afcd6dc2e794")
-  	if err != nil {
-  		panic(err)
-  	}
-  	fmt.Println(canceled.Id)
-  }
-  ```
+func main() {
+	client := resend.NewClient("re_xxxxxxxxx")
 
-  ```rust Rust theme={"theme":{"light":"github-light","dark":"vesper"}}
-  use resend_rs::{Resend, Result};
+	canceled, err := client.Emails.Cancel("49a3999c-0ce1-4ea6-ab68-afcd6dc2e794")
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(canceled.Id)
+}
+```
 
-  #[tokio::main]
-  async fn main() -> Result<()> {
-    let resend = Resend::new("re_xxxxxxxxx");
+```rust Rust theme={"theme":{"light":"github-light","dark":"vesper"}}
+use resend_rs::{Resend, Result};
 
-    let _canceled = resend
-      .emails
-      .cancel("49a3999c-0ce1-4ea6-ab68-afcd6dc2e794")
-      .await?;
+#[tokio::main]
+async fn main() -> Result<()> {
+  let resend = Resend::new("re_xxxxxxxxx");
 
-    Ok(())
-  }
-  ```
+  let _canceled = resend
+    .emails
+    .cancel("49a3999c-0ce1-4ea6-ab68-afcd6dc2e794")
+    .await?;
 
-  ```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
-  import com.resend.Resend;
-  import com.resend.core.exception.ResendException;
-  import com.resend.services.emails.model.CancelEmailResponse;
+  Ok(())
+}
+```
 
-  public class Main {
-      public static void main(String[] args) throws ResendException {
-          Resend resend = new Resend("re_xxxxxxxxx");
+```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
+import com.resend.Resend;
+import com.resend.core.exception.ResendException;
+import com.resend.services.emails.model.CancelEmailResponse;
 
-          CancelEmailResponse canceled = resend
-            .emails()
-            .cancel("49a3999c-0ce1-4ea6-ab68-afcd6dc2e794");
-      }
-  }
-  ```
+public class Main {
+    public static void main(String[] args) throws ResendException {
+        Resend resend = new Resend("re_xxxxxxxxx");
 
-  ```csharp .NET theme={"theme":{"light":"github-light","dark":"vesper"}}
-  using Resend;
+        CancelEmailResponse canceled = resend
+          .emails()
+          .cancel("49a3999c-0ce1-4ea6-ab68-afcd6dc2e794");
+    }
+}
+```
 
-  IResend resend = ResendClient.Create( "re_xxxxxxxxx" ); // Or from DI
+```csharp .NET theme={"theme":{"light":"github-light","dark":"vesper"}}
+using Resend;
 
-  await resend.EmailCancelAsync( new Guid( "49a3999c-0ce1-4ea6-ab68-afcd6dc2e794" ) );
-  ```
+IResend resend = ResendClient.Create( "re_xxxxxxxxx" ); // Or from DI
 
-  ```bash cURL theme={"theme":{"light":"github-light","dark":"vesper"}}
-  curl -X POST 'https://api.resend.com/emails/49a3999c-0ce1-4ea6-ab68-afcd6dc2e794/cancel' \
-       -H 'Authorization: Bearer re_xxxxxxxxx' \
-       -H 'Content-Type: application/json'
-  ```
+await resend.EmailCancelAsync( new Guid( "49a3999c-0ce1-4ea6-ab68-afcd6dc2e794" ) );
+```
 
-  ```bash CLI theme={"theme":{"light":"github-light","dark":"vesper"}}
-  resend emails cancel 49a3999c-0ce1-4ea6-ab68-afcd6dc2e794
-  ```
-</RequestExample>
+```bash cURL theme={"theme":{"light":"github-light","dark":"vesper"}}
+curl -X POST 'https://api.resend.com/emails/49a3999c-0ce1-4ea6-ab68-afcd6dc2e794/cancel' \
+     -H 'Authorization: Bearer re_xxxxxxxxx' \
+     -H 'Content-Type: application/json'
+```
 
-<ResponseExample>
-  ```json Response theme={"theme":{"light":"github-light","dark":"vesper"}}
-  {
-    "object": "email",
-    "id": "49a3999c-0ce1-4ea6-ab68-afcd6dc2e794"
-  }
-  ```
-</ResponseExample>
+```bash CLI theme={"theme":{"light":"github-light","dark":"vesper"}}
+resend emails cancel 49a3999c-0ce1-4ea6-ab68-afcd6dc2e794
+```
+
+```json Response theme={"theme":{"light":"github-light","dark":"vesper"}}
+{
+  "object": "email",
+  "id": "49a3999c-0ce1-4ea6-ab68-afcd6dc2e794"
+}
+```

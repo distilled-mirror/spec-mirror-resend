@@ -18,19 +18,17 @@ Before you start, you'll need:
 
 ## Install the Resend SDK
 
-<CodeGroup>
-  ```bash npm theme={"theme":{"light":"github-light","dark":"vesper"}}
-  npm install resend
-  ```
+```bash npm theme={"theme":{"light":"github-light","dark":"vesper"}}
+npm install resend
+```
 
-  ```bash pnpm theme={"theme":{"light":"github-light","dark":"vesper"}}
-  pnpm add resend
-  ```
+```bash pnpm theme={"theme":{"light":"github-light","dark":"vesper"}}
+pnpm add resend
+```
 
-  ```bash yarn theme={"theme":{"light":"github-light","dark":"vesper"}}
-  yarn add resend
-  ```
-</CodeGroup>
+```bash yarn theme={"theme":{"light":"github-light","dark":"vesper"}}
+yarn add resend
+```
 
 Add your API key to the environment:
 
@@ -38,14 +36,14 @@ Add your API key to the environment:
 RESEND_API_KEY=re_xxxxxxxxx
 ```
 
-<Note>
-  The hook examples below call `void resend.emails.send(...)` instead of
-  awaiting it, [as Better Auth
-  recommends](https://better-auth.com/docs/concepts/email), so the response time
-  doesn't reveal whether an account exists. On serverless platforms, wrap the
-  send in `waitUntil` (or your platform's equivalent) so the function doesn't
-  terminate before the email is sent.
-</Note>
+> [!NOTE]
+>
+> The hook examples below call `void resend.emails.send(...)` instead of
+> awaiting it, [as Better Auth
+> recommends](https://better-auth.com/docs/concepts/email), so the response time
+> doesn't reveal whether an account exists. On serverless platforms, wrap the
+> send in `waitUntil` (or your platform's equivalent) so the function doesn't
+> terminate before the email is sent.
 
 ## Send password reset and verification emails
 
@@ -82,9 +80,9 @@ export const auth = betterAuth({
 });
 ```
 
-<Info>
-  Set the `from` address to match your [verified domain](/docs/add-a-domain).
-</Info>
+> [!NOTE]
+>
+> Set the `from` address to match your [verified domain](/docs/add-a-domain).
 
 ## Send magic links (optional)
 
@@ -113,9 +111,9 @@ export const auth = betterAuth({
 });
 ```
 
-<Info>
-  Set the `from` address to match your [verified domain](/docs/add-a-domain).
-</Info>
+> [!NOTE]
+>
+> Set the `from` address to match your [verified domain](/docs/add-a-domain).
 
 ## Send one-time codes (optional)
 
@@ -145,9 +143,9 @@ export const auth = betterAuth({
 });
 ```
 
-<Info>
-  Set the `from` address to match your [verified domain](/docs/add-a-domain).
-</Info>
+> [!NOTE]
+>
+> Set the `from` address to match your [verified domain](/docs/add-a-domain).
 
 ## Customize email templates
 
@@ -166,9 +164,9 @@ sendResetPassword: ({ user, url }) => {
 },
 ```
 
-<Info>
-  Set the `from` address to match your [verified domain](/docs/add-a-domain).
-</Info>
+> [!NOTE]
+>
+> Set the `from` address to match your [verified domain](/docs/add-a-domain).
 
 ## Debugging email delivery
 

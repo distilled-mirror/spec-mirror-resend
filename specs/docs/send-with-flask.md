@@ -15,85 +15,79 @@ Before you start, you'll need:
 
 ## Guide
 
-<Steps>
-  <Step title="Install">
-    Get the Resend Python SDK.
+**1. Install**
 
-    <CodeGroup>
-      ```bash Pip theme={"theme":{"light":"github-light","dark":"vesper"}}
-      pip install resend
-      ```
-    </CodeGroup>
-  </Step>
+Get the Resend Python SDK.
 
-  <Step title="Send email using HTML">
-    The easiest way to send an email is by using the `html` parameter.
+```bash Pip theme={"theme":{"light":"github-light","dark":"vesper"}}
+pip install resend
+```
 
-    ```py index.py theme={"theme":{"light":"github-light","dark":"vesper"}}
-    import resend
-    import os
-    from flask import Flask, jsonify
+**2. Send email using HTML**
 
-    resend.api_key = os.environ["RESEND_API_KEY"]
+The easiest way to send an email is by using the `html` parameter.
 
-    app = Flask(__name__)
+```py index.py theme={"theme":{"light":"github-light","dark":"vesper"}}
+import resend
+import os
+from flask import Flask, jsonify
+
+resend.api_key = os.environ["RESEND_API_KEY"]
+
+app = Flask(__name__)
 
 
-    @app.route("/")
-    def index():
-        params: resend.Emails.SendParams = {
-            "from": "Acme <onboarding@resend.dev>",
-            "to": ["delivered@resend.dev"],
-            "subject": "hello world",
-            "html": "<strong>it works!</strong>",
-        }
+@app.route("/")
+def index():
+    params: resend.Emails.SendParams = {
+        "from": "Acme <onboarding@resend.dev>",
+        "to": ["delivered@resend.dev"],
+        "subject": "hello world",
+        "html": "<strong>it works!</strong>",
+    }
 
-        r = resend.Emails.send(params)
-        return jsonify(r)
+    r = resend.Emails.send(params)
+    return jsonify(r)
 
 
-    if __name__ == "__main__":
-        app.run()
-    ```
-  </Step>
-</Steps>
+if __name__ == "__main__":
+    app.run()
+```
 
 ## Examples
 
-<CardGroup cols={3}>
-  <Card title="Flask App" icon="arrow-up-right-from-square" href="https://github.com/resend/resend-examples/blob/main/python-resend-examples/examples/flask_app.py">
-    Full Flask web application
-  </Card>
+> **[Flask App](https://github.com/resend/resend-examples/blob/main/python-resend-examples/examples/flask_app.py)**
+>
+> Full Flask web application
 
-  <Card title="Basic Send" icon="arrow-up-right-from-square" href="https://github.com/resend/resend-examples/blob/main/python-resend-examples/examples/basic_send.py">
-    Basic email sending
-  </Card>
+> **[Basic Send](https://github.com/resend/resend-examples/blob/main/python-resend-examples/examples/basic_send.py)**
+>
+> Basic email sending
 
-  <Card title="Attachments" icon="arrow-up-right-from-square" href="https://github.com/resend/resend-examples/blob/main/python-resend-examples/examples/with_attachments.py">
-    Send emails with file attachments
-  </Card>
+> **[Attachments](https://github.com/resend/resend-examples/blob/main/python-resend-examples/examples/with_attachments.py)**
+>
+> Send emails with file attachments
 
-  <Card title="Templates" icon="arrow-up-right-from-square" href="https://github.com/resend/resend-examples/blob/main/python-resend-examples/examples/with_template.py">
-    Send emails using Resend hosted templates
-  </Card>
+> **[Templates](https://github.com/resend/resend-examples/blob/main/python-resend-examples/examples/with_template.py)**
+>
+> Send emails using Resend hosted templates
 
-  <Card title="Scheduling" icon="arrow-up-right-from-square" href="https://github.com/resend/resend-examples/blob/main/python-resend-examples/examples/scheduled_send.py">
-    Schedule emails for future delivery
-  </Card>
+> **[Scheduling](https://github.com/resend/resend-examples/blob/main/python-resend-examples/examples/scheduled_send.py)**
+>
+> Schedule emails for future delivery
 
-  <Card title="Audiences" icon="arrow-up-right-from-square" href="https://github.com/resend/resend-examples/blob/main/python-resend-examples/examples/audiences.py">
-    Manage contacts and audiences
-  </Card>
+> **[Audiences](https://github.com/resend/resend-examples/blob/main/python-resend-examples/examples/audiences.py)**
+>
+> Manage contacts and audiences
 
-  <Card title="Domains" icon="arrow-up-right-from-square" href="https://github.com/resend/resend-examples/blob/main/python-resend-examples/examples/domains.py">
-    Create and manage sending domains
-  </Card>
+> **[Domains](https://github.com/resend/resend-examples/blob/main/python-resend-examples/examples/domains.py)**
+>
+> Create and manage sending domains
 
-  <Card title="Inbound Webhooks" icon="arrow-up-right-from-square" href="https://github.com/resend/resend-examples/blob/main/python-resend-examples/examples/inbound.py">
-    Receive and process inbound emails
-  </Card>
+> **[Inbound Webhooks](https://github.com/resend/resend-examples/blob/main/python-resend-examples/examples/inbound.py)**
+>
+> Receive and process inbound emails
 
-  <Card title="Double Opt-in" icon="arrow-up-right-from-square" href="https://github.com/resend/resend-examples/blob/main/python-resend-examples/examples/double_optin_subscribe.py">
-    Double opt-in subscription flow
-  </Card>
-</CardGroup>
+> **[Double Opt-in](https://github.com/resend/resend-examples/blob/main/python-resend-examples/examples/double_optin_subscribe.py)**
+>
+> Double opt-in subscription flow

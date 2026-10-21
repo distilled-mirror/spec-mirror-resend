@@ -6,125 +6,116 @@
 
 > Received when an email link is clicked.
 
-export const ResponseBodyParameters = ({type, children}) => {
-  return <div>
-      <h2>Response Body Parameters</h2>
-      <p>
-        All webhook payloads follow a consistent top-level structure with
-        event-specific data nested within the <code>data</code> object.
-      </p>
-      <ParamField body="type" type="string">
-        The event type that triggered the webhook (e.g., <code>{type}</code>).
-      </ParamField>
-      <ParamField body="created_at" type="string">
-        ISO 8601 timestamp when the webhook event was created.
-      </ParamField>
-      <ParamField body="data" type="object">
-        Event-specific data containing detailed information about the event. The
-        data object for the <code>{type}</code> event contains the following
-        parameters:
-        <Expandable defaultOpen title="object parameters">
-          {children}
-        </Expandable>
-      </ParamField>
-    </div>;
-};
-
 Event triggered whenever the **recipient clicks on an email link**.
 
-<ResponseBodyParameters type="email.clicked">
-  <ParamField body="broadcast_id" type="string">
-    Unique identifier for the broadcast campaign (if applicable)
-  </ParamField>
+## Response Body Parameters
 
-  <ParamField body="created_at" type="string">
-    ISO 8601 timestamp when the email was created
-  </ParamField>
+All webhook payloads follow a consistent top-level structure with
+event-specific data nested within the `data` object.
 
-  <ParamField body="email_id" type="string">
-    Unique identifier for the specific email
-  </ParamField>
+**type** `string`
 
-  <ParamField body="message_id" type="string">
-    RFC Message-ID header value for the email
-  </ParamField>
+The event type that triggered the webhook (e.g., `email.clicked`).
+**created\_at** `string`
 
-  <ParamField body="from" type="string">
-    Sender's email address. For sent events, this matches the value passed at send time and may include a display name (e.g., `Name <email@domain.com>`). For received events, this is the bare email address only; the display name from the original `From:` header is preserved in `headers.from` on the [retrieve endpoint](/docs/api-reference/emails/retrieve-received-email).
-  </ParamField>
+ISO 8601 timestamp when the webhook event was created.
+**data** `object`
 
-  <ParamField body="to" type="array">
-    Array of impacted recipient email addresses
-  </ParamField>
+Event-specific data containing detailed information about the event. The
+data object for the `email.clicked` event contains the following
+parameters:
 
-  <ParamField body="subject" type="string">
-    Email subject line
-  </ParamField>
+**object parameters**
 
-  <ParamField body="template_id" type="string">
-    Unique identifier for the template used (if applicable)
-  </ParamField>
+**broadcast\_id** `string`
 
-  <ParamField body="tags" type="Record<string, string>">
-    Object of tag key-value pairs associated with the email.
+Unique identifier for the broadcast campaign (if applicable)
 
-    Example:
+**created\_at** `string`
 
-    ```json theme={"theme":{"light":"github-light","dark":"vesper"}}
-    {
-      "category": "welcome",
-      "user_id": "1234567890"
-    }
-    ```
-  </ParamField>
+ISO 8601 timestamp when the email was created
 
-  <ParamField body="click" type="object">
-    Click tracking details
+**email\_id** `string`
 
-    <Expandable title="click object" defaultOpen>
-      <ParamField body="ipAddress" type="string">
-        IP address of the user who clicked the link
-      </ParamField>
+Unique identifier for the specific email
 
-      <ParamField body="link" type="string">
-        The URL that was clicked
-      </ParamField>
+**message\_id** `string`
 
-      <ParamField body="timestamp" type="string">
-        ISO 8601 timestamp when the click occurred
-      </ParamField>
+RFC Message-ID header value for the email
 
-      <ParamField body="userAgent" type="string">
-        User agent string of the browser that clicked the link
-      </ParamField>
-    </Expandable>
-  </ParamField>
-</ResponseBodyParameters>
+**from** `string`
 
-<ResponseExample>
-  ```json theme={"theme":{"light":"github-light","dark":"vesper"}}
-  {
-    "type": "email.clicked",
-    "created_at": "2026-11-22T23:41:12.126Z",
-    "data": {
-      "broadcast_id": "8b146471-e88e-4322-86af-016cd36fd216",
-      "created_at": "2026-11-22T23:41:11.894Z",
-      "email_id": "56761188-7520-42d8-8898-ff6fc54ce618",
-      "message_id": "<111-222-333@email.example.com>",
-      "from": "Acme <onboarding@resend.dev>",
-      "to": ["delivered@resend.dev"],
-      "click": {
-        "ipAddress": "122.115.53.11",
-        "link": "https://resend.com",
-        "timestamp": "2026-11-24T05:00:57.163Z",
-        "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.1 Safari/605.1.15"
-      },
-      "subject": "Sending this example",
-      "template_id": "43f68331-0622-4e15-8202-246a0388854b",
-      "tags": {
-        "category": "confirm_email"
-      }
+Sender's email address. For sent events, this matches the value passed at send time and may include a display name (e.g., `Name <email@domain.com>`). For received events, this is the bare email address only; the display name from the original `From:` header is preserved in `headers.from` on the [retrieve endpoint](/docs/api-reference/emails/retrieve-received-email).
+
+**to** `array`
+
+Array of impacted recipient email addresses
+
+**subject** `string`
+
+Email subject line
+
+**template\_id** `string`
+
+Unique identifier for the template used (if applicable)
+
+**tags** `Record\<string, string\>`
+
+Object of tag key-value pairs associated with the email.
+
+Example:
+
+```json theme={"theme":{"light":"github-light","dark":"vesper"}}
+{
+  "category": "welcome",
+  "user_id": "1234567890"
+}
+```
+
+**click** `object`
+
+Click tracking details
+
+**click object**
+
+**ipAddress** `string`
+
+IP address of the user who clicked the link
+
+**link** `string`
+
+The URL that was clicked
+
+**timestamp** `string`
+
+ISO 8601 timestamp when the click occurred
+
+**userAgent** `string`
+
+User agent string of the browser that clicked the link
+
+```json theme={"theme":{"light":"github-light","dark":"vesper"}}
+{
+  "type": "email.clicked",
+  "created_at": "2026-11-22T23:41:12.126Z",
+  "data": {
+    "broadcast_id": "8b146471-e88e-4322-86af-016cd36fd216",
+    "created_at": "2026-11-22T23:41:11.894Z",
+    "email_id": "56761188-7520-42d8-8898-ff6fc54ce618",
+    "message_id": "<111-222-333@email.example.com>",
+    "from": "Acme <onboarding@resend.dev>",
+    "to": ["delivered@resend.dev"],
+    "click": {
+      "ipAddress": "122.115.53.11",
+      "link": "https://resend.com",
+      "timestamp": "2026-11-24T05:00:57.163Z",
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.1 Safari/605.1.15"
+    },
+    "subject": "Sending this example",
+    "template_id": "43f68331-0622-4e15-8202-246a0388854b",
+    "tags": {
+      "category": "confirm_email"
     }
   }
-  ```
-</ResponseExample>
+}
+```

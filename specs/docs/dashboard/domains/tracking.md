@@ -10,11 +10,11 @@ Open and click tracking is disabled by default for all domains. These settings a
 
 We suggest only tracking open rates for the domain (or subdomain) used to send your [Broadcasts](/docs/dashboard/broadcasts/introduction) to ensure that inbox providers do not mistakenly identify your [transactional emails](/docs/dashboard/emails/introduction) as marketing emails.
 
-<Info>
-  Learn more about why it is better to [send emails from a
-  subdomain](/docs/dashboard/domains/introduction#subdomains) than from your root
-  domain.
-</Info>
+> [!NOTE]
+>
+> Learn more about why it is better to [send emails from a
+> subdomain](/docs/dashboard/domains/introduction#subdomains) than from your root
+> domain.
 
 You can enable tracking in the Resend Dashboard under the **Configuration** tab or programmatically when you create a new domain or update an existing domain.
 
@@ -22,466 +22,456 @@ Once verified, all tracked links in your emails will use your tracking subdomain
 
 ## Enable tracking using the Dashboard
 
-<Steps>
-  <Step title="Go to the [**Domains** Dashboard page](https://resend.com/domains) and click on the domain you want to configure." />
+**1. Go to the [**Domains** Dashboard page](https://resend.com/domains) and click on the domain you want to configure.**
 
-  <Step title="In the **Configuration** tab, click **Configure** under **Enable tracking metrics**.">
-    <img alt="Open and Click Tracking" src="https://mintcdn.com/resend/8slja5cHAobSwGo7/images/dashboard-domains-custom-tracking-domains.png?fit=max&auto=format&n=8slja5cHAobSwGo7&q=85&s=b94c649f1c22c899c144cd73ab5a8e73" width="1869" height="959" data-path="images/dashboard-domains-custom-tracking-domains.png" />
-  </Step>
+**2. In the **Configuration** tab, click **Configure** under **Enable tracking metrics**.**
 
-  <Step title="Provide a name for your tracking subdomain, enable open and/or click tracking, and click **+Add domain**.">
-    <img alt="Verify Custom Tracking Subdomain" src="https://mintcdn.com/resend/aVe4W1upaT_ALaEY/images/dashboard-custom-tracking-domain-verify.png?fit=max&auto=format&n=aVe4W1upaT_ALaEY&q=85&s=aac30239e34f1fbf89bb9e41ba5540e8" width="3360" height="2100" data-path="images/dashboard-custom-tracking-domain-verify.png" />
-  </Step>
+![Open and Click Tracking](https://mintcdn.com/resend/8slja5cHAobSwGo7/images/dashboard-domains-custom-tracking-domains.png?fit=max\&auto=format\&n=8slja5cHAobSwGo7\&q=85\&s=b94c649f1c22c899c144cd73ab5a8e73)
 
-  <Step title="Add the CNAME record to your DNS settings (e.g. Cloudflare, GoDaddy, etc.) to verify your tracking subdomain.">
-    <img alt="Add Custom Tracking Subdomain" src="https://mintcdn.com/resend/aVe4W1upaT_ALaEY/images/dashboard-domains-custom-tracking-domains-add.png?fit=max&auto=format&n=aVe4W1upaT_ALaEY&q=85&s=118b4d5f8269265c5eed074a52a2c9e5" width="3776" height="2096" data-path="images/dashboard-domains-custom-tracking-domains-add.png" />
+**3. Provide a name for your tracking subdomain, enable open and/or click tracking, and click **+Add domain**.**
 
-    <Info>
-      If we detect CAA records on your domain, we will show an additional CAA record
-      that needs to be created. This ensures that we can issue a TLS certificate for
-      your tracking subdomain.
-    </Info>
-  </Step>
+![Verify Custom Tracking Subdomain](https://mintcdn.com/resend/aVe4W1upaT_ALaEY/images/dashboard-custom-tracking-domain-verify.png?fit=max\&auto=format\&n=aVe4W1upaT_ALaEY\&q=85\&s=aac30239e34f1fbf89bb9e41ba5540e8)
 
-  <Step title="Click **I've added the records** to verify the domain." />
-</Steps>
+**4. Add the CNAME record to your DNS settings (e.g. Cloudflare, GoDaddy, etc.) to verify your tracking subdomain.**
+
+![Add Custom Tracking Subdomain](https://mintcdn.com/resend/aVe4W1upaT_ALaEY/images/dashboard-domains-custom-tracking-domains-add.png?fit=max\&auto=format\&n=aVe4W1upaT_ALaEY\&q=85\&s=118b4d5f8269265c5eed074a52a2c9e5)
+
+> [!NOTE]
+>
+> If we detect CAA records on your domain, we will show an additional CAA record
+> that needs to be created. This ensures that we can issue a TLS certificate for
+> your tracking subdomain.
+
+**5. Click **I've added the records** to verify the domain.**
 
 Once verified, all tracked links in your emails will use your custom tracking subdomain.
 
 ## Enable tracking via the API
 
-<Steps>
-  <Step title="Provide the tracking subdomain">
-    When [adding a new domain](/docs/add-a-domain) to Resend, add tracking by passing the `tracking_subdomain` field along with `click_tracking` and/or `open_tracking`.
-
-    <CodeGroup>
-      ```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
-      import { Resend } from 'resend';
-
-      const resend = new Resend('re_xxxxxxxxx');
-
-      const { data, error } = await resend.domains.create({
-        name: 'example.com',
-        openTracking: true,
-        clickTracking: true,
-        trackingSubdomain: 'links',
-      });
-      ```
-
-      ```php PHP theme={"theme":{"light":"github-light","dark":"vesper"}}
-      $resend = Resend::client('re_xxxxxxxxx');
-
-      $resend->domains->create([
-        'name' => 'example.com',
-        'open_tracking' => true,
-        'click_tracking' => true,
-        'tracking_subdomain' => 'links',
-      ]);
-      ```
-
-      ```python Python theme={"theme":{"light":"github-light","dark":"vesper"}}
-      import resend
-
-      resend.api_key = "re_xxxxxxxxx"
-
-      params: resend.Domains.CreateParams = {
-        "name": "example.com",
-        "open_tracking": True,
-        "click_tracking": True,
-        "tracking_subdomain": "links",
-      }
-
-      resend.Domains.create(params)
-      ```
-
-      ```ruby Ruby theme={"theme":{"light":"github-light","dark":"vesper"}}
-      require "resend"
-
-      Resend.api_key = "re_xxxxxxxxx"
-
-      params = {
-        name: "example.com",
-        open_tracking: true,
-        click_tracking: true,
-        tracking_subdomain: "links",
-      }
-      Resend::Domains.create(params)
-      ```
-
-      ```go Go theme={"theme":{"light":"github-light","dark":"vesper"}}
-      package main
-
-      import "github.com/resend/resend-go/v4"
-
-      func main() {
-        client := resend.NewClient("re_xxxxxxxxx")
-
-        params := &resend.CreateDomainRequest{
-          Name:              "example.com",
-          OpenTracking:      resend.Bool(true),
-          ClickTracking:     resend.Bool(true),
-          TrackingSubdomain: "links",
-        }
-
-        client.Domains.Create(params)
-      }
-      ```
-
-      ```rust Rust theme={"theme":{"light":"github-light","dark":"vesper"}}
-      use resend_rs::{types::CreateDomainOptions, Resend, Result};
-
-      #[tokio::main]
-      async fn main() -> Result<()> {
-        let resend = Resend::new("re_xxxxxxxxx");
-
-        let _domain = resend
-          .domains
-          .create(
-            CreateDomainOptions::new("example.com")
-              .with_open_tracking(true)
-              .with_click_tracking(true)
-              .with_tracking_subdomain("links"),
-          )
-          .await?;
-
-        Ok(())
-      }
-      ```
-
-      ```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
-      import com.resend.*;
-      import com.resend.services.domains.model.CreateDomainOptions;
-
-      Resend resend = new Resend("re_xxxxxxxxx");
-
-      CreateDomainOptions params = CreateDomainOptions.builder()
-              .name("example.com")
-              .openTracking(true)
-              .clickTracking(true)
-              .trackingSubdomain("links")
-              .build();
-
-      resend.domains().create(params);
-      ```
-
-      ```csharp .NET theme={"theme":{"light":"github-light","dark":"vesper"}}
-      using Resend;
-
-      IResend resend = ResendClient.Create( "re_xxxxxxxxx" );
-
-      var resp = await resend.DomainAddAsync( new DomainAddData()
-      {
-          DomainName = "example.com",
-          OpenTracking = true,
-          ClickTracking = true,
-          TrackingSubdomain = "links",
-      } );
-      ```
-
-      ```bash cURL theme={"theme":{"light":"github-light","dark":"vesper"}}
-      curl -X POST 'https://api.resend.com/domains' \
-          -H 'Authorization: Bearer re_xxxxxxxxx' \
-          -H 'Content-Type: application/json' \
-          -d $'{
-        "name": "example.com",
-        "open_tracking": true,
-        "click_tracking": true,
-        "tracking_subdomain": "links"
-      }'
-      ```
-    </CodeGroup>
-
-    If you already have a verified domain, call the `update` endpoint to add a tracking subdomain and enable tracking.
-
-    <CodeGroup>
-      ```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
-      import { Resend } from 'resend';
-
-      const resend = new Resend('re_xxxxxxxxx');
-
-      const { data, error } = await resend.domains.update({
-        id: 'd91cd9bd-1176-453e-8fc1-35364d380206',
-        openTracking: true,
-        clickTracking: true,
-        trackingSubdomain: 'links',
-      });
-      ```
-
-      ```php PHP theme={"theme":{"light":"github-light","dark":"vesper"}}
-      $resend = Resend::client('re_xxxxxxxxx');
-
-      $resend->domains->update(
-        'd91cd9bd-1176-453e-8fc1-35364d380206',
-        [
-          'open_tracking' => true,
-          'click_tracking' => true,
-          'tracking_subdomain' => 'links',
-        ]
-      );
-      ```
-
-      ```python Python theme={"theme":{"light":"github-light","dark":"vesper"}}
-      import resend
-
-      resend.api_key = "re_xxxxxxxxx"
-
-      params: resend.Domains.UpdateParams = {
-        "id": "d91cd9bd-1176-453e-8fc1-35364d380206",
-        "open_tracking": True,
-        "click_tracking": True,
-        "tracking_subdomain": "links",
-      }
-
-      resend.Domains.update(params)
-      ```
-
-      ```ruby Ruby theme={"theme":{"light":"github-light","dark":"vesper"}}
-      require "resend"
-
-      Resend.api_key = "re_xxxxxxxxx"
-
-      Resend::Domains.update({
-        id: "d91cd9bd-1176-453e-8fc1-35364d380206",
-        open_tracking: true,
-        click_tracking: true,
-        tracking_subdomain: "links",
-      })
-      ```
-
-      ```go Go theme={"theme":{"light":"github-light","dark":"vesper"}}
-      package main
-
-      import "github.com/resend/resend-go/v4"
-
-      func main() {
-        client := resend.NewClient("re_xxxxxxxxx")
-
-        params := &resend.UpdateDomainRequest{
-          OpenTracking:      true,
-          ClickTracking:     true,
-          TrackingSubdomain: "links",
-        }
-
-        client.Domains.Update("d91cd9bd-1176-453e-8fc1-35364d380206", params)
-      }
-      ```
-
-      ```rust Rust theme={"theme":{"light":"github-light","dark":"vesper"}}
-      use resend_rs::{types::DomainChanges, Resend, Result};
-
-      #[tokio::main]
-      async fn main() -> Result<()> {
-        let resend = Resend::new("re_xxxxxxxxx");
-
-        let changes = DomainChanges::new()
-          .with_open_tracking(true)
-          .with_click_tracking(true)
-          .with_tracking_subdomain("links");
-
-        let _domain = resend
-          .domains
-          .update("d91cd9bd-1176-453e-8fc1-35364d380206", changes)
-          .await?;
-
-        Ok(())
-      }
-      ```
-
-      ```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
-      import com.resend.*;
-      import com.resend.services.domains.model.UpdateDomainOptions;
-
-      Resend resend = new Resend("re_xxxxxxxxx");
-
-      UpdateDomainOptions params = UpdateDomainOptions.builder()
-              .id("d91cd9bd-1176-453e-8fc1-35364d380206")
-              .openTracking(true)
-              .clickTracking(true)
-              .trackingSubdomain("links")
-              .build();
-
-      resend.domains().update(params);
-      ```
-
-      ```csharp .NET theme={"theme":{"light":"github-light","dark":"vesper"}}
-      using Resend;
-
-      IResend resend = ResendClient.Create( "re_xxxxxxxxx" );
-
-      await resend.DomainUpdateAsync(
-          new Guid( "d91cd9bd-1176-453e-8fc1-35364d380206" ),
-          new DomainUpdateData()
-          {
-              TrackOpen = true,
-              TrackClicks = true,
-              TrackingSubdomain = "links",
-          }
-      );
-      ```
-
-      ```bash cURL theme={"theme":{"light":"github-light","dark":"vesper"}}
-      curl -X PATCH 'https://api.resend.com/domains/d91cd9bd-1176-453e-8fc1-35364d380206' \
-          -H 'Authorization: Bearer re_xxxxxxxxx' \
-          -H 'Content-Type: application/json' \
-          -d $'{
-        "open_tracking": true,
-        "click_tracking": true,
-        "tracking_subdomain": "links"
-      }'
-      ```
-    </CodeGroup>
-  </Step>
-
-  <Step title="Add the CNAME record to your DNS settings (e.g. Cloudflare, GoDaddy, etc.) to verify your tracking subdomain.">
-    <img alt="Add Custom Tracking Subdomain" src="https://mintcdn.com/resend/aVe4W1upaT_ALaEY/images/dashboard-domains-custom-tracking-domains-add.png?fit=max&auto=format&n=aVe4W1upaT_ALaEY&q=85&s=118b4d5f8269265c5eed074a52a2c9e5" width="3776" height="2096" data-path="images/dashboard-domains-custom-tracking-domains-add.png" />
-
-    <Info>
-      If we detect CAA records on your domain, we will show an additional CAA record
-      that needs to be created. This ensures that we can issue a TLS certificate for
-      your tracking subdomain.
-    </Info>
-
-    Whether creating or updating a domain, the API will return the required DNS records that need to be added to your domain provider's DNS settings. Note the `Tracking` record.
-
-    ```json {15-22} API Response Example theme={"theme":{"light":"github-light","dark":"vesper"}}
+**1. Provide the tracking subdomain**
+
+When [adding a new domain](/docs/add-a-domain) to Resend, add tracking by passing the `tracking_subdomain` field along with `click_tracking` and/or `open_tracking`.
+
+```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
+import { Resend } from 'resend';
+
+const resend = new Resend('re_xxxxxxxxx');
+
+const { data, error } = await resend.domains.create({
+  name: 'example.com',
+  openTracking: true,
+  clickTracking: true,
+  trackingSubdomain: 'links',
+});
+```
+
+```php PHP theme={"theme":{"light":"github-light","dark":"vesper"}}
+$resend = Resend::client('re_xxxxxxxxx');
+
+$resend->domains->create([
+  'name' => 'example.com',
+  'open_tracking' => true,
+  'click_tracking' => true,
+  'tracking_subdomain' => 'links',
+]);
+```
+
+```python Python theme={"theme":{"light":"github-light","dark":"vesper"}}
+import resend
+
+resend.api_key = "re_xxxxxxxxx"
+
+params: resend.Domains.CreateParams = {
+  "name": "example.com",
+  "open_tracking": True,
+  "click_tracking": True,
+  "tracking_subdomain": "links",
+}
+
+resend.Domains.create(params)
+```
+
+```ruby Ruby theme={"theme":{"light":"github-light","dark":"vesper"}}
+require "resend"
+
+Resend.api_key = "re_xxxxxxxxx"
+
+params = {
+  name: "example.com",
+  open_tracking: true,
+  click_tracking: true,
+  tracking_subdomain: "links",
+}
+Resend::Domains.create(params)
+```
+
+```go Go theme={"theme":{"light":"github-light","dark":"vesper"}}
+package main
+
+import "github.com/resend/resend-go/v4"
+
+func main() {
+  client := resend.NewClient("re_xxxxxxxxx")
+
+  params := &resend.CreateDomainRequest{
+    Name:              "example.com",
+    OpenTracking:      resend.Bool(true),
+    ClickTracking:     resend.Bool(true),
+    TrackingSubdomain: "links",
+  }
+
+  client.Domains.Create(params)
+}
+```
+
+```rust Rust theme={"theme":{"light":"github-light","dark":"vesper"}}
+use resend_rs::{types::CreateDomainOptions, Resend, Result};
+
+#[tokio::main]
+async fn main() -> Result<()> {
+  let resend = Resend::new("re_xxxxxxxxx");
+
+  let _domain = resend
+    .domains
+    .create(
+      CreateDomainOptions::new("example.com")
+        .with_open_tracking(true)
+        .with_click_tracking(true)
+        .with_tracking_subdomain("links"),
+    )
+    .await?;
+
+  Ok(())
+}
+```
+
+```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
+import com.resend.*;
+import com.resend.services.domains.model.CreateDomainOptions;
+
+Resend resend = new Resend("re_xxxxxxxxx");
+
+CreateDomainOptions params = CreateDomainOptions.builder()
+        .name("example.com")
+        .openTracking(true)
+        .clickTracking(true)
+        .trackingSubdomain("links")
+        .build();
+
+resend.domains().create(params);
+```
+
+```csharp .NET theme={"theme":{"light":"github-light","dark":"vesper"}}
+using Resend;
+
+IResend resend = ResendClient.Create( "re_xxxxxxxxx" );
+
+var resp = await resend.DomainAddAsync( new DomainAddData()
+{
+    DomainName = "example.com",
+    OpenTracking = true,
+    ClickTracking = true,
+    TrackingSubdomain = "links",
+} );
+```
+
+```bash cURL theme={"theme":{"light":"github-light","dark":"vesper"}}
+curl -X POST 'https://api.resend.com/domains' \
+    -H 'Authorization: Bearer re_xxxxxxxxx' \
+    -H 'Content-Type: application/json' \
+    -d $'{
+  "name": "example.com",
+  "open_tracking": true,
+  "click_tracking": true,
+  "tracking_subdomain": "links"
+}'
+```
+
+If you already have a verified domain, call the `update` endpoint to add a tracking subdomain and enable tracking.
+
+```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
+import { Resend } from 'resend';
+
+const resend = new Resend('re_xxxxxxxxx');
+
+const { data, error } = await resend.domains.update({
+  id: 'd91cd9bd-1176-453e-8fc1-35364d380206',
+  openTracking: true,
+  clickTracking: true,
+  trackingSubdomain: 'links',
+});
+```
+
+```php PHP theme={"theme":{"light":"github-light","dark":"vesper"}}
+$resend = Resend::client('re_xxxxxxxxx');
+
+$resend->domains->update(
+  'd91cd9bd-1176-453e-8fc1-35364d380206',
+  [
+    'open_tracking' => true,
+    'click_tracking' => true,
+    'tracking_subdomain' => 'links',
+  ]
+);
+```
+
+```python Python theme={"theme":{"light":"github-light","dark":"vesper"}}
+import resend
+
+resend.api_key = "re_xxxxxxxxx"
+
+params: resend.Domains.UpdateParams = {
+  "id": "d91cd9bd-1176-453e-8fc1-35364d380206",
+  "open_tracking": True,
+  "click_tracking": True,
+  "tracking_subdomain": "links",
+}
+
+resend.Domains.update(params)
+```
+
+```ruby Ruby theme={"theme":{"light":"github-light","dark":"vesper"}}
+require "resend"
+
+Resend.api_key = "re_xxxxxxxxx"
+
+Resend::Domains.update({
+  id: "d91cd9bd-1176-453e-8fc1-35364d380206",
+  open_tracking: true,
+  click_tracking: true,
+  tracking_subdomain: "links",
+})
+```
+
+```go Go theme={"theme":{"light":"github-light","dark":"vesper"}}
+package main
+
+import "github.com/resend/resend-go/v4"
+
+func main() {
+  client := resend.NewClient("re_xxxxxxxxx")
+
+  params := &resend.UpdateDomainRequest{
+    OpenTracking:      true,
+    ClickTracking:     true,
+    TrackingSubdomain: "links",
+  }
+
+  client.Domains.Update("d91cd9bd-1176-453e-8fc1-35364d380206", params)
+}
+```
+
+```rust Rust theme={"theme":{"light":"github-light","dark":"vesper"}}
+use resend_rs::{types::DomainChanges, Resend, Result};
+
+#[tokio::main]
+async fn main() -> Result<()> {
+  let resend = Resend::new("re_xxxxxxxxx");
+
+  let changes = DomainChanges::new()
+    .with_open_tracking(true)
+    .with_click_tracking(true)
+    .with_tracking_subdomain("links");
+
+  let _domain = resend
+    .domains
+    .update("d91cd9bd-1176-453e-8fc1-35364d380206", changes)
+    .await?;
+
+  Ok(())
+}
+```
+
+```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
+import com.resend.*;
+import com.resend.services.domains.model.UpdateDomainOptions;
+
+Resend resend = new Resend("re_xxxxxxxxx");
+
+UpdateDomainOptions params = UpdateDomainOptions.builder()
+        .id("d91cd9bd-1176-453e-8fc1-35364d380206")
+        .openTracking(true)
+        .clickTracking(true)
+        .trackingSubdomain("links")
+        .build();
+
+resend.domains().update(params);
+```
+
+```csharp .NET theme={"theme":{"light":"github-light","dark":"vesper"}}
+using Resend;
+
+IResend resend = ResendClient.Create( "re_xxxxxxxxx" );
+
+await resend.DomainUpdateAsync(
+    new Guid( "d91cd9bd-1176-453e-8fc1-35364d380206" ),
+    new DomainUpdateData()
     {
-      "id": "4dd369bc-aa82-4ff3-97de-514ae3000ee0",
-      "name": "example.com",
-      "created_at": "2026-03-28 17:12:02.059593+00",
-      "status": "not_started",
-      "open_tracking": true,
-      "click_tracking": true,
-      "tracking_subdomain": "links",
-      "capabilities": {
-        "sending": "enabled",
-        "receiving": "disabled"
-      },
-      "records": [
-        // ... other records ...
-        {
-          "record": "Tracking",
-          "name": "links.example.com",
-          "type": "CNAME",
-          "value": "links1.resend-dns.com",
-          "ttl": "Auto",
-          "status": "not_started"
-        }
-      ],
-      "region": "us-east-1"
+        TrackOpen = true,
+        TrackClicks = true,
+        TrackingSubdomain = "links",
     }
-    ```
+);
+```
 
-    <Info>
-      If we detect CAA records on your domain, we will show an additional CAA record
-      that needs to be created. This ensures that we can issue a TLS certificate for
-      your tracking subdomain.
-    </Info>
-  </Step>
+```bash cURL theme={"theme":{"light":"github-light","dark":"vesper"}}
+curl -X PATCH 'https://api.resend.com/domains/d91cd9bd-1176-453e-8fc1-35364d380206' \
+    -H 'Authorization: Bearer re_xxxxxxxxx' \
+    -H 'Content-Type: application/json' \
+    -d $'{
+  "open_tracking": true,
+  "click_tracking": true,
+  "tracking_subdomain": "links"
+}'
+```
 
-  <Step title="Verify the domain">
-    Once you've added the required DNS record(s), call the `verify` endpoint to verify the domain.
+**2. Add the CNAME record to your DNS settings (e.g. Cloudflare, GoDaddy, etc.) to verify your tracking subdomain.**
 
-    <CodeGroup>
-      ```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
-      import { Resend } from 'resend';
+![Add Custom Tracking Subdomain](https://mintcdn.com/resend/aVe4W1upaT_ALaEY/images/dashboard-domains-custom-tracking-domains-add.png?fit=max\&auto=format\&n=aVe4W1upaT_ALaEY\&q=85\&s=118b4d5f8269265c5eed074a52a2c9e5)
 
-      const resend = new Resend('re_xxxxxxxxx');
+> [!NOTE]
+>
+> If we detect CAA records on your domain, we will show an additional CAA record
+> that needs to be created. This ensures that we can issue a TLS certificate for
+> your tracking subdomain.
 
-      const { data, error } = await resend.domains.verify(
-        'd91cd9bd-1176-453e-8fc1-35364d380206',
-      );
-      ```
+Whether creating or updating a domain, the API will return the required DNS records that need to be added to your domain provider's DNS settings. Note the `Tracking` record.
 
-      ```php PHP theme={"theme":{"light":"github-light","dark":"vesper"}}
-      $resend = Resend::client('re_xxxxxxxxx');
+```json {15-22} API Response Example theme={"theme":{"light":"github-light","dark":"vesper"}}
+{
+  "id": "4dd369bc-aa82-4ff3-97de-514ae3000ee0",
+  "name": "example.com",
+  "created_at": "2026-03-28 17:12:02.059593+00",
+  "status": "not_started",
+  "open_tracking": true,
+  "click_tracking": true,
+  "tracking_subdomain": "links",
+  "capabilities": {
+    "sending": "enabled",
+    "receiving": "disabled"
+  },
+  "records": [
+    // ... other records ...
+    {
+      "record": "Tracking",
+      "name": "links.example.com",
+      "type": "CNAME",
+      "value": "links1.resend-dns.com",
+      "ttl": "Auto",
+      "status": "not_started"
+    }
+  ],
+  "region": "us-east-1"
+}
+```
 
-      $resend->domains->verify('d91cd9bd-1176-453e-8fc1-35364d380206');
-      ```
+> [!NOTE]
+>
+> If we detect CAA records on your domain, we will show an additional CAA record
+> that needs to be created. This ensures that we can issue a TLS certificate for
+> your tracking subdomain.
 
-      ```python Python theme={"theme":{"light":"github-light","dark":"vesper"}}
-      import resend
+**3. Verify the domain**
 
-      resend.api_key = "re_xxxxxxxxx"
+Once you've added the required DNS record(s), call the `verify` endpoint to verify the domain.
 
-      resend.Domains.verify(domain_id="d91cd9bd-1176-453e-8fc1-35364d380206")
-      ```
+```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
+import { Resend } from 'resend';
 
-      ```ruby Ruby theme={"theme":{"light":"github-light","dark":"vesper"}}
-      require "resend"
+const resend = new Resend('re_xxxxxxxxx');
 
-      Resend.api_key = "re_xxxxxxxxx"
+const { data, error } = await resend.domains.verify(
+  'd91cd9bd-1176-453e-8fc1-35364d380206',
+);
+```
 
-      Resend::Domains.verify("d91cd9bd-1176-453e-8fc1-35364d380206")
-      ```
+```php PHP theme={"theme":{"light":"github-light","dark":"vesper"}}
+$resend = Resend::client('re_xxxxxxxxx');
 
-      ```go Go theme={"theme":{"light":"github-light","dark":"vesper"}}
-      package main
+$resend->domains->verify('d91cd9bd-1176-453e-8fc1-35364d380206');
+```
 
-      import "github.com/resend/resend-go/v4"
+```python Python theme={"theme":{"light":"github-light","dark":"vesper"}}
+import resend
 
-      func main() {
-        client := resend.NewClient("re_xxxxxxxxx")
+resend.api_key = "re_xxxxxxxxx"
 
-        client.Domains.Verify("d91cd9bd-1176-453e-8fc1-35364d380206")
-      }
-      ```
+resend.Domains.verify(domain_id="d91cd9bd-1176-453e-8fc1-35364d380206")
+```
 
-      ```rust Rust theme={"theme":{"light":"github-light","dark":"vesper"}}
-      use resend_rs::{Resend, Result};
+```ruby Ruby theme={"theme":{"light":"github-light","dark":"vesper"}}
+require "resend"
 
-      #[tokio::main]
-      async fn main() -> Result<()> {
-        let resend = Resend::new("re_xxxxxxxxx");
+Resend.api_key = "re_xxxxxxxxx"
 
-        resend
-          .domains
-          .verify("d91cd9bd-1176-453e-8fc1-35364d380206")
-          .await?;
+Resend::Domains.verify("d91cd9bd-1176-453e-8fc1-35364d380206")
+```
 
-        Ok(())
-      }
-      ```
+```go Go theme={"theme":{"light":"github-light","dark":"vesper"}}
+package main
 
-      ```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
-      import com.resend.*;
-      import com.resend.services.domains.model.VerifyDomainResponse;
+import "github.com/resend/resend-go/v4"
 
-      Resend resend = new Resend("re_xxxxxxxxx");
+func main() {
+  client := resend.NewClient("re_xxxxxxxxx")
 
-      VerifyDomainResponse verified = resend.domains().verify("d91cd9bd-1176-453e-8fc1-35364d380206");
-      ```
+  client.Domains.Verify("d91cd9bd-1176-453e-8fc1-35364d380206")
+}
+```
 
-      ```csharp .NET theme={"theme":{"light":"github-light","dark":"vesper"}}
-      using Resend;
+```rust Rust theme={"theme":{"light":"github-light","dark":"vesper"}}
+use resend_rs::{Resend, Result};
 
-      IResend resend = ResendClient.Create( "re_xxxxxxxxx" );
+#[tokio::main]
+async fn main() -> Result<()> {
+  let resend = Resend::new("re_xxxxxxxxx");
 
-      await resend.DomainVerifyAsync( new Guid( "d91cd9bd-1176-453e-8fc1-35364d380206" ) );
-      ```
+  resend
+    .domains
+    .verify("d91cd9bd-1176-453e-8fc1-35364d380206")
+    .await?;
 
-      ```bash cURL theme={"theme":{"light":"github-light","dark":"vesper"}}
-      curl -X POST 'https://api.resend.com/domains/d91cd9bd-1176-453e-8fc1-35364d380206/verify' \
-          -H 'Authorization: Bearer re_xxxxxxxxx' \
-          -H 'Content-Type: application/json'
-      ```
-    </CodeGroup>
-  </Step>
-</Steps>
+  Ok(())
+}
+```
 
-<Note>
-  Tracking is active only when both of these conditions are met:
+```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
+import com.resend.*;
+import com.resend.services.domains.model.VerifyDomainResponse;
 
-  <ol>
-    <li>
-      The `open_tracking` or `click_tracking` setting is enabled for the domain.
-    </li>
+Resend resend = new Resend("re_xxxxxxxxx");
 
-    <li>
-      A tracking subdomain is configured (e.g., `links.example.com`) and
-      successfully verified.
-    </li>
-  </ol>
-</Note>
+VerifyDomainResponse verified = resend.domains().verify("d91cd9bd-1176-453e-8fc1-35364d380206");
+```
+
+```csharp .NET theme={"theme":{"light":"github-light","dark":"vesper"}}
+using Resend;
+
+IResend resend = ResendClient.Create( "re_xxxxxxxxx" );
+
+await resend.DomainVerifyAsync( new Guid( "d91cd9bd-1176-453e-8fc1-35364d380206" ) );
+```
+
+```bash cURL theme={"theme":{"light":"github-light","dark":"vesper"}}
+curl -X POST 'https://api.resend.com/domains/d91cd9bd-1176-453e-8fc1-35364d380206/verify' \
+    -H 'Authorization: Bearer re_xxxxxxxxx' \
+    -H 'Content-Type: application/json'
+```
+
+> [!NOTE]
+>
+> Tracking is active only when both of these conditions are met:
+>
+> <ol>
+>   <li>
+>     The `open_tracking` or `click_tracking` setting is enabled for the domain.
+>   </li>
+>
+>   <li>
+>     A tracking subdomain is configured (e.g., `links.example.com`) and
+>     successfully verified.
+>   </li>
+> </ol>
 
 All tracked links in your emails will use your tracking subdomain.
 

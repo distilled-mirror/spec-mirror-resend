@@ -120,7 +120,7 @@ resend webhooks listen \
 
 The `--url` flag takes any public URL that points to the local server port (`4318` by default). Use any tunnel, such as [Tailscale Funnel](https://tailscale.com/kb/1223/funnel), [ngrok](https://ngrok.com/), or [localtunnel](https://theboringtech.io/).
 
-<Tip>
-  For a permanent setup, deploy a webhook handler and register it via `resend
-      webhooks create` pointing to your production URL.
-</Tip>
+> [!TIP]
+>
+> For a permanent setup, deploy a webhook handler and register it via `resend
+>     webhooks create` pointing to your production URL.

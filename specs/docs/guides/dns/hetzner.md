@@ -10,15 +10,15 @@
 
 First, log in to your [Resend Account](https://resend.com/login) and [add a domain](https://resend.com/domains).
 
-<img alt="Domain Details" src="https://mintcdn.com/resend/JHWt09hsc7E33HK2/images/dashboard-domains-resend-add-domain.png?fit=max&auto=format&n=JHWt09hsc7E33HK2&q=85&s=418dd93c2f2ead0b0d83d1b7c2fb0970" width="3360" height="2100" data-path="images/dashboard-domains-resend-add-domain.png" />
+![Domain Details](https://mintcdn.com/resend/JHWt09hsc7E33HK2/images/dashboard-domains-resend-add-domain.png?fit=max\&auto=format\&n=JHWt09hsc7E33HK2\&q=85\&s=418dd93c2f2ead0b0d83d1b7c2fb0970)
 
-<Tip>
-  It is [best practice to use a
-  subdomain](/docs/knowledge-base/is-it-better-to-send-emails-from-a-subdomain-or-the-root-domain)
-  (updates.example.com) instead of the root domain (example.com). Using a
-  subdomain allows for proper reputation segmentation based on topics or purpose
-  (e.g. marketing) and is especially important if receiving emails with Resend.
-</Tip>
+> [!TIP]
+>
+> It is [best practice to use a
+> subdomain](/docs/knowledge-base/is-it-better-to-send-emails-from-a-subdomain-or-the-root-domain)
+> (updates.example.com) instead of the root domain (example.com). Using a
+> subdomain allows for proper reputation segmentation based on topics or purpose
+> (e.g. marketing) and is especially important if receiving emails with Resend.
 
 ## Log in to Hetzner Console
 
@@ -30,7 +30,7 @@ Log in to [Hetzner Console](https://console.hetzner.com/):
 2. Click on the `DNS` link from the `Networking` section of the side navigation.
 3. Choose your Domain from the `DNS zones` list.
 
-<img alt="Domain Details" src="https://mintcdn.com/resend/JnEHZ2RkJvy-KeG2/images/dashboard-domains-Hetzner-console-dns.png?fit=max&auto=format&n=JnEHZ2RkJvy-KeG2&q=85&s=b8f96a05c8b1115639ba85ce616716ec" width="3078" height="1134" data-path="images/dashboard-domains-Hetzner-console-dns.png" />
+![Domain Details](https://mintcdn.com/resend/JnEHZ2RkJvy-KeG2/images/dashboard-domains-Hetzner-console-dns.png?fit=max\&auto=format\&n=JnEHZ2RkJvy-KeG2\&q=85\&s=b8f96a05c8b1115639ba85ce616716ec)
 
 ## Log in to Hetzner DNS Console
 
@@ -41,7 +41,7 @@ Log in to [Hetzner DNS Console](https://dns.hetzner.com):
 1. Choose your Domain from the `Your Zones` list.
 2. Select the `Records` tab to get to the page to manage DNS records.
 
-<img alt="Domain Details" src="https://mintcdn.com/resend/JnEHZ2RkJvy-KeG2/images/dashboard-domains-Hetzner-dns-console-domains.png?fit=max&auto=format&n=JnEHZ2RkJvy-KeG2&q=85&s=491d0aab1c3722d47159c8e42fe880ba" width="2984" height="1849" data-path="images/dashboard-domains-Hetzner-dns-console-domains.png" />
+![Domain Details](https://mintcdn.com/resend/JnEHZ2RkJvy-KeG2/images/dashboard-domains-Hetzner-dns-console-domains.png?fit=max\&auto=format\&n=JnEHZ2RkJvy-KeG2\&q=85\&s=491d0aab1c3722d47159c8e42fe880ba)
 
 ## Add MX SPF Record
 
@@ -54,15 +54,15 @@ In the `Add Record` section on Hetzner copy and paste the values MX from Resend:
 5. For the `TTL` field, set the value to `1800`.
 6. Select `Add`.
 
-<Info>
-  Hetzner requires your MX record to have a trailing period when adding. Resend
-  will include the trailing period when copying. Removing the period will cause
-  the verification to fail.
-</Info>
+> [!NOTE]
+>
+> Hetzner requires your MX record to have a trailing period when adding. Resend
+> will include the trailing period when copying. Removing the period will cause
+> the verification to fail.
 
-<img alt="Domain Details" src="https://mintcdn.com/resend/JHWt09hsc7E33HK2/images/dashboard-domains-resend-spf-mx.png?fit=max&auto=format&n=JHWt09hsc7E33HK2&q=85&s=bb0db2dd2809135194cfb62b695225cd" width="3024" height="1888" data-path="images/dashboard-domains-resend-spf-mx.png" />
+![Domain Details](https://mintcdn.com/resend/JHWt09hsc7E33HK2/images/dashboard-domains-resend-spf-mx.png?fit=max\&auto=format\&n=JHWt09hsc7E33HK2\&q=85\&s=bb0db2dd2809135194cfb62b695225cd)
 
-<img alt="Domain Details" src="https://mintcdn.com/resend/JnEHZ2RkJvy-KeG2/images/dashboard-domains-Hetzner-console-spf-mx.png?fit=max&auto=format&n=JnEHZ2RkJvy-KeG2&q=85&s=29ce3bf6e50439348e0d3bf2f90110de" width="3812" height="936" data-path="images/dashboard-domains-Hetzner-console-spf-mx.png" />
+![Domain Details](https://mintcdn.com/resend/JnEHZ2RkJvy-KeG2/images/dashboard-domains-Hetzner-console-spf-mx.png?fit=max\&auto=format\&n=JnEHZ2RkJvy-KeG2\&q=85\&s=29ce3bf6e50439348e0d3bf2f90110de)
 
 Below is a mapping of the record fields from Resend to Hetzner Console:
 
@@ -74,10 +74,10 @@ Below is a mapping of the record fields from Resend to Hetzner Console:
 | TTL | TTL | `1800` |
 | Priority | Priority | `10` |
 
-<Info>
-  Do not use the same priority for multiple records. If Priority `10` is already
-  in use on another record, try a higher value `20` or `30`.
-</Info>
+> [!NOTE]
+>
+> Do not use the same priority for multiple records. If Priority `10` is already
+> in use on another record, try a higher value `20` or `30`.
 
 ## Add TXT SPF Record
 
@@ -89,15 +89,15 @@ On the same `Add Record` section:
 4. For the `TTL` field, set the value to `1800`.
 5. Select `Add`.
 
-<Info>
-  Omit your domain from the record values in Resend when you paste. Instead of
-  `send.example.com`, paste only `send` (or `send.subdomain` if you're using a
-  subdomain).
-</Info>
+> [!NOTE]
+>
+> Omit your domain from the record values in Resend when you paste. Instead of
+> `send.example.com`, paste only `send` (or `send.subdomain` if you're using a
+> subdomain).
 
-<img alt="Domain Details" src="https://mintcdn.com/resend/JHWt09hsc7E33HK2/images/dashboard-domains-resend-spf-txt.png?fit=max&auto=format&n=JHWt09hsc7E33HK2&q=85&s=747425d0a224baeee2846c9a707d5bbc" width="3024" height="1888" data-path="images/dashboard-domains-resend-spf-txt.png" />
+![Domain Details](https://mintcdn.com/resend/JHWt09hsc7E33HK2/images/dashboard-domains-resend-spf-txt.png?fit=max\&auto=format\&n=JHWt09hsc7E33HK2\&q=85\&s=747425d0a224baeee2846c9a707d5bbc)
 
-<img alt="Domain Details" src="https://mintcdn.com/resend/JnEHZ2RkJvy-KeG2/images/dashboard-domains-Hetzner-console-spf-txt.png?fit=max&auto=format&n=JnEHZ2RkJvy-KeG2&q=85&s=9cfd4af1fd47c8bf7f0e80bd2c846497" width="3806" height="882" data-path="images/dashboard-domains-Hetzner-console-spf-txt.png" />
+![Domain Details](https://mintcdn.com/resend/JnEHZ2RkJvy-KeG2/images/dashboard-domains-Hetzner-console-spf-txt.png?fit=max\&auto=format\&n=JnEHZ2RkJvy-KeG2\&q=85\&s=9cfd4af1fd47c8bf7f0e80bd2c846497)
 
 Below is a mapping of the record fields from Resend to Hetzner:
 
@@ -118,15 +118,15 @@ On the same `Add Record` section:
 4. For the `TTL` field, set the value to `1800`.
 5. Select `Add`.
 
-<Info>
-  Omit your domain from the record values in Resend when you paste. Instead of
-  `resend._domainkey.example.com`, paste only `resend._domainkey` (or
-  `resend._domainkey.subdomain` if you're using a subdomain).
-</Info>
+> [!NOTE]
+>
+> Omit your domain from the record values in Resend when you paste. Instead of
+> `resend._domainkey.example.com`, paste only `resend._domainkey` (or
+> `resend._domainkey.subdomain` if you're using a subdomain).
 
-<img alt="Domain Details" src="https://mintcdn.com/resend/JHWt09hsc7E33HK2/images/dashboard-domains-resend-dkim.png?fit=max&auto=format&n=JHWt09hsc7E33HK2&q=85&s=345d1dc6b7c138dbd92bd6928c634bd9" width="2992" height="1868" data-path="images/dashboard-domains-resend-dkim.png" />
+![Domain Details](https://mintcdn.com/resend/JHWt09hsc7E33HK2/images/dashboard-domains-resend-dkim.png?fit=max\&auto=format\&n=JHWt09hsc7E33HK2\&q=85\&s=345d1dc6b7c138dbd92bd6928c634bd9)
 
-<img alt="Domain Details" src="https://mintcdn.com/resend/JnEHZ2RkJvy-KeG2/images/dashboard-domains-Hetzner-console-dkim-txt.png?fit=max&auto=format&n=JnEHZ2RkJvy-KeG2&q=85&s=96d275fc831f3bfde0aec1c9b5325385" width="3808" height="872" data-path="images/dashboard-domains-Hetzner-console-dkim-txt.png" />
+![Domain Details](https://mintcdn.com/resend/JnEHZ2RkJvy-KeG2/images/dashboard-domains-Hetzner-console-dkim-txt.png?fit=max\&auto=format\&n=JnEHZ2RkJvy-KeG2\&q=85\&s=96d275fc831f3bfde0aec1c9b5325385)
 
 Below is a mapping of the record fields from Resend to Hetzner:
 
@@ -141,18 +141,25 @@ Below is a mapping of the record fields from Resend to Hetzner:
 
 If you want to receive emails at your domain, toggle the "Receiving" switch on the domain details page.
 
-<img alt="Enable Receiving Emails for a verified domain" src="https://mintcdn.com/resend/B7wTVm7aKL5pNT-6/images/inbound-domain-toggle.png?fit=max&auto=format&n=B7wTVm7aKL5pNT-6&q=85&s=46f6b4c142fb90e04b57861e338ed2d0" width="1980" height="1244" data-path="images/inbound-domain-toggle.png" />
+![Enable Receiving Emails for a verified domain](https://mintcdn.com/resend/B7wTVm7aKL5pNT-6/images/inbound-domain-toggle.png?fit=max\&auto=format\&n=B7wTVm7aKL5pNT-6\&q=85\&s=46f6b4c142fb90e04b57861e338ed2d0)
 
-<img alt="Domain Details" src="https://mintcdn.com/resend/JnEHZ2RkJvy-KeG2/images/dashboard-domains-Hetzner-console-inbound-mx.png?fit=max&auto=format&n=JnEHZ2RkJvy-KeG2&q=85&s=b292bfefc0c463ebe78e0f77fb283263" width="3808" height="932" data-path="images/dashboard-domains-Hetzner-console-inbound-mx.png" />
+![Domain Details](https://mintcdn.com/resend/JnEHZ2RkJvy-KeG2/images/dashboard-domains-Hetzner-console-inbound-mx.png?fit=max\&auto=format\&n=JnEHZ2RkJvy-KeG2\&q=85\&s=b292bfefc0c463ebe78e0f77fb283263)
 
-<Warning>
-  When you enable Inbound on a domain, Resend receives *all emails* sent to that
-  specific domain depending on the priority of the MX record. For this reason,
-  we strongly recommend verifying a subdomain (`subdomain.example.com`) instead
-  of the root domain (`example.com`). Learn more about [avoiding conflicts with
-  your existing MX
-  records](/docs/knowledge-base/how-do-i-avoid-conflicting-with-my-mx-records).
-</Warning>
+> [!WARNING]
+>
+> When you enable Inbound on a domain, Resend receives *all emails* sent to that
+> specific domain depending on the priority of the MX record. For this reason,
+> we strongly recommend verifying a subdomain (`subdomain.example.com`) instead
+> of the root domain (`example.com`). Learn more about [avoiding conflicts with
+> your existing MX
+> records](/docs/knowledge-base/how-do-i-avoid-conflicting-with-my-mx-records).
+
+> [!NOTE]
+>
+> Always copy the MX record value shown on your domain's page in Resend. The
+> values in this guide are examples. Depending on your domain you will see
+> `receive.forge.rmta.net`, a regional variant such as
+> `receive-euw1.forge.rmta.net`, or `inbound-smtp.<region>.amazonaws.com`.
 
 In the `Add Record` section on Hetzner:
 
@@ -183,12 +190,10 @@ Now click [Verify DNS Records](https://resend.com/domains) on your Domain in Res
 
 If your domain is not successfully verified, these are some common troubleshooting methods.
 
-<AccordionGroup>
-  <Accordion title="Resend shows my domain verification failed.">
-    Review the records you added to Hetzner to rule out copy and paste errors.
-  </Accordion>
+> **Resend shows my domain verification failed.**
+>
+> Review the records you added to Hetzner to rule out copy and paste errors.
 
-  <Accordion title="It has been longer than 72 hours and my domain is still Pending.">
-    [Review our guide on a domain not verifying](/docs/knowledge-base/what-if-my-domain-is-not-verifying).
-  </Accordion>
-</AccordionGroup>
+> **It has been longer than 72 hours and my domain is still Pending.**
+>
+> [Review our guide on a domain not verifying](/docs/knowledge-base/what-if-my-domain-is-not-verifying).

@@ -8,112 +8,108 @@
 
 ## Path Parameters
 
-<ParamField path="id" type="string" required>
-  The Contact Import ID.
-</ParamField>
+**id** `string` *required*
 
-<RequestExample>
-  ```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
-  import { Resend } from 'resend';
+The Contact Import ID.
 
-  const resend = new Resend('re_xxxxxxxxx');
+```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
+import { Resend } from 'resend';
 
-  const { data, error } = await resend.contacts.imports.get(
-    '479e3145-dd38-476b-932c-529ceb705947',
-  );
-  ```
+const resend = new Resend('re_xxxxxxxxx');
 
-  ```php PHP theme={"theme":{"light":"github-light","dark":"vesper"}}
-  $resend = Resend::client('re_xxxxxxxxx');
+const { data, error } = await resend.contacts.imports.get(
+  '479e3145-dd38-476b-932c-529ceb705947',
+);
+```
 
-  $resend->contacts->imports->get('479e3145-dd38-476b-932c-529ceb705947');
-  ```
+```php PHP theme={"theme":{"light":"github-light","dark":"vesper"}}
+$resend = Resend::client('re_xxxxxxxxx');
 
-  ```python Python theme={"theme":{"light":"github-light","dark":"vesper"}}
-  import resend
+$resend->contacts->imports->get('479e3145-dd38-476b-932c-529ceb705947');
+```
 
-  resend.api_key = "re_xxxxxxxxx"
+```python Python theme={"theme":{"light":"github-light","dark":"vesper"}}
+import resend
 
-  resend.Contacts.Imports.get("479e3145-dd38-476b-932c-529ceb705947")
-  ```
+resend.api_key = "re_xxxxxxxxx"
 
-  ```ruby Ruby theme={"theme":{"light":"github-light","dark":"vesper"}}
-  require "resend"
+resend.Contacts.Imports.get("479e3145-dd38-476b-932c-529ceb705947")
+```
 
-  Resend.api_key = "re_xxxxxxxxx"
+```ruby Ruby theme={"theme":{"light":"github-light","dark":"vesper"}}
+require "resend"
 
-  Resend::Contacts::Imports.get("479e3145-dd38-476b-932c-529ceb705947")
-  ```
+Resend.api_key = "re_xxxxxxxxx"
 
-  ```go Go theme={"theme":{"light":"github-light","dark":"vesper"}}
-  package main
+Resend::Contacts::Imports.get("479e3145-dd38-476b-932c-529ceb705947")
+```
 
-  import "github.com/resend/resend-go/v4"
+```go Go theme={"theme":{"light":"github-light","dark":"vesper"}}
+package main
 
-  func main() {
-  	client := resend.NewClient("re_xxxxxxxxx")
+import "github.com/resend/resend-go/v4"
 
-  	client.Contacts.Imports.Get("479e3145-dd38-476b-932c-529ceb705947")
-  }
-  ```
+func main() {
+	client := resend.NewClient("re_xxxxxxxxx")
 
-  ```rust Rust theme={"theme":{"light":"github-light","dark":"vesper"}}
-  use resend_rs::{Resend, Result};
+	client.Contacts.Imports.Get("479e3145-dd38-476b-932c-529ceb705947")
+}
+```
 
-  #[tokio::main]
-  async fn main() -> Result<()> {
-    let resend = Resend::new("re_xxxxxxxxx");
+```rust Rust theme={"theme":{"light":"github-light","dark":"vesper"}}
+use resend_rs::{Resend, Result};
 
-    let _data = resend
-      .contacts
-      .get_import("479e3145-dd38-476b-932c-529ceb705947")
-      .await?;
+#[tokio::main]
+async fn main() -> Result<()> {
+  let resend = Resend::new("re_xxxxxxxxx");
 
-    Ok(())
-  }
-  ```
+  let _data = resend
+    .contacts
+    .get_import("479e3145-dd38-476b-932c-529ceb705947")
+    .await?;
 
-  ```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
-  import com.resend.Resend;
-  import com.resend.services.contacts.model.GetContactImportResponseSuccess;
+  Ok(())
+}
+```
 
-  public class Main {
-      public static void main(String[] args) throws Exception {
-          Resend resend = new Resend("re_xxxxxxxxx");
+```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
+import com.resend.Resend;
+import com.resend.services.contacts.model.GetContactImportResponseSuccess;
 
-          GetContactImportResponseSuccess data = resend
-                  .contacts()
-                  .imports()
-                  .get("479e3145-dd38-476b-932c-529ceb705947");
-      }
-  }
-  ```
+public class Main {
+    public static void main(String[] args) throws Exception {
+        Resend resend = new Resend("re_xxxxxxxxx");
 
-  ```bash cURL theme={"theme":{"light":"github-light","dark":"vesper"}}
-  curl -X GET 'https://api.resend.com/contacts/imports/479e3145-dd38-476b-932c-529ceb705947' \
-       -H 'Authorization: Bearer re_xxxxxxxxx'
-  ```
-
-  ```bash CLI theme={"theme":{"light":"github-light","dark":"vesper"}}
-  resend contacts imports get 479e3145-dd38-476b-932c-529ceb705947
-  ```
-</RequestExample>
-
-<ResponseExample>
-  ```json Response theme={"theme":{"light":"github-light","dark":"vesper"}}
-  {
-    "object": "contact_import",
-    "id": "479e3145-dd38-476b-932c-529ceb705947",
-    "status": "completed",
-    "created_at": "2026-05-15 18:32:37.823+00",
-    "completed_at": "2026-05-15 18:33:42.916+00",
-    "counts": {
-      "total": 1200,
-      "created": 800,
-      "updated": 300,
-      "skipped": 75,
-      "failed": 25
+        GetContactImportResponseSuccess data = resend
+                .contacts()
+                .imports()
+                .get("479e3145-dd38-476b-932c-529ceb705947");
     }
+}
+```
+
+```bash cURL theme={"theme":{"light":"github-light","dark":"vesper"}}
+curl -X GET 'https://api.resend.com/contacts/imports/479e3145-dd38-476b-932c-529ceb705947' \
+     -H 'Authorization: Bearer re_xxxxxxxxx'
+```
+
+```bash CLI theme={"theme":{"light":"github-light","dark":"vesper"}}
+resend contacts imports get 479e3145-dd38-476b-932c-529ceb705947
+```
+
+```json Response theme={"theme":{"light":"github-light","dark":"vesper"}}
+{
+  "object": "contact_import",
+  "id": "479e3145-dd38-476b-932c-529ceb705947",
+  "status": "completed",
+  "created_at": "2026-05-15 18:32:37.823+00",
+  "completed_at": "2026-05-15 18:33:42.916+00",
+  "counts": {
+    "total": 1200,
+    "created": 800,
+    "updated": 300,
+    "skipped": 75,
+    "failed": 25
   }
-  ```
-</ResponseExample>
+}
+```

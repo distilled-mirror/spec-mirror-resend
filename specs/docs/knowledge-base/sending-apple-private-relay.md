@@ -12,13 +12,13 @@ When a user selects the Hide My Email option, Apple assigns them a unique, rando
 
 To ensure your emails are delivered through Apple’s Private Email Relay, you must first access the Apple Developer Portal and navigate to `Certificates, Identifiers & Profiles` > `More` > `Sign in with Apple for Email Communication` > `Configure`.
 
-<Info>
-  **Apple Offers Multiple Hide My Email Services**
-
-  Starting with iOS 15, Apple provides two separate Hide My Email services—one through Sign in with Apple and another via iCloud+.
-
-  This guide is specifically for apps and websites utilizing Sign in with Apple, which generates a unique email address for account creation and login purposes.
-</Info>
+> [!NOTE]
+>
+> **Apple Offers Multiple Hide My Email Services**
+>
+> Starting with iOS 15, Apple provides two separate Hide My Email services—one through Sign in with Apple and another via iCloud+.
+>
+> This guide is specifically for apps and websites utilizing Sign in with Apple, which generates a unique email address for account creation and login purposes.
 
 ## Register your sending domains
 

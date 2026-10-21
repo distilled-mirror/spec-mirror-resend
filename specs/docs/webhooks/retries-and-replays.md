@@ -37,7 +37,7 @@ If a webhook message fails, you can manually replay it.
 
 You can replay both `failed` and `succeeded` webhook messages.
 
-<img alt="Replay Webhook" src="https://mintcdn.com/resend/qZ1nhePh39wY_UO4/images/webhooks-replay-1.jpg?fit=max&auto=format&n=qZ1nhePh39wY_UO4&q=85&s=aeae9936eeea92d71da580af9f82cbb5" width="1476" height="448" data-path="images/webhooks-replay-1.jpg" />
+![Replay Webhook](https://mintcdn.com/resend/qZ1nhePh39wY_UO4/images/webhooks-replay-1.jpg?fit=max\&auto=format\&n=qZ1nhePh39wY_UO4\&q=85\&s=aeae9936eeea92d71da580af9f82cbb5)
 
 Here's how to replay a webhook message:
 

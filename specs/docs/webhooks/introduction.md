@@ -33,17 +33,15 @@ Get started by [creating a webhook](/docs/webhooks/create-webhook) to incorporat
 
 To receive real-time events in your app via webhooks, you need to:
 
-<Steps>
-  <Step title="Create an endpoint in your application">
-    Create a route that can accept POST requests. This route will listen for and
-    receive events from Resend.
-  </Step>
+**1. Create an endpoint in your application**
 
-  <Step title="Add a webhook in Resend">
-    Define a webhook with the URL of your endpoint, and the [email
-    events](/docs/webhooks/event-types) it handles.
-  </Step>
-</Steps>
+Create a route that can accept POST requests. This route will listen for and
+receive events from Resend.
+
+**2. Add a webhook in Resend**
+
+Define a webhook with the URL of your endpoint, and the [email
+events](/docs/webhooks/event-types) it handles.
 
 See a step-by-step example of [creating a webhook](/docs/webhooks/create-webhook) through the Dashboard, including testing and deployment.
 
@@ -63,48 +61,44 @@ See how to use Resend's webhook features such as replaying webhooks and storing 
 
 ## Related Guides
 
-<CardGroup cols={2}>
-  <Card title="Create webhook" icon="globe" href="/docs/webhooks/create-webhook" />
+> **[Create webhook](/docs/webhooks/create-webhook)**
 
-  <Card title="Respond to emails" icon="mailbox-open-letter" href="/docs/dashboard/receiving/create-receiving-webhook" />
+> **[Respond to emails](/docs/dashboard/receiving/create-receiving-webhook)**
 
-  <Card title="Retry replay webhooks" icon="rotate" href="/docs/webhooks/retries-and-replays" />
+> **[Retry replay webhooks](/docs/webhooks/retries-and-replays)**
 
-  <Card title="Email event types" icon="file-plus" href="/docs/webhooks/event-types" />
+> **[Email event types](/docs/webhooks/event-types)**
 
-  <Card title="Verify a webhook request" icon="shield-check" href="/docs/webhooks/verify-webhooks-requests" />
+> **[Verify a webhook request](/docs/webhooks/verify-webhooks-requests)**
 
-  <Card title="Store webhook data" icon="database" href="/docs/webhooks/how-to-store-webhooks-data" />
+> **[Store webhook data](/docs/webhooks/how-to-store-webhooks-data)**
 
-  <Card title="Self-host the Resend Webhook Ingester" icon="inbox" href="/docs/webhooks/ingester" />
+> **[Self-host the Resend Webhook Ingester](/docs/webhooks/ingester)**
 
-  <Card title="Webhook events reference" icon="book-bookmark" href="/docs/webhooks/emails/bounced" />
-</CardGroup>
+> **[Webhook events reference](/docs/webhooks/emails/bounced)**
 
 ## Examples
 
-<CardGroup>
-  <Card title="Next.js (TypeScript)" icon="arrow-up-right-from-square" href="https://github.com/resend/resend-examples/tree/main/nextjs-resend-examples/typescript/src/app/inbound">
-    See the full source code.
-  </Card>
+> **[Next.js (TypeScript)](https://github.com/resend/resend-examples/tree/main/nextjs-resend-examples/typescript/src/app/inbound)**
+>
+> See the full source code.
 
-  <Card title="Next.js (JavaScript)" icon="arrow-up-right-from-square" href="https://github.com/resend/resend-examples/tree/main/nextjs-resend-examples/javascript/src/app/inbound">
-    See the full source code.
-  </Card>
+> **[Next.js (JavaScript)](https://github.com/resend/resend-examples/tree/main/nextjs-resend-examples/javascript/src/app/inbound)**
+>
+> See the full source code.
 
-  <Card title="PHP" icon="arrow-up-right-from-square" href="https://github.com/resend/resend-examples/tree/main/php-resend-examples/src/inbound">
-    See the full source code.
-  </Card>
+> **[PHP](https://github.com/resend/resend-examples/tree/main/php-resend-examples/src/inbound)**
+>
+> See the full source code.
 
-  <Card title="Laravel" icon="arrow-up-right-from-square" href="https://github.com/resend/resend-examples/tree/main/laravel-resend-examples">
-    See the full source code.
-  </Card>
+> **[Laravel](https://github.com/resend/resend-examples/tree/main/laravel-resend-examples)**
+>
+> See the full source code.
 
-  <Card title="Python" icon="arrow-up-right-from-square" href="https://github.com/resend/resend-examples/tree/main/python-resend-examples/examples">
-    See the full source code.
-  </Card>
+> **[Python](https://github.com/resend/resend-examples/tree/main/python-resend-examples/examples)**
+>
+> See the full source code.
 
-  <Card title="Ruby" icon="arrow-up-right-from-square" href="https://github.com/resend/resend-examples/tree/main/ruby-resend-examples/examples">
-    See the full source code.
-  </Card>
-</CardGroup>
+> **[Ruby](https://github.com/resend/resend-examples/tree/main/ruby-resend-examples/examples)**
+>
+> See the full source code.

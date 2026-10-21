@@ -20,299 +20,297 @@ This separation allows you to:
 
 Once you [publish a Template](/docs/dashboard/templates/create-template#publish-a-template), this published version will be used to send emails until you publish again. You can continue to work on a production Template in draft state without affecting the published version, and the editor will automatically save your progress.
 
-<CodeGroup>
-  ```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
-  // Create template
-  import { Resend } from 'resend';
+```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
+// Create template
+import { Resend } from 'resend';
 
-  const resend = new Resend('re_xxxxxxxxx');
+const resend = new Resend('re_xxxxxxxxx');
 
-  await resend.templates.create({
-    name: 'order-confirmation',
-    from: 'Resend Store <store@resend.com>',
-    subject: 'Thanks for your order!',
-    html: '<p>Name: {{{PRODUCT}}}</p><p>Total: {{{PRICE}}}</p>',
-    variables: [
-      {
-        key: 'PRODUCT',
-        type: 'string',
-        fallbackValue: 'item',
-      },
-      {
-        key: 'PRICE',
-        type: 'number',
-        fallbackValue: 20,
-      },
-    ],
-  });
-
-  // Publish template
-  await resend.templates.publish('template_id');
-
-  // Or create and publish a template in one step
-  const { data, error } = await resend.templates
-    .create({
-      name: 'order-confirmation',
-      html: '<p>Thanks for your order!</p>',
-    })
-    .publish();
-  ```
-
-  ```php PHP theme={"theme":{"light":"github-light","dark":"vesper"}}
-  $resend = Resend::client('re_xxxxxxxxx');
-
-  // Create template
-  $resend->templates->create([
-    'name' => 'order-confirmation',
-    'from' => 'Resend Store <store@resend.com>',
-    'subject' => 'Thanks for your order!',
-      'html' => "<p>Name: {{{PRODUCT}}}</p><p>Total: {{{PRICE}}}</p>",
-    'variables' => [
-      [
-        'key' => 'PRODUCT',
-        'type' => 'string',
-        'fallback_value' => 'item'
-      ],
-      [
-        'key' => 'PRICE',
-        'type' => 'number',
-        'fallback_value' => 49.99
-      ]
-    ]
-  ]);
-
-  // Publish template
-  $resend->templates->publish('template_id');
-  ```
-
-  ```py Python theme={"theme":{"light":"github-light","dark":"vesper"}}
-  import resend
-
-  resend.api_key = "re_xxxxxxxxx"
-
-  # Create template
-  params: resend.Templates.CreateParams = {
-    "name": "order-confirmation",
-    "from": "Resend Store <store@resend.com>",
-    "subject": "Thanks for your order!",
-    "html": "<p>Name: {{{PRODUCT}}}</p><p>Total: {{{PRICE}}}</p>",
-    "variables": [
-      {
-        "key": "PRODUCT",
-        "type": "string",
-        "fallback_value": "item"
-      },
-      {
-        "key": "PRICE",
-        "type": "number",
-        "fallback_value": 20
-      },
-    ]
-  }
-
-  resend.Templates.create(params)
-
-  # Publish template
-  resend.Templates.publish('template_id');
-  ```
-
-  ```ruby Ruby theme={"theme":{"light":"github-light","dark":"vesper"}}
-  require "resend"
-
-  Resend.api_key = "re_xxxxxxxxx"
-
-  # Create template
-  params = {
-    "name": 'order-confirmation',
-    "from": 'Resend Store <store@resend.com>',
-    "subject": 'Thanks for your order!',
-    "html": "<p>Name: {{{PRODUCT}}}</p><p>Total: {{{PRICE}}}</p>",
-    "variables": [{
-        "key": 'PRODUCT',
-        "type": 'string',
-        "fallback_value": 'item'
-      },
-      {
-        "key": 'PRICE',
-        "type": 'number',
-        "fallback_value": 20
-      }
-    ]
-  }
-
-  Resend::Templates.create(params)
-
-  # Publish template
-  Resend::Templates.publish('template_id');
-  ```
-
-  ```go Go theme={"theme":{"light":"github-light","dark":"vesper"}}
-  import "github.com/resend/resend-go/v4"
-
-  client := resend.NewClient("re_xxxxxxxxx")
-
-  // Create template
-  params := &resend.CreateTemplateRequest{
-    Name: "order-confirmation",
-    From: "Resend Store <store@resend.com>",
-    Subject: "Thanks for your order!",
-    Html: "<p>Name: {{{PRODUCT}}}</p><p>Total: {{{PRICE}}}</p>",
-    Variables: []*resend.TemplateVariable{
-      {
-        Key: "PRODUCT",
-        Type: "string",
-        FallbackValue: "item",
-      },
-      {
-        Key: "PRICE",
-        Type: "number",
-        FallbackValue: 20,
-      },
-    },
-  }
-
-  template, _ := client.Templates.Create(params)
-
-  // Publish template
-  client.Templates.Publish(template.Id)
-  ```
-
-  ```rust Rust theme={"theme":{"light":"github-light","dark":"vesper"}}
-  use resend_rs::{
-    types::{CreateTemplateOptions, Variable, VariableType},
-    Resend, Result,
-  };
-
-  #[tokio::main]
-  async fn main() -> Result<()> {
-    let resend = Resend::new("re_xxxxxxxxx");
-
-    // Create template
-    let name = "order-confirmation";
-    let from = "Resend Store <store@resend.com>";
-    let subject = "Thanks for your order!";
-    let html = "<p>Name: {{{PRODUCT}}}</p><p>Total: {{{PRICE}}}</p>";
-
-    let variables = [
-      Variable::new("PRODUCT", VariableType::String).with_fallback("item"),
-      Variable::new("PRICE", VariableType::Number).with_fallback(20),
-    ];
-
-    let opts = CreateTemplateOptions::new(name, html)
-      .with_from(from)
-      .with_subject(subject)
-      .with_variables(&variables);
-
-    let template = resend.templates.create(opts).await?;
-
-    // Publish template
-    resend.templates.publish(&template.id).await?;
-
-    Ok(())
-  }
-  ```
-
-  ```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
-  import com.resend.*;
-  import com.resend.services.templates.model.CreateTemplateOptions;
-  import com.resend.services.templates.model.CreateTemplateResponseSuccess;
-  import com.resend.services.templates.model.Variable;
-  import com.resend.services.templates.model.VariableType;
-  import java.util.Arrays;
-  import java.util.List;
-
-  Resend resend = new Resend("re_xxxxxxxxx");
-
-  // Create template
-  List<Variable> variables = Arrays.asList(
-    new Variable("PRODUCT", VariableType.STRING, "item"),
-    new Variable("PRICE", VariableType.NUMBER, 20)
-  );
-
-  CreateTemplateOptions params = CreateTemplateOptions.builder()
-    .name("order-confirmation")
-    .from("Resend Store <store@resend.com>")
-    .subject("Thanks for your order!")
-    .html("<p>Name: {{{PRODUCT}}}</p><p>Total: {{{PRICE}}}</p>")
-    .variables(variables)
-    .build();
-
-  CreateTemplateResponseSuccess data = resend.templates().create(params);
-
-  // Publish template
-  resend.templates().publish(data.getId());
-  ```
-
-  ```csharp .NET theme={"theme":{"light":"github-light","dark":"vesper"}}
-  using Resend;
-
-  IResend resend = ResendClient.Create("re_xxxxxxxxx");
-
-  // Create template
-  var variables = new List<TemplateVariable>
-  {
-    new TemplateVariable() {
-      Key = "PRODUCT",
-      Type = TemplateVariableType.String,
-      Default = "item",
-    },
-    new TemplateVariable() {
-      Key = "PRICE",
-      Type = TemplateVariableType.Number,
-      Default = 20,
-    },
-  };
-
-  var resp = await resend.TemplateCreateAsync(
-    new TemplateData()
+await resend.templates.create({
+  name: 'order-confirmation',
+  from: 'Resend Store <store@resend.com>',
+  subject: 'Thanks for your order!',
+  html: '<p>Name: {{{PRODUCT}}}</p><p>Total: {{{PRICE}}}</p>',
+  variables: [
     {
-      Name = "order-confirmation",
-      From = "Resend Store <store@resend.com>",
-      Subject = "Thanks for your order!",
-      HtmlBody = @"
-        <p>Name: {{{PRODUCT}}}</p>
-        <p>Total: {{{PRICE}}}</p>
-      ",
-      Variables = variables,
+      key: 'PRODUCT',
+      type: 'string',
+      fallbackValue: 'item',
+    },
+    {
+      key: 'PRICE',
+      type: 'number',
+      fallbackValue: 20,
+    },
+  ],
+});
+
+// Publish template
+await resend.templates.publish('template_id');
+
+// Or create and publish a template in one step
+const { data, error } = await resend.templates
+  .create({
+    name: 'order-confirmation',
+    html: '<p>Thanks for your order!</p>',
+  })
+  .publish();
+```
+
+```php PHP theme={"theme":{"light":"github-light","dark":"vesper"}}
+$resend = Resend::client('re_xxxxxxxxx');
+
+// Create template
+$resend->templates->create([
+  'name' => 'order-confirmation',
+  'from' => 'Resend Store <store@resend.com>',
+  'subject' => 'Thanks for your order!',
+    'html' => "<p>Name: {{{PRODUCT}}}</p><p>Total: {{{PRICE}}}</p>",
+  'variables' => [
+    [
+      'key' => 'PRODUCT',
+      'type' => 'string',
+      'fallback_value' => 'item'
+    ],
+    [
+      'key' => 'PRICE',
+      'type' => 'number',
+      'fallback_value' => 49.99
+    ]
+  ]
+]);
+
+// Publish template
+$resend->templates->publish('template_id');
+```
+
+```py Python theme={"theme":{"light":"github-light","dark":"vesper"}}
+import resend
+
+resend.api_key = "re_xxxxxxxxx"
+
+# Create template
+params: resend.Templates.CreateParams = {
+  "name": "order-confirmation",
+  "from": "Resend Store <store@resend.com>",
+  "subject": "Thanks for your order!",
+  "html": "<p>Name: {{{PRODUCT}}}</p><p>Total: {{{PRICE}}}</p>",
+  "variables": [
+    {
+      "key": "PRODUCT",
+      "type": "string",
+      "fallback_value": "item"
+    },
+    {
+      "key": "PRICE",
+      "type": "number",
+      "fallback_value": 20
+    },
+  ]
+}
+
+resend.Templates.create(params)
+
+# Publish template
+resend.Templates.publish('template_id');
+```
+
+```ruby Ruby theme={"theme":{"light":"github-light","dark":"vesper"}}
+require "resend"
+
+Resend.api_key = "re_xxxxxxxxx"
+
+# Create template
+params = {
+  "name": 'order-confirmation',
+  "from": 'Resend Store <store@resend.com>',
+  "subject": 'Thanks for your order!',
+  "html": "<p>Name: {{{PRODUCT}}}</p><p>Total: {{{PRICE}}}</p>",
+  "variables": [{
+      "key": 'PRODUCT',
+      "type": 'string',
+      "fallback_value": 'item'
+    },
+    {
+      "key": 'PRICE',
+      "type": 'number',
+      "fallback_value": 20
     }
-  );
+  ]
+}
+
+Resend::Templates.create(params)
+
+# Publish template
+Resend::Templates.publish('template_id');
+```
+
+```go Go theme={"theme":{"light":"github-light","dark":"vesper"}}
+import "github.com/resend/resend-go/v4"
+
+client := resend.NewClient("re_xxxxxxxxx")
+
+// Create template
+params := &resend.CreateTemplateRequest{
+  Name: "order-confirmation",
+  From: "Resend Store <store@resend.com>",
+  Subject: "Thanks for your order!",
+  Html: "<p>Name: {{{PRODUCT}}}</p><p>Total: {{{PRICE}}}</p>",
+  Variables: []*resend.TemplateVariable{
+    {
+      Key: "PRODUCT",
+      Type: "string",
+      FallbackValue: "item",
+    },
+    {
+      Key: "PRICE",
+      Type: "number",
+      FallbackValue: 20,
+    },
+  },
+}
+
+template, _ := client.Templates.Create(params)
+
+// Publish template
+client.Templates.Publish(template.Id)
+```
+
+```rust Rust theme={"theme":{"light":"github-light","dark":"vesper"}}
+use resend_rs::{
+  types::{CreateTemplateOptions, Variable, VariableType},
+  Resend, Result,
+};
+
+#[tokio::main]
+async fn main() -> Result<()> {
+  let resend = Resend::new("re_xxxxxxxxx");
+
+  // Create template
+  let name = "order-confirmation";
+  let from = "Resend Store <store@resend.com>";
+  let subject = "Thanks for your order!";
+  let html = "<p>Name: {{{PRODUCT}}}</p><p>Total: {{{PRICE}}}</p>";
+
+  let variables = [
+    Variable::new("PRODUCT", VariableType::String).with_fallback("item"),
+    Variable::new("PRICE", VariableType::Number).with_fallback(20),
+  ];
+
+  let opts = CreateTemplateOptions::new(name, html)
+    .with_from(from)
+    .with_subject(subject)
+    .with_variables(&variables);
+
+  let template = resend.templates.create(opts).await?;
 
   // Publish template
-  await resend.TemplatePublishAsync(resp.Content);
+  resend.templates.publish(&template.id).await?;
 
-  Console.WriteLine($"Template Id={resp.Content}");
-  ```
+  Ok(())
+}
+```
 
-  ```bash cURL theme={"theme":{"light":"github-light","dark":"vesper"}}
-  # Create template
-  curl -X POST 'https://api.resend.com/templates' \
-   -H 'Authorization: Bearer re_xxxxxxxxx' \
-   -H 'Content-Type: application/json' \
-   -d $'{
-    "name": "order-confirmation",
-    "from": "Resend Store <store@resend.com>",
-    "subject": "Thanks for your order!",
-    "html": "<p>Name: {{{PRODUCT}}}</p><p>Total: {{{PRICE}}}</p>",
-    "variables": [
-      {
-        "key": "PRODUCT",
-        "type": "string",
-        "fallbackValue": "item"
-      },
-      {
-        "key": "PRICE",
-        "type": "number",
-        "fallbackValue": 20
-      }
-    ]
-  }'
+```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
+import com.resend.*;
+import com.resend.services.templates.model.CreateTemplateOptions;
+import com.resend.services.templates.model.CreateTemplateResponseSuccess;
+import com.resend.services.templates.model.Variable;
+import com.resend.services.templates.model.VariableType;
+import java.util.Arrays;
+import java.util.List;
 
-  # Publish template
-  curl -X POST 'https://api.resend.com/templates/{template_id}/publish' \
-       -H 'Authorization: Bearer re_xxxxxxxxx' \
-       -H 'Content-Type: application/json'
-  ```
-</CodeGroup>
+Resend resend = new Resend("re_xxxxxxxxx");
+
+// Create template
+List<Variable> variables = Arrays.asList(
+  new Variable("PRODUCT", VariableType.STRING, "item"),
+  new Variable("PRICE", VariableType.NUMBER, 20)
+);
+
+CreateTemplateOptions params = CreateTemplateOptions.builder()
+  .name("order-confirmation")
+  .from("Resend Store <store@resend.com>")
+  .subject("Thanks for your order!")
+  .html("<p>Name: {{{PRODUCT}}}</p><p>Total: {{{PRICE}}}</p>")
+  .variables(variables)
+  .build();
+
+CreateTemplateResponseSuccess data = resend.templates().create(params);
+
+// Publish template
+resend.templates().publish(data.getId());
+```
+
+```csharp .NET theme={"theme":{"light":"github-light","dark":"vesper"}}
+using Resend;
+
+IResend resend = ResendClient.Create("re_xxxxxxxxx");
+
+// Create template
+var variables = new List<TemplateVariable>
+{
+  new TemplateVariable() {
+    Key = "PRODUCT",
+    Type = TemplateVariableType.String,
+    Default = "item",
+  },
+  new TemplateVariable() {
+    Key = "PRICE",
+    Type = TemplateVariableType.Number,
+    Default = 20,
+  },
+};
+
+var resp = await resend.TemplateCreateAsync(
+  new TemplateData()
+  {
+    Name = "order-confirmation",
+    From = "Resend Store <store@resend.com>",
+    Subject = "Thanks for your order!",
+    HtmlBody = @"
+      <p>Name: {{{PRODUCT}}}</p>
+      <p>Total: {{{PRICE}}}</p>
+    ",
+    Variables = variables,
+  }
+);
+
+// Publish template
+await resend.TemplatePublishAsync(resp.Content);
+
+Console.WriteLine($"Template Id={resp.Content}");
+```
+
+```bash cURL theme={"theme":{"light":"github-light","dark":"vesper"}}
+# Create template
+curl -X POST 'https://api.resend.com/templates' \
+ -H 'Authorization: Bearer re_xxxxxxxxx' \
+ -H 'Content-Type: application/json' \
+ -d $'{
+  "name": "order-confirmation",
+  "from": "Resend Store <store@resend.com>",
+  "subject": "Thanks for your order!",
+  "html": "<p>Name: {{{PRODUCT}}}</p><p>Total: {{{PRICE}}}</p>",
+  "variables": [
+    {
+      "key": "PRODUCT",
+      "type": "string",
+      "fallbackValue": "item"
+    },
+    {
+      "key": "PRICE",
+      "type": "number",
+      "fallbackValue": 20
+    }
+  ]
+}'
+
+# Publish template
+curl -X POST 'https://api.resend.com/templates/{template_id}/publish' \
+     -H 'Authorization: Bearer re_xxxxxxxxx' \
+     -H 'Content-Type: application/json'
+```
 
 After you publish a Template, you can freely work on it through the editor or update it [via the Templates API](/docs/api-reference/templates/update-template) without affecting the published version. This allows you to test and validate new edits before sending them to users.
 
@@ -324,7 +322,7 @@ As you work on a Template in the editor, your changes are saved as a draft, alth
 
 Through the version history, you can preview each version, who made them, and when they were made. You can also revert to a previous version if needed.
 
-<video src="https://mintcdn.com/resend/8sUIFX1U2gAd2pqE/images/templates-version-history.mp4?fit=max&auto=format&n=8sUIFX1U2gAd2pqE&q=85&s=31b1f60d7873113f5dcc7c84928118d2" autoPlay muted loop data-path="images/templates-version-history.mp4" />
+<video src="https://mintcdn.com/resend/8sUIFX1U2gAd2pqE/images/templates-version-history.mp4?fit=max&auto=format&n=8sUIFX1U2gAd2pqE&q=85&s=31b1f60d7873113f5dcc7c84928118d2" autoPlay muted loop />
 
 Reverting creates a new draft based on the selected version's content, without affecting the published Template.
 

@@ -6,172 +6,136 @@
 
 > Add a new API key to authenticate communications with Resend.
 
-export const ResendParamField = ({children, body, path, ...props}) => {
-  const [lang, setLang] = useState(() => {
-    return localStorage.getItem('code') || '"Node.js"';
-  });
-  useEffect(() => {
-    const onStorage = event => {
-      const key = event.detail.key;
-      if (key === 'code') {
-        setLang(event.detail.value);
-      }
-    };
-    document.addEventListener('mintlify-localstorage', onStorage);
-    return () => {
-      document.removeEventListener('mintlify-localstorage', onStorage);
-    };
-  }, []);
-  const toCamelCase = str => typeof str === 'string' ? str.replace(/[_-](\w)/g, (_, c) => c.toUpperCase()) : str;
-  const resolvedBody = useMemo(() => {
-    const value = JSON.parse(lang);
-    return value === 'Node.js' ? toCamelCase(body) : body;
-  }, [body, lang]);
-  const resolvedPath = useMemo(() => {
-    const value = JSON.parse(lang);
-    return value === 'Node.js' ? toCamelCase(path) : path;
-  }, [path, lang]);
-  return <ParamField body={resolvedBody} path={resolvedPath} {...props}>
-      {children}
-    </ParamField>;
-};
-
 ## Body Parameters
 
-<ParamField body="name" type="string" required>
-  The API key name. Maximum 50 characters.
-</ParamField>
+**name** `string` *required*
 
-<ParamField body="permission" type="full_access | sending_access">
-  The API key can have full access to Resend's API or be only restricted to send emails.
+The API key name. Maximum 50 characters.
 
-  * `full_access`: Can create, delete, get, and update any resource.
-  * `sending_access`: Can only send emails. For Inboxes, it can call only [Reply to Thread Email](/docs/api-reference/inboxes/reply-thread-email), [Forward Thread Email](/docs/api-reference/inboxes/forward-thread-email), [Create Draft](/docs/api-reference/inboxes/create-draft) and [Send Draft](/docs/api-reference/inboxes/send-draft). A key restricted to a domain can use only the inboxes on that domain.
-</ParamField>
+**permission** `full_access | sending_access`
 
-<ResendParamField body="domain_id" type="string">
-  Restrict an API key to send emails only from a specific domain. This is only
-  used when the `permission` is set to `sending_access`.
-</ResendParamField>
+The API key can have full access to Resend's API or be only restricted to send emails.
 
-<RequestExample>
-  ```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
-  import { Resend } from 'resend';
+* `full_access`: Can create, delete, get, and update any resource.
+* `sending_access`: Can only send emails. For Inboxes, it can call only [Reply to Thread Email](/docs/api-reference/inboxes/reply-thread-email), [Forward Thread Email](/docs/api-reference/inboxes/forward-thread-email), [Create Draft](/docs/api-reference/inboxes/create-draft) and [Send Draft](/docs/api-reference/inboxes/send-draft). A key restricted to a domain can use only the inboxes on that domain.
 
-  const resend = new Resend('re_xxxxxxxxx');
+Restrict an API key to send emails only from a specific domain. This is only
+used when the `permission` is set to `sending_access`.
 
-  const { data, error } = await resend.apiKeys.create({ name: 'Production' });
-  ```
+```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
+import { Resend } from 'resend';
 
-  ```php PHP theme={"theme":{"light":"github-light","dark":"vesper"}}
-  $resend = Resend::client('re_xxxxxxxxx');
+const resend = new Resend('re_xxxxxxxxx');
 
-  $resend->apiKeys->create([
-    'name' => 'Production'
-  ]);
-  ```
+const { data, error } = await resend.apiKeys.create({ name: 'Production' });
+```
 
-  ```python Python theme={"theme":{"light":"github-light","dark":"vesper"}}
-  import resend
+```php PHP theme={"theme":{"light":"github-light","dark":"vesper"}}
+$resend = Resend::client('re_xxxxxxxxx');
 
-  resend.api_key = "re_xxxxxxxxx"
+$resend->apiKeys->create([
+  'name' => 'Production'
+]);
+```
 
-  params: resend.ApiKeys.CreateParams = {
-    "name": "Production",
-  }
+```python Python theme={"theme":{"light":"github-light","dark":"vesper"}}
+import resend
 
-  resend.ApiKeys.create(params)
-  ```
+resend.api_key = "re_xxxxxxxxx"
 
-  ```ruby Ruby theme={"theme":{"light":"github-light","dark":"vesper"}}
-  require "resend"
+params: resend.ApiKeys.CreateParams = {
+  "name": "Production",
+}
 
-  Resend.api_key = "re_xxxxxxxxx"
+resend.ApiKeys.create(params)
+```
 
-  params = {
-    name: "Production"
-  }
-  Resend::ApiKeys.create(params)
-  ```
+```ruby Ruby theme={"theme":{"light":"github-light","dark":"vesper"}}
+require "resend"
 
-  ```go Go theme={"theme":{"light":"github-light","dark":"vesper"}}
-  package main
+Resend.api_key = "re_xxxxxxxxx"
 
-  import "github.com/resend/resend-go/v4"
+params = {
+  name: "Production"
+}
+Resend::ApiKeys.create(params)
+```
 
-  func main() {
-  	client := resend.NewClient("re_xxxxxxxxx")
-  	params := &resend.CreateApiKeyRequest{
-  		Name: "Production",
-  	}
-  	client.ApiKeys.Create(params)
-  }
-  ```
+```go Go theme={"theme":{"light":"github-light","dark":"vesper"}}
+package main
 
-  ```rust Rust theme={"theme":{"light":"github-light","dark":"vesper"}}
-  use resend_rs::{types::CreateApiKeyOptions, Resend, Result};
+import "github.com/resend/resend-go/v4"
 
-  #[tokio::main]
-  async fn main() -> Result<()> {
-    let resend = Resend::new("re_xxxxxxxxx");
+func main() {
+	client := resend.NewClient("re_xxxxxxxxx")
+	params := &resend.CreateApiKeyRequest{
+		Name: "Production",
+	}
+	client.ApiKeys.Create(params)
+}
+```
 
-    let _api_key = resend
-      .api_keys
-      .create(CreateApiKeyOptions::new("Production"))
-      .await?;
+```rust Rust theme={"theme":{"light":"github-light","dark":"vesper"}}
+use resend_rs::{types::CreateApiKeyOptions, Resend, Result};
 
-    Ok(())
-  }
-  ```
+#[tokio::main]
+async fn main() -> Result<()> {
+  let resend = Resend::new("re_xxxxxxxxx");
 
-  ```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
-  import com.resend.Resend;
-  import com.resend.core.exception.ResendException;
-  import com.resend.services.apikeys.model.CreateApiKeyOptions;
-  import com.resend.services.apikeys.model.CreateApiKeyResponse;
+  let _api_key = resend
+    .api_keys
+    .create(CreateApiKeyOptions::new("Production"))
+    .await?;
 
-  public class Main {
-      public static void main(String[] args) throws ResendException {
-          Resend resend = new Resend("re_xxxxxxxxx");
+  Ok(())
+}
+```
 
-          CreateApiKeyOptions params = CreateApiKeyOptions
-                  .builder()
-                  .name("Production").build();
+```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
+import com.resend.Resend;
+import com.resend.core.exception.ResendException;
+import com.resend.services.apikeys.model.CreateApiKeyOptions;
+import com.resend.services.apikeys.model.CreateApiKeyResponse;
 
-          CreateApiKeyResponse apiKey = resend.apiKeys().create(params);
-      }
-  }
-  ```
+public class Main {
+    public static void main(String[] args) throws ResendException {
+        Resend resend = new Resend("re_xxxxxxxxx");
 
-  ```csharp .NET theme={"theme":{"light":"github-light","dark":"vesper"}}
-  using Resend;
+        CreateApiKeyOptions params = CreateApiKeyOptions
+                .builder()
+                .name("Production").build();
 
-  IResend resend = ResendClient.Create( "re_xxxxxxxxx" ); // Or from DI
+        CreateApiKeyResponse apiKey = resend.apiKeys().create(params);
+    }
+}
+```
 
-  var resp = await resend.ApiKeyCreateAsync( "Production" );
-  Console.WriteLine( "Token={0}", resp.Content.Token );
-  ```
+```csharp .NET theme={"theme":{"light":"github-light","dark":"vesper"}}
+using Resend;
 
-  ```bash cURL theme={"theme":{"light":"github-light","dark":"vesper"}}
-  curl -X POST 'https://api.resend.com/api-keys' \
-       -H 'Authorization: Bearer re_xxxxxxxxx' \
-       -H 'Content-Type: application/json' \
-       -d $'{
-    "name": "Production"
-  }'
-  ```
+IResend resend = ResendClient.Create( "re_xxxxxxxxx" ); // Or from DI
 
-  ```bash CLI theme={"theme":{"light":"github-light","dark":"vesper"}}
-  resend api-keys create --name Production
-  ```
-</RequestExample>
+var resp = await resend.ApiKeyCreateAsync( "Production" );
+Console.WriteLine( "Token={0}", resp.Content.Token );
+```
 
-<ResponseExample>
-  ```json Response theme={"theme":{"light":"github-light","dark":"vesper"}}
-  {
-    "id": "dacf4072-4119-4d88-932f-6202748ac7c8",
-    "object": "api_key",
-    "token": "re_c1tpEyD8_NKFusih9vKVQknRAQfmFcWCv"
-  }
-  ```
-</ResponseExample>
+```bash cURL theme={"theme":{"light":"github-light","dark":"vesper"}}
+curl -X POST 'https://api.resend.com/api-keys' \
+     -H 'Authorization: Bearer re_xxxxxxxxx' \
+     -H 'Content-Type: application/json' \
+     -d $'{
+  "name": "Production"
+}'
+```
+
+```bash CLI theme={"theme":{"light":"github-light","dark":"vesper"}}
+resend api-keys create --name Production
+```
+
+```json Response theme={"theme":{"light":"github-light","dark":"vesper"}}
+{
+  "id": "dacf4072-4119-4d88-932f-6202748ac7c8",
+  "object": "api_key",
+  "token": "re_c1tpEyD8_NKFusih9vKVQknRAQfmFcWCv"
+}
+```

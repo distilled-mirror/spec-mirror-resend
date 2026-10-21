@@ -6,229 +6,195 @@
 
 > Retrieve a single contact.
 
-export const ResendParamField = ({children, body, path, ...props}) => {
-  const [lang, setLang] = useState(() => {
-    return localStorage.getItem('code') || '"Node.js"';
-  });
-  useEffect(() => {
-    const onStorage = event => {
-      const key = event.detail.key;
-      if (key === 'code') {
-        setLang(event.detail.value);
-      }
-    };
-    document.addEventListener('mintlify-localstorage', onStorage);
-    return () => {
-      document.removeEventListener('mintlify-localstorage', onStorage);
-    };
-  }, []);
-  const toCamelCase = str => typeof str === 'string' ? str.replace(/[_-](\w)/g, (_, c) => c.toUpperCase()) : str;
-  const resolvedBody = useMemo(() => {
-    const value = JSON.parse(lang);
-    return value === 'Node.js' ? toCamelCase(body) : body;
-  }, [body, lang]);
-  const resolvedPath = useMemo(() => {
-    const value = JSON.parse(lang);
-    return value === 'Node.js' ? toCamelCase(path) : path;
-  }, [path, lang]);
-  return <ParamField body={resolvedBody} path={resolvedPath} {...props}>
-      {children}
-    </ParamField>;
-};
-
 ## Path Parameters
 
 Either `id` or `email` must be provided.
 
-<ParamField path="id" type="string">
-  The Contact ID.
-</ParamField>
+**id** `string`
 
-<ParamField path="email" type="string">
-  The Contact Email.
-</ParamField>
+The Contact ID.
 
-<RequestExample>
-  ```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
-  import { Resend } from 'resend';
+**email** `string`
 
-  const resend = new Resend('re_xxxxxxxxx');
+The Contact Email.
 
-  const { data, error } = await resend.contacts.get({
-    id: 'e169aa45-1ecf-4183-9955-b1499d5701d3',
-    // or: email: 'steve.wozniak@gmail.com',
-  });
-  ```
+```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
+import { Resend } from 'resend';
 
-  ```php PHP theme={"theme":{"light":"github-light","dark":"vesper"}}
-  $resend = Resend::client('re_xxxxxxxxx');
+const resend = new Resend('re_xxxxxxxxx');
 
-  // Get by contact id
-  $resend->contacts->get(
-    idOrEmail: 'e169aa45-1ecf-4183-9955-b1499d5701d3'
-  );
+const { data, error } = await resend.contacts.get({
+  id: 'e169aa45-1ecf-4183-9955-b1499d5701d3',
+  // or: email: 'steve.wozniak@gmail.com',
+});
+```
 
-  // Get by contact email
-  $resend->contacts->get(
-    idOrEmail: 'steve.wozniak@gmail.com'
-  );
-  ```
+```php PHP theme={"theme":{"light":"github-light","dark":"vesper"}}
+$resend = Resend::client('re_xxxxxxxxx');
 
-  ```python Python theme={"theme":{"light":"github-light","dark":"vesper"}}
-  import resend
+// Get by contact id
+$resend->contacts->get(
+  idOrEmail: 'e169aa45-1ecf-4183-9955-b1499d5701d3'
+);
 
-  resend.api_key = "re_xxxxxxxxx"
+// Get by contact email
+$resend->contacts->get(
+  idOrEmail: 'steve.wozniak@gmail.com'
+);
+```
 
-  # Get by contact id
-  resend.Contacts.get(
-    id="e169aa45-1ecf-4183-9955-b1499d5701d3",
-  )
+```python Python theme={"theme":{"light":"github-light","dark":"vesper"}}
+import resend
 
-  # Get by contact email
-  resend.Contacts.get(
-    email="steve.wozniak@gmail.com",
-  )
-  ```
+resend.api_key = "re_xxxxxxxxx"
 
-  ```ruby Ruby theme={"theme":{"light":"github-light","dark":"vesper"}}
-  require "resend"
+# Get by contact id
+resend.Contacts.get(
+  id="e169aa45-1ecf-4183-9955-b1499d5701d3",
+)
 
-  Resend.api_key = "re_xxxxxxxxx"
+# Get by contact email
+resend.Contacts.get(
+  email="steve.wozniak@gmail.com",
+)
+```
 
-  # Get by contact id
-  params = {
-    "id": "e169aa45-1ecf-4183-9955-b1499d5701d3",
-  }
+```ruby Ruby theme={"theme":{"light":"github-light","dark":"vesper"}}
+require "resend"
 
-  Resend::Contacts.get(params)
+Resend.api_key = "re_xxxxxxxxx"
 
-  # Get by contact email
-  params = {
-    "email": "steve.wozniak@gmail.com",
-  }
+# Get by contact id
+params = {
+  "id": "e169aa45-1ecf-4183-9955-b1499d5701d3",
+}
 
-  Resend::Contacts.get(params)
-  ```
+Resend::Contacts.get(params)
 
-  ```go Go theme={"theme":{"light":"github-light","dark":"vesper"}}
-  package main
+# Get by contact email
+params = {
+  "email": "steve.wozniak@gmail.com",
+}
 
-  import "github.com/resend/resend-go/v4"
+Resend::Contacts.get(params)
+```
 
-  func main() {
-  	client := resend.NewClient("re_xxxxxxxxx")
+```go Go theme={"theme":{"light":"github-light","dark":"vesper"}}
+package main
 
-  	// Get by contact id
-  	client.Contacts.Get(&resend.GetContactOptions{
-  		Id: "e169aa45-1ecf-4183-9955-b1499d5701d3",
-  	})
+import "github.com/resend/resend-go/v4"
 
-  	// Get by contact email
-  	client.Contacts.Get(&resend.GetContactOptions{
-  		Id: "steve.wozniak@gmail.com",
-  	})
-  }
-  ```
+func main() {
+	client := resend.NewClient("re_xxxxxxxxx")
 
-  ```rust Rust theme={"theme":{"light":"github-light","dark":"vesper"}}
-  use resend_rs::{Resend, Result};
+	// Get by contact id
+	client.Contacts.Get(&resend.GetContactOptions{
+		Id: "e169aa45-1ecf-4183-9955-b1499d5701d3",
+	})
 
-  #[tokio::main]
-  async fn main() -> Result<()> {
-    let resend = Resend::new("re_xxxxxxxxx");
+	// Get by contact email
+	client.Contacts.Get(&resend.GetContactOptions{
+		Id: "steve.wozniak@gmail.com",
+	})
+}
+```
 
-    // Get by contact id
-    let _contact = resend
-      .contacts
-      .get("e169aa45-1ecf-4183-9955-b1499d5701d3")
-      .await?;
+```rust Rust theme={"theme":{"light":"github-light","dark":"vesper"}}
+use resend_rs::{Resend, Result};
 
-    // Get by contact email
-    let _contact = resend
-      .contacts
-      .get("steve.wozniak@gmail.com")
-      .await?;
-
-    Ok(())
-  }
-  ```
-
-  ```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
-  import com.resend.Resend;
-  import com.resend.core.exception.ResendException;
-  import com.resend.services.contacts.model.GetContactOptions;
-  import com.resend.services.contacts.model.GetContactResponseSuccess;
-
-  public class Main {
-      public static void main(String[] args) throws ResendException {
-          Resend resend = new Resend("re_xxxxxxxxx");
-
-          GetContactOptions params = GetContactOptions.builder()
-                  .id("e169aa45-1ecf-4183-9955-b1499d5701d3") // or: .email("steve.wozniak@gmail.com")
-                  .build();
-
-          GetContactResponseSuccess data = resend.contacts().get(params);
-      }
-  }
-  ```
-
-  ```csharp .NET theme={"theme":{"light":"github-light","dark":"vesper"}}
-  using Resend;
-
-  IResend resend = ResendClient.Create( "re_xxxxxxxxx" ); // Or from DI
+#[tokio::main]
+async fn main() -> Result<()> {
+  let resend = Resend::new("re_xxxxxxxxx");
 
   // Get by contact id
-  var resp1 = await resend.ContactRetrieveAsync(
-      contactId: new Guid( "e169aa45-1ecf-4183-9955-b1499d5701d3" )
-  );
+  let _contact = resend
+    .contacts
+    .get("e169aa45-1ecf-4183-9955-b1499d5701d3")
+    .await?;
 
   // Get by contact email
-  var resp2 = await resend.ContactRetrieveByEmailAsync(
-      email: "steve.wozniak@gmail.com"
-  );
+  let _contact = resend
+    .contacts
+    .get("steve.wozniak@gmail.com")
+    .await?;
 
-  Console.WriteLine( "Contact Email={0}", resp2.Content.Email );
-  ```
+  Ok(())
+}
+```
 
-  ```bash cURL theme={"theme":{"light":"github-light","dark":"vesper"}}
-  # Get by contact id
-  curl -X GET 'https://api.resend.com/contacts/e169aa45-1ecf-4183-9955-b1499d5701d3' \
-       -H 'Authorization: Bearer re_xxxxxxxxx'
+```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
+import com.resend.Resend;
+import com.resend.core.exception.ResendException;
+import com.resend.services.contacts.model.GetContactOptions;
+import com.resend.services.contacts.model.GetContactResponseSuccess;
 
-  # Get by contact email
-  curl -X GET 'https://api.resend.com/contacts/steve.wozniak@gmail.com' \
-       -H 'Authorization: Bearer re_xxxxxxxxx'
-  ```
+public class Main {
+    public static void main(String[] args) throws ResendException {
+        Resend resend = new Resend("re_xxxxxxxxx");
 
-  ```bash CLI theme={"theme":{"light":"github-light","dark":"vesper"}}
-  # Get by contact id
-  resend contacts get e169aa45-1ecf-4183-9955-b1499d5701d3
+        GetContactOptions params = GetContactOptions.builder()
+                .id("e169aa45-1ecf-4183-9955-b1499d5701d3") // or: .email("steve.wozniak@gmail.com")
+                .build();
 
-  # Get by contact email
-  resend contacts get steve.wozniak@gmail.com
-  ```
-</RequestExample>
+        GetContactResponseSuccess data = resend.contacts().get(params);
+    }
+}
+```
 
-<ResponseExample>
-  ```json Response theme={"theme":{"light":"github-light","dark":"vesper"}}
-  {
-    "object": "contact",
-    "id": "e169aa45-1ecf-4183-9955-b1499d5701d3",
-    "email": "steve.wozniak@gmail.com",
-    "first_name": "Steve",
-    "last_name": "Wozniak",
-    "created_at": "2026-10-06 23:47:56.678+00",
-    "unsubscribed": false,
-    "properties": {
-      "company_name": {
-        "value": "Acme Corp",
-        "type": "string"
-      },
-      "department": {
-        "value": "Engineering",
-        "type": "string"
-      }
+```csharp .NET theme={"theme":{"light":"github-light","dark":"vesper"}}
+using Resend;
+
+IResend resend = ResendClient.Create( "re_xxxxxxxxx" ); // Or from DI
+
+// Get by contact id
+var resp1 = await resend.ContactRetrieveAsync(
+    contactId: new Guid( "e169aa45-1ecf-4183-9955-b1499d5701d3" )
+);
+
+// Get by contact email
+var resp2 = await resend.ContactRetrieveByEmailAsync(
+    email: "steve.wozniak@gmail.com"
+);
+
+Console.WriteLine( "Contact Email={0}", resp2.Content.Email );
+```
+
+```bash cURL theme={"theme":{"light":"github-light","dark":"vesper"}}
+# Get by contact id
+curl -X GET 'https://api.resend.com/contacts/e169aa45-1ecf-4183-9955-b1499d5701d3' \
+     -H 'Authorization: Bearer re_xxxxxxxxx'
+
+# Get by contact email
+curl -X GET 'https://api.resend.com/contacts/steve.wozniak@gmail.com' \
+     -H 'Authorization: Bearer re_xxxxxxxxx'
+```
+
+```bash CLI theme={"theme":{"light":"github-light","dark":"vesper"}}
+# Get by contact id
+resend contacts get e169aa45-1ecf-4183-9955-b1499d5701d3
+
+# Get by contact email
+resend contacts get steve.wozniak@gmail.com
+```
+
+```json Response theme={"theme":{"light":"github-light","dark":"vesper"}}
+{
+  "object": "contact",
+  "id": "e169aa45-1ecf-4183-9955-b1499d5701d3",
+  "email": "steve.wozniak@gmail.com",
+  "first_name": "Steve",
+  "last_name": "Wozniak",
+  "created_at": "2026-10-06 23:47:56.678+00",
+  "unsubscribed": false,
+  "properties": {
+    "company_name": {
+      "value": "Acme Corp",
+      "type": "string"
+    },
+    "department": {
+      "value": "Engineering",
+      "type": "string"
     }
   }
-  ```
-</ResponseExample>
+}
+```

@@ -6,204 +6,170 @@
 
 > Retrieve a list of API request logs.
 
-export const QueryParams = ({type, isRequired}) => {
-  return <>
-      <h2>Query Parameters</h2>
+## Query Parameters
 
-      {isRequired ? <ParamField query="limit" type="number">
-          Number of {type} to retrieve.
-          <ul>
-            <li>
-              Default value: <code>20</code>
-            </li>
-            <li>
-              Maximum value: <code>100</code>
-            </li>
-            <li>
-              Minimum value: <code>1</code>
-            </li>
-          </ul>
-        </ParamField> : <>
-          <p>
-            Note that the <code>limit</code> parameter is <em>optional</em>. If
-            you do not provide a <code>limit</code>, all {type} will be returned
-            in a single response.
-          </p>
-          <ParamField query="limit" type="number">
-            Number of {type} to retrieve.
-            <ul>
-              <li>
-                Maximum value: <code>100</code>
-              </li>
-              <li>
-                Minimum value: <code>1</code>
-              </li>
-            </ul>
-          </ParamField>
-        </>}
+**limit** `number`
 
-      <ParamField query="after" type="string">
-        The ID <em>after</em> which we'll retrieve more {type} (for pagination).
-        This ID will <em>not</em> be included in the returned list. Cannot be
-        used with the
-        <code>before</code> parameter.
-      </ParamField>
-      <ParamField query="before" type="string">
-        The ID <em>before</em> which we'll retrieve more {type} (for
-        pagination). This ID will <em>not</em> be included in the returned list.
-        Cannot be used with the <code>after</code> parameter.
-      </ParamField>
-      <Info>
-        You can only use either <code>after</code> or <code>before</code>{' '}
-        parameter, not both. See our{' '}
-        <a href="/docs/api-reference/pagination">pagination guide</a> for more
-        information.
-      </Info>
-    </>;
-};
+Number of logs to retrieve.
+<ul><li>Default value: `20`</li>
+<li>Maximum value: `100`</li>
+<li>Minimum value: `1`</li></ul>
 
-<QueryParams type="logs" isRequired={true} />
+**after** `string`
 
-<RequestExample>
-  ```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
-  import { Resend } from 'resend';
+The ID *after* which we'll retrieve more logs (for pagination).
+This ID will *not* be included in the returned list. Cannot be
+used with the
+`before` parameter.
+**before** `string`
 
-  const resend = new Resend('re_xxxxxxxxx');
+The ID *before* which we'll retrieve more logs (for
+pagination). This ID will *not* be included in the returned list.
+Cannot be used with the `after` parameter.
 
-  const { data, error } = await resend.logs.list();
-  ```
+> [!NOTE]
+>
+> You can only use either `after` or `before`
+> parameter, not both. See our
+> [pagination guide](/docs/api-reference/pagination) for more
+> information.
 
-  ```php PHP theme={"theme":{"light":"github-light","dark":"vesper"}}
-  $resend = Resend::client('re_xxxxxxxxx');
+```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
+import { Resend } from 'resend';
 
-  $resend->logs->list();
-  ```
+const resend = new Resend('re_xxxxxxxxx');
 
-  ```python Python theme={"theme":{"light":"github-light","dark":"vesper"}}
-  import resend
+const { data, error } = await resend.logs.list();
+```
 
-  resend.api_key = "re_xxxxxxxxx"
+```php PHP theme={"theme":{"light":"github-light","dark":"vesper"}}
+$resend = Resend::client('re_xxxxxxxxx');
 
-  resend.Logs.list()
-  ```
+$resend->logs->list();
+```
 
-  ```ruby Ruby theme={"theme":{"light":"github-light","dark":"vesper"}}
-  require "resend"
+```python Python theme={"theme":{"light":"github-light","dark":"vesper"}}
+import resend
 
-  Resend.api_key = "re_xxxxxxxxx"
+resend.api_key = "re_xxxxxxxxx"
 
-  logs = Resend::Logs.list
-  puts logs
-  ```
+resend.Logs.list()
+```
 
-  ```go Go theme={"theme":{"light":"github-light","dark":"vesper"}}
-  package main
+```ruby Ruby theme={"theme":{"light":"github-light","dark":"vesper"}}
+require "resend"
 
-  import (
-  	"context"
+Resend.api_key = "re_xxxxxxxxx"
 
-  	"github.com/resend/resend-go/v4"
-  )
+logs = Resend::Logs.list
+puts logs
+```
 
-  func main() {
-  	ctx := context.TODO()
-  	client := resend.NewClient("re_xxxxxxxxx")
+```go Go theme={"theme":{"light":"github-light","dark":"vesper"}}
+package main
 
-  	logs, err := client.Logs.ListWithOptions(ctx, nil)
-  	if err != nil {
-  		panic(err)
-  	}
+import (
+	"context"
 
-  	if logs.HasMore {
-  		opts := &resend.ListOptions{
-  			After: &logs.Data[len(logs.Data)-1].Id,
-  		}
-  		client.Logs.ListWithOptions(ctx, opts)
-  	}
-  }
-  ```
+	"github.com/resend/resend-go/v4"
+)
 
-  ```rust Rust theme={"theme":{"light":"github-light","dark":"vesper"}}
-  use resend_rs::{Resend, Result, list_opts::ListOptions};
+func main() {
+	ctx := context.TODO()
+	client := resend.NewClient("re_xxxxxxxxx")
 
-  #[tokio::main]
-  async fn main() -> Result<()> {
-    let resend = Resend::new("re_xxxxxxxxx");
+	logs, err := client.Logs.ListWithOptions(ctx, nil)
+	if err != nil {
+		panic(err)
+	}
 
-    let _logs = resend
-      .logs
-      .list(ListOptions::default())
-      .await?;
+	if logs.HasMore {
+		opts := &resend.ListOptions{
+			After: &logs.Data[len(logs.Data)-1].Id,
+		}
+		client.Logs.ListWithOptions(ctx, opts)
+	}
+}
+```
 
-    Ok(())
-  }
-  ```
+```rust Rust theme={"theme":{"light":"github-light","dark":"vesper"}}
+use resend_rs::{Resend, Result, list_opts::ListOptions};
 
-  ```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
-  import com.resend.Resend;
-  import com.resend.core.exception.ResendException;
+#[tokio::main]
+async fn main() -> Result<()> {
+  let resend = Resend::new("re_xxxxxxxxx");
 
-  public class Main {
-      public static void main(String[] args) throws ResendException {
-          Resend resend = new Resend("re_xxxxxxxxx");
+  let _logs = resend
+    .logs
+    .list(ListOptions::default())
+    .await?;
 
-          resend.logs().list();
-      }
-  }
-  ```
+  Ok(())
+}
+```
 
-  ```csharp .NET theme={"theme":{"light":"github-light","dark":"vesper"}}
-  using Resend;
-  using System.Linq;
+```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
+import com.resend.Resend;
+import com.resend.core.exception.ResendException;
 
-  IResend resend = ResendClient.Create( "re_xxxxxxxxx" ); // Or from DI
+public class Main {
+    public static void main(String[] args) throws ResendException {
+        Resend resend = new Resend("re_xxxxxxxxx");
 
-  var resp = await resend.LogListAsync();
-  Console.WriteLine( "Count={0}", resp.Content.Data.Count );
+        resend.logs().list();
+    }
+}
+```
 
-  if ( resp.Content.HasMore )
-  {
-      var lastId = resp.Content.Data.Last().Id;
-      await resend.LogListAsync( new PaginatedQuery()
-      {
-          After = lastId.ToString(),
-      } );
-  }
-  ```
+```csharp .NET theme={"theme":{"light":"github-light","dark":"vesper"}}
+using Resend;
+using System.Linq;
 
-  ```bash cURL theme={"theme":{"light":"github-light","dark":"vesper"}}
-  curl -X GET 'https://api.resend.com/logs' \
-       -H 'Authorization: Bearer re_xxxxxxxxx'
-  ```
+IResend resend = ResendClient.Create( "re_xxxxxxxxx" ); // Or from DI
 
-  ```bash CLI theme={"theme":{"light":"github-light","dark":"vesper"}}
-  resend logs list
-  ```
-</RequestExample>
+var resp = await resend.LogListAsync();
+Console.WriteLine( "Count={0}", resp.Content.Data.Count );
 
-<ResponseExample>
-  ```json Response theme={"theme":{"light":"github-light","dark":"vesper"}}
-  {
-    "object": "list",
-    "has_more": false,
-    "data": [
-      {
-        "id": "37e4414c-5e25-4dbc-a071-43552a4bd53b",
-        "created_at": "2026-03-30 13:43:54.622865+00",
-        "endpoint": "/emails",
-        "method": "POST",
-        "response_status": 200,
-        "user_agent": "resend-node:6.0.3"
-      },
-      {
-        "id": "a1b2c3d4-5e6f-7a8b-9c0d-1e2f3a4b5c6d",
-        "created_at": "2026-03-30 12:15:00.123456+00",
-        "endpoint": "/emails/4ef9a417-02e9-4d39-ad75-9611e0fcc33c",
-        "method": "GET",
-        "response_status": 200,
-        "user_agent": "curl/8.7.1"
-      }
-    ]
-  }
-  ```
-</ResponseExample>
+if ( resp.Content.HasMore )
+{
+    var lastId = resp.Content.Data.Last().Id;
+    await resend.LogListAsync( new PaginatedQuery()
+    {
+        After = lastId.ToString(),
+    } );
+}
+```
+
+```bash cURL theme={"theme":{"light":"github-light","dark":"vesper"}}
+curl -X GET 'https://api.resend.com/logs' \
+     -H 'Authorization: Bearer re_xxxxxxxxx'
+```
+
+```bash CLI theme={"theme":{"light":"github-light","dark":"vesper"}}
+resend logs list
+```
+
+```json Response theme={"theme":{"light":"github-light","dark":"vesper"}}
+{
+  "object": "list",
+  "has_more": false,
+  "data": [
+    {
+      "id": "37e4414c-5e25-4dbc-a071-43552a4bd53b",
+      "created_at": "2026-03-30 13:43:54.622865+00",
+      "endpoint": "/emails",
+      "method": "POST",
+      "response_status": 200,
+      "user_agent": "resend-node:6.0.3"
+    },
+    {
+      "id": "a1b2c3d4-5e6f-7a8b-9c0d-1e2f3a4b5c6d",
+      "created_at": "2026-03-30 12:15:00.123456+00",
+      "endpoint": "/emails/4ef9a417-02e9-4d39-ad75-9611e0fcc33c",
+      "method": "GET",
+      "response_status": 200,
+      "user_agent": "curl/8.7.1"
+    }
+  ]
+}
+```

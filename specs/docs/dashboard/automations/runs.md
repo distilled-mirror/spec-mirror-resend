@@ -28,592 +28,576 @@ When a contact unsubscribes, any remaining **Send Email** steps in the Automatio
 
 ## Listing runs
 
-<Tabs>
-  <Tab title="Using the dashboard">
-    Navigate to the [Automations page](https://resend.com/automations) and select an Automation to view its runs.
+**Using the dashboard**
 
-    <img alt="Automation Runs" src="https://mintcdn.com/resend/ePnINhGLisYSJsWT/images/automations-runs.png?fit=max&auto=format&n=ePnINhGLisYSJsWT&q=85&s=b15322c27ffd309ee310250f6fc6dedd" width="3411" height="1881" data-path="images/automations-runs.png" />
+Navigate to the [Automations page](https://resend.com/automations) and select an Automation to view its runs.
 
-    Each run shows:
+![Automation Runs](https://mintcdn.com/resend/ePnINhGLisYSJsWT/images/automations-runs.png?fit=max\&auto=format\&n=ePnINhGLisYSJsWT\&q=85\&s=b15322c27ffd309ee310250f6fc6dedd)
 
-    * **Status** — Whether the run is `running`, `completed`, `failed`, `cancelled`, or `skipped`.
-    * **Started** — When the run began.
-    * **Duration** — When the run finished (if applicable).
-  </Tab>
+Each run shows:
 
-  <Tab title="Using the API">
-    List all runs for an Automation:
+* **Status** — Whether the run is `running`, `completed`, `failed`, `cancelled`, or `skipped`.
+* **Started** — When the run began.
+* **Duration** — When the run finished (if applicable).
 
-    <CodeGroup>
-      ```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
-      import { Resend } from 'resend';
+**Using the API**
 
-      const resend = new Resend('re_xxxxxxxxx');
+List all runs for an Automation:
 
-      const { data, error } = await resend.automations.runs.list({
-        automationId: 'c9b16d4f-ba6c-4e2e-b044-6bf4404e57fd',
-      });
-      ```
+```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
+import { Resend } from 'resend';
 
-      ```php PHP theme={"theme":{"light":"github-light","dark":"vesper"}}
-      $resend = Resend::client('re_xxxxxxxxx');
+const resend = new Resend('re_xxxxxxxxx');
 
-      $resend->automations->runs->list('c9b16d4f-ba6c-4e2e-b044-6bf4404e57fd');
-      ```
+const { data, error } = await resend.automations.runs.list({
+  automationId: 'c9b16d4f-ba6c-4e2e-b044-6bf4404e57fd',
+});
+```
 
-      ```python Python theme={"theme":{"light":"github-light","dark":"vesper"}}
-      import resend
+```php PHP theme={"theme":{"light":"github-light","dark":"vesper"}}
+$resend = Resend::client('re_xxxxxxxxx');
 
-      resend.api_key = "re_xxxxxxxxx"
+$resend->automations->runs->list('c9b16d4f-ba6c-4e2e-b044-6bf4404e57fd');
+```
 
-      resend.Automations.Runs.list("c9b16d4f-ba6c-4e2e-b044-6bf4404e57fd")
-      ```
+```python Python theme={"theme":{"light":"github-light","dark":"vesper"}}
+import resend
 
-      ```ruby Ruby theme={"theme":{"light":"github-light","dark":"vesper"}}
-      require "resend"
+resend.api_key = "re_xxxxxxxxx"
 
-      Resend.api_key = "re_xxxxxxxxx"
+resend.Automations.Runs.list("c9b16d4f-ba6c-4e2e-b044-6bf4404e57fd")
+```
 
-      Resend::Automations::Runs.list("c9b16d4f-ba6c-4e2e-b044-6bf4404e57fd")
-      ```
+```ruby Ruby theme={"theme":{"light":"github-light","dark":"vesper"}}
+require "resend"
 
-      ```go Go theme={"theme":{"light":"github-light","dark":"vesper"}}
-      package main
+Resend.api_key = "re_xxxxxxxxx"
 
-      import "github.com/resend/resend-go/v4"
+Resend::Automations::Runs.list("c9b16d4f-ba6c-4e2e-b044-6bf4404e57fd")
+```
 
-      func main() {
-      	client := resend.NewClient("re_xxxxxxxxx")
+```go Go theme={"theme":{"light":"github-light","dark":"vesper"}}
+package main
 
-      	client.Automations.ListRuns("c9b16d4f-ba6c-4e2e-b044-6bf4404e57fd")
-      }
-      ```
+import "github.com/resend/resend-go/v4"
 
-      ```rust Rust theme={"theme":{"light":"github-light","dark":"vesper"}}
-      use resend_rs::{list_opts::ListOptions, Resend, Result};
+func main() {
+	client := resend.NewClient("re_xxxxxxxxx")
 
-      #[tokio::main]
-      async fn main() -> Result<()> {
-        let resend = Resend::new("re_xxxxxxxxx");
+	client.Automations.ListRuns("c9b16d4f-ba6c-4e2e-b044-6bf4404e57fd")
+}
+```
 
-        let _runs = resend
-          .automations
-          .list_runs(
-            "c9b16d4f-ba6c-4e2e-b044-6bf4404e57fd",
-            None,
-            ListOptions::default(),
-          )
-          .await?;
+```rust Rust theme={"theme":{"light":"github-light","dark":"vesper"}}
+use resend_rs::{list_opts::ListOptions, Resend, Result};
 
-        Ok(())
-      }
-      ```
+#[tokio::main]
+async fn main() -> Result<()> {
+  let resend = Resend::new("re_xxxxxxxxx");
 
-      ```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
-      import com.resend.*;
-      import com.resend.core.exception.ResendException;
-      import com.resend.services.automations.model.ListAutomationRunsResponseSuccess;
+  let _runs = resend
+    .automations
+    .list_runs(
+      "c9b16d4f-ba6c-4e2e-b044-6bf4404e57fd",
+      None,
+      ListOptions::default(),
+    )
+    .await?;
 
-      public class Main {
-          public static void main(String[] args) throws ResendException {
-              Resend resend = new Resend("re_xxxxxxxxx");
+  Ok(())
+}
+```
 
-              ListAutomationRunsResponseSuccess data = resend.automations().listRuns("c9b16d4f-ba6c-4e2e-b044-6bf4404e57fd");
-          }
-      }
-      ```
+```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
+import com.resend.*;
+import com.resend.core.exception.ResendException;
+import com.resend.services.automations.model.ListAutomationRunsResponseSuccess;
 
-      ```csharp .NET theme={"theme":{"light":"github-light","dark":"vesper"}}
-      using Resend;
+public class Main {
+    public static void main(String[] args) throws ResendException {
+        Resend resend = new Resend("re_xxxxxxxxx");
 
-      IResend resend = ResendClient.Create( "re_xxxxxxxxx" );
-
-      var resp = await resend.AutomationRunListAsync( new Guid( "c9b16d4f-ba6c-4e2e-b044-6bf4404e57fd" ) );
-      Console.WriteLine( "Count={0}", resp.Content.Data.Count );
-      ```
-
-      ```bash cURL theme={"theme":{"light":"github-light","dark":"vesper"}}
-      curl -X GET 'https://api.resend.com/automations/c9b16d4f-ba6c-4e2e-b044-6bf4404e57fd/runs' \
-           -H 'Authorization: Bearer re_xxxxxxxxx'
-      ```
-
-      ```bash CLI theme={"theme":{"light":"github-light","dark":"vesper"}}
-      resend automations runs list c9b16d4f-ba6c-4e2e-b044-6bf4404e57fd
-      ```
-    </CodeGroup>
-
-    Response:
-
-    ```json theme={"theme":{"light":"github-light","dark":"vesper"}}
-    {
-      "object": "list",
-      "has_more": false,
-      "data": [
-        {
-          "id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
-          "status": "completed",
-          "started_at": "2026-10-01 12:00:00.000000+00",
-          "completed_at": "2026-10-01 12:05:00.000000+00",
-          "created_at": "2026-10-01 12:00:00.000000+00"
-        }
-      ]
+        ListAutomationRunsResponseSuccess data = resend.automations().listRuns("c9b16d4f-ba6c-4e2e-b044-6bf4404e57fd");
     }
-    ```
-  </Tab>
-</Tabs>
+}
+```
+
+```csharp .NET theme={"theme":{"light":"github-light","dark":"vesper"}}
+using Resend;
+
+IResend resend = ResendClient.Create( "re_xxxxxxxxx" );
+
+var resp = await resend.AutomationRunListAsync( new Guid( "c9b16d4f-ba6c-4e2e-b044-6bf4404e57fd" ) );
+Console.WriteLine( "Count={0}", resp.Content.Data.Count );
+```
+
+```bash cURL theme={"theme":{"light":"github-light","dark":"vesper"}}
+curl -X GET 'https://api.resend.com/automations/c9b16d4f-ba6c-4e2e-b044-6bf4404e57fd/runs' \
+     -H 'Authorization: Bearer re_xxxxxxxxx'
+```
+
+```bash CLI theme={"theme":{"light":"github-light","dark":"vesper"}}
+resend automations runs list c9b16d4f-ba6c-4e2e-b044-6bf4404e57fd
+```
+
+Response:
+
+```json theme={"theme":{"light":"github-light","dark":"vesper"}}
+{
+  "object": "list",
+  "has_more": false,
+  "data": [
+    {
+      "id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+      "status": "completed",
+      "started_at": "2026-10-01 12:00:00.000000+00",
+      "completed_at": "2026-10-01 12:05:00.000000+00",
+      "created_at": "2026-10-01 12:00:00.000000+00"
+    }
+  ]
+}
+```
 
 View the [List Automation Runs API reference](/docs/api-reference/automations/list-automation-runs) for more details.
 
 ## Filtering runs by status
 
-<Tabs>
-  <Tab title="Using the dashboard">
-    You can filter runs by status to find specific executions.
+**Using the dashboard**
 
-    <img alt="Automation Runs Filter" src="https://mintcdn.com/resend/ePnINhGLisYSJsWT/images/automations-runs-filter.png?fit=max&auto=format&n=ePnINhGLisYSJsWT&q=85&s=9e9cb92b783ce0dbcb8569004fb9e9ef" width="3412" height="1880" data-path="images/automations-runs-filter.png" />
-  </Tab>
+You can filter runs by status to find specific executions.
 
-  <Tab title="Using the API">
-    You can filter by multiple statuses using a comma-separated list.
+![Automation Runs Filter](https://mintcdn.com/resend/ePnINhGLisYSJsWT/images/automations-runs-filter.png?fit=max\&auto=format\&n=ePnINhGLisYSJsWT\&q=85\&s=9e9cb92b783ce0dbcb8569004fb9e9ef)
 
-    <CodeGroup>
-      ```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
-      import { Resend } from 'resend';
+**Using the API**
 
-      const resend = new Resend('re_xxxxxxxxx');
+You can filter by multiple statuses using a comma-separated list.
 
-      const { data, error } = await resend.automations.runs.list({
-        automationId: 'c9b16d4f-ba6c-4e2e-b044-6bf4404e57fd',
-        status: ['running', 'completed'],
-      });
-      ```
+```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
+import { Resend } from 'resend';
 
-      ```php PHP theme={"theme":{"light":"github-light","dark":"vesper"}}
-      $resend = Resend::client('re_xxxxxxxxx');
+const resend = new Resend('re_xxxxxxxxx');
 
-      $resend->automations->runs->list('c9b16d4f-ba6c-4e2e-b044-6bf4404e57fd', [
-        'status' => 'running,completed',
-      ]);
-      ```
+const { data, error } = await resend.automations.runs.list({
+  automationId: 'c9b16d4f-ba6c-4e2e-b044-6bf4404e57fd',
+  status: ['running', 'completed'],
+});
+```
 
-      ```python Python theme={"theme":{"light":"github-light","dark":"vesper"}}
-      import resend
+```php PHP theme={"theme":{"light":"github-light","dark":"vesper"}}
+$resend = Resend::client('re_xxxxxxxxx');
 
-      resend.api_key = "re_xxxxxxxxx"
+$resend->automations->runs->list('c9b16d4f-ba6c-4e2e-b044-6bf4404e57fd', [
+  'status' => 'running,completed',
+]);
+```
 
-      resend.Automations.Runs.list(
-        "c9b16d4f-ba6c-4e2e-b044-6bf4404e57fd",
-        params={"status": "running,completed"},
-      )
-      ```
+```python Python theme={"theme":{"light":"github-light","dark":"vesper"}}
+import resend
 
-      ```ruby Ruby theme={"theme":{"light":"github-light","dark":"vesper"}}
-      require "resend"
+resend.api_key = "re_xxxxxxxxx"
 
-      Resend.api_key = "re_xxxxxxxxx"
+resend.Automations.Runs.list(
+  "c9b16d4f-ba6c-4e2e-b044-6bf4404e57fd",
+  params={"status": "running,completed"},
+)
+```
 
-      Resend::Automations::Runs.list(
-        "c9b16d4f-ba6c-4e2e-b044-6bf4404e57fd",
-        status: "running,completed",
-      )
-      ```
+```ruby Ruby theme={"theme":{"light":"github-light","dark":"vesper"}}
+require "resend"
 
-      ```go Go theme={"theme":{"light":"github-light","dark":"vesper"}}
-      package main
+Resend.api_key = "re_xxxxxxxxx"
 
-      import (
-      	"context"
+Resend::Automations::Runs.list(
+  "c9b16d4f-ba6c-4e2e-b044-6bf4404e57fd",
+  status: "running,completed",
+)
+```
 
-      	"github.com/resend/resend-go/v4"
-      )
+```go Go theme={"theme":{"light":"github-light","dark":"vesper"}}
+package main
 
-      func main() {
-      	client := resend.NewClient("re_xxxxxxxxx")
+import (
+	"context"
 
-      	client.Automations.ListRunsWithContext(
-      		context.TODO(),
-      		"c9b16d4f-ba6c-4e2e-b044-6bf4404e57fd",
-      		&resend.ListAutomationRunsOptions{
-      			Status: []resend.AutomationRunStatus{
-      				resend.AutomationRunStatusRunning,
-      				resend.AutomationRunStatusCompleted,
-      			},
-      		},
-      	)
-      }
-      ```
+	"github.com/resend/resend-go/v4"
+)
 
-      ```rust Rust theme={"theme":{"light":"github-light","dark":"vesper"}}
-      use resend_rs::{list_opts::ListOptions, Resend, Result};
+func main() {
+	client := resend.NewClient("re_xxxxxxxxx")
 
-      #[tokio::main]
-      async fn main() -> Result<()> {
-        let resend = Resend::new("re_xxxxxxxxx");
+	client.Automations.ListRunsWithContext(
+		context.TODO(),
+		"c9b16d4f-ba6c-4e2e-b044-6bf4404e57fd",
+		&resend.ListAutomationRunsOptions{
+			Status: []resend.AutomationRunStatus{
+				resend.AutomationRunStatusRunning,
+				resend.AutomationRunStatusCompleted,
+			},
+		},
+	)
+}
+```
 
-        let _runs = resend
-          .automations
-          .list_runs(
-            "c9b16d4f-ba6c-4e2e-b044-6bf4404e57fd",
-            Some("running,completed".to_owned()),
-            ListOptions::default(),
-          )
-          .await?;
+```rust Rust theme={"theme":{"light":"github-light","dark":"vesper"}}
+use resend_rs::{list_opts::ListOptions, Resend, Result};
 
-        Ok(())
-      }
-      ```
+#[tokio::main]
+async fn main() -> Result<()> {
+  let resend = Resend::new("re_xxxxxxxxx");
 
-      ```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
-      import com.resend.*;
-      import com.resend.core.exception.ResendException;
-      import com.resend.services.automations.model.ListAutomationRunsParams;
-      import com.resend.services.automations.model.ListAutomationRunsResponseSuccess;
-      import com.resend.services.automations.model.RunStatus;
+  let _runs = resend
+    .automations
+    .list_runs(
+      "c9b16d4f-ba6c-4e2e-b044-6bf4404e57fd",
+      Some("running,completed".to_owned()),
+      ListOptions::default(),
+    )
+    .await?;
 
-      public class Main {
-          public static void main(String[] args) throws ResendException {
-              Resend resend = new Resend("re_xxxxxxxxx");
+  Ok(())
+}
+```
 
-              ListAutomationRunsParams params = ListAutomationRunsParams.builder()
-                      .status(RunStatus.RUNNING, RunStatus.COMPLETED)
-                      .build();
-              ListAutomationRunsResponseSuccess data = resend.automations().listRuns("c9b16d4f-ba6c-4e2e-b044-6bf4404e57fd", params);
-          }
-      }
-      ```
+```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
+import com.resend.*;
+import com.resend.core.exception.ResendException;
+import com.resend.services.automations.model.ListAutomationRunsParams;
+import com.resend.services.automations.model.ListAutomationRunsResponseSuccess;
+import com.resend.services.automations.model.RunStatus;
 
-      ```csharp .NET theme={"theme":{"light":"github-light","dark":"vesper"}}
-      using Resend;
+public class Main {
+    public static void main(String[] args) throws ResendException {
+        Resend resend = new Resend("re_xxxxxxxxx");
 
-      IResend resend = ResendClient.Create( "re_xxxxxxxxx" ); // Or from DI
+        ListAutomationRunsParams params = ListAutomationRunsParams.builder()
+                .status(RunStatus.RUNNING, RunStatus.COMPLETED)
+                .build();
+        ListAutomationRunsResponseSuccess data = resend.automations().listRuns("c9b16d4f-ba6c-4e2e-b044-6bf4404e57fd", params);
+    }
+}
+```
 
-      var resp = await resend.AutomationRunListAsync(
-          new Guid( "c9b16d4f-ba6c-4e2e-b044-6bf4404e57fd" ),
-          new AutomationRunListQuery() { Status = "running,completed" }
-      );
-      ```
+```csharp .NET theme={"theme":{"light":"github-light","dark":"vesper"}}
+using Resend;
 
-      ```bash cURL theme={"theme":{"light":"github-light","dark":"vesper"}}
-      curl -X GET 'https://api.resend.com/automations/c9b16d4f-ba6c-4e2e-b044-6bf4404e57fd/runs?status=running,completed' \
-           -H 'Authorization: Bearer re_xxxxxxxxx'
-      ```
+IResend resend = ResendClient.Create( "re_xxxxxxxxx" ); // Or from DI
 
-      ```bash CLI theme={"theme":{"light":"github-light","dark":"vesper"}}
-      resend automations runs list c9b16d4f-ba6c-4e2e-b044-6bf4404e57fd
-      ```
-    </CodeGroup>
-  </Tab>
-</Tabs>
+var resp = await resend.AutomationRunListAsync(
+    new Guid( "c9b16d4f-ba6c-4e2e-b044-6bf4404e57fd" ),
+    new AutomationRunListQuery() { Status = "running,completed" }
+);
+```
+
+```bash cURL theme={"theme":{"light":"github-light","dark":"vesper"}}
+curl -X GET 'https://api.resend.com/automations/c9b16d4f-ba6c-4e2e-b044-6bf4404e57fd/runs?status=running,completed' \
+     -H 'Authorization: Bearer re_xxxxxxxxx'
+```
+
+```bash CLI theme={"theme":{"light":"github-light","dark":"vesper"}}
+resend automations runs list c9b16d4f-ba6c-4e2e-b044-6bf4404e57fd
+```
 
 ## Viewing a single run
 
-<Tabs>
-  <Tab title="Using the dashboard">
-    Click on a run to view its details, and select the step you want to debug.
+**Using the dashboard**
 
-    <img alt="Automation Run View" src="https://mintcdn.com/resend/ePnINhGLisYSJsWT/images/automations-run-view.png?fit=max&auto=format&n=ePnINhGLisYSJsWT&q=85&s=57ab5b2a94a3f0a932482bb1635ae4ab" width="3411" height="1880" data-path="images/automations-run-view.png" />
-  </Tab>
+Click on a run to view its details, and select the step you want to debug.
 
-  <Tab title="Using the API">
-    Get the details of a specific run:
+![Automation Run View](https://mintcdn.com/resend/ePnINhGLisYSJsWT/images/automations-run-view.png?fit=max\&auto=format\&n=ePnINhGLisYSJsWT\&q=85\&s=57ab5b2a94a3f0a932482bb1635ae4ab)
 
-    <CodeGroup>
-      ```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
-      import { Resend } from 'resend';
+**Using the API**
 
-      const resend = new Resend('re_xxxxxxxxx');
+Get the details of a specific run:
 
-      const { data, error } = await resend.automations.runs.get({
-        automationId: 'c9b16d4f-ba6c-4e2e-b044-6bf4404e57fd',
-        runId: 'a1b2c3d4-e5f6-7890-abcd-ef1234567890',
-      });
-      ```
+```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
+import { Resend } from 'resend';
 
-      ```php PHP theme={"theme":{"light":"github-light","dark":"vesper"}}
-      $resend = Resend::client('re_xxxxxxxxx');
+const resend = new Resend('re_xxxxxxxxx');
 
-      $resend->automations->runs->get(
-        'c9b16d4f-ba6c-4e2e-b044-6bf4404e57fd',
-        'a1b2c3d4-e5f6-7890-abcd-ef1234567890',
-      );
-      ```
+const { data, error } = await resend.automations.runs.get({
+  automationId: 'c9b16d4f-ba6c-4e2e-b044-6bf4404e57fd',
+  runId: 'a1b2c3d4-e5f6-7890-abcd-ef1234567890',
+});
+```
 
-      ```python Python theme={"theme":{"light":"github-light","dark":"vesper"}}
-      import resend
+```php PHP theme={"theme":{"light":"github-light","dark":"vesper"}}
+$resend = Resend::client('re_xxxxxxxxx');
 
-      resend.api_key = "re_xxxxxxxxx"
+$resend->automations->runs->get(
+  'c9b16d4f-ba6c-4e2e-b044-6bf4404e57fd',
+  'a1b2c3d4-e5f6-7890-abcd-ef1234567890',
+);
+```
 
-      resend.Automations.Runs.get(
-        "c9b16d4f-ba6c-4e2e-b044-6bf4404e57fd",
-        "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
-      )
-      ```
+```python Python theme={"theme":{"light":"github-light","dark":"vesper"}}
+import resend
 
-      ```ruby Ruby theme={"theme":{"light":"github-light","dark":"vesper"}}
-      require "resend"
+resend.api_key = "re_xxxxxxxxx"
 
-      Resend.api_key = "re_xxxxxxxxx"
+resend.Automations.Runs.get(
+  "c9b16d4f-ba6c-4e2e-b044-6bf4404e57fd",
+  "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+)
+```
 
-      Resend::Automations::Runs.get(
-        "c9b16d4f-ba6c-4e2e-b044-6bf4404e57fd",
-        "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
-      )
-      ```
+```ruby Ruby theme={"theme":{"light":"github-light","dark":"vesper"}}
+require "resend"
 
-      ```go Go theme={"theme":{"light":"github-light","dark":"vesper"}}
-      package main
+Resend.api_key = "re_xxxxxxxxx"
 
-      import "github.com/resend/resend-go/v4"
+Resend::Automations::Runs.get(
+  "c9b16d4f-ba6c-4e2e-b044-6bf4404e57fd",
+  "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+)
+```
 
-      func main() {
-      	client := resend.NewClient("re_xxxxxxxxx")
+```go Go theme={"theme":{"light":"github-light","dark":"vesper"}}
+package main
 
-      	client.Automations.GetRun(
-      		"c9b16d4f-ba6c-4e2e-b044-6bf4404e57fd",
-      		"a1b2c3d4-e5f6-7890-abcd-ef1234567890",
-      	)
-      }
-      ```
+import "github.com/resend/resend-go/v4"
 
-      ```rust Rust theme={"theme":{"light":"github-light","dark":"vesper"}}
-      use resend_rs::{Resend, Result};
+func main() {
+	client := resend.NewClient("re_xxxxxxxxx")
 
-      #[tokio::main]
-      async fn main() -> Result<()> {
-        let resend = Resend::new("re_xxxxxxxxx");
+	client.Automations.GetRun(
+		"c9b16d4f-ba6c-4e2e-b044-6bf4404e57fd",
+		"a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+	)
+}
+```
 
-        let _run = resend
-          .automations
-          .get_run(
-            "c9b16d4f-ba6c-4e2e-b044-6bf4404e57fd",
-            "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
-          )
-          .await?;
+```rust Rust theme={"theme":{"light":"github-light","dark":"vesper"}}
+use resend_rs::{Resend, Result};
 
-        Ok(())
-      }
-      ```
+#[tokio::main]
+async fn main() -> Result<()> {
+  let resend = Resend::new("re_xxxxxxxxx");
 
-      ```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
-      import com.resend.*;
-      import com.resend.services.automations.model.AutomationRun;
-      import com.resend.services.automations.model.GetAutomationRunOptions;
+  let _run = resend
+    .automations
+    .get_run(
+      "c9b16d4f-ba6c-4e2e-b044-6bf4404e57fd",
+      "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+    )
+    .await?;
 
-      Resend resend = new Resend("re_xxxxxxxxx");
+  Ok(())
+}
+```
 
-      AutomationRun data = resend.automations().getRun(
-              GetAutomationRunOptions.builder()
-                      .automationId("c9b16d4f-ba6c-4e2e-b044-6bf4404e57fd")
-                      .runId("a1b2c3d4-e5f6-7890-abcd-ef1234567890")
-                      .build()
-      );
-      ```
+```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
+import com.resend.*;
+import com.resend.services.automations.model.AutomationRun;
+import com.resend.services.automations.model.GetAutomationRunOptions;
 
-      ```csharp .NET theme={"theme":{"light":"github-light","dark":"vesper"}}
-      using Resend;
+Resend resend = new Resend("re_xxxxxxxxx");
 
-      IResend resend = ResendClient.Create( "re_xxxxxxxxx" ); // Or from DI
+AutomationRun data = resend.automations().getRun(
+        GetAutomationRunOptions.builder()
+                .automationId("c9b16d4f-ba6c-4e2e-b044-6bf4404e57fd")
+                .runId("a1b2c3d4-e5f6-7890-abcd-ef1234567890")
+                .build()
+);
+```
 
-      var resp = await resend.AutomationRunRetrieveAsync(
-          new Guid( "c9b16d4f-ba6c-4e2e-b044-6bf4404e57fd" ),
-          new Guid( "a1b2c3d4-e5f6-7890-abcd-ef1234567890" )
-      );
-      Console.WriteLine( "Status={0}", resp.Content.Status );
-      ```
+```csharp .NET theme={"theme":{"light":"github-light","dark":"vesper"}}
+using Resend;
 
-      ```bash cURL theme={"theme":{"light":"github-light","dark":"vesper"}}
-      curl -X GET 'https://api.resend.com/automations/c9b16d4f-ba6c-4e2e-b044-6bf4404e57fd/runs/a1b2c3d4-e5f6-7890-abcd-ef1234567890' \
-           -H 'Authorization: Bearer re_xxxxxxxxx'
-      ```
+IResend resend = ResendClient.Create( "re_xxxxxxxxx" ); // Or from DI
 
-      ```bash CLI theme={"theme":{"light":"github-light","dark":"vesper"}}
-      resend automations runs get --automation-id c9b16d4f-ba6c-4e2e-b044-6bf4404e57fd --run-id a1b2c3d4-e5f6-7890-abcd-ef1234567890
-      ```
-    </CodeGroup>
+var resp = await resend.AutomationRunRetrieveAsync(
+    new Guid( "c9b16d4f-ba6c-4e2e-b044-6bf4404e57fd" ),
+    new Guid( "a1b2c3d4-e5f6-7890-abcd-ef1234567890" )
+);
+Console.WriteLine( "Status={0}", resp.Content.Status );
+```
 
-    Response:
+```bash cURL theme={"theme":{"light":"github-light","dark":"vesper"}}
+curl -X GET 'https://api.resend.com/automations/c9b16d4f-ba6c-4e2e-b044-6bf4404e57fd/runs/a1b2c3d4-e5f6-7890-abcd-ef1234567890' \
+     -H 'Authorization: Bearer re_xxxxxxxxx'
+```
 
-    ```json theme={"theme":{"light":"github-light","dark":"vesper"}}
+```bash CLI theme={"theme":{"light":"github-light","dark":"vesper"}}
+resend automations runs get --automation-id c9b16d4f-ba6c-4e2e-b044-6bf4404e57fd --run-id a1b2c3d4-e5f6-7890-abcd-ef1234567890
+```
+
+Response:
+
+```json theme={"theme":{"light":"github-light","dark":"vesper"}}
+{
+  "object": "automation_run",
+  "id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+  "status": "completed",
+  "started_at": "2026-10-01 12:00:00.000000+00",
+  "completed_at": "2026-10-01 12:05:00.000000+00",
+  "created_at": "2026-10-01 12:00:00.000000+00",
+  "steps": [
     {
-      "object": "automation_run",
-      "id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+      "key": "start",
+      "type": "trigger",
       "status": "completed",
       "started_at": "2026-10-01 12:00:00.000000+00",
-      "completed_at": "2026-10-01 12:05:00.000000+00",
-      "created_at": "2026-10-01 12:00:00.000000+00",
-      "steps": [
-        {
-          "key": "start",
-          "type": "trigger",
-          "status": "completed",
-          "started_at": "2026-10-01 12:00:00.000000+00",
-          "completed_at": "2026-10-01 12:00:01.000000+00",
-          "output": null,
-          "error": null
-        },
-        {
-          "key": "welcome",
-          "type": "send_email",
-          "status": "completed",
-          "started_at": "2026-10-01 12:00:01.000000+00",
-          "completed_at": "2026-10-01 12:00:02.000000+00",
-          "output": {
-            "to": "user@example.com",
-            "email_id": "6278820d-2421-42d0-85f0-80e9e28c1c69",
-            "template": {
-              "id": "caa9851e-e7bf-4a50-a408-56024edc19c0",
-              "variables": null
-            }
-          },
-          "error": null
+      "completed_at": "2026-10-01 12:00:01.000000+00",
+      "output": null,
+      "error": null
+    },
+    {
+      "key": "welcome",
+      "type": "send_email",
+      "status": "completed",
+      "started_at": "2026-10-01 12:00:01.000000+00",
+      "completed_at": "2026-10-01 12:00:02.000000+00",
+      "output": {
+        "to": "user@example.com",
+        "email_id": "6278820d-2421-42d0-85f0-80e9e28c1c69",
+        "template": {
+          "id": "caa9851e-e7bf-4a50-a408-56024edc19c0",
+          "variables": null
         }
-      ]
+      },
+      "error": null
     }
-    ```
+  ]
+}
+```
 
-    Each step in the response includes:
+Each step in the response includes:
 
-    | Field | Description |
-    | - | - |
-    | `key` | The unique key of the step in the automation graph |
-    | `type` | The step type (e.g., `trigger`, `send_email`, `delay`) |
-    | `status` | The step's execution status |
-    | `started_at` | When the step started executing |
-    | `completed_at` | When the step finished |
-    | `output` | Output data from the step (if any) |
-    | `error` | Error details if the step failed |
-  </Tab>
-</Tabs>
+| Field | Description |
+| - | - |
+| `key` | The unique key of the step in the automation graph |
+| `type` | The step type (e.g., `trigger`, `send_email`, `delay`) |
+| `status` | The step's execution status |
+| `started_at` | When the step started executing |
+| `completed_at` | When the step finished |
+| `output` | Output data from the step (if any) |
+| `error` | Error details if the step failed |
 
 View the [Retrieve Automation Run API reference](/docs/api-reference/automations/get-automation-run) for more details.
 
 ## Debugging failed runs
 
-<Tabs>
-  <Tab title="Using the dashboard">
-    Go to the **Runs** tab and click on a run to view the details.
+**Using the dashboard**
 
-    <img alt="Automation Run Failed" src="https://mintcdn.com/resend/ePnINhGLisYSJsWT/images/automations-run-failed.png?fit=max&auto=format&n=ePnINhGLisYSJsWT&q=85&s=adf5c604c5000f28f85a65b7f2bcf82e" width="3412" height="1880" data-path="images/automations-run-failed.png" />
-  </Tab>
+Go to the **Runs** tab and click on a run to view the details.
 
-  <Tab title="Using the API">
-    Get the details of a specific failed run:
+![Automation Run Failed](https://mintcdn.com/resend/ePnINhGLisYSJsWT/images/automations-run-failed.png?fit=max\&auto=format\&n=ePnINhGLisYSJsWT\&q=85\&s=adf5c604c5000f28f85a65b7f2bcf82e)
 
-    <CodeGroup>
-      ```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
-      import { Resend } from 'resend';
+**Using the API**
 
-      const resend = new Resend('re_xxxxxxxxx');
+Get the details of a specific failed run:
 
-      const { data, error } = await resend.automations.runs.get({
-        automationId: 'c9b16d4f-ba6c-4e2e-b044-6bf4404e57fd',
-        runId: 'a1b2c3d4-e5f6-7890-abcd-ef1234567890',
-      });
-      ```
+```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
+import { Resend } from 'resend';
 
-      ```php PHP theme={"theme":{"light":"github-light","dark":"vesper"}}
-      $resend = Resend::client('re_xxxxxxxxx');
+const resend = new Resend('re_xxxxxxxxx');
 
-      $resend->automations->runs->get(
-        'c9b16d4f-ba6c-4e2e-b044-6bf4404e57fd',
-        'a1b2c3d4-e5f6-7890-abcd-ef1234567890',
-      );
-      ```
+const { data, error } = await resend.automations.runs.get({
+  automationId: 'c9b16d4f-ba6c-4e2e-b044-6bf4404e57fd',
+  runId: 'a1b2c3d4-e5f6-7890-abcd-ef1234567890',
+});
+```
 
-      ```python Python theme={"theme":{"light":"github-light","dark":"vesper"}}
-      import resend
+```php PHP theme={"theme":{"light":"github-light","dark":"vesper"}}
+$resend = Resend::client('re_xxxxxxxxx');
 
-      resend.api_key = "re_xxxxxxxxx"
+$resend->automations->runs->get(
+  'c9b16d4f-ba6c-4e2e-b044-6bf4404e57fd',
+  'a1b2c3d4-e5f6-7890-abcd-ef1234567890',
+);
+```
 
-      resend.Automations.Runs.get(
-        "c9b16d4f-ba6c-4e2e-b044-6bf4404e57fd",
-        "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
-      )
-      ```
+```python Python theme={"theme":{"light":"github-light","dark":"vesper"}}
+import resend
 
-      ```ruby Ruby theme={"theme":{"light":"github-light","dark":"vesper"}}
-      require "resend"
+resend.api_key = "re_xxxxxxxxx"
 
-      Resend.api_key = "re_xxxxxxxxx"
+resend.Automations.Runs.get(
+  "c9b16d4f-ba6c-4e2e-b044-6bf4404e57fd",
+  "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+)
+```
 
-      Resend::Automations::Runs.get(
-        "c9b16d4f-ba6c-4e2e-b044-6bf4404e57fd",
-        "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
-      )
-      ```
+```ruby Ruby theme={"theme":{"light":"github-light","dark":"vesper"}}
+require "resend"
 
-      ```go Go theme={"theme":{"light":"github-light","dark":"vesper"}}
-      package main
+Resend.api_key = "re_xxxxxxxxx"
 
-      import "github.com/resend/resend-go/v4"
+Resend::Automations::Runs.get(
+  "c9b16d4f-ba6c-4e2e-b044-6bf4404e57fd",
+  "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+)
+```
 
-      func main() {
-      	client := resend.NewClient("re_xxxxxxxxx")
+```go Go theme={"theme":{"light":"github-light","dark":"vesper"}}
+package main
 
-      	client.Automations.GetRun(
-      		"c9b16d4f-ba6c-4e2e-b044-6bf4404e57fd",
-      		"a1b2c3d4-e5f6-7890-abcd-ef1234567890",
-      	)
-      }
-      ```
+import "github.com/resend/resend-go/v4"
 
-      ```rust Rust theme={"theme":{"light":"github-light","dark":"vesper"}}
-      use resend_rs::{Resend, Result};
+func main() {
+	client := resend.NewClient("re_xxxxxxxxx")
 
-      #[tokio::main]
-      async fn main() -> Result<()> {
-        let resend = Resend::new("re_xxxxxxxxx");
+	client.Automations.GetRun(
+		"c9b16d4f-ba6c-4e2e-b044-6bf4404e57fd",
+		"a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+	)
+}
+```
 
-        let _run = resend
-          .automations
-          .get_run(
-            "c9b16d4f-ba6c-4e2e-b044-6bf4404e57fd",
-            "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
-          )
-          .await?;
+```rust Rust theme={"theme":{"light":"github-light","dark":"vesper"}}
+use resend_rs::{Resend, Result};
 
-        Ok(())
-      }
-      ```
+#[tokio::main]
+async fn main() -> Result<()> {
+  let resend = Resend::new("re_xxxxxxxxx");
 
-      ```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
-      import com.resend.*;
-      import com.resend.services.automations.model.AutomationRun;
-      import com.resend.services.automations.model.GetAutomationRunOptions;
+  let _run = resend
+    .automations
+    .get_run(
+      "c9b16d4f-ba6c-4e2e-b044-6bf4404e57fd",
+      "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+    )
+    .await?;
 
-      Resend resend = new Resend("re_xxxxxxxxx");
+  Ok(())
+}
+```
 
-      AutomationRun data = resend.automations().getRun(
-              GetAutomationRunOptions.builder()
-                      .automationId("c9b16d4f-ba6c-4e2e-b044-6bf4404e57fd")
-                      .runId("a1b2c3d4-e5f6-7890-abcd-ef1234567890")
-                      .build()
-      );
-      ```
+```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
+import com.resend.*;
+import com.resend.services.automations.model.AutomationRun;
+import com.resend.services.automations.model.GetAutomationRunOptions;
 
-      ```csharp .NET theme={"theme":{"light":"github-light","dark":"vesper"}}
-      using Resend;
+Resend resend = new Resend("re_xxxxxxxxx");
 
-      IResend resend = ResendClient.Create( "re_xxxxxxxxx" ); // Or from DI
+AutomationRun data = resend.automations().getRun(
+        GetAutomationRunOptions.builder()
+                .automationId("c9b16d4f-ba6c-4e2e-b044-6bf4404e57fd")
+                .runId("a1b2c3d4-e5f6-7890-abcd-ef1234567890")
+                .build()
+);
+```
 
-      var resp = await resend.AutomationRunRetrieveAsync(
-          new Guid( "c9b16d4f-ba6c-4e2e-b044-6bf4404e57fd" ),
-          new Guid( "a1b2c3d4-e5f6-7890-abcd-ef1234567890" )
-      );
-      Console.WriteLine( "Status={0}", resp.Content.Status );
-      ```
+```csharp .NET theme={"theme":{"light":"github-light","dark":"vesper"}}
+using Resend;
 
-      ```bash cURL theme={"theme":{"light":"github-light","dark":"vesper"}}
-      curl -X GET 'https://api.resend.com/automations/c9b16d4f-ba6c-4e2e-b044-6bf4404e57fd/runs/a1b2c3d4-e5f6-7890-abcd-ef1234567890' \
-           -H 'Authorization: Bearer re_xxxxxxxxx'
-      ```
+IResend resend = ResendClient.Create( "re_xxxxxxxxx" ); // Or from DI
 
-      ```bash CLI theme={"theme":{"light":"github-light","dark":"vesper"}}
-      resend automations runs get --automation-id c9b16d4f-ba6c-4e2e-b044-6bf4404e57fd --run-id a1b2c3d4-e5f6-7890-abcd-ef1234567890
-      ```
-    </CodeGroup>
-  </Tab>
-</Tabs>
+var resp = await resend.AutomationRunRetrieveAsync(
+    new Guid( "c9b16d4f-ba6c-4e2e-b044-6bf4404e57fd" ),
+    new Guid( "a1b2c3d4-e5f6-7890-abcd-ef1234567890" )
+);
+Console.WriteLine( "Status={0}", resp.Content.Status );
+```
+
+```bash cURL theme={"theme":{"light":"github-light","dark":"vesper"}}
+curl -X GET 'https://api.resend.com/automations/c9b16d4f-ba6c-4e2e-b044-6bf4404e57fd/runs/a1b2c3d4-e5f6-7890-abcd-ef1234567890' \
+     -H 'Authorization: Bearer re_xxxxxxxxx'
+```
+
+```bash CLI theme={"theme":{"light":"github-light","dark":"vesper"}}
+resend automations runs get --automation-id c9b16d4f-ba6c-4e2e-b044-6bf4404e57fd --run-id a1b2c3d4-e5f6-7890-abcd-ef1234567890
+```
 
 When a run fails, use the step-level details to identify the issue:
 
@@ -630,112 +614,108 @@ Common failure scenarios:
 
 ## Stopping an Automation
 
-<Tabs>
-  <Tab title="Using the dashboard">
-    Click on the **Stop** button to stop an Automation.
+**Using the dashboard**
 
-    <img alt="Automation Run Stop" src="https://mintcdn.com/resend/ePnINhGLisYSJsWT/images/automations-run-stop.png?fit=max&auto=format&n=ePnINhGLisYSJsWT&q=85&s=8b4eb6acb320dc5960c037d327cd5fb8" width="3411" height="1881" data-path="images/automations-run-stop.png" />
-  </Tab>
+Click on the **Stop** button to stop an Automation.
 
-  <Tab title="Using the API">
-    Stop an Automation programmatically:
+![Automation Run Stop](https://mintcdn.com/resend/ePnINhGLisYSJsWT/images/automations-run-stop.png?fit=max\&auto=format\&n=ePnINhGLisYSJsWT\&q=85\&s=8b4eb6acb320dc5960c037d327cd5fb8)
 
-    <CodeGroup>
-      ```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
-      import { Resend } from 'resend';
+**Using the API**
 
-      const resend = new Resend('re_xxxxxxxxx');
+Stop an Automation programmatically:
 
-      const { data, error } = await resend.automations.stop(
-        'c9b16d4f-ba6c-4e2e-b044-6bf4404e57fd',
-      );
-      ```
+```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
+import { Resend } from 'resend';
 
-      ```php PHP theme={"theme":{"light":"github-light","dark":"vesper"}}
-      $resend = Resend::client('re_xxxxxxxxx');
+const resend = new Resend('re_xxxxxxxxx');
 
-      $resend->automations->stop('c9b16d4f-ba6c-4e2e-b044-6bf4404e57fd');
-      ```
+const { data, error } = await resend.automations.stop(
+  'c9b16d4f-ba6c-4e2e-b044-6bf4404e57fd',
+);
+```
 
-      ```python Python theme={"theme":{"light":"github-light","dark":"vesper"}}
-      import resend
+```php PHP theme={"theme":{"light":"github-light","dark":"vesper"}}
+$resend = Resend::client('re_xxxxxxxxx');
 
-      resend.api_key = "re_xxxxxxxxx"
+$resend->automations->stop('c9b16d4f-ba6c-4e2e-b044-6bf4404e57fd');
+```
 
-      resend.Automations.stop("c9b16d4f-ba6c-4e2e-b044-6bf4404e57fd")
-      ```
+```python Python theme={"theme":{"light":"github-light","dark":"vesper"}}
+import resend
 
-      ```ruby Ruby theme={"theme":{"light":"github-light","dark":"vesper"}}
-      require "resend"
+resend.api_key = "re_xxxxxxxxx"
 
-      Resend.api_key = "re_xxxxxxxxx"
+resend.Automations.stop("c9b16d4f-ba6c-4e2e-b044-6bf4404e57fd")
+```
 
-      Resend::Automations.stop("c9b16d4f-ba6c-4e2e-b044-6bf4404e57fd")
-      ```
+```ruby Ruby theme={"theme":{"light":"github-light","dark":"vesper"}}
+require "resend"
 
-      ```go Go theme={"theme":{"light":"github-light","dark":"vesper"}}
-      package main
+Resend.api_key = "re_xxxxxxxxx"
 
-      import "github.com/resend/resend-go/v4"
+Resend::Automations.stop("c9b16d4f-ba6c-4e2e-b044-6bf4404e57fd")
+```
 
-      func main() {
-      	client := resend.NewClient("re_xxxxxxxxx")
+```go Go theme={"theme":{"light":"github-light","dark":"vesper"}}
+package main
 
-      	client.Automations.Stop("c9b16d4f-ba6c-4e2e-b044-6bf4404e57fd")
-      }
-      ```
+import "github.com/resend/resend-go/v4"
 
-      ```rust Rust theme={"theme":{"light":"github-light","dark":"vesper"}}
-      use resend_rs::{Resend, Result};
+func main() {
+	client := resend.NewClient("re_xxxxxxxxx")
 
-      #[tokio::main]
-      async fn main() -> Result<()> {
-        let resend = Resend::new("re_xxxxxxxxx");
+	client.Automations.Stop("c9b16d4f-ba6c-4e2e-b044-6bf4404e57fd")
+}
+```
 
-        let _automation = resend
-          .automations
-          .stop("c9b16d4f-ba6c-4e2e-b044-6bf4404e57fd")
-          .await?;
+```rust Rust theme={"theme":{"light":"github-light","dark":"vesper"}}
+use resend_rs::{Resend, Result};
 
-        Ok(())
-      }
-      ```
+#[tokio::main]
+async fn main() -> Result<()> {
+  let resend = Resend::new("re_xxxxxxxxx");
 
-      ```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
-      import com.resend.*;
-      import com.resend.services.automations.model.StopAutomationResponseSuccess;
+  let _automation = resend
+    .automations
+    .stop("c9b16d4f-ba6c-4e2e-b044-6bf4404e57fd")
+    .await?;
 
-      Resend resend = new Resend("re_xxxxxxxxx");
+  Ok(())
+}
+```
 
-      StopAutomationResponseSuccess data = resend.automations().stop("c9b16d4f-ba6c-4e2e-b044-6bf4404e57fd");
-      ```
+```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
+import com.resend.*;
+import com.resend.services.automations.model.StopAutomationResponseSuccess;
 
-      ```csharp .NET theme={"theme":{"light":"github-light","dark":"vesper"}}
-      using Resend;
+Resend resend = new Resend("re_xxxxxxxxx");
 
-      IResend resend = ResendClient.Create( "re_xxxxxxxxx" ); // Or from DI
+StopAutomationResponseSuccess data = resend.automations().stop("c9b16d4f-ba6c-4e2e-b044-6bf4404e57fd");
+```
 
-      var resp = await resend.AutomationStopAsync( new Guid( "c9b16d4f-ba6c-4e2e-b044-6bf4404e57fd" ) );
-      Console.WriteLine( "Status={0}", resp.Content.Status );
-      ```
+```csharp .NET theme={"theme":{"light":"github-light","dark":"vesper"}}
+using Resend;
 
-      ```bash cURL theme={"theme":{"light":"github-light","dark":"vesper"}}
-      curl -X POST 'https://api.resend.com/automations/c9b16d4f-ba6c-4e2e-b044-6bf4404e57fd/stop' \
-           -H 'Authorization: Bearer re_xxxxxxxxx'
-      ```
+IResend resend = ResendClient.Create( "re_xxxxxxxxx" ); // Or from DI
 
-      ```bash CLI theme={"theme":{"light":"github-light","dark":"vesper"}}
-      resend automations stop c9b16d4f-ba6c-4e2e-b044-6bf4404e57fd
-      ```
-    </CodeGroup>
+var resp = await resend.AutomationStopAsync( new Guid( "c9b16d4f-ba6c-4e2e-b044-6bf4404e57fd" ) );
+Console.WriteLine( "Status={0}", resp.Content.Status );
+```
 
-    <Note>
-      Stopping an Automation prevents new runs from being created.
+```bash cURL theme={"theme":{"light":"github-light","dark":"vesper"}}
+curl -X POST 'https://api.resend.com/automations/c9b16d4f-ba6c-4e2e-b044-6bf4404e57fd/stop' \
+     -H 'Authorization: Bearer re_xxxxxxxxx'
+```
 
-      Existing in-progress runs will continue to completion.
-    </Note>
-  </Tab>
-</Tabs>
+```bash CLI theme={"theme":{"light":"github-light","dark":"vesper"}}
+resend automations stop c9b16d4f-ba6c-4e2e-b044-6bf4404e57fd
+```
+
+> [!NOTE]
+>
+> Stopping an Automation prevents new runs from being created.
+>
+> Existing in-progress runs will continue to completion.
 
 View the [Stop Automation API reference](/docs/api-reference/automations/stop-automation) for more details.
 
@@ -743,6 +723,6 @@ View the [Stop Automation API reference](/docs/api-reference/automations/stop-au
 
 In the dashboard, you can view overall metrics for any Automation. In the **Observability** panel for any Automation, select **Metrics**.
 
-<img alt="Automation Runs Metrics" src="https://mintcdn.com/resend/HwMhsRC0UaHCUVdg/images/automations-runs-metrics.png?fit=max&auto=format&n=HwMhsRC0UaHCUVdg&q=85&s=c94ad9540f4cc11e09a67258b26745cf" width="3360" height="2100" data-path="images/automations-runs-metrics.png" />
+![Automation Runs Metrics](https://mintcdn.com/resend/HwMhsRC0UaHCUVdg/images/automations-runs-metrics.png?fit=max\&auto=format\&n=HwMhsRC0UaHCUVdg\&q=85\&s=c94ad9540f4cc11e09a67258b26745cf)
 
 The API does not support fetching metrics for an Automation.

@@ -29,7 +29,7 @@ If more than one person needs to receive invoices, you have two options:
 ## How to cancel your subscription
 
 1. Go to the [Billing](https://resend.com/settings/billing) page.
-2. Click on the three dots <span className="inline-block align-middle"><Icon icon="ellipsis" iconType="solid" /></span> next to your plan.
+2. Click on the three dots  next to your plan.
 3. Select **Cancel Subscription** from the dropdown menu.
 
-<img src="https://mintcdn.com/resend/ABWmVTZIHGIFNTFD/images/dashboard-billing.jpg?fit=max&auto=format&n=ABWmVTZIHGIFNTFD&q=85&s=3331d4b449ffd37fc0fe24f89e6f7dde" alt="Cancel subscription" width="2314" height="724" data-path="images/dashboard-billing.jpg" />
+![Cancel subscription](https://mintcdn.com/resend/ABWmVTZIHGIFNTFD/images/dashboard-billing.jpg?fit=max\&auto=format\&n=ABWmVTZIHGIFNTFD\&q=85\&s=3331d4b449ffd37fc0fe24f89e6f7dde)

@@ -17,72 +17,70 @@ Make sure you have the latest version of the [Supabase CLI](https://supabase.com
 
 ## Guide
 
-<Steps>
-  <Step title="Create Supabase function">
-    Create a new function locally:
+**1. Create Supabase function**
 
-    ```bash theme={"theme":{"light":"github-light","dark":"vesper"}}
-    supabase functions new resend
-    ```
-  </Step>
+Create a new function locally:
 
-  <Step title="Edit the handler function">
-    Paste the following code into the `index.ts` file:
+```bash theme={"theme":{"light":"github-light","dark":"vesper"}}
+supabase functions new resend
+```
 
-    ```ts index.ts theme={"theme":{"light":"github-light","dark":"vesper"}}
-    const RESEND_API_KEY = Deno.env.get('RESEND_API_KEY');
+**2. Edit the handler function**
 
-    const handler = async (_request: Request): Promise<Response> => {
-      const res = await fetch('https://api.resend.com/emails', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${RESEND_API_KEY}`,
-        },
-        body: JSON.stringify({
-          from: 'Acme <onboarding@resend.dev>',
-          to: ['delivered@resend.dev'],
-          subject: 'hello world',
-          html: '<strong>it works!</strong>',
-        }),
-      });
+Paste the following code into the `index.ts` file:
 
-      const data = await res.json();
+```ts index.ts theme={"theme":{"light":"github-light","dark":"vesper"}}
+const RESEND_API_KEY = Deno.env.get('RESEND_API_KEY');
 
-      return new Response(JSON.stringify(data), {
-        status: 200,
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      });
-    };
+const handler = async (_request: Request): Promise<Response> => {
+  const res = await fetch('https://api.resend.com/emails', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${RESEND_API_KEY}`,
+    },
+    body: JSON.stringify({
+      from: 'Acme <onboarding@resend.dev>',
+      to: ['delivered@resend.dev'],
+      subject: 'hello world',
+      html: '<strong>it works!</strong>',
+    }),
+  });
 
-    Deno.serve(handler);
-    ```
-  </Step>
+  const data = await res.json();
 
-  <Step title="Deploy and send email">
-    Run function locally:
+  return new Response(JSON.stringify(data), {
+    status: 200,
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
+};
 
-    ```bash theme={"theme":{"light":"github-light","dark":"vesper"}}
-    supabase functions start
-    supabase functions serve resend --no-verify-jwt
-    ```
+Deno.serve(handler);
+```
 
-    Deploy function to Supabase:
+**3. Deploy and send email**
 
-    ```bash theme={"theme":{"light":"github-light","dark":"vesper"}}
-    supabase functions deploy resend
-    ```
+Run function locally:
 
-    Open the endpoint URL to send an email:
+```bash theme={"theme":{"light":"github-light","dark":"vesper"}}
+supabase functions start
+supabase functions serve resend --no-verify-jwt
+```
 
-    <img alt="Supabase Edge Functions - Deploy Function" src="https://mintcdn.com/resend/OWNnQaVDyqcGyhhN/images/supabase-edge-functions-deploy-function.png?fit=max&auto=format&n=OWNnQaVDyqcGyhhN&q=85&s=e28cab375d10a57f712e77ff3c888005" width="3414" height="1886" data-path="images/supabase-edge-functions-deploy-function.png" />
-  </Step>
-</Steps>
+Deploy function to Supabase:
+
+```bash theme={"theme":{"light":"github-light","dark":"vesper"}}
+supabase functions deploy resend
+```
+
+Open the endpoint URL to send an email:
+
+![Supabase Edge Functions - Deploy Function](https://mintcdn.com/resend/OWNnQaVDyqcGyhhN/images/supabase-edge-functions-deploy-function.png?fit=max\&auto=format\&n=OWNnQaVDyqcGyhhN\&q=85\&s=e28cab375d10a57f712e77ff3c888005)
 
 ## Examples
 
-<Card title="Supabase Edge Functions Example" icon="arrow-up-right-from-square" href="https://github.com/resend/resend-supabase-edge-functions-example">
-  See the full source code.
-</Card>
+> **[Supabase Edge Functions Example](https://github.com/resend/resend-supabase-edge-functions-example)**
+>
+> See the full source code.

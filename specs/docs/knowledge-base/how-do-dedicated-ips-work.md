@@ -19,10 +19,10 @@ Resend goes one step further and exclusively provisions "Managed Dedicated IP Po
 * **Continuous monitoring**: Resend continuously monitors the reputation and performance of your dedicated IPs.
 * **Fully dedicated**: You can segregate your emails from sending on shared pools to reduce risk of "noisy neighbors".
 
-<Note>
-  Resend only provisions Managed Dedicated IP Pools, but we will refer to them
-  as **Dedicated IPs** in this article to be succinct.
-</Note>
+> [!NOTE]
+>
+> Resend only provisions Managed Dedicated IP Pools, but we will refer to them
+> as **Dedicated IPs** in this article to be succinct.
 
 ## When Dedicated IPs are helpful
 
@@ -54,10 +54,10 @@ With Resend's Managed Dedicated IP Pools, the warmup process is handled automati
 
 Often IP warmup is a highly manual process and requires great care if you don't want a deliverability degradation in the process. With this automatic warmup process, that's handled for you so you can focus on sending.
 
-<Note>
-  Because Managed Dedicated IP Pools are dynamically scaled, **we do not expose
-  the list of IPs** in your dedicated pool.
-</Note>
+> [!NOTE]
+>
+> Because Managed Dedicated IP Pools are dynamically scaled, **we do not expose
+> the list of IPs** in your dedicated pool.
 
 ## Requirements for a Dedicated IP
 

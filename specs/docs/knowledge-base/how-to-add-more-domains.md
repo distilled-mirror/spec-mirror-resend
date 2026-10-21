@@ -16,7 +16,7 @@ Navigate to [**Settings** > **Usage**](https://resend.com/settings/usage). The D
 
 The number of domains included in each plan is listed on the [pricing page](https://resend.com/pricing).
 
-<img alt="The Add-ons section of the Resend pricing page, showing the domains add-on at $20 per month" src="https://mintcdn.com/resend/4aoJCf3h0EWlfiV5/images/pricing-domains-add-on.png?fit=max&auto=format&n=4aoJCf3h0EWlfiV5&q=85&s=5741fdddf81323ba42f87b44fc50ec46" width="2048" height="988" data-path="images/pricing-domains-add-on.png" />
+![The Add-ons section of the Resend pricing page, showing the domains add-on at \$20 per month](https://mintcdn.com/resend/4aoJCf3h0EWlfiV5/images/pricing-domains-add-on.png?fit=max\&auto=format\&n=4aoJCf3h0EWlfiV5\&q=85\&s=5741fdddf81323ba42f87b44fc50ec46)
 
 ## Add the domains add-on
 
@@ -31,18 +31,18 @@ The add-on costs \$20 per month and applies immediately. Your next invoice inclu
 
 Once enabled, the add-on appears on your [**Settings** > **Billing**](https://resend.com/settings/billing) page as its own line item, and the 100 extra domains are reflected in the domain count on **Settings** > **Usage**.
 
-<Note>
-  The domains add-on is available on paid transactional plans, and only team
-  admins can manage add-ons. On Enterprise plans, the domain limit is set in
-  your contract, so [contact support](https://resend.com/help) to change it.
-</Note>
+> [!NOTE]
+>
+> The domains add-on is available on paid transactional plans, and only team
+> admins can manage add-ons. On Enterprise plans, the domain limit is set in
+> your contract, so [contact support](https://resend.com/help) to change it.
 
-<Info>
-  The add-on raises the number of domains you can add. It does not change your
-  monthly email quota, your contact limit, or your rate limit. Those are set by
-  your plan. See [account quotas and
-  limits](/docs/knowledge-base/account-quotas-and-limits).
-</Info>
+> [!NOTE]
+>
+> The add-on raises the number of domains you can add. It does not change your
+> monthly email quota, your contact limit, or your rate limit. Those are set by
+> your plan. See [account quotas and
+> limits](/docs/knowledge-base/account-quotas-and-limits).
 
 ## Remove the domains add-on
 

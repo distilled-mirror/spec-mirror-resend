@@ -19,35 +19,33 @@ Before you begin, you'll need two things:
 
 ## Guide
 
-<Info>
-  Prefer a video guide? [Watch the v0 Resend integration
-  video](https://youtu.be/WSSV5Ofpxzc).
-</Info>
+> [!NOTE]
+>
+> Prefer a video guide? [Watch the v0 Resend integration
+> video](https://youtu.be/WSSV5Ofpxzc).
 
-<Steps>
-  <Step title="Ask v0 to add the Resend integration">
-    You can ask v0 something like:
+**1. Ask v0 to add the Resend integration**
 
-    ```
-    Add an email capture to my application using Resend. Store the user's email as a Contact in Resend and send them a welcome email.
-    ```
-  </Step>
+You can ask v0 something like:
 
-  <Step title="Install the integration">
-    Click **Install** to add the Resend integration to your v0 project. This will take you to the integration page, where you can follow the instructions to add email to your project.
+```
+Add an email capture to my application using Resend. Store the user's email as a Contact in Resend and send them a welcome email.
+```
 
-    <img src="https://mintcdn.com/resend/E_8j6xCcW_Abb4jB/images/v0-integration.png?fit=max&auto=format&n=E_8j6xCcW_Abb4jB&q=85&s=10c51c3fba665a9ef6d108d2a5ccd564" alt="Install button called out in v0 chat" width="1864" height="954" data-path="images/v0-integration.png" />
+**2. Install the integration**
 
-    The integration will automatically set up a new Resend account, add the necessary environment variables to your v0 project, and verify your domain in Resend.
-  </Step>
+Click **Install** to add the Resend integration to your v0 project. This will take you to the integration page, where you can follow the instructions to add email to your project.
 
-  <Step title="Finish setup">
-    Once the integration is installed, click **Finish Setup** to complete the setup.
+![Install button called out in v0 chat](https://mintcdn.com/resend/E_8j6xCcW_Abb4jB/images/v0-integration.png?fit=max\&auto=format\&n=E_8j6xCcW_Abb4jB\&q=85\&s=10c51c3fba665a9ef6d108d2a5ccd564)
 
-    <img src="https://mintcdn.com/resend/E_8j6xCcW_Abb4jB/images/v0-integration-1.png?fit=max&auto=format&n=E_8j6xCcW_Abb4jB&q=85&s=ee11a0f791b1b3feb401bb63831c32b2" alt="Finish setup button called out in v0 chat" width="1864" height="954" data-path="images/v0-integration-1.png" />
+The integration will automatically set up a new Resend account, add the necessary environment variables to your v0 project, and verify your domain in Resend.
 
-    You'll be taken to the Resend dashboard, where you can confirm the domain has been verified.
+**3. Finish setup**
 
-    Once you've confirmed your domain is verified, return to the v0 chat and tell the chat the domain is verified and which email it should use to send emails on your behalf.
-  </Step>
-</Steps>
+Once the integration is installed, click **Finish Setup** to complete the setup.
+
+![Finish setup button called out in v0 chat](https://mintcdn.com/resend/E_8j6xCcW_Abb4jB/images/v0-integration-1.png?fit=max\&auto=format\&n=E_8j6xCcW_Abb4jB\&q=85\&s=ee11a0f791b1b3feb401bb63831c32b2)
+
+You'll be taken to the Resend dashboard, where you can confirm the domain has been verified.
+
+Once you've confirmed your domain is verified, return to the v0 chat and tell the chat the domain is verified and which email it should use to send emails on your behalf.

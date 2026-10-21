@@ -6,10 +6,6 @@
 
 > Learn how to send Auth0 transactional emails through Resend using the official integration.
 
-export const YouTube = ({id}) => {
-  return <iframe className="w-full aspect-video rounded-xl" src={`https://www.youtube.com/embed/${id}`} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>;
-};
-
 [Auth0](https://auth0.com) supports Resend as a built-in email provider. Authentication flows depend on reliable delivery for verification codes, password resets, and other crucial emails.
 
 ## Prerequisites
@@ -21,7 +17,7 @@ Before you start, you'll need:
 
 Prefer a video walkthrough?
 
-<YouTube id="-xlz8xVN3Rc" />
+[YouTube video player](https://www.youtube.com/embed/-xlz8xVN3Rc)
 
 ## Set up the Resend provider in Auth0
 
@@ -29,14 +25,14 @@ In the Auth0 Dashboard, go to **Branding > Email Provider**, toggle on **Use my 
 
 Enter your API key and set the **From** address to match your verified domain. Click **Save** to apply the changes.
 
-<img src="https://mintcdn.com/resend/3aaPXnVunyH4ynzk/images/auth0-setup.png?fit=max&auto=format&n=3aaPXnVunyH4ynzk&q=85&s=1e7ff74e83ff205e0b499c5aacdb7d3f" alt="Auth0 Resend Integration" className="extraWidth" width="2220" height="970" data-path="images/auth0-setup.png" />
+![Auth0 Resend Integration](https://mintcdn.com/resend/3aaPXnVunyH4ynzk/images/auth0-setup.png?fit=max\&auto=format\&n=3aaPXnVunyH4ynzk\&q=85\&s=1e7ff74e83ff205e0b499c5aacdb7d3f)
 
 To test that it's working, click **Send Test Email**. The email will appear in your Resend dashboard and email inbox.
 
-<Info>
-  For the full setup guide, see the [Auth0
-  documentation](https://auth0.com/docs/customize/email/smtp-email-providers/resend).
-</Info>
+> [!NOTE]
+>
+> For the full setup guide, see the [Auth0
+> documentation](https://auth0.com/docs/customize/email/smtp-email-providers/resend).
 
 ## Send emails with Auth0 Actions (optional)
 
@@ -44,14 +40,16 @@ For more control over delivery, like per-organization sender addresses, conditio
 
 In the Auth0 Dashboard, go to **Actions > Library**, create a new Custom action.
 
-<img src="https://mintcdn.com/resend/3aaPXnVunyH4ynzk/images/auth0-action.png?fit=max&auto=format&n=3aaPXnVunyH4ynzk&q=85&s=6eec4f5953cfa2a5e7848b8dfbe184a0" alt="Auth0 Custom Action" className="extraWidth" width="2264" height="706" data-path="images/auth0-action.png" />
+![Auth0 Custom Action](https://mintcdn.com/resend/3aaPXnVunyH4ynzk/images/auth0-action.png?fit=max\&auto=format\&n=3aaPXnVunyH4ynzk\&q=85\&s=6eec4f5953cfa2a5e7848b8dfbe184a0)
 
 To enable Resend in the Action:
 
 1. Add `resend` as a dependency.
-   <img src="https://mintcdn.com/resend/3aaPXnVunyH4ynzk/images/auth0-dependency.png?fit=max&auto=format&n=3aaPXnVunyH4ynzk&q=85&s=7789456d3dd2c52559961357226cea0a" alt="Auth0 Custom Action" width="1852" height="973" data-path="images/auth0-dependency.png" />
+
+   ![Auth0 Custom Action](https://mintcdn.com/resend/3aaPXnVunyH4ynzk/images/auth0-dependency.png?fit=max\&auto=format\&n=3aaPXnVunyH4ynzk\&q=85\&s=7789456d3dd2c52559961357226cea0a)
 2. Store your API key as a secret named `RESEND_API_KEY`.
-   <img src="https://mintcdn.com/resend/3aaPXnVunyH4ynzk/images/auth0-secret.png?fit=max&auto=format&n=3aaPXnVunyH4ynzk&q=85&s=6326f23f2690292e87545282c1fee855" alt="Auth0 Custom Action" width="1822" height="869" data-path="images/auth0-secret.png" />
+
+   ![Auth0 Custom Action](https://mintcdn.com/resend/3aaPXnVunyH4ynzk/images/auth0-secret.png?fit=max\&auto=format\&n=3aaPXnVunyH4ynzk\&q=85\&s=6326f23f2690292e87545282c1fee855)
 
 Here's a working example that sends a security alert on first login:
 

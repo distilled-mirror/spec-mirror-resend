@@ -80,12 +80,12 @@ chat.onNewMention(async (thread, message) => {
 });
 ```
 
-<Info>
-  Always include `fallbackText`. Some email clients strip HTML entirely, and the fallback text is what recipients will see in that case.
-</Info>
+> [!NOTE]
+>
+> Always include `fallbackText`. Some email clients strip HTML entirely, and the fallback text is what recipients will see in that case.
 
 ## Try it yourself
 
-<Card title="Welcome Cards Example" icon="arrow-up-right-from-square" href="https://github.com/resend/resend-chat-sdk/tree/main/examples/welcome-cards">
-  Full working example that sends a styled card on first contact
-</Card>
+> **[Welcome Cards Example](https://github.com/resend/resend-chat-sdk/tree/main/examples/welcome-cards)**
+>
+> Full working example that sends a styled card on first contact

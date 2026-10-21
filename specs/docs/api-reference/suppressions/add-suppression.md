@@ -8,126 +8,122 @@
 
 ## Body Parameters
 
-<ParamField body="email" type="string" required>
-  The email address to suppress.
-</ParamField>
+**email** `string` *required*
 
-<RequestExample>
-  ```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
-  import { Resend } from 'resend';
+The email address to suppress.
 
-  const resend = new Resend('re_xxxxxxxxx');
+```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
+import { Resend } from 'resend';
 
-  const { data, error } = await resend.suppressions.add({
-    email: 'steve.wozniak@example.com',
-  });
-  ```
+const resend = new Resend('re_xxxxxxxxx');
 
-  ```php PHP theme={"theme":{"light":"github-light","dark":"vesper"}}
-  $resend = Resend::client('re_xxxxxxxxx');
+const { data, error } = await resend.suppressions.add({
+  email: 'steve.wozniak@example.com',
+});
+```
 
-  $resend->suppressions->add([
-    'email' => 'steve.wozniak@example.com',
-  ]);
-  ```
+```php PHP theme={"theme":{"light":"github-light","dark":"vesper"}}
+$resend = Resend::client('re_xxxxxxxxx');
 
-  ```python Python theme={"theme":{"light":"github-light","dark":"vesper"}}
-  import resend
+$resend->suppressions->add([
+  'email' => 'steve.wozniak@example.com',
+]);
+```
 
-  resend.api_key = "re_xxxxxxxxx"
+```python Python theme={"theme":{"light":"github-light","dark":"vesper"}}
+import resend
 
-  params: resend.Suppressions.AddParams = {
-    "email": "steve.wozniak@example.com",
-  }
+resend.api_key = "re_xxxxxxxxx"
 
-  resend.Suppressions.add(params)
-  ```
+params: resend.Suppressions.AddParams = {
+  "email": "steve.wozniak@example.com",
+}
 
-  ```ruby Ruby theme={"theme":{"light":"github-light","dark":"vesper"}}
-  require "resend"
+resend.Suppressions.add(params)
+```
 
-  Resend.api_key = "re_xxxxxxxxx"
+```ruby Ruby theme={"theme":{"light":"github-light","dark":"vesper"}}
+require "resend"
 
-  Resend::Suppressions.add(email: "steve.wozniak@example.com")
-  ```
+Resend.api_key = "re_xxxxxxxxx"
 
-  ```go Go theme={"theme":{"light":"github-light","dark":"vesper"}}
-  package main
+Resend::Suppressions.add(email: "steve.wozniak@example.com")
+```
 
-  import "github.com/resend/resend-go/v4"
+```go Go theme={"theme":{"light":"github-light","dark":"vesper"}}
+package main
 
-  func main() {
-  	client := resend.NewClient("re_xxxxxxxxx")
+import "github.com/resend/resend-go/v4"
 
-  	params := &resend.AddSuppressionRequest{
-  		Email: "steve.wozniak@example.com",
-  	}
+func main() {
+	client := resend.NewClient("re_xxxxxxxxx")
 
-  	client.Suppressions.Add(params)
-  }
-  ```
+	params := &resend.AddSuppressionRequest{
+		Email: "steve.wozniak@example.com",
+	}
 
-  ```rust Rust theme={"theme":{"light":"github-light","dark":"vesper"}}
-  use resend_rs::types::AddSuppressionOptions;
-  use resend_rs::{Resend, Result};
+	client.Suppressions.Add(params)
+}
+```
 
-  #[tokio::main]
-  async fn main() -> Result<()> {
-    let resend = Resend::new("re_xxxxxxxxx");
+```rust Rust theme={"theme":{"light":"github-light","dark":"vesper"}}
+use resend_rs::types::AddSuppressionOptions;
+use resend_rs::{Resend, Result};
 
-    let opts = AddSuppressionOptions::new().with_email("steve.wozniak@example.com");
-    let _data = resend.suppressions.add(opts).await?;
+#[tokio::main]
+async fn main() -> Result<()> {
+  let resend = Resend::new("re_xxxxxxxxx");
 
-    Ok(())
-  }
-  ```
+  let opts = AddSuppressionOptions::new().with_email("steve.wozniak@example.com");
+  let _data = resend.suppressions.add(opts).await?;
 
-  ```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
-  import com.resend.Resend;
-  import com.resend.core.exception.ResendException;
-  import com.resend.services.suppressions.model.AddSuppressionOptions;
+  Ok(())
+}
+```
 
-  public class Main {
-      public static void main(String[] args) throws ResendException {
-          Resend resend = new Resend("re_xxxxxxxxx");
+```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
+import com.resend.Resend;
+import com.resend.core.exception.ResendException;
+import com.resend.services.suppressions.model.AddSuppressionOptions;
 
-          AddSuppressionOptions options = AddSuppressionOptions.builder()
-                  .email("steve.wozniak@example.com")
-                  .build();
+public class Main {
+    public static void main(String[] args) throws ResendException {
+        Resend resend = new Resend("re_xxxxxxxxx");
 
-          resend.suppressions().add(options);
-      }
-  }
-  ```
+        AddSuppressionOptions options = AddSuppressionOptions.builder()
+                .email("steve.wozniak@example.com")
+                .build();
 
-  ```csharp .NET theme={"theme":{"light":"github-light","dark":"vesper"}}
-  using Resend;
+        resend.suppressions().add(options);
+    }
+}
+```
 
-  IResend resend = ResendClient.Create( "re_xxxxxxxxx" );
+```csharp .NET theme={"theme":{"light":"github-light","dark":"vesper"}}
+using Resend;
 
-  var resp = await resend.SuppressionAddAsync( "steve.wozniak@example.com" );
-  Console.WriteLine( "Suppression Id={0}", resp.Content );
-  ```
+IResend resend = ResendClient.Create( "re_xxxxxxxxx" );
 
-  ```bash cURL theme={"theme":{"light":"github-light","dark":"vesper"}}
-  curl -X POST 'https://api.resend.com/suppressions' \
-       -H 'Authorization: Bearer re_xxxxxxxxx' \
-       -H 'Content-Type: application/json' \
-       -d $'{
-    "email": "steve.wozniak@example.com"
-  }'
-  ```
+var resp = await resend.SuppressionAddAsync( "steve.wozniak@example.com" );
+Console.WriteLine( "Suppression Id={0}", resp.Content );
+```
 
-  ```bash CLI theme={"theme":{"light":"github-light","dark":"vesper"}}
-  resend suppressions add steve.wozniak@example.com
-  ```
-</RequestExample>
+```bash cURL theme={"theme":{"light":"github-light","dark":"vesper"}}
+curl -X POST 'https://api.resend.com/suppressions' \
+     -H 'Authorization: Bearer re_xxxxxxxxx' \
+     -H 'Content-Type: application/json' \
+     -d $'{
+  "email": "steve.wozniak@example.com"
+}'
+```
 
-<ResponseExample>
-  ```json Response theme={"theme":{"light":"github-light","dark":"vesper"}}
-  {
-    "object": "suppression",
-    "id": "e169aa45-1ecf-4183-9955-b1499d5701d3"
-  }
-  ```
-</ResponseExample>
+```bash CLI theme={"theme":{"light":"github-light","dark":"vesper"}}
+resend suppressions add steve.wozniak@example.com
+```
+
+```json Response theme={"theme":{"light":"github-light","dark":"vesper"}}
+{
+  "object": "suppression",
+  "id": "e169aa45-1ecf-4183-9955-b1499d5701d3"
+}
+```

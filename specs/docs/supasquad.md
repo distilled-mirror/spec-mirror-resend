@@ -6,10 +6,6 @@
 
 > A quick jumpstart to using Resend with Supabase for SupaSquad members.
 
-export const YouTube = ({id}) => {
-  return <iframe className="w-full aspect-video rounded-xl" src={`https://www.youtube.com/embed/${id}`} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>;
-};
-
 This guide helps you get started with Resend by:
 
 * [Setting up Resend](#set-up-resend)
@@ -20,35 +16,33 @@ This guide helps you get started with Resend by:
 
 To send emails with your Supabase project, you'll need to first verify it in Resend.
 
-<Steps>
-  <Step title="Add a new domain to Resend.">
-    Go to the [Domains Dashboard page](https://resend.com/domains) and click on **Add Domain**.
-  </Step>
+**1. Add a new domain to Resend.**
 
-  <Step title="Add your domain name">
-    We recommend [using a subdomain](/docs/knowledge-base/is-it-better-to-send-emails-from-a-subdomain-or-the-root-domain) like `updates.example.com`.
-  </Step>
+Go to the [Domains Dashboard page](https://resend.com/domains) and click on **Add Domain**.
 
-  <Step title="Add the DNS records to your DNS provider.">
-    Learn more about [setting the required records](/docs/dashboard/domains/introduction) or see the [DNS provider guides](/docs/knowledge-base/) for specific provider instructions.
-  </Step>
+**2. Add your domain name**
 
-  <Step title="Confirm in your Dashboard.">
-    Click on **I've added the records** to begin the verification process.
+We recommend [using a subdomain](/docs/knowledge-base/is-it-better-to-send-emails-from-a-subdomain-or-the-root-domain) like `updates.example.com`.
 
-    <img alt="Resend Domains page" src="https://mintcdn.com/resend/_kGPo-rF0-rO9nI4/images/resend-domain-records.png?fit=max&auto=format&n=_kGPo-rF0-rO9nI4&q=85&s=24107151c9a59db661aca80c64338bfe" width="3024" height="1900" data-path="images/resend-domain-records.png" />
-  </Step>
+**3. Add the DNS records to your DNS provider.**
 
-  <Step title="Wait for the verification to complete.">
-    This usually takes 5–10 minutes.
-  </Step>
-</Steps>
+Learn more about [setting the required records](/docs/dashboard/domains/introduction) or see the [DNS provider guides](/docs/knowledge-base/) for specific provider instructions.
 
-<Info>
-  Resend requires you own your domain (i.e., not a shared or public domain).
-  Adding DNS records gives Resend the authority to send emails on your behalf
-  and signals to the inbox providers that you're a legitimate sender.
-</Info>
+**4. Confirm in your Dashboard.**
+
+Click on **I've added the records** to begin the verification process.
+
+![Resend Domains page](https://mintcdn.com/resend/_kGPo-rF0-rO9nI4/images/resend-domain-records.png?fit=max\&auto=format\&n=_kGPo-rF0-rO9nI4\&q=85\&s=24107151c9a59db661aca80c64338bfe)
+
+**5. Wait for the verification to complete.**
+
+This usually takes 5–10 minutes.
+
+> [!NOTE]
+>
+> Resend requires you own your domain (i.e., not a shared or public domain).
+> Adding DNS records gives Resend the authority to send emails on your behalf
+> and signals to the inbox providers that you're a legitimate sender.
 
 As a member of the SupaSquad, **you qualify for a discount** on a paid Resend plan. Contact your Supabase representative to get your discount code.
 
@@ -64,39 +58,37 @@ If you want to use Resend to send your Supabase Auth Emails, you have three opti
 
 Resend includes a pre-built integration with Supabase. Connecting Resend as your email provider will allow you to send your Supabase emails (e.g., password resets, email confirmations) through Resend.
 
-<YouTube id="BkfDsGMgutk" />
+[YouTube video player](https://www.youtube.com/embed/BkfDsGMgutk)
 
-<Steps>
-  <Step title="Navigate to the Integrations Settings Dashboard page." />
+**1. Navigate to the Integrations Settings Dashboard page.**
 
-  <Step title="Connect your account to Supabase.">
-    Click **Connect to Supabase** and login to your Supabase account if prompted.
+**2. Connect your account to Supabase.**
 
-    <img alt="Resend Integrations settings" src="https://mintcdn.com/resend/_kGPo-rF0-rO9nI4/images/resend-integrations-settings.png?fit=max&auto=format&n=_kGPo-rF0-rO9nI4&q=85&s=b954067bfb28d84f7d8201e05a449815" width="3024" height="1900" data-path="images/resend-integrations-settings.png" />
-  </Step>
+Click **Connect to Supabase** and login to your Supabase account if prompted.
 
-  <Step title="Add your API key.">
-    Select a project and click **Select Project**, then select your domain and click **Add API Key**. Resend will create an API key for you. Add a sender name and click **Configure SMTP Integration**.
+![Resend Integrations settings](https://mintcdn.com/resend/_kGPo-rF0-rO9nI4/images/resend-integrations-settings.png?fit=max\&auto=format\&n=_kGPo-rF0-rO9nI4\&q=85\&s=b954067bfb28d84f7d8201e05a449815)
 
-    <img alt="Resend Integrations settings" src="https://mintcdn.com/resend/_kGPo-rF0-rO9nI4/images/resend-supabase-setup-smtp.png?fit=max&auto=format&n=_kGPo-rF0-rO9nI4&q=85&s=e744247952bc105d6083babcc315b0a6" width="3024" height="1900" data-path="images/resend-supabase-setup-smtp.png" />
-  </Step>
+**3. Add your API key.**
 
-  <Step title="Confirm the integration.">
-    Click on **Supabase Dashboard** to confirm the integration.
+Select a project and click **Select Project**, then select your domain and click **Add API Key**. Resend will create an API key for you. Add a sender name and click **Configure SMTP Integration**.
 
-    <img alt="Resend Integrations settings" src="https://mintcdn.com/resend/_kGPo-rF0-rO9nI4/images/resend-supabase-setup-confirm.png?fit=max&auto=format&n=_kGPo-rF0-rO9nI4&q=85&s=d72c13ba50f60530587107b6d7040223" width="1360" height="150" data-path="images/resend-supabase-setup-confirm.png" />
-  </Step>
-</Steps>
+![Resend Integrations settings](https://mintcdn.com/resend/_kGPo-rF0-rO9nI4/images/resend-supabase-setup-smtp.png?fit=max\&auto=format\&n=_kGPo-rF0-rO9nI4\&q=85\&s=e744247952bc105d6083babcc315b0a6)
 
-<Info>
-  Supabase has a rate limit on the number of emails you can send per hour and
-  requires you to [connect a custom email provider for more than 2
-  emails/hour](https://supabase.com/docs/guides/auth/rate-limits). Once you set
-  Resend as your email provider, you can send additional emails (by default, 25
-  emails/hour, although you can change the rate limit in your project's
-  [authentication
-  settings](https://supabase.com/docs/guides/deployment/going-into-prod#rate-limiting-resource-allocation--abuse-prevention)).
-</Info>
+**4. Confirm the integration.**
+
+Click on **Supabase Dashboard** to confirm the integration.
+
+![Resend Integrations settings](https://mintcdn.com/resend/_kGPo-rF0-rO9nI4/images/resend-supabase-setup-confirm.png?fit=max\&auto=format\&n=_kGPo-rF0-rO9nI4\&q=85\&s=d72c13ba50f60530587107b6d7040223)
+
+> [!NOTE]
+>
+> Supabase has a rate limit on the number of emails you can send per hour and
+> requires you to [connect a custom email provider for more than 2
+> emails/hour](https://supabase.com/docs/guides/auth/rate-limits). Once you set
+> Resend as your email provider, you can send additional emails (by default, 25
+> emails/hour, although you can change the rate limit in your project's
+> [authentication
+> settings](https://supabase.com/docs/guides/deployment/going-into-prod#rate-limiting-resource-allocation--abuse-prevention)).
 
 ### Custom Auth Functions
 
@@ -107,11 +99,11 @@ Benefit of using custom auth functions:
 
 Note that this requires enabling [Supabase Auth Hooks](https://supabase.com/docs/guides/auth/auth-hooks).
 
-<YouTube id="tB_HcKjW8fQ" />
+[YouTube video player](https://www.youtube.com/embed/tB_HcKjW8fQ)
 
-<Card title="Supabase Auth Hooks with Resend Templates" icon="arrow-up-right-from-square" href="https://github.com/resend/supabase-auth-hooks-with-resend-templates">
-  See the full source code.
-</Card>
+> **[Supabase Auth Hooks with Resend Templates](https://github.com/resend/supabase-auth-hooks-with-resend-templates)**
+>
+> See the full source code.
 
 ### Self-hosted with Custom SMTP
 
@@ -123,75 +115,73 @@ If you're using Supabase Edge Functions, you can add email sending to your funct
 
 First, make sure you have the latest version of the [Supabase CLI](https://supabase.com/docs/guides/cli#installation) installed.
 
-<Steps>
-  <Step title="Create Supabase function">
-    Create a new function locally:
+**1. Create Supabase function**
 
-    ```bash theme={"theme":{"light":"github-light","dark":"vesper"}}
-    supabase functions new resend
-    ```
-  </Step>
+Create a new function locally:
 
-  <Step title="Edit the handler function">
-    Paste the following code into the `index.ts` file:
+```bash theme={"theme":{"light":"github-light","dark":"vesper"}}
+supabase functions new resend
+```
 
-    ```js index.ts theme={"theme":{"light":"github-light","dark":"vesper"}}
-    import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
+**2. Edit the handler function**
 
-    const RESEND_API_KEY = 're_xxxxxxxxx';
+Paste the following code into the `index.ts` file:
 
-    const handler = async (_request: Request): Promise<Response> => {
-        const res = await fetch('https://api.resend.com/emails', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${RESEND_API_KEY}`
-            },
-            body: JSON.stringify({
-                from: 'Acme <onboarding@resend.dev>',
-                to: ['delivered@resend.dev'],
-                subject: 'hello world',
-                html: '<strong>it works!</strong>',
-            })
-        });
+```js index.ts theme={"theme":{"light":"github-light","dark":"vesper"}}
+import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 
-        const data = await res.json();
+const RESEND_API_KEY = 're_xxxxxxxxx';
 
-        return new Response(JSON.stringify(data), {
-            status: 200,
-            headers: {
-                'Content-Type': 'application/json',
-            },
-        });
-    };
+const handler = async (_request: Request): Promise<Response> => {
+    const res = await fetch('https://api.resend.com/emails', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${RESEND_API_KEY}`
+        },
+        body: JSON.stringify({
+            from: 'Acme <onboarding@resend.dev>',
+            to: ['delivered@resend.dev'],
+            subject: 'hello world',
+            html: '<strong>it works!</strong>',
+        })
+    });
 
-    serve(handler);
-    ```
-  </Step>
+    const data = await res.json();
 
-  <Step title="Deploy and send email">
-    Run function locally:
+    return new Response(JSON.stringify(data), {
+        status: 200,
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    });
+};
 
-    ```bash theme={"theme":{"light":"github-light","dark":"vesper"}}
-    supabase functions start
-    supabase functions serve resend --no-verify-jwt
-    ```
+serve(handler);
+```
 
-    Deploy function to Supabase:
+**3. Deploy and send email**
 
-    ```bash theme={"theme":{"light":"github-light","dark":"vesper"}}
-    supabase functions deploy resend
-    ```
+Run function locally:
 
-    Open the endpoint URL to send an email:
+```bash theme={"theme":{"light":"github-light","dark":"vesper"}}
+supabase functions start
+supabase functions serve resend --no-verify-jwt
+```
 
-    <img alt="Supabase Edge Functions - Deploy Function" src="https://mintcdn.com/resend/OWNnQaVDyqcGyhhN/images/supabase-edge-functions-deploy-function.png?fit=max&auto=format&n=OWNnQaVDyqcGyhhN&q=85&s=e28cab375d10a57f712e77ff3c888005" width="3414" height="1886" data-path="images/supabase-edge-functions-deploy-function.png" />
+Deploy function to Supabase:
 
-    <Card title="Supabase Edge Functions Example" icon="arrow-up-right-from-square" href="https://github.com/resend/resend-supabase-edge-functions-example">
-      See the full source code.
-    </Card>
-  </Step>
-</Steps>
+```bash theme={"theme":{"light":"github-light","dark":"vesper"}}
+supabase functions deploy resend
+```
+
+Open the endpoint URL to send an email:
+
+![Supabase Edge Functions - Deploy Function](https://mintcdn.com/resend/OWNnQaVDyqcGyhhN/images/supabase-edge-functions-deploy-function.png?fit=max\&auto=format\&n=OWNnQaVDyqcGyhhN\&q=85\&s=e28cab375d10a57f712e77ff3c888005)
+
+> **[Supabase Edge Functions Example](https://github.com/resend/resend-supabase-edge-functions-example)**
+>
+> See the full source code.
 
 ## Get more help
 

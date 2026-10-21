@@ -6,199 +6,168 @@
 
 > Retrieve a list of attachments from a received email.
 
-export const QueryParams = ({type, isRequired}) => {
-  return <>
-      <h2>Query Parameters</h2>
+## Query Parameters
 
-      {isRequired ? <ParamField query="limit" type="number">
-          Number of {type} to retrieve.
-          <ul>
-            <li>
-              Default value: <code>20</code>
-            </li>
-            <li>
-              Maximum value: <code>100</code>
-            </li>
-            <li>
-              Minimum value: <code>1</code>
-            </li>
-          </ul>
-        </ParamField> : <>
-          <p>
-            Note that the <code>limit</code> parameter is <em>optional</em>. If
-            you do not provide a <code>limit</code>, all {type} will be returned
-            in a single response.
-          </p>
-          <ParamField query="limit" type="number">
-            Number of {type} to retrieve.
-            <ul>
-              <li>
-                Maximum value: <code>100</code>
-              </li>
-              <li>
-                Minimum value: <code>1</code>
-              </li>
-            </ul>
-          </ParamField>
-        </>}
+Note that the `limit` parameter is *optional*. If
+you do not provide a `limit`, all attachments will be returned
+in a single response.
 
-      <ParamField query="after" type="string">
-        The ID <em>after</em> which we'll retrieve more {type} (for pagination).
-        This ID will <em>not</em> be included in the returned list. Cannot be
-        used with the
-        <code>before</code> parameter.
-      </ParamField>
-      <ParamField query="before" type="string">
-        The ID <em>before</em> which we'll retrieve more {type} (for
-        pagination). This ID will <em>not</em> be included in the returned list.
-        Cannot be used with the <code>after</code> parameter.
-      </ParamField>
-      <Info>
-        You can only use either <code>after</code> or <code>before</code>{' '}
-        parameter, not both. See our{' '}
-        <a href="/docs/api-reference/pagination">pagination guide</a> for more
-        information.
-      </Info>
-    </>;
-};
+**limit** `number`
 
-<QueryParams type="attachments" isRequired={false} />
+Number of attachments to retrieve.
+<ul><li>Maximum value: `100`</li>
+<li>Minimum value: `1`</li></ul>
+
+**after** `string`
+
+The ID *after* which we'll retrieve more attachments (for pagination).
+This ID will *not* be included in the returned list. Cannot be
+used with the
+`before` parameter.
+**before** `string`
+
+The ID *before* which we'll retrieve more attachments (for
+pagination). This ID will *not* be included in the returned list.
+Cannot be used with the `after` parameter.
+
+> [!NOTE]
+>
+> You can only use either `after` or `before`
+> parameter, not both. See our
+> [pagination guide](/docs/api-reference/pagination) for more
+> information.
 
 ## Path Parameters
 
-<ParamField path="email_id" type="string" required>
-  The Email ID.
-</ParamField>
+**email\_id** `string` *required*
 
-<RequestExample>
-  ```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
-  import { Resend } from 'resend';
+The Email ID.
 
-  const resend = new Resend('re_xxxxxxxxx');
+```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
+import { Resend } from 'resend';
 
-  const { data, error } = await resend.emails.receiving.attachments.list({
-    emailId: '4ef9a417-02e9-4d39-ad75-9611e0fcc33c',
-  });
-  ```
+const resend = new Resend('re_xxxxxxxxx');
 
-  ```php PHP theme={"theme":{"light":"github-light","dark":"vesper"}}
-  $resend = Resend::client('re_xxxxxxxxx');
+const { data, error } = await resend.emails.receiving.attachments.list({
+  emailId: '4ef9a417-02e9-4d39-ad75-9611e0fcc33c',
+});
+```
 
-  $resend->emails->receiving->attachments->list(
-    emailId: '4ef9a417-02e9-4d39-ad75-9611e0fcc33c'
-  );
-  ```
+```php PHP theme={"theme":{"light":"github-light","dark":"vesper"}}
+$resend = Resend::client('re_xxxxxxxxx');
 
-  ```python Python theme={"theme":{"light":"github-light","dark":"vesper"}}
-  import resend
+$resend->emails->receiving->attachments->list(
+  emailId: '4ef9a417-02e9-4d39-ad75-9611e0fcc33c'
+);
+```
 
-  resend.api_key = 're_xxxxxxxxx'
+```python Python theme={"theme":{"light":"github-light","dark":"vesper"}}
+import resend
 
-  attachments = resend.Emails.Receiving.Attachments.list(
-    email_id='4ef9a417-02e9-4d39-ad75-9611e0fcc33c'
-  )
-  ```
+resend.api_key = 're_xxxxxxxxx'
 
-  ```ruby Ruby theme={"theme":{"light":"github-light","dark":"vesper"}}
-  require 'resend'
+attachments = resend.Emails.Receiving.Attachments.list(
+  email_id='4ef9a417-02e9-4d39-ad75-9611e0fcc33c'
+)
+```
 
-  Resend.api_key = 're_xxxxxxxxx'
+```ruby Ruby theme={"theme":{"light":"github-light","dark":"vesper"}}
+require 'resend'
 
-  attachments = Resend::Emails::Receiving::Attachments.list(
-    email_id: '4ef9a417-02e9-4d39-ad75-9611e0fcc33c'
-  )
-  ```
+Resend.api_key = 're_xxxxxxxxx'
 
-  ```go Go theme={"theme":{"light":"github-light","dark":"vesper"}}
-  package main
+attachments = Resend::Emails::Receiving::Attachments.list(
+  email_id: '4ef9a417-02e9-4d39-ad75-9611e0fcc33c'
+)
+```
 
-  import (
-  	"context"
+```go Go theme={"theme":{"light":"github-light","dark":"vesper"}}
+package main
 
-  	"github.com/resend/resend-go/v4"
-  )
+import (
+	"context"
 
-  func main() {
-  	client := resend.NewClient("re_xxxxxxxxx")
+	"github.com/resend/resend-go/v4"
+)
 
-  	client.Emails.Receiving.ListAttachmentsWithContext(
-  		context.TODO(),
-  		"4ef9a417-02e9-4d39-ad75-9611e0fcc33c",
-  	)
+func main() {
+	client := resend.NewClient("re_xxxxxxxxx")
+
+	client.Emails.Receiving.ListAttachmentsWithContext(
+		context.TODO(),
+		"4ef9a417-02e9-4d39-ad75-9611e0fcc33c",
+	)
+}
+```
+
+```rust Rust theme={"theme":{"light":"github-light","dark":"vesper"}}
+use resend_rs::{list_opts::ListOptions, Resend, Result};
+
+#[tokio::main]
+async fn main() -> Result<()> {
+  let resend = Resend::new("re_xxxxxxxxx");
+
+  let _email = resend
+    .receiving
+    .list_attachments(
+      "4ef9a417-02e9-4d39-ad75-9611e0fcc33c",
+      ListOptions::default(),
+    )
+    .await?;
+
+  Ok(())
+}
+```
+
+```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
+import com.resend.Resend;
+import com.resend.core.exception.ResendException;
+import com.resend.services.receiving.model.ListAttachmentsResponse;
+
+public class Main {
+  public static void main(String[] args) throws ResendException {
+    Resend resend = new Resend("re_xxxxxxxxx");
+
+    ListAttachmentsResponse response = resend.receiving().listAttachments(
+      "4ef9a417-02e9-4d39-ad75-9611e0fcc33c"
+    );
   }
-  ```
+}
+```
 
-  ```rust Rust theme={"theme":{"light":"github-light","dark":"vesper"}}
-  use resend_rs::{list_opts::ListOptions, Resend, Result};
+```csharp .NET theme={"theme":{"light":"github-light","dark":"vesper"}}
+using Resend;
 
-  #[tokio::main]
-  async fn main() -> Result<()> {
-    let resend = Resend::new("re_xxxxxxxxx");
+IResend resend = ResendClient.Create( "re_xxxxxxxxx" ); // Or from DI
 
-    let _email = resend
-      .receiving
-      .list_attachments(
-        "4ef9a417-02e9-4d39-ad75-9611e0fcc33c",
-        ListOptions::default(),
-      )
-      .await?;
+var resp = await resend.ReceivedEmailAttachmentListAsync( new Guid( "4ef9a417-02e9-4d39-ad75-9611e0fcc33c" ));
+Console.WriteLine( "Nr Attachments={0}", resp.Content.Data.Count );
+```
 
-    Ok(())
-  }
-  ```
+```bash cURL theme={"theme":{"light":"github-light","dark":"vesper"}}
+curl -X GET 'https://api.resend.com/emails/receiving/4ef9a417-02e9-4d39-ad75-9611e0fcc33c/attachments' \
+     -H 'Authorization: Bearer re_xxxxxxxxx'
+```
 
-  ```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
-  import com.resend.Resend;
-  import com.resend.core.exception.ResendException;
-  import com.resend.services.receiving.model.ListAttachmentsResponse;
+```bash CLI theme={"theme":{"light":"github-light","dark":"vesper"}}
+resend emails receiving attachments 4ef9a417-02e9-4d39-ad75-9611e0fcc33c
+```
 
-  public class Main {
-    public static void main(String[] args) throws ResendException {
-      Resend resend = new Resend("re_xxxxxxxxx");
-
-      ListAttachmentsResponse response = resend.receiving().listAttachments(
-        "4ef9a417-02e9-4d39-ad75-9611e0fcc33c"
-      );
+```json Response theme={"theme":{"light":"github-light","dark":"vesper"}}
+{
+  "object": "list",
+  "has_more": false,
+  "data": [
+    {
+      "id": "2a0c9ce0-3112-4728-976e-47ddcd16a318",
+      "filename": "avatar.png",
+      "size": 4096,
+      "content_type": "image/png",
+      "content_disposition": "inline",
+      "content_id": "img001",
+      "download_url": "https://inbound-cdn.resend.com/4ef9a417-02e9-4d39-ad75-9611e0fcc33c/attachments/2a0c9ce0-3112-4728-976e-47ddcd16a318?some-params=example&signature=sig-123",
+      "expires_at": "2026-10-17T14:29:41.521Z"
     }
-  }
-  ```
-
-  ```csharp .NET theme={"theme":{"light":"github-light","dark":"vesper"}}
-  using Resend;
-
-  IResend resend = ResendClient.Create( "re_xxxxxxxxx" ); // Or from DI
-
-  var resp = await resend.ReceivedEmailAttachmentListAsync( new Guid( "4ef9a417-02e9-4d39-ad75-9611e0fcc33c" ));
-  Console.WriteLine( "Nr Attachments={0}", resp.Content.Data.Count );
-  ```
-
-  ```bash cURL theme={"theme":{"light":"github-light","dark":"vesper"}}
-  curl -X GET 'https://api.resend.com/emails/receiving/4ef9a417-02e9-4d39-ad75-9611e0fcc33c/attachments' \
-       -H 'Authorization: Bearer re_xxxxxxxxx'
-  ```
-
-  ```bash CLI theme={"theme":{"light":"github-light","dark":"vesper"}}
-  resend emails receiving attachments 4ef9a417-02e9-4d39-ad75-9611e0fcc33c
-  ```
-</RequestExample>
-
-<ResponseExample>
-  ```json Response theme={"theme":{"light":"github-light","dark":"vesper"}}
-  {
-    "object": "list",
-    "has_more": false,
-    "data": [
-      {
-        "id": "2a0c9ce0-3112-4728-976e-47ddcd16a318",
-        "filename": "avatar.png",
-        "size": 4096,
-        "content_type": "image/png",
-        "content_disposition": "inline",
-        "content_id": "img001",
-        "download_url": "https://inbound-cdn.resend.com/4ef9a417-02e9-4d39-ad75-9611e0fcc33c/attachments/2a0c9ce0-3112-4728-976e-47ddcd16a318?some-params=example&signature=sig-123",
-        "expires_at": "2026-10-17T14:29:41.521Z"
-      }
-    ]
-  }
-  ```
-</ResponseExample>
+  ]
+}
+```

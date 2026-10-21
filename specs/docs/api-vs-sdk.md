@@ -10,11 +10,11 @@ For most use cases, **the Resend SDK offers a better developer experience** than
 calling the raw HTTP API directly. Resend maintains official, open source SDKs
 for Node.js, PHP, Python, Ruby, Go, Rust, Java, and .NET.
 
-<Info>
-  **Recommendation:** Use a [Resend SDK](/docs/sdks) for your language. Call the [raw
-  API](/docs/api-reference/introduction) directly only when no SDK exists for your
-  stack.
-</Info>
+> [!NOTE]
+>
+> **Recommendation:** Use a [Resend SDK](/docs/sdks) for your language. Call the [raw
+> API](/docs/api-reference/introduction) directly only when no SDK exists for your
+> stack.
 
 ## Choosing between the SDK and API
 
@@ -43,20 +43,18 @@ If you do call the API directly, remember to set the required
 
 ## Next steps
 
-<CardGroup cols={2}>
-  <Card title="Official SDKs" icon="cube" href="/docs/sdks">
-    Install the SDK for your language.
-  </Card>
+> **[Official SDKs](/docs/sdks)**
+>
+> Install the SDK for your language.
 
-  <Card title="Quickstart" icon="rocket" href="/docs/introduction">
-    Send your first email in minutes.
-  </Card>
+> **[Quickstart](/docs/introduction)**
+>
+> Send your first email in minutes.
 
-  <Card title="API Reference" icon="code" href="/docs/api-reference/introduction">
-    Full HTTP API documentation.
-  </Card>
+> **[API Reference](/docs/api-reference/introduction)**
+>
+> Full HTTP API documentation.
 
-  <Card title="MCP Server" icon="robot" href="/docs/mcp-server">
-    Give your AI agent access to Resend.
-  </Card>
-</CardGroup>
+> **[MCP Server](/docs/mcp-server)**
+>
+> Give your AI agent access to Resend.

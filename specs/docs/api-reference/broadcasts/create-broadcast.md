@@ -6,480 +6,438 @@
 
 > Create a new broadcast to send to your contacts.
 
-export const ResendParamField = ({children, body, path, ...props}) => {
-  const [lang, setLang] = useState(() => {
-    return localStorage.getItem('code') || '"Node.js"';
-  });
-  useEffect(() => {
-    const onStorage = event => {
-      const key = event.detail.key;
-      if (key === 'code') {
-        setLang(event.detail.value);
-      }
-    };
-    document.addEventListener('mintlify-localstorage', onStorage);
-    return () => {
-      document.removeEventListener('mintlify-localstorage', onStorage);
-    };
-  }, []);
-  const toCamelCase = str => typeof str === 'string' ? str.replace(/[_-](\w)/g, (_, c) => c.toUpperCase()) : str;
-  const resolvedBody = useMemo(() => {
-    const value = JSON.parse(lang);
-    return value === 'Node.js' ? toCamelCase(body) : body;
-  }, [body, lang]);
-  const resolvedPath = useMemo(() => {
-    const value = JSON.parse(lang);
-    return value === 'Node.js' ? toCamelCase(path) : path;
-  }, [path, lang]);
-  return <ParamField body={resolvedBody} path={resolvedPath} {...props}>
-      {children}
-    </ParamField>;
-};
-
 ## Body Parameters
 
-<ResendParamField body="segment_id" type="string" required>
-  The ID of the segment you want to send to.
+The ID of the segment you want to send to.
 
-  <Info>
-    Audiences are now called Segments. Follow the [Migration
-    Guide](/docs/dashboard/segments/migrating-from-audiences-to-segments).
-  </Info>
-</ResendParamField>
+> [!NOTE]
+>
+> Audiences are now called Segments. Follow the [Migration
+> Guide](/docs/dashboard/segments/migrating-from-audiences-to-segments).
 
-<ParamField body="from" type="string" required>
-  Sender email address.
+**from** `string` *required*
 
-  To include a friendly name, pass the sender as `Name <email@example.com>`, for example `Acme <onboarding@example.dev>`.
-</ParamField>
+Sender email address.
 
-<ParamField body="subject" type="string" required>
-  Email subject.
-</ParamField>
+To include a friendly name, pass the sender as `Name <email@example.com>`, for example `Acme <onboarding@example.dev>`.
 
-<ResendParamField body="reply_to" type="string | string[]">
-  Reply-to email address. For multiple addresses, send as an array of strings.
-</ResendParamField>
+**subject** `string` *required*
 
-<ParamField body="html" type="string">
-  The HTML version of the message. You can include Contact Properties in the
-  body of the Broadcast. Learn more about [Contact
-  Properties](/docs/dashboard/contacts/properties).
-</ParamField>
+Email subject.
 
-<ParamField body="text" type="string">
-  The plain text version of the message. You can include Contact Properties in the body of the Broadcast. Learn more about [Contact Properties](/docs/dashboard/contacts/properties).
+Reply-to email address. For multiple addresses, send as an array of strings.
 
-  <Info>
-    If not provided, the HTML will be used to generate a plain text version. You
-    can opt out of this behavior by setting value to an empty string.
-  </Info>
-</ParamField>
+**html** `string`
 
-<ParamField body="react" type="React.ReactNode">
-  The React component used to write the message. *Only available in the Node.js
-  SDK.*
-</ParamField>
+The HTML version of the message. You can include Contact Properties in the
+body of the Broadcast. Learn more about [Contact
+Properties](/docs/dashboard/contacts/properties).
 
-<ParamField body="name" type="string">
-  The friendly name of the broadcast. Only used for internal reference.
-</ParamField>
+**text** `string`
 
-<ResendParamField body="topic_id" type="string">
-  Optional. Omit it to send to every subscribed contact in the segment, without
-  checking topic preferences.
-</ResendParamField>
+The plain text version of the message. You can include Contact Properties in the body of the Broadcast. Learn more about [Contact Properties](/docs/dashboard/contacts/properties).
 
-<ParamField body="send" type="boolean">
-  Send the broadcast immediately after creation. Defaults to `false`.
+> [!NOTE]
+>
+> If not provided, the HTML will be used to generate a plain text version. You
+> can opt out of this behavior by setting value to an empty string.
 
-  <Info>
-    When set to `true`, the broadcast will be sent or scheduled (if `scheduled_at` is provided) without requiring a separate call to the [Send Broadcast](/docs/api-reference/broadcasts/send-broadcast) endpoint.
-  </Info>
-</ParamField>
+**react** `React.ReactNode`
 
-<ResendParamField body="scheduled_at" type="string">
-  Schedule the broadcast to be sent later. The date should be in natural language (e.g.: `in 1 min`) or ISO 8601 format (e.g: `2026-08-05T11:52:01.858Z`).
+The React component used to write the message. *Only available in the Node.js
+SDK.*
 
-  <Warning>
-    This parameter requires `send` to be set to `true`.
-  </Warning>
-</ResendParamField>
+**name** `string`
 
-<RequestExample>
-  ```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
-  import { Resend } from 'resend';
+The friendly name of the broadcast. Only used for internal reference.
 
-  const resend = new Resend('re_xxxxxxxxx');
+Optional. Omit it to send to every subscribed contact in the segment, without
+checking topic preferences.
 
-  // Create a draft broadcast
-  const { data, error } = await resend.broadcasts.create({
-    segmentId: '78261eea-8f8b-4381-83c6-79fa7120f1cf',
-    from: 'Acme <onboarding@resend.dev>',
-    subject: 'hello world',
-    html: 'Hi {{{contact.first_name|there}}}, you can unsubscribe here: {{{RESEND_UNSUBSCRIBE_URL}}}',
-  });
+**send** `boolean`
 
-  // Create and send immediately
-  const { data: sent, error: sendError } = await resend.broadcasts.create({
+Send the broadcast immediately after creation. Defaults to `false`.
+
+> [!NOTE]
+>
+> When set to `true`, the broadcast will be sent or scheduled (if `scheduled_at` is provided) without requiring a separate call to the [Send Broadcast](/docs/api-reference/broadcasts/send-broadcast) endpoint.
+
+Schedule the broadcast to be sent later. The date should be in natural language (e.g.: `in 1 min`) or ISO 8601 format (e.g: `2026-08-05T11:52:01.858Z`).
+
+> [!WARNING]
+>
+> This parameter requires `send` to be set to `true`.
+
+```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
+import { Resend } from 'resend';
+
+const resend = new Resend('re_xxxxxxxxx');
+
+// Create a draft broadcast
+const { data, error } = await resend.broadcasts.create({
+  segmentId: '78261eea-8f8b-4381-83c6-79fa7120f1cf',
+  from: 'Acme <onboarding@resend.dev>',
+  subject: 'hello world',
+  html: 'Hi {{{contact.first_name|there}}}, you can unsubscribe here: {{{RESEND_UNSUBSCRIBE_URL}}}',
+});
+
+// Create and send immediately
+const { data: sent, error: sendError } = await resend.broadcasts.create({
+  segmentId: '78261eea-8f8b-4381-83c6-79fa7120f1cf',
+  from: 'Acme <onboarding@resend.dev>',
+  subject: 'hello world',
+  html: 'Hi {{{contact.first_name|there}}}, you can unsubscribe here: {{{RESEND_UNSUBSCRIBE_URL}}}',
+  send: true,
+});
+
+// Create and schedule
+const { data: scheduled, error: scheduleError } =
+  await resend.broadcasts.create({
     segmentId: '78261eea-8f8b-4381-83c6-79fa7120f1cf',
     from: 'Acme <onboarding@resend.dev>',
     subject: 'hello world',
     html: 'Hi {{{contact.first_name|there}}}, you can unsubscribe here: {{{RESEND_UNSUBSCRIBE_URL}}}',
     send: true,
+    scheduledAt: 'in 1 hour',
   });
+```
 
-  // Create and schedule
-  const { data: scheduled, error: scheduleError } =
-    await resend.broadcasts.create({
-      segmentId: '78261eea-8f8b-4381-83c6-79fa7120f1cf',
-      from: 'Acme <onboarding@resend.dev>',
-      subject: 'hello world',
-      html: 'Hi {{{contact.first_name|there}}}, you can unsubscribe here: {{{RESEND_UNSUBSCRIBE_URL}}}',
-      send: true,
-      scheduledAt: 'in 1 hour',
-    });
-  ```
+```php PHP theme={"theme":{"light":"github-light","dark":"vesper"}}
+$resend = Resend::client('re_xxxxxxxxx');
 
-  ```php PHP theme={"theme":{"light":"github-light","dark":"vesper"}}
-  $resend = Resend::client('re_xxxxxxxxx');
+// Create a draft broadcast
+$resend->broadcasts->create([
+  'segment_id' => '78261eea-8f8b-4381-83c6-79fa7120f1cf',
+  'from' => 'Acme <onboarding@resend.dev>',
+  'subject' => 'hello world',
+  'html' => 'Hi {{{contact.first_name|there}}}, you can unsubscribe here: {{{RESEND_UNSUBSCRIBE_URL}}}',
+]);
 
-  // Create a draft broadcast
-  $resend->broadcasts->create([
-    'segment_id' => '78261eea-8f8b-4381-83c6-79fa7120f1cf',
-    'from' => 'Acme <onboarding@resend.dev>',
-    'subject' => 'hello world',
-    'html' => 'Hi {{{contact.first_name|there}}}, you can unsubscribe here: {{{RESEND_UNSUBSCRIBE_URL}}}',
-  ]);
+// Create and send immediately
+$resend->broadcasts->create([
+  'segment_id' => '78261eea-8f8b-4381-83c6-79fa7120f1cf',
+  'from' => 'Acme <onboarding@resend.dev>',
+  'subject' => 'hello world',
+  'html' => 'Hi {{{contact.first_name|there}}}, you can unsubscribe here: {{{RESEND_UNSUBSCRIBE_URL}}}',
+  'send' => true,
+]);
 
-  // Create and send immediately
-  $resend->broadcasts->create([
-    'segment_id' => '78261eea-8f8b-4381-83c6-79fa7120f1cf',
-    'from' => 'Acme <onboarding@resend.dev>',
-    'subject' => 'hello world',
-    'html' => 'Hi {{{contact.first_name|there}}}, you can unsubscribe here: {{{RESEND_UNSUBSCRIBE_URL}}}',
-    'send' => true,
-  ]);
+// Create and schedule
+$resend->broadcasts->create([
+  'segment_id' => '78261eea-8f8b-4381-83c6-79fa7120f1cf',
+  'from' => 'Acme <onboarding@resend.dev>',
+  'subject' => 'hello world',
+  'html' => 'Hi {{{contact.first_name|there}}}, you can unsubscribe here: {{{RESEND_UNSUBSCRIBE_URL}}}',
+  'send' => true,
+  'scheduled_at' => 'in 1 hour',
+]);
+```
 
-  // Create and schedule
-  $resend->broadcasts->create([
-    'segment_id' => '78261eea-8f8b-4381-83c6-79fa7120f1cf',
-    'from' => 'Acme <onboarding@resend.dev>',
-    'subject' => 'hello world',
-    'html' => 'Hi {{{contact.first_name|there}}}, you can unsubscribe here: {{{RESEND_UNSUBSCRIBE_URL}}}',
-    'send' => true,
-    'scheduled_at' => 'in 1 hour',
-  ]);
-  ```
+```py Python theme={"theme":{"light":"github-light","dark":"vesper"}}
+import resend
 
-  ```py Python theme={"theme":{"light":"github-light","dark":"vesper"}}
-  import resend
+resend.api_key = "re_xxxxxxxxx"
 
-  resend.api_key = "re_xxxxxxxxx"
+# Create a draft broadcast
+params: resend.Broadcasts.CreateParams = {
+  "segment_id": "78261eea-8f8b-4381-83c6-79fa7120f1cf",
+  "from": "Acme <onboarding@resend.dev>",
+  "subject": "Hello, world!",
+  "html": "Hi {{{contact.first_name|there}}}, you can unsubscribe here: {{{RESEND_UNSUBSCRIBE_URL}}}",
+}
+resend.Broadcasts.create(params)
 
-  # Create a draft broadcast
-  params: resend.Broadcasts.CreateParams = {
-    "segment_id": "78261eea-8f8b-4381-83c6-79fa7120f1cf",
-    "from": "Acme <onboarding@resend.dev>",
-    "subject": "Hello, world!",
-    "html": "Hi {{{contact.first_name|there}}}, you can unsubscribe here: {{{RESEND_UNSUBSCRIBE_URL}}}",
-  }
-  resend.Broadcasts.create(params)
+# Create and send immediately
+params: resend.Broadcasts.CreateParams = {
+  "segment_id": "78261eea-8f8b-4381-83c6-79fa7120f1cf",
+  "from": "Acme <onboarding@resend.dev>",
+  "subject": "Hello, world!",
+  "html": "Hi {{{contact.first_name|there}}}, you can unsubscribe here: {{{RESEND_UNSUBSCRIBE_URL}}}",
+  "send": True,
+}
+resend.Broadcasts.create(params)
 
-  # Create and send immediately
-  params: resend.Broadcasts.CreateParams = {
-    "segment_id": "78261eea-8f8b-4381-83c6-79fa7120f1cf",
-    "from": "Acme <onboarding@resend.dev>",
-    "subject": "Hello, world!",
-    "html": "Hi {{{contact.first_name|there}}}, you can unsubscribe here: {{{RESEND_UNSUBSCRIBE_URL}}}",
-    "send": True,
-  }
-  resend.Broadcasts.create(params)
+# Create and schedule
+params: resend.Broadcasts.CreateParams = {
+  "segment_id": "78261eea-8f8b-4381-83c6-79fa7120f1cf",
+  "from": "Acme <onboarding@resend.dev>",
+  "subject": "Hello, world!",
+  "html": "Hi {{{contact.first_name|there}}}, you can unsubscribe here: {{{RESEND_UNSUBSCRIBE_URL}}}",
+  "send": True,
+  "scheduled_at": "in 1 hour",
+}
+resend.Broadcasts.create(params)
+```
 
-  # Create and schedule
-  params: resend.Broadcasts.CreateParams = {
-    "segment_id": "78261eea-8f8b-4381-83c6-79fa7120f1cf",
-    "from": "Acme <onboarding@resend.dev>",
-    "subject": "Hello, world!",
-    "html": "Hi {{{contact.first_name|there}}}, you can unsubscribe here: {{{RESEND_UNSUBSCRIBE_URL}}}",
-    "send": True,
-    "scheduled_at": "in 1 hour",
-  }
-  resend.Broadcasts.create(params)
-  ```
+```ruby Ruby theme={"theme":{"light":"github-light","dark":"vesper"}}
+require "resend"
 
-  ```ruby Ruby theme={"theme":{"light":"github-light","dark":"vesper"}}
-  require "resend"
+Resend.api_key = "re_xxxxxxxxx"
 
-  Resend.api_key = "re_xxxxxxxxx"
+# Create a draft broadcast
+params = {
+  "segment_id": "78261eea-8f8b-4381-83c6-79fa7120f1cf",
+  "from": "Acme <onboarding@resend.dev>",
+  "subject": "hello world",
+  "html": "Hi {{{contact.first_name|there}}}, you can unsubscribe here: {{{RESEND_UNSUBSCRIBE_URL}}}",
+}
+Resend::Broadcasts.create(params)
 
-  # Create a draft broadcast
-  params = {
-    "segment_id": "78261eea-8f8b-4381-83c6-79fa7120f1cf",
-    "from": "Acme <onboarding@resend.dev>",
-    "subject": "hello world",
-    "html": "Hi {{{contact.first_name|there}}}, you can unsubscribe here: {{{RESEND_UNSUBSCRIBE_URL}}}",
-  }
-  Resend::Broadcasts.create(params)
+# Create and send immediately
+params = {
+  "segment_id": "78261eea-8f8b-4381-83c6-79fa7120f1cf",
+  "from": "Acme <onboarding@resend.dev>",
+  "subject": "Hello, world!",
+  "html": "Hi {{{contact.first_name|there}}}, you can unsubscribe here: {{{RESEND_UNSUBSCRIBE_URL}}}",
+  "send": true,
+}
+Resend::Broadcasts.create(params)
 
-  # Create and send immediately
-  params = {
-    "segment_id": "78261eea-8f8b-4381-83c6-79fa7120f1cf",
-    "from": "Acme <onboarding@resend.dev>",
-    "subject": "Hello, world!",
-    "html": "Hi {{{contact.first_name|there}}}, you can unsubscribe here: {{{RESEND_UNSUBSCRIBE_URL}}}",
-    "send": true,
-  }
-  Resend::Broadcasts.create(params)
+# Create and schedule
+params = {
+  "segment_id": "78261eea-8f8b-4381-83c6-79fa7120f1cf",
+  "from": "Acme <onboarding@resend.dev>",
+  "subject": "Hello, world!",
+  "html": "Hi {{{contact.first_name|there}}}, you can unsubscribe here: {{{RESEND_UNSUBSCRIBE_URL}}}",
+  "send": true,
+  "scheduled_at": "in 1 hour",
+}
+Resend::Broadcasts.create(params)
 
-  # Create and schedule
-  params = {
-    "segment_id": "78261eea-8f8b-4381-83c6-79fa7120f1cf",
-    "from": "Acme <onboarding@resend.dev>",
-    "subject": "Hello, world!",
-    "html": "Hi {{{contact.first_name|there}}}, you can unsubscribe here: {{{RESEND_UNSUBSCRIBE_URL}}}",
-    "send": true,
-    "scheduled_at": "in 1 hour",
-  }
-  Resend::Broadcasts.create(params)
+```
 
-  ```
+```go Go theme={"theme":{"light":"github-light","dark":"vesper"}}
+package main
 
-  ```go Go theme={"theme":{"light":"github-light","dark":"vesper"}}
-  package main
+import "github.com/resend/resend-go/v4"
 
-  import "github.com/resend/resend-go/v4"
+func main() {
+	client := resend.NewClient("re_xxxxxxxxx")
 
-  func main() {
-  	client := resend.NewClient("re_xxxxxxxxx")
+	// Create a draft broadcast
+	params := &resend.CreateBroadcastRequest{
+		SegmentId: "78261eea-8f8b-4381-83c6-79fa7120f1cf",
+		From:      "Acme <onboarding@resend.dev>",
+		Html:      "Hi {{{contact.first_name|there}}}, you can unsubscribe here: {{{RESEND_UNSUBSCRIBE_URL}}}",
+		Subject:   "Hello, world!",
+	}
+	client.Broadcasts.Create(params)
 
-  	// Create a draft broadcast
-  	params := &resend.CreateBroadcastRequest{
-  		SegmentId: "78261eea-8f8b-4381-83c6-79fa7120f1cf",
-  		From:      "Acme <onboarding@resend.dev>",
-  		Html:      "Hi {{{contact.first_name|there}}}, you can unsubscribe here: {{{RESEND_UNSUBSCRIBE_URL}}}",
-  		Subject:   "Hello, world!",
-  	}
-  	client.Broadcasts.Create(params)
+	// Create and send immediately
+	params = &resend.CreateBroadcastRequest{
+		SegmentId: "78261eea-8f8b-4381-83c6-79fa7120f1cf",
+		From:      "Acme <onboarding@resend.dev>",
+		Subject:   "Hello, world!",
+		Html:      "Hi {{{contact.first_name|there}}}, you can unsubscribe here: {{{RESEND_UNSUBSCRIBE_URL}}}",
+		Send:      true,
+	}
+	client.Broadcasts.Create(params)
 
-  	// Create and send immediately
-  	params = &resend.CreateBroadcastRequest{
-  		SegmentId: "78261eea-8f8b-4381-83c6-79fa7120f1cf",
-  		From:      "Acme <onboarding@resend.dev>",
-  		Subject:   "Hello, world!",
-  		Html:      "Hi {{{contact.first_name|there}}}, you can unsubscribe here: {{{RESEND_UNSUBSCRIBE_URL}}}",
-  		Send:      true,
-  	}
-  	client.Broadcasts.Create(params)
+	// Create and schedule
+	params = &resend.CreateBroadcastRequest{
+		SegmentId:   "78261eea-8f8b-4381-83c6-79fa7120f1cf",
+		From:        "Acme <onboarding@resend.dev>",
+		Subject:     "Hello, world!",
+		Html:        "Hi {{{contact.first_name|there}}}, you can unsubscribe here: {{{RESEND_UNSUBSCRIBE_URL}}}",
+		Send:        true,
+		ScheduledAt: "in 1 hour",
+	}
+	client.Broadcasts.Create(params)
+}
+```
 
-  	// Create and schedule
-  	params = &resend.CreateBroadcastRequest{
-  		SegmentId:   "78261eea-8f8b-4381-83c6-79fa7120f1cf",
-  		From:        "Acme <onboarding@resend.dev>",
-  		Subject:     "Hello, world!",
-  		Html:        "Hi {{{contact.first_name|there}}}, you can unsubscribe here: {{{RESEND_UNSUBSCRIBE_URL}}}",
-  		Send:        true,
-  		ScheduledAt: "in 1 hour",
-  	}
-  	client.Broadcasts.Create(params)
-  }
-  ```
+```rust Rust theme={"theme":{"light":"github-light","dark":"vesper"}}
+use resend_rs::{types::CreateBroadcastOptions, Resend, Result};
 
-  ```rust Rust theme={"theme":{"light":"github-light","dark":"vesper"}}
-  use resend_rs::{types::CreateBroadcastOptions, Resend, Result};
+#[tokio::main]
+async fn main() -> Result<()> {
+  let resend = Resend::new("re_xxxxxxxxx");
 
-  #[tokio::main]
-  async fn main() -> Result<()> {
-    let resend = Resend::new("re_xxxxxxxxx");
+  let segment_id = "78261eea-8f8b-4381-83c6-79fa7120f1cf";
+  let from = "Acme <onboarding@resend.dev>";
+  let subject = "hello world";
+  let html = "Hi {{{contact.first_name|there}}}, you can unsubscribe here: {{{RESEND_UNSUBSCRIBE_URL}}}";
 
-    let segment_id = "78261eea-8f8b-4381-83c6-79fa7120f1cf";
-    let from = "Acme <onboarding@resend.dev>";
-    let subject = "hello world";
-    let html = "Hi {{{contact.first_name|there}}}, you can unsubscribe here: {{{RESEND_UNSUBSCRIBE_URL}}}";
-
-    let opts = CreateBroadcastOptions::new(segment_id, from, subject).with_html(html);
-
-    // Create a draft broadcast
-    let _broadcast = resend.broadcasts.create(opts.clone()).await?;
-
-    // Create and send immediately
-    let _broadcast = resend
-      .broadcasts
-      .create(opts.clone().with_send(true))
-      .await?;
-
-    // Create and schedule
-    let _broadcast = resend
-      .broadcasts
-      .create(opts.with_send(true).with_scheduled_at("in 1 hour"))
-      .await?;
-
-    Ok(())
-  }
-  ```
-
-  ```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
-  import com.resend.Resend;
-  import com.resend.services.broadcasts.model.CreateBroadcastOptions;
-  import com.resend.services.broadcasts.model.CreateBroadcastResponseSuccess;
-
-  Resend resend = new Resend("re_xxxxxxxxx");
+  let opts = CreateBroadcastOptions::new(segment_id, from, subject).with_html(html);
 
   // Create a draft broadcast
-  CreateBroadcastOptions params = CreateBroadcastOptions.builder()
-      .segmentId("78261eea-8f8b-4381-83c6-79fa7120f1cf")
-      .from("Acme <onboarding@resend.dev>")
-      .subject("hello world")
-      .html("Hi {{{contact.first_name|there}}}, you can unsubscribe here: {{{RESEND_UNSUBSCRIBE_URL}}}")
-      .build();
-  CreateBroadcastResponseSuccess data = resend.broadcasts().create(params);
+  let _broadcast = resend.broadcasts.create(opts.clone()).await?;
 
   // Create and send immediately
-  CreateBroadcastOptions sendParams = CreateBroadcastOptions.builder()
-      .segmentId("78261eea-8f8b-4381-83c6-79fa7120f1cf")
-      .from("Acme <onboarding@resend.dev>")
-      .subject("hello world")
-      .html("Hi {{{contact.first_name|there}}}, you can unsubscribe here: {{{RESEND_UNSUBSCRIBE_URL}}}")
-      .send(true)
-      .build();
-  CreateBroadcastResponseSuccess sent = resend.broadcasts().create(sendParams);
+  let _broadcast = resend
+    .broadcasts
+    .create(opts.clone().with_send(true))
+    .await?;
 
   // Create and schedule
-  CreateBroadcastOptions scheduleParams = CreateBroadcastOptions.builder()
-      .segmentId("78261eea-8f8b-4381-83c6-79fa7120f1cf")
-      .from("Acme <onboarding@resend.dev>")
-      .subject("hello world")
-      .html("Hi {{{contact.first_name|there}}}, you can unsubscribe here: {{{RESEND_UNSUBSCRIBE_URL}}}")
-      .send(true)
-      .scheduledAt("in 1 hour")
-      .build();
-  CreateBroadcastResponseSuccess scheduled = resend.broadcasts().create(scheduleParams);
-  ```
+  let _broadcast = resend
+    .broadcasts
+    .create(opts.with_send(true).with_scheduled_at("in 1 hour"))
+    .await?;
 
-  ```csharp .NET theme={"theme":{"light":"github-light","dark":"vesper"}}
-  using Resend;
+  Ok(())
+}
+```
 
-  IResend resend = ResendClient.Create( "re_xxxxxxxxx" ); // Or from DI
+```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
+import com.resend.Resend;
+import com.resend.services.broadcasts.model.CreateBroadcastOptions;
+import com.resend.services.broadcasts.model.CreateBroadcastResponseSuccess;
 
-  // Create a draft broadcast
-  var resp = await resend.BroadcastAddAsync(
-      new BroadcastData()
-      {
-          DisplayName = "Example Broadcast",
-          SegmentId = new Guid( "78261eea-8f8b-4381-83c6-79fa7120f1cf" ),
-          From = "Acme <onboarding@resend.dev>",
-          Subject = "Hello, world!",
-          HtmlBody = "Hi {{{contact.first_name|there}}}, you can unsubscribe here: {{{RESEND_UNSUBSCRIBE_URL}}}",
-      }
-  );
+Resend resend = new Resend("re_xxxxxxxxx");
 
-  Console.WriteLine( "Broadcast Id={0}", resp.Content );
+// Create a draft broadcast
+CreateBroadcastOptions params = CreateBroadcastOptions.builder()
+    .segmentId("78261eea-8f8b-4381-83c6-79fa7120f1cf")
+    .from("Acme <onboarding@resend.dev>")
+    .subject("hello world")
+    .html("Hi {{{contact.first_name|there}}}, you can unsubscribe here: {{{RESEND_UNSUBSCRIBE_URL}}}")
+    .build();
+CreateBroadcastResponseSuccess data = resend.broadcasts().create(params);
 
-  // Create and send immediately
-  var sent = await resend.BroadcastAddAsync(
-      new BroadcastData()
-      {
-          DisplayName = "Example Broadcast",
-          SegmentId = new Guid( "78261eea-8f8b-4381-83c6-79fa7120f1cf" ),
-          From = "Acme <onboarding@resend.dev>",
-          Subject = "Hello, world!",
-          HtmlBody = "Hi {{{contact.first_name|there}}}, you can unsubscribe here: {{{RESEND_UNSUBSCRIBE_URL}}}",
-          SendAfterAdd = true,
-      }
-  );
+// Create and send immediately
+CreateBroadcastOptions sendParams = CreateBroadcastOptions.builder()
+    .segmentId("78261eea-8f8b-4381-83c6-79fa7120f1cf")
+    .from("Acme <onboarding@resend.dev>")
+    .subject("hello world")
+    .html("Hi {{{contact.first_name|there}}}, you can unsubscribe here: {{{RESEND_UNSUBSCRIBE_URL}}}")
+    .send(true)
+    .build();
+CreateBroadcastResponseSuccess sent = resend.broadcasts().create(sendParams);
 
-  Console.WriteLine( "Broadcast Id={0}", sent.Content );
+// Create and schedule
+CreateBroadcastOptions scheduleParams = CreateBroadcastOptions.builder()
+    .segmentId("78261eea-8f8b-4381-83c6-79fa7120f1cf")
+    .from("Acme <onboarding@resend.dev>")
+    .subject("hello world")
+    .html("Hi {{{contact.first_name|there}}}, you can unsubscribe here: {{{RESEND_UNSUBSCRIBE_URL}}}")
+    .send(true)
+    .scheduledAt("in 1 hour")
+    .build();
+CreateBroadcastResponseSuccess scheduled = resend.broadcasts().create(scheduleParams);
+```
 
-  // Create and schedule
-  var scheduled = await resend.BroadcastAddAsync(
-      new BroadcastData()
-      {
-          DisplayName = "Example Broadcast",
-          SegmentId = new Guid( "78261eea-8f8b-4381-83c6-79fa7120f1cf" ),
-          From = "Acme <onboarding@resend.dev>",
-          Subject = "Hello, world!",
-          HtmlBody = "Hi {{{contact.first_name|there}}}, you can unsubscribe here: {{{RESEND_UNSUBSCRIBE_URL}}}",
-          SendAfterAdd = true,
-          MomentSchedule = DateTime.UtcNow.AddHours( 1 ),
-      }
-  );
+```csharp .NET theme={"theme":{"light":"github-light","dark":"vesper"}}
+using Resend;
 
-  Console.WriteLine( "Broadcast Id={0}", scheduled.Content );
-  ```
+IResend resend = ResendClient.Create( "re_xxxxxxxxx" ); // Or from DI
 
-  ```bash cURL theme={"theme":{"light":"github-light","dark":"vesper"}}
-  # Create a draft broadcast
-  curl -X POST 'https://api.resend.com/broadcasts' \
-       -H 'Authorization: Bearer re_xxxxxxxxx' \
-       -H 'Content-Type: application/json' \
-       -d $'
-  {
-    "segment_id": "78261eea-8f8b-4381-83c6-79fa7120f1cf",
-    "from": "Acme <onboarding@resend.dev>",
-    "subject": "hello world",
-    "html": "Hi {{{contact.first_name|there}}}, you can unsubscribe here: {{{RESEND_UNSUBSCRIBE_URL}}}"
-  }'
+// Create a draft broadcast
+var resp = await resend.BroadcastAddAsync(
+    new BroadcastData()
+    {
+        DisplayName = "Example Broadcast",
+        SegmentId = new Guid( "78261eea-8f8b-4381-83c6-79fa7120f1cf" ),
+        From = "Acme <onboarding@resend.dev>",
+        Subject = "Hello, world!",
+        HtmlBody = "Hi {{{contact.first_name|there}}}, you can unsubscribe here: {{{RESEND_UNSUBSCRIBE_URL}}}",
+    }
+);
 
-  # Create and send immediately
-  curl -X POST 'https://api.resend.com/broadcasts' \
-   -H 'Authorization: Bearer re_xxxxxxxxx' \
-   -H 'Content-Type: application/json' \
-   -d $'
-  {
-    "segment_id": "78261eea-8f8b-4381-83c6-79fa7120f1cf",
-    "from": "Acme <onboarding@resend.dev>",
-    "subject": "hello world",
-    "html": "Hi {{{contact.first_name|there}}}, you can unsubscribe here: {{{RESEND_UNSUBSCRIBE_URL}}}",
-    "send": true
-  }'
+Console.WriteLine( "Broadcast Id={0}", resp.Content );
 
-  # Create and schedule
-  curl -X POST 'https://api.resend.com/broadcasts' \
-   -H 'Authorization: Bearer re_xxxxxxxxx' \
-   -H 'Content-Type: application/json' \
-   -d $'
-  {
-    "segment_id": "78261eea-8f8b-4381-83c6-79fa7120f1cf",
-    "from": "Acme <onboarding@resend.dev>",
-    "subject": "hello world",
-    "html": "Hi {{{contact.first_name|there}}}, you can unsubscribe here: {{{RESEND_UNSUBSCRIBE_URL}}}",
-    "send": true,
-    "scheduled_at": "in 1 hour"
-  }'
-  ```
+// Create and send immediately
+var sent = await resend.BroadcastAddAsync(
+    new BroadcastData()
+    {
+        DisplayName = "Example Broadcast",
+        SegmentId = new Guid( "78261eea-8f8b-4381-83c6-79fa7120f1cf" ),
+        From = "Acme <onboarding@resend.dev>",
+        Subject = "Hello, world!",
+        HtmlBody = "Hi {{{contact.first_name|there}}}, you can unsubscribe here: {{{RESEND_UNSUBSCRIBE_URL}}}",
+        SendAfterAdd = true,
+    }
+);
 
-  ```bash CLI theme={"theme":{"light":"github-light","dark":"vesper"}}
-  # Create a draft broadcast
-  resend broadcasts create \
-    --from "Acme <onboarding@resend.dev>" \
-    --subject "hello world" \
-    --segment-id 78261eea-8f8b-4381-83c6-79fa7120f1cf \
-    --html "Hi {{{contact.first_name|there}}}, you can unsubscribe here: {{{RESEND_UNSUBSCRIBE_URL}}}"
+Console.WriteLine( "Broadcast Id={0}", sent.Content );
 
-  # Create and send immediately
-  resend broadcasts create \
-    --from "Acme <onboarding@resend.dev>" \
-    --subject "hello world" \
-    --segment-id 78261eea-8f8b-4381-83c6-79fa7120f1cf \
-    --html "Hi {{{contact.first_name|there}}}, you can unsubscribe here: {{{RESEND_UNSUBSCRIBE_URL}}}" \
-    --send
+// Create and schedule
+var scheduled = await resend.BroadcastAddAsync(
+    new BroadcastData()
+    {
+        DisplayName = "Example Broadcast",
+        SegmentId = new Guid( "78261eea-8f8b-4381-83c6-79fa7120f1cf" ),
+        From = "Acme <onboarding@resend.dev>",
+        Subject = "Hello, world!",
+        HtmlBody = "Hi {{{contact.first_name|there}}}, you can unsubscribe here: {{{RESEND_UNSUBSCRIBE_URL}}}",
+        SendAfterAdd = true,
+        MomentSchedule = DateTime.UtcNow.AddHours( 1 ),
+    }
+);
 
-  # Create and schedule
-  resend broadcasts create \
-    --from "Acme <onboarding@resend.dev>" \
-    --subject "hello world" \
-    --segment-id 78261eea-8f8b-4381-83c6-79fa7120f1cf \
-    --html "Hi {{{contact.first_name|there}}}, you can unsubscribe here: {{{RESEND_UNSUBSCRIBE_URL}}}" \
-    --send \
-    --scheduled-at "in 1 hour"
-  ```
-</RequestExample>
+Console.WriteLine( "Broadcast Id={0}", scheduled.Content );
+```
 
-<ResponseExample>
-  ```json Response theme={"theme":{"light":"github-light","dark":"vesper"}}
-  {
-    "object": "broadcast",
-    "id": "49a3999c-0ce1-4ea6-ab68-afcd6dc2e794"
-  }
-  ```
-</ResponseExample>
+```bash cURL theme={"theme":{"light":"github-light","dark":"vesper"}}
+# Create a draft broadcast
+curl -X POST 'https://api.resend.com/broadcasts' \
+     -H 'Authorization: Bearer re_xxxxxxxxx' \
+     -H 'Content-Type: application/json' \
+     -d $'
+{
+  "segment_id": "78261eea-8f8b-4381-83c6-79fa7120f1cf",
+  "from": "Acme <onboarding@resend.dev>",
+  "subject": "hello world",
+  "html": "Hi {{{contact.first_name|there}}}, you can unsubscribe here: {{{RESEND_UNSUBSCRIBE_URL}}}"
+}'
+
+# Create and send immediately
+curl -X POST 'https://api.resend.com/broadcasts' \
+ -H 'Authorization: Bearer re_xxxxxxxxx' \
+ -H 'Content-Type: application/json' \
+ -d $'
+{
+  "segment_id": "78261eea-8f8b-4381-83c6-79fa7120f1cf",
+  "from": "Acme <onboarding@resend.dev>",
+  "subject": "hello world",
+  "html": "Hi {{{contact.first_name|there}}}, you can unsubscribe here: {{{RESEND_UNSUBSCRIBE_URL}}}",
+  "send": true
+}'
+
+# Create and schedule
+curl -X POST 'https://api.resend.com/broadcasts' \
+ -H 'Authorization: Bearer re_xxxxxxxxx' \
+ -H 'Content-Type: application/json' \
+ -d $'
+{
+  "segment_id": "78261eea-8f8b-4381-83c6-79fa7120f1cf",
+  "from": "Acme <onboarding@resend.dev>",
+  "subject": "hello world",
+  "html": "Hi {{{contact.first_name|there}}}, you can unsubscribe here: {{{RESEND_UNSUBSCRIBE_URL}}}",
+  "send": true,
+  "scheduled_at": "in 1 hour"
+}'
+```
+
+```bash CLI theme={"theme":{"light":"github-light","dark":"vesper"}}
+# Create a draft broadcast
+resend broadcasts create \
+  --from "Acme <onboarding@resend.dev>" \
+  --subject "hello world" \
+  --segment-id 78261eea-8f8b-4381-83c6-79fa7120f1cf \
+  --html "Hi {{{contact.first_name|there}}}, you can unsubscribe here: {{{RESEND_UNSUBSCRIBE_URL}}}"
+
+# Create and send immediately
+resend broadcasts create \
+  --from "Acme <onboarding@resend.dev>" \
+  --subject "hello world" \
+  --segment-id 78261eea-8f8b-4381-83c6-79fa7120f1cf \
+  --html "Hi {{{contact.first_name|there}}}, you can unsubscribe here: {{{RESEND_UNSUBSCRIBE_URL}}}" \
+  --send
+
+# Create and schedule
+resend broadcasts create \
+  --from "Acme <onboarding@resend.dev>" \
+  --subject "hello world" \
+  --segment-id 78261eea-8f8b-4381-83c6-79fa7120f1cf \
+  --html "Hi {{{contact.first_name|there}}}, you can unsubscribe here: {{{RESEND_UNSUBSCRIBE_URL}}}" \
+  --send \
+  --scheduled-at "in 1 hour"
+```
+
+```json Response theme={"theme":{"light":"github-light","dark":"vesper"}}
+{
+  "object": "broadcast",
+  "id": "49a3999c-0ce1-4ea6-ab68-afcd6dc2e794"
+}
+```

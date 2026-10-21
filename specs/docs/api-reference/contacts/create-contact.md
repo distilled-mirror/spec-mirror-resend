@@ -6,251 +6,213 @@
 
 > Create a contact.
 
-export const ResendParamField = ({children, body, path, ...props}) => {
-  const [lang, setLang] = useState(() => {
-    return localStorage.getItem('code') || '"Node.js"';
-  });
-  useEffect(() => {
-    const onStorage = event => {
-      const key = event.detail.key;
-      if (key === 'code') {
-        setLang(event.detail.value);
-      }
-    };
-    document.addEventListener('mintlify-localstorage', onStorage);
-    return () => {
-      document.removeEventListener('mintlify-localstorage', onStorage);
-    };
-  }, []);
-  const toCamelCase = str => typeof str === 'string' ? str.replace(/[_-](\w)/g, (_, c) => c.toUpperCase()) : str;
-  const resolvedBody = useMemo(() => {
-    const value = JSON.parse(lang);
-    return value === 'Node.js' ? toCamelCase(body) : body;
-  }, [body, lang]);
-  const resolvedPath = useMemo(() => {
-    const value = JSON.parse(lang);
-    return value === 'Node.js' ? toCamelCase(path) : path;
-  }, [path, lang]);
-  return <ParamField body={resolvedBody} path={resolvedPath} {...props}>
-      {children}
-    </ParamField>;
-};
-
 ## Body Parameters
 
-<ParamField body="email" type="string" required>
-  The email address of the contact.
-</ParamField>
+**email** `string` *required*
 
-<ResendParamField body="first_name" type="string">
-  The first name of the contact.
-</ResendParamField>
+The email address of the contact.
 
-<ResendParamField body="last_name" type="string">
-  The last name of the contact.
-</ResendParamField>
+The first name of the contact.
 
-<ParamField body="unsubscribed" type="boolean">
-  The Contact's global subscription status. If set to `true`, the contact will
-  be unsubscribed from all Broadcasts.
-</ParamField>
+The last name of the contact.
 
-<ParamField body="properties" type="object">
-  A map of custom property keys and values to create.
+**unsubscribed** `boolean`
 
-  <Expandable defaultOpen title="custom properties">
-    <ParamField body="key" type="string" required>
-      The property key.
-    </ParamField>
+The Contact's global subscription status. If set to `true`, the contact will
+be unsubscribed from all Broadcasts.
 
-    <ParamField body="value" type="string" required>
-      The property value.
-    </ParamField>
-  </Expandable>
-</ParamField>
+**properties** `object`
 
-<ParamField body="segments" type="array">
-  Array of objects. Each object must contain the ID of the segment that you'd like to add the contact to.
+A map of custom property keys and values to create.
 
-  <Expandable defaultOpen title="segments">
-    <ParamField body="id" type="string" required>
-      The segment ID.
-    </ParamField>
-  </Expandable>
-</ParamField>
+**custom properties**
 
-<ParamField body="topics" type="array">
-  Array of topic subscriptions for the contact.
+**key** `string` *required*
 
-  <Expandable defaultOpen title="topics">
-    <ParamField body="id" type="string" required>
-      The topic ID.
-    </ParamField>
+The property key.
 
-    <ParamField body="subscription" type="'opt_in' | 'opt_out'" required>
-      The subscription status for this topic.
-    </ParamField>
-  </Expandable>
-</ParamField>
+**value** `string` *required*
 
-<RequestExample>
-  ```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
-  import { Resend } from 'resend';
+The property value.
 
-  const resend = new Resend('re_xxxxxxxxx');
+**segments** `array`
 
-  const { data, error } = await resend.contacts.create({
-    email: 'steve.wozniak@gmail.com',
-    firstName: 'Steve',
-    lastName: 'Wozniak',
-    unsubscribed: false,
-  });
-  ```
+Array of objects. Each object must contain the ID of the segment that you'd like to add the contact to.
 
-  ```php PHP theme={"theme":{"light":"github-light","dark":"vesper"}}
-  $resend = Resend::client('re_xxxxxxxxx');
+**segments**
 
-  $resend->contacts->create(
-    parameters: [
-      'email' => 'steve.wozniak@gmail.com',
-      'first_name' => 'Steve',
-      'last_name' => 'Wozniak',
-      'unsubscribed' => false
-    ]
-  );
-  ```
+**id** `string` *required*
 
-  ```python Python theme={"theme":{"light":"github-light","dark":"vesper"}}
-  import resend
+The segment ID.
 
-  resend.api_key = "re_xxxxxxxxx"
+**topics** `array`
 
-  params: resend.Contacts.CreateParams = {
-    "email": "steve.wozniak@gmail.com",
-    "first_name": "Steve",
-    "last_name": "Wozniak",
-    "unsubscribed": False,
-  }
+Array of topic subscriptions for the contact.
 
-  resend.Contacts.create(params)
-  ```
+**topics**
 
-  ```ruby Ruby theme={"theme":{"light":"github-light","dark":"vesper"}}
-  require "resend"
+**id** `string` *required*
 
-  Resend.api_key = "re_xxxxxxxxx"
+The topic ID.
 
-  params = {
-    "email": "steve.wozniak@gmail.com",
-    "first_name": "Steve",
-    "last_name": "Wozniak",
-    "unsubscribed": false,
-  }
+**subscription** `'opt_in' | 'opt_out'` *required*
 
-  Resend::Contacts.create(params)
-  ```
+The subscription status for this topic.
 
-  ```go Go theme={"theme":{"light":"github-light","dark":"vesper"}}
-  package main
+```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
+import { Resend } from 'resend';
 
-  import "github.com/resend/resend-go/v4"
+const resend = new Resend('re_xxxxxxxxx');
 
-  func main() {
-  	client := resend.NewClient("re_xxxxxxxxx")
+const { data, error } = await resend.contacts.create({
+  email: 'steve.wozniak@gmail.com',
+  firstName: 'Steve',
+  lastName: 'Wozniak',
+  unsubscribed: false,
+});
+```
 
-  	params := &resend.CreateContactRequest{
-  		Email:        "steve.wozniak@gmail.com",
-  		FirstName:    "Steve",
-  		LastName:     "Wozniak",
-  		Unsubscribed: false,
-  	}
+```php PHP theme={"theme":{"light":"github-light","dark":"vesper"}}
+$resend = Resend::client('re_xxxxxxxxx');
 
-  	client.Contacts.Create(params)
-  }
-  ```
+$resend->contacts->create(
+  parameters: [
+    'email' => 'steve.wozniak@gmail.com',
+    'first_name' => 'Steve',
+    'last_name' => 'Wozniak',
+    'unsubscribed' => false
+  ]
+);
+```
 
-  ```rust Rust theme={"theme":{"light":"github-light","dark":"vesper"}}
-  use resend_rs::{types::CreateContactOptions, Resend, Result};
+```python Python theme={"theme":{"light":"github-light","dark":"vesper"}}
+import resend
 
-  #[tokio::main]
-  async fn main() -> Result<()> {
-    let resend = Resend::new("re_xxxxxxxxx");
+resend.api_key = "re_xxxxxxxxx"
 
-    let contact = CreateContactOptions::new("steve.wozniak@gmail.com")
-      .with_first_name("Steve")
-      .with_last_name("Wozniak")
-      .with_unsubscribed(false);
+params: resend.Contacts.CreateParams = {
+  "email": "steve.wozniak@gmail.com",
+  "first_name": "Steve",
+  "last_name": "Wozniak",
+  "unsubscribed": False,
+}
 
-    let _contact = resend.contacts.create(contact).await?;
+resend.Contacts.create(params)
+```
 
-    Ok(())
-  }
-  ```
+```ruby Ruby theme={"theme":{"light":"github-light","dark":"vesper"}}
+require "resend"
 
-  ```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
-  import com.resend.Resend;
-  import com.resend.core.exception.ResendException;
-  import com.resend.services.contacts.model.CreateContactOptions;
-  import com.resend.services.contacts.model.CreateContactResponseSuccess;
+Resend.api_key = "re_xxxxxxxxx"
 
-  public class Main {
-      public static void main(String[] args) throws ResendException {
-          Resend resend = new Resend("re_xxxxxxxxx");
+params = {
+  "email": "steve.wozniak@gmail.com",
+  "first_name": "Steve",
+  "last_name": "Wozniak",
+  "unsubscribed": false,
+}
 
-          CreateContactOptions params = CreateContactOptions.builder()
-                  .email("steve.wozniak@gmail.com")
-                  .firstName("Steve")
-                  .lastName("Wozniak")
-                  .unsubscribed(false)
-                  .build();
+Resend::Contacts.create(params)
+```
 
-          CreateContactResponseSuccess data = resend.contacts().create(params);
-      }
-  }
-  ```
+```go Go theme={"theme":{"light":"github-light","dark":"vesper"}}
+package main
 
-  ```csharp .NET theme={"theme":{"light":"github-light","dark":"vesper"}}
-  using Resend;
+import "github.com/resend/resend-go/v4"
 
-  IResend resend = ResendClient.Create( "re_xxxxxxxxx" ); // Or from DI
+func main() {
+	client := resend.NewClient("re_xxxxxxxxx")
 
-  var resp = await resend.ContactAddAsync(
-      new ContactData()
-      {
-          Email = "steve.wozniak@gmail.com",
-          FirstName = "Steve",
-          LastName = "Wozniak",
-          IsUnsubscribed = false,
-      }
-  );
-  Console.WriteLine( "Contact Id={0}", resp.Content );
-  ```
+	params := &resend.CreateContactRequest{
+		Email:        "steve.wozniak@gmail.com",
+		FirstName:    "Steve",
+		LastName:     "Wozniak",
+		Unsubscribed: false,
+	}
 
-  ```bash cURL theme={"theme":{"light":"github-light","dark":"vesper"}}
-  curl -X POST 'https://api.resend.com/contacts' \
-       -H 'Authorization: Bearer re_xxxxxxxxx' \
-       -H 'Content-Type: application/json' \
-       -d $'{
-    "email": "steve.wozniak@gmail.com",
-    "first_name": "Steve",
-    "last_name": "Wozniak",
-    "unsubscribed": false
-  }'
-  ```
+	client.Contacts.Create(params)
+}
+```
 
-  ```bash CLI theme={"theme":{"light":"github-light","dark":"vesper"}}
-  resend contacts create \
-    --email steve.wozniak@gmail.com \
-    --first-name Steve \
-    --last-name Wozniak
-  ```
-</RequestExample>
+```rust Rust theme={"theme":{"light":"github-light","dark":"vesper"}}
+use resend_rs::{types::CreateContactOptions, Resend, Result};
 
-<ResponseExample>
-  ```json Response theme={"theme":{"light":"github-light","dark":"vesper"}}
-  {
-    "object": "contact",
-    "id": "479e3145-dd38-476b-932c-529ceb705947"
-  }
-  ```
-</ResponseExample>
+#[tokio::main]
+async fn main() -> Result<()> {
+  let resend = Resend::new("re_xxxxxxxxx");
+
+  let contact = CreateContactOptions::new("steve.wozniak@gmail.com")
+    .with_first_name("Steve")
+    .with_last_name("Wozniak")
+    .with_unsubscribed(false);
+
+  let _contact = resend.contacts.create(contact).await?;
+
+  Ok(())
+}
+```
+
+```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
+import com.resend.Resend;
+import com.resend.core.exception.ResendException;
+import com.resend.services.contacts.model.CreateContactOptions;
+import com.resend.services.contacts.model.CreateContactResponseSuccess;
+
+public class Main {
+    public static void main(String[] args) throws ResendException {
+        Resend resend = new Resend("re_xxxxxxxxx");
+
+        CreateContactOptions params = CreateContactOptions.builder()
+                .email("steve.wozniak@gmail.com")
+                .firstName("Steve")
+                .lastName("Wozniak")
+                .unsubscribed(false)
+                .build();
+
+        CreateContactResponseSuccess data = resend.contacts().create(params);
+    }
+}
+```
+
+```csharp .NET theme={"theme":{"light":"github-light","dark":"vesper"}}
+using Resend;
+
+IResend resend = ResendClient.Create( "re_xxxxxxxxx" ); // Or from DI
+
+var resp = await resend.ContactAddAsync(
+    new ContactData()
+    {
+        Email = "steve.wozniak@gmail.com",
+        FirstName = "Steve",
+        LastName = "Wozniak",
+        IsUnsubscribed = false,
+    }
+);
+Console.WriteLine( "Contact Id={0}", resp.Content );
+```
+
+```bash cURL theme={"theme":{"light":"github-light","dark":"vesper"}}
+curl -X POST 'https://api.resend.com/contacts' \
+     -H 'Authorization: Bearer re_xxxxxxxxx' \
+     -H 'Content-Type: application/json' \
+     -d $'{
+  "email": "steve.wozniak@gmail.com",
+  "first_name": "Steve",
+  "last_name": "Wozniak",
+  "unsubscribed": false
+}'
+```
+
+```bash CLI theme={"theme":{"light":"github-light","dark":"vesper"}}
+resend contacts create \
+  --email steve.wozniak@gmail.com \
+  --first-name Steve \
+  --last-name Wozniak
+```
+
+```json Response theme={"theme":{"light":"github-light","dark":"vesper"}}
+{
+  "object": "contact",
+  "id": "479e3145-dd38-476b-932c-529ceb705947"
+}
+```

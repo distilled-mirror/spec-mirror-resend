@@ -6,208 +6,142 @@
 
 > Retrieve a list of automations.
 
-export const QueryParams = ({type, isRequired}) => {
-  return <>
-      <h2>Query Parameters</h2>
+## Query Parameters
 
-      {isRequired ? <ParamField query="limit" type="number">
-          Number of {type} to retrieve.
-          <ul>
-            <li>
-              Default value: <code>20</code>
-            </li>
-            <li>
-              Maximum value: <code>100</code>
-            </li>
-            <li>
-              Minimum value: <code>1</code>
-            </li>
-          </ul>
-        </ParamField> : <>
-          <p>
-            Note that the <code>limit</code> parameter is <em>optional</em>. If
-            you do not provide a <code>limit</code>, all {type} will be returned
-            in a single response.
-          </p>
-          <ParamField query="limit" type="number">
-            Number of {type} to retrieve.
-            <ul>
-              <li>
-                Maximum value: <code>100</code>
-              </li>
-              <li>
-                Minimum value: <code>1</code>
-              </li>
-            </ul>
-          </ParamField>
-        </>}
+**limit** `number`
 
-      <ParamField query="after" type="string">
-        The ID <em>after</em> which we'll retrieve more {type} (for pagination).
-        This ID will <em>not</em> be included in the returned list. Cannot be
-        used with the
-        <code>before</code> parameter.
-      </ParamField>
-      <ParamField query="before" type="string">
-        The ID <em>before</em> which we'll retrieve more {type} (for
-        pagination). This ID will <em>not</em> be included in the returned list.
-        Cannot be used with the <code>after</code> parameter.
-      </ParamField>
-      <Info>
-        You can only use either <code>after</code> or <code>before</code>{' '}
-        parameter, not both. See our{' '}
-        <a href="/docs/api-reference/pagination">pagination guide</a> for more
-        information.
-      </Info>
-    </>;
-};
+Number of automations to retrieve.
+<ul><li>Default value: `20`</li>
+<li>Maximum value: `100`</li>
+<li>Minimum value: `1`</li></ul>
 
-export const ResendParamField = ({children, body, path, ...props}) => {
-  const [lang, setLang] = useState(() => {
-    return localStorage.getItem('code') || '"Node.js"';
-  });
-  useEffect(() => {
-    const onStorage = event => {
-      const key = event.detail.key;
-      if (key === 'code') {
-        setLang(event.detail.value);
-      }
-    };
-    document.addEventListener('mintlify-localstorage', onStorage);
-    return () => {
-      document.removeEventListener('mintlify-localstorage', onStorage);
-    };
-  }, []);
-  const toCamelCase = str => typeof str === 'string' ? str.replace(/[_-](\w)/g, (_, c) => c.toUpperCase()) : str;
-  const resolvedBody = useMemo(() => {
-    const value = JSON.parse(lang);
-    return value === 'Node.js' ? toCamelCase(body) : body;
-  }, [body, lang]);
-  const resolvedPath = useMemo(() => {
-    const value = JSON.parse(lang);
-    return value === 'Node.js' ? toCamelCase(path) : path;
-  }, [path, lang]);
-  return <ParamField body={resolvedBody} path={resolvedPath} {...props}>
-      {children}
-    </ParamField>;
-};
+**after** `string`
 
-<QueryParams type="automations" isRequired={true} />
+The ID *after* which we'll retrieve more automations (for pagination).
+This ID will *not* be included in the returned list. Cannot be
+used with the
+`before` parameter.
+**before** `string`
 
-<ResendParamField query="status" type="string">
-  Filter automations by status. Possible values: `enabled`, `disabled`.
-</ResendParamField>
+The ID *before* which we'll retrieve more automations (for
+pagination). This ID will *not* be included in the returned list.
+Cannot be used with the `after` parameter.
 
-<RequestExample>
-  ```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
-  import { Resend } from 'resend';
+> [!NOTE]
+>
+> You can only use either `after` or `before`
+> parameter, not both. See our
+> [pagination guide](/docs/api-reference/pagination) for more
+> information.
 
-  const resend = new Resend('re_xxxxxxxxx');
+Filter automations by status. Possible values: `enabled`, `disabled`.
 
-  const { data, error } = await resend.automations.list();
-  ```
+```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
+import { Resend } from 'resend';
 
-  ```php PHP theme={"theme":{"light":"github-light","dark":"vesper"}}
-  $resend = Resend::client('re_xxxxxxxxx');
+const resend = new Resend('re_xxxxxxxxx');
 
-  $resend->automations->list();
-  ```
+const { data, error } = await resend.automations.list();
+```
 
-  ```python Python theme={"theme":{"light":"github-light","dark":"vesper"}}
-  import resend
+```php PHP theme={"theme":{"light":"github-light","dark":"vesper"}}
+$resend = Resend::client('re_xxxxxxxxx');
 
-  resend.api_key = "re_xxxxxxxxx"
+$resend->automations->list();
+```
 
-  resend.Automations.list()
-  ```
+```python Python theme={"theme":{"light":"github-light","dark":"vesper"}}
+import resend
 
-  ```ruby Ruby theme={"theme":{"light":"github-light","dark":"vesper"}}
-  require "resend"
+resend.api_key = "re_xxxxxxxxx"
 
-  Resend.api_key = "re_xxxxxxxxx"
+resend.Automations.list()
+```
 
-  Resend::Automations.list
-  ```
+```ruby Ruby theme={"theme":{"light":"github-light","dark":"vesper"}}
+require "resend"
 
-  ```go Go theme={"theme":{"light":"github-light","dark":"vesper"}}
-  package main
+Resend.api_key = "re_xxxxxxxxx"
 
-  import "github.com/resend/resend-go/v4"
+Resend::Automations.list
+```
 
-  func main() {
-  	client := resend.NewClient("re_xxxxxxxxx")
+```go Go theme={"theme":{"light":"github-light","dark":"vesper"}}
+package main
 
-  	client.Automations.List()
-  }
-  ```
+import "github.com/resend/resend-go/v4"
 
-  ```rust Rust theme={"theme":{"light":"github-light","dark":"vesper"}}
-  use resend_rs::{list_opts::ListOptions, Resend, Result};
+func main() {
+	client := resend.NewClient("re_xxxxxxxxx")
 
-  #[tokio::main]
-  async fn main() -> Result<()> {
-    let resend = Resend::new("re_xxxxxxxxx");
+	client.Automations.List()
+}
+```
 
-    let _automations = resend.automations.list(ListOptions::default()).await?;
+```rust Rust theme={"theme":{"light":"github-light","dark":"vesper"}}
+use resend_rs::{list_opts::ListOptions, Resend, Result};
 
-    Ok(())
-  }
-  ```
+#[tokio::main]
+async fn main() -> Result<()> {
+  let resend = Resend::new("re_xxxxxxxxx");
 
-  ```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
-  import com.resend.Resend;
-  import com.resend.core.exception.ResendException;
-  import com.resend.services.automations.model.ListAutomationsResponseSuccess;
+  let _automations = resend.automations.list(ListOptions::default()).await?;
 
-  public class Main {
-      public static void main(String[] args) throws ResendException {
-          Resend resend = new Resend("re_xxxxxxxxx");
+  Ok(())
+}
+```
 
-          ListAutomationsResponseSuccess data = resend.automations().list();
-      }
-  }
-  ```
+```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
+import com.resend.Resend;
+import com.resend.core.exception.ResendException;
+import com.resend.services.automations.model.ListAutomationsResponseSuccess;
 
-  ```csharp .NET theme={"theme":{"light":"github-light","dark":"vesper"}}
-  using Resend;
+public class Main {
+    public static void main(String[] args) throws ResendException {
+        Resend resend = new Resend("re_xxxxxxxxx");
 
-  IResend resend = ResendClient.Create( "re_xxxxxxxxx" );
+        ListAutomationsResponseSuccess data = resend.automations().list();
+    }
+}
+```
 
-  var resp = await resend.AutomationListAsync();
-  Console.WriteLine( "Count={0}", resp.Content.Data.Count );
-  ```
+```csharp .NET theme={"theme":{"light":"github-light","dark":"vesper"}}
+using Resend;
 
-  ```bash cURL theme={"theme":{"light":"github-light","dark":"vesper"}}
-  curl -X GET 'https://api.resend.com/automations' \
-       -H 'Authorization: Bearer re_xxxxxxxxx'
-  ```
+IResend resend = ResendClient.Create( "re_xxxxxxxxx" );
 
-  ```bash CLI theme={"theme":{"light":"github-light","dark":"vesper"}}
-  resend automations list
-  ```
-</RequestExample>
+var resp = await resend.AutomationListAsync();
+Console.WriteLine( "Count={0}", resp.Content.Data.Count );
+```
 
-<ResponseExample>
-  ```json Response theme={"theme":{"light":"github-light","dark":"vesper"}}
-  {
-    "object": "list",
-    "has_more": false,
-    "data": [
-      {
-        "id": "c9b16d4f-ba6c-4e2e-b044-6bf4404e57fd",
-        "name": "Welcome series",
-        "status": "enabled",
-        "created_at": "2026-10-01 12:00:00.000000+00",
-        "updated_at": "2026-10-01 12:00:00.000000+00"
-      },
-      {
-        "id": "662892b2-4270-4130-a186-33a19752319d",
-        "name": "Re-engagement",
-        "status": "disabled",
-        "created_at": "2026-09-15 08:30:00.000000+00",
-        "updated_at": "2026-09-20 14:00:00.000000+00"
-      }
-    ]
-  }
-  ```
-</ResponseExample>
+```bash cURL theme={"theme":{"light":"github-light","dark":"vesper"}}
+curl -X GET 'https://api.resend.com/automations' \
+     -H 'Authorization: Bearer re_xxxxxxxxx'
+```
+
+```bash CLI theme={"theme":{"light":"github-light","dark":"vesper"}}
+resend automations list
+```
+
+```json Response theme={"theme":{"light":"github-light","dark":"vesper"}}
+{
+  "object": "list",
+  "has_more": false,
+  "data": [
+    {
+      "id": "c9b16d4f-ba6c-4e2e-b044-6bf4404e57fd",
+      "name": "Welcome series",
+      "status": "enabled",
+      "created_at": "2026-10-01 12:00:00.000000+00",
+      "updated_at": "2026-10-01 12:00:00.000000+00"
+    },
+    {
+      "id": "662892b2-4270-4130-a186-33a19752319d",
+      "name": "Re-engagement",
+      "status": "disabled",
+      "created_at": "2026-09-15 08:30:00.000000+00",
+      "updated_at": "2026-09-20 14:00:00.000000+00"
+    }
+  ]
+}
+```

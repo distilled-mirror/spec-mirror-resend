@@ -14,11 +14,11 @@ Resend may require that you setup a MX record on two occasions:
 
 1. **[Enabling your domain to send emails](https://resend.com/docs/dashboard/emails/introduction)**: You need to setup an MX record on `send.example.com` to establish a return-path for bounce/complaint reports from Inbox Providers. This return path is set in the email headers of every email you send through Resend.
 
-<Info>
-  For domains created after August 2026, Resend may generate CNAME records for sending instead of the MX and TXT pair, in which case this occasion doesn't apply to your domain. Always add the exact records shown in your domain's **Records** tab within the Resend dashboard.
-
-  Note that a CNAME record cannot co-exist with any other record on the same subdomain, so if you already have other records set for `send.example.com`, you will need to either configure a different `Return-Path` subdomain (e.g. `bounce.example.com`) or remove the existing records for `send.example.com`.
-</Info>
+> [!NOTE]
+>
+> For domains created after August 2026, Resend may generate CNAME records for sending instead of the MX and TXT pair, in which case this occasion doesn't apply to your domain. Always add the exact records shown in your domain's **Records** tab within the Resend dashboard.
+>
+> Note that a CNAME record cannot co-exist with any other record on the same subdomain, so if you already have other records set for `send.example.com`, you will need to either configure a different `Return-Path` subdomain (e.g. `bounce.example.com`) or remove the existing records for `send.example.com`.
 
 2. **[Enabling your domain to receive emails](https://resend.com/docs/dashboard/receiving/custom-domains)**: You can setup an MX record on your domain to route all received emails to Resend.
 
@@ -57,25 +57,23 @@ example.com    MX    9  inbound-smtp.us-east-1.amazonaws.com
 
 Now this MX record priority has a lower value (higher priority) so it will be prioritized. But keep in mind that:
 
-<Note>
-  * This will route all emails destined to `<anything>@example.com` to Resend, instead of your previous provider (e.g., G Suite).
-  * If two MX records have the same priority value, this does not mean it will send to both servers. Instead, only one server will be chosen, randomly, per email delivery attempt.
-</Note>
+> [!NOTE]
+>
+> * This will route all emails destined to `<anything>@example.com` to Resend, instead of your previous provider (e.g., G Suite).
+> * If two MX records have the same priority value, this does not mean it will send to both servers. Instead, only one server will be chosen, randomly, per email delivery attempt.
 
 ## Solving common conflicts
 
-<AccordionGroup>
-  <Accordion title="Conflicts with existing records">
-    If you already have a MX record set for `send.example.com`, you will need to remove it before adding the Resend MX record.
+> **Conflicts with existing records**
+>
+> If you already have a MX record set for `send.example.com`, you will need to remove it before adding the Resend MX record.
+>
+> If you need to keep the existing record, you can add a subdomain to your domain (e.g. `sub.example.com`) which will move the Resend MX location to `send.sub.example.com`.
 
-    If you need to keep the existing record, you can add a subdomain to your domain (e.g. `sub.example.com`) which will move the Resend MX location to `send.sub.example.com`.
-  </Accordion>
-
-  <Accordion title="Conflicts with existing priority">
-    Each MX should have a unique priority value. We suggest using 10 for your MX record on `send.example.com`, but you can use a lower number (higher priority) if 10 is already in use.
-
-    <Note>
-      The lowest possible value (highest priority) is 0. So if you already have a record with this priority, you'll need to remove it in order to create the MX record for Resend.
-    </Note>
-  </Accordion>
-</AccordionGroup>
+> **Conflicts with existing priority**
+>
+> Each MX should have a unique priority value. We suggest using 10 for your MX record on `send.example.com`, but you can use a lower number (higher priority) if 10 is already in use.
+>
+> > [!NOTE]
+> >
+> > The lowest possible value (highest priority) is 0. So if you already have a record with this priority, you'll need to remove it in order to create the MX record for Resend.

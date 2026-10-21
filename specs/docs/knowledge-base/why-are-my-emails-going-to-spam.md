@@ -16,10 +16,10 @@ Make sure your domain has all three authentication records properly configured:
 * **DKIM**: Also set up during domain verification. Confirm with [dns.email](https://dns.email).
 * **DMARC**: Not automatically set up, but strongly recommended. See [DMARC](/docs/dashboard/domains/dmarc) for setup instructions.
 
-<Warning>
-  If any of these records are missing or misconfigured, fix them first.
-  Authentication issues are the most common cause of spam placement.
-</Warning>
+> [!WARNING]
+>
+> If any of these records are missing or misconfigured, fix them first.
+> Authentication issues are the most common cause of spam placement.
 
 ## Use Deliverability Insights
 
@@ -67,14 +67,14 @@ If your emails are being blocked by a specific corporate recipient:
 * Include a visible unsubscribe link in marketing emails.
 * Keep HTML simple. Heavy formatting and image-only emails are more likely to trigger filters.
 
-<Tip>
-  For provider-specific guidance, see [How do I avoid Gmail's spam
-  folder?](https://resend.com/guides/email/deliverability/avoid-gmail-spam-folder).
-  For Outlook, message headers include Spam Confidence Level (SCL) and Bulk
-  Complaint Level (BCL) scores. See [How do I avoid Outlook's spam
-  folder?](https://resend.com/guides/email/deliverability/avoid-outlook-spam-folder#read-what-microsoft-told-you)
-  to read them.
-</Tip>
+> [!TIP]
+>
+> For provider-specific guidance, see [How do I avoid Gmail's spam
+> folder?](https://resend.com/guides/email/deliverability/avoid-gmail-spam-folder).
+> For Outlook, message headers include Spam Confidence Level (SCL) and Bulk
+> Complaint Level (BCL) scores. See [How do I avoid Outlook's spam
+> folder?](https://resend.com/guides/email/deliverability/avoid-outlook-spam-folder#read-what-microsoft-told-you)
+> to read them.
 
 ## Get more help
 

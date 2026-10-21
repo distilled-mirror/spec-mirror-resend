@@ -76,10 +76,10 @@ To keep your email list in top shape, focus on sending to engaged users. Major i
 
 As a best practice, limit non-transactional email sends to recipients who have opened or clicked an email in the past 6 months.
 
-<Info>
-  The exact timeframe may vary depending on your industry, sending frequency,
-  and audience behavior, but 6 months is a generally accepted standard.
-</Info>
+> [!NOTE]
+>
+> The exact timeframe may vary depending on your industry, sending frequency,
+> and audience behavior, but 6 months is a generally accepted standard.
 
 Regularly cleaning your list of disengaged recipients helps maintain a positive sender reputation and boosts your chances of landing in the inbox instead of the spam folder.
 

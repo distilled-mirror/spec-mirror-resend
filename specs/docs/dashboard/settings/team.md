@@ -22,7 +22,7 @@ Resend allows multiple teams to be managed under a single email address. Each te
 2. Click **Upload Image** next to the avatar placeholders.
 3. Upload an image file to use as the team avatar.
 
-<video autoPlay muted loop playsinline className="w-full aspect-video" src="https://mintcdn.com/resend/OWNnQaVDyqcGyhhN/images/team-avatars.mp4?fit=max&auto=format&n=OWNnQaVDyqcGyhhN&q=85&s=65055e2c2d2652e8791f2aa997f4cb1e" data-path="images/team-avatars.mp4" />
+<video autoPlay muted loop playsinline src="https://mintcdn.com/resend/OWNnQaVDyqcGyhhN/images/team-avatars.mp4?fit=max&auto=format&n=OWNnQaVDyqcGyhhN&q=85&s=65055e2c2d2652e8791f2aa997f4cb1e" />
 
 ## Switching between teams
 
@@ -32,7 +32,7 @@ After accepting an invite from the account owner, users can switch between teams
 2. A dropdown menu will appear, listing all the teams you belong to.
 3. Select a team to switch between them.
 
-<img src="https://mintcdn.com/resend/OWNnQaVDyqcGyhhN/images/teams-toggle.png?fit=max&auto=format&n=OWNnQaVDyqcGyhhN&q=85&s=d873d8c43f65af895d4fb025648f59d9" alt="image" width="1366" height="852" data-path="images/teams-toggle.png" />
+![image](https://mintcdn.com/resend/OWNnQaVDyqcGyhhN/images/teams-toggle.png?fit=max\&auto=format\&n=OWNnQaVDyqcGyhhN\&q=85\&s=d873d8c43f65af895d4fb025648f59d9)
 
 ## Change the team member roles
 
@@ -40,9 +40,9 @@ As an admin of your team, you can change the role of members in your team.
 
 1. Navigate to your [**Team Settings**](https://resend.com/settings/team).
 2. Find the user you want to change.
-3. Select the more options button <span className="inline-block align-middle"><Icon icon="ellipsis" iconType="solid" /></span> and choose **Change role**.
+3. Select the more options button  and choose **Change role**.
 
-<img alt="Change role popover visible for team member" src="https://mintcdn.com/resend/OWNnQaVDyqcGyhhN/images/how-can-i-change-team-roles-1.png?fit=max&auto=format&n=OWNnQaVDyqcGyhhN&q=85&s=656430ad540c2b6143998583b2a71c97" width="3360" height="2100" data-path="images/how-can-i-change-team-roles-1.png" />
+![Change role popover visible for team member](https://mintcdn.com/resend/OWNnQaVDyqcGyhhN/images/how-can-i-change-team-roles-1.png?fit=max\&auto=format\&n=OWNnQaVDyqcGyhhN\&q=85\&s=656430ad540c2b6143998583b2a71c97)
 
 Upon confirmation, your team member will be given the new role.
 
@@ -55,14 +55,14 @@ The **Enabled MFA** column on your [**Team Settings**](https://resend.com/settin
 You can leave your team by following these steps:
 
 1. Navigate to your [**Team Settings**](https://resend.com/settings/team).
-2. Under members, click on <span className="inline-block align-middle"><Icon icon="ellipsis" iconType="solid" /></span> next to your name for more options.
+2. Under members, click on  next to your name for more options.
 3. Select the **Leave Team** button.
 
 Upon confirmation, you will leave your team.
 
-<Note>
-  If you are the last member of the team, leaving will permanently delete the
-  team and all its data. You will be prompted to confirm this action by typing
-  **DELETE**. If the team still has other members, but you are the only admin,
-  you will be prompted to promote another member to admin before leaving.
-</Note>
+> [!NOTE]
+>
+> If you are the last member of the team, leaving will permanently delete the
+> team and all its data. You will be prompted to confirm this action by typing
+> **DELETE**. If the team still has other members, but you are the only admin,
+> you will be prompted to promote another member to admin before leaving.

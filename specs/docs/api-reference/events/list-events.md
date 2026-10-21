@@ -6,176 +6,142 @@
 
 > Retrieve a list of events.
 
-export const QueryParams = ({type, isRequired}) => {
-  return <>
-      <h2>Query Parameters</h2>
+## Query Parameters
 
-      {isRequired ? <ParamField query="limit" type="number">
-          Number of {type} to retrieve.
-          <ul>
-            <li>
-              Default value: <code>20</code>
-            </li>
-            <li>
-              Maximum value: <code>100</code>
-            </li>
-            <li>
-              Minimum value: <code>1</code>
-            </li>
-          </ul>
-        </ParamField> : <>
-          <p>
-            Note that the <code>limit</code> parameter is <em>optional</em>. If
-            you do not provide a <code>limit</code>, all {type} will be returned
-            in a single response.
-          </p>
-          <ParamField query="limit" type="number">
-            Number of {type} to retrieve.
-            <ul>
-              <li>
-                Maximum value: <code>100</code>
-              </li>
-              <li>
-                Minimum value: <code>1</code>
-              </li>
-            </ul>
-          </ParamField>
-        </>}
+**limit** `number`
 
-      <ParamField query="after" type="string">
-        The ID <em>after</em> which we'll retrieve more {type} (for pagination).
-        This ID will <em>not</em> be included in the returned list. Cannot be
-        used with the
-        <code>before</code> parameter.
-      </ParamField>
-      <ParamField query="before" type="string">
-        The ID <em>before</em> which we'll retrieve more {type} (for
-        pagination). This ID will <em>not</em> be included in the returned list.
-        Cannot be used with the <code>after</code> parameter.
-      </ParamField>
-      <Info>
-        You can only use either <code>after</code> or <code>before</code>{' '}
-        parameter, not both. See our{' '}
-        <a href="/docs/api-reference/pagination">pagination guide</a> for more
-        information.
-      </Info>
-    </>;
-};
+Number of events to retrieve.
+<ul><li>Default value: `20`</li>
+<li>Maximum value: `100`</li>
+<li>Minimum value: `1`</li></ul>
 
-<QueryParams type="events" isRequired={true} />
+**after** `string`
 
-<RequestExample>
-  ```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
-  import { Resend } from 'resend';
+The ID *after* which we'll retrieve more events (for pagination).
+This ID will *not* be included in the returned list. Cannot be
+used with the
+`before` parameter.
+**before** `string`
 
-  const resend = new Resend('re_xxxxxxxxx');
+The ID *before* which we'll retrieve more events (for
+pagination). This ID will *not* be included in the returned list.
+Cannot be used with the `after` parameter.
 
-  const { data, error } = await resend.events.list();
-  ```
+> [!NOTE]
+>
+> You can only use either `after` or `before`
+> parameter, not both. See our
+> [pagination guide](/docs/api-reference/pagination) for more
+> information.
 
-  ```php PHP theme={"theme":{"light":"github-light","dark":"vesper"}}
-  $resend = Resend::client('re_xxxxxxxxx');
+```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
+import { Resend } from 'resend';
 
-  $resend->events->list();
-  ```
+const resend = new Resend('re_xxxxxxxxx');
 
-  ```python Python theme={"theme":{"light":"github-light","dark":"vesper"}}
-  import resend
+const { data, error } = await resend.events.list();
+```
 
-  resend.api_key = "re_xxxxxxxxx"
+```php PHP theme={"theme":{"light":"github-light","dark":"vesper"}}
+$resend = Resend::client('re_xxxxxxxxx');
 
-  resend.Events.list()
-  ```
+$resend->events->list();
+```
 
-  ```ruby Ruby theme={"theme":{"light":"github-light","dark":"vesper"}}
-  require "resend"
+```python Python theme={"theme":{"light":"github-light","dark":"vesper"}}
+import resend
 
-  Resend.api_key = "re_xxxxxxxxx"
+resend.api_key = "re_xxxxxxxxx"
 
-  Resend::Events.list
-  ```
+resend.Events.list()
+```
 
-  ```go Go theme={"theme":{"light":"github-light","dark":"vesper"}}
-  package main
+```ruby Ruby theme={"theme":{"light":"github-light","dark":"vesper"}}
+require "resend"
 
-  import "github.com/resend/resend-go/v4"
+Resend.api_key = "re_xxxxxxxxx"
 
-  func main() {
-  	client := resend.NewClient("re_xxxxxxxxx")
+Resend::Events.list
+```
 
-  	client.Events.List()
-  }
-  ```
+```go Go theme={"theme":{"light":"github-light","dark":"vesper"}}
+package main
 
-  ```rust Rust theme={"theme":{"light":"github-light","dark":"vesper"}}
-  use resend_rs::{Resend, Result, list_opts::ListOptions};
+import "github.com/resend/resend-go/v4"
 
-  #[tokio::main]
-  async fn main() -> Result<()> {
-    let resend = Resend::new("re_xxxxxxxxx");
+func main() {
+	client := resend.NewClient("re_xxxxxxxxx")
 
-    let _events = resend.events.list(ListOptions::default()).await?;
+	client.Events.List()
+}
+```
 
-    Ok(())
-  }
-  ```
+```rust Rust theme={"theme":{"light":"github-light","dark":"vesper"}}
+use resend_rs::{Resend, Result, list_opts::ListOptions};
 
-  ```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
-  import com.resend.Resend;
-  import com.resend.core.exception.ResendException;
-  import com.resend.services.events.model.ListEventsResponseSuccess;
+#[tokio::main]
+async fn main() -> Result<()> {
+  let resend = Resend::new("re_xxxxxxxxx");
 
-  public class Main {
-      public static void main(String[] args) throws ResendException {
-          Resend resend = new Resend("re_xxxxxxxxx");
+  let _events = resend.events.list(ListOptions::default()).await?;
 
-          ListEventsResponseSuccess data = resend.events().list();
-      }
-  }
-  ```
+  Ok(())
+}
+```
 
-  ```csharp .NET theme={"theme":{"light":"github-light","dark":"vesper"}}
-  using Resend;
+```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
+import com.resend.Resend;
+import com.resend.core.exception.ResendException;
+import com.resend.services.events.model.ListEventsResponseSuccess;
 
-  IResend resend = ResendClient.Create( "re_xxxxxxxxx" );
+public class Main {
+    public static void main(String[] args) throws ResendException {
+        Resend resend = new Resend("re_xxxxxxxxx");
 
-  var resp = await resend.EventListAsync();
-  Console.WriteLine( "Count={0}", resp.Content.Data.Count );
-  ```
+        ListEventsResponseSuccess data = resend.events().list();
+    }
+}
+```
 
-  ```bash cURL theme={"theme":{"light":"github-light","dark":"vesper"}}
-  curl -X GET 'https://api.resend.com/events' \
-       -H 'Authorization: Bearer re_xxxxxxxxx'
-  ```
+```csharp .NET theme={"theme":{"light":"github-light","dark":"vesper"}}
+using Resend;
 
-  ```bash CLI theme={"theme":{"light":"github-light","dark":"vesper"}}
-  resend events list
-  ```
-</RequestExample>
+IResend resend = ResendClient.Create( "re_xxxxxxxxx" );
 
-<ResponseExample>
-  ```json Response theme={"theme":{"light":"github-light","dark":"vesper"}}
-  {
-    "object": "list",
-    "has_more": false,
-    "data": [
-      {
-        "id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
-        "name": "user.created",
-        "schema": {
-          "plan": "string"
-        },
-        "created_at": "2026-10-01 12:00:00.000000+00",
-        "updated_at": "2026-10-01 12:00:00.000000+00"
+var resp = await resend.EventListAsync();
+Console.WriteLine( "Count={0}", resp.Content.Data.Count );
+```
+
+```bash cURL theme={"theme":{"light":"github-light","dark":"vesper"}}
+curl -X GET 'https://api.resend.com/events' \
+     -H 'Authorization: Bearer re_xxxxxxxxx'
+```
+
+```bash CLI theme={"theme":{"light":"github-light","dark":"vesper"}}
+resend events list
+```
+
+```json Response theme={"theme":{"light":"github-light","dark":"vesper"}}
+{
+  "object": "list",
+  "has_more": false,
+  "data": [
+    {
+      "id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+      "name": "user.created",
+      "schema": {
+        "plan": "string"
       },
-      {
-        "id": "b2c3d4e5-f6a7-8901-bcde-f12345678901",
-        "name": "user.upgraded",
-        "schema": null,
-        "created_at": "2026-09-15 08:30:00.000000+00",
-        "updated_at": "2026-09-20 14:00:00.000000+00"
-      }
-    ]
-  }
-  ```
-</ResponseExample>
+      "created_at": "2026-10-01 12:00:00.000000+00",
+      "updated_at": "2026-10-01 12:00:00.000000+00"
+    },
+    {
+      "id": "b2c3d4e5-f6a7-8901-bcde-f12345678901",
+      "name": "user.upgraded",
+      "schema": null,
+      "created_at": "2026-09-15 08:30:00.000000+00",
+      "updated_at": "2026-09-20 14:00:00.000000+00"
+    }
+  ]
+}
+```

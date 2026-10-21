@@ -6,128 +6,119 @@
 
 > Received when an email bounces.
 
-export const ResponseBodyParameters = ({type, children}) => {
-  return <div>
-      <h2>Response Body Parameters</h2>
-      <p>
-        All webhook payloads follow a consistent top-level structure with
-        event-specific data nested within the <code>data</code> object.
-      </p>
-      <ParamField body="type" type="string">
-        The event type that triggered the webhook (e.g., <code>{type}</code>).
-      </ParamField>
-      <ParamField body="created_at" type="string">
-        ISO 8601 timestamp when the webhook event was created.
-      </ParamField>
-      <ParamField body="data" type="object">
-        Event-specific data containing detailed information about the event. The
-        data object for the <code>{type}</code> event contains the following
-        parameters:
-        <Expandable defaultOpen title="object parameters">
-          {children}
-        </Expandable>
-      </ParamField>
-    </div>;
-};
-
 Event triggered whenever the recipient's mail server **permanently rejected the email**.
 
-<ResponseBodyParameters type="email.bounced">
-  <ParamField body="broadcast_id" type="string">
-    Unique identifier for the broadcast campaign (if applicable)
-  </ParamField>
+## Response Body Parameters
 
-  <ParamField body="created_at" type="string">
-    ISO 8601 timestamp when the email was created
-  </ParamField>
+All webhook payloads follow a consistent top-level structure with
+event-specific data nested within the `data` object.
 
-  <ParamField body="email_id" type="string">
-    Unique identifier for the specific email
-  </ParamField>
+**type** `string`
 
-  <ParamField body="message_id" type="string">
-    RFC Message-ID header value for the email
-  </ParamField>
+The event type that triggered the webhook (e.g., `email.bounced`).
+**created\_at** `string`
 
-  <ParamField body="from" type="string">
-    Sender's email address. For sent events, this matches the value passed at send time and may include a display name (e.g., `Name <email@domain.com>`). For received events, this is the bare email address only; the display name from the original `From:` header is preserved in `headers.from` on the [retrieve endpoint](/docs/api-reference/emails/retrieve-received-email).
-  </ParamField>
+ISO 8601 timestamp when the webhook event was created.
+**data** `object`
 
-  <ParamField body="to" type="array">
-    Array of impacted recipient email addresses
-  </ParamField>
+Event-specific data containing detailed information about the event. The
+data object for the `email.bounced` event contains the following
+parameters:
 
-  <ParamField body="subject" type="string">
-    Email subject line
-  </ParamField>
+**object parameters**
 
-  <ParamField body="template_id" type="string">
-    Unique identifier for the template used (if applicable)
-  </ParamField>
+**broadcast\_id** `string`
 
-  <ParamField body="tags" type="Record<string, string>">
-    Object of tag key-value pairs associated with the email.
+Unique identifier for the broadcast campaign (if applicable)
 
-    Example:
+**created\_at** `string`
 
-    ```json theme={"theme":{"light":"github-light","dark":"vesper"}}
-    {
-      "category": "welcome",
-      "user_id": "1234567890"
-    }
-    ```
-  </ParamField>
+ISO 8601 timestamp when the email was created
 
-  <ParamField body="bounce" type="object">
-    Bounce details from the receiving server
+**email\_id** `string`
 
-    <Expandable title="bounce object" defaultOpen>
-      <ParamField body="diagnosticCode" type="array">
-        Array of SMTP diagnostic responses from the receiving server, including the status code and reason for the bounce (e.g., `smtp; 550 5.5.0 Requested action not taken: mailbox unavailable`)
-      </ParamField>
+Unique identifier for the specific email
 
-      <ParamField body="message" type="string">
-        Detailed bounce message from the receiving server
-      </ParamField>
+**message\_id** `string`
 
-      <ParamField body="subType" type="string">
-        Bounce sub-type (e.g., `Suppressed`, `MessageRejected`)
-      </ParamField>
+RFC Message-ID header value for the email
 
-      <ParamField body="type" type="string">
-        Bounce type (e.g., `Permanent`, `Temporary`)
-      </ParamField>
+**from** `string`
 
-      <Info>
-        Learn more about [bounce types and subtypes](/docs/dashboard/emails/email-bounces).
-      </Info>
-    </Expandable>
-  </ParamField>
-</ResponseBodyParameters>
+Sender's email address. For sent events, this matches the value passed at send time and may include a display name (e.g., `Name <email@domain.com>`). For received events, this is the bare email address only; the display name from the original `From:` header is preserved in `headers.from` on the [retrieve endpoint](/docs/api-reference/emails/retrieve-received-email).
 
-<ResponseExample>
-  ```json theme={"theme":{"light":"github-light","dark":"vesper"}}
-  {
-    "type": "email.bounced",
-    "created_at": "2026-11-22T23:41:12.126Z",
-    "data": {
-      "broadcast_id": "8b146471-e88e-4322-86af-016cd36fd216",
-      "created_at": "2026-11-22T23:41:11.894Z",
-      "email_id": "56761188-7520-42d8-8898-ff6fc54ce618",
-      "message_id": "<111-222-333@email.example.com>",
-      "from": "Acme <onboarding@resend.dev>",
-      "to": ["delivered@resend.dev"],
-      "subject": "Sending this example",
-      "template_id": "43f68331-0622-4e15-8202-246a0388854b",
-      "bounce": {
-        "message": "The recipient's email address is on the suppression list because it has a recent history of producing hard bounces.",
-        "subType": "Suppressed",
-        "type": "Permanent"
-      },
-      "tags": {
-        "category": "confirm_email"
-      }
+**to** `array`
+
+Array of impacted recipient email addresses
+
+**subject** `string`
+
+Email subject line
+
+**template\_id** `string`
+
+Unique identifier for the template used (if applicable)
+
+**tags** `Record\<string, string\>`
+
+Object of tag key-value pairs associated with the email.
+
+Example:
+
+```json theme={"theme":{"light":"github-light","dark":"vesper"}}
+{
+  "category": "welcome",
+  "user_id": "1234567890"
+}
+```
+
+**bounce** `object`
+
+Bounce details from the receiving server
+
+**bounce object**
+
+**diagnosticCode** `array`
+
+Array of SMTP diagnostic responses from the receiving server, including the status code and reason for the bounce (e.g., `smtp; 550 5.5.0 Requested action not taken: mailbox unavailable`)
+
+**message** `string`
+
+Detailed bounce message from the receiving server
+
+**subType** `string`
+
+Bounce sub-type (e.g., `Suppressed`, `MessageRejected`)
+
+**type** `string`
+
+Bounce type (e.g., `Permanent`, `Temporary`)
+
+> [!NOTE]
+>
+> Learn more about [bounce types and subtypes](/docs/dashboard/emails/email-bounces).
+
+```json theme={"theme":{"light":"github-light","dark":"vesper"}}
+{
+  "type": "email.bounced",
+  "created_at": "2026-11-22T23:41:12.126Z",
+  "data": {
+    "broadcast_id": "8b146471-e88e-4322-86af-016cd36fd216",
+    "created_at": "2026-11-22T23:41:11.894Z",
+    "email_id": "56761188-7520-42d8-8898-ff6fc54ce618",
+    "message_id": "<111-222-333@email.example.com>",
+    "from": "Acme <onboarding@resend.dev>",
+    "to": ["delivered@resend.dev"],
+    "subject": "Sending this example",
+    "template_id": "43f68331-0622-4e15-8202-246a0388854b",
+    "bounce": {
+      "message": "The recipient's email address is on the suppression list because it has a recent history of producing hard bounces.",
+      "subType": "Suppressed",
+      "type": "Permanent"
+    },
+    "tags": {
+      "category": "confirm_email"
     }
   }
-  ```
-</ResponseExample>
+}
+```

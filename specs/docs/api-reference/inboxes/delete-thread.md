@@ -6,122 +6,138 @@
 
 > Move a thread to the trash folder.
 
-export const ResendParamField = ({children, body, path, ...props}) => {
-  const [lang, setLang] = useState(() => {
-    return localStorage.getItem('code') || '"Node.js"';
-  });
-  useEffect(() => {
-    const onStorage = event => {
-      const key = event.detail.key;
-      if (key === 'code') {
-        setLang(event.detail.value);
-      }
-    };
-    document.addEventListener('mintlify-localstorage', onStorage);
-    return () => {
-      document.removeEventListener('mintlify-localstorage', onStorage);
-    };
-  }, []);
-  const toCamelCase = str => typeof str === 'string' ? str.replace(/[_-](\w)/g, (_, c) => c.toUpperCase()) : str;
-  const resolvedBody = useMemo(() => {
-    const value = JSON.parse(lang);
-    return value === 'Node.js' ? toCamelCase(body) : body;
-  }, [body, lang]);
-  const resolvedPath = useMemo(() => {
-    const value = JSON.parse(lang);
-    return value === 'Node.js' ? toCamelCase(path) : path;
-  }, [path, lang]);
-  return <ParamField body={resolvedBody} path={resolvedPath} {...props}>
-      {children}
-    </ParamField>;
-};
-
-<Warning>
-  Inboxes are currently in private beta and only available to a limited
-  number of users. The response shape might change before GA.
-
-  <span />
-
-  [Get early access](https://resend.com/settings/labs) if you're interested in testing this feature.
-
-  <span />
-
-  Once you have access, upgrade your Resend SDK to use the new methods:
-
-  <CodeGroup>
-    ```bash Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
-    npm install resend@6.33.0
-    ```
-
-    ```bash CLI theme={"theme":{"light":"github-light","dark":"vesper"}}
-    npm install -g resend-cli@2.25.0
-    ```
-  </CodeGroup>
-</Warning>
-
 Deleting a thread moves it to `trash` and schedules it for deletion in 30
 days.
 
-<Info>
-  This is reversible. To restore a thread, [update
-  it](/docs/api-reference/inboxes/update-thread) back to `inbox`, `archive`, or
-  `spam`, which also clears the deletion deadline.
-</Info>
+> [!NOTE]
+>
+> This is reversible. To restore a thread, [update
+> it](/docs/api-reference/inboxes/update-thread) back to `inbox`, `archive`, or
+> `spam`, which also clears the deletion deadline.
 
 ## Path Parameters
 
-<ResendParamField path="inbox_id" type="string" required>
-  The Inbox ID or the inbox email address, such as `support@example.com`.
-</ResendParamField>
+The Inbox ID or the inbox email address, such as `support@example.com`.
 
-<ResendParamField path="thread_id" type="string" required>
-  The Thread ID.
-</ResendParamField>
+The Thread ID.
 
 ## Response Fields
 
-<ParamField body="object" type="string">
-  Always `inbox_thread`.
-</ParamField>
+**object** `string`
 
-<ParamField body="id" type="string">
-  The ID of the thread.
-</ParamField>
+Always `inbox_thread`.
 
-<ParamField body="deleted" type="boolean">
-  Returns `true` when the thread is moved to `trash`, and `false` when the
-  thread was already there.
-</ParamField>
+**id** `string`
 
-<RequestExample>
-  ```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
-  import { Resend } from 'resend';
+The ID of the thread.
 
-  const resend = new Resend('re_xxxxxxxxx');
+**deleted** `boolean`
 
-  const { data, error } = await resend.inboxes.threads.remove({
-    inboxId: 'b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1',
-    threadId: '4d8e2a1c-9b3f-4c6d-8a21-3e5f7c9c0d12',
-  });
-  ```
+Returns `true` when the thread is moved to `trash`, and `false` when the
+thread was already there.
 
-  ```bash cURL theme={"theme":{"light":"github-light","dark":"vesper"}}
-  curl -X DELETE 'https://api.resend.com/inboxes/b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1/threads/4d8e2a1c-9b3f-4c6d-8a21-3e5f7c9c0d12' \
-       -H 'Authorization: Bearer re_xxxxxxxxx'
-  ```
+```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
+import { Resend } from 'resend';
 
-  ```bash CLI theme={"theme":{"light":"github-light","dark":"vesper"}}
-  resend inboxes threads delete b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1 4d8e2a1c-9b3f-4c6d-8a21-3e5f7c9c0d12 \
-    --yes
-  ```
-</RequestExample>
+const resend = new Resend('re_xxxxxxxxx');
 
-<ResponseExample>
-  ```json Response theme={"theme":{"light":"github-light","dark":"vesper"}}
-  {
-    "object": "inbox_thread",
-    "id": "4d8e2a1c-9b3f-4c6d-8a21-3e5f7c9c0d12",
-    "deleted": true
-  }
-  ```
-</ResponseExample>
+const { data, error } = await resend.inboxes.threads.remove({
+  inboxId: 'b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1',
+  threadId: '4d8e2a1c-9b3f-4c6d-8a21-3e5f7c9c0d12',
+});
+```
+
+```php PHP theme={"theme":{"light":"github-light","dark":"vesper"}}
+$resend = Resend::client('re_xxxxxxxxx');
+
+$resend->inboxes->threads->remove(
+  'b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1',
+  '4d8e2a1c-9b3f-4c6d-8a21-3e5f7c9c0d12'
+);
+```
+
+```python Python theme={"theme":{"light":"github-light","dark":"vesper"}}
+import resend
+
+resend.api_key = "re_xxxxxxxxx"
+
+resend.Inboxes.Threads.remove(
+    inbox_id="b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1",
+    thread_id="4d8e2a1c-9b3f-4c6d-8a21-3e5f7c9c0d12",
+)
+```
+
+```ruby Ruby theme={"theme":{"light":"github-light","dark":"vesper"}}
+require "resend"
+
+Resend.api_key = "re_xxxxxxxxx"
+
+params = {
+  inbox_id: "b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1",
+  thread_id: "4d8e2a1c-9b3f-4c6d-8a21-3e5f7c9c0d12"
+}
+
+Resend::Inboxes::Threads.remove(params)
+```
+
+```go Go theme={"theme":{"light":"github-light","dark":"vesper"}}
+package main
+
+import "github.com/resend/resend-go/v4"
+
+func main() {
+	client := resend.NewClient("re_xxxxxxxxx")
+
+	client.Inboxes.Threads.Remove(
+		"b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1",
+		"4d8e2a1c-9b3f-4c6d-8a21-3e5f7c9c0d12",
+	)
+```
+
+```rust Rust theme={"theme":{"light":"github-light","dark":"vesper"}}
+use resend_rs::{Resend, Result};
+
+#[tokio::main]
+async fn main() -> Result<()> {
+  let resend = Resend::new("re_xxxxxxxxx");
+
+  let _deleted = resend
+    .inboxes
+    .delete_thread(
+      "b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1",
+      "4d8e2a1c-9b3f-4c6d-8a21-3e5f7c9c0d12",
+    )
+    .await?;
+
+  Ok(())
+}
+```
+
+```csharp .NET theme={"theme":{"light":"github-light","dark":"vesper"}}
+using Resend;
+
+IResend resend = ResendClient.Create( "re_xxxxxxxxx" ); // Or from DI
+
+await resend.InboxThreadDeleteAsync(
+    new Guid( "b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1" ),
+    new Guid( "4d8e2a1c-9b3f-4c6d-8a21-3e5f7c9c0d12" )
+);
+```
+
+```bash cURL theme={"theme":{"light":"github-light","dark":"vesper"}}
+curl -X DELETE 'https://api.resend.com/inboxes/b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1/threads/4d8e2a1c-9b3f-4c6d-8a21-3e5f7c9c0d12' \
+     -H 'Authorization: Bearer re_xxxxxxxxx'
+```
+
+```bash CLI theme={"theme":{"light":"github-light","dark":"vesper"}}
+resend inboxes threads delete b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1 4d8e2a1c-9b3f-4c6d-8a21-3e5f7c9c0d12 \
+  --yes
+```
+
+```json Response theme={"theme":{"light":"github-light","dark":"vesper"}}
+{
+  "object": "inbox_thread",
+  "id": "4d8e2a1c-9b3f-4c6d-8a21-3e5f7c9c0d12",
+  "deleted": true
+}
+```

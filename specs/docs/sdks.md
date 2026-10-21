@@ -8,68 +8,62 @@
 
 ## Official SDKs
 
-<CardGroup cols={2}>
-  <Card title="Node.js" icon="github" href="https://github.com/resend/resend-node">
-    github.com/resend/resend-node
-  </Card>
+> **[Node.js](https://github.com/resend/resend-node)**
+>
+> github.com/resend/resend-node
 
-  <Card title="PHP" icon="github" href="https://github.com/resend/resend-php">
-    github.com/resend/resend-php
-  </Card>
+> **[PHP](https://github.com/resend/resend-php)**
+>
+> github.com/resend/resend-php
 
-  <Card title="Laravel" icon="github" href="https://github.com/resend/resend-laravel">
-    github.com/resend/resend-laravel
-  </Card>
+> **[Laravel](https://github.com/resend/resend-laravel)**
+>
+> github.com/resend/resend-laravel
 
-  <Card title="Python" icon="github" href="https://github.com/resend/resend-python">
-    github.com/resend/resend-python
-  </Card>
+> **[Python](https://github.com/resend/resend-python)**
+>
+> github.com/resend/resend-python
 
-  <Card title="Ruby" icon="github" href="https://github.com/resend/resend-ruby">
-    github.com/resend/resend-ruby
-  </Card>
+> **[Ruby](https://github.com/resend/resend-ruby)**
+>
+> github.com/resend/resend-ruby
 
-  <Card title="Go" icon="github" href="https://github.com/resend/resend-go">
-    github.com/resend/resend-go
-  </Card>
+> **[Go](https://github.com/resend/resend-go)**
+>
+> github.com/resend/resend-go
 
-  <Card title="Java" icon="github" href="https://github.com/resend/resend-java">
-    github.com/resend/resend-java
-  </Card>
+> **[Java](https://github.com/resend/resend-java)**
+>
+> github.com/resend/resend-java
 
-  <Card title="Rust" icon="github" href="https://github.com/resend/resend-rust">
-    github.com/resend/resend-rust
-  </Card>
+> **[Rust](https://github.com/resend/resend-rust)**
+>
+> github.com/resend/resend-rust
 
-  <Card title=".NET" icon="github" href="https://github.com/resend/resend-dotnet">
-    github.com/resend/resend-dotnet
-  </Card>
+> **[.NET](https://github.com/resend/resend-dotnet)**
+>
+> github.com/resend/resend-dotnet
 
-  <Card title="Chat SDK Adapter" icon="github" href="https://github.com/resend/resend-chat-sdk">
-    github.com/resend/resend-chat-sdk
-  </Card>
-</CardGroup>
+> **[Chat SDK Adapter](https://github.com/resend/resend-chat-sdk)**
+>
+> github.com/resend/resend-chat-sdk
 
 ## Community SDKs
 
-<CardGroup cols={2}>
-  <Card title="Elixir" icon="github" href="https://github.com/elixir-saas/resend-elixir">
-    github.com/elixir-saas/resend-elixir
-  </Card>
+> **[Elixir](https://github.com/elixir-saas/resend-elixir)**
+>
+> github.com/elixir-saas/resend-elixir
 
-  <Card title="NestJS" icon="github" href="https://github.com/jiangtaste/nestjs-resend">
-    github.com/jiangtaste/nestjs-resend
-  </Card>
+> **[NestJS](https://github.com/jiangtaste/nestjs-resend)**
+>
+> github.com/jiangtaste/nestjs-resend
 
-  <Card title="Dart" icon="github" href="https://github.com/coderaveHQ/dart_resend">
-    github.com/coderaveHQ/dart\_resend
-  </Card>
-</CardGroup>
+> **[Dart](https://github.com/coderaveHQ/dart_resend)**
+>
+> github.com/coderaveHQ/dart\_resend
 
 ## OpenAPI
 
-<CardGroup cols={2}>
-  <Card title="OpenAPI" icon="github" href="https://github.com/resend/resend-openapi">
-    github.com/resend/resend-openapi
-  </Card>
-</CardGroup>
+> **[OpenAPI](https://github.com/resend/resend-openapi)**
+>
+> github.com/resend/resend-openapi

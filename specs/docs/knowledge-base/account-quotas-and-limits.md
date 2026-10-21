@@ -14,11 +14,11 @@ Resend regulates email volume in three ways:
 
 These limits help improve your deliverability and likelihood of reaching your recipient's inbox.
 
-<Info>
-  Both **sent emails** and **received emails** (inbound) count towards your
-  account's email quota. Each received email counts as 1 email against your
-  daily and monthly limits, just like sent emails.
-</Info>
+> [!NOTE]
+>
+> Both **sent emails** and **received emails** (inbound) count towards your
+> account's email quota. Each received email counts as 1 email against your
+> daily and monthly limits, just like sent emails.
 
 ## Free Account Quotas and Limits
 
@@ -43,19 +43,19 @@ Free accounts have the following:
 
 Paid plans include pay-as-you-go overages, which allow you to continue sending emails after you've reached your monthly quota. To prevent extreme overages and unexpected costs, a hard limit of 5x your monthly quota applies.
 
-<Note>
-  By default, overage usage is capped at **5x your plan's monthly quota**. Once you reach this limit, sending will be paused until the next billing cycle.
+> [!NOTE]
+>
+> By default, overage usage is capped at **5x your plan's monthly quota**. Once you reach this limit, sending will be paused until the next billing cycle.
+>
+> If you need to adjust this limit, please [contact support](https://resend.com/help).
 
-  If you need to adjust this limit, please [contact support](https://resend.com/help).
-</Note>
-
-<Tip>
-  While overages provide flexibility for occasional spikes in email volume, they
-  can be more expensive per email than upgrading your plan. If you consistently
-  exceed your quota, consider [upgrading to a higher
-  tier](https://resend.com/settings/billing) for better value and more
-  predictable costs.
-</Tip>
+> [!TIP]
+>
+> While overages provide flexibility for occasional spikes in email volume, they
+> can be more expensive per email than upgrading your plan. If you consistently
+> exceed your quota, consider [upgrading to a higher
+> tier](https://resend.com/settings/billing) for better value and more
+> predictable costs.
 
 ## Domain Limits
 
@@ -69,13 +69,11 @@ Every plan includes 3 [inboxes](/docs/api-reference/inboxes/create-inbox) for fr
 
 You can see how many inboxes your team is using on the [**Usage page**](https://resend.com/settings/usage).
 
-<Note>
-  Pay-as-you-go for inboxes is off by default and can only be turned on by a
-  team admin. Turning it off later stops new inboxes from being created, but
-  existing inboxes keep working and keep being billed until you delete them.
-</Note>
-
-Inboxes are in early access. Enable them in [Labs](https://resend.com/settings/labs) to show them in the dashboard.
+> [!NOTE]
+>
+> Pay-as-you-go for inboxes is off by default and can only be turned on by a
+> team admin. Turning it off later stops new inboxes from being created, but
+> existing inboxes keep working and keep being billed until you delete them.
 
 ## Rate Limits
 
@@ -132,10 +130,10 @@ Resend retains email data for **30 days** across all plans (Free, Pro, and Scale
 
 Enterprise plans have access to **flexible data retention** options. [Contact support](https://resend.com/help) to discuss custom retention requirements.
 
-<Tip>
-  If you need access to historical email data beyond the 30-day retention
-  window, consider storing [webhook
-  events](/docs/webhooks/how-to-store-webhooks-data) in your own database. This gives
-  you full control over retention periods and ensures you never lose important
-  information.
-</Tip>
+> [!TIP]
+>
+> If you need access to historical email data beyond the 30-day retention
+> window, consider storing [webhook
+> events](/docs/webhooks/how-to-store-webhooks-data) in your own database. This gives
+> you full control over retention periods and ensures you never lose important
+> information.

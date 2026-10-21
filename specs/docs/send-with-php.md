@@ -6,10 +6,6 @@
 
 > Learn how to send your first email using the Resend PHP SDK.
 
-export const YouTube = ({id}) => {
-  return <iframe className="w-full aspect-video rounded-xl" src={`https://www.youtube.com/embed/${id}`} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>;
-};
-
 ## Prerequisites
 
 Before you start, you'll need:
@@ -19,75 +15,71 @@ Before you start, you'll need:
 
 Prefer watching a video? Check out this video walkthrough below.
 
-<YouTube id="vJRJ7b4QJHw" />
+[YouTube video player](https://www.youtube.com/embed/vJRJ7b4QJHw)
 
 ## Guide
 
-<Steps>
-  <Step title="Install">
-    Get the Resend PHP SDK.
+**1. Install**
 
-    ```bash Composer theme={"theme":{"light":"github-light","dark":"vesper"}}
-    composer require resend/resend-php
-    ```
-  </Step>
+Get the Resend PHP SDK.
 
-  <Step title="Send email using HTML">
-    The easiest way to send an email is by using the `html` parameter.
+```bash Composer theme={"theme":{"light":"github-light","dark":"vesper"}}
+composer require resend/resend-php
+```
 
-    ```php index.php theme={"theme":{"light":"github-light","dark":"vesper"}}
-    <?php
+**2. Send email using HTML**
 
-    require __DIR__ . '/vendor/autoload.php';
+The easiest way to send an email is by using the `html` parameter.
 
-    $resend = Resend::client('re_xxxxxxxxx');
+```php index.php theme={"theme":{"light":"github-light","dark":"vesper"}}
+<?php
 
-    $resend->emails->send([
-      'from' => 'Acme <onboarding@resend.dev>',
-      'to' => ['delivered@resend.dev'],
-      'subject' => 'hello world',
-      'html' => '<strong>it works!</strong>',
-    ]);
-    ```
-  </Step>
-</Steps>
+require __DIR__ . '/vendor/autoload.php';
+
+$resend = Resend::client('re_xxxxxxxxx');
+
+$resend->emails->send([
+  'from' => 'Acme <onboarding@resend.dev>',
+  'to' => ['delivered@resend.dev'],
+  'subject' => 'hello world',
+  'html' => '<strong>it works!</strong>',
+]);
+```
 
 ## Examples
 
-<CardGroup cols={3}>
-  <Card title="Basic Send" icon="arrow-up-right-from-square" href="https://github.com/resend/resend-examples/tree/main/php-resend-examples/src/send">
-    Basic, batch, and prevent-threading send
-  </Card>
+> **[Basic Send](https://github.com/resend/resend-examples/tree/main/php-resend-examples/src/send)**
+>
+> Basic, batch, and prevent-threading send
 
-  <Card title="Attachments" icon="arrow-up-right-from-square" href="https://github.com/resend/resend-examples/tree/main/php-resend-examples/src/attachments">
-    File attachments and inline images (CID)
-  </Card>
+> **[Attachments](https://github.com/resend/resend-examples/tree/main/php-resend-examples/src/attachments)**
+>
+> File attachments and inline images (CID)
 
-  <Card title="Scheduling" icon="arrow-up-right-from-square" href="https://github.com/resend/resend-examples/tree/main/php-resend-examples/src/scheduling">
-    Schedule emails for future delivery
-  </Card>
+> **[Scheduling](https://github.com/resend/resend-examples/tree/main/php-resend-examples/src/scheduling)**
+>
+> Schedule emails for future delivery
 
-  <Card title="Templates" icon="arrow-up-right-from-square" href="https://github.com/resend/resend-examples/tree/main/php-resend-examples/src/templates">
-    Send emails using Resend hosted templates
-  </Card>
+> **[Templates](https://github.com/resend/resend-examples/tree/main/php-resend-examples/src/templates)**
+>
+> Send emails using Resend hosted templates
 
-  <Card title="Double Opt-in" icon="arrow-up-right-from-square" href="https://github.com/resend/resend-examples/tree/main/php-resend-examples/src/double-optin">
-    Double opt-in subscription flow
-  </Card>
+> **[Double Opt-in](https://github.com/resend/resend-examples/tree/main/php-resend-examples/src/double-optin)**
+>
+> Double opt-in subscription flow
 
-  <Card title="Inbound Webhooks" icon="arrow-up-right-from-square" href="https://github.com/resend/resend-examples/tree/main/php-resend-examples/src/inbound">
-    Receive and process inbound emails
-  </Card>
+> **[Inbound Webhooks](https://github.com/resend/resend-examples/tree/main/php-resend-examples/src/inbound)**
+>
+> Receive and process inbound emails
 
-  <Card title="Audiences" icon="arrow-up-right-from-square" href="https://github.com/resend/resend-examples/tree/main/php-resend-examples/src/audiences">
-    Manage contacts and audiences
-  </Card>
+> **[Audiences](https://github.com/resend/resend-examples/tree/main/php-resend-examples/src/audiences)**
+>
+> Manage contacts and audiences
 
-  <Card title="Domains" icon="arrow-up-right-from-square" href="https://github.com/resend/resend-examples/tree/main/php-resend-examples/src/domains">
-    Create and manage sending domains
-  </Card>
+> **[Domains](https://github.com/resend/resend-examples/tree/main/php-resend-examples/src/domains)**
+>
+> Create and manage sending domains
 
-  <Card title="Symfony App" icon="arrow-up-right-from-square" href="https://github.com/resend/resend-examples/tree/main/php-resend-examples/symfony_app">
-    Full Symfony web application
-  </Card>
-</CardGroup>
+> **[Symfony App](https://github.com/resend/resend-examples/tree/main/php-resend-examples/symfony_app)**
+>
+> Full Symfony web application

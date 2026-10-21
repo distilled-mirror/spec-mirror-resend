@@ -64,28 +64,24 @@ Resend allows you to choose both a Transactional and a Marketing plan, each at t
 
 ## Learn more
 
-<CardGroup cols={2}>
-  <Card title="Send Email API" icon="tools" href="/docs/api-reference/emails/send-email">
-    Send, list, retrieve, update, and cancel transactional emails with the Send
-    Email API.
-  </Card>
+> **[Send Email API](/docs/api-reference/emails/send-email)**
+>
+> Send, list, retrieve, update, and cancel transactional emails with the Send
+> Email API.
 
-  <Card title="Broadcasts" icon="megaphone" href="/docs/dashboard/broadcasts/introduction">
-    Create and send marketing emails with Resend's no-code editor or the
-    Broadcasts API.
-  </Card>
-</CardGroup>
+> **[Broadcasts](/docs/dashboard/broadcasts/introduction)**
+>
+> Create and send marketing emails with Resend's no-code editor or the
+> Broadcasts API.
 
 ## Next steps
 
-<CardGroup cols={2}>
-  <Card title="Import or add email contacts" icon="globe" href="/docs/dashboard/contacts/add-contacts">
-    Add existing subscribers to your Resend contact list programmatically,
-    manually, or by uploading a `.csv` file.
-  </Card>
+> **[Import or add email contacts](/docs/dashboard/contacts/add-contacts)**
+>
+> Add existing subscribers to your Resend contact list programmatically,
+> manually, or by uploading a `.csv` file.
 
-  <Card title="Quickstart tutorials" icon="stopwatch" href="/docs/introduction">
-    Send your first transactional email with a quick tutorial for your language
-    or framework.
-  </Card>
-</CardGroup>
+> **[Quickstart tutorials](/docs/introduction)**
+>
+> Send your first transactional email with a quick tutorial for your language
+> or framework.

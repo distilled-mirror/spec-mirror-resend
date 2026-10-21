@@ -29,11 +29,11 @@ Deleting a key revokes it right away. There's no separate revoke step, and no fu
 3. Click the **More options** button, then **Remove API key**.
 4. Create a replacement key and deploy it to your services.
 
-<Warning>
-  Treat the old key as compromised. You can't view an API key after it's
-  created, so a replacement is always a new key rather than a reissue of the old
-  one.
-</Warning>
+> [!WARNING]
+>
+> Treat the old key as compromised. You can't view an API key after it's
+> created, so a replacement is always a new key rather than a reissue of the old
+> one.
 
 If your services are still running on the exposed key, follow the [key rotation steps](/docs/knowledge-base/how-to-handle-api-keys#key-rotation) so you don't experience downtime while you swap it out.
 

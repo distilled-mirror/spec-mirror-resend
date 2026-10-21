@@ -18,294 +18,290 @@ Common use cases:
 
 ## How it works
 
-<Tabs>
-  <Tab title="Using the dashboard">
-    Add a **Wait for event** step and configure the event to wait for.
+**Using the dashboard**
 
-    <img alt="Automation for Event" src="https://mintcdn.com/resend/xKsnaRV1IW7mxJit/images/automations-wait-until.png?fit=max&auto=format&n=xKsnaRV1IW7mxJit&q=85&s=76e77ac2bccd32127ebdb3d01baab410" width="3411" height="1881" data-path="images/automations-wait-until.png" />
-  </Tab>
+Add a **Wait for event** step and configure the event to wait for.
 
-  <Tab title="Using the API">
-    Add a `wait_for_event` step to your Automation's `steps` array.
+![Automation for Event](https://mintcdn.com/resend/xKsnaRV1IW7mxJit/images/automations-wait-until.png?fit=max\&auto=format\&n=xKsnaRV1IW7mxJit\&q=85\&s=76e77ac2bccd32127ebdb3d01baab410)
 
-    <CodeGroup>
-      ```ts Node.js {13-20} theme={"theme":{"light":"github-light","dark":"vesper"}}
-      import { Resend } from 'resend';
+**Using the API**
 
-      const resend = new Resend('re_xxxxxxxxx');
+Add a `wait_for_event` step to your Automation's `steps` array.
 
-      const { data, error } = await resend.automations.create({
-        name: 'Verification Reminder',
-        steps: [
-          {
-            key: 'start',
-            type: 'trigger',
-            config: { eventName: 'user.created' },
-          },
-          {
-            key: 'verification',
-            type: 'wait_for_event',
-            config: {
-              eventName: 'email.verified',
-              timeout: '1 day',
-            },
-          },
-        ],
-        connections: [{ from: 'start', to: 'verification', type: 'default' }],
-      });
-      ```
+```ts Node.js {13-20} theme={"theme":{"light":"github-light","dark":"vesper"}}
+import { Resend } from 'resend';
 
-      ```php PHP {11-18} theme={"theme":{"light":"github-light","dark":"vesper"}}
-      $resend = Resend::client('re_xxxxxxxxx');
+const resend = new Resend('re_xxxxxxxxx');
 
-      $resend->automations->create([
-        'name' => 'Verification Reminder',
-        'steps' => [
-          [
-            'key' => 'start',
-            'type' => 'trigger',
-            'config' => ['event_name' => 'user.created'],
-          ],
-          [
-            'key' => 'verification',
-            'type' => 'wait_for_event',
-            'config' => [
-              'event_name' => 'email.verified',
-              'timeout' => '24 hours',
-            ],
-          ],
-        ],
-        'connections' => [['from' => 'start', 'to' => 'verification', 'type' => 'default']],
-      ]);
-      ```
+const { data, error } = await resend.automations.create({
+  name: 'Verification Reminder',
+  steps: [
+    {
+      key: 'start',
+      type: 'trigger',
+      config: { eventName: 'user.created' },
+    },
+    {
+      key: 'verification',
+      type: 'wait_for_event',
+      config: {
+        eventName: 'email.verified',
+        timeout: '1 day',
+      },
+    },
+  ],
+  connections: [{ from: 'start', to: 'verification', type: 'default' }],
+});
+```
 
-      ```python Python {13-20} theme={"theme":{"light":"github-light","dark":"vesper"}}
-      import resend
+```php PHP {11-18} theme={"theme":{"light":"github-light","dark":"vesper"}}
+$resend = Resend::client('re_xxxxxxxxx');
 
-      resend.api_key = "re_xxxxxxxxx"
+$resend->automations->create([
+  'name' => 'Verification Reminder',
+  'steps' => [
+    [
+      'key' => 'start',
+      'type' => 'trigger',
+      'config' => ['event_name' => 'user.created'],
+    ],
+    [
+      'key' => 'verification',
+      'type' => 'wait_for_event',
+      'config' => [
+        'event_name' => 'email.verified',
+        'timeout' => '24 hours',
+      ],
+    ],
+  ],
+  'connections' => [['from' => 'start', 'to' => 'verification', 'type' => 'default']],
+]);
+```
 
-      params: resend.Automations.CreateParams = {
-        "name": "Verification Reminder",
-        "steps": [
-          {
-            "key": "start",
-            "type": "trigger",
-            "config": {"event_name": "user.created"},
-          },
-          {
-            "key": "verification",
-            "type": "wait_for_event",
-            "config": {
-              "event_name": "email.verified",
-              "timeout": "24 hours",
-            },
-          },
-        ],
-        "connections": [{"from": "start", "to": "verification", "type": "default"}],
-      }
+```python Python {13-20} theme={"theme":{"light":"github-light","dark":"vesper"}}
+import resend
 
-      resend.Automations.create(params)
-      ```
+resend.api_key = "re_xxxxxxxxx"
 
-      ```ruby Ruby {13-20} theme={"theme":{"light":"github-light","dark":"vesper"}}
-      require "resend"
+params: resend.Automations.CreateParams = {
+  "name": "Verification Reminder",
+  "steps": [
+    {
+      "key": "start",
+      "type": "trigger",
+      "config": {"event_name": "user.created"},
+    },
+    {
+      "key": "verification",
+      "type": "wait_for_event",
+      "config": {
+        "event_name": "email.verified",
+        "timeout": "24 hours",
+      },
+    },
+  ],
+  "connections": [{"from": "start", "to": "verification", "type": "default"}],
+}
 
-      Resend.api_key = "re_xxxxxxxxx"
+resend.Automations.create(params)
+```
 
-      params = {
-        name: "Verification Reminder",
-        steps: [
-          {
-            key: "start",
-            type: "trigger",
-            config: { event_name: "user.created" },
-          },
-          {
-            key: "verification",
-            type: "wait_for_event",
-            config: {
-              event_name: "email.verified",
-              timeout: "24 hours",
-            },
-          },
-        ],
-        connections: [{ from: "start", to: "verification", type: "default" }],
-      }
+```ruby Ruby {13-20} theme={"theme":{"light":"github-light","dark":"vesper"}}
+require "resend"
 
-      Resend::Automations.create(params)
-      ```
+Resend.api_key = "re_xxxxxxxxx"
 
-      ```go Go {18-25} theme={"theme":{"light":"github-light","dark":"vesper"}}
-      package main
+params = {
+  name: "Verification Reminder",
+  steps: [
+    {
+      key: "start",
+      type: "trigger",
+      config: { event_name: "user.created" },
+    },
+    {
+      key: "verification",
+      type: "wait_for_event",
+      config: {
+        event_name: "email.verified",
+        timeout: "24 hours",
+      },
+    },
+  ],
+  connections: [{ from: "start", to: "verification", type: "default" }],
+}
 
-      import "github.com/resend/resend-go/v4"
+Resend::Automations.create(params)
+```
 
-      func main() {
-      	client := resend.NewClient("re_xxxxxxxxx")
+```go Go {18-25} theme={"theme":{"light":"github-light","dark":"vesper"}}
+package main
 
-      	params := &resend.CreateAutomationRequest{
-      		Name: "Verification Reminder",
-      		Steps: []resend.AutomationStep{
-      			{
-      				Key:  "start",
-      				Type: resend.AutomationStepTypeTrigger,
-      				Config: map[string]any{
-      					"event_name": "user.created",
-      				},
-      			},
-      			{
-      				Key:  "verification",
-      				Type: resend.AutomationStepTypeWaitForEvent,
-      				Config: map[string]any{
-      					"event_name": "email.verified",
-      					"timeout":    "24 hours",
-      				},
-      			},
-      		},
-      		Connections: []resend.AutomationConnection{
-      			{From: "start", To: "verification", Type: resend.AutomationConnectionTypeDefault},
-      		},
-      	}
+import "github.com/resend/resend-go/v4"
 
-      	client.Automations.Create(params)
-      }
-      ```
+func main() {
+	client := resend.NewClient("re_xxxxxxxxx")
 
-      ```rust Rust {22-29} theme={"theme":{"light":"github-light","dark":"vesper"}}
-      use resend_rs::{
-        types::{
-          AutomationStatus, Connection, ConnectionType, CreateAutomationOptions, Step, TriggerStepConfig,
-          WaitForEventStepConfig,
+	params := &resend.CreateAutomationRequest{
+		Name: "Verification Reminder",
+		Steps: []resend.AutomationStep{
+			{
+				Key:  "start",
+				Type: resend.AutomationStepTypeTrigger,
+				Config: map[string]any{
+					"event_name": "user.created",
+				},
+			},
+			{
+				Key:  "verification",
+				Type: resend.AutomationStepTypeWaitForEvent,
+				Config: map[string]any{
+					"event_name": "email.verified",
+					"timeout":    "24 hours",
+				},
+			},
+		},
+		Connections: []resend.AutomationConnection{
+			{From: "start", To: "verification", Type: resend.AutomationConnectionTypeDefault},
+		},
+	}
+
+	client.Automations.Create(params)
+}
+```
+
+```rust Rust {22-29} theme={"theme":{"light":"github-light","dark":"vesper"}}
+use resend_rs::{
+  types::{
+    AutomationStatus, Connection, ConnectionType, CreateAutomationOptions, Step, TriggerStepConfig,
+    WaitForEventStepConfig,
+  },
+  Resend, Result,
+};
+
+#[tokio::main]
+async fn main() -> Result<()> {
+  let resend = Resend::new("re_xxxxxxxxx");
+
+  let opts = CreateAutomationOptions {
+    name: "Verification Reminder".to_owned(),
+    steps: vec![
+      Step::Trigger {
+        key: "start".to_owned(),
+        config: TriggerStepConfig {
+          event_name: "user.created".to_owned(),
         },
-        Resend, Result,
-      };
+      },
+      Step::WaitForEvent {
+        key: "verification".to_owned(),
+        config: WaitForEventStepConfig {
+          event_name: "email.verified".to_owned(),
+          timeout: Some("24 hours".to_owned()),
+          filter_rule: None,
+        },
+      },
+    ],
+    connections: vec![Connection::new("start", "verification").with_type(ConnectionType::Default)],
+    status: AutomationStatus::Disabled,
+  };
+  let _automation = resend.automations.create(opts).await?;
 
-      #[tokio::main]
-      async fn main() -> Result<()> {
-        let resend = Resend::new("re_xxxxxxxxx");
+  Ok(())
+}
+```
 
-        let opts = CreateAutomationOptions {
-          name: "Verification Reminder".to_owned(),
-          steps: vec![
-            Step::Trigger {
-              key: "start".to_owned(),
-              config: TriggerStepConfig {
-                event_name: "user.created".to_owned(),
-              },
-            },
-            Step::WaitForEvent {
-              key: "verification".to_owned(),
-              config: WaitForEventStepConfig {
-                event_name: "email.verified".to_owned(),
-                timeout: Some("24 hours".to_owned()),
-                filter_rule: None,
-              },
-            },
-          ],
-          connections: vec![Connection::new("start", "verification").with_type(ConnectionType::Default)],
-          status: AutomationStatus::Disabled,
-        };
-        let _automation = resend.automations.create(opts).await?;
+```java Java {20-25} theme={"theme":{"light":"github-light","dark":"vesper"}}
+import com.resend.*;
+import com.resend.core.exception.ResendException;
+import com.resend.services.automations.model.AutomationConnection;
+import com.resend.services.automations.model.AutomationStep;
+import com.resend.services.automations.model.ConnectionType;
+import com.resend.services.automations.model.CreateAutomationOptions;
+import com.resend.services.automations.model.CreateAutomationResponseSuccess;
 
-        Ok(())
-      }
-      ```
+public class Main {
+    public static void main(String[] args) throws ResendException {
+        Resend resend = new Resend("re_xxxxxxxxx");
 
-      ```java Java {20-25} theme={"theme":{"light":"github-light","dark":"vesper"}}
-      import com.resend.*;
-      import com.resend.core.exception.ResendException;
-      import com.resend.services.automations.model.AutomationConnection;
-      import com.resend.services.automations.model.AutomationStep;
-      import com.resend.services.automations.model.ConnectionType;
-      import com.resend.services.automations.model.CreateAutomationOptions;
-      import com.resend.services.automations.model.CreateAutomationResponseSuccess;
+        CreateAutomationOptions options = CreateAutomationOptions.builder()
+                .name("Verification Reminder")
+                .steps(
+                    AutomationStep.trigger("start")
+                        .eventName("user.created")
+                        .build(),
+                    AutomationStep.waitForEvent("verification")
+                        .eventName("email.verified")
+                        .timeout("1 day")
+                        .build()
+                )
+                .connections(
+                    AutomationConnection.builder()
+                        .from("start")
+                        .to("verification")
+                        .type(ConnectionType.DEFAULT)
+                        .build()
+                )
+                .build();
 
-      public class Main {
-          public static void main(String[] args) throws ResendException {
-              Resend resend = new Resend("re_xxxxxxxxx");
+        CreateAutomationResponseSuccess data = resend.automations().create(options);
+    }
+}
+```
 
-              CreateAutomationOptions options = CreateAutomationOptions.builder()
-                      .name("Verification Reminder")
-                      .steps(
-                          AutomationStep.trigger("start")
-                              .eventName("user.created")
-                              .build(),
-                          AutomationStep.waitForEvent("verification")
-                              .eventName("email.verified")
-                              .timeout("1 day")
-                              .build()
-                      )
-                      .connections(
-                          AutomationConnection.builder()
-                              .from("start")
-                              .to("verification")
-                              .type(ConnectionType.DEFAULT)
-                              .build()
-                      )
-                      .build();
+```csharp .NET {7-11,19} theme={"theme":{"light":"github-light","dark":"vesper"}}
+using Resend;
+using System.Text.Json;
 
-              CreateAutomationResponseSuccess data = resend.automations().create(options);
-          }
-      }
-      ```
+IResend resend = ResendClient.Create( "re_xxxxxxxxx" );
 
-      ```csharp .NET {7-11,19} theme={"theme":{"light":"github-light","dark":"vesper"}}
-      using Resend;
-      using System.Text.Json;
+var startConfig = JsonSerializer.SerializeToElement( new { event_name = "user.created" } );
+var waitConfig = JsonSerializer.SerializeToElement( new
+{
+    event_name = "email.verified",
+    timeout = "1 day",
+} );
 
-      IResend resend = ResendClient.Create( "re_xxxxxxxxx" );
+var resp = await resend.AutomationCreateAsync( new AutomationCreateData()
+{
+    Name = "Verification Reminder",
+    Steps = new List<AutomationStepData>
+    {
+        new AutomationStepData { Ref = "start", Type = "trigger", Config = startConfig },
+        new AutomationStepData { Ref = "verification", Type = "wait_for_event", Config = waitConfig },
+    },
+    Connections = new List<AutomationEdge>
+    {
+        new AutomationEdge { From = "start", To = "verification", EdgeType = "default" },
+    },
+} );
+```
 
-      var startConfig = JsonSerializer.SerializeToElement( new { event_name = "user.created" } );
-      var waitConfig = JsonSerializer.SerializeToElement( new
-      {
-          event_name = "email.verified",
-          timeout = "1 day",
-      } );
+```bash cURL {10-16} theme={"theme":{"light":"github-light","dark":"vesper"}}
+curl -X POST 'https://api.resend.com/automations' \
+     -H 'Authorization: Bearer re_xxxxxxxxx' \
+     -H 'Content-Type: application/json' \
+     -d '{
+  "name": "Verification Reminder",
+  "steps": [{
+    "key": "start",
+    "type": "trigger",
+    "config": { "event_name": "user.created" }
+  }, {
+    "key": "verification",
+    "type": "wait_for_event",
+    "config": {
+      "event_name": "email.verified"
+    }
+  }],
+  "connections": [
+    { "from": "start", "to": "verification", "type": "default" }
+  ]
+}'
+```
 
-      var resp = await resend.AutomationCreateAsync( new AutomationCreateData()
-      {
-          Name = "Verification Reminder",
-          Steps = new List<AutomationStepData>
-          {
-              new AutomationStepData { Ref = "start", Type = "trigger", Config = startConfig },
-              new AutomationStepData { Ref = "verification", Type = "wait_for_event", Config = waitConfig },
-          },
-          Connections = new List<AutomationEdge>
-          {
-              new AutomationEdge { From = "start", To = "verification", EdgeType = "default" },
-          },
-      } );
-      ```
-
-      ```bash cURL {10-16} theme={"theme":{"light":"github-light","dark":"vesper"}}
-      curl -X POST 'https://api.resend.com/automations' \
-           -H 'Authorization: Bearer re_xxxxxxxxx' \
-           -H 'Content-Type: application/json' \
-           -d '{
-        "name": "Verification Reminder",
-        "steps": [{
-          "key": "start",
-          "type": "trigger",
-          "config": { "event_name": "user.created" }
-        }, {
-          "key": "verification",
-          "type": "wait_for_event",
-          "config": {
-            "event_name": "email.verified"
-          }
-        }],
-        "connections": [
-          { "from": "start", "to": "verification", "type": "default" }
-        ]
-      }'
-      ```
-
-      ```bash CLI theme={"theme":{"light":"github-light","dark":"vesper"}}
-      resend automations create --name "Verification Reminder" --file ./automation.json
-      ```
-    </CodeGroup>
-  </Tab>
-</Tabs>
+```bash CLI theme={"theme":{"light":"github-light","dark":"vesper"}}
+resend automations create --name "Verification Reminder" --file ./automation.json
+```
 
 ## Timeouts
 
@@ -331,7 +327,9 @@ You can create different paths depending on whether the user took action within 
 }
 ```
 
-<Note>The maximum timeout is 30 days.</Note>
+> [!NOTE]
+>
+> The maximum timeout is 30 days.
 
 ## Filter rules
 
@@ -432,63 +430,63 @@ You can use `wait_events` in [send email](/docs/dashboard/automations/send-email
 
 ## Configuration
 
-<ParamField body="config.event_name" type="string" required>
-  The name of the event to wait for.
-</ParamField>
+**config.event\_name** `string` *required*
 
-<ParamField body="config.timeout" type="string">
-  The maximum time to wait before timing out (e.g. `"3 days"`, `"1 hour"`).
-  Maximum: 30 days.
-</ParamField>
+The name of the event to wait for.
 
-<ParamField body="config.filter_rule" type="object">
-  An optional rule that filters which incoming events resume the step.
-  `wait_events.` is not available.
+**config.timeout** `string`
 
-  <Expandable title="properties" defaultOpen>
-    <ParamField body="type" type="string" required>
-      The type of filter rule. Possible values:
+The maximum time to wait before timing out (e.g. `"3 days"`, `"1 hour"`).
+Maximum: 30 days.
 
-      * `rule`
-      * `and`
-      * `or`
-    </ParamField>
+**config.filter\_rule** `object`
 
-    <ParamField body="field" type="string">
-      Required when `type` is `rule`. The payload field to evaluate. Use
-      `event.` for the incoming event or `contact.` for the Automation's contact
-      (for example, `event.status` or `contact.email`).
-    </ParamField>
+An optional rule that filters which incoming events resume the step.
+`wait_events.` is not available.
 
-    <ParamField body="operator" type="string">
-      Required when `type` is `rule`. The comparison operator. Possible values:
+**properties**
 
-      * `eq`: equals
-      * `neq`: not equals
-      * `gt`: greater than
-      * `gte`: greater than or equal to
-      * `lt`: less than
-      * `lte`: less than or equal to
-      * `contains`: contains a given value
-      * `starts_with`: starts with a given value
-      * `ends_with`: ends with a given value
-      * `exists`: field exists
-      * `is_empty`: field is empty
-    </ParamField>
+**type** `string` *required*
 
-    <ParamField body="value" type="string | number | boolean | null | object">
-      Used when `type` is `rule`. The value to compare against. A fixed value,
-      or a variable reference such as `{ "var": "event.order_id" }`. `event.`
-      is the event that triggered the Automation. `contact.` is the
-      Automation's contact. Not required for `exists` and `is_empty`.
-    </ParamField>
+The type of filter rule. Possible values:
 
-    <ParamField body="rules" type="object[]">
-      Required when `type` is `and` or `or`. An array of nested filter rules.
-      Must contain at least one item.
-    </ParamField>
-  </Expandable>
-</ParamField>
+* `rule`
+* `and`
+* `or`
+
+**field** `string`
+
+Required when `type` is `rule`. The payload field to evaluate. Use
+`event.` for the incoming event or `contact.` for the Automation's contact
+(for example, `event.status` or `contact.email`).
+
+**operator** `string`
+
+Required when `type` is `rule`. The comparison operator. Possible values:
+
+* `eq`: equals
+* `neq`: not equals
+* `gt`: greater than
+* `gte`: greater than or equal to
+* `lt`: less than
+* `lte`: less than or equal to
+* `contains`: contains a given value
+* `starts_with`: starts with a given value
+* `ends_with`: ends with a given value
+* `exists`: field exists
+* `is_empty`: field is empty
+
+**value** `string | number | boolean | null | object`
+
+Used when `type` is `rule`. The value to compare against. A fixed value,
+or a variable reference such as `{ "var": "event.order_id" }`. `event.`
+is the event that triggered the Automation. `contact.` is the
+Automation's contact. Not required for `exists` and `is_empty`.
+
+**rules** `object[]`
+
+Required when `type` is `and` or `or`. An array of nested filter rules.
+Must contain at least one item.
 
 This waits for `order.paid` only when it is the order that started the Automation. `field` reads `order_id` on the incoming event. `value` reads `order_id` on the triggering event.
 

@@ -6,12 +6,12 @@
 
 > Understand general concepts, response codes, and authentication strategies.
 
-<Info>
-  For most use cases, we recommend using an [official Resend SDK](/docs/sdks) instead
-  of calling the API directly. The SDKs handle authentication, required headers,
-  and error handling for you. See [Resend API vs SDK](/docs/api-vs-sdk) to decide
-  which fits your project.
-</Info>
+> [!NOTE]
+>
+> For most use cases, we recommend using an [official Resend SDK](/docs/sdks) instead
+> of calling the API directly. The SDKs handle authentication, required headers,
+> and error handling for you. See [Resend API vs SDK](/docs/api-vs-sdk) to decide
+> which fits your project.
 
 ## Base URL
 
@@ -39,11 +39,11 @@ All API requests must include a `User-Agent` header. Requests without this heade
 User-Agent: my-app/1.0
 ```
 
-<Info>
-  If you're getting a `403` error with error code `1010` despite having a valid
-  API key, a missing `User-Agent` header is likely the cause. See [Error
-  1010](/docs/knowledge-base/403-error-1010) for more details.
-</Info>
+> [!NOTE]
+>
+> If you're getting a `403` error with error code `1010` despite having a valid
+> API key, a missing `User-Agent` header is likely the cause. See [Error
+> 1010](/docs/knowledge-base/403-error-1010) for more details.
 
 ## Response codes
 
@@ -61,10 +61,10 @@ In general, `2xx` HTTP codes correspond to success, `4xx` codes are for user-rel
 | `429` | The rate limit was exceeded. |
 | `5xx` | Indicates an error with Resend servers. |
 
-<Info>
-  Check [Error Codes](/docs/api-reference/errors) for a comprehensive breakdown of
-  all possible API errors.
-</Info>
+> [!NOTE]
+>
+> Check [Error Codes](/docs/api-reference/errors) for a comprehensive breakdown of
+> all possible API errors.
 
 ## Rate limit
 
@@ -74,16 +74,14 @@ Learn more about our [rate limits](/docs/api-reference/rate-limit).
 
 ## FAQ
 
-<AccordionGroup>
-  <Accordion title="How does pagination work with the API?">
-    Some endpoints support cursor-based pagination to help you browse through
-    large datasets efficiently. Check our [pagination
-    guide](/docs/api-reference/pagination) for detailed information on how to use
-    pagination parameters.
-  </Accordion>
+> **How does pagination work with the API?**
+>
+> Some endpoints support cursor-based pagination to help you browse through
+> large datasets efficiently. Check our [pagination
+> guide](/docs/api-reference/pagination) for detailed information on how to use
+> pagination parameters.
 
-  <Accordion title="How do you handle API versioning?">
-    Currently, there's no versioning system in place. We plan to add versioning
-    via calendar-based headers in the future.
-  </Accordion>
-</AccordionGroup>
+> **How do you handle API versioning?**
+>
+> Currently, there's no versioning system in place. We plan to add versioning
+> via calendar-based headers in the future.

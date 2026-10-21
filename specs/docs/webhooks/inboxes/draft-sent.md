@@ -6,288 +6,256 @@
 
 > Received when a draft is sent.
 
-export const ResponseBodyParameters = ({type, children}) => {
-  return <div>
-      <h2>Response Body Parameters</h2>
-      <p>
-        All webhook payloads follow a consistent top-level structure with
-        event-specific data nested within the <code>data</code> object.
-      </p>
-      <ParamField body="type" type="string">
-        The event type that triggered the webhook (e.g., <code>{type}</code>).
-      </ParamField>
-      <ParamField body="created_at" type="string">
-        ISO 8601 timestamp when the webhook event was created.
-      </ParamField>
-      <ParamField body="data" type="object">
-        Event-specific data containing detailed information about the event. The
-        data object for the <code>{type}</code> event contains the following
-        parameters:
-        <Expandable defaultOpen title="object parameters">
-          {children}
-        </Expandable>
-      </ParamField>
-    </div>;
-};
-
-<Warning>
-  Inboxes are currently in private beta and only available to a limited
-  number of users. The response shape might change before GA.
-
-  <span />
-
-  [Get early access](https://resend.com/settings/labs) if you're interested in testing this feature.
-
-  <span />
-
-  Once you have access, upgrade your Resend SDK to use the new methods:
-
-  <CodeGroup>
-    ```bash Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
-    npm install resend@6.33.0
-    ```
-
-    ```bash CLI theme={"theme":{"light":"github-light","dark":"vesper"}}
-    npm install -g resend-cli@2.25.0
-    ```
-  </CodeGroup>
-</Warning>
-
 Event triggered whenever a **draft is sent**.
 
 *Note: A sent draft also triggers `inbox.email.sent`.*
 
-<ResponseBodyParameters type="inbox.draft.sent">
-  <ParamField body="source" type="api | dashboard | agent | system">
-    What made the change
-  </ParamField>
+## Response Body Parameters
 
-  <ParamField body="inbox_id" type="string">
-    The ID of the inbox
-  </ParamField>
+All webhook payloads follow a consistent top-level structure with
+event-specific data nested within the `data` object.
 
-  <ParamField body="thread_id" type="string">
-    The ID of the thread
-  </ParamField>
+**type** `string`
 
-  <ParamField body="email_id" type="string">
-    The ID of the email
-  </ParamField>
+The event type that triggered the webhook (e.g., `inbox.draft.sent`).
+**created\_at** `string`
 
-  <ParamField body="draft_id" type="string">
-    The ID of the draft
-  </ParamField>
+ISO 8601 timestamp when the webhook event was created.
+**data** `object`
 
-  <ParamField body="thread" type="object">
-    The thread, as it is when the webhook is sent. Absent when the thread no longer exists
+Event-specific data containing detailed information about the event. The
+data object for the `inbox.draft.sent` event contains the following
+parameters:
 
-    <Expandable title="thread object" defaultOpen>
-      <ParamField body="object" type="string">
-        Always `inbox_thread`
-      </ParamField>
+**object parameters**
 
-      <ParamField body="id" type="string">
-        The ID of the thread
-      </ParamField>
+**source** `api | dashboard | agent | system`
 
-      <ParamField body="subject" type="string | null">
-        The subject of the thread
-      </ParamField>
+What made the change
 
-      <ParamField body="folder" type="inbox | archive | spam | sent | trash">
-        The folder the thread lives in
-      </ParamField>
+**inbox\_id** `string`
 
-      <ParamField body="labels" type="array">
-        The labels attached to the thread, each with an `id`, `name`, and `color`
-      </ParamField>
+The ID of the inbox
 
-      <ParamField body="read" type="boolean">
-        True only when every message in the thread is read
-      </ParamField>
-    </Expandable>
-  </ParamField>
+**thread\_id** `string`
 
-  <ParamField body="email" type="object">
-    The email, as it is when the webhook is sent, without `html` or `text`. Fetch the body with [Retrieve Thread Email](/docs/api-reference/inboxes/get-thread-email). Only when the email is already on the thread when the webhook is sent
+The ID of the thread
 
-    <Expandable title="email object" defaultOpen>
-      <ParamField body="id" type="string">
-        The ID of the email
-      </ParamField>
+**email\_id** `string`
 
-      <ParamField body="direction" type="inbound | outbound">
-        Whether the email was received by the inbox or sent from it
-      </ParamField>
+The ID of the email
 
-      <ParamField body="from" type="string">
-        Sender email address. Can include the display name.
-      </ParamField>
+**draft\_id** `string`
 
-      <ParamField body="to" type="string[]">
-        The recipients of the email
-      </ParamField>
+The ID of the draft
 
-      <ParamField body="cc" type="string[]">
-        The CC recipients of the email
-      </ParamField>
+**thread** `object`
 
-      <ParamField body="bcc" type="string[]">
-        The BCC recipients of the email
-      </ParamField>
+The thread, as it is when the webhook is sent. Absent when the thread no longer exists
 
-      <ParamField body="reply_to" type="string[]">
-        The Reply-To addresses
-      </ParamField>
+**thread object**
 
-      <ParamField body="subject" type="string | null">
-        The subject of the email
-      </ParamField>
+**object** `string`
 
-      <ParamField body="message_id" type="string | null">
-        The Message-ID header of the email
-      </ParamField>
+Always `inbox_thread`
 
-      <ParamField body="attachments" type="array">
-        The attachments on the email
+**id** `string`
 
-        <Expandable title="attachment object" defaultOpen>
-          <ParamField body="id" type="string">
-            The ID of the attachment
-          </ParamField>
+The ID of the thread
 
-          <ParamField body="filename" type="string | null">
-            The filename of the attachment
-          </ParamField>
+**subject** `string | null`
 
-          <ParamField body="size" type="number | null">
-            The size of the attachment in bytes
-          </ParamField>
-        </Expandable>
-      </ParamField>
+The subject of the thread
 
-      <ParamField body="read" type="boolean">
-        Whether the email has been read
-      </ParamField>
+**folder** `inbox | archive | spam | sent | trash`
 
-      <ParamField body="received_at" type="string">
-        ISO 8601 timestamp when the email arrived or was sent
-      </ParamField>
-    </Expandable>
-  </ParamField>
+The folder the thread lives in
 
-  <ParamField body="draft" type="object">
-    The draft, as it is when the webhook is sent, without `html` or `text`. Fetch the body with [Retrieve Draft](/docs/api-reference/inboxes/get-draft). Absent when the draft no longer exists
+**labels** `array`
 
-    <Expandable title="draft object" defaultOpen>
-      <ParamField body="object" type="string">
-        Always `inbox_draft`
-      </ParamField>
+The labels attached to the thread, each with an `id`, `name`, and `color`
 
-      <ParamField body="id" type="string">
-        The ID of the draft
-      </ParamField>
+**read** `boolean`
 
-      <ParamField body="type" type="standalone | reply">
-        `standalone` for a new conversation, or `reply`
-      </ParamField>
+True only when every message in the thread is read
 
-      <ParamField body="to" type="string[] | null">
-        Recipients
-      </ParamField>
+**email** `object`
 
-      <ParamField body="cc" type="string[]">
-        CC recipients
-      </ParamField>
+The email, as it is when the webhook is sent, without `html` or `text`. Fetch the body with [Retrieve Thread Email](/docs/api-reference/inboxes/get-thread-email). Only when the email is already on the thread when the webhook is sent
 
-      <ParamField body="bcc" type="string[]">
-        BCC recipients
-      </ParamField>
+**email object**
 
-      <ParamField body="subject" type="string | null">
-        The subject
-      </ParamField>
+**id** `string`
 
-      <ParamField body="thread_id" type="string | null">
-        The Thread ID when this draft is a reply. `null` otherwise
-      </ParamField>
+The ID of the email
 
-      <ParamField body="reply_to_email_id" type="string | null">
-        The Email ID being replied to. `null` otherwise
-      </ParamField>
+**direction** `inbound | outbound`
 
-      <ParamField body="email_id" type="string | null">
-        The queued outbound email after send. `null` until then
-      </ParamField>
+Whether the email was received by the inbox or sent from it
 
-      <ParamField body="created_at" type="string">
-        ISO 8601 timestamp when the draft was created
-      </ParamField>
+**from** `string`
 
-      <ParamField body="updated_at" type="string">
-        ISO 8601 timestamp when the draft was last saved
-      </ParamField>
+Sender email address. Can include the display name.
 
-      <ParamField body="attachments" type="array">
-        The files stored on the draft
+**to** `string[]`
 
-        <Expandable title="attachment object" defaultOpen>
-          <ParamField body="id" type="string">
-            The ID of the attachment
-          </ParamField>
+The recipients of the email
 
-          <ParamField body="filename" type="string">
-            The filename of the attachment
-          </ParamField>
+**cc** `string[]`
 
-          <ParamField body="content_type" type="string">
-            The MIME type of the attachment
-          </ParamField>
+The CC recipients of the email
 
-          <ParamField body="size" type="number">
-            The size of the attachment in bytes
-          </ParamField>
-        </Expandable>
-      </ParamField>
-    </Expandable>
-  </ParamField>
-</ResponseBodyParameters>
+**bcc** `string[]`
 
-<ResponseExample>
-  ```json theme={"theme":{"light":"github-light","dark":"vesper"}}
-  {
-    "type": "inbox.draft.sent",
-    "created_at": "2026-09-29T12:00:00.000Z",
-    "data": {
-      "source": "api",
-      "inbox_id": "b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1",
+The BCC recipients of the email
+
+**reply\_to** `string[]`
+
+The Reply-To addresses
+
+**subject** `string | null`
+
+The subject of the email
+
+**message\_id** `string | null`
+
+The Message-ID header of the email
+
+**attachments** `array`
+
+The attachments on the email
+
+**attachment object**
+
+**id** `string`
+
+The ID of the attachment
+
+**filename** `string | null`
+
+The filename of the attachment
+
+**size** `number | null`
+
+The size of the attachment in bytes
+
+**read** `boolean`
+
+Whether the email has been read
+
+**received\_at** `string`
+
+ISO 8601 timestamp when the email arrived or was sent
+
+**draft** `object`
+
+The draft, as it is when the webhook is sent, without `html` or `text`. Fetch the body with [Retrieve Draft](/docs/api-reference/inboxes/get-draft). Absent when the draft no longer exists
+
+**draft object**
+
+**object** `string`
+
+Always `inbox_draft`
+
+**id** `string`
+
+The ID of the draft
+
+**type** `standalone | reply`
+
+`standalone` for a new conversation, or `reply`
+
+**to** `string[] | null`
+
+Recipients
+
+**cc** `string[]`
+
+CC recipients
+
+**bcc** `string[]`
+
+BCC recipients
+
+**subject** `string | null`
+
+The subject
+
+**thread\_id** `string | null`
+
+The Thread ID when this draft is a reply. `null` otherwise
+
+**reply\_to\_email\_id** `string | null`
+
+The Email ID being replied to. `null` otherwise
+
+**email\_id** `string | null`
+
+The queued outbound email after send. `null` until then
+
+**created\_at** `string`
+
+ISO 8601 timestamp when the draft was created
+
+**updated\_at** `string`
+
+ISO 8601 timestamp when the draft was last saved
+
+**attachments** `array`
+
+The files stored on the draft
+
+**attachment object**
+
+**id** `string`
+
+The ID of the attachment
+
+**filename** `string`
+
+The filename of the attachment
+
+**content\_type** `string`
+
+The MIME type of the attachment
+
+**size** `number`
+
+The size of the attachment in bytes
+
+```json theme={"theme":{"light":"github-light","dark":"vesper"}}
+{
+  "type": "inbox.draft.sent",
+  "created_at": "2026-09-29T12:00:00.000Z",
+  "data": {
+    "source": "api",
+    "inbox_id": "b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1",
+    "thread_id": "7c1f0a2e-5d3b-4e8a-9f61-2b8d4c6e1a90",
+    "email_id": "81ce9b8d-1b0a-4d02-a4d9-2a91f5ab6397",
+    "draft_id": "9a2b7c4d-1e3f-4a5b-8c6d-0e1f2a3b4c5d",
+    "thread": {
+      "object": "inbox_thread",
+      "id": "7c1f0a2e-5d3b-4e8a-9f61-2b8d4c6e1a90",
+      "subject": "Question about my invoice",
+      "folder": "inbox",
+      "labels": [],
+      "read": true
+    },
+    "draft": {
+      "object": "inbox_draft",
+      "id": "9a2b7c4d-1e3f-4a5b-8c6d-0e1f2a3b4c5d",
+      "type": "reply",
+      "to": ["steve.wozniak@gmail.com"],
+      "cc": [],
+      "bcc": [],
+      "subject": "Re: Question about my invoice",
       "thread_id": "7c1f0a2e-5d3b-4e8a-9f61-2b8d4c6e1a90",
+      "reply_to_email_id": "4ef9a417-02e9-4d39-ad75-9611e0fcc33c",
       "email_id": "81ce9b8d-1b0a-4d02-a4d9-2a91f5ab6397",
-      "draft_id": "9a2b7c4d-1e3f-4a5b-8c6d-0e1f2a3b4c5d",
-      "thread": {
-        "object": "inbox_thread",
-        "id": "7c1f0a2e-5d3b-4e8a-9f61-2b8d4c6e1a90",
-        "subject": "Question about my invoice",
-        "folder": "inbox",
-        "labels": [],
-        "read": true
-      },
-      "draft": {
-        "object": "inbox_draft",
-        "id": "9a2b7c4d-1e3f-4a5b-8c6d-0e1f2a3b4c5d",
-        "type": "reply",
-        "to": ["steve.wozniak@gmail.com"],
-        "cc": [],
-        "bcc": [],
-        "subject": "Re: Question about my invoice",
-        "thread_id": "7c1f0a2e-5d3b-4e8a-9f61-2b8d4c6e1a90",
-        "reply_to_email_id": "4ef9a417-02e9-4d39-ad75-9611e0fcc33c",
-        "email_id": "81ce9b8d-1b0a-4d02-a4d9-2a91f5ab6397",
-        "created_at": "2026-09-29T11:58:00.000Z",
-        "updated_at": "2026-09-29T12:00:00.000Z",
-        "attachments": []
-      }
+      "created_at": "2026-09-29T11:58:00.000Z",
+      "updated_at": "2026-09-29T12:00:00.000Z",
+      "attachments": []
     }
   }
-  ```
-</ResponseExample>
+}
+```

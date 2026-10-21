@@ -10,31 +10,29 @@ The [Resend CLI](https://github.com/resend/resend-cli) is the official command-l
 
 ## Installation
 
-<Tabs>
-  <Tab title="cURL">
-    ```bash theme={"theme":{"light":"github-light","dark":"vesper"}}
-    curl -fsSL https://resend.com/install.sh | bash
-    ```
-  </Tab>
+**cURL**
 
-  <Tab title="npm">
-    ```bash theme={"theme":{"light":"github-light","dark":"vesper"}}
-    npm install -g resend-cli
-    ```
-  </Tab>
+```bash theme={"theme":{"light":"github-light","dark":"vesper"}}
+curl -fsSL https://resend.com/install.sh | bash
+```
 
-  <Tab title="Homebrew">
-    ```bash theme={"theme":{"light":"github-light","dark":"vesper"}}
-    brew install resend/cli/resend
-    ```
-  </Tab>
+**npm**
 
-  <Tab title="PowerShell (Windows)">
-    ```powershell theme={"theme":{"light":"github-light","dark":"vesper"}}
-    irm https://resend.com/install.ps1 | iex
-    ```
-  </Tab>
-</Tabs>
+```bash theme={"theme":{"light":"github-light","dark":"vesper"}}
+npm install -g resend-cli
+```
+
+**Homebrew**
+
+```bash theme={"theme":{"light":"github-light","dark":"vesper"}}
+brew install resend/cli/resend
+```
+
+**PowerShell (Windows)**
+
+```powershell theme={"theme":{"light":"github-light","dark":"vesper"}}
+irm https://resend.com/install.ps1 | iex
+```
 
 ## Authentication
 
@@ -461,11 +459,11 @@ resend webhooks listen \
 | `--forward-to <url>` | No | Forward payloads to a local server (passes original Svix headers) |
 | `--port <port>` | No | Local server port (default: 4318) |
 
-<Info>
-  See the [webhook events documentation](/docs/webhooks/event-types) for the full
-  list of available event types. For agent-specific webhook patterns, see [CLI
-  for AI Agents](/docs/cli-agents#closing-the-loop-with-webhooks).
-</Info>
+> [!NOTE]
+>
+> See the [webhook events documentation](/docs/webhooks/event-types) for the full
+> list of available event types. For agent-specific webhook patterns, see [CLI
+> for AI Agents](/docs/cli-agents#closing-the-loop-with-webhooks).
 
 **Other webhook commands**
 
@@ -476,9 +474,9 @@ resend webhooks update <id>       # Update endpoint URL, events, or status
 resend webhooks delete <id>       # Delete a webhook endpoint
 ```
 
-<Tip>
-  Run `resend <command> --help` for the full list of flags and options on any command.
-</Tip>
+> [!TIP]
+>
+> Run `resend <command> --help` for the full list of flags and options on any command.
 
 ## Automations
 
@@ -525,6 +523,166 @@ resend automations runs get --automation-id <id> --run-id <id>  # Retrieve a spe
 | Flag | Required | Description |
 | - | - | - |
 | `--status <status>` | No | Filter by status: `running`, `completed`, `failed`, `cancelled` (comma-separated) |
+
+## Inboxes
+
+Create and manage inboxes, and read, reply to, and organize the email threads they receive.
+
+Every flag below uses kebab-case, for example `--inbox-id`. Commands that act on an inbox, thread, email, draft, or label also accept the IDs as positional arguments, in that order, so `resend inboxes threads get --inbox-id <id> --thread-id <id>` and `resend inboxes threads get <inbox-id> <thread-id>` are the same. Run any command with `--help` for the full list of flags.
+
+**`resend inboxes create`**
+
+Create an inbox at one of your verified domains.
+
+```bash theme={"theme":{"light":"github-light","dark":"vesper"}}
+resend inboxes create \
+  --email-address hello@yourdomain.com \
+  --name "Hello" \
+  --from-name "Team Hello"
+```
+
+| Flag | Required | Description |
+| - | - | - |
+| `--email-address <address>` | Yes | Email address for the inbox, e.g. [support@yourdomain.com](mailto:support@yourdomain.com) |
+| `--name <name>` | No | Inbox name shown in the Dashboard. Recipients don't see it |
+| `--from-name <name>` | No | Name used when sending from this inbox, e.g. "Ada from Support" (a plain name, not "Name \<email>") |
+| `--forwarding` | No | Receive mail without an MX record. Resend returns a receiving address to forward mail to |
+
+The domain must have receiving enabled, unless you pass `--forwarding`. With `--forwarding`, run `resend inboxes get <id>` to read the `receiving_address`.
+
+**Other inbox commands**
+
+```bash theme={"theme":{"light":"github-light","dark":"vesper"}}
+resend inboxes list                         # List all inboxes (alias: ls)
+resend inboxes get <id>                     # Retrieve an inbox by ID or email address
+resend inboxes update <id> --name "Support" # Update an inbox's name or from name
+resend inboxes delete <id> --yes            # Delete an inbox and its threads (alias: rm)
+```
+
+### Threads
+
+Received emails are grouped into threads. Every thread command takes `--inbox-id`.
+
+```bash theme={"theme":{"light":"github-light","dark":"vesper"}}
+resend inboxes threads list --inbox-id <id>                            # List threads, newest activity first (alias: ls)
+resend inboxes threads list --inbox-id <id> --unread --folders archive # Filter by read state, folders, or labels
+resend inboxes threads search --inbox-id <id> --query invoice          # Search by text, people, attachments, and dates
+resend inboxes threads get --inbox-id <id> --thread-id <id>            # Retrieve a thread summary
+resend inboxes threads update --inbox-id <id> --thread-id <id> --read  # Mark read or unread, or move to a folder
+resend inboxes threads delete --inbox-id <id> --thread-id <id> --yes   # Move a thread to trash (alias: rm)
+```
+
+Flags for `list` and `search`:
+
+| Flag | Required | Description |
+| - | - | - |
+| `--inbox-id <id>` | Yes | Inbox ID |
+| `--folders <folders...>` | No | Folders to include: `inbox`, `archive`, `spam`, `sent`, `trash` |
+| `--labels <label-ids...>` | No | Only threads with any of these label IDs |
+| `--read` / `--unread` | No | Filter by read state |
+| `--limit <n>` | No | Threads per page, 1 to 100 |
+| `--after <thread-id>` | No | Pass the last thread ID of the previous page to fetch the next page |
+
+`threads search` also accepts `--query`, `--from`, `--to`, `--cc`, `--bcc`, `--has-attachment`, `--without-attachment`, `--start-date`, and `--end-date`. Search can be up to about a minute behind new emails.
+
+Flags for `update`:
+
+| Flag | Required | Description |
+| - | - | - |
+| `--read` / `--unread` | No | Mark every email in the thread read or unread |
+| `--folder <folder>` | No | Move the thread to `inbox`, `archive`, `spam`, or `trash` |
+
+`threads update` needs `--read`, `--unread`, or `--folder`. To change a thread's labels, use the [thread labels](#thread-labels) commands.
+
+`threads delete` moves the thread to `trash` and schedules it for deletion in 30 days. To restore it, move it to another folder with `threads update --folder`.
+
+### Thread emails
+
+Read, reply to, and forward the individual emails in a thread.
+
+```bash theme={"theme":{"light":"github-light","dark":"vesper"}}
+resend inboxes threads emails list --inbox-id <id> --thread-id <id>                   # List emails, oldest first (alias: ls)
+resend inboxes threads emails get --inbox-id <id> --thread-id <id> --email-id <id>    # Retrieve a single email
+resend inboxes threads emails reply --inbox-id <id> --thread-id <id> --email-id <id> \
+  --text "Thanks!"                                                                    # Reply from the inbox address
+resend inboxes threads emails forward --inbox-id <id> --thread-id <id> --email-id <id> \
+  --to teammate@example.com                                                           # Forward to other recipients
+```
+
+| Flag | Required | Description |
+| - | - | - |
+| `--text` / `--html` | Yes \* | Body of the reply, or an optional note to include with a forward |
+| `--to <addresses...>` | Yes \* | Forward recipients, separated by spaces |
+| `--cc` / `--bcc` | No | Additional recipients, separated by spaces |
+| `--subject <subject>` | No | Override the reply or forwarded subject |
+| `--reply-all` | No | Reply to everyone on the original email, not only its author |
+| `--attachment <specs...>` | No | Local files or URLs to attach. Local file content can total at most 25 MB. URLs are fetched when the email is sent |
+| `--idempotency-key <key>` | No | Deduplicate this send request using this key |
+
+\* `reply` requires `--text` or `--html`. `forward` requires `--to`.
+
+### Labels
+
+Organize threads with labels. Apply or remove them with the [thread labels](#thread-labels) commands.
+
+```bash theme={"theme":{"light":"github-light","dark":"vesper"}}
+resend inboxes labels list --inbox-id <id>                                      # List all labels in an inbox (alias: ls)
+resend inboxes labels create --inbox-id <id> --name "Billing" --color '#12A594' # Create a label (random color when omitted)
+resend inboxes labels update --inbox-id <id> --label-id <id> --name "Invoices"  # Update a label's name or color
+resend inboxes labels delete --inbox-id <id> --label-id <id> --yes              # Delete a label and remove it from threads (alias: rm)
+```
+
+### Thread labels
+
+Change the labels on a thread. Every command takes `--inbox-id` and `--thread-id`, and prints every label on the thread after the change.
+
+```bash theme={"theme":{"light":"github-light","dark":"vesper"}}
+resend inboxes threads labels add --inbox-id <id> --thread-id <id> --labels <label-id>      # Add labels, keeping existing ones
+resend inboxes threads labels set --inbox-id <id> --thread-id <id> --labels <label-id>      # Replace every label on the thread
+resend inboxes threads labels remove --inbox-id <id> --thread-id <id> --label-id <label-id> # Remove one label from the thread
+```
+
+| Flag | Required | Description |
+| - | - | - |
+| `--labels <label-ids...>` | Yes \* | Label IDs, separated by spaces or commas. `add` takes 1 to 10, `set` takes 0 to 100 |
+| `--label-id <id>` | Yes \* | The label to remove |
+
+\* `add` and `set` require `--labels`. `remove` requires `--label-id`. Pass `--labels ""` to `set` to remove every label from the thread. Removing a label from a thread does not delete the label.
+
+### Drafts
+
+Create unsent emails in an inbox, then send them later.
+
+```bash theme={"theme":{"light":"github-light","dark":"vesper"}}
+resend inboxes drafts list --inbox-id <id>                                  # List drafts (alias: ls)
+resend inboxes drafts create --inbox-id <id> --to user@example.com \
+  --subject "Hello" --text "Body"                                           # Create a standalone draft
+resend inboxes drafts get --inbox-id <id> --draft-id <id>                   # Retrieve a draft
+resend inboxes drafts update --inbox-id <id> --draft-id <id> --subject "Hi" # Replace recipients, subject, or body
+resend inboxes drafts send --inbox-id <id> --draft-id <id>                  # Send a draft from the inbox address
+resend inboxes drafts delete --inbox-id <id> --draft-id <id> --yes          # Delete a draft (alias: rm)
+```
+
+To create a reply draft, pass `--thread-id` and `--reply-to-email-id` together. When you omit `--to`, the draft is addressed to the sender of the email it replies to, or to its `Reply-To` address. If the inbox sent that email, it is addressed to that email's recipients instead. `--cc` and `--bcc` are never filled in. If you omit `--subject`, the draft is sent with the subject of the thread, prefixed with `Re:`. An email can have only one unsent reply draft, and creating a second one returns the existing draft.
+
+`drafts send` requires the draft to have at least one recipient, a subject, and a text or HTML body.
+
+### Agent
+
+Configure the instructions, tone, and actions for an inbox's agent.
+
+```bash theme={"theme":{"light":"github-light","dark":"vesper"}}
+resend inboxes agent get --inbox-id <id>                                 # Retrieve the agent settings
+resend inboxes agent update --inbox-id <id> --tone concise_professional # Update instructions, tone, or actions
+```
+
+| Flag | Required | Description |
+| - | - | - |
+| `--instructions <text>` | No | Instructions the agent follows (max 4000 characters) |
+| `--tone <tone>` | No | Tone the agent writes in: `concise_professional`, `concise_casual`, `expanded_professional`, or `expanded_casual`. See [tone](/docs/dashboard/inboxes/agent#using-the-api) |
+| `--actions <actions...>` | No | Replaces the full set of actions: `draft_reply`, `forward_thread`, `add_labels`, `assign_thread`, `mark_as_spam`, `archive`, `move_to_trash`. See [actions](/docs/dashboard/inboxes/agent#actions) |
+
+`agent update` needs at least one flag. Omitted fields keep their current value. Pass `--instructions ""` or `--tone ""` to clear a value. List several actions separated by spaces or commas, for example `--actions draft_reply add_labels`. Pass `--actions ""` to disable all actions.
 
 ## Events
 
@@ -684,7 +842,7 @@ steps:
 | Credentials | System secure storage | macOS Keychain, Windows Credential Manager, or Linux secret service |
 | Install directory | `~/.resend/bin/` | Respects `$RESEND_INSTALL` |
 
-<Card title="Using the CLI with AI Agents" icon="microchip-ai" href="/docs/cli-agents">
-  Learn about Agent Skills, non-interactive mode, and local webhook development
-  for AI agents.
-</Card>
+> **[Using the CLI with AI Agents](/docs/cli-agents)**
+>
+> Learn about Agent Skills, non-interactive mode, and local webhook development
+> for AI agents.

@@ -6,145 +6,113 @@
 
 > Received when an inbox's settings change.
 
-export const ResponseBodyParameters = ({type, children}) => {
-  return <div>
-      <h2>Response Body Parameters</h2>
-      <p>
-        All webhook payloads follow a consistent top-level structure with
-        event-specific data nested within the <code>data</code> object.
-      </p>
-      <ParamField body="type" type="string">
-        The event type that triggered the webhook (e.g., <code>{type}</code>).
-      </ParamField>
-      <ParamField body="created_at" type="string">
-        ISO 8601 timestamp when the webhook event was created.
-      </ParamField>
-      <ParamField body="data" type="object">
-        Event-specific data containing detailed information about the event. The
-        data object for the <code>{type}</code> event contains the following
-        parameters:
-        <Expandable defaultOpen title="object parameters">
-          {children}
-        </Expandable>
-      </ParamField>
-    </div>;
-};
-
-<Warning>
-  Inboxes are currently in private beta and only available to a limited
-  number of users. The response shape might change before GA.
-
-  <span />
-
-  [Get early access](https://resend.com/settings/labs) if you're interested in testing this feature.
-
-  <span />
-
-  Once you have access, upgrade your Resend SDK to use the new methods:
-
-  <CodeGroup>
-    ```bash Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
-    npm install resend@6.33.0
-    ```
-
-    ```bash CLI theme={"theme":{"light":"github-light","dark":"vesper"}}
-    npm install -g resend-cli@2.25.0
-    ```
-  </CodeGroup>
-</Warning>
-
 Event triggered whenever an **inbox's settings change**.
 
-<ResponseBodyParameters type="inbox.updated">
-  <ParamField body="source" type="api | dashboard | agent | system">
-    What made the change
-  </ParamField>
+## Response Body Parameters
 
-  <ParamField body="inbox_id" type="string">
-    The ID of the inbox
-  </ParamField>
+All webhook payloads follow a consistent top-level structure with
+event-specific data nested within the `data` object.
 
-  <ParamField body="inbox" type="object">
-    The inbox, as it is when the webhook is sent. Absent when the inbox no longer exists
+**type** `string`
 
-    <Expandable title="inbox object" defaultOpen>
-      <ParamField body="object" type="string">
-        Always `inbox`
-      </ParamField>
+The event type that triggered the webhook (e.g., `inbox.updated`).
+**created\_at** `string`
 
-      <ParamField body="id" type="string">
-        The ID of the inbox
-      </ParamField>
+ISO 8601 timestamp when the webhook event was created.
+**data** `object`
 
-      <ParamField body="name" type="string">
-        Internal name for the inbox. Recipients do not see it. Falls back to the inbox
-        address
-      </ParamField>
+Event-specific data containing detailed information about the event. The
+data object for the `inbox.updated` event contains the following
+parameters:
 
-      <ParamField body="email_address" type="string">
-        The address of the inbox
-      </ParamField>
+**object parameters**
 
-      <ParamField body="domain_id" type="string">
-        The ID of the domain the inbox belongs to
-      </ParamField>
+**source** `api | dashboard | agent | system`
 
-      <ParamField body="receiving_address" type="string | null">
-        The address to forward mail to when forwarding is enabled. `null` otherwise
-      </ParamField>
+What made the change
 
-      <ParamField body="from_name" type="string | null">
-        The name recipients see when mail is sent from this inbox. `null` when not set
-      </ParamField>
+**inbox\_id** `string`
 
-      <ParamField body="unread" type="number">
-        The number of unread threads in the Inbox folder
-      </ParamField>
+The ID of the inbox
 
-      <ParamField body="drafts" type="number">
-        The number of unsent drafts
-      </ParamField>
+**inbox** `object`
 
-      <ParamField body="last_received" type="string | null">
-        ISO 8601 timestamp of the newest received email in the Inbox folder. `null`
-        when the folder has no received email
-      </ParamField>
+The inbox, as it is when the webhook is sent. Absent when the inbox no longer exists
 
-      <ParamField body="created_at" type="string">
-        ISO 8601 timestamp when the inbox was created
-      </ParamField>
+**inbox object**
 
-      <ParamField body="updated_at" type="string">
-        ISO 8601 timestamp set when the inbox is created and updated whenever its name
-        or from name changes
-      </ParamField>
-    </Expandable>
-  </ParamField>
-</ResponseBodyParameters>
+**object** `string`
 
-<ResponseExample>
-  ```json theme={"theme":{"light":"github-light","dark":"vesper"}}
-  {
-    "type": "inbox.updated",
-    "created_at": "2026-09-29T12:00:00.000Z",
-    "data": {
-      "source": "dashboard",
-      "inbox_id": "b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1",
-      "inbox": {
-        "object": "inbox",
-        "id": "b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1",
-        "name": "Customer Support",
-        "email_address": "support@example.com",
-        "domain_id": "d91cd9bd-1176-453e-8fc1-35364d380206",
-        "receiving_address": null,
-        "from_name": "Ada from Support",
-        "unread": 3,
-        "drafts": 2,
-        "last_received": "2026-09-29T11:42:08.000Z",
-        "created_at": "2026-09-01T09:30:00.000Z",
-        "updated_at": "2026-09-03T09:30:00.000Z"
-      }
+Always `inbox`
+
+**id** `string`
+
+The ID of the inbox
+
+**name** `string`
+
+Internal name for the inbox. Recipients do not see it. Falls back to the inbox
+address
+
+**email\_address** `string`
+
+The address of the inbox
+
+**domain\_id** `string`
+
+The ID of the domain the inbox belongs to
+
+**receiving\_address** `string | null`
+
+The address to forward mail to when forwarding is enabled. `null` otherwise
+
+**from\_name** `string | null`
+
+The name recipients see when mail is sent from this inbox. `null` when not set
+
+**unread** `number`
+
+The number of unread threads in the Inbox folder
+
+**drafts** `number`
+
+The number of unsent drafts
+
+**last\_received** `string | null`
+
+ISO 8601 timestamp of the newest received email in the Inbox folder. `null`
+when the folder has no received email
+
+**created\_at** `string`
+
+ISO 8601 timestamp when the inbox was created
+
+**updated\_at** `string`
+
+ISO 8601 timestamp set when the inbox is created and updated whenever its name
+or from name changes
+
+```json theme={"theme":{"light":"github-light","dark":"vesper"}}
+{
+  "type": "inbox.updated",
+  "created_at": "2026-09-29T12:00:00.000Z",
+  "data": {
+    "source": "dashboard",
+    "inbox_id": "b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1",
+    "inbox": {
+      "object": "inbox",
+      "id": "b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1",
+      "name": "Customer Support",
+      "email_address": "support@example.com",
+      "domain_id": "d91cd9bd-1176-453e-8fc1-35364d380206",
+      "receiving_address": null,
+      "from_name": "Ada from Support",
+      "unread": 3,
+      "drafts": 2,
+      "last_received": "2026-09-29T11:42:08.000Z",
+      "created_at": "2026-09-01T09:30:00.000Z",
+      "updated_at": "2026-09-03T09:30:00.000Z"
     }
   }
-  ```
-</ResponseExample>
+}
+```

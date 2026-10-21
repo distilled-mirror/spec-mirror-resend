@@ -15,55 +15,51 @@ Before you start, you'll need:
 
 ## Guide
 
-<Steps>
-  <Step title="Install">
-    <Tabs>
-      <Tab title="cURL">
-        ```bash theme={"theme":{"light":"github-light","dark":"vesper"}}
-        curl -fsSL https://resend.com/install.sh | bash
-        ```
-      </Tab>
+**1. Install**
 
-      <Tab title="npm">
-        ```bash theme={"theme":{"light":"github-light","dark":"vesper"}}
-        npm install -g resend-cli
-        ```
-      </Tab>
+**cURL**
 
-      <Tab title="Homebrew">
-        ```bash theme={"theme":{"light":"github-light","dark":"vesper"}}
-        brew install resend/cli/resend
-        ```
-      </Tab>
+```bash theme={"theme":{"light":"github-light","dark":"vesper"}}
+curl -fsSL https://resend.com/install.sh | bash
+```
 
-      <Tab title="PowerShell (Windows)">
-        ```powershell theme={"theme":{"light":"github-light","dark":"vesper"}}
-        irm https://resend.com/install.ps1 | iex
-        ```
-      </Tab>
-    </Tabs>
-  </Step>
+**npm**
 
-  <Step title="Authenticate">
-    ```bash theme={"theme":{"light":"github-light","dark":"vesper"}}
-    resend login
-    ```
-  </Step>
+```bash theme={"theme":{"light":"github-light","dark":"vesper"}}
+npm install -g resend-cli
+```
 
-  <Step title="Send email">
-    ```bash theme={"theme":{"light":"github-light","dark":"vesper"}}
-    resend emails send \
-      --from "Acme <onboarding@resend.dev>" \
-      --to delivered@resend.dev \
-      --subject "Hello World" \
-      --text "Sent from my terminal."
-    ```
-  </Step>
-</Steps>
+**Homebrew**
+
+```bash theme={"theme":{"light":"github-light","dark":"vesper"}}
+brew install resend/cli/resend
+```
+
+**PowerShell (Windows)**
+
+```powershell theme={"theme":{"light":"github-light","dark":"vesper"}}
+irm https://resend.com/install.ps1 | iex
+```
+
+**2. Authenticate**
+
+```bash theme={"theme":{"light":"github-light","dark":"vesper"}}
+resend login
+```
+
+**3. Send email**
+
+```bash theme={"theme":{"light":"github-light","dark":"vesper"}}
+resend emails send \
+  --from "Acme <onboarding@resend.dev>" \
+  --to delivered@resend.dev \
+  --subject "Hello World" \
+  --text "Sent from my terminal."
+```
 
 ## Next steps
 
-<Card title="CLI Reference" icon="terminal" href="/docs/cli">
-  Explore the full command reference, authentication options, and CI/CD
-  examples.
-</Card>
+> **[CLI Reference](/docs/cli)**
+>
+> Explore the full command reference, authentication options, and CI/CD
+> examples.

@@ -15,121 +15,115 @@ Before you start, you'll need:
 
 ## Guide
 
-<Steps>
-  <Step title="Install">
-    Get the Resend Ruby SDK.
+**1. Install**
 
-    <CodeGroup>
-      ```bash RubyGems theme={"theme":{"light":"github-light","dark":"vesper"}}
-      gem install resend
-      ```
+Get the Resend Ruby SDK.
 
-      ```bash Gemfile theme={"theme":{"light":"github-light","dark":"vesper"}}
-      gem 'resend'
-      ```
-    </CodeGroup>
-  </Step>
+```bash RubyGems theme={"theme":{"light":"github-light","dark":"vesper"}}
+gem install resend
+```
 
-  <Step title="Send email using Rails Action Mailer">
-    This gem can be used as an Action Mailer delivery method.
+```bash Gemfile theme={"theme":{"light":"github-light","dark":"vesper"}}
+gem 'resend'
+```
 
-    First, let's update or create your mailer initializer file with your Resend API Key.
+**2. Send email using Rails Action Mailer**
 
-    ```rb config/initializers/mailer.rb theme={"theme":{"light":"github-light","dark":"vesper"}}
-    Resend.api_key = "re_xxxxxxxxx"
-    ```
+This gem can be used as an Action Mailer delivery method.
 
-    Add these lines of code into your environment config file.
+First, let's update or create your mailer initializer file with your Resend API Key.
 
-    ```rb config/environments/environment.rb theme={"theme":{"light":"github-light","dark":"vesper"}}
-    config.action_mailer.delivery_method = :resend
-    ```
+```rb config/initializers/mailer.rb theme={"theme":{"light":"github-light","dark":"vesper"}}
+Resend.api_key = "re_xxxxxxxxx"
+```
 
-    Then create a `UserMailer` class definition.
+Add these lines of code into your environment config file.
 
-    ```rb app/mailers/user_mailer.rb theme={"theme":{"light":"github-light","dark":"vesper"}}
-    class UserMailer < ApplicationMailer
-      default from: 'Acme <onboarding@resend.dev>' # this domain must be verified with Resend
-      def welcome_email
-        @user = params[:user]
-        @url = 'http://example.com/login'
-        mail(to: ["delivered@resend.dev"], subject: 'hello world')
-      end
-    end
-    ```
+```rb config/environments/environment.rb theme={"theme":{"light":"github-light","dark":"vesper"}}
+config.action_mailer.delivery_method = :resend
+```
 
-    And create your ERB email template.
+Then create a `UserMailer` class definition.
 
-    ```html app/views/user_mailer/welcome_email.html.erb theme={"theme":{"light":"github-light","dark":"vesper"}}
-    <!doctype html>
-    <html>
-      <head>
-        <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
-      </head>
-      <body>
-        <h1>Welcome to example.com, <%= @user.name %></h1>
-        <p>You have successfully signed up to example.com,</p>
-        <p>To log in to the site, just follow this link: <%= @url %>.</p>
-        <p>Thanks for joining and have a great day!</p>
-      </body>
-    </html>
-    ```
+```rb app/mailers/user_mailer.rb theme={"theme":{"light":"github-light","dark":"vesper"}}
+class UserMailer < ApplicationMailer
+  default from: 'Acme <onboarding@resend.dev>' # this domain must be verified with Resend
+  def welcome_email
+    @user = params[:user]
+    @url = 'http://example.com/login'
+    mail(to: ["delivered@resend.dev"], subject: 'hello world')
+  end
+end
+```
 
-    Initialize your `UserMailer` class. This returns an `ActionMailer::MessageDelivery` instance.
+And create your ERB email template.
 
-    ```rb theme={"theme":{"light":"github-light","dark":"vesper"}}
-    u = User.new name: "derich"
-    mailer = UserMailer.with(user: u).welcome_email
+```html app/views/user_mailer/welcome_email.html.erb theme={"theme":{"light":"github-light","dark":"vesper"}}
+<!doctype html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  </head>
+  <body>
+    <h1>Welcome to example.com, <%= @user.name %></h1>
+    <p>You have successfully signed up to example.com,</p>
+    <p>To log in to the site, just follow this link: <%= @url %>.</p>
+    <p>Thanks for joining and have a great day!</p>
+  </body>
+</html>
+```
 
-    # => #<ActionMailer::MessageDelivery:153700, @mail_message=#<Mail::Message...>, @processed_mailer=...>
-    ```
+Initialize your `UserMailer` class. This returns an `ActionMailer::MessageDelivery` instance.
 
-    Finally, you can now send emails using the `deliver_now!` method:
+```rb theme={"theme":{"light":"github-light","dark":"vesper"}}
+u = User.new name: "derich"
+mailer = UserMailer.with(user: u).welcome_email
 
-    ```rb theme={"theme":{"light":"github-light","dark":"vesper"}}
-    mailer.deliver_now!
+# => #<ActionMailer::MessageDelivery:153700, @mail_message=#<Mail::Message...>, @processed_mailer=...>
+```
 
-    # => {:id=>"a193c81e-9ac5-4708-a569-5caf14220539", :from=>....}
-    ```
-  </Step>
-</Steps>
+Finally, you can now send emails using the `deliver_now!` method:
+
+```rb theme={"theme":{"light":"github-light","dark":"vesper"}}
+mailer.deliver_now!
+
+# => {:id=>"a193c81e-9ac5-4708-a569-5caf14220539", :from=>....}
+```
 
 ## Examples
 
-<CardGroup cols={3}>
-  <Card title="Rails App" icon="arrow-up-right-from-square" href="https://github.com/resend/resend-examples/tree/main/ruby-resend-examples/rails_app">
-    Full Rails web application
-  </Card>
+> **[Rails App](https://github.com/resend/resend-examples/tree/main/ruby-resend-examples/rails_app)**
+>
+> Full Rails web application
 
-  <Card title="Basic Send" icon="arrow-up-right-from-square" href="https://github.com/resend/resend-examples/blob/main/ruby-resend-examples/examples/basic_send.rb">
-    Basic email sending
-  </Card>
+> **[Basic Send](https://github.com/resend/resend-examples/blob/main/ruby-resend-examples/examples/basic_send.rb)**
+>
+> Basic email sending
 
-  <Card title="Attachments" icon="arrow-up-right-from-square" href="https://github.com/resend/resend-examples/blob/main/ruby-resend-examples/examples/with_attachments.rb">
-    Send emails with file attachments
-  </Card>
+> **[Attachments](https://github.com/resend/resend-examples/blob/main/ruby-resend-examples/examples/with_attachments.rb)**
+>
+> Send emails with file attachments
 
-  <Card title="Templates" icon="arrow-up-right-from-square" href="https://github.com/resend/resend-examples/blob/main/ruby-resend-examples/examples/with_template.rb">
-    Send emails using Resend hosted templates
-  </Card>
+> **[Templates](https://github.com/resend/resend-examples/blob/main/ruby-resend-examples/examples/with_template.rb)**
+>
+> Send emails using Resend hosted templates
 
-  <Card title="Scheduling" icon="arrow-up-right-from-square" href="https://github.com/resend/resend-examples/blob/main/ruby-resend-examples/examples/scheduled_send.rb">
-    Schedule emails for future delivery
-  </Card>
+> **[Scheduling](https://github.com/resend/resend-examples/blob/main/ruby-resend-examples/examples/scheduled_send.rb)**
+>
+> Schedule emails for future delivery
 
-  <Card title="Audiences" icon="arrow-up-right-from-square" href="https://github.com/resend/resend-examples/blob/main/ruby-resend-examples/examples/audiences.rb">
-    Manage contacts and audiences
-  </Card>
+> **[Audiences](https://github.com/resend/resend-examples/blob/main/ruby-resend-examples/examples/audiences.rb)**
+>
+> Manage contacts and audiences
 
-  <Card title="Domains" icon="arrow-up-right-from-square" href="https://github.com/resend/resend-examples/blob/main/ruby-resend-examples/examples/domains.rb">
-    Create and manage sending domains
-  </Card>
+> **[Domains](https://github.com/resend/resend-examples/blob/main/ruby-resend-examples/examples/domains.rb)**
+>
+> Create and manage sending domains
 
-  <Card title="Inbound Webhooks" icon="arrow-up-right-from-square" href="https://github.com/resend/resend-examples/blob/main/ruby-resend-examples/examples/inbound.rb">
-    Receive and process inbound emails
-  </Card>
+> **[Inbound Webhooks](https://github.com/resend/resend-examples/blob/main/ruby-resend-examples/examples/inbound.rb)**
+>
+> Receive and process inbound emails
 
-  <Card title="Double Opt-in" icon="arrow-up-right-from-square" href="https://github.com/resend/resend-examples/tree/main/ruby-resend-examples/examples/double_optin">
-    Double opt-in subscription flow
-  </Card>
-</CardGroup>
+> **[Double Opt-in](https://github.com/resend/resend-examples/tree/main/ruby-resend-examples/examples/double_optin)**
+>
+> Double opt-in subscription flow

@@ -6,179 +6,145 @@
 
 > Retrieve a list of contact properties.
 
-export const QueryParams = ({type, isRequired}) => {
-  return <>
-      <h2>Query Parameters</h2>
+## Query Parameters
 
-      {isRequired ? <ParamField query="limit" type="number">
-          Number of {type} to retrieve.
-          <ul>
-            <li>
-              Default value: <code>20</code>
-            </li>
-            <li>
-              Maximum value: <code>100</code>
-            </li>
-            <li>
-              Minimum value: <code>1</code>
-            </li>
-          </ul>
-        </ParamField> : <>
-          <p>
-            Note that the <code>limit</code> parameter is <em>optional</em>. If
-            you do not provide a <code>limit</code>, all {type} will be returned
-            in a single response.
-          </p>
-          <ParamField query="limit" type="number">
-            Number of {type} to retrieve.
-            <ul>
-              <li>
-                Maximum value: <code>100</code>
-              </li>
-              <li>
-                Minimum value: <code>1</code>
-              </li>
-            </ul>
-          </ParamField>
-        </>}
+**limit** `number`
 
-      <ParamField query="after" type="string">
-        The ID <em>after</em> which we'll retrieve more {type} (for pagination).
-        This ID will <em>not</em> be included in the returned list. Cannot be
-        used with the
-        <code>before</code> parameter.
-      </ParamField>
-      <ParamField query="before" type="string">
-        The ID <em>before</em> which we'll retrieve more {type} (for
-        pagination). This ID will <em>not</em> be included in the returned list.
-        Cannot be used with the <code>after</code> parameter.
-      </ParamField>
-      <Info>
-        You can only use either <code>after</code> or <code>before</code>{' '}
-        parameter, not both. See our{' '}
-        <a href="/docs/api-reference/pagination">pagination guide</a> for more
-        information.
-      </Info>
-    </>;
-};
+Number of contact-properties to retrieve.
+<ul><li>Default value: `20`</li>
+<li>Maximum value: `100`</li>
+<li>Minimum value: `1`</li></ul>
 
-<QueryParams type="contact-properties" isRequired={true} />
+**after** `string`
 
-<RequestExample>
-  ```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
-  import { Resend } from 'resend';
+The ID *after* which we'll retrieve more contact-properties (for pagination).
+This ID will *not* be included in the returned list. Cannot be
+used with the
+`before` parameter.
+**before** `string`
 
-  const resend = new Resend('re_xxxxxxxxx');
+The ID *before* which we'll retrieve more contact-properties (for
+pagination). This ID will *not* be included in the returned list.
+Cannot be used with the `after` parameter.
 
-  const { data, error } = await resend.contactProperties.list();
-  ```
+> [!NOTE]
+>
+> You can only use either `after` or `before`
+> parameter, not both. See our
+> [pagination guide](/docs/api-reference/pagination) for more
+> information.
 
-  ```php PHP theme={"theme":{"light":"github-light","dark":"vesper"}}
-  $resend = Resend::client('re_xxxxxxxxx');
+```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
+import { Resend } from 'resend';
 
-  $resend->contactProperties->list();
-  ```
+const resend = new Resend('re_xxxxxxxxx');
 
-  ```python Python theme={"theme":{"light":"github-light","dark":"vesper"}}
-  import resend
+const { data, error } = await resend.contactProperties.list();
+```
 
-  resend.api_key = 're_xxxxxxxxx'
+```php PHP theme={"theme":{"light":"github-light","dark":"vesper"}}
+$resend = Resend::client('re_xxxxxxxxx');
 
-  contact_properties = resend.ContactProperties.list()
-  ```
+$resend->contactProperties->list();
+```
 
-  ```ruby Ruby theme={"theme":{"light":"github-light","dark":"vesper"}}
-  require "resend"
+```python Python theme={"theme":{"light":"github-light","dark":"vesper"}}
+import resend
 
-  Resend.api_key = "re_xxxxxxxxx"
+resend.api_key = 're_xxxxxxxxx'
 
-  properties = Resend::ContactProperties.list
-  ```
+contact_properties = resend.ContactProperties.list()
+```
 
-  ```go Go theme={"theme":{"light":"github-light","dark":"vesper"}}
-  package main
+```ruby Ruby theme={"theme":{"light":"github-light","dark":"vesper"}}
+require "resend"
 
-  import (
-  	"context"
-  	"fmt"
+Resend.api_key = "re_xxxxxxxxx"
 
-  	"github.com/resend/resend-go/v4"
-  )
+properties = Resend::ContactProperties.list
+```
 
-  func main() {
-  	ctx := context.TODO()
-  	client := resend.NewClient("re_xxxxxxxxx")
+```go Go theme={"theme":{"light":"github-light","dark":"vesper"}}
+package main
 
-  	properties, err := client.ContactProperties.ListWithContext(ctx)
-  	if err != nil {
-  		panic(err)
-  	}
-  	fmt.Println(properties)
+import (
+	"context"
+	"fmt"
+
+	"github.com/resend/resend-go/v4"
+)
+
+func main() {
+	ctx := context.TODO()
+	client := resend.NewClient("re_xxxxxxxxx")
+
+	properties, err := client.ContactProperties.ListWithContext(ctx)
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(properties)
+}
+```
+
+```rust Rust theme={"theme":{"light":"github-light","dark":"vesper"}}
+use resend_rs::{list_opts::ListOptions, Resend, Result};
+
+#[tokio::main]
+async fn main() -> Result<()> {
+  let resend = Resend::new("re_xxxxxxxxx");
+
+  let _contact_properties = resend
+    .contacts
+    .list_properties(ListOptions::default())
+    .await?;
+
+  Ok(())
+}
+```
+
+```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
+import com.resend.Resend;
+import com.resend.core.exception.ResendException;
+
+public class Main {
+  public static void main(String[] args) throws ResendException {
+    Resend resend = new Resend("re_xxxxxxxxx");
+
+    resend.contactProperties().list();
   }
-  ```
+}
+```
 
-  ```rust Rust theme={"theme":{"light":"github-light","dark":"vesper"}}
-  use resend_rs::{list_opts::ListOptions, Resend, Result};
+```csharp .NET theme={"theme":{"light":"github-light","dark":"vesper"}}
+using Resend;
 
-  #[tokio::main]
-  async fn main() -> Result<()> {
-    let resend = Resend::new("re_xxxxxxxxx");
+IResend resend = ResendClient.Create( "re_xxxxxxxxx" ); // Or from DI
 
-    let _contact_properties = resend
-      .contacts
-      .list_properties(ListOptions::default())
-      .await?;
+var resp = await resend.ContactPropListAsync();
+Console.WriteLine( "Nr Props={0}", resp.Content.Data.Count );
+```
 
-    Ok(())
-  }
-  ```
+```bash cURL theme={"theme":{"light":"github-light","dark":"vesper"}}
+curl -X GET 'https://api.resend.com/contact-properties' \
+     -H 'Authorization: Bearer re_xxxxxxxxx'
+```
 
-  ```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
-  import com.resend.Resend;
-  import com.resend.core.exception.ResendException;
+```bash CLI theme={"theme":{"light":"github-light","dark":"vesper"}}
+resend contact-properties list
+```
 
-  public class Main {
-    public static void main(String[] args) throws ResendException {
-      Resend resend = new Resend("re_xxxxxxxxx");
-
-      resend.contactProperties().list();
+```json Response theme={"theme":{"light":"github-light","dark":"vesper"}}
+{
+  "object": "list",
+  "has_more": false,
+  "data": [
+    {
+      "id": "b6d24b8e-af0b-4c3c-be0c-359bbd97381e",
+      "key": "company_name",
+      "type": "string",
+      "fallback_value": "Acme Corp",
+      "created_at": "2026-04-08 00:11:13.110779+00"
     }
-  }
-  ```
-
-  ```csharp .NET theme={"theme":{"light":"github-light","dark":"vesper"}}
-  using Resend;
-
-  IResend resend = ResendClient.Create( "re_xxxxxxxxx" ); // Or from DI
-
-  var resp = await resend.ContactPropListAsync();
-  Console.WriteLine( "Nr Props={0}", resp.Content.Data.Count );
-  ```
-
-  ```bash cURL theme={"theme":{"light":"github-light","dark":"vesper"}}
-  curl -X GET 'https://api.resend.com/contact-properties' \
-       -H 'Authorization: Bearer re_xxxxxxxxx'
-  ```
-
-  ```bash CLI theme={"theme":{"light":"github-light","dark":"vesper"}}
-  resend contact-properties list
-  ```
-</RequestExample>
-
-<ResponseExample>
-  ```json Response theme={"theme":{"light":"github-light","dark":"vesper"}}
-  {
-    "object": "list",
-    "has_more": false,
-    "data": [
-      {
-        "id": "b6d24b8e-af0b-4c3c-be0c-359bbd97381e",
-        "key": "company_name",
-        "type": "string",
-        "fallback_value": "Acme Corp",
-        "created_at": "2026-04-08 00:11:13.110779+00"
-      }
-    ]
-  }
-  ```
-</ResponseExample>
+  ]
+}
+```

@@ -25,13 +25,13 @@ For automated processing, use the [Attachments API](#process-attachments-program
 
 ## Process attachments programmatically
 
-<Info>
-  Webhooks do not include the actual content of attachments, only their
-  metadata. You must call the [Attachments
-  API](/docs/api-reference/emails/list-received-email-attachments) to retrieve the
-  content. This design choice supports large attachments in serverless
-  environments that have limited request body sizes.
-</Info>
+> [!NOTE]
+>
+> Webhooks do not include the actual content of attachments, only their
+> metadata. You must call the [Attachments
+> API](/docs/api-reference/emails/list-received-email-attachments) to retrieve the
+> content. This design choice supports large attachments in serverless
+> environments that have limited request body sizes.
 
 Users can forward airplane tickets, receipts, and expenses to you. Then, you can extract key information from attachments and use that data.
 
@@ -44,201 +44,199 @@ each attachment to see exactly when it will expire.
 
 Here's how you can implement this:
 
-<CodeGroup>
-  ```ts Next.js theme={"theme":{"light":"github-light","dark":"vesper"}}
-  // app/api/events/route.ts
-  import type { NextRequest } from 'next/server';
-  import { NextResponse } from 'next/server';
-  import { Resend } from 'resend';
+```ts Next.js theme={"theme":{"light":"github-light","dark":"vesper"}}
+// app/api/events/route.ts
+import type { NextRequest } from 'next/server';
+import { NextResponse } from 'next/server';
+import { Resend } from 'resend';
 
-  const resend = new Resend('re_xxxxxxxxx');
+const resend = new Resend('re_xxxxxxxxx');
 
-  export const POST = async (request: NextRequest) => {
-    const event = await request.json();
+export const POST = async (request: NextRequest) => {
+  const event = await request.json();
 
-    if (event.type === 'email.received') {
-      const { data: attachments, error } =
-        await resend.emails.receiving.attachments.list({
-          emailId: event.data.email_id,
-        });
-
-      if (error) {
-        return NextResponse.json({ error: error.message }, { status: 500 });
-      }
-
-      for (const attachment of attachments.data) {
-        // use the download_url to download attachments however you want
-        const response = await fetch(attachment.download_url);
-        if (!response.ok) {
-          console.error(`Failed to download ${attachment.filename}`);
-          continue;
-        }
-
-        // get the file's contents
-        const buffer = Buffer.from(await response.arrayBuffer());
-
-        // process the content (e.g., save to storage, analyze, etc.)
-      }
-
-      return NextResponse.json({
-        attachmentsProcessed: attachments.data.length,
+  if (event.type === 'email.received') {
+    const { data: attachments, error } =
+      await resend.emails.receiving.attachments.list({
+        emailId: event.data.email_id,
       });
+
+    if (error) {
+      return NextResponse.json({ error: error.message }, { status: 500 });
     }
 
-    return NextResponse.json({});
-  };
-  ```
-
-  ```php Laravel theme={"theme":{"light":"github-light","dark":"vesper"}}
-  // routes/api.php
-  use Illuminate\Http\JsonResponse;
-  use Illuminate\Http\Request;
-  use Illuminate\Support\Facades\Http;
-  use Illuminate\Support\Facades\Log;
-  use Illuminate\Support\Facades\Route;
-  use Resend\Laravel\Facades\Resend;
-
-  Route::post('/events', function (Request $request) {
-    $event = $request->json()->all();
-
-      if ($event['type'] === 'email.received') {
-          $attachments = Resend::emails()->receiving->attachments->list(
-              emailId: $event['data']['email_id']
-          );
-
-          foreach ($attachments->data as $attachment) {
-              $response = Http::get($attachment->download_url);
-
-              if ($response->failed()) {
-                  Log::error("Failed to download {$attachment->filename}");
-                  continue;
-              }
-
-              // get the file's contents
-              $contents = $response->body();
-
-              // process the content (e.g., save to storage, analyze, etc.)
-          }
-
-          return new JsonResponse($event);
+    for (const attachment of attachments.data) {
+      // use the download_url to download attachments however you want
+      const response = await fetch(attachment.download_url);
+      if (!response.ok) {
+        console.error(`Failed to download ${attachment.filename}`);
+        continue;
       }
 
-      return new JsonResponse([]);
-  });
-  ```
+      // get the file's contents
+      const buffer = Buffer.from(await response.arrayBuffer());
 
-  ```php PHP theme={"theme":{"light":"github-light","dark":"vesper"}}
-  // index.php
-  // Include Composer autoload file to load Resend SDK classes...
-  require __DIR__ . '/vendor/autoload.php';
+      // process the content (e.g., save to storage, analyze, etc.)
+    }
 
-  header('Content-Type: application/json');
-
-  if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-      http_response_code(405);
-      echo json_encode(['error' => 'Method Not Allowed']);
-      exit;
+    return NextResponse.json({
+      attachmentsProcessed: attachments.data.length,
+    });
   }
 
-  $body = file_get_contents('php://input');
-  $event = json_decode($body, true);
+  return NextResponse.json({});
+};
+```
 
-  if (json_last_error() !== JSON_ERROR_NONE) {
-      http_response_code(400);
-      echo json_encode(['error' => 'Invalid JSON']);
-      exit;
-  }
+```php Laravel theme={"theme":{"light":"github-light","dark":"vesper"}}
+// routes/api.php
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Route;
+use Resend\Laravel\Facades\Resend;
 
-  if ($event['type'] === 'email.received') {
-      $resend = Resend::client('re_xxxxxxxxx');
+Route::post('/events', function (Request $request) {
+  $event = $request->json()->all();
 
-      $attachments = $resend->emails->receiving->attachments->list(
-          emailId: $event['data']['email_id']
-      );
+    if ($event['type'] === 'email.received') {
+        $attachments = Resend::emails()->receiving->attachments->list(
+            emailId: $event['data']['email_id']
+        );
 
-      foreach ($attachments->data as $attachment) {
-          $ch = curl_init($attachment->download_url);
-          curl_setopt_array($ch, [
-              CURLOPT_RETURNTRANSFER => true,
-              CURLOPT_FOLLOWLOCATION => true,
-          ]);
+        foreach ($attachments->data as $attachment) {
+            $response = Http::get($attachment->download_url);
 
-          $contents = curl_exec($ch);
-          $statusCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-          $ch = null;
+            if ($response->failed()) {
+                Log::error("Failed to download {$attachment->filename}");
+                continue;
+            }
 
-          if ($contents === false || $statusCode !== 200) {
-              error_log("Failed to download {$attachment->filename}");
-              continue;
-          }
+            // get the file's contents
+            $contents = $response->body();
 
-          // process the content (e.g., save to disk, analyze, etc.)
-      }
+            // process the content (e.g., save to storage, analyze, etc.)
+        }
 
-      echo json_encode($event);
-      exit;
-  }
+        return new JsonResponse($event);
+    }
 
-  echo json_encode([]);
-  ```
+    return new JsonResponse([]);
+});
+```
 
-  ```rust Rust theme={"theme":{"light":"github-light","dark":"vesper"}}
-  use axum::{
-      extract::State,
-      response::{IntoResponse, Json, Response},
-  };
-  use resend_rs::{json, list_opts::ListOptions, Resend};
-  use serde::Serialize;
-  use std::sync::Arc;
+```php PHP theme={"theme":{"light":"github-light","dark":"vesper"}}
+// index.php
+// Include Composer autoload file to load Resend SDK classes...
+require __DIR__ . '/vendor/autoload.php';
 
-  struct AppState {
-      resend: Resend,
-  }
+header('Content-Type: application/json');
 
-  #[derive(Serialize)]
-  struct Empty {}
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+    http_response_code(405);
+    echo json_encode(['error' => 'Method Not Allowed']);
+    exit;
+}
 
-  async fn example(
-      State(state): State<Arc<AppState>>,
-      Json(event): Json<resend_rs::events::EmailEvent>,
-  ) -> Response {
-      if matches!(
-          event.r#type,
-          resend_rs::events::EmailEventType::EmailReceived
-      ) {
-          let attachments = state
-              .resend
-              .receiving
-              .list_attachments(&event.data.email_id, ListOptions::default())
-              .await
-              .unwrap();
+$body = file_get_contents('php://input');
+$event = json_decode($body, true);
 
-          for attachment in &attachments.data {
-              // use the download_url to download attachments however you want
-              let response = reqwest::get(&attachment.download_url).await;
+if (json_last_error() !== JSON_ERROR_NONE) {
+    http_response_code(400);
+    echo json_encode(['error' => 'Invalid JSON']);
+    exit;
+}
 
-              if response.is_err() {
-                  dbg!(format!(
-                      "Failed to download {}",
-                      attachment.filename.clone().unwrap()
-                  ));
-              }
+if ($event['type'] === 'email.received') {
+    $resend = Resend::client('re_xxxxxxxxx');
 
-              // get the file's contents
-              let _buffer = response.unwrap().bytes().await.unwrap();
+    $attachments = $resend->emails->receiving->attachments->list(
+        emailId: $event['data']['email_id']
+    );
 
-              // process the content (e.g., save to storage, analyze, etc.)
-          }
+    foreach ($attachments->data as $attachment) {
+        $ch = curl_init($attachment->download_url);
+        curl_setopt_array($ch, [
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_FOLLOWLOCATION => true,
+        ]);
 
-          Json(json!({
-              "attachmentsProcessed": attachments.len()
-          }))
-          .into_response()
-      } else {
-          Json(Empty {}).into_response()
-      }
-  }
-  ```
-</CodeGroup>
+        $contents = curl_exec($ch);
+        $statusCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+        $ch = null;
+
+        if ($contents === false || $statusCode !== 200) {
+            error_log("Failed to download {$attachment->filename}");
+            continue;
+        }
+
+        // process the content (e.g., save to disk, analyze, etc.)
+    }
+
+    echo json_encode($event);
+    exit;
+}
+
+echo json_encode([]);
+```
+
+```rust Rust theme={"theme":{"light":"github-light","dark":"vesper"}}
+use axum::{
+    extract::State,
+    response::{IntoResponse, Json, Response},
+};
+use resend_rs::{json, list_opts::ListOptions, Resend};
+use serde::Serialize;
+use std::sync::Arc;
+
+struct AppState {
+    resend: Resend,
+}
+
+#[derive(Serialize)]
+struct Empty {}
+
+async fn example(
+    State(state): State<Arc<AppState>>,
+    Json(event): Json<resend_rs::events::EmailEvent>,
+) -> Response {
+    if matches!(
+        event.r#type,
+        resend_rs::events::EmailEventType::EmailReceived
+    ) {
+        let attachments = state
+            .resend
+            .receiving
+            .list_attachments(&event.data.email_id, ListOptions::default())
+            .await
+            .unwrap();
+
+        for attachment in &attachments.data {
+            // use the download_url to download attachments however you want
+            let response = reqwest::get(&attachment.download_url).await;
+
+            if response.is_err() {
+                dbg!(format!(
+                    "Failed to download {}",
+                    attachment.filename.clone().unwrap()
+                ));
+            }
+
+            // get the file's contents
+            let _buffer = response.unwrap().bytes().await.unwrap();
+
+            // process the content (e.g., save to storage, analyze, etc.)
+        }
+
+        Json(json!({
+            "attachmentsProcessed": attachments.len()
+        }))
+        .into_response()
+    } else {
+        Json(Empty {}).into_response()
+    }
+}
+```
 
 Once you process attachments, you may want to forward the email to another address. Learn more about [forwarding emails](/docs/dashboard/receiving/forward-emails).

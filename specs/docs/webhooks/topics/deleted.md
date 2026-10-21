@@ -6,76 +6,67 @@
 
 > Received when a topic is deleted.
 
-export const ResponseBodyParameters = ({type, children}) => {
-  return <div>
-      <h2>Response Body Parameters</h2>
-      <p>
-        All webhook payloads follow a consistent top-level structure with
-        event-specific data nested within the <code>data</code> object.
-      </p>
-      <ParamField body="type" type="string">
-        The event type that triggered the webhook (e.g., <code>{type}</code>).
-      </ParamField>
-      <ParamField body="created_at" type="string">
-        ISO 8601 timestamp when the webhook event was created.
-      </ParamField>
-      <ParamField body="data" type="object">
-        Event-specific data containing detailed information about the event. The
-        data object for the <code>{type}</code> event contains the following
-        parameters:
-        <Expandable defaultOpen title="object parameters">
-          {children}
-        </Expandable>
-      </ParamField>
-    </div>;
-};
-
 Event triggered whenever a **topic is deleted**.
 
-<ResponseBodyParameters type="topic.deleted">
-  <ParamField body="id" type="string">
-    Unique identifier for the topic
-  </ParamField>
+## Response Body Parameters
 
-  <ParamField body="name" type="string">
-    The topic name
-  </ParamField>
+All webhook payloads follow a consistent top-level structure with
+event-specific data nested within the `data` object.
 
-  <ParamField body="description" type="string | null">
-    The topic description
-  </ParamField>
+**type** `string`
 
-  <ParamField body="default_subscription" type="opt_in | opt_out">
-    The default subscription preference for new contacts
-  </ParamField>
+The event type that triggered the webhook (e.g., `topic.deleted`).
+**created\_at** `string`
 
-  <ParamField body="deleted" type="boolean">
-    Whether the topic was deleted
-  </ParamField>
+ISO 8601 timestamp when the webhook event was created.
+**data** `object`
 
-  <ParamField body="created_at" type="string">
-    ISO 8601 timestamp when the topic was created
-  </ParamField>
+Event-specific data containing detailed information about the event. The
+data object for the `topic.deleted` event contains the following
+parameters:
 
-  <ParamField body="updated_at" type="string">
-    ISO 8601 timestamp when the topic was last updated
-  </ParamField>
-</ResponseBodyParameters>
+**object parameters**
 
-<ResponseExample>
-  ```json theme={"theme":{"light":"github-light","dark":"vesper"}}
-  {
-    "type": "topic.deleted",
+**id** `string`
+
+Unique identifier for the topic
+
+**name** `string`
+
+The topic name
+
+**description** `string | null`
+
+The topic description
+
+**default\_subscription** `opt_in | opt_out`
+
+The default subscription preference for new contacts
+
+**deleted** `boolean`
+
+Whether the topic was deleted
+
+**created\_at** `string`
+
+ISO 8601 timestamp when the topic was created
+
+**updated\_at** `string`
+
+ISO 8601 timestamp when the topic was last updated
+
+```json theme={"theme":{"light":"github-light","dark":"vesper"}}
+{
+  "type": "topic.deleted",
+  "created_at": "2026-02-12T10:00:00.000Z",
+  "data": {
+    "id": "b6d24b8e-af0b-4c3c-be0c-359bbd97381e",
+    "name": "Product Updates",
+    "description": "New features and improvements",
+    "default_subscription": "opt_in",
+    "deleted": true,
     "created_at": "2026-02-12T10:00:00.000Z",
-    "data": {
-      "id": "b6d24b8e-af0b-4c3c-be0c-359bbd97381e",
-      "name": "Product Updates",
-      "description": "New features and improvements",
-      "default_subscription": "opt_in",
-      "deleted": true,
-      "created_at": "2026-02-12T10:00:00.000Z",
-      "updated_at": "2026-02-12T10:00:00.000Z"
-    }
+    "updated_at": "2026-02-12T10:00:00.000Z"
   }
-  ```
-</ResponseExample>
+}
+```

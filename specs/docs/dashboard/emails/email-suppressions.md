@@ -20,16 +20,16 @@ An address is added to Suppressions for one of three origins:
 
 Suppressions apply to your entire team. Any address added to the suppression list will be skipped across all your domains and subdomains when sending transactional or [Broadcast](/docs/dashboard/broadcasts/introduction) emails.
 
-<Tip>
-  Not all Inbox Service Providers return a `complained` event, most notably,
-  Gmail/Google Workspace.
-</Tip>
+> [!TIP]
+>
+> Not all Inbox Service Providers return a `complained` event, most notably,
+> Gmail/Google Workspace.
 
 ## Viewing Suppressions in Resend
 
 You can see all Suppressions [in the Dashboard](https://resend.com/emails/suppressions) or list them [in the API](/docs/api-reference/suppressions/list-suppressions).
 
-<img alt="Email Suppressions" src="https://mintcdn.com/resend/Nyu32IXsxRkmP92c/images/suppression-list-board.png?fit=max&auto=format&n=Nyu32IXsxRkmP92c&q=85&s=437d48fa3afbc7e4885ecaa139ce83bc" width="1842" height="1000" data-path="images/suppression-list-board.png" />
+![Email Suppressions](https://mintcdn.com/resend/Nyu32IXsxRkmP92c/images/suppression-list-board.png?fit=max\&auto=format\&n=Nyu32IXsxRkmP92c\&q=85\&s=437d48fa3afbc7e4885ecaa139ce83bc)
 
 You can also programmatically retrieve [a single Suppression](/docs/api-reference/suppressions/get-suppression) or [your entire suppression list](/docs/api-reference/suppressions/list-suppressions), which returns key data about the Suppression.
 
@@ -55,10 +55,10 @@ In the Dashboard, go to the [Suppressions page](https://resend.com/emails/suppre
 
 You can also [suppress individual emails](/docs/api-reference/suppressions/add-suppression) or [bulk suppress up to 100 at a time](/docs/api-reference/suppressions/add-batch-suppressions) using the API.
 
-<Info>
-  Remember that adding a Suppression will skip all sending to that recipient
-  until it is removed from your team's suppression list.
-</Info>
+> [!NOTE]
+>
+> Remember that adding a Suppression will skip all sending to that recipient
+> until it is removed from your team's suppression list.
 
 ## Remove emails from the Suppression List
 
@@ -67,15 +67,15 @@ Before removing an email address from the suppression list, ensure the reason fo
 You can remove an email address from the suppression list in the Dashboard from the [Suppressions page](https://resend.com/emails/suppressions).
 
 1. Search or filter for a suppression.
-2. Click the **more options button** <Icon icon="ellipsis" iconType="solid" /> and select **Remove email address**.
+2. Click the **more options button**  and select **Remove email address**.
 
 You can also [remove individual emails](/docs/api-reference/suppressions/remove-suppression) or [bulk remove up to 100 at a time](/docs/api-reference/suppressions/remove-batch-suppressions) using the API.
 
-<Warning>
-  Removing an address from the suppression list does not guarantee delivery. If
-  it bounces or is marked as spam again, it will be suppressed again
-  automatically and damage your sender reputation.
-</Warning>
+> [!WARNING]
+>
+> Removing an address from the suppression list does not guarantee delivery. If
+> it bounces or is marked as spam again, it will be suppressed again
+> automatically and damage your sender reputation.
 
 ## Webhook suppression notifications
 
@@ -90,4 +90,4 @@ You can, for example, use these webhook notifications to sync your suppressions 
 
 You can export your suppressions as a CSV file from the [Suppressions page](https://resend.com/emails/suppressions). Click the **Download CSV** button to export your suppressions.
 
-<img alt="Email Suppressions" src="https://mintcdn.com/resend/Nyu32IXsxRkmP92c/images/suppression-list-export.png?fit=max&auto=format&n=Nyu32IXsxRkmP92c&q=85&s=ff09fe52117ce4847a43126f84f58cc8" width="1776" height="1153" data-path="images/suppression-list-export.png" />
+![Email Suppressions](https://mintcdn.com/resend/Nyu32IXsxRkmP92c/images/suppression-list-export.png?fit=max\&auto=format\&n=Nyu32IXsxRkmP92c\&q=85\&s=ff09fe52117ce4847a43126f84f58cc8)
