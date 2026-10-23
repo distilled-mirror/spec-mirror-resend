@@ -18,7 +18,7 @@ The trigger is the first node in the editor.
 
 ![Add Trigger to Automation](https://mintcdn.com/resend/ePnINhGLisYSJsWT/images/automations-trigger.png?fit=max\&auto=format\&n=ePnINhGLisYSJsWT\&q=85\&s=1249bd18fbe832abb5b3ea0ecfe2b7ed)
 
-Choose an existing [custom event](/docs/dashboard/automations/custom-events) or type a new event name.
+Choose an existing [custom event](/docs/dashboard/automations/custom-events.md) or type a new event name.
 
 ![Add Custom Event](https://mintcdn.com/resend/ePnINhGLisYSJsWT/images/automations-custom-event.png?fit=max\&auto=format\&n=ePnINhGLisYSJsWT\&q=85\&s=4e5b189cb756d8ca5a468746dac901a0)
 
@@ -227,7 +227,7 @@ When sending an event to trigger an Automation, you must identify the contact us
 
 **Using contact ID**
 
-Use a contact ID when you already have the [Contact](/docs/dashboard/contacts/introduction) stored:
+Use a contact ID when you already have the [Contact](/docs/dashboard/contacts/introduction.md) stored:
 
 ```ts Node.js {7} theme={"theme":{"light":"github-light","dark":"vesper"}}
 import { Resend } from 'resend';
@@ -720,9 +720,9 @@ resend events send \
   --payload '{"amount":49.99,"currency":"USD","retryDate":"2026-11-01"}'
 ```
 
-In this example, you can use `event.amount`, `event.currency`, and `event.retryDate` in other automation [conditions](/docs/dashboard/automations/condition) and steps, or in email templates.
+In this example, you can use `event.amount`, `event.currency`, and `event.retryDate` in other automation [conditions](/docs/dashboard/automations/condition.md) and steps, or in email templates.
 
-View the [Send Event API reference](/docs/api-reference/events/send-event) for the full endpoint specification.
+View the [Send Event API reference](/docs/api-reference/events/send-event.md) for the full endpoint specification.
 
 ## Configuration
 

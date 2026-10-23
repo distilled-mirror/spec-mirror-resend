@@ -6,16 +6,16 @@
 
 > Receive emails using your own domain.
 
-In addition to [using Resend-managed domains](/docs/dashboard/receiving/introduction#quickstart), you can also receive emails using your own custom domain.
+In addition to [using Resend-managed domains](/docs/dashboard/receiving/introduction.md#quickstart), you can also receive emails using your own custom domain.
 
 ## Enabling receiving for a new domain
 
-Receiving emails requires an extra [MX record](/docs/knowledge-base/how-do-i-avoid-conflicting-with-my-mx-records) to work. You'll need to add this record to your DNS provider.
+Receiving emails requires an extra [MX record](/docs/knowledge-base/how-do-i-avoid-conflicting-with-my-mx-records.md) to work. You'll need to add this record to your DNS provider.
 
 **1. Verify your domain**
 
 If you have not already done so, [add and verify your
-domain](/docs/add-a-domain).
+domain](/docs/add-a-domain.md).
 
 **2. Navigate to the Domains page in your Dashboard**
 
@@ -39,7 +39,7 @@ domain](/docs/add-a-domain).
 > SMTP server address that appears in the receiving `MX` record: Resend drops emails
 > for domains whose receiving `MX` record isn't verified.
 
-You can now [create a webhook to receive emails](/docs/dashboard/receiving/create-receiving-webhook) at your custom domain in your application.
+You can now [create a webhook to receive emails](/docs/dashboard/receiving/create-receiving-webhook.md) at your custom domain in your application.
 
 ## Enabling receiving for an existing domain
 

@@ -8,6 +8,8 @@
 
 [Encore](https://encore.dev) is an open-source TypeScript framework that provisions infrastructure directly from your application code, with built-in observability and cloud deployment.
 
+Use this pre-built prompt to get started faster.
+
 # Send Email with Resend and Encore.ts
 
 **Purpose:** Enforce only the **current** and **correct** instructions for sending emails using [Resend](https://resend.com/) with the [Encore.ts](https://encore.dev) backend framework.
@@ -379,8 +381,8 @@ For the entire docs for Resend, see [https://resend.com/docs/llms-full.txt](http
 
 Before you start, you'll need:
 
-* A Resend [API key](/docs/create-an-api-key)
-* A [verified domain](/docs/add-a-domain)
+* A Resend [API key](/docs/create-an-api-key.md)
+* A [verified domain](/docs/add-a-domain.md)
 * Install [Encore](https://encore.dev/docs/ts/install) (`brew install encoredev/tap/encore`)
 
 ## Guide

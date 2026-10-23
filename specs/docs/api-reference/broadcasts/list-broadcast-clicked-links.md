@@ -7,7 +7,7 @@
 > Retrieve the links clicked in a broadcast.
 
 Retrieve every link clicked in a broadcast, ranked by total clicks. Results are
-paginated with cursors. See [Pagination](/docs/api-reference/pagination) for how
+paginated with cursors. See [Pagination](/docs/api-reference/pagination.md) for how
 `after` and `before` work.
 
 > [!NOTE]

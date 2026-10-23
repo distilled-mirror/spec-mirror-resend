@@ -9,27 +9,27 @@
 ## Webhooks
 
 Resend provides webhooks, which are real-time HTTPS requests that tell your application an event occurred, such as an email delivery notification or subscription status update. This allows you to receive real-time and actionable updates on the delivery, open, bounce, and click events of your emails.
-You can create, update, observe, and retry webhooks from the dashboard or [via the API](/docs/api-reference/webhooks/create-webhook).
+You can create, update, observe, and retry webhooks from the dashboard or [via the API](/docs/api-reference/webhooks/create-webhook.md).
 
 Webhooks deliver a JSON payload with metadata like the from, to, and status of your email event that can be used by your application. Use webhook feeds for common workflows such as:
 
-* Automatically remove [bounced email addresses](/docs/webhooks/emails/bounced) from mailing lists.
-* Create alerts in your messaging or incident tools based on [event types](/docs/webhooks/event-types).
-* [Store all send events](/docs/webhooks/how-to-store-webhooks-data) in your own database for custom reporting/retention.
-* [Receive inbound emails](/docs/dashboard/receiving/introduction) from your application.
+* Automatically remove [bounced email addresses](/docs/webhooks/emails/bounced.md) from mailing lists.
+* Create alerts in your messaging or incident tools based on [event types](/docs/webhooks/event-types.md).
+* [Store all send events](/docs/webhooks/how-to-store-webhooks-data.md) in your own database for custom reporting/retention.
+* [Receive inbound emails](/docs/dashboard/receiving/introduction.md) from your application.
 
 ## Webhook features
 
 With Resend's webhook features, you can:
 
-* [Replay any webhook event](/docs/webhooks/retries-and-replays). This is useful when your endpoint missed an event, or when you want to reprocess events with updated handler code.
-* [Verify webhook requests](/docs/webhooks/verify-webhooks-requests) to ensure their authenticity.
-* [Listen for webhook events locally during development](/docs/cli#webhooks).
-* Self-host the [Resend Webhook Ingester](/docs/webhooks/ingester) to store all your webhook events with an open-source, ready-to-deploy solution that handles all the complexity for you.
+* [Replay any webhook event](/docs/webhooks/retries-and-replays.md). This is useful when your endpoint missed an event, or when you want to reprocess events with updated handler code.
+* [Verify webhook requests](/docs/webhooks/verify-webhooks-requests.md) to ensure their authenticity.
+* [Listen for webhook events locally during development](/docs/cli.md#webhooks).
+* Self-host the [Resend Webhook Ingester](/docs/webhooks/ingester.md) to store all your webhook events with an open-source, ready-to-deploy solution that handles all the complexity for you.
 
 ## Quickstart
 
-Get started by [creating a webhook](/docs/webhooks/create-webhook) to incorporate Resend into your application.
+Get started by [creating a webhook](/docs/webhooks/create-webhook.md) to incorporate Resend into your application.
 
 To receive real-time events in your app via webhooks, you need to:
 
@@ -41,9 +41,9 @@ receive events from Resend.
 **2. Add a webhook in Resend**
 
 Define a webhook with the URL of your endpoint, and the [email
-events](/docs/webhooks/event-types) it handles.
+events](/docs/webhooks/event-types.md) it handles.
 
-See a step-by-step example of [creating a webhook](/docs/webhooks/create-webhook) through the Dashboard, including testing and deployment.
+See a step-by-step example of [creating a webhook](/docs/webhooks/create-webhook.md) through the Dashboard, including testing and deployment.
 
 ## Choose your infrastructure
 
@@ -51,31 +51,31 @@ After creating your application endpoint, you can define and manage your webhook
 
 To build workflows to manage and respond to email events from your application, you can use a variety of tools:
 
-* [SDK](/docs/sdks): build and manage webhooks with an SDK built for your language
-* [Integrations](/docs/integrations): build workflows with a framework or tool you already use
-* [API](/docs/api-reference/webhooks/create-webhook): manage webhooks with raw cURL calls
-* [CLI](/docs/cli#webhooks): register endpoints and listen for email event notifications from the terminal.
-* [MCP](/docs/mcp-server): build workflows that respond to email events through your agent using natural language.
+* [SDK](/docs/sdks.md): build and manage webhooks with an SDK built for your language
+* [Integrations](/docs/integrations.md): build workflows with a framework or tool you already use
+* [API](/docs/api-reference/webhooks/create-webhook.md): manage webhooks with raw cURL calls
+* [CLI](/docs/cli.md#webhooks): register endpoints and listen for email event notifications from the terminal.
+* [MCP](/docs/mcp-server.md): build workflows that respond to email events through your agent using natural language.
 
 See how to use Resend's webhook features such as replaying webhooks and storing webhook data in the [webhooks guides](#related-guides).
 
 ## Related Guides
 
-> **[Create webhook](/docs/webhooks/create-webhook)**
+> **[Create webhook](/docs/webhooks/create-webhook.md)**
 
-> **[Respond to emails](/docs/dashboard/receiving/create-receiving-webhook)**
+> **[Respond to emails](/docs/dashboard/receiving/create-receiving-webhook.md)**
 
-> **[Retry replay webhooks](/docs/webhooks/retries-and-replays)**
+> **[Retry replay webhooks](/docs/webhooks/retries-and-replays.md)**
 
-> **[Email event types](/docs/webhooks/event-types)**
+> **[Email event types](/docs/webhooks/event-types.md)**
 
-> **[Verify a webhook request](/docs/webhooks/verify-webhooks-requests)**
+> **[Verify a webhook request](/docs/webhooks/verify-webhooks-requests.md)**
 
-> **[Store webhook data](/docs/webhooks/how-to-store-webhooks-data)**
+> **[Store webhook data](/docs/webhooks/how-to-store-webhooks-data.md)**
 
-> **[Self-host the Resend Webhook Ingester](/docs/webhooks/ingester)**
+> **[Self-host the Resend Webhook Ingester](/docs/webhooks/ingester.md)**
 
-> **[Webhook events reference](/docs/webhooks/emails/bounced)**
+> **[Webhook events reference](/docs/webhooks/emails/bounced.md)**
 
 ## Examples
 

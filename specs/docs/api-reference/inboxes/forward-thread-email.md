@@ -15,7 +15,7 @@ attachment that was sent from a URL (`path`) cannot be forwarded, and the
 request returns a `422`. The whole email can be at most 40 MB.
 
 The forward carries the same `In-Reply-To` and `References` headers as a
-[reply](/docs/api-reference/inboxes/reply-thread-email) to the original message, so
+[reply](/docs/api-reference/inboxes/reply-thread-email.md) to the original message, so
 mail clients may group it with the original conversation.
 
 ## Path Parameters
@@ -25,7 +25,7 @@ The Inbox ID or the inbox email address, such as `support@example.com`.
 The Thread ID.
 
 The Email ID of the message to forward, as returned by [List Thread
-Emails](/docs/api-reference/inboxes/list-thread-emails) in `data[].id`.
+Emails](/docs/api-reference/inboxes/list-thread-emails.md) in `data[].id`.
 
 ## Body Parameters
 
@@ -58,7 +58,7 @@ Defaults to the thread subject with a `Fwd:` prefix.
 
 **attachments** `array | null`
 
-Files to attach, as on [Send Email](/docs/api-reference/emails/send-email).
+Files to attach, as on [Send Email](/docs/api-reference/emails/send-email.md).
 
 **properties**
 
@@ -78,7 +78,7 @@ Content type for the attachment. When not set, it is derived from the
 `filename`.
 
 Content ID for embedding inline images with a `cid:` reference in the
-`html`. [Learn about inline images](/docs/dashboard/emails/embed-inline-images).
+`html`. [Learn about inline images](/docs/dashboard/emails/embed-inline-images.md).
 
 **headers** `object | null`
 
@@ -100,14 +100,14 @@ Add an idempotency key to prevent duplicated emails.
 * Reusing the key with a different body, or while the first request is still
   running, returns a `409`
 
-[Learn more](/docs/dashboard/emails/idempotency-keys)
+[Learn more](/docs/dashboard/emails/idempotency-keys.md)
 
 ## Response Fields
 
 **id** `string`
 
 The ID of the sent email. Use it with the [emails
-endpoints](/docs/api-reference/emails/retrieve-email).
+endpoints](/docs/api-reference/emails/retrieve-email.md).
 
 ```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
 import { Resend } from 'resend';
@@ -255,6 +255,37 @@ async fn main() -> Result<()> {
     .await?;
 
   Ok(())
+}
+```
+
+```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
+import com.resend.Resend;
+import com.resend.core.exception.ResendException;
+import com.resend.services.emails.model.Attachment;
+import com.resend.services.inboxes.model.ForwardInboxThreadEmailOptions;
+import com.resend.services.inboxes.model.ForwardInboxThreadEmailResponseSuccess;
+
+public class Main {
+    public static void main(String[] args) throws ResendException {
+        Resend resend = new Resend("re_xxxxxxxxx");
+
+        ForwardInboxThreadEmailOptions params = ForwardInboxThreadEmailOptions.builder()
+                .to("colleague@example.org")
+                .cc("billing@example.com")
+                .bcc("records@example.com")
+                .text("Flagging this refund request for you.")
+                .attachments(Attachment.builder()
+                        .fileName("invoice.pdf")
+                        .path("https://resend.com/static/sample/invoice.pdf")
+                        .build())
+                .build();
+
+        ForwardInboxThreadEmailResponseSuccess data = resend.inboxes().threads().emails().forward(
+                "b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1",
+                "4d8e2a1c-9b3f-4c6d-8a21-3e5f7c9c0d12",
+                "5b1a9f47-2c8d-4e6f-9a03-1d2e3f4a5b60",
+                params);
+    }
 }
 ```
 

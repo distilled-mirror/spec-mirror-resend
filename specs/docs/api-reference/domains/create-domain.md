@@ -23,7 +23,7 @@ handling bounced emails. Defaults to `send` (i.e., `send.yourdomain.tld`). Avoid
 setting values that could undermine credibility (e.g. `testing`), as they may
 be exposed to recipients.
 
-Learn more about [custom return paths](/docs/dashboard/domains/custom-return-path).
+Learn more about [custom return paths](/docs/dashboard/domains/custom-return-path.md).
 
 Track the open rate of each email.
 
@@ -41,7 +41,7 @@ Configure a custom subdomain for click and open tracking. For example, setting
 `"links"` on domain `example.com` will produce a CNAME record for
 `links.example.com`. Avoid setting values that have a negative connotation (e.g. `tracking`).
 
-Learn more about [custom tracking subdomains](/docs/dashboard/domains/tracking).
+Learn more about [custom tracking subdomains](/docs/dashboard/domains/tracking.md).
 
 **tls** `string` (default: opportunistic)
 

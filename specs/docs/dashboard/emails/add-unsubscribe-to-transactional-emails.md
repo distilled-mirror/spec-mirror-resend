@@ -9,7 +9,7 @@
 > [!NOTE]
 >
 > For contact and unsubscribe management workflows, see the [Contacts
-> overview](/docs/dashboard/contacts/introduction), where Broadcasts are built for
+> overview](/docs/dashboard/contacts/introduction.md), where Broadcasts are built for
 > keeping track of topics, segments, and unsubscribe preferences.
 
 Resend doesn't manage contact lists for transactional emails.

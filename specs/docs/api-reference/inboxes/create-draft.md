@@ -29,7 +29,7 @@ must be non-empty. `to`, `cc`, and `bcc` combined cannot exceed 50 recipients.
 Recipients. For multiple addresses, send an array of strings. Each value can
 include a friendly name, for example `Ada Lovelace <ada@example.org>`. On a
 reply draft, when you omit `to` or send `null`, the draft gets the recipients
-of a [reply](/docs/api-reference/inboxes/reply-thread-email). Send `[]` for no
+of a [reply](/docs/api-reference/inboxes/reply-thread-email.md). Send `[]` for no
 recipients.
 
 **cc** `string | string[] | null`
@@ -73,7 +73,7 @@ Content type for the attachment. Must be a valid MIME type, such as
 The Thread ID to reply in. Must be sent with `reply_to_email_id`.
 
 The Email ID to reply to, as returned by [List Thread
-Emails](/docs/api-reference/inboxes/list-thread-emails) in `data[].id`. Must be
+Emails](/docs/api-reference/inboxes/list-thread-emails.md) in `data[].id`. Must be
 sent with `thread_id`.
 
 ## Headers
@@ -91,7 +91,7 @@ Add an idempotency key to prevent duplicated drafts.
 * Reusing the key with a different body, or while the first request is still
   running, returns a `409`
 
-[Learn more](/docs/dashboard/emails/idempotency-keys)
+[Learn more](/docs/dashboard/emails/idempotency-keys.md)
 
 ## Response Fields
 
@@ -234,6 +234,35 @@ async fn main() -> Result<()> {
     .await?;
 
   Ok(())
+}
+```
+
+```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
+import com.resend.Resend;
+import com.resend.core.exception.ResendException;
+import com.resend.services.emails.model.Attachment;
+import com.resend.services.inboxes.model.CreateInboxDraftOptions;
+import com.resend.services.inboxes.model.CreateInboxDraftResponseSuccess;
+
+public class Main {
+    public static void main(String[] args) throws ResendException {
+        Resend resend = new Resend("re_xxxxxxxxx");
+
+        CreateInboxDraftOptions params = CreateInboxDraftOptions.builder()
+                .to("ada@example.org")
+                .subject("Refund for order 1041")
+                .html("<p>Refund issued for order 1041.</p>")
+                .text("Refund issued for order 1041.")
+                .attachments(Attachment.builder()
+                        .fileName("note.txt")
+                        .content("aGVsbG8=")
+                        .contentType("text/plain")
+                        .build())
+                .build();
+
+        CreateInboxDraftResponseSuccess data = resend.inboxes().drafts()
+                .create("b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1", params);
+    }
 }
 ```
 

@@ -26,7 +26,7 @@ For example, if your sending domain is `@widgets.com`, ensure links within the m
 
 #### Include valid DMARC record
 
-DMARC is a TXT record published in the DNS that specifies how email receivers should handle messages from your domain that don't pass SPF or DKIM validation. [A valid DMARC record](/docs/dashboard/domains/dmarc) can help improve email deliverability.
+DMARC is a TXT record published in the DNS that specifies how email receivers should handle messages from your domain that don't pass SPF or DKIM validation. [A valid DMARC record](/docs/dashboard/domains/dmarc.md) can help improve email deliverability.
 
 Gmail and Yahoo have required bulk senders to have a DMARC record published since 2024. When [viewing your domain](https://resend.com/domains) in Resend, you'll see a suggested DMARC record if you’re unsure what to publish.
 
@@ -68,15 +68,15 @@ Using a subdomain instead of the root domain helps segment your sending by purpo
 
 You're using a shared tracking domain for click tracking. Shared tracking domains can hurt deliverability because spam filters may flag links rewritten through shared domains as suspicious. Configure a custom tracking subdomain to keep links on your own domain and improve deliverability.
 
-Learn how to [configure a custom tracking subdomain](/docs/dashboard/domains/tracking).
+Learn how to [configure a custom tracking subdomain](/docs/dashboard/domains/tracking.md).
 
 #### Use Custom Subdomain for Open Tracking
 
 You're using a shared tracking domain for open tracking. Spam filters are sensitive to tracking pixels served from shared domains, and may flag them as potential spam. Configure a custom tracking subdomain to serve tracking pixels from your own domain and improve deliverability.
 
-Learn how to [configure a custom tracking subdomain](/docs/dashboard/domains/tracking).
+Learn how to [configure a custom tracking subdomain](/docs/dashboard/domains/tracking.md).
 
 > [!NOTE]
 >
 > Open rates are not always accurate. Learn more about [why open rates may not
-> be accurate](/docs/knowledge-base/why-are-my-open-rates-not-accurate).
+> be accurate](/docs/knowledge-base/why-are-my-open-rates-not-accurate.md).

@@ -39,7 +39,7 @@ Cannot be used with the `after` parameter.
 >
 > You can only use either `after` or `before`
 > parameter, not both. See our
-> [pagination guide](/docs/api-reference/pagination) for more
+> [pagination guide](/docs/api-reference/pagination.md) for more
 > information.
 
 ```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}

@@ -212,7 +212,7 @@ resend logs list
 
 ## Retrieve log
 
-Once you're ready to inspect a log in greater detail, you can use the [Retrieve Log](/docs/api-reference/logs/retrieve-log) endpoint.
+Once you're ready to inspect a log in greater detail, you can use the [Retrieve Log](/docs/api-reference/logs/retrieve-log.md) endpoint.
 
 This endpoint returns the full request body and response, as well as the endpoint, status code, and user agent.
 
@@ -308,7 +308,7 @@ resend logs get 37e4414c-5e25-4dbc-a071-43552a4bd53b
 > [!NOTE]
 >
 > View a comprehensive list of error codes and their meanings in the [Resend API
-> Reference](/docs/api-reference/errors).
+> Reference](/docs/api-reference/errors.md).
 
 ## Export your data
 

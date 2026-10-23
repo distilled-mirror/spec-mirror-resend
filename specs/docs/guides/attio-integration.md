@@ -21,7 +21,7 @@ The app is available on every Attio plan. A workspace admin connects one API key
 * Use **Full access** when workflows create contacts or add people to segments.
 * Use **Sending access** when you only send email. That permission can't create contacts or update segments.
 
-You can change the permission later in the [API keys Dashboard](/docs/dashboard/api-keys/introduction).
+You can change the permission later in the [API keys Dashboard](/docs/dashboard/api-keys/introduction.md).
 
 **2. Install the app in Attio**
 
@@ -52,7 +52,7 @@ Email identifies the contact in Resend. Run the step again with the same email a
 
 ### Add contact to segment
 
-Adds an existing Resend contact to a [segment](/docs/dashboard/contacts/manage-segments).
+Adds an existing Resend contact to a [segment](/docs/dashboard/contacts/manage-segments.md).
 
 * **Segment:** The segment to add the contact to. Search the list and pick one. You can't pass a variable for this field. Required.
 * **Contact:** The contact to add. Search for a contact, or pass a contact ID from an earlier step. Required.
@@ -63,9 +63,9 @@ Chain this step after Create contact. Pass that step's contact ID into the conta
 
 ### Send email
 
-Sends an email through Resend as plain text or from a published [template](/docs/dashboard/templates/introduction).
+Sends an email through Resend as plain text or from a published [template](/docs/dashboard/templates/introduction.md).
 
-* **From:** The sending address. Use an address on a [verified domain](/docs/add-a-domain). Required.
+* **From:** The sending address. Use an address on a [verified domain](/docs/add-a-domain.md). Required.
 * **To:** The recipient's email address. Required.
 * **Subject:** The email subject. Required.
 * **Plain text:** The email body as plain text.
@@ -77,7 +77,7 @@ Sends an email through Resend as plain text or from a published [template](/docs
 * **Reply to:** The address that receives replies. Optional.
 * **Schedule:** When to send the email. Leave this empty to send right away. Optional.
 * **Tags:** Name and value pairs that label the email in Resend. Optional.
-* **Topic:** The [topic](/docs/dashboard/contacts/manage-topics) for this email. Pick it from the list. You can't pass a variable for this field. Optional.
+* **Topic:** The [topic](/docs/dashboard/contacts/manage-topics.md) for this email. Pick it from the list. You can't pass a variable for this field. Optional.
 * **Attachments:** Files to attach. Each file needs a filename and a remote file URL. Optional.
 
 Fill in plain text or a template. If you select a template, Attio ignores the plain text body.
@@ -88,7 +88,7 @@ On success, the step returns the email ID. Run the same step again and Attio doe
 >
 > The From address has to use a domain you verified in Resend. With the test
 > sender `onboarding@resend.dev`, you can only email your own address. [Add a
-> domain](/docs/add-a-domain) to email anyone else.
+> domain](/docs/add-a-domain.md) to email anyone else.
 
 > [!NOTE]
 >
@@ -115,7 +115,7 @@ If the action fails, Attio shows the error from Resend and keeps the dialog open
 
 An invalid or revoked key fails as unauthorized. A valid key that lacks permission for the action fails with a permission error.
 
-Reconnecting the same key keeps the same permissions. Open the key in the [API keys Dashboard](/docs/dashboard/api-keys/introduction) and grant the permission the action needs, or create a new key and connect that one.
+Reconnecting the same key keeps the same permissions. Open the key in the [API keys Dashboard](/docs/dashboard/api-keys/introduction.md) and grant the permission the action needs, or create a new key and connect that one.
 
 Create contact and Add contact to segment need **Full access**. Send email works with **Sending access**.
 

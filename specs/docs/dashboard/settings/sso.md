@@ -71,7 +71,7 @@ Team members sign in at [resend.com/login](https://resend.com/login):
 2. If their domain has SSO configured, they're offered **Continue with SSO**.
 3. They authenticate with your identity provider and land in the team.
 
-Anyone who signs in through SSO and isn't yet a member of the team is added automatically with the **Member** role. No invitation is needed. To give someone Admin access, [change their role](/docs/dashboard/settings/team#change-the-team-member-roles) in Team Settings.
+Anyone who signs in through SSO and isn't yet a member of the team is added automatically with the **Member** role. No invitation is needed. To give someone Admin access, [change their role](/docs/dashboard/settings/team.md#change-the-team-member-roles) in Team Settings.
 
 ## Enforce SSO
 

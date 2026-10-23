@@ -6,7 +6,7 @@
 
 > Monitor and debug your Automation executions.
 
-Every time an event [triggers](/docs/dashboard/automations/trigger) an Automation, Resend creates a run.
+Every time an event [triggers](/docs/dashboard/automations/trigger.md) an Automation, Resend creates a run.
 
 A run tracks the execution of each step in the workflow, including its status and timing, along with any errors.
 
@@ -158,7 +158,7 @@ Response:
 }
 ```
 
-View the [List Automation Runs API reference](/docs/api-reference/automations/list-automation-runs) for more details.
+View the [List Automation Runs API reference](/docs/api-reference/automations/list-automation-runs.md) for more details.
 
 ## Filtering runs by status
 
@@ -473,7 +473,7 @@ Each step in the response includes:
 | `output` | Output data from the step (if any) |
 | `error` | Error details if the step failed |
 
-View the [Retrieve Automation Run API reference](/docs/api-reference/automations/get-automation-run) for more details.
+View the [Retrieve Automation Run API reference](/docs/api-reference/automations/get-automation-run.md) for more details.
 
 ## Debugging failed runs
 
@@ -608,7 +608,7 @@ When a run fails, use the step-level details to identify the issue:
 
 Common failure scenarios:
 
-* **Condition error:** A referenced field may not exist in the event payload. See [Condition](/docs/dashboard/automations/condition) for how conditions are evaluated.
+* **Condition error:** A referenced field may not exist in the event payload. See [Condition](/docs/dashboard/automations/condition.md) for how conditions are evaluated.
 * **Wait for event timeout:** The expected event was not received within the timeout window.
 * **Send email failed:** The template may not be published, or the sender address may not be verified.
 
@@ -717,7 +717,7 @@ resend automations stop c9b16d4f-ba6c-4e2e-b044-6bf4404e57fd
 >
 > Existing in-progress runs will continue to completion.
 
-View the [Stop Automation API reference](/docs/api-reference/automations/stop-automation) for more details.
+View the [Stop Automation API reference](/docs/api-reference/automations/stop-automation.md) for more details.
 
 ## Viewing Metrics
 

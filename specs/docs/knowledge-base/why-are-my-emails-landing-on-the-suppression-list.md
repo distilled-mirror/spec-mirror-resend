@@ -25,7 +25,7 @@ Here are some possible reasons an email address is placed on the Suppression Lis
 
 ## What happens when you send to an address on the Suppression List
 
-Whenever you send an email with Resend, the recipient is checked against the suppression list. If they're on it, the delivery is [suppressed](/docs/dashboard/emails/email-suppressions) to prevent damaging your sender reputation and our infrastructure.
+Whenever you send an email with Resend, the recipient is checked against the suppression list. If they're on it, the delivery is [suppressed](/docs/dashboard/emails/email-suppressions.md) to prevent damaging your sender reputation and our infrastructure.
 
 Suppressed emails will appear with a `suppressed` status in your [Emails](https://resend.com/emails) dashboard:
 

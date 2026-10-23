@@ -47,11 +47,11 @@ your Resend team](/docs/knowledge-base/how-can-i-delete-my-team).
 
 ## If you can no longer reach the other team
 
-If a domain sits on a team you no longer have access to, add the domain on the team you want to keep. Resend will prompt you to start a claim, which proves ownership with a TXT record. See [Claiming a domain](/docs/dashboard/domains/claim) for more information.
+If a domain sits on a team you no longer have access to, add the domain on the team you want to keep. Resend will prompt you to start a claim, which proves ownership with a TXT record. See [Claiming a domain](/docs/dashboard/domains/claim.md) for more information.
 
 ## Several products or clients in one team
 
-One team can serve several products or clients. See the [multi tenant setup guide](/docs/knowledge-base/setting-up-resend-for-multi-tenants) for recommended setup.
+One team can serve several products or clients. See the [multi tenant setup guide](/docs/knowledge-base/setting-up-resend-for-multi-tenants.md) for recommended setup.
 
 ## Additional support
 

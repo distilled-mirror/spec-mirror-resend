@@ -44,16 +44,16 @@ Number of threads to return. Default is `20`, maximum is `100`, minimum is
 
 The ID of the last thread on the current page. Returns the next, older page.
 Must be a thread ID. To filter by date, use [Search
-Threads](/docs/api-reference/inboxes/search-threads) with `start_date`.
+Threads](/docs/api-reference/inboxes/search-threads.md) with `start_date`.
 
 **before** `string`
 
 The ID of the first thread on the current page. Returns the previous, newer
 page. Cannot be combined with `after`. Must be a thread ID. To filter by date,
-use [Search Threads](/docs/api-reference/inboxes/search-threads) with `end_date`.
+use [Search Threads](/docs/api-reference/inboxes/search-threads.md) with `end_date`.
 
 To find threads by text, sender, recipient, attachment, or date, use [Search
-Threads](/docs/api-reference/inboxes/search-threads).
+Threads](/docs/api-reference/inboxes/search-threads.md).
 
 ## Response Fields
 
@@ -212,6 +212,21 @@ async fn main() -> Result<()> {
     .await?;
 
   Ok(())
+}
+```
+
+```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
+import com.resend.Resend;
+import com.resend.core.exception.ResendException;
+import com.resend.services.inboxes.model.ListInboxThreadsResponseSuccess;
+
+public class Main {
+    public static void main(String[] args) throws ResendException {
+        Resend resend = new Resend("re_xxxxxxxxx");
+
+        ListInboxThreadsResponseSuccess data = resend.inboxes().threads()
+                .list("b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1");
+    }
 }
 ```
 

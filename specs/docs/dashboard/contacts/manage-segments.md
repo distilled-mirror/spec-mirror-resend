@@ -6,11 +6,11 @@
 
 > Learn how to create, retrieve, and delete Segments.
 
-Segments are used to organize your [Contacts](/docs/dashboard/contacts/introduction) into groups for sending [Broadcasts](/docs/dashboard/broadcasts/introduction). **Segments are not visible to your Contacts.** They are only used for your own internal Contact management.
+Segments are used to organize your [Contacts](/docs/dashboard/contacts/introduction.md) into groups for sending [Broadcasts](/docs/dashboard/broadcasts/introduction.md). **Segments are not visible to your Contacts.** They are only used for your own internal Contact management.
 
 ## Create Segments
 
-You can create Segments in the [Dashboard](https://resend.com/audience/segments), or programmatically from the [Segments API](/docs/api-reference/segments/create-segment), with a [Segments CLI command](/docs/cli#segments), or [MCP](/docs/mcp-server).
+You can create Segments in the [Dashboard](https://resend.com/audience/segments), or programmatically from the [Segments API](/docs/api-reference/segments/create-segment.md), with a [Segments CLI command](/docs/cli.md#segments), or [MCP](/docs/mcp-server.md).
 
 To create a Segment in the Resend Dashboard:
 
@@ -39,27 +39,27 @@ Click the **More options**  menu next to each Segment to:
 
 Click on any Segment to view the list of Contacts that belong to that Segment.
 
-You can also retrieve a single Segment, list of Segments, or the list of Contacts in a Segment, from the [Segments API](/docs/api-reference/segments/get-segment), with a [Segments CLI command](/docs/cli#segments), or [MCP](/docs/mcp-server).
+You can also retrieve a single Segment, list of Segments, or the list of Contacts in a Segment, from the [Segments API](/docs/api-reference/segments/get-segment.md), with a [Segments CLI command](/docs/cli.md#segments), or [MCP](/docs/mcp-server.md).
 
 ## Updating the Segments of a Contact
 
 A Contact can belong to multiple Segments. Because Segments are only used to organize your Contacts internally for sending Broadcasts, you do not need consent to add a user to a Segment.
 
-You can add a Contact to a Segment via the Dashboard by [editing the Contact](/docs/dashboard/contacts/manage-contacts#edit-contacts) and choosing to add or remove Segments.
+You can add a Contact to a Segment via the Dashboard by [editing the Contact](/docs/dashboard/contacts/manage-contacts.md#edit-contacts) and choosing to add or remove Segments.
 
-You can also use the [Contacts API](/docs/api-reference/contacts/add-contact-to-segment) or [Contacts CLI commands](/docs/cli#contacts) to add or remove Segments from a Contact's profile programmatically.
+You can also use the [Contacts API](/docs/api-reference/contacts/add-contact-to-segment.md) or [Contacts CLI commands](/docs/cli.md#contacts) to add or remove Segments from a Contact's profile programmatically.
 
 > [!NOTE]
 >
-> If a Contact's unsubscribed status is `true`, or the Contact is on the [Suppression List](/docs/dashboard/emails/email-suppressions), Resend will not send any emails to them, even if you have added them to a Segment.
+> If a Contact's unsubscribed status is `true`, or the Contact is on the [Suppression List](/docs/dashboard/emails/email-suppressions.md), Resend will not send any emails to them, even if you have added them to a Segment.
 >
-> Regularly [review your unsubscribe list](/docs/dashboard/contacts/managing-unsubscribe-list) and remove recipients from your Contact list who no longer wish to receive your emails.
+> Regularly [review your unsubscribe list](/docs/dashboard/contacts/managing-unsubscribe-list.md) and remove recipients from your Contact list who no longer wish to receive your emails.
 
 ## Delete Segments
 
 When you delete a Segment, no Contacts are deleted. The Segment is removed from your list, and from the `segments` property of all associated Contacts.
 
-You can delete Segments in the [Dashboard](https://resend.com/audience/segments), or programmatically from the [Segments API](/docs/api-reference/segments/delete-segment), with a [Segments CLI command](/docs/cli#segments), or with [MCP](/docs/mcp-server).
+You can delete Segments in the [Dashboard](https://resend.com/audience/segments), or programmatically from the [Segments API](/docs/api-reference/segments/delete-segment.md), with a [Segments CLI command](/docs/cli.md#segments), or with [MCP](/docs/mcp-server.md).
 
 To delete one or more Segments in the Dashboard:
 
@@ -111,4 +111,4 @@ All admins on your team can securely access the export for 7 days. Unavailable e
 
 ## API Reference
 
-For complete API documentation, see the [Segments API reference](/docs/api-reference/segments/create-segment).
+For complete API documentation, see the [Segments API reference](/docs/api-reference/segments/create-segment.md).

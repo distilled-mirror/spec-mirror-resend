@@ -26,7 +26,7 @@ Using your recovery code turns off MFA and allows you to sign in with your usual
 > [!NOTE]
 >
 > If you also lost access to the email address you sign in with, see our
-> [recover access to a team](/docs/guides/account/how-to-recover-access-to-a-team)
+> [recover access to a team](/docs/guides/account/how-to-recover-access-to-a-team.md)
 > support article.
 
 To use your recovery code, sign in with your usual method and enter your recovery code when Resend asks for your authenticator code. ([View help](#if-you-do-not-have-a-recovery-code) if you do not have a recovery code.)
@@ -40,7 +40,7 @@ Removing MFA only removes the authenticator factor. The domains and API keys on 
 
 **2. Turn on MFA again**
 
-Enable MFA on again from your [Profile](https://resend.com/profile) with your new device. Resend shows you a new recovery code when you do. Save it before you close the dialog. See [how to add MFA](/docs/knowledge-base/how-can-i-add-mfa) for more details.
+Enable MFA on again from your [Profile](https://resend.com/profile) with your new device. Resend shows you a new recovery code when you do. Save it before you close the dialog. See [how to add MFA](/docs/knowledge-base/how-can-i-add-mfa.md) for more details.
 
 If you receive that email and did not use your recovery code, reset your password and [contact support](https://resend.com/help) immediately.
 

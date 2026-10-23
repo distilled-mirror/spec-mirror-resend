@@ -12,7 +12,7 @@ Event triggered whenever Resend **successfully delivered the email** to the reci
 >
 > Learn more about what to do [when an email is delivered, but the recipient
 > does not receive
-> it](/docs/knowledge-base/what-if-an-email-says-delivered-but-the-recipient-has-not-received-it).
+> it](/docs/knowledge-base/what-if-an-email-says-delivered-but-the-recipient-has-not-received-it.md).
 
 ## Response Body Parameters
 
@@ -51,7 +51,7 @@ RFC Message-ID header value for the email
 
 **from** `string`
 
-Sender's email address. For sent events, this matches the value passed at send time and may include a display name (e.g., `Name <email@domain.com>`). For received events, this is the bare email address only; the display name from the original `From:` header is preserved in `headers.from` on the [retrieve endpoint](/docs/api-reference/emails/retrieve-received-email).
+Sender's email address. For sent events, this matches the value passed at send time and may include a display name (e.g., `Name <email@domain.com>`). For received events, this is the bare email address only; the display name from the original `From:` header is preserved in `headers.from` on the [retrieve endpoint](/docs/api-reference/emails/retrieve-received-email.md).
 
 **to** `array`
 

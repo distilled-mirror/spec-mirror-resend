@@ -6,6 +6,8 @@
 
 > Learn how to send your first email using the Resend Python SDK.
 
+Use this pre-built prompt to get started faster.
+
 # Send Email with Resend Python SDK
 
 **Purpose:** Enforce only the **current** and **correct** instructions for sending emails using the [Resend](https://resend.com/) Python SDK.
@@ -282,8 +284,8 @@ For the entire docs for Resend, see [https://resend.com/docs/llms-full.txt](http
 
 Before you start, you'll need:
 
-* A Resend [API key](/docs/create-an-api-key)
-* A [verified domain](/docs/add-a-domain)
+* A Resend [API key](/docs/create-an-api-key.md)
+* A [verified domain](/docs/add-a-domain.md)
 
 ## Guide
 
@@ -303,7 +305,7 @@ Store your API key in an environment variable in your `.env` file.
 RESEND_API_KEY=re_xxxxxxxxx
 ```
 
-Access it with `os.environ["RESEND_API_KEY"]`. See [Create an API key](/docs/create-an-api-key) for the full setup.
+Access it with `os.environ["RESEND_API_KEY"]`. See [Create an API key](/docs/create-an-api-key.md) for the full setup.
 
 **3. Send email using HTML**
 

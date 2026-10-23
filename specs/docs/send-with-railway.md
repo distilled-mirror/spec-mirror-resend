@@ -12,8 +12,8 @@
 
 Before you start, you'll need:
 
-* A Resend [API key](/docs/create-an-api-key)
-* A [verified domain](/docs/add-a-domain)
+* A Resend [API key](/docs/create-an-api-key.md)
+* A [verified domain](/docs/add-a-domain.md)
 
 ## Guide
 
@@ -39,7 +39,7 @@ Once your deployment finishes, click the deploy URL to open the app and send you
 
 ![Deployment link highlighted](https://mintcdn.com/resend/UGYfPeFBYurSSqVy/images/send-with-railway-2.png?fit=max\&auto=format\&n=UGYfPeFBYurSSqVy\&q=85\&s=c4a9f0838a4efb406d349c4e815c1c80)
 
-While this example uses the [Resend Node.js SDK](https://www.npmjs.com/package/@resend/node), you can add Resend using [any of our Official SDKs](https://resend.com/docs/sdks) that Railway supports.
+While this example uses the [Resend Node.js SDK](https://www.npmjs.com/package/@resend/node), you can add Resend using [any of our Official SDKs](https://resend.com/docs/sdks.md) that Railway supports.
 
 > [!NOTE]
 >

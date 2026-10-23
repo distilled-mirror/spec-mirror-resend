@@ -20,11 +20,11 @@ If you're developing with AI, Resend offers several resources to improve your ex
 
 ## Prerequisite: Create an API Key
 
-A human must create the Resend account. Once you have an account, you'll need to [create an API key](/docs/create-an-api-key). With an API key, your agent can perform many other tasks.
+A human must create the Resend account. Once you have an account, you'll need to [create an API key](/docs/create-an-api-key.md). With an API key, your agent can perform many other tasks.
 
 > [!NOTE]
 >
-> To send or receive with Resend, you'll need to [verify a domain](https://resend.com/domains). While an agent can [create a domain](/docs/api-reference/domains/create-domain), the API returns DNS records you will need to add in your DNS provider before [verifying your DNS records](/docs/api-reference/domains/verify-domain). You may find it easier to verify your domain in the dashboard.
+> To send or receive with Resend, you'll need to [verify a domain](https://resend.com/domains). While an agent can [create a domain](/docs/api-reference/domains/create-domain.md), the API returns DNS records you will need to add in your DNS provider before [verifying your DNS records](/docs/api-reference/domains/verify-domain.md). You may find it easier to verify your domain in the dashboard.
 
 ## Resend MCP Server
 
@@ -38,12 +38,12 @@ https://mcp.resend.com/mcp
 
 When you connect, your client authenticates with OAuth by opening a browser to log in to Resend. Clients that can't complete a browser login can pass an API key as a Bearer token instead. You can also run the server locally with `npx` using the `resend-mcp` package on NPM.
 
-The [Resend plugin](https://github.com/resend/resend-skills) follows the [Agent Plugins](https://agent-plugins.org) spec. On clients whose landing page installs that plugin, it adds the remote MCP server and the Resend skills together. Setup for each client is on the [MCP server page](/docs/mcp-server), and it matches the page at resend.com. Claude and Codex also keep these one-click installs:
+The [Resend plugin](https://github.com/resend/resend-skills) follows the [Agent Plugins](https://agent-plugins.org) spec. On clients whose landing page installs that plugin, it adds the remote MCP server and the Resend skills together. Setup for each client is on the [MCP server page](/docs/mcp-server.md), and it matches the page at resend.com. Claude and Codex also keep these one-click installs:
 
 * [Resend connector for Claude](https://claude.ai/directory/connectors/resend)
 * [Resend plugin for Codex](https://chatgpt.com/plugins/plugin_asdk_app_6a3c407853888191beddc2151c2b6f8b?open_in_codex)
 
-> **[MCP Server](/docs/mcp-server)**
+> **[MCP Server](/docs/mcp-server.md)**
 >
 > View setup instructions for Claude, Cursor, Codex, Copilot, Hermes, OpenClaw,
 > and more.
@@ -66,7 +66,7 @@ resend emails send \
 
 The CLI also includes a full local webhook setup for developing with inbound email events without deploying anything.
 
-> **[Resend CLI](/docs/cli)**
+> **[Resend CLI](/docs/cli.md)**
 >
 > Install the CLI and set up a local webhook development environment.
 
@@ -112,13 +112,15 @@ Or install individually:
 
 | Skill | Install | What it does |
 | - | - | - |
-| [Resend](/docs/resend-skill) | `npx skills add resend/resend-skills` | Send and receive emails, handle errors, and prevent duplicate sends. Get code examples from various SDKs. |
-| [React Email](/docs/react-email-skill) | `npx skills add resend/react-email` | Build emails in React, Tailwind, and TypeScript. Audit existing React emails for style and cross-client rendering. |
-| [Email Best Practices](/docs/email-best-practices-skill) | `npx skills add resend/email-best-practices` | Audit SPF/DKIM/DMARC setup, compliance (CAN-SPAM, GDPR), webhook handling |
+| [Resend](/docs/resend-skill.md) | `npx skills add resend/resend-skills` | Send and receive emails, handle errors, and prevent duplicate sends. Get code examples from various SDKs. |
+| [React Email](/docs/react-email-skill.md) | `npx skills add resend/react-email` | Build emails in React, Tailwind, and TypeScript. Audit existing React emails for style and cross-client rendering. |
+| [Email Best Practices](/docs/email-best-practices-skill.md) | `npx skills add resend/email-best-practices` | Audit SPF/DKIM/DMARC setup, compliance (CAN-SPAM, GDPR), webhook handling |
 
 ## Quick Start Guides
 
 The documentation includes quick start guides for common tasks with Resend. They contain step-by-step instructions for sending emails, creating templates, and more. Copy the prompt for your agent or click to open in Cursor.
+
+Example agent quick start guide for sending emails.
 
 Resend provides two endpoints for sending emails:
 
@@ -291,7 +293,7 @@ console.log(
 
 Equipping your agent with its own email inbox can be a powerful tool to unlock new workflows. Alternatively, give it access to your Resend account to support agentic flows for sending and receiving emails.
 
-> **[Email Automation for OpenClaw using Resend](/docs/openclaw-guide)**
+> **[Email Automation for OpenClaw using Resend](/docs/openclaw-guide.md)**
 >
 > View the OpenClaw guide.
 
@@ -299,7 +301,7 @@ Equipping your agent with its own email inbox can be a powerful tool to unlock n
 
 The `@resend/chat-sdk-adapter` package is a Vercel Chat SDK adapter that turns email into a two-way communication channel. Receive inbound emails through webhooks, reply through the Resend API, and let the adapter handle threading automatically. It also supports card emails, attachments, and proactive outreach.
 
-> **[Chat SDK](/docs/chat-sdk)**
+> **[Chat SDK](/docs/chat-sdk.md)**
 >
 > Build conversational email experiences with the Chat SDK adapter.
 
@@ -307,13 +309,13 @@ The `@resend/chat-sdk-adapter` package is a Vercel Chat SDK adapter that turns e
 
 Get started using Resend with popular AI builders:
 
-* [Anything Integration](/docs/anything-integration)
-* [Lovable Integration](/docs/lovable-integration)
-* [v0 Integration](/docs/v0-integration)
-* [Bolt.new Integration](/docs/bolt-new-integration)
-* [Replit Integration](/docs/replit-integration)
-* [Base44 Integration](/docs/base44-integration)
-* [Leap.new Integration](/docs/leap-new-integration)
+* [Anything Integration](/docs/anything-integration.md)
+* [Lovable Integration](/docs/lovable-integration.md)
+* [v0 Integration](/docs/v0-integration.md)
+* [Bolt.new Integration](/docs/bolt-new-integration.md)
+* [Replit Integration](/docs/replit-integration.md)
+* [Base44 Integration](/docs/base44-integration.md)
+* [Leap.new Integration](/docs/leap-new-integration.md)
 
 ## AI Integrations
 

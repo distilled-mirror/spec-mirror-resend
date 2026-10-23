@@ -29,7 +29,7 @@ To send emails to other email addresses:
 1. Add a [custom domain to your Resend account](https://resend.com/domains).
 2. Add the custom domain to the `from` field in the `resend` function in Replit (or ask the chat to update these fields).
 
-Get more help adding a custom domain in [Resend's documentation](/docs/dashboard/domains/introduction).
+Get more help adding a custom domain in [Resend's documentation](/docs/dashboard/domains/introduction.md).
 
 **2. Add your Resend API key and from address**
 

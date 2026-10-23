@@ -17,7 +17,7 @@ The API key name. Maximum 50 characters.
 The API key can have full access to Resend's API or be only restricted to send emails.
 
 * `full_access`: Can create, delete, get, and update any resource.
-* `sending_access`: Can only send emails. For Inboxes, it can call only [Reply to Thread Email](/docs/api-reference/inboxes/reply-thread-email), [Forward Thread Email](/docs/api-reference/inboxes/forward-thread-email), [Create Draft](/docs/api-reference/inboxes/create-draft) and [Send Draft](/docs/api-reference/inboxes/send-draft). A key restricted to a domain can use only the inboxes on that domain.
+* `sending_access`: Can only send emails. For Inboxes, it can call only [Reply to Thread Email](/docs/api-reference/inboxes/reply-thread-email.md), [Forward Thread Email](/docs/api-reference/inboxes/forward-thread-email.md), [Create Draft](/docs/api-reference/inboxes/create-draft.md) and [Send Draft](/docs/api-reference/inboxes/send-draft.md). A key restricted to a domain can use only the inboxes on that domain.
 
 Restrict an API key to send emails only from a specific domain. This is only
 used when the `permission` is set to `sending_access`.

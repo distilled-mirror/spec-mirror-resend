@@ -9,10 +9,10 @@
 > [!NOTE]
 >
 > Use this endpoint when [creating a
-> domain](/docs/api-reference/domains/create-domain) fails because the domain is
+> domain](/docs/api-reference/domains/create-domain.md) fails because the domain is
 > already verified by another team. Resend creates a placeholder domain on your
 > team and returns a `domain_claim` with a TXT record to add to your DNS. Learn
-> more in [Claiming a domain](/docs/dashboard/domains/claim).
+> more in [Claiming a domain](/docs/dashboard/domains/claim.md).
 
 ## Body Parameters
 
@@ -45,7 +45,7 @@ Configure a custom subdomain for click and open tracking. For example, setting
 `"links"` on domain `example.com` will produce a CNAME record for
 `links.example.com`. Avoid setting values that have a negative connotation (e.g. `tracking`).
 
-Learn more about [custom tracking subdomains](/docs/dashboard/domains/tracking).
+Learn more about [custom tracking subdomains](/docs/dashboard/domains/tracking.md).
 
 ```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
 import { Resend } from 'resend';

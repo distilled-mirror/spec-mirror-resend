@@ -10,7 +10,7 @@ In November 2025, [Resend changed how Contacts are segmented](https://resend.com
 
 Contacts are now independent of the groups they belong to, and the former Audiences are now called Segments. A Contact can be in zero, one or multiple Segments and count as only one Contact toward your Contact quota.
 
-Contacts API endpoints that previously required an `audience_id` can now be used directly instead. The [Audiences API](https://resend.com/docs/api-reference/audiences/create-audience) is now deprecated and will be removed in the future.
+Contacts API endpoints that previously required an `audience_id` can now be used directly instead. The [Audiences API](https://resend.com/docs/api-reference/audiences/create-audience.md) is now deprecated and will be removed in the future.
 
 ## What changed
 
@@ -19,7 +19,7 @@ Resend now uses a **Global Contacts** model.
 * **Before**: If a Contact with the same email appeared in multiple Segments, it was counted as multiple Contacts.
 * **Now**: Each email address is treated as a single Contact across your team, even if it appears in multiple Segments.
 
-The [current Contact model](/docs/dashboard/contacts/introduction) includes four concepts:
+The [current Contact model](/docs/dashboard/contacts/introduction.md) includes four concepts:
 
 * **Contact**: a global entity linked to a specific email address.
 * **Segment**: an internal segmentation tool for your team to organize sending.
@@ -47,9 +47,9 @@ With this setup, when you send a Broadcast, your users can choose which Topics t
 
 For details on the new API endpoints view:
 
-* [Contacts](/docs/api-reference/contacts/create-contact)
-* [Topics](/docs/api-reference/topics/create-topic)
-* [Segments](/docs/api-reference/segments/create-segment)
+* [Contacts](/docs/api-reference/contacts/create-contact.md)
+* [Topics](/docs/api-reference/topics/create-topic.md)
+* [Segments](/docs/api-reference/segments/create-segment.md)
 
 ## Additional Help
 

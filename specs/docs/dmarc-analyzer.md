@@ -10,16 +10,16 @@
 
 ## What is DMARC?
 
-DMARC (Domain-based Message Authentication, Reporting, and Conformance) is an email authentication protocol that builds on [SPF and DKIM](/docs/dashboard/domains/introduction). It lets domain owners specify how unauthenticated emails are handled and receive reports about authentication results.
+DMARC (Domain-based Message Authentication, Reporting, and Conformance) is an email authentication protocol that builds on [SPF and DKIM](/docs/dashboard/domains/introduction.md). It lets domain owners specify how unauthenticated emails are handled and receive reports about authentication results.
 
-When you [set up a DMARC policy](/docs/dashboard/domains/dmarc), mailbox providers send XML reports to the address you specify. These reports contain valuable data about who is sending email on behalf of your domain and whether those emails pass authentication, but the raw XML is difficult to read. The DMARC Analyzer helps you visualize these reports in a human-readable format.
+When you [set up a DMARC policy](/docs/dashboard/domains/dmarc.md), mailbox providers send XML reports to the address you specify. These reports contain valuable data about who is sending email on behalf of your domain and whether those emails pass authentication, but the raw XML is difficult to read. The DMARC Analyzer helps you visualize these reports in a human-readable format.
 
 ## Features
 
 * Parse and visualize DMARC XML reports instantly
 * View SPF and DKIM alignment results per source
 * Identify unauthorized senders using your domain
-* Self-host with automated report ingestion via [Resend Receiving](/docs/dashboard/receiving/introduction)
+* Self-host with automated report ingestion via [Resend Receiving](/docs/dashboard/receiving/introduction.md)
 * Receive email digests summarizing your DMARC reports
 
 > [!NOTE]
@@ -54,21 +54,7 @@ cd resend-dmarc-analyzer
 
 **2. Install dependencies**
 
-**pnpm**
-
-`bash pnpm install `
-
-**npm**
-
-`bash npm install `
-
-**yarn**
-
-`bash yarn install `
-
-**bun**
-
-`bash bun install `
+`bash pnpm install ``bash npm install ``bash yarn install ``bash bun install `
 
 **3. Configure environment variables**
 
@@ -89,21 +75,7 @@ cp .env.example .env.local
 
 Start the development server:
 
-**pnpm**
-
-`bash pnpm run dev `
-
-**npm**
-
-`bash npm run dev `
-
-**yarn**
-
-`bash yarn run dev `
-
-**bun**
-
-`bash bun run dev `
+`bash pnpm run dev ``bash npm run dev ``bash yarn run dev ``bash bun run dev `
 
 Register your publicly accessible HTTPS URL in the Resend dashboard and enable the `email.received` event.
 

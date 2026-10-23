@@ -10,15 +10,15 @@
 
 You can draft and publish reusable email Templates with Resend's no-code editor or programmatically.
 
-Templates allow you to send your frequently used transactional emails without needing to include the entire HTML body content. You can also include [Template variables](/docs/dashboard/templates/template-variables) that will be replaced with personalized information when sending, such as a customer's first name.
+Templates allow you to send your frequently used transactional emails without needing to include the entire HTML body content. You can also include [Template variables](/docs/dashboard/templates/template-variables.md) that will be replaced with personalized information when sending, such as a customer's first name.
 
 You can create a new transactional email Template in several ways:
 
 * [Dashboard editor](#add-a-template-in-the-dashboard)
 * [API](#add-a-template-with-the-api)
-* [CLI](/docs/cli#templates)
+* [CLI](/docs/cli.md#templates)
 * [HTML file](#add-a-template-from-an-existing-file)
-* [React Email](/docs/knowledge-base/template-emails-with-react-email)
+* [React Email](/docs/knowledge-base/template-emails-with-react-email.md)
 * [Duplicate a Template](#duplicate-a-template)
 * [Clone a Broadcast](#clone-a-broadcast)
 
@@ -34,7 +34,7 @@ To create and publish a new Template using the no-code editor:
 
 **3. Add sender info.**
 
-Choose any username at your [verified domain](/docs/add-a-domain) to send your email from.
+Choose any username at your [verified domain](/docs/add-a-domain.md) to send your email from.
 
 We suggest you choose a `from` name and address that assures the reader the email is coming from you, for example:
 
@@ -48,7 +48,7 @@ Resend's no-code Template editor allows you to specify optional fields such as a
 
 **6. Write your email content.**
 
-You can use `/` commands in the Template editor for UI elements such as headings, lists, and images. You can also [compose your body text in Markdown](/docs/dashboard/templates/template-editor#markdown-support) and [add Template variables](/docs/dashboard/templates/template-variables) to personalize content.
+You can use `/` commands in the Template editor for UI elements such as headings, lists, and images. You can also [compose your body text in Markdown](/docs/dashboard/templates/template-editor.md#markdown-support) and [add Template variables](/docs/dashboard/templates/template-variables.md) to personalize content.
 
 Alternatively, you can paste or drag in content from [an existing HTML or React Email file](#add-a-template-from-an-existing-file).
 
@@ -74,7 +74,7 @@ Alternatively, exit the editor to leave your Template saved as a draft. It is au
 
 ## Add a Template with the API
 
-Programmatically create a Template from your application with the [Templates API](/docs/api-reference/templates/create-template). The payload can optionally include [variables to be used in the template](/docs/dashboard/templates/template-variables).
+Programmatically create a Template from your application with the [Templates API](/docs/api-reference/templates/create-template.md). The payload can optionally include [variables to be used in the template](/docs/dashboard/templates/template-variables.md).
 
 ```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
 import { Resend } from 'resend';
@@ -331,19 +331,19 @@ You can create a Template from existing resources such as an HTML or [React Emai
 
 ## Duplicate a Template
 
-You can duplicate an existing Template in the Dashboard, [via the Templates API](/docs/api-reference/templates/duplicate-template), or with a [Templates CLI command](/docs/cli#templates).
+You can duplicate an existing Template in the Dashboard, [via the Templates API](/docs/api-reference/templates/duplicate-template.md), or with a [Templates CLI command](/docs/cli.md#templates).
 
 ![Duplicate a template](https://mintcdn.com/resend/8sUIFX1U2gAd2pqE/images/templates-introduction-duplicate.png?fit=max\&auto=format\&n=8sUIFX1U2gAd2pqE\&q=85\&s=05d9c56edfa20ed9e03b3a83c01cd130)
 
 ## Clone a Broadcast
 
-You can turn any sent [Broadcast](/docs/dashboard/broadcasts/introduction) into a reusable Template. Cloning reuses a Broadcast's design and content as a starting point for transactional emails.
+You can turn any sent [Broadcast](/docs/dashboard/broadcasts/introduction.md) into a reusable Template. Cloning reuses a Broadcast's design and content as a starting point for transactional emails.
 
 Locate your desired Broadcast in the [Broadcast dashboard](https://resend.com/broadcasts), click the more options button , and choose **Clone as Template**.
 
 ## Publish a Template
 
-By default, Templates are in a **draft** state. To use a Template to send emails, you must first **publish** it via the Dashboard, using the [Templates API](/docs/api-reference/templates/publish-template), or with a [Templates CLI command](/docs/cli#templates).
+By default, Templates are in a **draft** state. To use a Template to send emails, you must first **publish** it via the Dashboard, using the [Templates API](/docs/api-reference/templates/publish-template.md), or with a [Templates CLI command](/docs/cli.md#templates).
 
 ![Publish a template](https://mintcdn.com/resend/8sUIFX1U2gAd2pqE/images/templates-introduction-publish.png?fit=max\&auto=format\&n=8sUIFX1U2gAd2pqE\&q=85\&s=c39c711baf5719d8199ecdc3b2221480)
 
@@ -368,14 +368,14 @@ You can only send emails using the most recently published version of a Template
 
 To use an updated version of your Template, you must publish your Template again to create a new version for sending. Until you republish, any edits are only saved in draft form. After you publish a new version, your changes will then be reflected in any future emails using the Template.
 
-[Learn more about editing Templates in production safely with version history](/docs/dashboard/templates/version-history).
+[Learn more about editing Templates in production safely with version history](/docs/dashboard/templates/version-history.md).
 
 ## Delete a Template
 
-You can delete a Template via the Dashboard by clicking on the **Delete** button, [via the Templates API](/docs/api-reference/templates/delete-template), or with a [Templates CLI command](/docs/cli#templates).
+You can delete a Template via the Dashboard by clicking on the **Delete** button, [via the Templates API](/docs/api-reference/templates/delete-template.md), or with a [Templates CLI command](/docs/cli.md#templates).
 
 ![Delete a template](https://mintcdn.com/resend/8sUIFX1U2gAd2pqE/images/templates-introduction-delete.png?fit=max\&auto=format\&n=8sUIFX1U2gAd2pqE\&q=85\&s=5e7bc7c5e86e28f831c1d133d7961d73)
 
 ## API Reference
 
-For complete API documentation, see the [Templates API reference](/docs/api-reference/templates/create-template) and the [`template` parameter of the Sending API](/docs/api-reference/emails/send-email#param-template).
+For complete API documentation, see the [Templates API reference](/docs/api-reference/templates/create-template.md) and the [`template` parameter of the Sending API](/docs/api-reference/emails/send-email#param-template).

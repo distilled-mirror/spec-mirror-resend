@@ -8,7 +8,7 @@
 
 Retrieve the recipients of a broadcast, filtered by a single event `type` (for
 example everyone who `opened`, `clicked`, or `bounced`). Results are paginated
-with cursors. See [Pagination](/docs/api-reference/pagination) for how `after` and
+with cursors. See [Pagination](/docs/api-reference/pagination.md) for how `after` and
 `before` work.
 
 > [!NOTE]

@@ -57,7 +57,7 @@ chat.onNewMention(async (thread, message) => {
 });
 ```
 
-For more on receiving email attachments outside the Chat SDK, see [Receiving Attachments](/docs/dashboard/receiving/attachments).
+For more on receiving email attachments outside the Chat SDK, see [Receiving Attachments](/docs/dashboard/receiving/attachments.md).
 
 ## Try it yourself
 

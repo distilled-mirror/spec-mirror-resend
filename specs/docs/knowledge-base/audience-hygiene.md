@@ -85,7 +85,7 @@ Regularly cleaning your list of disengaged recipients helps maintain a positive 
 
 ### Automatically remove bounced recipients
 
-Using our [Webhooks](/docs/webhooks/introduction), you can be notified when a delivery bounces or gets marked as spam by the recipient.
+Using our [Webhooks](/docs/webhooks/introduction.md), you can be notified when a delivery bounces or gets marked as spam by the recipient.
 
 This allows you to proactively unsubscribe the recipient and prevent further sending. Resend will automatically suppress further deliveries to that email address but will not automatically unsubscribe it for you.
 

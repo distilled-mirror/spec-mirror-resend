@@ -52,12 +52,12 @@ While not exhaustive, here's a table listing different examples of emails and th
 
 You can send a Transactional email using:
 
-* Our [Send Email API](/docs/api-reference/emails/send-email)
-* Our [Batch Send API](/docs/api-reference/emails/send-batch-emails) (send up to 100 transactional emails in one API call)
+* Our [Send Email API](/docs/api-reference/emails/send-email.md)
+* Our [Batch Send API](/docs/api-reference/emails/send-batch-emails.md) (send up to 100 transactional emails in one API call)
 
 ### How to send a Marketing email
 
 You can send Marketing emails using:
 
-* [Resend no-code Editor](/docs/dashboard/broadcasts/introduction) – a collaborative interface for designing emails
-* [Broadcast API](/docs/api-reference/broadcasts/create-broadcast) – for programmatic sending
+* [Resend no-code Editor](/docs/dashboard/broadcasts/introduction.md) – a collaborative interface for designing emails
+* [Broadcast API](/docs/api-reference/broadcasts/create-broadcast.md) – for programmatic sending

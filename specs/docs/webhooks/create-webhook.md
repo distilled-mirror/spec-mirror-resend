@@ -41,9 +41,9 @@ On receiving an event, respond with an `HTTP 200 OK` to signal to Resend that th
 
 > [!TIP]
 >
-> The [Resend CLI](/docs/cli) has a built-in `webhooks listen` command that handles
+> The [Resend CLI](/docs/cli.md) has a built-in `webhooks listen` command that handles
 > local webhook development. It starts a server, registers a temporary webhook,
-> and streams events to your terminal. See the [CLI reference](/docs/cli#webhooks)
+> and streams events to your terminal. See the [CLI reference](/docs/cli.md#webhooks)
 > for setup instructions.
 
 **2. Add a webhook in Resend**
@@ -57,7 +57,7 @@ Navigate to the [Webhooks page](https://resend.com/webhooks), then select **Add 
 
 > [!NOTE]
 >
-> Resend also supports managing webhooks via the API or the SDKs. View the [API reference](/docs/api-reference/webhooks/create-webhook) for more details.
+> Resend also supports managing webhooks via the API or the SDKs. View the [API reference](/docs/api-reference/webhooks/create-webhook.md) for more details.
 
 **3. Test your local endpoint**
 
@@ -97,7 +97,7 @@ You can also see the webhook details in the dashboard.
 > [!NOTE]
 >
 > View all possible [event types and their webhook payload
-> responses](/docs/webhooks/event-types).
+> responses](/docs/webhooks/event-types.md).
 
 **4. Update and deploy your production endpoint**
 
@@ -181,11 +181,11 @@ Once your webhook endpoint is deployed to production, you can register it in the
 > and a button to replay the webhook event and get it sent to
 > the configured webhook endpoint.
 >
-> For more details, see [Retries and Replays](/docs/webhooks/retries-and-replays).
+> For more details, see [Retries and Replays](/docs/webhooks/retries-and-replays.md).
 
 ## API Reference
 
-For complete API documentation, see the [Webhooks API reference](/docs/api-reference/webhooks/create-webhook).
+For complete API documentation, see the [Webhooks API reference](/docs/api-reference/webhooks/create-webhook.md).
 
 ## Examples
 

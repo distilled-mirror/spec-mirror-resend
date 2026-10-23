@@ -29,16 +29,16 @@ For automated processing, use the [Attachments API](#process-attachments-program
 >
 > Webhooks do not include the actual content of attachments, only their
 > metadata. You must call the [Attachments
-> API](/docs/api-reference/emails/list-received-email-attachments) to retrieve the
+> API](/docs/api-reference/emails/list-received-email-attachments.md) to retrieve the
 > content. This design choice supports large attachments in serverless
 > environments that have limited request body sizes.
 
 Users can forward airplane tickets, receipts, and expenses to you. Then, you can extract key information from attachments and use that data.
 
-To do this, call the [Attachments API](/docs/api-reference/emails/list-received-email-attachments) after receiving the webhook event. That API will return a list of attachments with their metadata and a `download_url` that you can use to download the actual content. To retrieve a single attachment, use [Retrieve Attachment](/docs/api-reference/emails/retrieve-received-email-attachment).
+To do this, call the [Attachments API](/docs/api-reference/emails/list-received-email-attachments.md) after receiving the webhook event. That API will return a list of attachments with their metadata and a `download_url` that you can use to download the actual content. To retrieve a single attachment, use [Retrieve Attachment](/docs/api-reference/emails/retrieve-received-email-attachment.md).
 
 Note that the `download_url` is valid for 1 hour. After that, you will need to call the
-[Attachments API](/docs/api-reference/emails/list-received-email-attachments)
+[Attachments API](/docs/api-reference/emails/list-received-email-attachments.md)
 again to get a new `download_url`. You can also check the `expires_at` field on
 each attachment to see exactly when it will expire.
 
@@ -239,4 +239,4 @@ async fn example(
 }
 ```
 
-Once you process attachments, you may want to forward the email to another address. Learn more about [forwarding emails](/docs/dashboard/receiving/forward-emails).
+Once you process attachments, you may want to forward the email to another address. Learn more about [forwarding emails](/docs/dashboard/receiving/forward-emails.md).

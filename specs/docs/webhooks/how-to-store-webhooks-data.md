@@ -46,16 +46,16 @@ With webhook data in your database, you can build powerful automations:
 
 ## How to Store Webhook Data
 
-While you can always [build your own webhook handler](/docs/webhooks/introduction), it requires development resources.
+While you can always [build your own webhook handler](/docs/webhooks/introduction.md), it requires development resources.
 
-You can get started quickly with the [Resend Webhook Ingester](/docs/webhooks/ingester). It's an open-source, ready-to-deploy solution that handles all the complexity for you:
+You can get started quickly with the [Resend Webhook Ingester](/docs/webhooks/ingester.md). It's an open-source, ready-to-deploy solution that handles all the complexity for you:
 
 * **One-click deployment** to Vercel, Railway, or Render
 * **Signature verification** built-in using Svix
 * **Idempotent storage** that handles duplicate deliveries
 * **8 database connectors** including PostgreSQL, MySQL, MongoDB, and data warehouses
 
-> **[Webhook Ingester](/docs/webhooks/ingester)**
+> **[Webhook Ingester](/docs/webhooks/ingester.md)**
 >
 > Deploy a production-ready webhook storage solution in minutes
 
@@ -163,18 +163,18 @@ High-volume senders can generate significant data. Plan for:
 
 ## Learn More
 
-> **[Webhook Ingester](/docs/webhooks/ingester)**
+> **[Webhook Ingester](/docs/webhooks/ingester.md)**
 >
 > Deploy a production-ready webhook storage solution
 
-> **[Webhook Event Types](/docs/webhooks/event-types)**
+> **[Webhook Event Types](/docs/webhooks/event-types.md)**
 >
 > See all available event types and their payloads
 
-> **[Verify Webhooks](/docs/webhooks/verify-webhooks-requests)**
+> **[Verify Webhooks](/docs/webhooks/verify-webhooks-requests.md)**
 >
 > Learn about webhook signature verification
 
-> **[Webhook Introduction](/docs/webhooks/introduction)**
+> **[Webhook Introduction](/docs/webhooks/introduction.md)**
 >
 > Get started with webhooks in your application

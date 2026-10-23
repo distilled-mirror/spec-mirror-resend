@@ -15,7 +15,7 @@ The Email ID.
 > [!NOTE]
 >
 > See all available `last_event` types in [the Email Events
-> overview](/docs/dashboard/emails/manage-emails#understand-email-events).
+> overview](/docs/dashboard/emails/manage-emails.md#understand-email-events).
 
 ```js Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
 import { Resend } from 'resend';

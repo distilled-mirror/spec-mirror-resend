@@ -48,7 +48,7 @@ This credential is used by the main **Resend** node for all API operations.
 >
 > By default, you can only send emails to your own email address using the
 > `onboarding@resend.dev` sender domain. To send to other recipients, [add a
-> custom domain](/docs/dashboard/domains/introduction) to your Resend account.
+> custom domain](/docs/dashboard/domains/introduction.md) to your Resend account.
 
 ## Human in the Loop (Send and Wait)
 

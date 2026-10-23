@@ -10,7 +10,7 @@
 >
 > If you signed up with Google or GitHub, you can't change your account's email
 > address on the Profile page. Instead, [invite the new email address as a team
-> member](/docs/dashboard/settings/team) with the Admin role. Once the new user can
+> member](/docs/dashboard/settings/team.md) with the Admin role. Once the new user can
 > sign in, you can remove the old user from the team. Your API keys, domains,
 > and settings stay with the team.
 

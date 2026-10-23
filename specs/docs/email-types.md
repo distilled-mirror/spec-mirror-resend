@@ -9,7 +9,7 @@
 Resend provides an API, command-line interface (CLI), webhooks, and automations to support both types of emails you need to send:
 
 * **Transactional emails:** personalized, event-driven communication
-* **Marketing campaigns:** bulk email [Broadcasts](/docs/dashboard/broadcasts/introduction) distributed to a contact list
+* **Marketing campaigns:** bulk email [Broadcasts](/docs/dashboard/broadcasts/introduction.md) distributed to a contact list
 
 All of these email features and activities are also available through a user-friendly Dashboard and through AI tooling for agents. This allows your entire team to create and send emails, update automations, manage contacts, track performance, and more.
 
@@ -25,9 +25,9 @@ A **Transactional email** is a message triggered by a user action or required fo
 
 Typically, transactional emails are **1-to-1** messages sent in response to a specific event.
 
-With a Resend Transactional Plan, you can send transactional emails from your application using the [Resend API](/docs/api-reference/introduction), the [Resend CLI](/docs/cli), or with [SMTP](/docs/send-with-smtp). Resend also provides an [MCP server](/docs/mcp-server), [agent skills](/docs/react-email-skill), and more to work with your preferred [AI builder and tooling](/docs/ai-onboarding).
+With a Resend Transactional Plan, you can send transactional emails from your application using the [Resend API](/docs/api-reference/introduction.md), the [Resend CLI](/docs/cli.md), or with [SMTP](/docs/send-with-smtp.md). Resend also provides an [MCP server](/docs/mcp-server.md), [agent skills](/docs/react-email-skill.md), and more to work with your preferred [AI builder and tooling](/docs/ai-onboarding.md).
 
-You can also trigger emails using [webhooks](/docs/webhooks/introduction), and even [create steps to automate emails](/docs/dashboard/automations/introduction) based on custom events from your application.
+You can also trigger emails using [webhooks](/docs/webhooks/introduction.md), and even [create steps to automate emails](/docs/dashboard/automations/introduction.md) based on custom events from your application.
 
 ## Send bulk marketing emails
 
@@ -43,11 +43,11 @@ Examples of marketing emails:
 
 Marketing emails are typically **1-to-many** messages, sent when you want to reach a larger audience (e.g., newsletters).
 
-With a Resend Marketing Plan, you can send [Broadcasts](/docs/dashboard/broadcasts/introduction) to your subscribers using a no-code editor in your Resend Dashboard, or from the [Broadcast API](https://resend.com/docs/api-reference/broadcasts/create-broadcast).
+With a Resend Marketing Plan, you can send [Broadcasts](/docs/dashboard/broadcasts/introduction.md) to your subscribers using a no-code editor in your Resend Dashboard, or from the [Broadcast API](https://resend.com/docs/api-reference/broadcasts/create-broadcast.md).
 
-When you use Broadcasts, you get tools for [managing your contacts](/docs/dashboard/contacts/introduction), [tracking performance](/docs/dashboard/broadcasts/performance-tracking), and [customizing your personal unsubscribe page](/docs/dashboard/settings/unsubscribe-page). Resend also handles all the queuing, throttling, and scheduling for you so that you don't have to roll your own infrastructure.
+When you use Broadcasts, you get tools for [managing your contacts](/docs/dashboard/contacts/introduction.md), [tracking performance](/docs/dashboard/broadcasts/performance-tracking.md), and [customizing your personal unsubscribe page](/docs/dashboard/settings/unsubscribe-page.md). Resend also handles all the queuing, throttling, and scheduling for you so that you don't have to roll your own infrastructure.
 
-Marketing plans also allow you to create [Resend automations](/docs/dashboard/automations/introduction) for repeatable actions like welcoming new subscribers and updating your contact list. Resources such as the [Resend MCP server](/docs/mcp-server), [agent skills](/docs/react-email-skill), and more are all available to your preferred [AI builders and tooling](/docs/ai-onboarding) to help you send and manage your marketing emails.
+Marketing plans also allow you to create [Resend automations](/docs/dashboard/automations/introduction.md) for repeatable actions like welcoming new subscribers and updating your contact list. Resources such as the [Resend MCP server](/docs/mcp-server.md), [agent skills](/docs/react-email-skill.md), and more are all available to your preferred [AI builders and tooling](/docs/ai-onboarding.md) to help you send and manage your marketing emails.
 
 ## Send a combination of emails
 
@@ -56,7 +56,7 @@ It is common to need to send both transactional and marketing emails to your use
 Some emails do not fit neatly into one category:
 
 * Marketing emails can be **1-to-1**, based on personalized user activity (e.g., abandoned cart reminders, drip marketing campaigns). You can use Resend's transactional APIs and automations to send these individual marketing emails, as long as proper consent and compliance regulations are followed.
-* Resend's [batch sending API feature](/docs/dashboard/emails/batch-sending) can send multiple transactional emails at once (up to 100), even to different recipients with unique content, instead of making individual API requests for each email.
+* Resend's [batch sending API feature](/docs/dashboard/emails/batch-sending.md) can send multiple transactional emails at once (up to 100), even to different recipients with unique content, instead of making individual API requests for each email.
 
 You can either go with Resend's opinionated, full-featured solutions or design your own architecture from the ground up. You can use all of Resend's features for any type of email sending that you can build. This includes APIs, CLI commands, webhooks, and automations, plus AI tools and Dashboard controls.
 
@@ -64,24 +64,24 @@ Resend allows you to choose both a Transactional and a Marketing plan, each at t
 
 ## Learn more
 
-> **[Send Email API](/docs/api-reference/emails/send-email)**
+> **[Send Email API](/docs/api-reference/emails/send-email.md)**
 >
 > Send, list, retrieve, update, and cancel transactional emails with the Send
 > Email API.
 
-> **[Broadcasts](/docs/dashboard/broadcasts/introduction)**
+> **[Broadcasts](/docs/dashboard/broadcasts/introduction.md)**
 >
 > Create and send marketing emails with Resend's no-code editor or the
 > Broadcasts API.
 
 ## Next steps
 
-> **[Import or add email contacts](/docs/dashboard/contacts/add-contacts)**
+> **[Import or add email contacts](/docs/dashboard/contacts/add-contacts.md)**
 >
 > Add existing subscribers to your Resend contact list programmatically,
 > manually, or by uploading a `.csv` file.
 
-> **[Quickstart tutorials](/docs/introduction)**
+> **[Quickstart tutorials](/docs/introduction.md)**
 >
 > Send your first transactional email with a quick tutorial for your language
 > or framework.

@@ -6,7 +6,7 @@
 
 > Customize your unsubscribe page
 
-When using Resend Broadcasts or Automations, Resend can [automatically handle the unsubscribe flow for you](/docs/dashboard/contacts/managing-unsubscribe-list).
+When using Resend Broadcasts or Automations, Resend can [automatically handle the unsubscribe flow for you](/docs/dashboard/contacts/managing-unsubscribe-list.md).
 
 You can customize your unsubscribe page to match your brand. Your unsubscribe page is used for every domain on your team.
 

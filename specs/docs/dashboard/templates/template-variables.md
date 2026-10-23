@@ -19,7 +19,7 @@ To add a custom variable to your Template, select **Variable** in the commands p
 ![variable dropdown](https://mintcdn.com/resend/j2QOddewHJcRH5o-/images/templates-introduction-variables-custom.png?fit=max\&auto=format\&n=j2QOddewHJcRH5o-\&q=85\&s=88a202c3830e629559bc01785a33a138)
 
 You can also define custom variables when you [create a Template via the
-API](/docs/dashboard/templates/create-template#add-a-template-with-the-api). The
+API](/docs/dashboard/templates/create-template.md#add-a-template-with-the-api). The
 payload can optionally include variables to be used in the Template.
 
 ```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
@@ -258,7 +258,7 @@ Each variable is an object with the following properties:
 * `type`: The type of the variable (`'string'` or `'number'`).
 * `fallback_value`: The fallback value of the variable. If no fallback value is provided, you must provide a value for the variable when sending an email using the Template.
 
-[See the API reference for more details](/docs/api-reference/templates/create-template).
+[See the API reference for more details](/docs/api-reference/templates/create-template.md).
 
 ## Fallback values
 
@@ -492,14 +492,14 @@ curl -X POST 'https://api.resend.com/emails' \
 >
 > When sending a Template, the payload for `from`, `subject`, and `reply_to` take precedence over the Template's defaults for these fields. If the Template does not provide a default value for these fields, you must provide them in the payload.
 
-Learn more about [sending emails](/docs/api-reference/emails/send-email) or sending [batch emails](/docs/api-reference/emails/send-batch-emails) with Templates via the API.
+Learn more about [sending emails](/docs/api-reference/emails/send-email.md) or sending [batch emails](/docs/api-reference/emails/send-batch-emails.md) with Templates via the API.
 
 ## Validation errors
 
 When sending an email using a Template, the Template variables will be replaced with the actual values. If a variable is not provided, the fallback value will be used.
 
-If no fallback value is provided, the email will not be sent and a [validation error](/docs/api-reference/errors) will be returned.
+If no fallback value is provided, the email will not be sent and a [validation error](/docs/api-reference/errors.md) will be returned.
 
 ## API Reference
 
-For complete API documentation, see the [Templates API reference](/docs/api-reference/templates/create-template) and the [`template` parameter of the Sending API](/docs/api-reference/emails/send-email#param-template).
+For complete API documentation, see the [Templates API reference](/docs/api-reference/templates/create-template.md) and the [`template` parameter of the Sending API](/docs/api-reference/emails/send-email#param-template).

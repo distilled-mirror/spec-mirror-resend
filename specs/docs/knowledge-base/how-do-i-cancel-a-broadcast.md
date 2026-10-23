@@ -18,7 +18,7 @@ You can cancel a Broadcast that is scheduled or still sending. When you cancel a
 
 Resend then returns a scheduled Broadcast to `draft`, or halts delivery to the remaining recipients if the Broadcast is sending.
 
-You can also [cancel a Broadcast via the API](/docs/api-reference/broadcasts/cancel-broadcast).
+You can also [cancel a Broadcast via the API](/docs/api-reference/broadcasts/cancel-broadcast.md).
 
 > [!NOTE]
 >
@@ -27,5 +27,5 @@ You can also [cancel a Broadcast via the API](/docs/api-reference/broadcasts/can
 
 ## Related pages
 
-* [Managing Broadcasts](/docs/dashboard/broadcasts/introduction)
-* [Broadcast statuses](/docs/dashboard/broadcasts/manage-broadcasts#understand-broadcast-statuses)
+* [Managing Broadcasts](/docs/dashboard/broadcasts/introduction.md)
+* [Broadcast statuses](/docs/dashboard/broadcasts/manage-broadcasts.md#understand-broadcast-statuses)

@@ -15,7 +15,7 @@ First, log in to your [Resend Account](https://resend.com/login) and [add a doma
 > [!TIP]
 >
 > It is [best practice to use a
-> subdomain](/docs/knowledge-base/is-it-better-to-send-emails-from-a-subdomain-or-the-root-domain)
+> subdomain](/docs/knowledge-base/is-it-better-to-send-emails-from-a-subdomain-or-the-root-domain.md)
 > (updates.example.com) instead of the root domain (example.com). Using a
 > subdomain allows for proper reputation segmentation based on topics or purpose
 > (e.g. marketing) and is especially important if receiving emails with Resend.
@@ -133,7 +133,7 @@ If you want to receive emails at your domain, toggle the "Receiving" switch on t
 > we strongly recommend verifying a subdomain (`subdomain.example.com`) instead
 > of the root domain (`example.com`). Learn more about [avoiding conflicts with
 > your existing MX
-> records](/docs/knowledge-base/how-do-i-avoid-conflicting-with-my-mx-records).
+> records](/docs/knowledge-base/how-do-i-avoid-conflicting-with-my-mx-records.md).
 
 > [!NOTE]
 >
@@ -159,7 +159,7 @@ Below is a mapping of the record fields from Resend to Strato:
 | Mail server | Content | `inbound-smtp.us-east-1.amazonaws.com.` |
 | Priority | Priority | `Low` |
 
-After verifying your domain, create a webhook to process incoming emails. For help setting up a webhook, how to access email data and attachments, forward emails, and more, see [our guide on receiving emails with Resend](/docs/dashboard/receiving/introduction).
+After verifying your domain, create a webhook to process incoming emails. For help setting up a webhook, how to access email data and attachments, forward emails, and more, see [our guide on receiving emails with Resend](/docs/dashboard/receiving/introduction.md).
 
 ## Complete Verification
 
@@ -175,4 +175,4 @@ If your domain is not successfully verified, these are some common troubleshooti
 
 > **It has been longer than 72 hours and my domain is still Pending.**
 >
-> [Review our guide on a domain not verifying](/docs/knowledge-base/what-if-my-domain-is-not-verifying).
+> [Review our guide on a domain not verifying](/docs/knowledge-base/what-if-my-domain-is-not-verifying.md).

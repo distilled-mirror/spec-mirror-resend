@@ -8,7 +8,7 @@
 
 With [React Email](https://react.email), write email templates as React components, with full TypeScript and [Tailwind support](https://react.email/docs/components/tailwind), and a local preview server. Preview your emails in real time with hot reloading, and render to email-friendly HTML or plain text when you're ready to send.
 
-This guide walks through setting up a React Email project, writing a template, and uploading it to [Resend Templates](/docs/dashboard/templates/introduction) with the [Resend CLI](/docs/cli) so the rest of your team can collaborate on it in the dashboard.
+This guide walks through setting up a React Email project, writing a template, and uploading it to [Resend Templates](/docs/dashboard/templates/introduction.md) with the [Resend CLI](/docs/cli.md) so the rest of your team can collaborate on it in the dashboard.
 
 **1. Set up a React Email project**
 
@@ -186,7 +186,7 @@ await resend.emails.send({
 
 **6. Upload your template to Resend**
 
-[Templates](/docs/dashboard/templates/introduction) are stored on Resend and can be referenced when you send transactional emails. With Templates, define the structure and layout of a message and optionally include custom variables which will be replaced with the actual values when sending the email.
+[Templates](/docs/dashboard/templates/introduction.md) are stored on Resend and can be referenced when you send transactional emails. With Templates, define the structure and layout of a message and optionally include custom variables which will be replaced with the actual values when sending the email.
 
 Set up the Resend integration using the React Email CLI:
 
@@ -208,15 +208,15 @@ If you want to remove the Resend integration, run `npx react-email@latest resend
 >
 > Browse every available component — Button, Container, Tailwind, and more.
 
-> **[Resend CLI reference](/docs/cli)**
+> **[Resend CLI reference](/docs/cli.md)**
 >
 > See every CLI command and flag, including templates, automations, and
 > webhooks.
 
-> **[Templates introduction](/docs/dashboard/templates/introduction)**
+> **[Templates introduction](/docs/dashboard/templates/introduction.md)**
 >
 > Learn how Templates, variables, and version history work in Resend.
 
-> **[Embed the React Email editor](/docs/knowledge-base/embed-react-email-editor)**
+> **[Embed the React Email editor](/docs/knowledge-base/embed-react-email-editor.md)**
 >
 > Add the open-source visual editor to your own app.

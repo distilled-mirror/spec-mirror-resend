@@ -58,25 +58,15 @@ The guide is meant as a general plan, but always pay careful attention to your d
 
 Domain Type
 
-<input type="radio" name="domainType" value="new" checked={domainType === 'new'} onChange={(e => setDomainType(e.target.value))} />
-
 New Domain
-
-<input type="radio" name="domainType" value="existing" checked={domainType === 'existing'} onChange={(e => setDomainType(e.target.value))} />
 
 Existing Domain
 
 Target Daily Volume
 
-<input id="targetVolume" type="number" min="100" max="1000000" step="100" value={targetVolume} onChange={(e => setTargetVolume(Number(e.target.value)))} placeholder="e.g., 5000" />
-
 Start Date
 
-<input id="startDate" type="date" value={startDate} onChange={(e => setStartDate(e.target.value))} />
-
 Target Date (optional)
-
-<input id="targetDate" type="date" value={targetDate} onChange={(e => setTargetDate(e.target.value))} min={startDate} />
 
 Warm-up Duration
 
@@ -111,7 +101,7 @@ In order for a Dedicated IP to be beneficial or useful, you first need to establ
 
 Resend provides an automatic warm-up process so that you can focus on sending.
 
-[Learn more about requesting a Dedicated IP](https://resend.com/docs/knowledge-base/how-do-dedicated-ips-work#how-to-request-a-dedicated-ip).
+[Learn more about requesting a Dedicated IP](https://resend.com/docs/knowledge-base/how-do-dedicated-ips-work.md#how-to-request-a-dedicated-ip).
 
 # Third-party warm-up services
 

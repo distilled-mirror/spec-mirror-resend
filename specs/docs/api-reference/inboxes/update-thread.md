@@ -7,9 +7,9 @@
 > Mark a thread read or unread, or move it to another folder.
 
 To change a thread's labels, use
-[Add Thread Labels](/docs/api-reference/inboxes/add-thread-labels),
-[Set Thread Labels](/docs/api-reference/inboxes/set-thread-labels), or
-[Remove Thread Label](/docs/api-reference/inboxes/remove-thread-label).
+[Add Thread Labels](/docs/api-reference/inboxes/add-thread-labels.md),
+[Set Thread Labels](/docs/api-reference/inboxes/set-thread-labels.md), or
+[Remove Thread Label](/docs/api-reference/inboxes/remove-thread-label.md).
 
 ## Path Parameters
 
@@ -183,6 +183,30 @@ async fn main() -> Result<()> {
     .await?;
 
   Ok(())
+}
+```
+
+```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
+import com.resend.Resend;
+import com.resend.core.exception.ResendException;
+import com.resend.services.inboxes.model.MoveInboxThreadFolder;
+import com.resend.services.inboxes.model.UpdateInboxThreadOptions;
+import com.resend.services.inboxes.model.UpdateInboxThreadResponseSuccess;
+
+public class Main {
+    public static void main(String[] args) throws ResendException {
+        Resend resend = new Resend("re_xxxxxxxxx");
+
+        UpdateInboxThreadOptions params = UpdateInboxThreadOptions.builder()
+                .read(true)
+                .folder(MoveInboxThreadFolder.SPAM)
+                .build();
+
+        UpdateInboxThreadResponseSuccess data = resend.inboxes().threads().update(
+                "b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1",
+                "4d8e2a1c-9b3f-4c6d-8a21-3e5f7c9c0d12",
+                params);
+    }
 }
 ```
 

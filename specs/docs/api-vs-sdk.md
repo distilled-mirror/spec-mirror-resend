@@ -12,8 +12,8 @@ for Node.js, PHP, Python, Ruby, Go, Rust, Java, and .NET.
 
 > [!NOTE]
 >
-> **Recommendation:** Use a [Resend SDK](/docs/sdks) for your language. Call the [raw
-> API](/docs/api-reference/introduction) directly only when no SDK exists for your
+> **Recommendation:** Use a [Resend SDK](/docs/sdks.md) for your language. Call the [raw
+> API](/docs/api-reference/introduction.md) directly only when no SDK exists for your
 > stack.
 
 ## Choosing between the SDK and API
@@ -43,18 +43,18 @@ If you do call the API directly, remember to set the required
 
 ## Next steps
 
-> **[Official SDKs](/docs/sdks)**
+> **[Official SDKs](/docs/sdks.md)**
 >
 > Install the SDK for your language.
 
-> **[Quickstart](/docs/introduction)**
+> **[Quickstart](/docs/introduction.md)**
 >
 > Send your first email in minutes.
 
-> **[API Reference](/docs/api-reference/introduction)**
+> **[API Reference](/docs/api-reference/introduction.md)**
 >
 > Full HTTP API documentation.
 
-> **[MCP Server](/docs/mcp-server)**
+> **[MCP Server](/docs/mcp-server.md)**
 >
 > Give your AI agent access to Resend.

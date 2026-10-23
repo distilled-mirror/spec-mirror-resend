@@ -9,7 +9,7 @@
 > [!NOTE]
 >
 > This endpoint only updates the API key's name. To change an API key's
-> [permission or domain](/docs/dashboard/api-keys/introduction#edit-api-key-details),
+> [permission or domain](/docs/dashboard/api-keys/introduction.md#edit-api-key-details),
 > edit the key in the [Resend Dashboard](https://resend.com/api-keys).
 
 ## Path Parameters

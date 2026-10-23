@@ -12,18 +12,18 @@ You can add a Contact in several different ways:
 
 * [CSV upload](#add-contacts-by-uploading-a-csv)
 * [API](#add-contacts-programmatically-via-api)
-* [CLI](/docs/cli#contacts)
+* [CLI](/docs/cli.md#contacts)
 * [manually in the Dashboard](#add-contacts-manually)
 
 > [!NOTE]
 >
 > Contacts are also created automatically when an
-> [Automation](/docs/dashboard/automations/introduction) runs for an email address
+> [Automation](/docs/dashboard/automations/introduction.md) runs for an email address
 > that doesn't yet exist in your Contact list.
 
 ### Add Contacts programmatically via API
 
-When you create Contacts programmatically using the [Contacts API](/docs/api-reference/contacts/create-contact), an email address is the only required property. You can optionally pass [Contact properties available by default](/docs/dashboard/contacts/properties#included-properties), or any [custom Contact properties](/docs/dashboard/contacts/properties#add-custom-contact-properties) you have previously defined.
+When you create Contacts programmatically using the [Contacts API](/docs/api-reference/contacts/create-contact.md), an email address is the only required property. You can optionally pass [Contact properties available by default](/docs/dashboard/contacts/properties.md#included-properties), or any [custom Contact properties](/docs/dashboard/contacts/properties.md#add-custom-contact-properties) you have previously defined.
 
 ```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
 import { Resend } from 'resend';
@@ -148,7 +148,7 @@ curl -X POST 'https://api.resend.com/contacts' \
 }'
 ```
 
-Once a Contact is created, you can update it using the [update Contact](/docs/api-reference/contacts/update-contact) endpoint. There are also endpoints to [add the Contact to a Segment](/docs/api-reference/contacts/add-contact-to-segment) and to [update Topics for a Contact](/docs/api-reference/contacts/update-contact-topics).
+Once a Contact is created, you can update it using the [update Contact](/docs/api-reference/contacts/update-contact.md) endpoint. There are also endpoints to [add the Contact to a Segment](/docs/api-reference/contacts/add-contact-to-segment.md) and to [update Topics for a Contact](/docs/api-reference/contacts/update-contact-topics.md).
 
 ### Add Contacts by uploading a .csv
 
@@ -163,9 +163,9 @@ If you already have a list of existing email addresses, you can add multiple Con
 **4. Map the fields you want to use.**
 
 You can map the fields to the [included Contact
-properties](/docs/dashboard/contacts/properties#included-properties) such as
+properties](/docs/dashboard/contacts/properties.md#included-properties) such as
 `email` and `first_name`, or any [custom Contact
-properties](/docs/dashboard/contacts/properties#add-custom-contact-properties)
+properties](/docs/dashboard/contacts/properties.md#add-custom-contact-properties)
 you've already created.
 
 **5. Optionally add the Contacts to an existing Segment.**
@@ -204,4 +204,4 @@ have the option to unsubscribe from your unsubscribe page.
 
 ## API Reference
 
-For complete API documentation, see the [Contacts API reference](/docs/api-reference/contacts/create-contact).
+For complete API documentation, see the [Contacts API reference](/docs/api-reference/contacts/create-contact.md).

@@ -7,7 +7,7 @@
 > Retrieve a single message from a thread.
 
 Returns one message of a thread. Each item from [List Thread
-Emails](/docs/api-reference/inboxes/list-thread-emails) has this shape.
+Emails](/docs/api-reference/inboxes/list-thread-emails.md) has this shape.
 
 ## Path Parameters
 
@@ -16,7 +16,7 @@ The Inbox ID or the inbox email address, such as `support@example.com`.
 The Thread ID.
 
 The Email ID, as returned by [List Thread
-Emails](/docs/api-reference/inboxes/list-thread-emails) in `data[].id`.
+Emails](/docs/api-reference/inboxes/list-thread-emails.md) in `data[].id`.
 
 ## Response Fields
 
@@ -175,6 +175,23 @@ async fn main() -> Result<()> {
     .await?;
 
   Ok(())
+}
+```
+
+```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
+import com.resend.Resend;
+import com.resend.core.exception.ResendException;
+import com.resend.services.inboxes.model.GetInboxThreadEmailResponseSuccess;
+
+public class Main {
+    public static void main(String[] args) throws ResendException {
+        Resend resend = new Resend("re_xxxxxxxxx");
+
+        GetInboxThreadEmailResponseSuccess data = resend.inboxes().threads().emails().get(
+                "b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1",
+                "4d8e2a1c-9b3f-4c6d-8a21-3e5f7c9c0d12",
+                "5b1a9f47-2c8d-4e6f-9a03-1d2e3f4a5b60");
+    }
 }
 ```
 

@@ -6,6 +6,8 @@
 
 > Learn how to send your first email using Vercel Functions.
 
+Use this pre-built prompt to get started faster.
+
 # Send Email with Resend Node.js SDK
 
 **Purpose:** Enforce only the **current** and **correct** instructions for sending emails using the [Resend](https://resend.com/) Node.js SDK.
@@ -277,8 +279,8 @@ For the entire docs for Resend, see [https://resend.com/docs/llms-full.txt](http
 
 Before you start, you'll need:
 
-* A Resend [API key](/docs/create-an-api-key)
-* A [verified domain](/docs/add-a-domain)
+* A Resend [API key](/docs/create-an-api-key.md)
+* A [verified domain](/docs/add-a-domain.md)
 
 Make sure you have the latest version of the [Vercel CLI](https://vercel.com/docs/cli#installing-vercel-cli) installed.
 

@@ -8,7 +8,7 @@
 
 Labels already on the thread stay on it. If any label ID is not found, the
 request returns a `404` and nothing changes. To replace the thread's labels
-instead, use [Set Thread Labels](/docs/api-reference/inboxes/set-thread-labels).
+instead, use [Set Thread Labels](/docs/api-reference/inboxes/set-thread-labels.md).
 
 ## Path Parameters
 
@@ -136,6 +136,28 @@ async fn main() -> Result<()> {
     .await?;
 
   Ok(())
+}
+```
+
+```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
+import com.resend.Resend;
+import com.resend.core.exception.ResendException;
+import com.resend.services.inboxes.model.AddInboxThreadLabelsOptions;
+import com.resend.services.inboxes.model.AddInboxThreadLabelsResponseSuccess;
+
+public class Main {
+    public static void main(String[] args) throws ResendException {
+        Resend resend = new Resend("re_xxxxxxxxx");
+
+        AddInboxThreadLabelsOptions params = AddInboxThreadLabelsOptions.builder()
+                .labels("7f9c1d2e-4a6b-4c3d-8e15-9b0a7c6d5e34")
+                .build();
+
+        AddInboxThreadLabelsResponseSuccess data = resend.inboxes().threads().addLabels(
+                "b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1",
+                "4d8e2a1c-9b3f-4c6d-8a21-3e5f7c9c0d12",
+                params);
+    }
 }
 ```
 

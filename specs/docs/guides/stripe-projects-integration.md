@@ -303,13 +303,13 @@ client = Resend.client(api_key: System.get_env("RESEND_API_KEY"))
 IO.inspect(result)
 ```
 
-See the full quickstart for [Node.js](/docs/send-with-nodejs), [PHP](/docs/send-with-php), [Python](/docs/send-with-python), [Ruby](/docs/send-with-ruby), [Go](/docs/send-with-go), [Rust](/docs/send-with-rust), [Java](/docs/send-with-java), [.NET](/docs/send-with-dotnet), or [Elixir](/docs/send-with-elixir).
+See the full quickstart for [Node.js](/docs/send-with-nodejs.md), [PHP](/docs/send-with-php.md), [Python](/docs/send-with-python.md), [Ruby](/docs/send-with-ruby.md), [Go](/docs/send-with-go.md), [Rust](/docs/send-with-rust.md), [Java](/docs/send-with-java.md), [.NET](/docs/send-with-dotnet.md), or [Elixir](/docs/send-with-elixir.md).
 
 ## Add a domain
 
 Resend sends emails using a domain you own. Before you can send or receive emails with Resend to addresses other than your own, you must have a verified domain associated with your account.
 
-To send from your own domain, and to any recipient, [add and verify a domain](/docs/add-a-domain).
+To send from your own domain, and to any recipient, [add and verify a domain](/docs/add-a-domain.md).
 
 ## Billing
 
@@ -337,7 +337,7 @@ If Stripe has no payment method for you yet, the CLI stops and gives you a Check
 
 ## Next steps
 
-* Send your first email with [Next.js](/docs/send-with-nextjs).
-* Explore [receiving emails](/docs/dashboard/receiving/introduction) with Resend.
-* Use Resend [Templates](/docs/dashboard/templates/introduction) to simplify your email sending and design.
-* Create your first Resend [Automation](/docs/dashboard/automations/introduction).
+* Send your first email with [Next.js](/docs/send-with-nextjs.md).
+* Explore [receiving emails](/docs/dashboard/receiving/introduction.md) with Resend.
+* Use Resend [Templates](/docs/dashboard/templates/introduction.md) to simplify your email sending and design.
+* Create your first Resend [Automation](/docs/dashboard/automations/introduction.md).

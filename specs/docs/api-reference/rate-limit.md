@@ -47,7 +47,7 @@ When you exceed your quota limits, you'll receive a `429` response error code wi
 * **`daily_quota_exceeded`** - You have reached your daily email quota. [Upgrade your plan](https://resend.com/settings/billing) to remove the daily quota limit or wait for the quota to reset at midnight UTC.
 * **`monthly_quota_exceeded`** - You have reached your monthly email quota. [Upgrade your plan](https://resend.com/settings/billing) to increase the monthly email quota.
 
-Both sent and received emails count towards these quotas. See the full list of [error codes](/docs/api-reference/errors) for more details.
+Both sent and received emails count towards these quotas. See the full list of [error codes](/docs/api-reference/errors.md) for more details.
 
 ## Contact Quotas
 

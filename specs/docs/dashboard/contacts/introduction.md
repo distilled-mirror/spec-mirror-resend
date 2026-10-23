@@ -8,7 +8,7 @@
 
 ## Global Contact list
 
-Resend manages a global Contact list for your [Broadcasts](/docs/dashboard/broadcasts/introduction) with tools for viewing, organizing, and updating your subscribers.
+Resend manages a global Contact list for your [Broadcasts](/docs/dashboard/broadcasts/introduction.md) with tools for viewing, organizing, and updating your subscribers.
 
 Contacts are global entities linked to a specific email address. Add additional [Contact properties](#contact-properties), such as a first name, to store additional information and personalize your marketing emails.
 
@@ -24,7 +24,7 @@ Each Contact:
 > [!TIP]
 >
 > If you previously used our Audience model, learn how to [migrate to the new
-> Contacts model](/docs/dashboard/contacts/migrating-from-audiences-to-segments).
+> Contacts model](/docs/dashboard/contacts/migrating-from-audiences-to-segments.md).
 
 ## Contact features
 
@@ -39,9 +39,9 @@ For each Contact, you can:
 
 ## Quickstart
 
-In the [Dashboard](https://resend.com/audience), add Contacts manually by providing one or more email addresses, or [upload your existing Contacts](/docs/dashboard/contacts/add-contacts#add-contacts-by-uploading-a-csv) stored in a `.csv` file.
+In the [Dashboard](https://resend.com/audience), add Contacts manually by providing one or more email addresses, or [upload your existing Contacts](/docs/dashboard/contacts/add-contacts.md#add-contacts-by-uploading-a-csv) stored in a `.csv` file.
 
-Add Contacts programmatically with the [Contacts API](/docs/dashboard/contacts/manage-contacts#add-contacts-programmatically-via-api) or [CLI commands](/docs/cli#contacts).
+Add Contacts programmatically with the [Contacts API](/docs/dashboard/contacts/manage-contacts.md#add-contacts-programmatically-via-api) or [CLI commands](/docs/cli.md#contacts).
 
 To add a single Contact manually in the Dashboard:
 
@@ -62,7 +62,7 @@ To add a single Contact manually in the Dashboard:
 
 **6. Confirm and click **Add**.**
 
-See examples of [adding Contacts using other methods](/docs/dashboard/contacts/add-contacts).
+See examples of [adding Contacts using other methods](/docs/dashboard/contacts/add-contacts.md).
 
 ## Choose your infrastructure
 
@@ -70,29 +70,29 @@ You can build and manage your Contact list entirely from the Resend Dashboard. T
 
 To organize and update your Contacts and their properties from your application, you can use a variety of tools:
 
-* [SDKs](/docs/sdks): manage with an SDK built for your language
-* [Integrations](/docs/integrations): manage with a framework or tool you already use
-* [API](/docs/api-reference/contacts/create-contact): manage with raw cURL calls
-* [CLI](/docs/cli#contacts): manage from the terminal
-* [MCP server](/docs/mcp-server): manage through your agent with MCP
+* [SDKs](/docs/sdks.md): manage with an SDK built for your language
+* [Integrations](/docs/integrations.md): manage with a framework or tool you already use
+* [API](/docs/api-reference/contacts/create-contact.md): manage with raw cURL calls
+* [CLI](/docs/cli.md#contacts): manage from the terminal
+* [MCP server](/docs/mcp-server.md): manage through your agent with MCP
 
-You can also create [Automations](/docs/dashboard/automations/introduction) for repeatable actions involving Contacts such as adding new subscribers and updating your Contact list.
+You can also create [Automations](/docs/dashboard/automations/introduction.md) for repeatable actions involving Contacts such as adding new subscribers and updating your Contact list.
 
 See how to use Resend's Contact features such as Segments and Topics in the [Contacts guides](#related-guides).
 
 ## Manage Contacts
 
-After you have added Contacts, you'll be able to [view, manage and update Contacts](/docs/dashboard/contacts/manage-contacts) and their properties in the [Dashboard page](https://resend.com/audience). This allows all members of your team to maintain your Contact list and to perform any necessary maintenance such as [removing unsubscribed Contacts](/docs/dashboard/contacts/managing-unsubscribe-list).
+After you have added Contacts, you'll be able to [view, manage and update Contacts](/docs/dashboard/contacts/manage-contacts.md) and their properties in the [Dashboard page](https://resend.com/audience). This allows all members of your team to maintain your Contact list and to perform any necessary maintenance such as [removing unsubscribed Contacts](/docs/dashboard/contacts/managing-unsubscribe-list.md).
 
-You can also perform these actions programmatically through the [Contacts API](/docs/api-reference/contacts/create-contact), [Resend CLI commands](/docs/cli#contacts), [Automations](/docs/dashboard/automations/introduction), and [MCP server](/docs/mcp-server).
+You can also perform these actions programmatically through the [Contacts API](/docs/api-reference/contacts/create-contact.md), [Resend CLI commands](/docs/cli.md#contacts), [Automations](/docs/dashboard/automations/introduction.md), and [MCP server](/docs/mcp-server.md).
 
-Learn more about [managing your Contacts](/docs/dashboard/contacts/manage-contacts) in the dedicated guide.
+Learn more about [managing your Contacts](/docs/dashboard/contacts/manage-contacts.md) in the dedicated guide.
 
 ## Contact properties
 
 All Contacts require a valid email address for the `email` property. In order to receive a Broadcast, a Contact will usually also be assigned to a Contact [Segment](#segments).
 
-You can store additional information about your Contacts by adding values for other [Contact properties](/docs/dashboard/contacts/properties), including custom defined properties. Contact properties are useful for [personalizing your Broadcasts with dynamic content](/docs/dashboard/contacts/properties#use-contact-properties-in-broadcasts), such as greeting recipients by first name.
+You can store additional information about your Contacts by adding values for other [Contact properties](/docs/dashboard/contacts/properties.md), including custom defined properties. Contact properties are useful for [personalizing your Broadcasts with dynamic content](/docs/dashboard/contacts/properties.md#use-contact-properties-in-broadcasts), such as greeting recipients by first name.
 
 ![Properties](https://mintcdn.com/resend/2SHIfycCcJlAJEpt/images/contact-properties.png?fit=max\&auto=format\&n=2SHIfycCcJlAJEpt\&q=85\&s=6eb917dc7ac58dd515c033cf443e0734)
 
@@ -102,11 +102,11 @@ Segments are a tool to group and manage your Contacts for sending Broadcasts. Se
 
 **Segments are not visible to your Contacts.** They are only used for your own internal Contact organization. Your Contacts will never see the names of your Segments, and will not know which Segment(s) they belong to.
 
-You can view, add, and manage your Segments in the [Dashboard](https://resend.com/audience) or with any of Resend's programmatic tools such as the [Segments API](/docs/api-reference/segments/create-segment), [Resend CLI commands](/docs/cli#segments), and [MCP](/docs/mcp-server).
+You can view, add, and manage your Segments in the [Dashboard](https://resend.com/audience) or with any of Resend's programmatic tools such as the [Segments API](/docs/api-reference/segments/create-segment.md), [Resend CLI commands](/docs/cli.md#segments), and [MCP](/docs/mcp-server.md).
 
-You can also create [Automations](/docs/dashboard/automations/introduction) to add or remove Contacts from a Segment.
+You can also create [Automations](/docs/dashboard/automations/introduction.md) to add or remove Contacts from a Segment.
 
-See how to perform common actions to manage your Segments in the dedicated [Segments guide](/docs/dashboard/contacts/manage-segments).
+See how to perform common actions to manage your Segments in the dedicated [Segments guide](/docs/dashboard/contacts/manage-segments.md).
 
 ## Topics
 
@@ -114,13 +114,13 @@ You can choose to organize your marketing emails into distinct categories based 
 
 Unlike Segments, this optional Contact property can also be updated by subscriber action, and allows your users to self-manage their email preferences.
 
-Scope sending a [Broadcast](/docs/dashboard/broadcasts/introduction) to a particular Topic, and subscribers will have the option to unsubscribe from that specific Topic only. This means that your users can continue to receive other emails that are relevant to them. They do not need to unsubscribe from your mailing list entirely.
+Scope sending a [Broadcast](/docs/dashboard/broadcasts/introduction.md) to a particular Topic, and subscribers will have the option to unsubscribe from that specific Topic only. This means that your users can continue to receive other emails that are relevant to them. They do not need to unsubscribe from your mailing list entirely.
 
 Resend will handle the unsubscription workflow and update each Contact's list of subscribed Topics in response to user action. You can also manually update this Contact property on the user's behalf, or as part of Automation workflows.
 
-You can view, add, and manage your Topics in the [**Audience** Dashboard](https://resend.com/audience) or with any of Resend's programmatic tools such as the [Topics API](/docs/api-reference/topics/create-topic), [Resend CLI commands](/docs/cli#topics), and [MCP](/docs/mcp-server).
+You can view, add, and manage your Topics in the [**Audience** Dashboard](https://resend.com/audience) or with any of Resend's programmatic tools such as the [Topics API](/docs/api-reference/topics/create-topic.md), [Resend CLI commands](/docs/cli.md#topics), and [MCP](/docs/mcp-server.md).
 
-See how to perform common actions to manage your Topics in the dedicated [Topics guide](/docs/dashboard/contacts/manage-topics).
+See how to perform common actions to manage your Topics in the dedicated [Topics guide](/docs/dashboard/contacts/manage-topics.md).
 
 ## Topics vs Segments
 
@@ -151,17 +151,17 @@ For example, you might send a product announcement to your "Enterprise Customers
 
 See how to use Resend's Contact management features.
 
-> **[Add Contacts](/docs/dashboard/contacts/add-contacts)**
+> **[Add Contacts](/docs/dashboard/contacts/add-contacts.md)**
 
-> **[Manage Contacts](/docs/dashboard/contacts/manage-contacts)**
+> **[Manage Contacts](/docs/dashboard/contacts/manage-contacts.md)**
 
-> **[Contact Properties](/docs/dashboard/contacts/properties)**
+> **[Contact Properties](/docs/dashboard/contacts/properties.md)**
 
-> **[Unsubscribe List](/docs/dashboard/contacts/managing-unsubscribe-list)**
+> **[Unsubscribe List](/docs/dashboard/contacts/managing-unsubscribe-list.md)**
 
-> **[Segments](/docs/dashboard/contacts/manage-segments)**
+> **[Segments](/docs/dashboard/contacts/manage-segments.md)**
 
-> **[Topics](/docs/dashboard/contacts/manage-topics)**
+> **[Topics](/docs/dashboard/contacts/manage-topics.md)**
 
 ## Export your data
 

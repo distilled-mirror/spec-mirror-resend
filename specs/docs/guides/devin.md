@@ -8,15 +8,15 @@
 
 [Devin](https://devin.ai) is an autonomous AI software engineer that can connect to external services through MCP (Model Context Protocol) servers. Adding Resend's MCP server gives Devin native access to send emails, manage contacts and broadcasts, verify domains, and more.
 
-For the full list of capabilities, see the [MCP Server overview](/docs/mcp-server).
+For the full list of capabilities, see the [MCP Server overview](/docs/mcp-server.md).
 
 ## Prerequisites
 
 Before you start, make sure you have:
 
 * A Devin account with access to the Settings menu
-* A Resend [API key](/docs/create-an-api-key)
-* A [verified domain](/docs/add-a-domain)
+* A Resend [API key](/docs/create-an-api-key.md)
+* A [verified domain](/docs/add-a-domain.md)
 
 ## Guide
 

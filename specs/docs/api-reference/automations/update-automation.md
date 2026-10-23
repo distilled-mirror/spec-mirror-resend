@@ -31,14 +31,14 @@ The status of the automation. Possible values are `enabled` or `disabled`.
 The steps that compose the automation graph. Must be provided together with
 `connections`. The graph of an `enabled` automation cannot be updated: disable
 the automation first, or duplicate it and edit the copy. See [Step
-Properties](/docs/dashboard/automations/steps#step-properties) for full object
+Properties](/docs/dashboard/automations/steps.md#step-properties) for full object
 definition.
 
 **connections** `Connection[]`
 
 The connections between steps in the automation graph. Must be provided
 together with `steps`. See [Connection
-Properties](/docs/dashboard/automations/connections#connection-properties) for full
+Properties](/docs/dashboard/automations/connections.md#connection-properties) for full
 object definition.
 
 ```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}

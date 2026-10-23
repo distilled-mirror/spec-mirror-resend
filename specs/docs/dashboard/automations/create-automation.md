@@ -20,7 +20,7 @@ The [Automations page](https://resend.com/automations) shows all of your existin
 
 **3. Add Trigger**
 
-A trigger is the first step that will run when the Automation is executed. You can create a new [custom trigger event](/docs/dashboard/automations/custom-events) when you create your automation, or select from existing events.
+A trigger is the first step that will run when the Automation is executed. You can create a new [custom trigger event](/docs/dashboard/automations/custom-events.md) when you create your automation, or select from existing events.
 
 Your existing trigger events are available in the [Events tab of the Automation Dashboard page](https://resend.com/automations/events). You can also create new custom events on that page.
 
@@ -32,7 +32,7 @@ In this example, the application will receive an event called `user.created` as 
 
 ![Add Custom Event](https://mintcdn.com/resend/ePnINhGLisYSJsWT/images/automations-custom-event.png?fit=max\&auto=format\&n=ePnINhGLisYSJsWT\&q=85\&s=4e5b189cb756d8ca5a468746dac901a0)
 
-See the [Trigger documentation](/docs/dashboard/automations/trigger) for more details.
+See the [Trigger documentation](/docs/dashboard/automations/trigger.md) for more details.
 
 **4. Define Steps**
 
@@ -42,13 +42,13 @@ There are several step types you can add to your Automation:
 
 | Step type | Description |
 | - | - |
-| [Condition](/docs/dashboard/automations/condition) | Branches the workflow based on rules |
-| [Delay](/docs/dashboard/automations/delay) | Pauses execution for a specified duration |
-| [Wait for Event](/docs/dashboard/automations/wait-for-event) | Pauses execution until a specific event is received |
-| [Send Email](/docs/dashboard/automations/send-email) | Sends an email using a template |
-| [Contact Update](/docs/dashboard/automations/contact-update) | Updates a contact's fields |
-| [Contact Delete](/docs/dashboard/automations/contact-delete) | Deletes the contact |
-| [Add to Segment](/docs/dashboard/automations/add-to-segment) | Adds the contact to a segment |
+| [Condition](/docs/dashboard/automations/condition.md) | Branches the workflow based on rules |
+| [Delay](/docs/dashboard/automations/delay.md) | Pauses execution for a specified duration |
+| [Wait for Event](/docs/dashboard/automations/wait-for-event.md) | Pauses execution until a specific event is received |
+| [Send Email](/docs/dashboard/automations/send-email.md) | Sends an email using a template |
+| [Contact Update](/docs/dashboard/automations/contact-update.md) | Updates a contact's fields |
+| [Contact Delete](/docs/dashboard/automations/contact-delete.md) | Deletes the contact |
+| [Add to Segment](/docs/dashboard/automations/add-to-segment.md) | Adds the contact to a segment |
 
 This example will send an email when a user is created.
 
@@ -75,7 +75,7 @@ Once you're done with the email, you can click on **Start** to enable the Automa
 > [!NOTE]
 >
 > While an Automation is enabled, its steps cannot be edited. To make changes,
-> [duplicate the Automation](/docs/api-reference/automations/duplicate-automation),
+> [duplicate the Automation](/docs/api-reference/automations/duplicate-automation.md),
 > edit the copy, and switch over by stopping new runs on the original. In-flight
 > runs will carry out the existing Automation in place when they started.
 
@@ -337,7 +337,7 @@ resend events send \
   --payload '{"plan":"pro"}'
 ```
 
-View the [Send Event API reference](/docs/api-reference/events/send-event) for more details.
+View the [Send Event API reference](/docs/api-reference/events/send-event.md) for more details.
 
 **6. Monitor Runs**
 
@@ -345,7 +345,7 @@ After sending events, you can monitor your Automation executions through Runs. E
 
 ![Monitor Runs](https://mintcdn.com/resend/ePnINhGLisYSJsWT/images/automations-runs.png?fit=max\&auto=format\&n=ePnINhGLisYSJsWT\&q=85\&s=b15322c27ffd309ee310250f6fc6dedd)
 
-See the [Runs documentation](/docs/dashboard/automations/runs) to learn how to:
+See the [Runs documentation](/docs/dashboard/automations/runs.md) to learn how to:
 
 * View Run statuses and execution details
 * Filter Runs by status (`running`, `completed`, `failed`, `cancelled`)
@@ -358,9 +358,9 @@ When creating an Automation via the API, you can create an entire Automation flo
 
 **1. Define Trigger**
 
-You need a [custom event](/docs/dashboard/automations/custom-events) to trigger your automation. If you are not using an existing trigger event, you must first create one.
+You need a [custom event](/docs/dashboard/automations/custom-events.md) to trigger your automation. If you are not using an existing trigger event, you must first create one.
 
-You can create new custom events in the [Events tab of the Automation Dashboard page](https://resend.com/automations/events), or using the [Create Event API](/docs/api-reference/events/create-event).
+You can create new custom events in the [Events tab of the Automation Dashboard page](https://resend.com/automations/events), or using the [Create Event API](/docs/api-reference/events/create-event.md).
 
 Choose a name like `user.created` or `onboarding.completed` for your custom event to describe the action that will trigger your automation.
 
@@ -370,8 +370,8 @@ The Create Automation API accepts four parameters (status is optional and defaul
 
 * `name`: The name of the Automation.
 * `status`: The status of the Automation.
-* `steps`: The [steps](/docs/dashboard/automations/steps) that compose the Automation graph. Use your custom event name as the first item in the `steps` array with `type: 'trigger'`.
-* `connections`: The [connections between steps](/docs/dashboard/automations/connections) in the Automation graph.
+* `steps`: The [steps](/docs/dashboard/automations/steps.md) that compose the Automation graph. Use your custom event name as the first item in the `steps` array with `type: 'trigger'`.
+* `connections`: The [connections between steps](/docs/dashboard/automations/connections.md) in the Automation graph.
 
 **3. Create Automation**
 
@@ -650,7 +650,7 @@ curl -X POST 'https://api.resend.com/automations' \
 resend automations create --name "Welcome series" --file ./automation.json
 ```
 
-For more help creating an Automation via the API, see the [Create Automation API reference](/docs/api-reference/automations/create-automation).
+For more help creating an Automation via the API, see the [Create Automation API reference](/docs/api-reference/automations/create-automation.md).
 
 **4. Send an Event**
 
@@ -893,7 +893,7 @@ resend events send \
   --payload '{"plan":"pro"}'
 ```
 
-View the [Send Event API reference](/docs/api-reference/events/send-event) for more details.
+View the [Send Event API reference](/docs/api-reference/events/send-event.md) for more details.
 
 **5. Monitor Runs**
 
@@ -997,8 +997,8 @@ resend automations runs list c9b16d4f-ba6c-4e2e-b044-6bf4404e57fd
 
 You can filter Runs by status (`running`, `completed`, `failed`, `cancelled`).
 
-See the [Runs documentation](/docs/dashboard/automations/runs) and [List Runs API reference](/docs/api-reference/automations/list-automation-runs) for more details.
+See the [Runs documentation](/docs/dashboard/automations/runs.md) and [List Runs API reference](/docs/api-reference/automations/list-automation-runs.md) for more details.
 
 ## API Reference
 
-For complete API documentation, see the [Automations API reference](/docs/api-reference/automations/create-automation) and the [Events API reference](/docs/api-reference/events/create-event).
+For complete API documentation, see the [Automations API reference](/docs/api-reference/automations/create-automation.md) and the [Events API reference](/docs/api-reference/events/create-event.md).

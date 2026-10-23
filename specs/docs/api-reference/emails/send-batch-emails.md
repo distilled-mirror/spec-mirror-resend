@@ -38,7 +38,7 @@ strings.
 Schedule email to be sent later. The date should be in natural language (e.g.: `in 1 min`) or ISO 8601 format (e.g:
 `2026-08-05T11:52:01.858Z`).
 
-[See examples](/docs/dashboard/emails/schedule-email)
+[See examples](/docs/dashboard/emails/schedule-email.md)
 
 Reply-to email address. For multiple addresses, send as an array of strings.
 
@@ -78,7 +78,7 @@ The topic ID to receive the email.
 
 Custom data passed in key/value pairs.
 
-[See examples](/docs/dashboard/emails/tags).
+[See examples](/docs/dashboard/emails/tags.md).
 
 **properties**
 
@@ -128,7 +128,7 @@ variables: {
 
 When sending the template, the HTML will be parsed. If all the variables used in the template were provided, the email will be sent. If not, the call will throw a validation error.
 
-See the [errors reference](/docs/api-reference/errors) for more details or [learn more about templates](/docs/dashboard/templates/introduction).
+See the [errors reference](/docs/api-reference/errors.md) for more details or [learn more about templates](/docs/dashboard/templates/introduction.md).
 
 **properties**
 
@@ -159,7 +159,7 @@ Add an idempotency key to prevent duplicated emails.
 * Idempotency keys expire after **24 hours**
 * Have a maximum length of **256 characters**
 
-[Learn more about idempotency keys →](/docs/dashboard/emails/idempotency-keys)
+[Learn more about idempotency keys →](/docs/dashboard/emails/idempotency-keys.md)
 
 ## Limitations
 

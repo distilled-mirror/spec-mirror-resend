@@ -8,7 +8,7 @@
 
 > [!WARNING]
 >
-> Removing a domain with a configured [custom tracking subdomain](/docs/dashboard/domains/tracking)
+> Removing a domain with a configured [custom tracking subdomain](/docs/dashboard/domains/tracking.md)
 > will also remove the Resend provisioned proxy, breaking any existing email links that use that subdomain.
 >
 > To keep links working, set up your own proxy pointing to Resend’s tracking DNS records before removing the domain.

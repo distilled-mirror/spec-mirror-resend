@@ -35,7 +35,7 @@ the name must be on one of your verified domains.
 
 When `true`, Resend provisions a receiving address so you can receive mail
 without adding an MX record. Read it from `receiving_address` with [Get
-Inbox](/docs/api-reference/inboxes/get-inbox).
+Inbox](/docs/api-reference/inboxes/get-inbox.md).
 
 ## Response Fields
 
@@ -131,6 +131,27 @@ async fn main() -> Result<()> {
   let _inbox = resend.inboxes.create(opts).await?;
 
   Ok(())
+}
+```
+
+```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
+import com.resend.Resend;
+import com.resend.core.exception.ResendException;
+import com.resend.services.inboxes.model.CreateInboxOptions;
+import com.resend.services.inboxes.model.CreateInboxResponseSuccess;
+
+public class Main {
+    public static void main(String[] args) throws ResendException {
+        Resend resend = new Resend("re_xxxxxxxxx");
+
+        CreateInboxOptions params = CreateInboxOptions.builder()
+                .emailAddress("support@example.com")
+                .name("Customer Support")
+                .fromName("Ada from Support")
+                .build();
+
+        CreateInboxResponseSuccess data = resend.inboxes().create(params);
+    }
 }
 ```
 

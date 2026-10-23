@@ -9,7 +9,7 @@
 > [!NOTE]
 >
 > Poll this endpoint to follow a claim's `status` after you [start a
-> claim](/docs/api-reference/domains/claim-domain). The `domain_id` is the
+> claim](/docs/api-reference/domains/claim-domain.md). The `domain_id` is the
 > placeholder domain id returned in the `domain_claim` object.
 
 ## Path Parameters

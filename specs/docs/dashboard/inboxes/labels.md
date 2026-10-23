@@ -184,9 +184,9 @@ You can also remove a label from a thread by clicking the **×** on the label un
 
 You can also change a thread's labels via the API, SDKs, or CLI:
 
-* [Add thread labels](/docs/api-reference/inboxes/add-thread-labels) applies up to 10 labels and keeps the labels already on the thread.
-* [Set thread labels](/docs/api-reference/inboxes/set-thread-labels) replaces every label on the thread. Pass an empty list to remove them all.
-* [Remove thread label](/docs/api-reference/inboxes/remove-thread-label) removes a single label from the thread.
+* [Add thread labels](/docs/api-reference/inboxes/add-thread-labels.md) applies up to 10 labels and keeps the labels already on the thread.
+* [Set thread labels](/docs/api-reference/inboxes/set-thread-labels.md) replaces every label on the thread. Pass an empty list to remove them all.
+* [Remove thread label](/docs/api-reference/inboxes/remove-thread-label.md) removes a single label from the thread.
 
 Removing a label from a thread does not delete the label.
 
@@ -332,15 +332,15 @@ resend inboxes threads labels add \
   --labels 7f9c1d2e-4a6b-4c3d-8e15-9b0a7c6d5e34
 ```
 
-The [inbox agent](/docs/dashboard/inboxes/agent) can also apply your existing labels to threads based on your instructions.
+The [inbox agent](/docs/dashboard/inboxes/agent.md) can also apply your existing labels to threads based on your instructions.
 
 ## Filter threads by label
 
 In the Dashboard, select a label in the left rail or from the folder switcher to see only the threads with that label. You can also click a label on a thread, or use the `label:` operator in search.
 
-Labels also power the **Grouped list** and card-based [inbox views](/docs/dashboard/inboxes/manage-inboxes#edit-an-inbox), which group threads by label.
+Labels also power the **Grouped list** and card-based [inbox views](/docs/dashboard/inboxes/manage-inboxes.md#edit-an-inbox), which group threads by label.
 
-To filter threads by label via the API, pass a comma-separated list of label IDs in the `labels` parameter when you [list](/docs/api-reference/inboxes/list-threads) or [search](/docs/api-reference/inboxes/search-threads) threads.
+To filter threads by label via the API, pass a comma-separated list of label IDs in the `labels` parameter when you [list](/docs/api-reference/inboxes/list-threads.md) or [search](/docs/api-reference/inboxes/search-threads.md) threads.
 
 ```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
 import { Resend } from 'resend';
@@ -475,7 +475,7 @@ When you filter by label, threads in the `inbox`, `archive`, and `sent` folders 
 
 In the **Labels** tab of the inbox settings, click a label to change its name or color, then press <kbd>Enter</kbd> or click the check button.
 
-You can also [update a label](/docs/api-reference/inboxes/update-label) via the API, SDKs, or CLI.
+You can also [update a label](/docs/api-reference/inboxes/update-label.md) via the API, SDKs, or CLI.
 
 ```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
 import { Resend } from 'resend';
@@ -641,7 +641,7 @@ In the **Labels** tab of the inbox settings, click the trash icon next to the la
 
 Deleting a label removes it from every thread it was applied to. The threads themselves are not affected and stay in their current folders.
 
-You can also [delete a label](/docs/api-reference/inboxes/delete-label) via the API, SDKs, or CLI.
+You can also [delete a label](/docs/api-reference/inboxes/delete-label.md) via the API, SDKs, or CLI.
 
 ```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
 import { Resend } from 'resend';
@@ -762,4 +762,4 @@ resend inboxes labels delete \
 
 ## API Reference
 
-For complete API documentation, see the [Inbox Labels API reference](/docs/api-reference/inboxes/create-label).
+For complete API documentation, see the [Inbox Labels API reference](/docs/api-reference/inboxes/create-label.md).

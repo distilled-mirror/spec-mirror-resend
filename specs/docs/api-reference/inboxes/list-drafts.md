@@ -166,6 +166,21 @@ async fn main() -> Result<()> {
 }
 ```
 
+```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
+import com.resend.Resend;
+import com.resend.core.exception.ResendException;
+import com.resend.services.inboxes.model.ListInboxDraftsResponseSuccess;
+
+public class Main {
+    public static void main(String[] args) throws ResendException {
+        Resend resend = new Resend("re_xxxxxxxxx");
+
+        ListInboxDraftsResponseSuccess data = resend.inboxes().drafts()
+                .list("b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1");
+    }
+}
+```
+
 ```csharp .NET theme={"theme":{"light":"github-light","dark":"vesper"}}
 using Resend;
 

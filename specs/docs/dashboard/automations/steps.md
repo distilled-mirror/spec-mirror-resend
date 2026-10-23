@@ -12,14 +12,14 @@ Steps are the building blocks of Automation workflows. They define the actions t
 
 Learn more about each available step in its dedicated guide:
 
-* [Trigger](/docs/dashboard/automations/trigger)
-* [Condition](/docs/dashboard/automations/condition)
-* [Delay](/docs/dashboard/automations/delay)
-* [Wait for Event](/docs/dashboard/automations/wait-for-event)
-* [Send Email](/docs/dashboard/automations/send-email)
-* [Add to Segment](/docs/dashboard/automations/add-to-segment)
-* [Contact Update](/docs/dashboard/automations/contact-update)
-* [Contact Delete](/docs/dashboard/automations/contact-delete)
+* [Trigger](/docs/dashboard/automations/trigger.md)
+* [Condition](/docs/dashboard/automations/condition.md)
+* [Delay](/docs/dashboard/automations/delay.md)
+* [Wait for Event](/docs/dashboard/automations/wait-for-event.md)
+* [Send Email](/docs/dashboard/automations/send-email.md)
+* [Add to Segment](/docs/dashboard/automations/add-to-segment.md)
+* [Contact Update](/docs/dashboard/automations/contact-update.md)
+* [Contact Delete](/docs/dashboard/automations/contact-delete.md)
 
 ## Step properties
 
@@ -375,7 +375,7 @@ The contact's unsubscribed status. Accepts a boolean or a variable reference.
 **config.properties** `object`
 
 A map of custom contact properties to update. Keys correspond to your [Contact
-Custom Properties](/docs/dashboard/audiences/properties). Each value can be a
+Custom Properties](/docs/dashboard/audiences/properties.md). Each value can be a
 hardcoded value (string, number, boolean) or a variable reference.
 
 ```json Example theme={"theme":{"light":"github-light","dark":"vesper"}}

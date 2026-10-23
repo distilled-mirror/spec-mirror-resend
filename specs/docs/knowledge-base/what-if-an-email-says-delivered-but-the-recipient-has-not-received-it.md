@@ -33,7 +33,7 @@ If they find it, ask them to mark the email as `Not Spam` or add your domain to 
 
 Debugging without direct contact with the user is challenging. However, there are some optimizations that can **improve your chances of delivering to their inbox next time**:
 
-* [Configure DMARC](/docs/dashboard/domains/dmarc) to build trust with the inbox provider
+* [Configure DMARC](/docs/dashboard/domains/dmarc.md) to build trust with the inbox provider
 * Warm up new domains slowly before sending large volumes
 * Change all links in your email to use your own domain (matching your sender domain)
 * Turn off open and click tracking

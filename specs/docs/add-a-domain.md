@@ -18,10 +18,10 @@ Resend sends emails using a domain you own. Before you can send or receive email
 
 You can add and verify a domain you own in four ways:
 
-* in the [**Domains** Dashboard page](/docs/dashboard/domains/introduction)
-* using the [Resend API](/docs/api-reference/domains/create-domain)
-* with a [Resend CLI command](/docs/cli#domains)
-* with the [Resend MCP server](/docs/mcp-server)
+* in the [**Domains** Dashboard page](/docs/dashboard/domains/introduction.md)
+* using the [Resend API](/docs/api-reference/domains/create-domain.md)
+* with a [Resend CLI command](/docs/cli.md#domains)
+* with the [Resend MCP server](/docs/mcp-server.md)
 
 To add a new domain from the Resend Dashboard:
 
@@ -37,7 +37,7 @@ Choose a subdomain that reflects the purpose of your emails, such as `customers.
 
 You can have multiple subdomains associated with your root domain. But, each one must be configured and verified individually.
 
-If you add a domain already used by another team, the dashboard will notify you and you can [claim the domain](/docs/dashboard/domains/claim) to transfer it to your team.
+If you add a domain already used by another team, the dashboard will notify you and you can [claim the domain](/docs/dashboard/domains/claim.md) to transfer it to your team.
 
 **4. Choose a region from the list provided.**
 
@@ -45,7 +45,7 @@ Select a region to send your emails from. Choose one that is closest to the majo
 
 **5. (optional) Enter a custom subdomain for the Return-Path address if desired.**
 
-Return-Path defaults to `send.example.com`, although you can [provide a custom path](/docs/dashboard/domains/custom-return-path).
+Return-Path defaults to `send.example.com`, although you can [provide a custom path](/docs/dashboard/domains/custom-return-path.md).
 
 **6. Update your DNS records with values provided by Resend.**
 
@@ -55,7 +55,7 @@ Provide the DKIM and SPF configurations (`TXT` and `MX` or `CNAME` records) to y
 
 > [!TIP]
 >
-> Consult one of our [DNS provider guides](/docs/knowledge-base/introduction) for specific examples of updating your DNS records with your host. Also, when shown a CNAME, make sure *not* to use proxying features (e.g., Cloudflare's orange cloud) for that record, as it will prevent verification from completing.
+> Consult one of our [DNS provider guides](/docs/knowledge-base/introduction.md) for specific examples of updating your DNS records with your host. Also, when shown a CNAME, make sure *not* to use proxying features (e.g., Cloudflare's orange cloud) for that record, as it will prevent verification from completing.
 
 **7. Wait for DNS verification to complete**
 
@@ -65,33 +65,33 @@ You can use Resend's [dns.email tool](https://dns.email/) to check that your rec
 
 **8. Add a DMARC record.**
 
-After your domain is verified, you can then [implement DMARC](/docs/dashboard/domains/dmarc) to build additional trust in your domain and protect against email spoofing.
+After your domain is verified, you can then [implement DMARC](/docs/dashboard/domains/dmarc.md) to build additional trust in your domain and protect against email spoofing.
 
 This is an email authentication protocol to verify email senders and to allow receivers to reject unauthenticated messages, and is important for email deliverability.
 
 **9. (optional) Update your domain's Resend configuration options.**
 
-After your domain is verified, you may wish to [enable open and click tracking](/docs/dashboard/domains/tracking) or [enforce Transport Layer Security (TLS)](/docs/dashboard/domains/tls).
+After your domain is verified, you may wish to [enable open and click tracking](/docs/dashboard/domains/tracking.md) or [enforce Transport Layer Security (TLS)](/docs/dashboard/domains/tls.md).
 
 ## Learn more
 
-> **[Manage domains](/docs/dashboard/domains/introduction)**
+> **[Manage domains](/docs/dashboard/domains/introduction.md)**
 >
 > View, create, edit, delete, and manage your domains.
 
-> **[Multi-tenant domain setup](/docs/knowledge-base/setting-up-resend-for-multi-tenants)**
+> **[Multi-tenant domain setup](/docs/knowledge-base/setting-up-resend-for-multi-tenants.md)**
 >
 > Learn how to configure Resend for SaaS platforms where tenants send emails
 > from their own domains.
 
 ## Next steps
 
-> **[Add a DMARC record](/docs/dashboard/domains/dmarc)**
+> **[Add a DMARC record](/docs/dashboard/domains/dmarc.md)**
 >
 > Implement DMARC to build trust in your domain and protect against email
 > spoofing.
 
-> **[Quickstart tutorials](/docs/introduction)**
+> **[Quickstart tutorials](/docs/introduction.md)**
 >
 > Send your first transactional email with a quick tutorial for your language
 > or framework.

@@ -19,7 +19,7 @@ The flow:
 
 **client\_id** `string` *required*
 
-The `client_id` from [registration](/docs/api-reference/oauth/register), or the
+The `client_id` from [registration](/docs/api-reference/oauth/register.md), or the
 HTTPS URL of a [Client ID Metadata Document](#client-id-metadata-documents).
 Resend tells the two apart by the `https://` prefix.
 
@@ -56,7 +56,7 @@ Maximum 1024 characters.
 **code\_challenge** `string` *required*
 
 Base64url-encoded SHA-256 hash of a
-[code\_verifier](/docs/api-reference/oauth/token#param-code-verifier) your client
+[code\_verifier](/docs/api-reference/oauth/token.md#param-code-verifier) your client
 generates.
 
 **code\_challenge\_method** `string` *required*
@@ -72,7 +72,7 @@ Must be `"S256"`. Resend does not support the `plain` method.
 
 A `client_id` that starts with `https://` is read as the URL of a JSON document describing the client, so the client never registers. This follows the [OAuth Client ID Metadata Document](https://datatracker.ietf.org/doc/draft-ietf-oauth-client-id-metadata-document/) draft.
 
-This is the only endpoint that fetches the document. See [Client ID Metadata Documents](/docs/guides/building-a-resend-oauth-client#client-id-metadata-documents) for the document fields and for how Resend fetches and caches it.
+This is the only endpoint that fetches the document. See [Client ID Metadata Documents](/docs/guides/building-a-resend-oauth-client.md#client-id-metadata-documents) for the document fields and for how Resend fetches and caches it.
 
 ```bash Browser navigation theme={"theme":{"light":"github-light","dark":"vesper"}}
 GET https://api.resend.com/oauth/authorize?client_id=550e8400-e29b-41d4-a716-446655440000&response_type=code&redirect_uri=http%3A%2F%2F127.0.0.1%3A49152%2Foauth%2Fcallback&scope=emails%3Asend&state=STATE_VALUE&code_challenge=CODE_CHALLENGE_VALUE&code_challenge_method=S256

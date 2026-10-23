@@ -48,7 +48,7 @@ Upon confirmation, your team member will be given the new role.
 
 ## Check team members' MFA status
 
-The **Enabled MFA** column on your [**Team Settings**](https://resend.com/settings/team) page shows a checkmark next to each member who has multi-factor authentication (MFA) enabled. Every member of the team can see this column, not just admins. There is no setting to require MFA for the whole team. See [how to add MFA](/docs/knowledge-base/how-can-i-add-mfa) for how each member enables it on their own account.
+The **Enabled MFA** column on your [**Team Settings**](https://resend.com/settings/team) page shows a checkmark next to each member who has multi-factor authentication (MFA) enabled. Every member of the team can see this column, not just admins. There is no setting to require MFA for the whole team. See [how to add MFA](/docs/knowledge-base/how-can-i-add-mfa.md) for how each member enables it on their own account.
 
 ## Leave your Resend team
 

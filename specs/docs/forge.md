@@ -164,4 +164,4 @@ If the Forge record doesn't verify, these are some common troubleshooting method
 >
 > Forge runs only in North Virginia (`us-east-1`). Data residency is the same
 > as for every other region. See [Data
-> Residency](/docs/dashboard/domains/regions#data-residency) for details.
+> Residency](/docs/dashboard/domains/regions.md#data-residency) for details.

@@ -90,7 +90,7 @@ test("mocks the response and doesn't call the Resend API", async ({ page }) => {
 >
 > However you test, it's important to test using a test email address (e.g.,
 > [delivered@resend.dev](mailto:delivered@resend.dev)) so your tests don't impact your deliverability. Resend's
-> [test accounts](/docs/dashboard/emails/send-test-emails) run through the entire API
+> [test accounts](/docs/dashboard/emails/send-test-emails.md) run through the entire API
 > flow without harming your reputation.
 
 **3. Create a Playwright config file**

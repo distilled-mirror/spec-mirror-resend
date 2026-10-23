@@ -8,7 +8,7 @@
 
 The label itself is kept, and stays on every other thread that carries it. To
 delete the label everywhere, use
-[Delete Label](/docs/api-reference/inboxes/delete-label).
+[Delete Label](/docs/api-reference/inboxes/delete-label.md).
 
 ## Path Parameters
 
@@ -123,6 +123,23 @@ async fn main() -> Result<()> {
     .await?;
 
   Ok(())
+}
+```
+
+```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
+import com.resend.Resend;
+import com.resend.core.exception.ResendException;
+import com.resend.services.inboxes.model.RemoveInboxThreadLabelResponseSuccess;
+
+public class Main {
+    public static void main(String[] args) throws ResendException {
+        Resend resend = new Resend("re_xxxxxxxxx");
+
+        RemoveInboxThreadLabelResponseSuccess data = resend.inboxes().threads().removeLabel(
+                "b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1",
+                "4d8e2a1c-9b3f-4c6d-8a21-3e5f7c9c0d12",
+                "7f9c1d2e-4a6b-4c3d-8e15-9b0a7c6d5e34");
+    }
 }
 ```
 

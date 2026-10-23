@@ -24,7 +24,7 @@ Each team has one billing email address. Invoices and billing notifications are 
 If more than one person needs to receive invoices, you have two options:
 
 * Set the billing email to a distribution list or alias that forwards to everyone who needs it.
-* [Invite them to your team](/docs/dashboard/settings/team). Team members can open the [Billing](https://resend.com/settings/billing) page to view and download every invoice.
+* [Invite them to your team](/docs/dashboard/settings/team.md). Team members can open the [Billing](https://resend.com/settings/billing) page to view and download every invoice.
 
 ## How to cancel your subscription
 

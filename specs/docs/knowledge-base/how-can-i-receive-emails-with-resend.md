@@ -19,4 +19,4 @@ You can receive emails at:
 * A Resend-managed `*.resend.app` receiving domain, or
 * Your own custom domain by adding the required `MX` record.
 
-See the full guide: [Receiving Emails](/docs/dashboard/receiving/introduction).
+See the full guide: [Receiving Emails](/docs/dashboard/receiving/introduction.md).

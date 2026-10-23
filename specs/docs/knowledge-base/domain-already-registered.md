@@ -41,5 +41,5 @@ If you cannot add DNS records or need further assistance, contact [Resend suppor
 
 ## Related Resources
 
-* [What if my domain is not verifying?](/docs/knowledge-base/what-if-my-domain-is-not-verifying)
-* [DNS provider setup guides](/docs/knowledge-base/introduction)
+* [What if my domain is not verifying?](/docs/knowledge-base/what-if-my-domain-is-not-verifying.md)
+* [DNS provider setup guides](/docs/knowledge-base/introduction.md)

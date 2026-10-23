@@ -35,4 +35,4 @@ To start sending emails with Resend:
 3. [Create an API key](https://resend.com/api-keys)
 4. Start sending emails immediately
 
-If you're having trouble with domain verification or DNS records, see our [domain verification troubleshooting guide](/docs/knowledge-base/what-if-my-domain-is-not-verifying) or check our [DNS setup guides](/docs/knowledge-base/introduction) for your specific DNS provider.
+If you're having trouble with domain verification or DNS records, see our [domain verification troubleshooting guide](/docs/knowledge-base/what-if-my-domain-is-not-verifying.md) or check our [DNS setup guides](/docs/knowledge-base/introduction.md) for your specific DNS provider.

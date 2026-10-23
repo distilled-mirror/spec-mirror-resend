@@ -14,7 +14,7 @@ There are two ways to send attachments:
 > [!NOTE]
 >
 > We currently do not support sending attachments [when using our batch
-> endpoint](/docs/api-reference/emails/send-batch-emails).
+> endpoint](/docs/api-reference/emails/send-batch-emails.md).
 
 ## Send attachments from a remote file
 
@@ -721,11 +721,11 @@ curl -X POST 'https://api.resend.com/emails' \
 }'
 ```
 
-Learn more about [embedding images](/docs/dashboard/emails/embed-inline-images).
+Learn more about [embedding images](/docs/dashboard/emails/embed-inline-images.md).
 
 ## View and Download Attachments
 
-You can view and download attachments from sent emails from the dashboard or programmatically through the [Attachments API](/docs/api-reference/emails/list-email-attachments).
+You can view and download attachments from sent emails from the dashboard or programmatically through the [Attachments API](/docs/api-reference/emails/list-email-attachments.md).
 
 ### From the dashboard
 
@@ -742,13 +742,13 @@ Attachments include the filename and an icon to help you identify the type of at
 
 ### From the API
 
-Use [List Attachments](/docs/api-reference/emails/list-email-attachments) to fetch all attachments for a sent email, or [Retrieve Attachment](/docs/api-reference/emails/retrieve-email-attachment) to fetch a single one. Both endpoints return a signed `download_url` that you can use to download the content.
+Use [List Attachments](/docs/api-reference/emails/list-email-attachments.md) to fetch all attachments for a sent email, or [Retrieve Attachment](/docs/api-reference/emails/retrieve-email-attachment.md) to fetch a single one. Both endpoints return a signed `download_url` that you can use to download the content.
 
 ## Attachment Limitations
 
 * Emails can be no larger than 40MB (including attachments after Base64 encoding).
-* Not all file types are supported. See the list of [unsupported file types](/docs/knowledge-base/what-attachment-types-are-not-supported).
-* Emails with attachments cannot be sent using our [batching endpoint](/docs/api-reference/emails/send-batch-emails).
+* Not all file types are supported. See the list of [unsupported file types](/docs/knowledge-base/what-attachment-types-are-not-supported.md).
+* Emails with attachments cannot be sent using our [batching endpoint](/docs/api-reference/emails/send-batch-emails.md).
 
 ## Examples
 

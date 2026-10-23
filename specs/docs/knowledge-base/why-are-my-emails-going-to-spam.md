@@ -14,7 +14,7 @@ Make sure your domain has all three authentication records properly configured:
 
 * **SPF**: Automatically set up when you verify your domain with Resend. Verify it is still present with [dns.email](https://dns.email).
 * **DKIM**: Also set up during domain verification. Confirm with [dns.email](https://dns.email).
-* **DMARC**: Not automatically set up, but strongly recommended. See [DMARC](/docs/dashboard/domains/dmarc) for setup instructions.
+* **DMARC**: Not automatically set up, but strongly recommended. See [DMARC](/docs/dashboard/domains/dmarc.md) for setup instructions.
 
 > [!WARNING]
 >
@@ -24,7 +24,7 @@ Make sure your domain has all three authentication records properly configured:
 ## Use Deliverability Insights
 
 If you sent the email through Resend, open the email in your dashboard and review
-[Deliverability Insights](/docs/dashboard/emails/deliverability-insights).
+[Deliverability Insights](/docs/dashboard/emails/deliverability-insights.md).
 
 Deliverability Insights runs a set of best-practice checks against your email and
 flags issues that may affect inbox placement. Pay close attention to warnings
@@ -49,7 +49,7 @@ When an email lands in spam, providers like Gmail display a banner explaining wh
 ## Check your domain reputation
 
 * Use [Google Postmaster Tools](https://postmaster.google.com) to see your domain and IP reputation with Gmail.
-* If your domain is new, you may need to warm it up by starting with low volume and increasing over time. See our [Domain and/or IP Warm-up Guide](/docs/knowledge-base/warming-up).
+* If your domain is new, you may need to warm it up by starting with low volume and increasing over time. See our [Domain and/or IP Warm-up Guide](/docs/knowledge-base/warming-up.md).
 
 ## Corporate email filters
 
@@ -62,8 +62,8 @@ If your emails are being blocked by a specific corporate recipient:
 
 ## Review your sending practices
 
-* Send from a dedicated address per email type, such as `notifications@` for transactional emails and `updates@` for marketing emails. For more guidance on domain setup, review [Is it better to send emails from a subdomain or the root domain?](/docs/knowledge-base/is-it-better-to-send-emails-from-a-subdomain-or-the-root-domain).
-* Do not send to purchased lists or addresses that have not opted in. If you are unsure what qualifies as permission, review [What counts as email consent?](/docs/knowledge-base/what-counts-as-email-consent).
+* Send from a dedicated address per email type, such as `notifications@` for transactional emails and `updates@` for marketing emails. For more guidance on domain setup, review [Is it better to send emails from a subdomain or the root domain?](/docs/knowledge-base/is-it-better-to-send-emails-from-a-subdomain-or-the-root-domain.md).
+* Do not send to purchased lists or addresses that have not opted in. If you are unsure what qualifies as permission, review [What counts as email consent?](/docs/knowledge-base/what-counts-as-email-consent.md).
 * Include a visible unsubscribe link in marketing emails.
 * Keep HTML simple. Heavy formatting and image-only emails are more likely to trigger filters.
 

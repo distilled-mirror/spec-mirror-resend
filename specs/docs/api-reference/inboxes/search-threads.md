@@ -201,9 +201,9 @@ within its inbox. You can move a thread to `inbox`, `archive`, `spam`, or
 
 Identifies the email in the thread that matched the search. When `query`
 has words or phrases, it's the most relevant match. Otherwise, it's the
-newest. [Retrieve Thread Email](/docs/api-reference/inboxes/get-thread-email),
+newest. [Retrieve Thread Email](/docs/api-reference/inboxes/get-thread-email.md),
 reply, and forward accept it as `email_id`. It is the same `id` that
-[List Thread Emails](/docs/api-reference/inboxes/list-thread-emails) returns.
+[List Thread Emails](/docs/api-reference/inboxes/list-thread-emails.md) returns.
 `null` when the search index returns no matched email for the thread.
 
 ## Errors
@@ -329,6 +329,29 @@ async fn main() -> Result<()> {
     .await?;
 
   Ok(())
+}
+```
+
+```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
+import com.resend.Resend;
+import com.resend.core.exception.ResendException;
+import com.resend.services.inboxes.model.SearchInboxThreadsParams;
+import com.resend.services.inboxes.model.SearchInboxThreadsResponseSuccess;
+
+public class Main {
+    public static void main(String[] args) throws ResendException {
+        Resend resend = new Resend("re_xxxxxxxxx");
+
+        SearchInboxThreadsParams params = SearchInboxThreadsParams.builder()
+                .query("invoice -draft")
+                .from("isabella@example.com", "carolina@example.com")
+                .startDate("2026-09-01")
+                .limit(2)
+                .build();
+
+        SearchInboxThreadsResponseSuccess data = resend.inboxes().threads()
+                .search("b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1", params);
+    }
 }
 ```
 

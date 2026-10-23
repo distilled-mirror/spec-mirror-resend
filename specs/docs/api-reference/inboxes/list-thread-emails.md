@@ -7,7 +7,7 @@
 > Retrieve the messages in a thread.
 
 Messages are returned oldest first. Each item has the same shape as [Retrieve
-Thread Email](/docs/api-reference/inboxes/get-thread-email).
+Thread Email](/docs/api-reference/inboxes/get-thread-email.md).
 
 ## Path Parameters
 
@@ -199,6 +199,22 @@ async fn main() -> Result<()> {
     .await?;
 
   Ok(())
+}
+```
+
+```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
+import com.resend.Resend;
+import com.resend.core.exception.ResendException;
+import com.resend.services.inboxes.model.ListInboxThreadEmailsResponseSuccess;
+
+public class Main {
+    public static void main(String[] args) throws ResendException {
+        Resend resend = new Resend("re_xxxxxxxxx");
+
+        ListInboxThreadEmailsResponseSuccess data = resend.inboxes().threads().emails().list(
+                "b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1",
+                "4d8e2a1c-9b3f-4c6d-8a21-3e5f7c9c0d12");
+    }
 }
 ```
 

@@ -13,12 +13,12 @@
 * OAuth connection to your Laravel Cloud organization.
 * Resource you can reuse across environments.
 * A sending key for each environment, injected as environment variables.
-* Billing that stays on your [Resend plan](/docs/dashboard/settings/billing).
+* Billing that stays on your [Resend plan](/docs/dashboard/settings/billing.md).
 
 ## Prerequisites
 
 * A Laravel Cloud organization with an environment.
-* A Resend account with a [verified domain](/docs/add-a-domain).
+* A Resend account with a [verified domain](/docs/add-a-domain.md).
 
 ## Connect your Resend account
 
@@ -96,11 +96,11 @@ use Illuminate\Support\Facades\Mail;
 Mail::to($user)->send(new OrderShipped($order));
 ```
 
-The key has full access, so the same application can call the rest of the Resend API. Install [`resend/resend-laravel`](/docs/send-with-laravel) for the Laravel SDK, or send over [SMTP](/docs/send-with-laravel-smtp).
+The key has full access, so the same application can call the rest of the Resend API. Install [`resend/resend-laravel`](/docs/send-with-laravel) for the Laravel SDK, or send over [SMTP](/docs/send-with-laravel-smtp.md).
 
 ### Other frameworks
 
-Laravel Cloud injects `RESEND_API_KEY` for every runtime. Read the key from the environment and pass it to the [API](/docs/api-reference/introduction) or an [SDK](/docs/sdks).
+Laravel Cloud injects `RESEND_API_KEY` for every runtime. Read the key from the environment and pass it to the [API](/docs/api-reference/introduction.md) or an [SDK](/docs/sdks.md).
 
 > [!NOTE]
 >
@@ -136,7 +136,7 @@ The same API can list what you attach and change it later:
 
 ## Next steps
 
-* Send your first email with [Laravel](/docs/send-with-laravel).
-* Add and verify a [domain](/docs/dashboard/domains/introduction).
-* Design messages with [Templates](/docs/dashboard/templates/introduction).
-* Follow up with an [Automation](/docs/dashboard/automations/introduction).
+* Send your first email with [Laravel](/docs/send-with-laravel.md).
+* Add and verify a [domain](/docs/dashboard/domains/introduction.md).
+* Design messages with [Templates](/docs/dashboard/templates/introduction.md).
+* Follow up with an [Automation](/docs/dashboard/automations/introduction.md).

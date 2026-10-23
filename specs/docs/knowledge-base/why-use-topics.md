@@ -83,7 +83,7 @@ You can customize:
 
 A branded unsubscribe page looks more professional and trustworthy, which can encourage recipients to adjust their preferences rather than unsubscribe entirely.
 
-Learn more about [customizing your unsubscribe page](/docs/dashboard/settings/unsubscribe-page).
+Learn more about [customizing your unsubscribe page](/docs/dashboard/settings/unsubscribe-page.md).
 
 > [!NOTE]
 >
@@ -141,9 +141,9 @@ Whenever you send a Broadcast, label it with a Topic. This ensures:
 
 ## Getting started with Topics
 
-1. [Create your Topics](/docs/dashboard/topics/introduction) in the Resend dashboard
-2. [Customize your unsubscribe page](/docs/dashboard/settings/unsubscribe-page) with your branding
-3. Use [Segments](/docs/dashboard/segments/introduction) to define who you're sending to
-4. When sending [Broadcasts](/docs/dashboard/broadcasts/introduction), always label them with a Topic
+1. [Create your Topics](/docs/dashboard/topics/introduction.md) in the Resend dashboard
+2. [Customize your unsubscribe page](/docs/dashboard/settings/unsubscribe-page.md) with your branding
+3. Use [Segments](/docs/dashboard/segments/introduction.md) to define who you're sending to
+4. When sending [Broadcasts](/docs/dashboard/broadcasts/introduction.md), always label them with a Topic
 
 By using Segments for targeting and Topics for respecting preferences, you send to the right people while honoring those who said no, improving engagement and protecting your sender reputation.

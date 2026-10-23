@@ -18,7 +18,7 @@ This separation allows you to:
 * Make changes without affecting active emails
 * Maintain version control over your email content
 
-Once you [publish a Template](/docs/dashboard/templates/create-template#publish-a-template), this published version will be used to send emails until you publish again. You can continue to work on a production Template in draft state without affecting the published version, and the editor will automatically save your progress.
+Once you [publish a Template](/docs/dashboard/templates/create-template.md#publish-a-template), this published version will be used to send emails until you publish again. You can continue to work on a production Template in draft state without affecting the published version, and the editor will automatically save your progress.
 
 ```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
 // Create template
@@ -312,7 +312,7 @@ curl -X POST 'https://api.resend.com/templates/{template_id}/publish' \
      -H 'Content-Type: application/json'
 ```
 
-After you publish a Template, you can freely work on it through the editor or update it [via the Templates API](/docs/api-reference/templates/update-template) without affecting the published version. This allows you to test and validate new edits before sending them to users.
+After you publish a Template, you can freely work on it through the editor or update it [via the Templates API](/docs/api-reference/templates/update-template.md) without affecting the published version. This allows you to test and validate new edits before sending them to users.
 
 ## Version History
 
@@ -336,4 +336,4 @@ This behavior is also useful to avoid breaking changes when you need to edit a T
 
 ## API reference
 
-For complete API documentation, see the [updating Templates API reference](/docs/api-reference/templates/update-template).
+For complete API documentation, see the [updating Templates API reference](/docs/api-reference/templates/update-template.md).

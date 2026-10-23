@@ -15,7 +15,7 @@ The broadcast ID.
 > [!NOTE]
 >
 > See all available `status` types in [the Broadcasts
-> overview](/docs/dashboard/broadcasts/manage-broadcasts#understand-broadcast-statuses).
+> overview](/docs/dashboard/broadcasts/manage-broadcasts.md#understand-broadcast-statuses).
 
 ```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
 import { Resend } from 'resend';

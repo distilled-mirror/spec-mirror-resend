@@ -49,7 +49,7 @@ Resend does not support RFC 8707 resource indicators yet. Don't send or rely on 
 Before starting the authorization request, generate three values:
 
 * `code_verifier`: a high-entropy random string kept only by the client. See
-  [Token](/docs/api-reference/oauth/token#pkce) for the length and character set it
+  [Token](/docs/api-reference/oauth/token.md#pkce) for the length and character set it
   must use.
 * `code_challenge`: the base64url-encoded SHA-256 hash of the `code_verifier`.
 * `state`: a high-entropy random string used to bind the callback to the request that started the flow.
@@ -102,7 +102,7 @@ Host the document on a site you control, whatever the client is. A hosted app se
 }
 ```
 
-The fields are the [registration](/docs/api-reference/oauth/register) fields, with extra rules:
+The fields are the [registration](/docs/api-reference/oauth/register.md) fields, with extra rules:
 
 | Field | Rule |
 | - | - |
@@ -159,7 +159,7 @@ A remote client must use an HTTPS redirect URI owned by the app, for example `ht
 
 Because a remote client has a backend that can keep a secret, register it as confidential: pass `token_endpoint_auth_method: "client_secret_basic"` and store the `client_secret` Resend returns. That secret is shown only once at registration, so persist it securely and never expose it in browser or client-side code. It's then presented on every token and revocation call, in addition to PKCE.
 
-For remote apps, you can still use [POST /oauth/register](/docs/api-reference/oauth/register) manually while we don't have a central place in the app to create clients.
+For remote apps, you can still use [POST /oauth/register](/docs/api-reference/oauth/register.md) manually while we don't have a central place in the app to create clients.
 
 ```mermaid theme={"theme":{"light":"github-light","dark":"vesper"}}
 sequenceDiagram
@@ -280,7 +280,7 @@ Pick a random high port and bind it to `127.0.0.1` or `[::1]`, never
 Use the URL of a [metadata document](#client-id-metadata-documents) that
 lists the loopback redirect URI and the minimum required scope. If the
 client can't host one, register dynamically with the same values instead.
-See [Register Client](/docs/api-reference/oauth/register).
+See [Register Client](/docs/api-reference/oauth/register.md).
 
 **4. Open the authorize URL in the user's browser**
 
@@ -298,7 +298,7 @@ parameter should all be treated as failures.
 
 **8. Exchange the code**
 
-Use the original `code_verifier`. See [Token](/docs/api-reference/oauth/token).
+Use the original `code_verifier`. See [Token](/docs/api-reference/oauth/token.md).
 
 **9. Store the newest refresh token after every token response**
 
@@ -388,7 +388,7 @@ The response includes a JWT access token and an opaque refresh token:
 
 ### Refresh token exchange
 
-Refresh tokens rotate on every successful refresh. Serialize refresh operations for a grant, and store the new refresh token atomically with the rest of the response. If refresh succeeds but the new refresh token isn't persisted, you'll need to reauthorize. Retrying an old token from multiple workers can revoke the whole grant: a replay fails with `invalid_grant` either way, and it also revokes the grant unless the rotation happened within the last minute. Don't rely on that window. See [Token](/docs/api-reference/oauth/token) for the reuse-detection details.
+Refresh tokens rotate on every successful refresh. Serialize refresh operations for a grant, and store the new refresh token atomically with the rest of the response. If refresh succeeds but the new refresh token isn't persisted, you'll need to reauthorize. Retrying an old token from multiple workers can revoke the whole grant: a replay fails with `invalid_grant` either way, and it also revokes the grant unless the rotation happened within the last minute. Don't rely on that window. See [Token](/docs/api-reference/oauth/token.md) for the reuse-detection details.
 
 Each refresh resets the new token's 60-day lifetime, so a client that refreshes regularly never has to reauthorize.
 
@@ -410,4 +410,4 @@ curl -X POST 'https://api.resend.com/oauth/revoke' \
 
 A confidential client must authenticate this request too, the same way it does at the token endpoint. For example, pass its `client_secret` with `curl -u 'CLIENT_ID:CLIENT_SECRET'` instead of sending `client_id` in the body.
 
-Access tokens are JWTs and can't be revoked individually. Revoking the refresh token revokes the grant. See [Revoke Token](/docs/api-reference/oauth/revoke).
+Access tokens are JWTs and can't be revoked individually. Revoking the refresh token revokes the grant. See [Revoke Token](/docs/api-reference/oauth/revoke.md).

@@ -7,12 +7,12 @@
 > Retrieve a list of inboxes for the team.
 
 Inboxes are returned newest first. Results are paginated with cursors. See
-[Pagination](/docs/api-reference/pagination) for how `after` and `before` work. The
+[Pagination](/docs/api-reference/pagination.md) for how `after` and `before` work. The
 cursors take an inbox ID. A value that is not a UUID returns a `422`, and an
 unknown ID returns a `404`.
 
 The list items carry fewer fields than a single inbox. [Retrieve an
-inbox](/docs/api-reference/inboxes/get-inbox) to get all its fields.
+inbox](/docs/api-reference/inboxes/get-inbox.md) to get all its fields.
 
 ## Query Parameters
 
@@ -39,7 +39,7 @@ Cannot be used with the `after` parameter.
 >
 > You can only use either `after` or `before`
 > parameter, not both. See our
-> [pagination guide](/docs/api-reference/pagination) for more
+> [pagination guide](/docs/api-reference/pagination.md) for more
 > information.
 
 ## Response Fields
@@ -143,6 +143,20 @@ async fn main() -> Result<()> {
   let _inboxes = resend.inboxes.list(ListOptions::default()).await?;
 
   Ok(())
+}
+```
+
+```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
+import com.resend.Resend;
+import com.resend.core.exception.ResendException;
+import com.resend.services.inboxes.model.ListInboxesResponseSuccess;
+
+public class Main {
+    public static void main(String[] args) throws ResendException {
+        Resend resend = new Resend("re_xxxxxxxxx");
+
+        ListInboxesResponseSuccess data = resend.inboxes().list();
+    }
 }
 ```
 

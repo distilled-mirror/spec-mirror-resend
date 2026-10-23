@@ -28,13 +28,13 @@ Use the `id` of objects as the cursor for pagination. The cursor itself is *excl
 
 Existing list endpoints can optionally return paginated results:
 
-* [List Domains](/docs/api-reference/domains/list-domains)
-* [List API Keys](/docs/api-reference/api-keys/list-api-keys)
-* [List Broadcasts](/docs/api-reference/broadcasts/list-broadcasts)
-* [List Segments](/docs/api-reference/segments/list-segments)
-* [List Contacts](/docs/api-reference/contacts/list-contacts)
-* [List Receiving Emails](/docs/api-reference/emails/list-received-emails)
-* [List Receiving Email Attachments](/docs/api-reference/emails/list-received-email-attachments)
+* [List Domains](/docs/api-reference/domains/list-domains.md)
+* [List API Keys](/docs/api-reference/api-keys/list-api-keys.md)
+* [List Broadcasts](/docs/api-reference/broadcasts/list-broadcasts.md)
+* [List Segments](/docs/api-reference/segments/list-segments.md)
+* [List Contacts](/docs/api-reference/contacts/list-contacts.md)
+* [List Receiving Emails](/docs/api-reference/emails/list-received-emails.md)
+* [List Receiving Email Attachments](/docs/api-reference/emails/list-received-email-attachments.md)
 
 > [!NOTE]
 >
@@ -43,14 +43,14 @@ Existing list endpoints can optionally return paginated results:
 
 Newer list endpoints always return paginated results:
 
-* [List Emails](/docs/api-reference/emails/list-emails)
-* [List Templates](/docs/api-reference/templates/list-templates)
-* [List Topics](/docs/api-reference/topics/list-topics)
-* [List Inboxes](/docs/api-reference/inboxes/list-inboxes)
-* [List Threads](/docs/api-reference/inboxes/list-threads)
-* [Search Threads](/docs/api-reference/inboxes/search-threads)
-* [List Thread Emails](/docs/api-reference/inboxes/list-thread-emails)
-* [List Drafts](/docs/api-reference/inboxes/list-drafts)
+* [List Emails](/docs/api-reference/emails/list-emails.md)
+* [List Templates](/docs/api-reference/templates/list-templates.md)
+* [List Topics](/docs/api-reference/topics/list-topics.md)
+* [List Inboxes](/docs/api-reference/inboxes/list-inboxes.md)
+* [List Threads](/docs/api-reference/inboxes/list-threads.md)
+* [Search Threads](/docs/api-reference/inboxes/search-threads.md)
+* [List Thread Emails](/docs/api-reference/inboxes/list-thread-emails.md)
+* [List Drafts](/docs/api-reference/inboxes/list-drafts.md)
 
 ## Parameters
 

@@ -12,7 +12,7 @@ Access tokens are JWTs signed with `ES256`, valid for 900 seconds. Refresh token
 
 ## Client authentication
 
-How the client proves its identity depends on the `token_endpoint_auth_method` it [registered](/docs/api-reference/oauth/register#param-token-endpoint-auth-method) with:
+How the client proves its identity depends on the `token_endpoint_auth_method` it [registered](/docs/api-reference/oauth/register.md#param-token-endpoint-auth-method) with:
 
 * **Public clients (`none`)** don't send a secret. PKCE (`code_verifier`) is the only proof. This is the default and covers native, CLI, and other clients that can't keep a secret.
 * **Confidential clients** additionally present their `client_secret`, on top of PKCE:
@@ -23,7 +23,7 @@ A client must use exactly one mechanism. Sending both a Basic header and a body 
 
 ## PKCE
 
-Before starting the [authorization request](/docs/api-reference/oauth/authorize), generate:
+Before starting the [authorization request](/docs/api-reference/oauth/authorize.md), generate:
 
 * `code_verifier`: a high-entropy random string, 43–128 characters, from the
   unreserved character set (`A-Z`, `a-z`, `0-9`, `-`, `.`, `_`, `~`). Keep it
@@ -75,7 +75,7 @@ Must exactly match the `redirect_uri` used in the authorization request.
 **code\_verifier** `string` *required*
 
 The original value that
-[code\_challenge](/docs/api-reference/oauth/authorize#param-code-challenge) was
+[code\_challenge](/docs/api-reference/oauth/authorize.md#param-code-challenge) was
 derived from.
 
 ```bash Public client theme={"theme":{"light":"github-light","dark":"vesper"}}

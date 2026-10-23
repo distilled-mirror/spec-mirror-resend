@@ -17,16 +17,16 @@ Each Contact includes the following attributes:
 * `email`: The email address of the Contact. (required)
 * `first_name`: The first name of the Contact.
 * `last_name`: The last name of the Contact.
-* `segments`: A list of [Segments](/docs/dashboard/contacts/introduction#segments) the Contact belongs to.
-* `topics`: A list of [Topics](/docs/dashboard/contacts/introduction#topics) the Contact subscribes to.
+* `segments`: A list of [Segments](/docs/dashboard/contacts/introduction.md#segments) the Contact belongs to.
+* `topics`: A list of [Topics](/docs/dashboard/contacts/introduction.md#topics) the Contact subscribes to.
 * `unsubscribed`: Whether the Contact is unsubscribed from all Broadcasts.
 * `properties`: An object of custom-defined properties, where each value includes the property's `value` and `type`.
 
 ## Manage Contact properties
 
-You can view, add, and manage your Contact properties in the [**Properties** Dashboard view](https://resend.com/audience/properties) or programmatically with the [Contact properties API](/docs/api-reference/contact-properties/create-contact-property), [Resend CLI commands](/docs/cli#contact-properties), and [MCP](/docs/mcp-server).
+You can view, add, and manage your Contact properties in the [**Properties** Dashboard view](https://resend.com/audience/properties) or programmatically with the [Contact properties API](/docs/api-reference/contact-properties/create-contact-property.md), [Resend CLI commands](/docs/cli.md#contact-properties), and [MCP](/docs/mcp-server.md).
 
-You can also create [Automations](/docs/dashboard/automations/introduction) to update Contact properties.
+You can also create [Automations](/docs/dashboard/automations/introduction.md) to update Contact properties.
 
 ## Add Custom Contact properties
 
@@ -40,7 +40,7 @@ Each Contact Property has a key, a value, and optional fallback value.
 
 <video src="https://mintcdn.com/resend/fJVhfUIq0WYU6NCn/images/contact-properties.mp4?fit=max&auto=format&n=fJVhfUIq0WYU6NCn&q=85&s=d99c945eacb2d13f8b76f22fdf527524" autoPlay muted loop />
 
-You can also create Contact properties [via the API or SDKs](/docs/api-reference/contact-properties/create-contact-property).
+You can also create Contact properties [via the API or SDKs](/docs/api-reference/contact-properties/create-contact-property.md).
 
 ```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
 import { Resend } from 'resend';
@@ -201,7 +201,7 @@ To update this value for a Contact in the [Dashboard](https://resend.com/audienc
 
 ## Add or update property values programmatically
 
-You can add custom property values to a Contact when you [create a Contact with the API](/docs/api-reference/contacts/create-contact) or [from the terminal with a CLI command](/docs/cli#contacts).
+You can add custom property values to a Contact when you [create a Contact with the API](/docs/api-reference/contacts/create-contact.md) or [from the terminal with a CLI command](/docs/cli.md#contacts).
 
 ```ts Node.js {10-12} theme={"theme":{"light":"github-light","dark":"vesper"}}
 import { Resend } from 'resend';
@@ -370,7 +370,7 @@ curl -X POST 'https://api.resend.com/contacts' \
 }'
 ```
 
-You can also update a Contact to add or change a property value [using the update Contact endpoint](/docs/api-reference/contacts/update-contact) or [CLI command](/docs/cli#contacts).
+You can also update a Contact to add or change a property value [using the update Contact endpoint](/docs/api-reference/contacts/update-contact.md) or [CLI command](/docs/cli.md#contacts).
 
 ```ts Node.js {8-10} theme={"theme":{"light":"github-light","dark":"vesper"}}
 import { Resend } from 'resend';
@@ -597,16 +597,16 @@ When you create or update a Contact with properties, the properties are added to
 
 If the properties don't exist, or the values are of the wrong type, they are not added to the Contact and the call fails. An error is returned.
 
-You can [list all Contact properties with the API](/docs/api-reference/contact-properties/list-contact-properties) to see and verify all available properties.
+You can [list all Contact properties with the API](/docs/api-reference/contact-properties/list-contact-properties.md) to see and verify all available properties.
 
 ## Use Contact properties in Broadcasts
 
-You can use Contact properties in your Broadcasts to [personalize your emails](/docs/dashboard/broadcasts/editor#personalize-your-content).
+You can use Contact properties in your Broadcasts to [personalize your emails](/docs/dashboard/broadcasts/editor.md#personalize-your-content).
 
 <video src="https://mintcdn.com/resend/DDdiJGHKV-ZLAZPR/images/use-properties-in-broadcasts.mp4?fit=max&auto=format&n=DDdiJGHKV-ZLAZPR&q=85&s=e33ef36ce044aed4e3685f00afd0d01b" autoPlay muted loop />
 
-You can also use Contact properties in your Broadcast HTML and Text content when you [create a Broadcast using the API or SDKs](/docs/api-reference/broadcasts/create-broadcast).
+You can also use Contact properties in your Broadcast HTML and Text content when you [create a Broadcast using the API or SDKs](/docs/api-reference/broadcasts/create-broadcast.md).
 
 ## API Reference
 
-For complete API documentation, see the [Contact properties API reference](/docs/api-reference/contact-properties/create-contact-property).
+For complete API documentation, see the [Contact properties API reference](/docs/api-reference/contact-properties/create-contact-property.md).

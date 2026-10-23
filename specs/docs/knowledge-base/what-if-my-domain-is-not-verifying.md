@@ -18,7 +18,7 @@ When this process is completed correctly, your domain will often verify within 1
 > [!TIP]
 >
 > If you are having any conflict issues with the `MX` records, [check out this
-> guide](/docs/knowledge-base/how-do-i-avoid-conflicting-with-my-mx-records).
+> guide](/docs/knowledge-base/how-do-i-avoid-conflicting-with-my-mx-records.md).
 
 ## Common verification issues
 
@@ -61,7 +61,7 @@ If your domain shows `CNAME` records for sending, check that they're not proxied
 A `CNAME` record can't co-exist with any other record on the same subdomain. If your DNS provider rejects the record, or verification keeps failing on a subdomain that already has an `A`, `TXT`, or `MX` record, you have two options:
 
 1. Remove the existing records from that subdomain
-2. [Configure a different Return-Path subdomain](/docs/dashboard/domains/custom-return-path) (e.g. `bounce.example.com`) and add the records Resend generates for it
+2. [Configure a different Return-Path subdomain](/docs/dashboard/domains/custom-return-path.md) (e.g. `bounce.example.com`) and add the records Resend generates for it
 
 ### DNS provider auto-appending domain names
 

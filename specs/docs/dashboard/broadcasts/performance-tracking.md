@@ -12,4 +12,4 @@ You can view these insights by clicking on [Broadcast](https://resend.com/broadc
 
 <video autoPlay muted loop playsinline src="https://mintcdn.com/resend/ABWmVTZIHGIFNTFD/images/broadcasts-performance-tracking-1.mp4?fit=max&auto=format&n=ABWmVTZIHGIFNTFD&q=85&s=772b0573205e3bd1d3dee7fabbbcfef1" />
 
-Please note, at times, open rates can be inaccurate for a number of reasons due to the way inbox providers handle incoming emails. You can [read more about this here.](https://resend.com/docs/knowledge-base/why-are-my-open-rates-not-accurate)
+Please note, at times, open rates can be inaccurate for a number of reasons due to the way inbox providers handle incoming emails. You can [read more about this here.](https://resend.com/docs/knowledge-base/why-are-my-open-rates-not-accurate.md)

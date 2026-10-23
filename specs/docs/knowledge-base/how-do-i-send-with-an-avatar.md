@@ -44,7 +44,7 @@ Avatars in Yahoo only display in the mobile app and inside an opened email on de
 
 ## Apple Mail
 
-Apple Mail only shows avatars if recipients have added images to contacts. Alternatively, you can set up [Apple Branded Mail](/docs/knowledge-base/how-do-i-set-up-apple-branded-mail), a proprietary Apple format introduced with iOS 18.2 that displays your logo as an avatar in the inbox of Apple Mail, or [set up BIMI](/docs/dashboard/domains/bimi#what-is-bimi) with a Verified Mark Certificate.
+Apple Mail only shows avatars if recipients have added images to contacts. Alternatively, you can set up [Apple Branded Mail](/docs/knowledge-base/how-do-i-set-up-apple-branded-mail.md), a proprietary Apple format introduced with iOS 18.2 that displays your logo as an avatar in the inbox of Apple Mail, or [set up BIMI](/docs/dashboard/domains/bimi.md#what-is-bimi) with a Verified Mark Certificate.
 
 ## Using Gravatar
 
@@ -61,7 +61,7 @@ This means **you can only**:
 1. Add your avatar to a real inbox, limiting it only to that provider
 2. Send mail from the same address that you set the avatar on
 
-The way around this is [BIMI (Brand Indicators for Message Identification)](/docs/dashboard/domains/bimi). BIMI now supports Common Mark Certificates (CMC) in addition to Verified Mark Certificates (VMC), making it more accessible. It is supported by nearly all major providers and allows you to send from any address on that domain.
+The way around this is [BIMI (Brand Indicators for Message Identification)](/docs/dashboard/domains/bimi.md). BIMI now supports Common Mark Certificates (CMC) in addition to Verified Mark Certificates (VMC), making it more accessible. It is supported by nearly all major providers and allows you to send from any address on that domain.
 
 > [!NOTE]
 >

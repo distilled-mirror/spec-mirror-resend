@@ -10,8 +10,8 @@
 
 Before you start, you'll need:
 
-* A Resend [API key](/docs/create-an-api-key)
-* A [verified domain](/docs/add-a-domain)
+* A Resend [API key](/docs/create-an-api-key.md)
+* A [verified domain](/docs/add-a-domain.md)
 
 Prefer watching a video? Check out our video walkthrough below.
 
@@ -46,7 +46,7 @@ Resend-Idempotency-Key: welcome-user/123456789
 <p>it works!</p>
 ```
 
-Learn more about [idempotency keys](/docs/dashboard/emails/idempotency-keys).
+Learn more about [idempotency keys](/docs/dashboard/emails/idempotency-keys.md).
 
 ## Custom Headers
 
@@ -74,4 +74,4 @@ Once configured, you can start sending emails via SMTP. Below are some frequentl
 > **Does the rate limit apply when sending with SMTP?**
 >
 > Yes, the rate limit is the [same as the
-> API](https://resend.com/docs/api-reference/introduction#rate-limit).
+> API](https://resend.com/docs/api-reference/introduction.md#rate-limit).

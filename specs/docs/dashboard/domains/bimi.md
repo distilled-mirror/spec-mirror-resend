@@ -13,7 +13,7 @@ To get the most out of this guide, you will need to:
 * Establish verifiable use of your logo
   * Obtain a registered trademark for your logo
   * Or, use your logo for over one year
-* [Add a DMARC record on your domain](/docs/dashboard/domains/dmarc)
+* [Add a DMARC record on your domain](/docs/dashboard/domains/dmarc.md)
 
 ## What is BIMI?
 
@@ -39,7 +39,7 @@ Here's an overview of current email client support:
 > [!NOTE]
 >
 > If you haven't set up DMARC yet, follow our [DMARC Setup
-> Guide](/docs/dashboard/domains/dmarc).
+> Guide](/docs/dashboard/domains/dmarc.md).
 
 BIMI requires a DMARC policy of `p=quarantine;` or `p=reject;`. This policy assures that your emails are properly authenticated and that no one else can spoof your domain and send them with your logo.
 

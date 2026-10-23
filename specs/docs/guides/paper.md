@@ -6,13 +6,13 @@
 
 > Learn how to combine the Paper MCP server and the Resend MCP server so your agent can turn a Paper design into a template or broadcast in your Resend account.
 
-[Paper](https://paper.design) is a design tool built for AI agents. Its MCP server lets agents read your canvas, including layout, styles, copy, and screenshots. Combined with the [Resend MCP server](/docs/mcp-server), your agent can take a design straight from Paper and turn it into a ready-to-send [Template](/docs/dashboard/templates/introduction) or [Broadcast](/docs/dashboard/broadcasts/introduction) in your Resend account.
+[Paper](https://paper.design) is a design tool built for AI agents. Its MCP server lets agents read your canvas, including layout, styles, copy, and screenshots. Combined with the [Resend MCP server](/docs/mcp-server.md), your agent can take a design straight from Paper and turn it into a ready-to-send [Template](/docs/dashboard/templates/introduction.md) or [Broadcast](/docs/dashboard/broadcasts/introduction.md) in your Resend account.
 
 The flow looks like this:
 
 1. You design an email in Paper.
 2. Your agent reads the design through the Paper MCP server.
-3. Your agent converts the design into email-safe HTML using the [Resend MCP server](/docs/mcp-server) and [agent skills](/docs/resend-skill).
+3. Your agent converts the design into email-safe HTML using the [Resend MCP server](/docs/mcp-server.md) and [agent skills](/docs/resend-skill.md).
 4. Your agent creates a Template or Broadcast in Resend
 
 ## Prerequisites
@@ -20,7 +20,7 @@ The flow looks like this:
 Before you start, make sure you have:
 
 * The [Paper Desktop app](https://paper.design/downloads) installed with a file open (opening a file starts the Paper MCP server automatically)
-* A [Resend account](https://resend.com/signup) with a [verified domain](/docs/add-a-domain)
+* A [Resend account](https://resend.com/signup) with a [verified domain](/docs/add-a-domain.md)
 * An MCP client like Claude Code, Cursor, or Claude Desktop
 
 > [!NOTE]
@@ -121,7 +121,7 @@ Open **Settings** > **Connectors** > **Add custom connector** and enter:
 https://mcp.resend.com/mcp
 ```
 
-For more clients and configuration options, including running the server locally, see the [MCP Server overview](/docs/mcp-server).
+For more clients and configuration options, including running the server locally, see the [MCP Server overview](/docs/mcp-server.md).
 
 **3. Design your email in Paper**
 
@@ -140,7 +140,7 @@ Design your email as an artboard in Paper. A few tips for designs that translate
 
 **4. Ask your agent to create an email**
 
-You can create either a [Template](/docs/dashboard/templates/introduction) or a [Broadcast](/docs/dashboard/broadcasts/introduction).
+You can create either a [Template](/docs/dashboard/templates/introduction.md) or a [Broadcast](/docs/dashboard/broadcasts/introduction.md).
 
 To create a template, select an artboard in Paper and with both servers connected, prompt your agent with the following:
 
@@ -158,7 +158,7 @@ Behind the scenes, the agent will:
 4. Call Resend's `create-template` with the HTML, name, and subject.
 5. Call Resend's `publish-template` to make it available for sending.
 
-Templates support variables using triple-brace syntax, like `{{{USERNAME}}}`. Once published, you can send the template via the [Emails API](/docs/api-reference/emails/send-email) or the dashboard.
+Templates support variables using triple-brace syntax, like `{{{USERNAME}}}`. Once published, you can send the template via the [Emails API](/docs/api-reference/emails/send-email.md) or the dashboard.
 
 To create a Broadcast and go from design to a campaign instead:
 
@@ -173,7 +173,7 @@ The agent reads the design the same way, then calls Resend's `create-broadcast` 
 > [!NOTE]
 >
 > Before you can send a Broadcast, you must define which
-> [Segment](/docs/dashboard/segments/introduction) should receive it. If you don't
+> [Segment](/docs/dashboard/segments/introduction.md) should receive it. If you don't
 > have one yet, your agent can create one.
 
 **5. Refine in the visual editor**
@@ -198,5 +198,5 @@ Alternatively, you can edit the Template or Broadcast in the Resend dashboard. S
 ## Troubleshooting
 
 * **Agent can't reach Paper**: make sure Paper Desktop is running with a file open, then restart your agent session.
-* **Design looks different in the email**: email clients don't support modern CSS. Ensure you've installed the Resend's [agent skills](/docs/resend-skill). Then ask the agent to use table-based layout and inline styles, and to flag anything (like custom fonts or complex gradients) that won't survive the conversion.
+* **Design looks different in the email**: email clients don't support modern CSS. Ensure you've installed the Resend's [agent skills](/docs/resend-skill.md). Then ask the agent to use table-based layout and inline styles, and to flag anything (like custom fonts or complex gradients) that won't survive the conversion.
 * **`create-broadcast` fails**: check that the `from` address uses a [verified domain](https://resend.com/domains) and that the segment exists.

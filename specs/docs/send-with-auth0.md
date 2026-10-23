@@ -12,8 +12,8 @@
 
 Before you start, you'll need:
 
-* A Resend [API key](/docs/create-an-api-key)
-* A [verified domain](/docs/add-a-domain)
+* A Resend [API key](/docs/create-an-api-key.md)
+* A [verified domain](/docs/add-a-domain.md)
 
 Prefer a video walkthrough?
 
@@ -98,7 +98,7 @@ Use them in your React Email components, render to static HTML, and paste the ou
 
 To use Resend templates with Auth0, define your templates in the [Resend Dashboard](https://resend.com/templates) and reference them in your [Custom OAuth Actions](#send-emails-with-auth0-actions-optional).
 
-For instance, the following code uses a Resend template with the id of `login-detected` that contains two variables (`first_name` and `ip_address`) to be passed in the call. [Learn more about Resend templates](/docs/dashboard/templates/introduction).
+For instance, the following code uses a Resend template with the id of `login-detected` that contains two variables (`first_name` and `ip_address`) to be passed in the call. [Learn more about Resend templates](/docs/dashboard/templates/introduction.md).
 
 ```javascript theme={"theme":{"light":"github-light","dark":"vesper"}}
 const { Resend } = require('resend');

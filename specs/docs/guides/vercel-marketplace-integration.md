@@ -61,7 +61,7 @@ Add Resend to the linked project from your terminal. With the [Vercel CLI](https
 7. Click **Complete onboarding** to view the domain in your new Resend account.
 8. Click **Auto configure** to automatically add the DNS records to your Vercel domain.
 
-Get more help adding a custom domain in [Resend's documentation](/docs/dashboard/domains/introduction).
+Get more help adding a custom domain in [Resend's documentation](/docs/dashboard/domains/introduction.md).
 
 ### v0
 
@@ -69,7 +69,7 @@ Get more help adding a custom domain in [Resend's documentation](/docs/dashboard
 
 The integration creates a Resend account, adds a Resend API key to your v0 project's environment variables, and configures DNS for a domain purchased in Vercel. Billing is managed through v0.
 
-See [Send emails with v0 and Resend](/docs/v0-integration) for the full walkthrough.
+See [Send emails with v0 and Resend](/docs/v0-integration.md) for the full walkthrough.
 
 ## Billing
 
@@ -82,7 +82,7 @@ Accounts created from the Marketplace are billed by Vercel. Manage your account 
 
 ## Next steps
 
-* Send your first email with [Next.js](/docs/send-with-nextjs).
-* Explore [receiving emails](/docs/dashboard/receiving/introduction) with Resend.
-* Use Resend [Templates](/docs/dashboard/templates/introduction) to simplify your email sending and design.
-* Create your first Resend [Automation](/docs/dashboard/automations/introduction).
+* Send your first email with [Next.js](/docs/send-with-nextjs.md).
+* Explore [receiving emails](/docs/dashboard/receiving/introduction.md) with Resend.
+* Use Resend [Templates](/docs/dashboard/templates/introduction.md) to simplify your email sending and design.
+* Create your first Resend [Automation](/docs/dashboard/automations/introduction.md).

@@ -39,7 +39,7 @@ Let's get you set up with an email inbox! Install the resend-skills from https:/
 > the skill since OpenClaw skills operate differently than traditional agent
 > skills.
 
-Your agent may also benefit from installing the [Resend CLI](/docs/cli).
+Your agent may also benefit from installing the [Resend CLI](/docs/cli.md).
 
 ### Step 2: Get an API key
 
@@ -71,9 +71,9 @@ We recommend not pasting API keys into the chat. Instead, use one of these two m
 
 ### Step 3: Verify a domain
 
-Next, your agent needs to know the email address it will use to send and receive emails. [Strongly consider](/docs/knowledge-base/is-it-better-to-send-emails-from-a-subdomain-or-the-root-domain) using a subdomain (`agent.example.com`) instead of the root domain (`example.com`), especially if you want to receive emails.
+Next, your agent needs to know the email address it will use to send and receive emails. [Strongly consider](/docs/knowledge-base/is-it-better-to-send-emails-from-a-subdomain-or-the-root-domain.md) using a subdomain (`agent.example.com`) instead of the root domain (`example.com`), especially if you want to receive emails.
 
-You can also use the [Resend CLI](/docs/cli) to verify a domain, although you will need to manually add the DNS records to your DNS provider.
+You can also use the [Resend CLI](/docs/cli.md) to verify a domain, although you will need to manually add the DNS records to your DNS provider.
 
 **1. Add a domain**
 
@@ -103,7 +103,7 @@ to **On**.
 
 Add the DNS records to your domain's DNS provider. For
 more guidance, see our [guides on adding DNS records to various
-providers](knowledge-base/introduction#dns-guides).
+providers](/docs/knowledge-base/introduction.md#dns-guides).
 
 **5. Wait for verification**
 
@@ -113,13 +113,13 @@ typically finished within a few minutes.
 > [!TIP]
 >
 > For a more in-depth guide on domain verification, see our [guide on verifying
-> a domain](/docs/dashboard/domains/introduction).
+> a domain](/docs/dashboard/domains/introduction.md).
 
 Once your domain is verified in Resend, you can use it to send (and receive) emails with your agent. Add the email address to your agent's memory and tell it to send you a test email to your own email address.
 
 ### Step 4: Create your agent's inbox
 
-An [inbox](/docs/api-reference/inboxes/create-inbox) gives your agent its own address on your domain. It groups each conversation into a thread, so your agent can reply in context.
+An [inbox](/docs/api-reference/inboxes/create-inbox.md) gives your agent its own address on your domain. It groups each conversation into a thread, so your agent can reply in context.
 
 Ask your agent to create it:
 
@@ -130,7 +130,7 @@ Create a Resend inbox for agent@agent.example.com using the agent email inbox ag
 > [!NOTE]
 >
 > If your plan has no inbox available, the skill falls back to Resend
-> [Receiving](/docs/dashboard/receiving/introduction) with the `email.received`
+> [Receiving](/docs/dashboard/receiving/introduction.md) with the `email.received`
 > event. The security levels stay the same.
 
 ### Step 5: Use webhooks to receive emails
@@ -248,7 +248,7 @@ async function handler(req) {
 > [!NOTE]
 >
 > For more help working with inbox emails, including how to reply in the thread,
-> see [Reply to Thread Email](/docs/api-reference/inboxes/reply-thread-email).
+> see [Reply to Thread Email](/docs/api-reference/inboxes/reply-thread-email.md).
 
 ### Step 6: Hook into OpenClaw's APIs for instant notifications
 

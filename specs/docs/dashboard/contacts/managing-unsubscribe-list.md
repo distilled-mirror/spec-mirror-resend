@@ -8,11 +8,11 @@
 
 ## Managing unsubscribes
 
-A Contact's [**Subscribed** status](#subscription-statuses) is a global setting that enables or disables sending [Broadcasts](/docs/dashboard/broadcasts/introduction).
+A Contact's [**Subscribed** status](#subscription-statuses) is a global setting that enables or disables sending [Broadcasts](/docs/dashboard/broadcasts/introduction.md).
 
-When you include [Resend's unsubscribe link placeholder](/docs/dashboard/broadcasts/editor#broadcast-unsubscribe-link) in your Broadcasts or Automations, Resend will automatically handle your Contact's unsubscribe flow for you and ensure that your Contact subscription statuses are up to date.
+When you include [Resend's unsubscribe link placeholder](/docs/dashboard/broadcasts/editor.md#broadcast-unsubscribe-link) in your Broadcasts or Automations, Resend will automatically handle your Contact's unsubscribe flow for you and ensure that your Contact subscription statuses are up to date.
 
-However, unsubscribed Contacts will not be removed from your account. Manually or programmatically deleting Contacts who no longer want to receive your emails is a key part of [maintaining audience hygiene](/docs/knowledge-base/audience-hygiene) and keeping your Contact list clean, valid, and engaged.
+However, unsubscribed Contacts will not be removed from your account. Manually or programmatically deleting Contacts who no longer want to receive your emails is a key part of [maintaining audience hygiene](/docs/knowledge-base/audience-hygiene.md) and keeping your Contact list clean, valid, and engaged.
 
 It's essential to update your Contact list when someone unsubscribes to maintain a good sender reputation.
 
@@ -24,11 +24,11 @@ Benefits of managing your unsubscribe list:
 > [!TIP]
 >
 > Whenever possible, [add a Topic to your
-> Broadcast](/docs/dashboard/contacts/introduction#topics). This allows your Contact
+> Broadcast](/docs/dashboard/contacts/introduction.md#topics). This allows your Contact
 > to unsubscribe from only specific types of emails (instead of unsubscribing
 > from all Broadcasts and Automation emails from your team).
 
-You can also [include an unsubscribe link in transactional emails](/docs/dashboard/emails/add-unsubscribe-to-transactional-emails) where Resend does not manage your Contacts.
+You can also [include an unsubscribe link in transactional emails](/docs/dashboard/emails/add-unsubscribe-to-transactional-emails.md) where Resend does not manage your Contacts.
 
 ## Subscription Statuses
 
@@ -57,8 +57,8 @@ select **Unsubscribed**.
 Select all Contacts then click the **Delete** button in the bulk actions
 bar.
 
-You can also retrieve a list of unsubscribed Contacts to delete via the [Contacts API](/docs/api-reference/contacts/list-contacts) or with a [Contacts CLI command](/docs/cli#contacts).
+You can also retrieve a list of unsubscribed Contacts to delete via the [Contacts API](/docs/api-reference/contacts/list-contacts.md) or with a [Contacts CLI command](/docs/cli.md#contacts).
 
 ## API Reference
 
-For complete API documentation, see the [Contacts API reference](/docs/api-reference/contacts/list-contacts).
+For complete API documentation, see the [Contacts API reference](/docs/api-reference/contacts/list-contacts.md).
