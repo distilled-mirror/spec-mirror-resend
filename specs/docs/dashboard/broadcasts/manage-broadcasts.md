@@ -8,13 +8,13 @@
 
 After you create your first Broadcast, all members of your team can view and manage existing Broadcast details directly in the [**Broadcasts** Dashboard page](https://resend.com/broadcasts). You can also perform bulk actions (cancel, delete) by selecting multiple Broadcasts.
 
-To manage your marketing campaigns directly from your application, you can use the [Broadcast API](/docs/api-reference/broadcasts/create-broadcast.md) endpoints to list, retrieve, update, and delete your existing Broadcasts.
+To manage your marketing campaigns directly from your application, you can use the [Broadcast API](https://resend.com/docs/api-reference/broadcasts/create-broadcast.md) endpoints to list, retrieve, update, and delete your existing Broadcasts.
 
-You can also manage your Broadcasts using [Resend CLI commands](/docs/cli.md#broadcasts) and [AI building tools](/docs/ai-onboarding.md).
+You can also manage your Broadcasts using [Resend CLI commands](https://resend.com/docs/cli.md#broadcasts) and [AI building tools](https://resend.com/docs/ai-onboarding.md).
 
 ## View Broadcasts
 
-See the name, [status](#understand-broadcast-statuses), and created date of all your Broadcasts from the Emails Dashboard page. These can also be filtered by status and [audience](/docs/dashboard/segments/introduction.md).
+See the name, [status](#understand-broadcast-statuses), and created date of all your Broadcasts from the Emails Dashboard page. These can also be filtered by status and [audience](https://resend.com/docs/dashboard/segments/introduction.md).
 
 Select any individual Broadcast to view its details. The view will depend on the status of the email. For example, Broadcasts that have been sent will show deliverability metrics as well as your content as a preview, plain text, and HTML.
 
@@ -71,4 +71,4 @@ You can also use keyboard shortcuts:
 
 ## API Reference
 
-For complete API documentation, see the [Broadcasts API reference](/docs/api-reference/broadcasts/create-broadcast.md).
+For complete API documentation, see the [Broadcasts API reference](https://resend.com/docs/api-reference/broadcasts/create-broadcast.md).

@@ -10,13 +10,13 @@ The Resend skill enables AI agents to send emails through the Resend API using o
 
 ## Installation
 
-This skill is part of the [resend-skills](https://github.com/resend/resend-skills) repository, which also includes the [Agent Email Inbox skill](/docs/agent-email-inbox-skill.md) for secure inbound email processing. When you run the install command, you'll be prompted to choose which skills to install.
+This skill is part of the [resend-skills](https://github.com/resend/resend-skills) repository, which also includes the [Agent Email Inbox skill](https://resend.com/docs/agent-email-inbox-skill.md) for secure inbound email processing. When you run the install command, you'll be prompted to choose which skills to install.
 
 ```bash theme={"theme":{"light":"github-light","dark":"vesper"}}
 npx skills add resend/resend-skills
 ```
 
-Clients that support the [Agent Plugins](https://agent-plugins.org) spec can install the same repository as a plugin. That install adds these skills and the [remote MCP server](/docs/mcp-server.md) together. The [MCP server docs](/docs/mcp-server.md#remote-mcp-server) list the install command for each supported client.
+Clients that support the [Agent Plugins](https://agent-plugins.org) spec can install the same repository as a plugin. That install adds these skills and the [remote MCP server](https://resend.com/docs/mcp-server.md) together. The [MCP server docs](https://resend.com/docs/mcp-server.md#remote-mcp-server) list the install command for each supported client.
 
 ## Advantages
 
@@ -30,7 +30,7 @@ Build with our official recommendations for sending emails with Resend.
 
 ## Learn More
 
-> **[Agent Email Inbox](/docs/agent-email-inbox-skill.md)**
+> **[Agent Email Inbox](https://resend.com/docs/agent-email-inbox-skill.md)**
 >
 > Give your agent a secure inbox to receive and act on inbound emails.
 

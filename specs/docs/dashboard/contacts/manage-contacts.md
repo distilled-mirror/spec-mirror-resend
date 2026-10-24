@@ -8,14 +8,14 @@
 
 All members of your team can view and manage existing Contact details directly in the [Dashboard](https://resend.com/audience). You can also perform bulk actions (update Segments, subscribe to Topics) by selecting multiple Contacts.
 
-To manage your Broadcast subscribers directly from your application, you can use the [Contacts API](/docs/api-reference/contacts/create-contact.md) to list, retrieve, update, and delete Contacts.
+To manage your Broadcast subscribers directly from your application, you can use the [Contacts API](https://resend.com/docs/api-reference/contacts/create-contact.md) to list, retrieve, update, and delete Contacts.
 
-You can also manage Contacts using [Resend CLI commands](/docs/cli.md#contacts) and [MCP](/docs/mcp-server.md).
+You can also manage Contacts using [Resend CLI commands](https://resend.com/docs/cli.md#contacts) and [MCP](https://resend.com/docs/mcp-server.md).
 
 > [!TIP]
 >
 > If you previously used our Audience model, learn how to [migrate to the new
-> Contacts model](/docs/dashboard/contacts/migrating-from-audiences-to-segments.md).
+> Contacts model](https://resend.com/docs/dashboard/contacts/migrating-from-audiences-to-segments.md).
 
 ## Dashboard Views
 
@@ -44,11 +44,11 @@ Each Contact includes the metadata associated with the Contact, as well as a ful
 
 ![View Contact](https://mintcdn.com/resend/fJVhfUIq0WYU6NCn/images/contacts-view.png?fit=max\&auto=format\&n=fJVhfUIq0WYU6NCn\&q=85\&s=7d9d97f84af0603a528dd841a4f77637)
 
-You can also [retrieve a single Contact](/docs/api-reference/contacts/get-contact.md) or [list all Contacts](/docs/api-reference/contacts/list-contacts.md) via the API or SDKs, or use [CLI commands to view your Contacts](/docs/cli.md#contacts).
+You can also [retrieve a single Contact](https://resend.com/docs/api-reference/contacts/get-contact.md) or [list all Contacts](https://resend.com/docs/api-reference/contacts/list-contacts.md) via the API or SDKs, or use [CLI commands to view your Contacts](https://resend.com/docs/cli.md#contacts).
 
 ## Edit Contacts
 
-You can edit any Contact property (excluding the email address), assign the Contact to a [Segment](/docs/dashboard/contacts/introduction.md#segments) or [Topic](/docs/dashboard/contacts/introduction.md#topics), or unsubscribe the Contact from all Broadcasts.
+You can edit any Contact property (excluding the email address), assign the Contact to a [Segment](https://resend.com/docs/dashboard/contacts/introduction.md#segments) or [Topic](https://resend.com/docs/dashboard/contacts/introduction.md#topics), or unsubscribe the Contact from all Broadcasts.
 
 **1. Go to the **Contacts** Dashboard view.**
 
@@ -56,7 +56,7 @@ You can edit any Contact property (excluding the email address), assign the Cont
 
 **3. Edit the Contact details and choose **Save**.**
 
-You can also [update a Contact via the API or SDKs](/docs/api-reference/contacts/update-contact.md) or with [CLI commands to update your Contacts](/docs/cli.md#contacts) using the `id` or `email` of the Contact.
+You can also [update a Contact via the API or SDKs](https://resend.com/docs/api-reference/contacts/update-contact.md) or with [CLI commands to update your Contacts](https://resend.com/docs/cli.md#contacts) using the `id` or `email` of the Contact.
 
 ```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
 import { Resend } from 'resend';
@@ -271,7 +271,7 @@ You can also delete multiple Contacts at once by clicking the **Delete** button 
 
 **3. Confirm the deletion.**
 
-You can also [delete a Contact](/docs/api-reference/contacts/delete-contact.md) via the API, SDKs, or CLI.
+You can also [delete a Contact](https://resend.com/docs/api-reference/contacts/delete-contact.md) via the API, SDKs, or CLI.
 
 ```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
 import { Resend } from 'resend';
@@ -419,4 +419,4 @@ curl -X DELETE 'https://api.resend.com/contacts/acme@example.com' \
 
 ## API Reference
 
-For complete API documentation, see the [Contacts API reference](/docs/api-reference/contacts/create-contact.md).
+For complete API documentation, see the [Contacts API reference](https://resend.com/docs/api-reference/contacts/create-contact.md).

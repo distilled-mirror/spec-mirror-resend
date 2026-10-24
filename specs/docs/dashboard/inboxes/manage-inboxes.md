@@ -20,7 +20,7 @@ While viewing an inbox, click on the **Settings** button to reconfigure your inb
 
 The General settings allow you to change the inbox nickname, which is the name that you see within the Dashboard. You can also change the **Reply as** name, which is the name that people who receive emails from this inbox will see. This is the `from_name` field in the API.
 
-You can also [update an inbox](/docs/api-reference/inboxes/update-inbox.md) via the API, SDKs, or CLI.
+You can also [update an inbox](https://resend.com/docs/api-reference/inboxes/update-inbox.md) via the API, SDKs, or CLI.
 
 ```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
 import { Resend } from 'resend';
@@ -166,11 +166,11 @@ In the Dashboard, you can also update how you view threads in the inbox. You can
 
 ## Inbox agent
 
-In the settings menu, under **Customize**, is the configuration for the built-in agent for this inbox. Each inbox has an agent that can take instructions, perform actions and draft responses. You can find more details about this agent in [Inbox Agent](/docs/dashboard/inboxes/agent.md).
+In the settings menu, under **Customize**, is the configuration for the built-in agent for this inbox. Each inbox has an agent that can take instructions, perform actions and draft responses. You can find more details about this agent in [Inbox Agent](https://resend.com/docs/dashboard/inboxes/agent.md).
 
 ## Inbox labels
 
-In the settings menu, under **Labels**, you can add, edit and remove labels that can be used to organize threads. Find more details about how to use labels under [Inbox Labels](/docs/dashboard/inboxes/labels.md).
+In the settings menu, under **Labels**, you can add, edit and remove labels that can be used to organize threads. Find more details about how to use labels under [Inbox Labels](https://resend.com/docs/dashboard/inboxes/labels.md).
 
 ## Delete an inbox
 
@@ -182,7 +182,7 @@ In the Dashboard, you can delete an inbox either from the settings panel at the 
 
 **3. Delete the inbox**
 
-You can also [delete an inbox](/docs/api-reference/inboxes/delete-inbox.md) via the API, SDKs, or CLI.
+You can also [delete an inbox](https://resend.com/docs/api-reference/inboxes/delete-inbox.md) via the API, SDKs, or CLI.
 
 ```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
 import { Resend } from 'resend';
@@ -281,4 +281,4 @@ Deleting an inbox removes its threads and the emails in them from the inbox. The
 
 ## API Reference
 
-For complete API documentation, see the [Inboxes API reference](/docs/api-reference/inboxes/update-inbox.md).
+For complete API documentation, see the [Inboxes API reference](https://resend.com/docs/api-reference/inboxes/update-inbox.md).

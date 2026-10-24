@@ -13,13 +13,13 @@ Since DMARC relies on DKIM and SPF, first ensure your existing emails are passin
 * DKIM verifies the email wasn't altered in transit using cryptographic authentication.
 * SPF authorizes IP addresses to send email for a domain.
 
-If you have a [verified](/docs/dashboard/domains/introduction.md) domain with Resend, it means you are already passing SPF and DKIM.
+If you have a [verified](https://resend.com/docs/dashboard/domains/introduction.md) domain with Resend, it means you are already passing SPF and DKIM.
 
 > [!NOTE]
 >
 > For more details on understanding DMARC reports, see our [guide on how to read
 > a DMARC report](https://resend.com/blog/how-to-read-a-dmarc-report). You can
-> also use Resend's [DMARC analyzer](/docs/dmarc-analyzer.md) to visualize your DMARC
+> also use Resend's [DMARC analyzer](https://resend.com/docs/dmarc-analyzer.md) to visualize your DMARC
 > reports.
 
 ## What is DMARC?
@@ -90,7 +90,7 @@ Once you're confident that all legitimate email is passing DMARC, you can furthe
 > and troubleshoot DMARC failures. For help analyzing your DMARC reports, see
 > our [guide on how to read a DMARC
 > report](https://resend.com/blog/how-to-read-a-dmarc-report) or use Resend's
-> [DMARC analyzer](/docs/dmarc-analyzer.md).
+> [DMARC analyzer](https://resend.com/docs/dmarc-analyzer.md).
 
 Here is a summary of the available policies and their behavior:
 
@@ -100,7 +100,7 @@ Here is a summary of the available policies and their behavior:
 | p=quarantine; | Send messages that fail DMARC to the spam folder |
 | p=reject; | Bounce delivery of emails that fail DMARC. |
 
-Once your policy is `p=quarantine;` or `p=reject;` you can explore setting up [BIMI](/docs/dashboard/domains/bimi.md), which can provide established brands even greater sending credibility by displaying a logo as an avatar in an email client.
+Once your policy is `p=quarantine;` or `p=reject;` you can explore setting up [BIMI](https://resend.com/docs/dashboard/domains/bimi.md), which can provide established brands even greater sending credibility by displaying a logo as an avatar in an email client.
 
 ## Reference
 

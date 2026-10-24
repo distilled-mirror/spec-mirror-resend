@@ -9,7 +9,7 @@
 > [!NOTE]
 >
 > See all available [domain `status`
-> types](/docs/dashboard/domains/manage-domains#understand-a-domain-status).
+> types](https://resend.com/docs/dashboard/domains/manage-domains#understand-a-domain-status).
 
 ## Query Parameters
 
@@ -39,7 +39,7 @@ Cannot be used with the `after` parameter.
 >
 > You can only use either `after` or `before`
 > parameter, not both. See our
-> [pagination guide](/docs/api-reference/pagination.md) for more
+> [pagination guide](https://resend.com/docs/api-reference/pagination.md) for more
 > information.
 
 ```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}

@@ -426,7 +426,7 @@ For example, wait for `order.shipped`, then send its tracking link:
 
 Connect the step to the `event_received` path. On the `timeout` path, the event never arrived, so there's no payload to read.
 
-You can use `wait_events` in [send email](/docs/dashboard/automations/send-email.md#template-variables) variables, [contact update](/docs/dashboard/automations/contact-update.md#dynamic-variables) fields, and [condition](/docs/dashboard/automations/condition.md#compare-against-other-data) rules.
+You can use `wait_events` in [send email](https://resend.com/docs/dashboard/automations/send-email.md#template-variables) variables, [contact update](https://resend.com/docs/dashboard/automations/contact-update.md#dynamic-variables) fields, and [condition](https://resend.com/docs/dashboard/automations/condition.md#compare-against-other-data) rules.
 
 ## Configuration
 

@@ -10,8 +10,8 @@
 
 Before you start, you'll need:
 
-* A Resend [API key](/docs/create-an-api-key.md)
-* A [verified domain](/docs/add-a-domain.md)
+* A Resend [API key](https://resend.com/docs/create-an-api-key.md)
+* A [verified domain](https://resend.com/docs/add-a-domain.md)
 
 Prefer watching a video? Check out this video walkthrough below.
 

@@ -17,7 +17,7 @@ The agent does not act on threads in the spam folder, and it skips emails that n
 > [!NOTE]
 >
 > The agent never sends email on its own. Replies and forwards are saved as
-> [drafts](/docs/dashboard/inboxes/drafts.md) for a member of your team to review and
+> [drafts](https://resend.com/docs/dashboard/inboxes/drafts.md) for a member of your team to review and
 > send.
 
 ## Configure the agent
@@ -48,7 +48,7 @@ Changes are saved automatically as you make them.
 
 ### Using the API
 
-You can also [update the agent settings](/docs/api-reference/inboxes/update-agent.md) via the API, SDKs, or CLI. Fields you leave out keep their current value, and `actions` replaces the whole set of actions. The `tone` is one of `concise_professional`, `concise_casual`, `expanded_professional`, or `expanded_casual`.
+You can also [update the agent settings](https://resend.com/docs/api-reference/inboxes/update-agent.md) via the API, SDKs, or CLI. Fields you leave out keep their current value, and `actions` replaces the whole set of actions. The `tone` is one of `concise_professional`, `concise_casual`, `expanded_professional`, or `expanded_casual`.
 
 ```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
 import { Resend } from 'resend';
@@ -209,7 +209,7 @@ resend inboxes agent update \
   --actions draft_reply add_labels
 ```
 
-To see the current settings, [retrieve the agent settings](/docs/api-reference/inboxes/get-agent.md).
+To see the current settings, [retrieve the agent settings](https://resend.com/docs/api-reference/inboxes/get-agent.md).
 
 ```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
 import { Resend } from 'resend';
@@ -311,7 +311,7 @@ The available actions are:
 | - | - | - |
 | Draft replies | `draft_reply` | Writes a reply as a draft for you to review and send. |
 | Forward threads | `forward_thread` | Writes a forward as a draft for you to review and send. |
-| Add labels | `add_labels` | Applies existing [labels](/docs/dashboard/inboxes/labels.md) to the thread. |
+| Add labels | `add_labels` | Applies existing [labels](https://resend.com/docs/dashboard/inboxes/labels.md) to the thread. |
 | Assign threads to teammates | `assign_thread` | Assigns the thread to a member of your team. |
 | Mark as spam | `mark_as_spam` | Moves the thread to the spam folder. |
 | Archive | `archive` | Moves the thread to the archive folder. |
@@ -322,7 +322,7 @@ A few rules keep the agent's actions safe:
 * **Drafts are never overwritten.** If a thread already has a draft, the agent leaves it alone and does not draft a reply or forward.
 * **Forwards only go to addresses in your instructions.** Write out the full email address the agent should forward to. Naming a domain or a person is not enough.
 * **Assignments need a clear match.** Name the teammate by email address or name in your instructions. If the name matches nobody, or more than one person, the thread is not assigned.
-* **Labels must already exist.** The agent applies your existing labels but does not create new ones. [Create the labels](/docs/dashboard/inboxes/labels.md#create-a-label) you want it to use first.
+* **Labels must already exist.** The agent applies your existing labels but does not create new ones. [Create the labels](https://resend.com/docs/dashboard/inboxes/labels.md#create-a-label) you want it to use first.
 
 ## Writing instructions
 
@@ -340,7 +340,7 @@ This inbox receives support requests for our online store.
 
 ## Review the agent's work
 
-The agent's work shows up directly in the inbox. Threads it labels, assigns or moves appear with those changes applied, and you can undo any of them by [organizing the thread](/docs/dashboard/inboxes/threads.md#organize-threads) yourself.
+The agent's work shows up directly in the inbox. Threads it labels, assigns or moves appear with those changes applied, and you can undo any of them by [organizing the thread](https://resend.com/docs/dashboard/inboxes/threads.md#organize-threads) yourself.
 
 When you open a thread that the agent drafted a reply or forward for, the draft opens in the reply composer with a badge showing it was drafted by the agent. Edit the draft if needed, then click **Send**, or discard it.
 
@@ -350,4 +350,4 @@ To stop the agent from acting on new email, remove all of its available actions 
 
 ## API Reference
 
-For complete API documentation, see the [Inbox Agent API reference](/docs/api-reference/inboxes/get-agent.md).
+For complete API documentation, see the [Inbox Agent API reference](https://resend.com/docs/api-reference/inboxes/get-agent.md).

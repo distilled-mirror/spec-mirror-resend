@@ -47,7 +47,7 @@ await resend.domains.verify(domain.id);
 > [!NOTE]
 >
 > Domain verification is asynchronous: DNS records need to propagate before
-> verification succeeds. You can use [webhooks](/docs/webhooks/introduction.md) to
+> verification succeeds. You can use [webhooks](https://resend.com/docs/webhooks/introduction.md) to
 > listen for `domain.verified` events instead of polling.
 
 ### Creating a domain-scoped API key
@@ -77,8 +77,8 @@ const apiKey = await resend.apiKeys.create({
 
 * No per-tenant volume breakdown or analytics in the dashboard
 * All tenants share your account's sender reputation
-* Aggregate sending volume will likely require a [rate-limit increase](/docs/knowledge-base/account-quotas-and-limits.md) as you onboard tenants
-* Each tenant domain counts toward your team's domain limit, which you can raise with the [domains add-on](/docs/knowledge-base/how-to-add-more-domains.md)
+* Aggregate sending volume will likely require a [rate-limit increase](https://resend.com/docs/knowledge-base/account-quotas-and-limits.md) as you onboard tenants
+* Each tenant domain counts toward your team's domain limit, which you can raise with the [domains add-on](https://resend.com/docs/knowledge-base/how-to-add-more-domains.md)
 
 > [!WARNING]
 >
@@ -125,9 +125,9 @@ await resend.emails.send({
 
 ## Billing implications
 
-With **Option A**, you pay a single plan that covers all tenant sending volume. Your total email count is the aggregate of all tenants' emails, so choose a plan that accommodates your combined volume. Since each tenant domain counts toward your domain limit, you may also need to [add more domains](/docs/knowledge-base/how-to-add-more-domains.md) as you grow.
+With **Option A**, you pay a single plan that covers all tenant sending volume. Your total email count is the aggregate of all tenants' emails, so choose a plan that accommodates your combined volume. Since each tenant domain counts toward your domain limit, you may also need to [add more domains](https://resend.com/docs/knowledge-base/how-to-add-more-domains.md) as you grow.
 
-With **Option B**, each tenant is responsible for their own Resend plan and billing. This removes billing complexity from your side but means tenants need to manage their own subscription. See [Resend pricing](/docs/knowledge-base/what-is-resend-pricing.md) and [account quotas and limits](/docs/knowledge-base/account-quotas-and-limits.md) for details.
+With **Option B**, each tenant is responsible for their own Resend plan and billing. This removes billing complexity from your side but means tenants need to manage their own subscription. See [Resend pricing](https://resend.com/docs/knowledge-base/what-is-resend-pricing.md) and [account quotas and limits](https://resend.com/docs/knowledge-base/account-quotas-and-limits.md) for details.
 
 ## Deliverability considerations
 
@@ -137,13 +137,13 @@ With **Option A**, all tenants share the same sender reputation. If a single ten
 
 With **Option B**, each tenant has a fully independent sender reputation. A problem with one tenant has zero impact on others. However, each tenant is responsible for following best practices on their own.
 
-Regardless of which approach you choose, each new tenant domain must follow a [warm-up schedule](/docs/knowledge-base/warming-up.md). Using a [subdomain](/docs/knowledge-base/is-it-better-to-send-emails-from-a-subdomain-or-the-root-domain.md) for sending is also a good practice to protect the tenant's root domain reputation.
+Regardless of which approach you choose, each new tenant domain must follow a [warm-up schedule](https://resend.com/docs/knowledge-base/warming-up.md). Using a [subdomain](https://resend.com/docs/knowledge-base/is-it-better-to-send-emails-from-a-subdomain-or-the-root-domain.md) for sending is also a good practice to protect the tenant's root domain reputation.
 
 ## Webhook routing
 
 ### Option A: Tags for tenant identification
 
-When using a single account, use [tags](/docs/dashboard/emails/tags.md) when sending emails to identify which tenant triggered the message. Tags are included in webhook payloads, so you can route events back to the correct tenant.
+When using a single account, use [tags](https://resend.com/docs/dashboard/emails/tags.md) when sending emails to identify which tenant triggered the message. Tags are included in webhook payloads, so you can route events back to the correct tenant.
 
 ```ts theme={"theme":{"light":"github-light","dark":"vesper"}}
 await resend.emails.send({
@@ -155,7 +155,7 @@ await resend.emails.send({
 });
 ```
 
-When you receive a [webhook](/docs/webhooks/introduction.md) event, the `tags` array in the payload will include `tenant_id`, allowing you to route the event to the appropriate tenant in your system.
+When you receive a [webhook](https://resend.com/docs/webhooks/introduction.md) event, the `tags` array in the payload will include `tenant_id`, allowing you to route the event to the appropriate tenant in your system.
 
 ### Option B: Natural isolation
 
@@ -196,18 +196,18 @@ Please share any feedback on your experience using Resend for your multi-tenant 
 
 ## Related resources
 
-> **[Create Domain API](/docs/api-reference/domains/create-domain.md)**
+> **[Create Domain API](https://resend.com/docs/api-reference/domains/create-domain.md)**
 >
 > Add and verify tenant domains programmatically.
 
-> **[Create API Key API](/docs/api-reference/api-keys/create-api-key.md)**
+> **[Create API Key API](https://resend.com/docs/api-reference/api-keys/create-api-key.md)**
 >
 > Create domain-scoped API keys for tenant isolation.
 
-> **[Webhooks](/docs/webhooks/introduction.md)**
+> **[Webhooks](https://resend.com/docs/webhooks/introduction.md)**
 >
 > Set up webhooks to receive real-time email event notifications.
 
-> **[Managing Tags](/docs/dashboard/emails/tags.md)**
+> **[Managing Tags](https://resend.com/docs/dashboard/emails/tags.md)**
 >
 > Use tags to organize emails and route webhook events by tenant.

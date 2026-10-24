@@ -16,15 +16,15 @@ A thread is a conversation within an inbox. Emails sent and received in reply to
 * `trash`: The thread is scheduled for deletion in 30 days.
 * `sent`: Threads whose messages are all outbound.
 
-In the Dashboard, the folder switcher also shows a **Drafts** folder that lists your unsent [drafts](/docs/dashboard/inboxes/drafts.md). The **Inbox** folder shows a count of unread threads.
+In the Dashboard, the folder switcher also shows a **Drafts** folder that lists your unsent [drafts](https://resend.com/docs/dashboard/inboxes/drafts.md). The **Inbox** folder shows a count of unread threads.
 
 ## View threads
 
-Select an inbox from the [Inboxes dashboard](https://resend.com/inboxes) to see its threads, most recently active first. Use the folder switcher to change folders, or select a label in the left rail to see only the threads with that [label](/docs/dashboard/inboxes/labels.md).
+Select an inbox from the [Inboxes dashboard](https://resend.com/inboxes) to see its threads, most recently active first. Use the folder switcher to change folders, or select a label in the left rail to see only the threads with that [label](https://resend.com/docs/dashboard/inboxes/labels.md).
 
 Select a thread to open it and read every email in the conversation. Opening a thread marks it as read. Use the **Next email** and **Previous email** buttons, or the <kbd>↓</kbd> and <kbd>↑</kbd> keys, to move between threads.
 
-You can also [list threads](/docs/api-reference/inboxes/list-threads.md) via the API, SDKs, or CLI, filtered by folder, label and read status.
+You can also [list threads](https://resend.com/docs/api-reference/inboxes/list-threads.md) via the API, SDKs, or CLI, filtered by folder, label and read status.
 
 ```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
 import { Resend } from 'resend';
@@ -122,7 +122,7 @@ curl -X GET 'https://api.resend.com/inboxes/b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1
 resend inboxes threads list --inbox-id b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1
 ```
 
-To read the emails in a thread, [list the thread emails](/docs/api-reference/inboxes/list-thread-emails.md). They are returned oldest first.
+To read the emails in a thread, [list the thread emails](https://resend.com/docs/api-reference/inboxes/list-thread-emails.md). They are returned oldest first.
 
 ```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
 import { Resend } from 'resend';
@@ -247,7 +247,7 @@ resend inboxes threads emails list \
 
 In the Dashboard, click the search icon or press <kbd>/</kbd> to search the inbox. Quick filters let you narrow results to emails **From me**, **Unread**, **Has attachments** or **Assigned to me**. You can also type search operators such as `from:`, `to:`, `label:`, `has:`, `is:`, `after:` and `before:`. Dates use the `YYYY-MM-DD` format.
 
-You can also [search threads](/docs/api-reference/inboxes/search-threads.md) via the API, SDKs, or CLI by text, sender, recipient, attachments and date.
+You can also [search threads](https://resend.com/docs/api-reference/inboxes/search-threads.md) via the API, SDKs, or CLI by text, sender, recipient, attachments and date.
 
 ```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
 import { Resend } from 'resend';
@@ -410,12 +410,12 @@ You can act on a thread from the thread view, from the actions that appear when 
 * **Archive** moves the thread to the archive folder.
 * **Report spam** moves the thread to the spam folder. From the spam folder, use **Report not spam** to move it back.
 * **Delete** moves the thread to the trash. Threads in the trash are scheduled for deletion in 30 days.
-* **Move to** moves the thread to another folder, or applies a [label](/docs/dashboard/inboxes/labels.md), and archives the thread.
-* **Label as** adds or removes [labels](/docs/dashboard/inboxes/labels.md).
+* **Move to** moves the thread to another folder, or applies a [label](https://resend.com/docs/dashboard/inboxes/labels.md), and archives the thread.
+* **Label as** adds or removes [labels](https://resend.com/docs/dashboard/inboxes/labels.md).
 
 Each move shows a notification with an **Undo** button. To restore a thread from the archive, spam or trash, use **Move to** and choose **Inbox**.
 
-You can also [update a thread](/docs/api-reference/inboxes/update-thread.md) via the API, SDKs, or CLI to mark it as read or unread, or move it to the `inbox`, `archive`, `spam` or `trash` folder.
+You can also [update a thread](https://resend.com/docs/api-reference/inboxes/update-thread.md) via the API, SDKs, or CLI to mark it as read or unread, or move it to the `inbox`, `archive`, `spam` or `trash` folder.
 
 ```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
 import { Resend } from 'resend';
@@ -581,7 +581,7 @@ resend inboxes threads update \
 
 Deleting a thread moves it to the trash and schedules it for deletion in 30 days. Until then, you can restore it by moving it back to another folder.
 
-You can also [delete a thread](/docs/api-reference/inboxes/delete-thread.md) via the API, SDKs, or CLI.
+You can also [delete a thread](https://resend.com/docs/api-reference/inboxes/delete-thread.md) via the API, SDKs, or CLI.
 
 ```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
 import { Resend } from 'resend';
@@ -704,13 +704,13 @@ resend inboxes threads delete \
 
 In the Dashboard, you can assign a thread to a member of your team so everyone knows who is handling it. Hover over a thread in the list and click **Assign thread**, or press <kbd>A</kbd>, then search for a teammate. Choose **Unassigned** to remove the assignment.
 
-The [inbox agent](/docs/dashboard/inboxes/agent.md) can also assign threads based on your instructions.
+The [inbox agent](https://resend.com/docs/dashboard/inboxes/agent.md) can also assign threads based on your instructions.
 
 ## Reply and forward
 
-While viewing a thread, use the **Reply**, **Reply all** or **Forward** buttons at the bottom of the thread, or the **More** menu on an individual email. The reply opens inline beneath the email and is saved as a [draft](/docs/dashboard/inboxes/drafts.md) as you write. Click **Send** or press <kbd>⌘</kbd> + <kbd>Enter</kbd> to send it.
+While viewing a thread, use the **Reply**, **Reply all** or **Forward** buttons at the bottom of the thread, or the **More** menu on an individual email. The reply opens inline beneath the email and is saved as a [draft](https://resend.com/docs/dashboard/inboxes/drafts.md) as you write. Click **Send** or press <kbd>⌘</kbd> + <kbd>Enter</kbd> to send it.
 
-Replies are sent from the inbox address and are threaded for the recipient. You can also [reply to](/docs/api-reference/inboxes/reply-thread-email.md) or [forward](/docs/api-reference/inboxes/forward-thread-email.md) an email via the API, SDKs, or CLI.
+Replies are sent from the inbox address and are threaded for the recipient. You can also [reply to](https://resend.com/docs/api-reference/inboxes/reply-thread-email.md) or [forward](https://resend.com/docs/api-reference/inboxes/forward-thread-email.md) an email via the API, SDKs, or CLI.
 
 ```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
 import { Resend } from 'resend';
@@ -889,4 +889,4 @@ Press <kbd>?</kbd> in the Dashboard to see every keyboard shortcut. The most use
 
 ## API Reference
 
-For complete API documentation, see the [Inbox Threads API reference](/docs/api-reference/inboxes/list-threads.md).
+For complete API documentation, see the [Inbox Threads API reference](https://resend.com/docs/api-reference/inboxes/list-threads.md).

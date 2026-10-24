@@ -44,16 +44,16 @@ Number of threads to return. Default is `20`, maximum is `100`, minimum is
 
 The ID of the last thread on the current page. Returns the next, older page.
 Must be a thread ID. To filter by date, use [Search
-Threads](/docs/api-reference/inboxes/search-threads.md) with `start_date`.
+Threads](https://resend.com/docs/api-reference/inboxes/search-threads.md) with `start_date`.
 
 **before** `string`
 
 The ID of the first thread on the current page. Returns the previous, newer
 page. Cannot be combined with `after`. Must be a thread ID. To filter by date,
-use [Search Threads](/docs/api-reference/inboxes/search-threads.md) with `end_date`.
+use [Search Threads](https://resend.com/docs/api-reference/inboxes/search-threads.md) with `end_date`.
 
 To find threads by text, sender, recipient, attachment, or date, use [Search
-Threads](/docs/api-reference/inboxes/search-threads.md).
+Threads](https://resend.com/docs/api-reference/inboxes/search-threads.md).
 
 ## Response Fields
 

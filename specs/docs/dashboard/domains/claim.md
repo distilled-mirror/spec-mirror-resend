@@ -19,25 +19,25 @@ Common reasons a domain you own may already be registered:
 * A team member or contractor added it to a separate Resend team.
 * You are logged into a different Resend team than the one where the domain was originally added.
 
-Before claiming a domain, check with your team members or in your other teams to see if you can locate the verified domain and [transfer it between teams](/docs/dashboard/domains/manage-domains.md#transfer-a-domain-between-teams) instead.
+Before claiming a domain, check with your team members or in your other teams to see if you can locate the verified domain and [transfer it between teams](https://resend.com/docs/dashboard/domains/manage-domains.md#transfer-a-domain-between-teams) instead.
 
 ## Claim a domain
 
 Claim a domain by adding a TXT record to your DNS, or do it in one click via DomainConnect for supported registrars.
 
-This record is provided along with the alert in your Dashboard, or when you [use the Domains API](#using-the-domains-API) and call the [**Claim Domain** API endpoint](/docs/api-reference/domains/claim-domain.md).
+This record is provided along with the alert in your Dashboard, or when you [use the Domains API](#using-the-domains-API) and call the [**Claim Domain** API endpoint](https://resend.com/docs/api-reference/domains/claim-domain.md).
 
 ![Domain claim](https://mintcdn.com/resend/zovbQ7LtiJotsf8X/images/claim-domain-1.png?fit=max\&auto=format\&n=zovbQ7LtiJotsf8X\&q=85\&s=e585d0a2eb204c15fa59b3998b6bd581)
 
 After adding the TXT record, return to the dashboard and click **I've added the records**.
 
-Resend verifies the domain ownership, releases the domain from the previous team, and shows you the records to add to your DNS for sending or receiving. See the full steps to [add a domain](/docs/add-a-domain.md).
+Resend verifies the domain ownership, releases the domain from the previous team, and shows you the records to add to your DNS for sending or receiving. See the full steps to [add a domain](https://resend.com/docs/add-a-domain.md).
 
 ## Using the Domains API
 
 **1. Start a claim**
 
-Call [Claim Domain](/docs/api-reference/domains/claim-domain.md) with the domain
+Call [Claim Domain](https://resend.com/docs/api-reference/domains/claim-domain.md) with the domain
 name. Resend creates a placeholder domain on your team and returns a
 `domain_claim` containing a TXT `record` to add to your DNS.
 
@@ -48,13 +48,13 @@ domain.
 
 **3. Verify the claim**
 
-Call [Verify Domain Claim](/docs/api-reference/domains/verify-domain-claim.md).
+Call [Verify Domain Claim](https://resend.com/docs/api-reference/domains/verify-domain-claim.md).
 Resend checks the TXT record and runs ownership-safety checks before
 transferring the domain.
 
 **4. Track the status**
 
-Poll [Retrieve Domain Claim](/docs/api-reference/domains/get-domain-claim.md) until
+Poll [Retrieve Domain Claim](https://resend.com/docs/api-reference/domains/get-domain-claim.md) until
 the claim reaches `completed`.
 
 ## Claim status
@@ -76,7 +76,7 @@ When a claim is `blocked`, `blocked_reason` explains why: `grace_period`,
 ## Canceling a claim
 
 Cancel a pending claim initiated with the API by deleting its placeholder domain with
-[Delete Domain](/docs/api-reference/domains/delete-domain.md), using the `domain_id`
+[Delete Domain](https://resend.com/docs/api-reference/domains/delete-domain.md), using the `domain_id`
 from the `domain_claim` object.
 
 ## Support

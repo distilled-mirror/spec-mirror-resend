@@ -6,7 +6,7 @@
 
 > An introduction to sending, receiving, and managing email conversations with Inboxes.
 
-Resend provides all the tools you need to host email inboxes on your [verified domains](/docs/dashboard/domains/introduction.md). Create an inbox to manage conversation threads for a single email address, such as a dedicated address for support emails.
+Resend provides all the tools you need to host email inboxes on your [verified domains](https://resend.com/docs/dashboard/domains/introduction.md). Create an inbox to manage conversation threads for a single email address, such as a dedicated address for support emails.
 
 Inboxes are useful for:
 
@@ -17,12 +17,12 @@ Inboxes are useful for:
 
 ## How Inboxes work
 
-Inboxes mirror the familiar email inbox structure, using [**threads**](/docs/dashboard/inboxes/threads.md), [**labels**](/docs/dashboard/inboxes/labels.md), and [**drafts**](/docs/dashboard/inboxes/drafts.md) to organize your conversations. `inbox`, `sent`, `archive`, `trash`, and `spam` folders are built in to your Resend Inbox.
+Inboxes mirror the familiar email inbox structure, using [**threads**](https://resend.com/docs/dashboard/inboxes/threads.md), [**labels**](https://resend.com/docs/dashboard/inboxes/labels.md), and [**drafts**](https://resend.com/docs/dashboard/inboxes/drafts.md) to organize your conversations. `inbox`, `sent`, `archive`, `trash`, and `spam` folders are built in to your Resend Inbox.
 
 > [!NOTE]
 >
 > Receiving email in an inbox is different from [receiving
-> emails](/docs/dashboard/receiving/introduction.md), which delivers inbound messages
+> emails](https://resend.com/docs/dashboard/receiving/introduction.md), which delivers inbound messages
 > for a domain to your own webhook endpoint. Use Inboxes when you want Resend to
 > store, thread, and organize conversations for you.
 
@@ -44,11 +44,11 @@ With Resend Inboxes you can:
 
 ## Prerequisites
 
-* A [verified domain with receiving enabled](/docs/dashboard/receiving/custom-domains.md). If you are unable to configure your custom domain to receive email, then you must configure [Inbox forwarding](/docs/dashboard/inboxes/create-inboxes.md#forward-an-existing-address) when you create your Inbox.
+* A [verified domain with receiving enabled](https://resend.com/docs/dashboard/receiving/custom-domains.md). If you are unable to configure your custom domain to receive email, then you must configure [Inbox forwarding](https://resend.com/docs/dashboard/inboxes/create-inboxes.md#forward-an-existing-address) when you create your Inbox.
 
 ## Quickstart
 
-Create an Inbox in the [Inboxes Dashboard](https://resend.com/inboxes). Or, get started with the [Inboxes API](/docs/api-reference/inboxes/create-inbox.md) and [SDKs](/docs/sdks.md), [CLI commands](/docs/cli.md#inboxes), or [MCP server](/docs/mcp-server.md).
+Create an Inbox in the [Inboxes Dashboard](https://resend.com/inboxes). Or, get started with the [Inboxes API](https://resend.com/docs/api-reference/inboxes/create-inbox.md) and [SDKs](https://resend.com/docs/sdks.md), [CLI commands](https://resend.com/docs/cli.md#inboxes), or [MCP server](https://resend.com/docs/mcp-server.md).
 
 To create an inbox in the Dashboard:
 
@@ -72,26 +72,26 @@ The reply goes out from the inbox address and stays in the same thread.
 
 ## Related Guides
 
-> **[Create inboxes](/docs/dashboard/inboxes/create-inboxes.md)**
+> **[Create inboxes](https://resend.com/docs/dashboard/inboxes/create-inboxes.md)**
 >
 > Create an address on a verified domain, or forward an existing address.
 
-> **[Manage inboxes](/docs/dashboard/inboxes/manage-inboxes.md)**
+> **[Manage inboxes](https://resend.com/docs/dashboard/inboxes/manage-inboxes.md)**
 >
 > Rename, update, and delete inboxes.
 
-> **[Manage threads](/docs/dashboard/inboxes/threads.md)**
+> **[Manage threads](https://resend.com/docs/dashboard/inboxes/threads.md)**
 >
 > Read, search, and organize conversations, and reply to or forward emails.
 
-> **[Drafts](/docs/dashboard/inboxes/drafts.md)**
+> **[Drafts](https://resend.com/docs/dashboard/inboxes/drafts.md)**
 >
 > Write a message now and send it later.
 
-> **[Labels](/docs/dashboard/inboxes/labels.md)**
+> **[Labels](https://resend.com/docs/dashboard/inboxes/labels.md)**
 >
 > Tag threads with colored labels to keep them organized.
 
-> **[Inbox agent](/docs/dashboard/inboxes/agent.md)**
+> **[Inbox agent](https://resend.com/docs/dashboard/inboxes/agent.md)**
 >
 > Let the built-in agent triage incoming threads from your instructions.

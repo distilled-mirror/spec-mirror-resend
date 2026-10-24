@@ -6,7 +6,7 @@
 
 > How to use the Resend CLI in AI agent workflows.
 
-The [Resend CLI](/docs/cli.md) works out of the box for AI agents and CI/CD pipelines. This page covers agent-specific behavior. See the [CLI reference](/docs/cli.md) for installation, commands, and full documentation.
+The [Resend CLI](https://resend.com/docs/cli.md) works out of the box for AI agents and CI/CD pipelines. This page covers agent-specific behavior. See the [CLI reference](https://resend.com/docs/cli.md) for installation, commands, and full documentation.
 
 ## Agent Skills
 
@@ -44,7 +44,7 @@ echo "Your order has shipped." | resend emails send \
   --text-file -
 ```
 
-This works with `--html-file -` on send and `--file -` on [batch commands](/docs/cli.md#emails).
+This works with `--html-file -` on send and `--file -` on [batch commands](https://resend.com/docs/cli.md#emails).
 
 ## Batch sending
 
@@ -98,11 +98,11 @@ Or fetch a specific email with full content and attachments:
 resend emails receiving get <email-id>
 ```
 
-This requires a [verified domain](/docs/dashboard/domains/introduction.md) with receiving enabled.
+This requires a [verified domain](https://resend.com/docs/dashboard/domains/introduction.md) with receiving enabled.
 
 ## Closing the loop with webhooks
 
-When an agent sends an email, it often needs to know what happened next: was it delivered, did it bounce, did the recipient reply? The `webhooks listen` command gives your agent a real-time feedback loop by streaming [webhook events](/docs/webhooks/event-types.md) directly to the terminal.
+When an agent sends an email, it often needs to know what happened next: was it delivered, did it bounce, did the recipient reply? The `webhooks listen` command gives your agent a real-time feedback loop by streaming [webhook events](https://resend.com/docs/webhooks/event-types.md) directly to the terminal.
 
 ```bash theme={"theme":{"light":"github-light","dark":"vesper"}}
 resend webhooks listen \

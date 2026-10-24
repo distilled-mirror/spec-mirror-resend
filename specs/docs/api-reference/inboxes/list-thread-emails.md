@@ -7,7 +7,7 @@
 > Retrieve the messages in a thread.
 
 Messages are returned oldest first. Each item has the same shape as [Retrieve
-Thread Email](/docs/api-reference/inboxes/get-thread-email.md).
+Thread Email](https://resend.com/docs/api-reference/inboxes/get-thread-email.md).
 
 ## Path Parameters
 

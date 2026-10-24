@@ -10,12 +10,12 @@
 
 Before you start, you'll need:
 
-* A Resend [API key](/docs/create-an-api-key.md)
-* A [verified domain](/docs/add-a-domain.md)
+* A Resend [API key](https://resend.com/docs/create-an-api-key.md)
+* A [verified domain](https://resend.com/docs/add-a-domain.md)
 
 > [!NOTE]
 >
-> On [Laravel Cloud](/docs/guides/laravel-cloud-integration.md), connect Resend as an
+> On [Laravel Cloud](https://resend.com/docs/guides/laravel-cloud-integration.md), connect Resend as an
 > email resource. Cloud injects `RESEND_API_KEY`, `MAIL_MAILER`,
 > `MAIL_FROM_ADDRESS`, and `MAIL_FROM_NAME` into the environment.
 

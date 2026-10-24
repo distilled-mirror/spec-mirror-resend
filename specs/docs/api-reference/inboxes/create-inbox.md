@@ -35,7 +35,7 @@ the name must be on one of your verified domains.
 
 When `true`, Resend provisions a receiving address so you can receive mail
 without adding an MX record. Read it from `receiving_address` with [Get
-Inbox](/docs/api-reference/inboxes/get-inbox.md).
+Inbox](https://resend.com/docs/api-reference/inboxes/get-inbox.md).
 
 ## Response Fields
 

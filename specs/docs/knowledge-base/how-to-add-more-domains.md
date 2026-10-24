@@ -8,7 +8,7 @@
 
 Every Resend plan includes a set number of verified custom domains. If you need more, you can enable the **domains add-on** in **Settings** > **Usage**. The add-on adds 100 domains on top of the number included in your plan for \$20 per month.
 
-Adding more domains is a common need for multi-tenant products that verify a domain per customer. See [Setting up Resend for Multi-Tenant Applications](/docs/knowledge-base/setting-up-resend-for-multi-tenants.md) for how to structure that.
+Adding more domains is a common need for multi-tenant products that verify a domain per customer. See [Setting up Resend for Multi-Tenant Applications](https://resend.com/docs/knowledge-base/setting-up-resend-for-multi-tenants.md) for how to structure that.
 
 ## Check your current limit
 
@@ -42,7 +42,7 @@ Once enabled, the add-on appears on your [**Settings** > **Billing**](https://re
 > The add-on raises the number of domains you can add. It does not change your
 > monthly email quota, your contact limit, or your rate limit. Those are set by
 > your plan. See [account quotas and
-> limits](/docs/knowledge-base/account-quotas-and-limits.md).
+> limits](https://resend.com/docs/knowledge-base/account-quotas-and-limits.md).
 
 ## Remove the domains add-on
 

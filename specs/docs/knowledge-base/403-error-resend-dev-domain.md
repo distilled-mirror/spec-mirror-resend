@@ -40,7 +40,7 @@ To send emails to recipients other than your own email address, you need to add 
 > [!NOTE]
 >
 > For detailed instructions on verifying your domain, check out our [domain
-> verification guide](/docs/dashboard/domains/introduction.md) or the DNS guide for your
+> verification guide](https://resend.com/docs/dashboard/domains/introduction.md) or the DNS guide for your
 > specific provider.
 
 ## If You're Still Having Issues

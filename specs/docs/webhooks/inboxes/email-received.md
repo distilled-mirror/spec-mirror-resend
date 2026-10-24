@@ -77,7 +77,7 @@ True only when every message in the thread is read
 
 **email** `object`
 
-The email, as it is when the webhook is sent, without `html` or `text`. Fetch the body with [Retrieve Thread Email](/docs/api-reference/inboxes/get-thread-email.md). Absent when the email no longer exists
+The email, as it is when the webhook is sent, without `html` or `text`. Fetch the body with [Retrieve Thread Email](https://resend.com/docs/api-reference/inboxes/get-thread-email.md). Absent when the email no longer exists
 
 **email object**
 

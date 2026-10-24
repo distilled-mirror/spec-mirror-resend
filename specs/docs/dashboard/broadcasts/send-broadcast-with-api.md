@@ -6,13 +6,13 @@
 
 > Send marketing emails using the Broadcasts API.
 
-Resend's [no-code Broadcast editor](/docs/dashboard/broadcasts/editor.md) allows all members of your team to write and send email campaigns directly in the Resend Dashboard, without having to ask for help from developers.
+Resend's [no-code Broadcast editor](https://resend.com/docs/dashboard/broadcasts/editor.md) allows all members of your team to write and send email campaigns directly in the Resend Dashboard, without having to ask for help from developers.
 
-To programmatically create, update, and send Broadcasts, you can use the [Broadcast API](/docs/api-reference/broadcasts/create-broadcast.md). There are also API endpoints to list, retrieve, and delete Broadcasts, allowing you to manage your marketing campaigns directly from your application.
+To programmatically create, update, and send Broadcasts, you can use the [Broadcast API](https://resend.com/docs/api-reference/broadcasts/create-broadcast.md). There are also API endpoints to list, retrieve, and delete Broadcasts, allowing you to manage your marketing campaigns directly from your application.
 
 ## Create Broadcasts
 
-The [`create()` method](/docs/api-reference/broadcasts/create-broadcast) takes the same sending properties that can be set in the Editor composer. This allows developers to also create drafts without sending, schedule sending for a time in the future, [personalize with dynamic content data](/docs/dashboard/broadcasts/editor.md#personalize-your-content), and more.
+The [`create()` method](https://resend.com/docs/api-reference/broadcasts/create-broadcast) takes the same sending properties that can be set in the Editor composer. This allows developers to also create drafts without sending, schedule sending for a time in the future, [personalize with dynamic content data](https://resend.com/docs/dashboard/broadcasts/editor.md#personalize-your-content), and more.
 
 Set the `send` property to `true` to send immediately or to schedule the Broadcast, or leave `false` (the default) to create a draft:
 
@@ -385,7 +385,7 @@ resend broadcasts create \
 
 ## Send Broadcasts
 
-Use the [`send()` method](/docs/api-reference/broadcasts/send-broadcast) to send or schedule an existing API-created Broadcast by ID. Broadcasts created using the Dashboard Broadcast editor cannot be sent with this endpoint.
+Use the [`send()` method](https://resend.com/docs/api-reference/broadcasts/send-broadcast) to send or schedule an existing API-created Broadcast by ID. Broadcasts created using the Dashboard Broadcast editor cannot be sent with this endpoint.
 
 ```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
 import { Resend } from 'resend';
@@ -509,8 +509,8 @@ resend broadcasts send 559ac32e-9ef5-46fb-82a1-b76b840c0f7b --scheduled-at "in 1
 
 ## Other ways to send
 
-You can also send and manage Broadcasts using [Resend CLI commands](/docs/cli.md#broadcasts) and [AI building tools](/docs/ai-onboarding.md).
+You can also send and manage Broadcasts using [Resend CLI commands](https://resend.com/docs/cli.md#broadcasts) and [AI building tools](https://resend.com/docs/ai-onboarding.md).
 
 ## API Reference
 
-For complete API documentation, see the [Broadcasts API reference](/docs/api-reference/broadcasts/create-broadcast.md).
+For complete API documentation, see the [Broadcasts API reference](https://resend.com/docs/api-reference/broadcasts/create-broadcast.md).

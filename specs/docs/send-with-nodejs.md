@@ -279,8 +279,8 @@ For the entire docs for Resend, see [https://resend.com/docs/llms-full.txt](http
 
 Before you start, you'll need:
 
-* A Resend [API key](/docs/create-an-api-key.md)
-* A [verified domain](/docs/add-a-domain.md)
+* A Resend [API key](https://resend.com/docs/create-an-api-key.md)
+* A [verified domain](https://resend.com/docs/add-a-domain.md)
 
 ## Guide
 
@@ -312,7 +312,7 @@ Store your API key in an environment variable in your `.env` file.
 RESEND_API_KEY=re_xxxxxxxxx
 ```
 
-Pass it to the constructor with `process.env.RESEND_API_KEY`. See [Create an API key](/docs/create-an-api-key.md) for the full setup.
+Pass it to the constructor with `process.env.RESEND_API_KEY`. See [Create an API key](https://resend.com/docs/create-an-api-key.md) for the full setup.
 
 **3. Send email using HTML**
 

@@ -17,7 +17,7 @@ const threadId = await resend.openDM('user@example.com');
 await resend.postMessage(threadId, 'Hello from the bot!');
 ```
 
-You can also send card emails in proactive threads. The same card structure from [Card Emails](/docs/chat-sdk-card-emails.md) works here.
+You can also send card emails in proactive threads. The same card structure from [Card Emails](https://resend.com/docs/chat-sdk-card-emails.md) works here.
 
 ## Triggering via HTTP
 

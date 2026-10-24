@@ -11,7 +11,7 @@ The Resend Webhook Ingester is an open-source Next.js application that receives,
 > [!NOTE]
 >
 > For more details on why you should store your webhook data, see the [data
-> storage guide](/docs/webhooks/how-to-store-webhooks-data.md).
+> storage guide](https://resend.com/docs/webhooks/how-to-store-webhooks-data.md).
 
 ## Why use the Webhook Ingester
 
@@ -299,18 +299,18 @@ WHERE event_created_at < NOW() - INTERVAL '90 days';
 
 ## Learn More
 
-> **[Webhook Event Types](/docs/webhooks/event-types.md)**
+> **[Webhook Event Types](https://resend.com/docs/webhooks/event-types.md)**
 >
 > View all available webhook event types and their payloads
 
-> **[Verify Webhooks](/docs/webhooks/verify-webhooks-requests.md)**
+> **[Verify Webhooks](https://resend.com/docs/webhooks/verify-webhooks-requests.md)**
 >
 > Learn how webhook signature verification works
 
-> **[Retries and Replays](/docs/webhooks/retries-and-replays.md)**
+> **[Retries and Replays](https://resend.com/docs/webhooks/retries-and-replays.md)**
 >
 > Understand webhook retry behavior
 
-> **[Storing Webhooks Data](/docs/webhooks/how-to-store-webhooks-data.md)**
+> **[Storing Webhooks Data](https://resend.com/docs/webhooks/how-to-store-webhooks-data.md)**
 >
 > Learn why and how to store your webhook data

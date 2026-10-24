@@ -12,12 +12,12 @@ Receiving emails contain the HTML and Plain Text body of the email, as well as t
 >
 > Webhooks do not include the email body, headers, or attachments, only their
 > metadata. You must call the [Received emails
-> API](/docs/api-reference/emails/retrieve-received-email.md) or the [Attachments
-> API](/docs/api-reference/emails/list-received-email-attachments.md) to retrieve them.
+> API](https://resend.com/docs/api-reference/emails/retrieve-received-email.md) or the [Attachments
+> API](https://resend.com/docs/api-reference/emails/list-received-email-attachments.md) to retrieve them.
 > This design choice supports large attachments in serverless environments that
 > have limited request body sizes.
 
-After receiving the webhook event, call the [Receiving API](/docs/api-reference/emails/retrieve-received-email.md).
+After receiving the webhook event, call the [Receiving API](https://resend.com/docs/api-reference/emails/retrieve-received-email.md).
 
 Here are some examples:
 

@@ -13,7 +13,7 @@ The ID of the segment you want to send to.
 > [!NOTE]
 >
 > Audiences are now called Segments. Follow the [Migration
-> Guide](/docs/dashboard/segments/migrating-from-audiences-to-segments.md).
+> Guide](https://resend.com/docs/dashboard/segments/migrating-from-audiences-to-segments.md).
 
 **from** `string` *required*
 
@@ -31,11 +31,11 @@ Reply-to email address. For multiple addresses, send as an array of strings.
 
 The HTML version of the message. You can include Contact Properties in the
 body of the Broadcast. Learn more about [Contact
-Properties](/docs/dashboard/contacts/properties.md).
+Properties](https://resend.com/docs/dashboard/contacts/properties.md).
 
 **text** `string`
 
-The plain text version of the message. You can include Contact Properties in the body of the Broadcast. Learn more about [Contact Properties](/docs/dashboard/contacts/properties.md).
+The plain text version of the message. You can include Contact Properties in the body of the Broadcast. Learn more about [Contact Properties](https://resend.com/docs/dashboard/contacts/properties.md).
 
 > [!NOTE]
 >
@@ -60,7 +60,7 @@ Send the broadcast immediately after creation. Defaults to `false`.
 
 > [!NOTE]
 >
-> When set to `true`, the broadcast will be sent or scheduled (if `scheduled_at` is provided) without requiring a separate call to the [Send Broadcast](/docs/api-reference/broadcasts/send-broadcast.md) endpoint.
+> When set to `true`, the broadcast will be sent or scheduled (if `scheduled_at` is provided) without requiring a separate call to the [Send Broadcast](https://resend.com/docs/api-reference/broadcasts/send-broadcast.md) endpoint.
 
 Schedule the broadcast to be sent later. The date should be in natural language (e.g.: `in 1 min`) or ISO 8601 format (e.g: `2026-08-05T11:52:01.858Z`).
 

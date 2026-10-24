@@ -12,6 +12,6 @@ Resend supports TLS 1.2, TLS 1.1 and TLS 1.0 for TLS connections, but only requi
 
 By default, Resend will attempt to make a secure connection, but will fall back to sending messages unencrypted when the receiving server does not support TLS. This is known as Opportunistic TLS.
 
-You can instead configure Enforced TLS in the Resend Dashboard under the **Configuration** tab or with the [Domains API](/docs/api-reference/domains/create-domain.md) or with [a domains CLI command](/docs/cli.md#domains). This means that if the receiving server does not support TLS, your email will not be sent.
+You can instead configure Enforced TLS in the Resend Dashboard under the **Configuration** tab or with the [Domains API](https://resend.com/docs/api-reference/domains/create-domain.md) or with [a domains CLI command](https://resend.com/docs/cli.md#domains). This means that if the receiving server does not support TLS, your email will not be sent.
 
-Learn more about [Opportunistic TLS vs Enforced TLS](/docs/knowledge-base/whats-the-difference-between-opportunistic-tls-vs-enforced-tls.md).
+Learn more about [Opportunistic TLS vs Enforced TLS](https://resend.com/docs/knowledge-base/whats-the-difference-between-opportunistic-tls-vs-enforced-tls.md).

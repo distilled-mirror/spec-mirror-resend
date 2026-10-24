@@ -10,8 +10,8 @@
 >
 > Replaying an event queues one additional delivery immediately. It's the same
 > action as the [dashboard's Replay
-> button](/docs/webhooks/retries-and-replays.md#manual-replays) and does not affect the
-> [automatic retry schedule](/docs/webhooks/retries-and-replays.md#automatic-retries)
+> button](https://resend.com/docs/webhooks/retries-and-replays.md#manual-replays) and does not affect the
+> [automatic retry schedule](https://resend.com/docs/webhooks/retries-and-replays.md#automatic-retries)
 > already running for that event.
 
 ## Path Parameters

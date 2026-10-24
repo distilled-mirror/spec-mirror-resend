@@ -8,7 +8,7 @@
 
 The label itself is kept, and stays on every other thread that carries it. To
 delete the label everywhere, use
-[Delete Label](/docs/api-reference/inboxes/delete-label.md).
+[Delete Label](https://resend.com/docs/api-reference/inboxes/delete-label.md).
 
 ## Path Parameters
 

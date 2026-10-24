@@ -74,19 +74,19 @@ Resend uses standard HTTP response codes for success and failure notifications, 
 
 * **Status:** 403
 * **Message:** You can only send testing emails to your own email address (`youremail@domain.com`). To send emails to other recipients, please verify a domain at resend.com/domains, and change the `from` address to an email using this domain.
-* **Suggested action:** In [Resend's Domain page](https://resend.com/domains), add and verify a domain for which you have DNS access. This allows you to send emails to addresses beyond your own. [Learn more about resolving this error](/docs/knowledge-base/403-error-resend-dev-domain.md).
+* **Suggested action:** In [Resend's Domain page](https://resend.com/domains), add and verify a domain for which you have DNS access. This allows you to send emails to addresses beyond your own. [Learn more about resolving this error](https://resend.com/docs/knowledge-base/403-error-resend-dev-domain.md).
 
 ### `validation_error`
 
 * **Status:** 403
 * **Message:** The `domain.com` domain is not verified. Please, add and verify your domain.
-* **Suggested action:** Make sure the domain in your API request's `from` field matches a domain you've verified in Resend. Update your API request to use your verified domain, or add and verify the domain you're trying to use. [Learn more about resolving this error](/docs/knowledge-base/403-error-domain-mismatch.md).
+* **Suggested action:** Make sure the domain in your API request's `from` field matches a domain you've verified in Resend. Update your API request to use your verified domain, or add and verify the domain you're trying to use. [Learn more about resolving this error](https://resend.com/docs/knowledge-base/403-error-domain-mismatch.md).
 
 ### `validation_error`
 
 * **Status:** 403
 * **Message:** The `example.com` domain has been registered already.
-* **Suggested action:** Verify you are signed in to the correct Resend account and check whether a teammate already added the domain. If you still cannot access it, [contact support](https://resend.com/help). [Learn more about resolving this error](/docs/knowledge-base/domain-already-registered.md).
+* **Suggested action:** Verify you are signed in to the correct Resend account and check whether a teammate already added the domain. If you still cannot access it, [contact support](https://resend.com/help). [Learn more about resolving this error](https://resend.com/docs/knowledge-base/domain-already-registered.md).
 
 ### `validation_error`
 
@@ -182,7 +182,7 @@ Resend uses standard HTTP response codes for success and failure notifications, 
 
 * **Status:** 429
 * **Message:** Too many requests. Please limit the number of requests per second. Or [contact support](https://resend.com/contact) to increase rate limit.
-* **Suggested action:** Read the [response headers](/docs/api-reference/introduction.md#rate-limit) and reduce the rate at which you request the API. This can be done by introducing a queue mechanism or reducing the number of concurrent requests per second. If you have specific requirements, [contact support](https://resend.com/contact) to request a rate increase.
+* **Suggested action:** Read the [response headers](https://resend.com/docs/api-reference/introduction.md#rate-limit) and reduce the rate at which you request the API. This can be done by introducing a queue mechanism or reducing the number of concurrent requests per second. If you have specific requirements, [contact support](https://resend.com/contact) to request a rate increase.
 
 ### `application_error`
 

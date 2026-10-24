@@ -6,13 +6,13 @@
 
 > Retrieve a list of emails sent by your team.
 
-You can list all emails sent by your team. The list returns references to individual emails. If needed, you can use the `id` of an email to retrieve the email HTML to plain text using the [Retrieve Email](/docs/api-reference/emails/retrieve-email.md) endpoint or the [Retrieve Attachments](/docs/api-reference/emails/list-email-attachments.md) endpoint to get an email's attachments.
+You can list all emails sent by your team. The list returns references to individual emails. If needed, you can use the `id` of an email to retrieve the email HTML to plain text using the [Retrieve Email](https://resend.com/docs/api-reference/emails/retrieve-email.md) endpoint or the [Retrieve Attachments](https://resend.com/docs/api-reference/emails/list-email-attachments.md) endpoint to get an email's attachments.
 
 > [!NOTE]
 >
 > This endpoint only returns emails sent by your team. If you need to list
 > emails received by your domain, use the [List Received
-> Emails](/docs/api-reference/emails/list-received-emails.md) endpoint.
+> Emails](https://resend.com/docs/api-reference/emails/list-received-emails.md) endpoint.
 
 ## Query Parameters
 
@@ -39,7 +39,7 @@ Cannot be used with the `after` parameter.
 >
 > You can only use either `after` or `before`
 > parameter, not both. See our
-> [pagination guide](/docs/api-reference/pagination.md) for more
+> [pagination guide](https://resend.com/docs/api-reference/pagination.md) for more
 > information.
 
 ```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}

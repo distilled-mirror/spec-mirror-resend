@@ -13,7 +13,7 @@ The Domain ID.
 > [!NOTE]
 >
 > See all available [domain `status`
-> types](/docs/dashboard/domains/manage-domains#understand-a-domain-status).
+> types](https://resend.com/docs/dashboard/domains/manage-domains#understand-a-domain-status).
 
 ```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
 import { Resend } from 'resend';

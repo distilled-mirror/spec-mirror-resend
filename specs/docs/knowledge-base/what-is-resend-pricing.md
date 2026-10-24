@@ -73,7 +73,7 @@ All plans include 10,000 Automation Runs per month. Paid plans can continue beyo
 
 Dedicated IPs are available for \$30/month on the Scale plan for customers sending more than 3,000 emails per day. Dedicated IPs include automatic warmup, monitoring, and autoscaling.
 
-The domains add-on is available for \$20/month on paid transactional plans and adds 100 domains on top of the number included in your plan. See [How to add more domains](/docs/knowledge-base/how-to-add-more-domains.md).
+The domains add-on is available for \$20/month on paid transactional plans and adds 100 domains on top of the number included in your plan. See [How to add more domains](https://resend.com/docs/knowledge-base/how-to-add-more-domains.md).
 
 ## Annual plans
 

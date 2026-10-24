@@ -344,9 +344,9 @@ Each field value is a fixed value (string, number, or boolean), or a reference w
 
 * `event.*` is a field from the event that triggered the Automation, such as `event.firstName`.
 * `contact.*` is a field from the contact, such as `contact.properties.company`.
-* `wait_events.<event_name>.*` is a field from an event a previous [wait for event](/docs/dashboard/automations/wait-for-event.md#use-the-received-event-in-later-steps) step received. If the Automation waited for that event more than once, this is the most recent one before this step.
+* `wait_events.<event_name>.*` is a field from an event a previous [wait for event](https://resend.com/docs/dashboard/automations/wait-for-event.md#use-the-received-event-in-later-steps) step received. If the Automation waited for that event more than once, this is the most recent one before this step.
 
-For more help working with variables in templates, see the [Send Email](/docs/dashboard/automations/send-email.md#template-variables) step documentation.
+For more help working with variables in templates, see the [Send Email](https://resend.com/docs/dashboard/automations/send-email.md#template-variables) step documentation.
 
 ```json {5-6,8} theme={"theme":{"light":"github-light","dark":"vesper"}}
 {
@@ -380,7 +380,7 @@ The contact's unsubscribed status. Accepts a boolean or a variable reference.
 **config.properties** `object`
 
 A map of custom contact properties to update. Keys correspond to your [Contact
-Custom Properties](/docs/dashboard/audiences/properties.md). Each value can be a
+Custom Properties](https://resend.com/docs/dashboard/audiences/properties.md). Each value can be a
 hardcoded value (string, number, boolean) or a variable reference.
 
 ```json Example theme={"theme":{"light":"github-light","dark":"vesper"}}

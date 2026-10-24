@@ -8,9 +8,9 @@
 
 ## Configure Webhook
 
-Once you can [receive emails](/docs/dashboard/receiving/introduction.md#quickstart), you can create a route to handle these emails in your application and configure an [`email.received` webhook](/docs/webhooks/emails/received) in your Dashboard.
+Once you can [receive emails](https://resend.com/docs/dashboard/receiving/introduction.md#quickstart), you can create a route to handle these emails in your application and configure an [`email.received` webhook](https://resend.com/docs/webhooks/emails/received) in your Dashboard.
 
-Alternatively, you can use Resend's code tools to create your webhook from the [Webhooks API](/docs/api-reference/webhooks/create-webhook.md) or with a [webhook CLI command](/docs/cli.md#webhooks).
+Alternatively, you can use Resend's code tools to create your webhook from the [Webhooks API](https://resend.com/docs/api-reference/webhooks/create-webhook.md) or with a [webhook CLI command](https://resend.com/docs/cli.md#webhooks).
 
 To configure your webhook in the Dashboard:
 
@@ -95,7 +95,7 @@ async fn example(Json(event): Json<resend_rs::events::EmailEvent>) -> Response {
 }
 ```
 
-Once you receive the email event, you can process the email body and attachments. You can also implement [webhook request verification](/docs/webhooks/verify-webhooks-requests.md) to secure your webhook endpoint.
+Once you receive the email event, you can process the email body and attachments. You can also implement [webhook request verification](https://resend.com/docs/webhooks/verify-webhooks-requests.md) to secure your webhook endpoint.
 
 > [!TIP]
 >
@@ -156,11 +156,11 @@ Once you receive an email event, you can process the email body and attachments 
 >
 > Webhooks do not include the email body, headers, or attachments, only their
 > metadata. You must call the [Received emails
-> API](/docs/api-reference/emails/retrieve-received-email.md) or the [Attachments
-> API](/docs/api-reference/emails/list-received-email-attachments.md) to retrieve them.
+> API](https://resend.com/docs/api-reference/emails/retrieve-received-email.md) or the [Attachments
+> API](https://resend.com/docs/api-reference/emails/list-received-email-attachments.md) to retrieve them.
 > This design choice supports large attachments in serverless environments that
 > have limited request body sizes.
 
 ## API Reference
 
-For complete API documentation, see the [Webhooks API reference](/docs/api-reference/webhooks/create-webhook.md).
+For complete API documentation, see the [Webhooks API reference](https://resend.com/docs/api-reference/webhooks/create-webhook.md).

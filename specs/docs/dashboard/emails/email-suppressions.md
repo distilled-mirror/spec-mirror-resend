@@ -14,11 +14,11 @@ Your suppressions list protects you by intentionally skipping sending to any add
 
 An address is added to Suppressions for one of three origins:
 
-* `bounce`: the recipient's mail server [permanently rejected the email](/docs/dashboard/emails/email-bounces.md).
+* `bounce`: the recipient's mail server [permanently rejected the email](https://resend.com/docs/dashboard/emails/email-bounces.md).
 * `complaint`: the recipient marked your email as spam.
 * `manual`: you add the recipient's address yourself.
 
-Suppressions apply to your entire team. Any address added to the suppression list will be skipped across all your domains and subdomains when sending transactional or [Broadcast](/docs/dashboard/broadcasts/introduction.md) emails.
+Suppressions apply to your entire team. Any address added to the suppression list will be skipped across all your domains and subdomains when sending transactional or [Broadcast](https://resend.com/docs/dashboard/broadcasts/introduction.md) emails.
 
 > [!TIP]
 >
@@ -27,11 +27,11 @@ Suppressions apply to your entire team. Any address added to the suppression lis
 
 ## Viewing Suppressions in Resend
 
-You can see all Suppressions [in the Dashboard](https://resend.com/emails/suppressions) or list them [in the API](/docs/api-reference/suppressions/list-suppressions.md).
+You can see all Suppressions [in the Dashboard](https://resend.com/emails/suppressions) or list them [in the API](https://resend.com/docs/api-reference/suppressions/list-suppressions.md).
 
 ![Email Suppressions](https://mintcdn.com/resend/Nyu32IXsxRkmP92c/images/suppression-list-board.png?fit=max\&auto=format\&n=Nyu32IXsxRkmP92c\&q=85\&s=437d48fa3afbc7e4885ecaa139ce83bc)
 
-You can also programmatically retrieve [a single Suppression](/docs/api-reference/suppressions/get-suppression.md) or [your entire suppression list](/docs/api-reference/suppressions/list-suppressions.md), which returns key data about the Suppression.
+You can also programmatically retrieve [a single Suppression](https://resend.com/docs/api-reference/suppressions/get-suppression.md) or [your entire suppression list](https://resend.com/docs/api-reference/suppressions/list-suppressions.md), which returns key data about the Suppression.
 
 ```json theme={"theme":{"light":"github-light","dark":"vesper"}}
 {
@@ -53,7 +53,7 @@ In the Dashboard, go to the [Suppressions page](https://resend.com/emails/suppre
 * **Add manually**: enter the email address you want to suppress.
 * **Import CSV**: upload a file with a list of email addresses to suppress.
 
-You can also [suppress individual emails](/docs/api-reference/suppressions/add-suppression.md) or [bulk suppress up to 100 at a time](/docs/api-reference/suppressions/add-batch-suppressions.md) using the API.
+You can also [suppress individual emails](https://resend.com/docs/api-reference/suppressions/add-suppression.md) or [bulk suppress up to 100 at a time](https://resend.com/docs/api-reference/suppressions/add-batch-suppressions.md) using the API.
 
 > [!NOTE]
 >
@@ -69,7 +69,7 @@ You can remove an email address from the suppression list in the Dashboard from 
 1. Search or filter for a suppression.
 2. Click the **more options button**  and select **Remove email address**.
 
-You can also [remove individual emails](/docs/api-reference/suppressions/remove-suppression.md) or [bulk remove up to 100 at a time](/docs/api-reference/suppressions/remove-batch-suppressions.md) using the API.
+You can also [remove individual emails](https://resend.com/docs/api-reference/suppressions/remove-suppression.md) or [bulk remove up to 100 at a time](https://resend.com/docs/api-reference/suppressions/remove-batch-suppressions.md) using the API.
 
 > [!WARNING]
 >
@@ -81,8 +81,8 @@ You can also [remove individual emails](/docs/api-reference/suppressions/remove-
 
 For maximum visibility, track suppressions using webhook notifications.
 
-* [**suppression.added**](/docs/webhooks/suppressions/added.md): triggered when an address is added.
-* [**suppression.removed**](/docs/webhooks/suppressions/removed.md): triggered when an address is removed.
+* [**suppression.added**](https://resend.com/docs/webhooks/suppressions/added.md): triggered when an address is added.
+* [**suppression.removed**](https://resend.com/docs/webhooks/suppressions/removed.md): triggered when an address is removed.
 
 You can, for example, use these webhook notifications to sync your suppressions with your own database or third-party service.
 

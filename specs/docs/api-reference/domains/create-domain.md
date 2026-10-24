@@ -23,7 +23,7 @@ handling bounced emails. Defaults to `send` (i.e., `send.yourdomain.tld`). Avoid
 setting values that could undermine credibility (e.g. `testing`), as they may
 be exposed to recipients.
 
-Learn more about [custom return paths](/docs/dashboard/domains/custom-return-path.md).
+Learn more about [custom return paths](https://resend.com/docs/dashboard/domains/custom-return-path.md).
 
 Track the open rate of each email.
 
@@ -41,7 +41,7 @@ Configure a custom subdomain for click and open tracking. For example, setting
 `"links"` on domain `example.com` will produce a CNAME record for
 `links.example.com`. Avoid setting values that have a negative connotation (e.g. `tracking`).
 
-Learn more about [custom tracking subdomains](/docs/dashboard/domains/tracking.md).
+Learn more about [custom tracking subdomains](https://resend.com/docs/dashboard/domains/tracking.md).
 
 **tls** `string` (default: opportunistic)
 
@@ -76,7 +76,7 @@ Enable or disable receiving emails to this domain. Possible values: `'enabled' |
 > [!NOTE]
 >
 > See all available [domain `status`
-> types](/docs/dashboard/domains/manage-domains#understand-a-domain-status).
+> types](https://resend.com/docs/dashboard/domains/manage-domains#understand-a-domain-status).
 
 ```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
 import { Resend } from 'resend';

@@ -39,9 +39,9 @@ When you're done, **Save** the event.
 
 ## Using the API
 
-All existing events can be retrieved using the [List Events API](/docs/api-reference/events/list-events.md).
+All existing events can be retrieved using the [List Events API](https://resend.com/docs/api-reference/events/list-events.md).
 
-To create a new event, use the [Create Event API](/docs/api-reference/events/create-event.md) and provide an event name and optional schema.
+To create a new event, use the [Create Event API](https://resend.com/docs/api-reference/events/create-event.md) and provide an event name and optional schema.
 
 ```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
 import { Resend } from 'resend';
@@ -193,7 +193,7 @@ resend events create --name user.created --schema '{"plan":"string"}'
 > required. If multiple enabled automations use the same event name, all of
 > them will be triggered.
 
-View the [Create Event API reference](/docs/api-reference/events/create-event.md) for the full endpoint specification.
+View the [Create Event API reference](https://resend.com/docs/api-reference/events/create-event.md) for the full endpoint specification.
 
 ## Configuration
 

@@ -25,7 +25,7 @@ An admin can fix your access without contacting support:
 2. Enter an email address you control and choose the **Admin** role.
 3. Accept the invite.
 
-If you are already a member, an admin can change your role instead. See [Managing Teams](/docs/dashboard/settings/team.md).
+If you are already a member, an admin can change your role instead. See [Managing Teams](https://resend.com/docs/dashboard/settings/team.md).
 
 > [!TIP]
 >
@@ -46,10 +46,10 @@ Support can restore access after you prove you own a domain on the team.
 
 Once ownership is verified, support gives your account admin access to the team. Nothing on the team is changed, revoked or deleted in the process.
 
-If you still control the old mailbox but the login asks for an MFA code you don't have access to, see our [Locked out by MFA](/docs/guides/account/locked-out-by-mfa.md) support article.
+If you still control the old mailbox but the login asks for an MFA code you don't have access to, see our [Locked out by MFA](https://resend.com/docs/guides/account/locked-out-by-mfa.md) support article.
 
 ## You only need the domain
 
-You can add the domain to a team you control and prove ownership with a self serve claim. See [Claiming a domain](/docs/dashboard/domains/claim.md). A claim moves the domain only and doesn't give you access to the old team. Safety checks can block a claim, for example when the domain was recently active on the other team.
+You can add the domain to a team you control and prove ownership with a self serve claim. See [Claiming a domain](https://resend.com/docs/dashboard/domains/claim.md). A claim moves the domain only and doesn't give you access to the old team. Safety checks can block a claim, for example when the domain was recently active on the other team.
 
 Please [reach out to support](https://resend.com/help) for help with a domain claim.

@@ -20,7 +20,7 @@ The URL where webhook events will be sent.
 
 Array of event types to subscribe to.
 
-See [event types](/docs/webhooks/event-types.md) for available options.
+See [event types](https://resend.com/docs/webhooks/event-types.md) for available options.
 
 **status** `string`
 

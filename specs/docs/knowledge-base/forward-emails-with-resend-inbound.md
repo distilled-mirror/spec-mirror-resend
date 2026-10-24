@@ -16,7 +16,7 @@ This guide demonstrates how to forward received emails using [NextJS](https://ne
 
 ![Verify a domain with Inbound](https://mintcdn.com/resend/Pc2KlUXbYPa-UCHT/images/forward-emails-with-resend-inbound.png?fit=max\&auto=format\&n=Pc2KlUXbYPa-UCHT\&q=85\&s=bb522c39f8fc29fafeda1166be728cca)
 
-Add the records in your DNS provider and wait for verification to finish in Resend. Learn more about [adding Domains in Resend](/docs/dashboard/domains/introduction.md).
+Add the records in your DNS provider and wait for verification to finish in Resend. Learn more about [adding Domains in Resend](https://resend.com/docs/dashboard/domains/introduction.md).
 
 > [!WARNING]
 >
@@ -25,7 +25,7 @@ Add the records in your DNS provider and wait for verification to finish in Rese
 > we strongly recommend verifying a subdomain (`subdomain.example.com`) instead
 > of the root domain (`example.com`). Learn more about [avoiding conflicts with
 > your existing MX
-> records](/docs/knowledge-base/how-do-i-avoid-conflicting-with-my-mx-records.md).
+> records](https://resend.com/docs/knowledge-base/how-do-i-avoid-conflicting-with-my-mx-records.md).
 
 **2. Create a POST route**
 
@@ -86,7 +86,7 @@ pnpm add resend
 bun add resend
 ```
 
-Create an [API key with "Full access" permission](/docs/dashboard/api-keys/introduction.md) in Resend and add it to your project's .env file.
+Create an [API key with "Full access" permission](https://resend.com/docs/dashboard/api-keys/introduction.md) in Resend and add it to your project's .env file.
 
 ```env .env theme={"theme":{"light":"github-light","dark":"vesper"}}
 RESEND_API_KEY=re_xxxxxxxxx
@@ -165,8 +165,8 @@ Once you verify the webhook, it returns the webhook payload as a JSON object. Yo
 >
 > Webhooks do not include the email body, headers, or attachments, only their
 > metadata. You must call the [Received emails
-> API](/docs/api-reference/emails/retrieve-received-email.md) or the [Attachments
-> API](/docs/api-reference/emails/list-received-email-attachments.md) to retrieve them.
+> API](https://resend.com/docs/api-reference/emails/retrieve-received-email.md) or the [Attachments
+> API](https://resend.com/docs/api-reference/emails/list-received-email-attachments.md) to retrieve them.
 > This design choice supports large attachments in serverless environments that
 > have limited request body sizes.
 

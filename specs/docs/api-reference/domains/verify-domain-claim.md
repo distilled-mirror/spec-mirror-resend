@@ -11,8 +11,8 @@
 > Calling this endpoint starts an **asynchronous verification process**. Resend
 > checks the claim's TXT record and runs ownership-safety checks before
 > transferring the domain to your team. Add the TXT record returned by [Claim
-> Domain](/docs/api-reference/domains/claim-domain.md) before calling this, then poll
-> [Retrieve Domain Claim](/docs/api-reference/domains/get-domain-claim.md) to follow the
+> Domain](https://resend.com/docs/api-reference/domains/claim-domain.md) before calling this, then poll
+> [Retrieve Domain Claim](https://resend.com/docs/api-reference/domains/get-domain-claim.md) to follow the
 > `status`.
 
 > [!NOTE]
@@ -20,10 +20,10 @@
 > **After the claim completes:** the domain is transferred to your account as a
 > brand-new domain with its own DKIM keys, so the previous account's DNS records
 > can't be reused. Fetch it with [Retrieve
-> Domain](/docs/api-reference/domains/get-domain.md), update your DNS with the new DKIM
-> record(s), then run [Verify Domain](/docs/api-reference/domains/verify-domain.md) to
+> Domain](https://resend.com/docs/api-reference/domains/get-domain.md), update your DNS with the new DKIM
+> record(s), then run [Verify Domain](https://resend.com/docs/api-reference/domains/verify-domain.md) to
 > finish setup before sending or receiving email. See [DKIM
-> records](/docs/dashboard/domains/manage-domains.md#what-are-dkim-records) for details.
+> records](https://resend.com/docs/dashboard/domains/manage-domains.md#what-are-dkim-records) for details.
 
 ## Path Parameters
 

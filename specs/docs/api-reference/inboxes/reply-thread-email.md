@@ -22,7 +22,7 @@ The Inbox ID or the inbox email address, such as `support@example.com`.
 The Thread ID.
 
 The Email ID of the message to reply to, as returned by [List Thread
-Emails](/docs/api-reference/inboxes/list-thread-emails.md) in `data[].id`.
+Emails](https://resend.com/docs/api-reference/inboxes/list-thread-emails.md) in `data[].id`.
 
 ## Body Parameters
 
@@ -54,7 +54,7 @@ Reply to everyone on the original message.
 
 **attachments** `array | null`
 
-Files to attach, as on [Send Email](/docs/api-reference/emails/send-email.md).
+Files to attach, as on [Send Email](https://resend.com/docs/api-reference/emails/send-email.md).
 
 **properties**
 
@@ -74,7 +74,7 @@ Content type for the attachment. When not set, it is derived from the
 `filename`.
 
 Content ID for embedding inline images with a `cid:` reference in the
-`html`. [Learn about inline images](/docs/dashboard/emails/embed-inline-images.md).
+`html`. [Learn about inline images](https://resend.com/docs/dashboard/emails/embed-inline-images.md).
 
 **headers** `object | null`
 
@@ -96,14 +96,14 @@ Add an idempotency key to prevent duplicated emails.
 * Reusing the key with a different body, or while the first request is still
   running, returns a `409`
 
-[Learn more](/docs/dashboard/emails/idempotency-keys.md)
+[Learn more](https://resend.com/docs/dashboard/emails/idempotency-keys.md)
 
 ## Response Fields
 
 **id** `string`
 
 The ID of the sent email. Use it with the [emails
-endpoints](/docs/api-reference/emails/retrieve-email.md).
+endpoints](https://resend.com/docs/api-reference/emails/retrieve-email.md).
 
 ```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
 import { Resend } from 'resend';

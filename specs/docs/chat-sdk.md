@@ -195,8 +195,8 @@ To get started, you'll need to:
 
 * [Create an API key](https://resend.com/api-keys)
 * [Verify your domain](https://resend.com/domains)
-* [Set up webhooks](/docs/webhooks/introduction.md) for `email.received` events, or for `inbox.email.received` events when you [use an inbox](#use-an-inbox)
-* [Enable receiving](/docs/dashboard/receiving/introduction.md) on your domain
+* [Set up webhooks](https://resend.com/docs/webhooks/introduction.md) for `email.received` events, or for `inbox.email.received` events when you [use an inbox](#use-an-inbox)
+* [Enable receiving](https://resend.com/docs/dashboard/receiving/introduction.md) on your domain
 
 ## Guide
 
@@ -273,7 +273,7 @@ if (req.method === 'POST' && req.url === '/webhook') {
 
 The handler expects a Web `Request` object. If you're using Node.js `http`, convert `IncomingMessage` to a `Request` first. See the [basic example](https://github.com/resend/resend-chat-sdk/tree/main/examples/basic) for a full working server.
 
-For webhook setup details, see [Managing Webhooks](/docs/webhooks/introduction.md) and [Verify Webhook Requests](/docs/webhooks/verify-webhooks-requests.md).
+For webhook setup details, see [Managing Webhooks](https://resend.com/docs/webhooks/introduction.md) and [Verify Webhook Requests](https://resend.com/docs/webhooks/verify-webhooks-requests.md).
 
 ## How threading works
 
@@ -296,7 +296,7 @@ The adapter resolves threads using standard `Message-ID`, `In-Reply-To`, and `Re
 
 ## Use an inbox
 
-Set `inboxId` or `inboxEmailAddress` to build the bot on a Resend [Inbox](/docs/api-reference/inboxes/create-inbox.md). The inbox groups email into threads, and the bot replies inside the thread. Resend sets the recipients and the threading headers.
+Set `inboxId` or `inboxEmailAddress` to build the bot on a Resend [Inbox](https://resend.com/docs/api-reference/inboxes/create-inbox.md). The inbox groups email into threads, and the bot replies inside the thread. Resend sets the recipients and the threading headers.
 
 ```ts theme={"theme":{"light":"github-light","dark":"vesper"}}
 const resend = createResendAdapter({
@@ -329,15 +329,15 @@ The inbox mode needs `@resend/chat-sdk-adapter` 0.5.0 or later and `resend` 6.34
 
 ## Features
 
-> **[Card Emails](/docs/chat-sdk-card-emails.md)**
+> **[Card Emails](https://resend.com/docs/chat-sdk-card-emails.md)**
 >
 > Send rich HTML emails with structured card elements.
 
-> **[Attachments](/docs/chat-sdk-attachments.md)**
+> **[Attachments](https://resend.com/docs/chat-sdk-attachments.md)**
 >
 > Handle inbound email attachments.
 
-> **[Proactive Outreach](/docs/chat-sdk-proactive-outreach.md)**
+> **[Proactive Outreach](https://resend.com/docs/chat-sdk-proactive-outreach.md)**
 >
 > Start new email threads without waiting for inbound.
 

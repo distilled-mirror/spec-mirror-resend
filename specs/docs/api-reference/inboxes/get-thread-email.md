@@ -7,7 +7,7 @@
 > Retrieve a single message from a thread.
 
 Returns one message of a thread. Each item from [List Thread
-Emails](/docs/api-reference/inboxes/list-thread-emails.md) has this shape.
+Emails](https://resend.com/docs/api-reference/inboxes/list-thread-emails.md) has this shape.
 
 ## Path Parameters
 
@@ -16,7 +16,7 @@ The Inbox ID or the inbox email address, such as `support@example.com`.
 The Thread ID.
 
 The Email ID, as returned by [List Thread
-Emails](/docs/api-reference/inboxes/list-thread-emails.md) in `data[].id`.
+Emails](https://resend.com/docs/api-reference/inboxes/list-thread-emails.md) in `data[].id`.
 
 ## Response Fields
 

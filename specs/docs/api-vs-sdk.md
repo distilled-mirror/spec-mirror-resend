@@ -12,8 +12,8 @@ for Node.js, PHP, Python, Ruby, Go, Rust, Java, and .NET.
 
 > [!NOTE]
 >
-> **Recommendation:** Use a [Resend SDK](/docs/sdks.md) for your language. Call the [raw
-> API](/docs/api-reference/introduction.md) directly only when no SDK exists for your
+> **Recommendation:** Use a [Resend SDK](https://resend.com/docs/sdks.md) for your language. Call the [raw
+> API](https://resend.com/docs/api-reference/introduction.md) directly only when no SDK exists for your
 > stack.
 
 ## Choosing between the SDK and API
@@ -39,22 +39,22 @@ Calling the API directly is a good fit when:
 * You're building your own integration or wrapper.
 
 If you do call the API directly, remember to set the required
-[`User-Agent` header](/docs/api-reference/introduction#user-agent).
+[`User-Agent` header](https://resend.com/docs/api-reference/introduction#user-agent).
 
 ## Next steps
 
-> **[Official SDKs](/docs/sdks.md)**
+> **[Official SDKs](https://resend.com/docs/sdks.md)**
 >
 > Install the SDK for your language.
 
-> **[Quickstart](/docs/introduction.md)**
+> **[Quickstart](https://resend.com/docs/introduction.md)**
 >
 > Send your first email in minutes.
 
-> **[API Reference](/docs/api-reference/introduction.md)**
+> **[API Reference](https://resend.com/docs/api-reference/introduction.md)**
 >
 > Full HTTP API documentation.
 
-> **[MCP Server](/docs/mcp-server.md)**
+> **[MCP Server](https://resend.com/docs/mcp-server.md)**
 >
 > Give your AI agent access to Resend.

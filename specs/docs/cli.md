@@ -461,9 +461,9 @@ resend webhooks listen \
 
 > [!NOTE]
 >
-> See the [webhook events documentation](/docs/webhooks/event-types.md) for the full
+> See the [webhook events documentation](https://resend.com/docs/webhooks/event-types.md) for the full
 > list of available event types. For agent-specific webhook patterns, see [CLI
-> for AI Agents](/docs/cli-agents.md#closing-the-loop-with-webhooks).
+> for AI Agents](https://resend.com/docs/cli-agents.md#closing-the-loop-with-webhooks).
 
 **Other webhook commands**
 
@@ -679,8 +679,8 @@ resend inboxes agent update --inbox-id <id> --tone concise_professional # Update
 | Flag | Required | Description |
 | - | - | - |
 | `--instructions <text>` | No | Instructions the agent follows (max 4000 characters) |
-| `--tone <tone>` | No | Tone the agent writes in: `concise_professional`, `concise_casual`, `expanded_professional`, or `expanded_casual`. See [tone](/docs/dashboard/inboxes/agent.md#using-the-api) |
-| `--actions <actions...>` | No | Replaces the full set of actions: `draft_reply`, `forward_thread`, `add_labels`, `assign_thread`, `mark_as_spam`, `archive`, `move_to_trash`. See [actions](/docs/dashboard/inboxes/agent.md#actions) |
+| `--tone <tone>` | No | Tone the agent writes in: `concise_professional`, `concise_casual`, `expanded_professional`, or `expanded_casual`. See [tone](https://resend.com/docs/dashboard/inboxes/agent.md#using-the-api) |
+| `--actions <actions...>` | No | Replaces the full set of actions: `draft_reply`, `forward_thread`, `add_labels`, `assign_thread`, `mark_as_spam`, `archive`, `move_to_trash`. See [actions](https://resend.com/docs/dashboard/inboxes/agent.md#actions) |
 
 `agent update` needs at least one flag. Omitted fields keep their current value. Pass `--instructions ""` or `--tone ""` to clear a value. List several actions separated by spaces or commas, for example `--actions draft_reply add_labels`. Pass `--actions ""` to disable all actions.
 
@@ -842,7 +842,7 @@ steps:
 | Credentials | System secure storage | macOS Keychain, Windows Credential Manager, or Linux secret service |
 | Install directory | `~/.resend/bin/` | Respects `$RESEND_INSTALL` |
 
-> **[Using the CLI with AI Agents](/docs/cli-agents.md)**
+> **[Using the CLI with AI Agents](https://resend.com/docs/cli-agents.md)**
 >
 > Learn about Agent Skills, non-interactive mode, and local webhook development
 > for AI agents.

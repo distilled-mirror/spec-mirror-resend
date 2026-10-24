@@ -19,7 +19,7 @@ Resend now uses a **Global Contacts** model.
 * **Before**: If a Contact with the same email appeared in multiple Segments, it was counted as multiple Contacts.
 * **Now**: Each email address is treated as a single Contact across your team, even if it appears in multiple Segments.
 
-The [current Contact model](/docs/dashboard/contacts/introduction.md) includes four concepts:
+The [current Contact model](https://resend.com/docs/dashboard/contacts/introduction.md) includes four concepts:
 
 * **Contact**: a global entity linked to a specific email address.
 * **Segment**: an internal segmentation tool for your team to organize sending.
@@ -47,9 +47,9 @@ With this setup, when you send a Broadcast, your users can choose which Topics t
 
 For details on the new API endpoints view:
 
-* [Contacts](/docs/api-reference/contacts/create-contact.md)
-* [Topics](/docs/api-reference/topics/create-topic.md)
-* [Segments](/docs/api-reference/segments/create-segment.md)
+* [Contacts](https://resend.com/docs/api-reference/contacts/create-contact.md)
+* [Topics](https://resend.com/docs/api-reference/topics/create-topic.md)
+* [Segments](https://resend.com/docs/api-reference/segments/create-segment.md)
 
 ## Additional Help
 

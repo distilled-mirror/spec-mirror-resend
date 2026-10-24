@@ -10,8 +10,8 @@
 
 Before you start, you'll need:
 
-* A Resend [API key](/docs/create-an-api-key.md)
-* A [verified domain](/docs/add-a-domain.md)
+* A Resend [API key](https://resend.com/docs/create-an-api-key.md)
+* A [verified domain](https://resend.com/docs/add-a-domain.md)
 
 Prefer watching a video? Check out our video walkthrough below.
 
@@ -46,7 +46,7 @@ Resend-Idempotency-Key: welcome-user/123456789
 <p>it works!</p>
 ```
 
-Learn more about [idempotency keys](/docs/dashboard/emails/idempotency-keys.md).
+Learn more about [idempotency keys](https://resend.com/docs/dashboard/emails/idempotency-keys.md).
 
 ## Custom Headers
 

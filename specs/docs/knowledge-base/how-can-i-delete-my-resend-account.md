@@ -25,4 +25,4 @@ A **Resend Account** is your login method (email address) used to access Resend.
 
 ## Deleting a Team
 
-If you want to delete a team (rather than leaving it), see [How to delete your Resend team](/docs/knowledge-base/how-can-i-delete-my-team).
+If you want to delete a team (rather than leaving it), see [How to delete your Resend team](https://resend.com/docs/knowledge-base/how-can-i-delete-my-team).

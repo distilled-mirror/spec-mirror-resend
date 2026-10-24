@@ -75,7 +75,7 @@ True only when every message in the thread is read
 
 **draft** `object`
 
-The draft, as it is when the webhook is sent, without `html` or `text`. Fetch the body with [Retrieve Draft](/docs/api-reference/inboxes/get-draft.md). Absent when the draft no longer exists
+The draft, as it is when the webhook is sent, without `html` or `text`. Fetch the body with [Retrieve Draft](https://resend.com/docs/api-reference/inboxes/get-draft.md). Absent when the draft no longer exists
 
 **draft object**
 

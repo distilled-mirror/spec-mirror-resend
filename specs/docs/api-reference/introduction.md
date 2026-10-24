@@ -8,9 +8,9 @@
 
 > [!NOTE]
 >
-> For most use cases, we recommend using an [official Resend SDK](/docs/sdks.md) instead
+> For most use cases, we recommend using an [official Resend SDK](https://resend.com/docs/sdks.md) instead
 > of calling the API directly. The SDKs handle authentication, required headers,
-> and error handling for you. See [Resend API vs SDK](/docs/api-vs-sdk) to decide
+> and error handling for you. See [Resend API vs SDK](https://resend.com/docs/api-vs-sdk) to decide
 > which fits your project.
 
 ## Base URL
@@ -33,7 +33,7 @@ Authorization: Bearer re_xxxxxxxxx
 
 ## User-Agent
 
-All API requests must include a `User-Agent` header. Requests without this header will be rejected with a `403` status code. Most HTTP clients, all [Resend SDKs](/docs/sdks.md), and the [Resend CLI](/docs/cli.md) include this header automatically, but if you're making direct HTTP requests, make sure to set it:
+All API requests must include a `User-Agent` header. Requests without this header will be rejected with a `403` status code. Most HTTP clients, all [Resend SDKs](https://resend.com/docs/sdks.md), and the [Resend CLI](https://resend.com/docs/cli.md) include this header automatically, but if you're making direct HTTP requests, make sure to set it:
 
 ```
 User-Agent: my-app/1.0
@@ -43,7 +43,7 @@ User-Agent: my-app/1.0
 >
 > If you're getting a `403` error with error code `1010` despite having a valid
 > API key, a missing `User-Agent` header is likely the cause. See [Error
-> 1010](/docs/knowledge-base/403-error-1010.md) for more details.
+> 1010](https://resend.com/docs/knowledge-base/403-error-1010.md) for more details.
 
 ## Response codes
 
@@ -63,14 +63,14 @@ In general, `2xx` HTTP codes correspond to success, `4xx` codes are for user-rel
 
 > [!NOTE]
 >
-> Check [Error Codes](/docs/api-reference/errors.md) for a comprehensive breakdown of
+> Check [Error Codes](https://resend.com/docs/api-reference/errors.md) for a comprehensive breakdown of
 > all possible API errors.
 
 ## Rate limit
 
 The default maximum rate limit is **10 requests per second per team**. This limit applies across all API keys associated with your team. This number can be increased for trusted senders by request. You can view your team's current rate limit on the [Settings Usage page](https://resend.com/settings/usage). After that, you'll hit the rate limit and receive a `429` response error code.
 
-Learn more about our [rate limits](/docs/api-reference/rate-limit.md).
+Learn more about our [rate limits](https://resend.com/docs/api-reference/rate-limit.md).
 
 ## FAQ
 
@@ -78,7 +78,7 @@ Learn more about our [rate limits](/docs/api-reference/rate-limit.md).
 >
 > Some endpoints support cursor-based pagination to help you browse through
 > large datasets efficiently. Check our [pagination
-> guide](/docs/api-reference/pagination.md) for detailed information on how to use
+> guide](https://resend.com/docs/api-reference/pagination.md) for detailed information on how to use
 > pagination parameters.
 
 > **How do you handle API versioning?**

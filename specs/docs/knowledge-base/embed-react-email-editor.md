@@ -158,7 +158,7 @@ Custom blocks use `EmailNode`, which extends TipTap's `Node` with the `renderToR
 
 **6. Send the result with Resend**
 
-If you use the standalone `EmailEditor` component, you can access the email HTML and plain text through ref methods. In your handler, send the HTML to Resend using the [Send Email](/docs/api-reference/emails/send-email.md) or [Send Batch Emails](/docs/api-reference/emails/send-batch-emails.md) API.
+If you use the standalone `EmailEditor` component, you can access the email HTML and plain text through ref methods. In your handler, send the HTML to Resend using the [Send Email](https://resend.com/docs/api-reference/emails/send-email.md) or [Send Batch Emails](https://resend.com/docs/api-reference/emails/send-batch-emails.md) API.
 
 ```tsx theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}}
 import { EmailEditor, type EmailEditorRef } from '@react-email/editor';
@@ -216,6 +216,6 @@ All three use [composeReactEmail](https://react.email/docs/editor/api-reference/
 >
 > Wrap existing TipTap extensions or build new email-safe nodes and marks.
 
-> **[Template emails with React Email](/docs/knowledge-base/template-emails-with-react-email.md)**
+> **[Template emails with React Email](https://resend.com/docs/knowledge-base/template-emails-with-react-email.md)**
 >
 > Author templates as `.tsx` files and upload them to Resend with the CLI.

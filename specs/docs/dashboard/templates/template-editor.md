@@ -36,4 +36,4 @@ You can also edit individual styles for each component, including the font size,
 
 ## Personalize your content
 
-When creating Templates, you can include dynamic audience data to personalize the email content. Learn more about working with [template variables](/docs/dashboard/templates/template-variables.md).
+When creating Templates, you can include dynamic audience data to personalize the email content. Learn more about working with [template variables](https://resend.com/docs/dashboard/templates/template-variables.md).

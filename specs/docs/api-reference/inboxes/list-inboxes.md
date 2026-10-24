@@ -7,12 +7,12 @@
 > Retrieve a list of inboxes for the team.
 
 Inboxes are returned newest first. Results are paginated with cursors. See
-[Pagination](/docs/api-reference/pagination.md) for how `after` and `before` work. The
+[Pagination](https://resend.com/docs/api-reference/pagination.md) for how `after` and `before` work. The
 cursors take an inbox ID. A value that is not a UUID returns a `422`, and an
 unknown ID returns a `404`.
 
 The list items carry fewer fields than a single inbox. [Retrieve an
-inbox](/docs/api-reference/inboxes/get-inbox.md) to get all its fields.
+inbox](https://resend.com/docs/api-reference/inboxes/get-inbox.md) to get all its fields.
 
 ## Query Parameters
 
@@ -39,7 +39,7 @@ Cannot be used with the `after` parameter.
 >
 > You can only use either `after` or `before`
 > parameter, not both. See our
-> [pagination guide](/docs/api-reference/pagination.md) for more
+> [pagination guide](https://resend.com/docs/api-reference/pagination.md) for more
 > information.
 
 ## Response Fields

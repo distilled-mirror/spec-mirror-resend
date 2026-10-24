@@ -12,8 +12,8 @@ Received emails can also be forwarded to another email address.
 >
 > Webhooks do not include the email body, headers, or attachments, only their
 > metadata. You must call the [Received emails
-> API](/docs/api-reference/emails/retrieve-received-email.md) or the [Attachments
-> API](/docs/api-reference/emails/list-received-email-attachments.md) to retrieve them.
+> API](https://resend.com/docs/api-reference/emails/retrieve-received-email.md) or the [Attachments
+> API](https://resend.com/docs/api-reference/emails/list-received-email-attachments.md) to retrieve them.
 > This design choice supports large attachments in serverless environments that
 > have limited request body sizes.
 
@@ -138,9 +138,9 @@ async fn forward(resend: &Resend, event: EmailEvent) {
 
 ## Manual forwarding
 
-If you're not using Node.js or prefer not to use the `forward` helper method, you can manually forward received emails using the [Send Email API](/docs/api-reference/emails/send-email.md).
+If you're not using Node.js or prefer not to use the `forward` helper method, you can manually forward received emails using the [Send Email API](https://resend.com/docs/api-reference/emails/send-email.md).
 
-The recommended approach is to download the raw email and parse it to properly extract content and attachments (especially for inline images). Then, you can send a new email with the extracted content and attachments using the [Send Email API](/docs/api-reference/emails/send-email.md).
+The recommended approach is to download the raw email and parse it to properly extract content and attachments (especially for inline images). Then, you can send a new email with the extracted content and attachments using the [Send Email API](https://resend.com/docs/api-reference/emails/send-email.md).
 
 ```js app/api/events/route.ts theme={"theme":{"light":"github-light","dark":"vesper"}}
 import type { NextRequest } from 'next/server';

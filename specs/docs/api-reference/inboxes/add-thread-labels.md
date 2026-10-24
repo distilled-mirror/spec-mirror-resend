@@ -8,7 +8,7 @@
 
 Labels already on the thread stay on it. If any label ID is not found, the
 request returns a `404` and nothing changes. To replace the thread's labels
-instead, use [Set Thread Labels](/docs/api-reference/inboxes/set-thread-labels.md).
+instead, use [Set Thread Labels](https://resend.com/docs/api-reference/inboxes/set-thread-labels.md).
 
 ## Path Parameters
 

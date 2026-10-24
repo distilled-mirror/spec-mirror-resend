@@ -22,11 +22,11 @@ Go to the [Domains Dashboard page](https://resend.com/domains) and click on **Ad
 
 **2. Add your domain name**
 
-We recommend [using a subdomain](/docs/knowledge-base/is-it-better-to-send-emails-from-a-subdomain-or-the-root-domain.md) like `updates.example.com`.
+We recommend [using a subdomain](https://resend.com/docs/knowledge-base/is-it-better-to-send-emails-from-a-subdomain-or-the-root-domain.md) like `updates.example.com`.
 
 **3. Add the DNS records to your DNS provider.**
 
-Learn more about [setting the required records](/docs/dashboard/domains/introduction.md) or see the [DNS provider guides](/docs/knowledge-base/) for specific provider instructions.
+Learn more about [setting the required records](https://resend.com/docs/dashboard/domains/introduction.md) or see the [DNS provider guides](https://resend.com/docs/knowledge-base/) for specific provider instructions.
 
 **4. Confirm in your Dashboard.**
 
@@ -107,7 +107,7 @@ Note that this requires enabling [Supabase Auth Hooks](https://supabase.com/docs
 
 ### Self-hosted with Custom SMTP
 
-If you're self-hosting Supabase, you can use a custom SMTP server to send your emails. [Learn more here](/docs/send-with-smtp.md).
+If you're self-hosting Supabase, you can use a custom SMTP server to send your emails. [Learn more here](https://resend.com/docs/send-with-smtp.md).
 
 ## Send Emails with Supabase Edge Functions
 

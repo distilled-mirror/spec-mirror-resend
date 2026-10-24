@@ -12,8 +12,8 @@
 
 Before you start, you'll need:
 
-* A Resend [API key](/docs/create-an-api-key.md)
-* A [verified domain](/docs/add-a-domain.md)
+* A Resend [API key](https://resend.com/docs/create-an-api-key.md)
+* A [verified domain](https://resend.com/docs/add-a-domain.md)
 * A project with [Better Auth installed](https://better-auth.com/docs/installation)
 
 ## Install the Resend SDK
@@ -82,7 +82,7 @@ export const auth = betterAuth({
 
 > [!NOTE]
 >
-> Set the `from` address to match your [verified domain](/docs/add-a-domain.md).
+> Set the `from` address to match your [verified domain](https://resend.com/docs/add-a-domain.md).
 
 ## Send magic links (optional)
 
@@ -113,7 +113,7 @@ export const auth = betterAuth({
 
 > [!NOTE]
 >
-> Set the `from` address to match your [verified domain](/docs/add-a-domain.md).
+> Set the `from` address to match your [verified domain](https://resend.com/docs/add-a-domain.md).
 
 ## Send one-time codes (optional)
 
@@ -145,11 +145,11 @@ export const auth = betterAuth({
 
 > [!NOTE]
 >
-> Set the `from` address to match your [verified domain](/docs/add-a-domain.md).
+> Set the `from` address to match your [verified domain](https://resend.com/docs/add-a-domain.md).
 
 ## Customize email templates
 
-For richer, reusable emails, author your templates with [React Email](https://react.email) and pass the rendered component to Resend's `react` field, or reference a [Resend template](/docs/dashboard/templates/introduction.md) by `id`.
+For richer, reusable emails, author your templates with [React Email](https://react.email) and pass the rendered component to Resend's `react` field, or reference a [Resend template](https://resend.com/docs/dashboard/templates/introduction.md) by `id`.
 
 ```typescript auth.ts theme={"theme":{"light":"github-light","dark":"vesper"}}
 import { ResetPasswordEmail } from './emails/reset-password';
@@ -166,7 +166,7 @@ sendResetPassword: ({ user, url }) => {
 
 > [!NOTE]
 >
-> Set the `from` address to match your [verified domain](/docs/add-a-domain.md).
+> Set the `from` address to match your [verified domain](https://resend.com/docs/add-a-domain.md).
 
 ## Debugging email delivery
 

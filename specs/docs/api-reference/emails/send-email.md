@@ -36,7 +36,7 @@ strings.
 Schedule email to be sent later. The date should be in natural language (e.g.: `in 1 min`) or ISO 8601 format (e.g:
 `2026-08-05T11:52:01.858Z`).
 
-[See examples](/docs/dashboard/emails/schedule-email.md)
+[See examples](https://resend.com/docs/dashboard/emails/schedule-email.md)
 
 Reply-to email address. For multiple addresses, send as an array of strings.
 
@@ -76,7 +76,7 @@ The topic ID to receive the email.
 
 Filename and content of attachments (max 40MB per email, after Base64 encoding of the attachments).
 
-[See examples](/docs/dashboard/emails/attachments.md)
+[See examples](https://resend.com/docs/dashboard/emails/attachments.md)
 
 **properties**
 
@@ -94,13 +94,13 @@ Path where the attachment file is hosted
 
 Content type for the attachment, if not set will be derived from the filename property
 
-You can embed images using the content id parameter for the attachment. To show the image, you need to include the ID in the `src` attribute of the `img` tag (e.g., `<img src="cid:...">`) of your HTML. [Learn about inline images](/docs/dashboard/emails/embed-inline-images.md).
+You can embed images using the content id parameter for the attachment. To show the image, you need to include the ID in the `src` attribute of the `img` tag (e.g., `<img src="cid:...">`) of your HTML. [Learn about inline images](https://resend.com/docs/dashboard/emails/embed-inline-images.md).
 
 **tags** `array`
 
 Custom data passed in key/value pairs.
 
-[See examples](/docs/dashboard/emails/tags.md).
+[See examples](https://resend.com/docs/dashboard/emails/tags.md).
 
 **properties**
 
@@ -150,7 +150,7 @@ variables: {
 
 When sending the template, the HTML will be parsed. If all the variables used in the template were provided, the email will be sent. If not, the call will throw a validation error.
 
-See the [errors reference](/docs/api-reference/errors.md) for more details or [learn more about templates](/docs/dashboard/templates/introduction.md).
+See the [errors reference](https://resend.com/docs/api-reference/errors.md) for more details or [learn more about templates](https://resend.com/docs/dashboard/templates/introduction.md).
 
 **properties**
 
@@ -181,7 +181,7 @@ Add an idempotency key to prevent duplicated emails.
 * Idempotency keys expire after **24 hours**
 * Have a maximum length of **256 characters**
 
-[Learn more](/docs/dashboard/emails/idempotency-keys.md)
+[Learn more](https://resend.com/docs/dashboard/emails/idempotency-keys.md)
 
 ```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
 import { Resend } from 'resend';

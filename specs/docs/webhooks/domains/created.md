@@ -11,7 +11,7 @@ Event triggered when a **domain was successfully created**.
 > [!NOTE]
 >
 > If you're having issues verifying your domain, [review our guide on a domain
-> not verifying](/docs/knowledge-base/what-if-my-domain-is-not-verifying.md) for
+> not verifying](https://resend.com/docs/knowledge-base/what-if-my-domain-is-not-verifying.md) for
 > troubleshooting steps.
 
 ## Response Body Parameters
@@ -55,8 +55,8 @@ Current verification status of the domain:
 > [!NOTE]
 >
 > The `data.status` field represents an aggregated status of the domain. For
-> domains that can both [send](/docs/dashboard/emails/introduction.md) and
-> [receive](/docs/dashboard/receiving/introduction.md) emails, the status may be
+> domains that can both [send](https://resend.com/docs/dashboard/emails/introduction.md) and
+> [receive](https://resend.com/docs/dashboard/receiving/introduction.md) emails, the status may be
 > `partially_verified` (one capability verified, the other pending) or
 > `partially_failed` (one capability verified, the other failed).
 
@@ -90,7 +90,7 @@ Array of DNS record objects required for domain verification
 
 **record** `SPF | DKIM | Receiving MX | Tracking | TrackingCAA`
 
-Record type purpose. Learn more about [domain verification records](/docs/dashboard/domains/introduction.md).
+Record type purpose. Learn more about [domain verification records](https://resend.com/docs/dashboard/domains/introduction.md).
 
 **name** `string`
 

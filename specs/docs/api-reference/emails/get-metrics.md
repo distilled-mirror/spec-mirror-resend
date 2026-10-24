@@ -97,8 +97,8 @@ combined with the `email` dimension or `email_id`.
 | `delivered` | Emails the recipient's mail server accepted. |
 | `delivery_delayed` | Delivery postponed by a temporary issue. Not final. |
 | `failed` | Emails that never reached a mail server. |
-| `suppressed` | Skipped because the recipient is [suppressed](/docs/dashboard/emails/email-suppressions.md). |
-| `bounced` | All [bounces](/docs/dashboard/emails/email-bounces.md), summing the three below. |
+| `suppressed` | Skipped because the recipient is [suppressed](https://resend.com/docs/dashboard/emails/email-suppressions.md). |
+| `bounced` | All [bounces](https://resend.com/docs/dashboard/emails/email-bounces.md), summing the three below. |
 | `bounced_transient` | Soft bounce. Temporary, so a later send can succeed. |
 | `bounced_permanent` | Hard bounce. Permanent, and the address is suppressed. |
 | `bounced_undetermined` | Bounce with no classifiable reason. |
@@ -118,7 +118,7 @@ combined with the `email` dimension or `email_id`.
 > [!NOTE]
 >
 > Open and click metrics require [open and click
-> tracking](/docs/dashboard/domains/tracking.md) on the sending domain.
+> tracking](https://resend.com/docs/dashboard/domains/tracking.md) on the sending domain.
 
 ```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
 import { Resend } from 'resend';

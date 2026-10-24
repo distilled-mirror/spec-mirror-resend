@@ -40,8 +40,8 @@ The events delivered to this webhook, most recent first.
 
 **id** `string`
 
-The event ID. Use this to [retrieve its details](/docs/api-reference/webhooks/get-event.md)
-or [list its attempts](/docs/api-reference/webhooks/list-event-attempts.md).
+The event ID. Use this to [retrieve its details](https://resend.com/docs/api-reference/webhooks/get-event.md)
+or [list its attempts](https://resend.com/docs/api-reference/webhooks/list-event-attempts.md).
 
 **type** `string`
 

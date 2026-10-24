@@ -17,14 +17,14 @@
 
 > [!NOTE]
 >
-> **Claimed a domain?** A [domain claim](/docs/dashboard/domains/claim.md) transfers the
+> **Claimed a domain?** A [domain claim](https://resend.com/docs/dashboard/domains/claim.md) transfers the
 > domain into your account as a brand-new domain with its own DKIM keys, so the
 > previous account's DNS records can't be reused. After the claim is
 > `completed`, fetch the domain with [Retrieve
-> Domain](/docs/api-reference/domains/get-domain.md), update your DNS with the new DKIM
+> Domain](https://resend.com/docs/api-reference/domains/get-domain.md), update your DNS with the new DKIM
 > record(s) it returns, then call this endpoint to verify it before sending or
 > receiving email. See [DKIM
-> records](/docs/dashboard/domains/manage-domains.md#what-are-dkim-records) for details.
+> records](https://resend.com/docs/dashboard/domains/manage-domains.md#what-are-dkim-records) for details.
 
 ## Path Parameters
 

@@ -17,7 +17,7 @@ The ID of the segment you want to send to.
 > [!NOTE]
 >
 > Audiences are now called Segments. Follow the [Migration
-> Guide](/docs/dashboard/segments/migrating-from-audiences-to-segments.md).
+> Guide](https://resend.com/docs/dashboard/segments/migrating-from-audiences-to-segments.md).
 
 **from** `string`
 

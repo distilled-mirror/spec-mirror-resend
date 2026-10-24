@@ -11,7 +11,7 @@ You can optionally embed an image in the HTML body of the email. This allows you
 > [!NOTE]
 >
 > We currently do not support sending attachments (including inline images)
-> [when using our batch endpoint](/docs/api-reference/emails/send-batch-emails.md).
+> [when using our batch endpoint](https://resend.com/docs/api-reference/emails/send-batch-emails.md).
 
 **1. Add the CID in the email HTML.**
 
@@ -27,7 +27,7 @@ Include the content id parameter in the attachment object (see below for example
 
 ## Implementation details
 
-Both remote and local attachments are supported. All attachment [requirements, options, and limitations](/docs/dashboard/emails/attachments.md) apply to inline images as well.
+Both remote and local attachments are supported. All attachment [requirements, options, and limitations](https://resend.com/docs/dashboard/emails/attachments.md) apply to inline images as well.
 
 As with all our features, inline images are available across all our SDKs.
 

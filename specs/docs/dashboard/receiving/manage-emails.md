@@ -8,7 +8,7 @@
 
 Your received emails are available in the [**Receiving** tab](https://resend.com/emails/receiving) of the **Emails** Dashboard page.
 
-You can also manage your received emails using the [Receiving API](/docs/api-reference/emails/retrieve-received-email.md), [MCP server](/docs/mcp-server.md), and [CLI commands](/docs/cli.md#receiving) for tasks such as retrieving full email details and attachments.
+You can also manage your received emails using the [Receiving API](https://resend.com/docs/api-reference/emails/retrieve-received-email.md), [MCP server](https://resend.com/docs/mcp-server.md), and [CLI commands](https://resend.com/docs/cli.md#receiving) for tasks such as retrieving full email details and attachments.
 
 ## View email details
 
@@ -18,7 +18,7 @@ In the [**"Receiving"** tab](https://resend.com/emails/receiving), select any em
 
 ![Viewing a received email](https://mintcdn.com/resend/JY1SfzW0Yy_MxC1X/images/receiving-manage-emails.png?fit=max\&auto=format\&n=JY1SfzW0Yy_MxC1X\&q=85\&s=9c83e18da72c27630eaf2465800f8967)
 
-If your webhook endpoint is down, you can still replay individual webhook events from the [Webhooks Dashboard page](https://resend.com/webhooks). You can also retrieve your emails at any time using the [Receiving API](/docs/api-reference/emails/retrieve-received-email.md) and the [receiving CLI commands](/docs/cli.md#receiving).
+If your webhook endpoint is down, you can still replay individual webhook events from the [Webhooks Dashboard page](https://resend.com/webhooks). You can also retrieve your emails at any time using the [Receiving API](https://resend.com/docs/api-reference/emails/retrieve-received-email.md) and the [receiving CLI commands](https://resend.com/docs/cli.md#receiving).
 
 ## Export your data
 
@@ -53,4 +53,4 @@ All admins on your team can securely access the export for 7 days. Unavailable e
 
 ## API Reference
 
-For complete API documentation, see the [Receiving API reference](/docs/api-reference/emails/retrieve-received-email.md).
+For complete API documentation, see the [Receiving API reference](https://resend.com/docs/api-reference/emails/retrieve-received-email.md).

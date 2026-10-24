@@ -18,8 +18,8 @@ To send emails with your Supabase project, you'll need to first verify it in Res
 
 Go to [the Domains page](https://resend.com/domains) and click on **Add Domain**.
 
-1. Add your domain name. We recommend [using a subdomain](/docs/knowledge-base/is-it-better-to-send-emails-from-a-subdomain-or-the-root-domain.md) like `updates.example.com` instead of the root domain.
-2. Add the DNS records to your DNS provider ([learn more about these records](/docs/dashboard/domains/introduction.md)).
+1. Add your domain name. We recommend [using a subdomain](https://resend.com/docs/knowledge-base/is-it-better-to-send-emails-from-a-subdomain-or-the-root-domain.md) like `updates.example.com` instead of the root domain.
+2. Add the DNS records to your DNS provider ([learn more about these records](https://resend.com/docs/dashboard/domains/introduction.md)).
 
    ![Resend Domains page](https://mintcdn.com/resend/_kGPo-rF0-rO9nI4/images/resend-domain-records.png?fit=max\&auto=format\&n=_kGPo-rF0-rO9nI4\&q=85\&s=24107151c9a59db661aca80c64338bfe)
 3. Click on **Verify DNS Records** to begin the verification process.
@@ -84,7 +84,7 @@ Note that this requires enabling [Supabase Auth Hooks](https://supabase.com/docs
 
 ### Send with a custom SMTP server for self-hosting
 
-If you're self-hosting Supabase, you can use a custom SMTP server to send your emails. [Learn more here](/docs/send-with-smtp.md).
+If you're self-hosting Supabase, you can use a custom SMTP server to send your emails. [Learn more here](https://resend.com/docs/send-with-smtp.md).
 
 ## Send Emails with Supabase Edge Functions
 

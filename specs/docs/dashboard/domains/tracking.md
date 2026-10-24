@@ -8,12 +8,12 @@
 
 Open and click tracking is disabled by default for all domains. These settings apply to all emails sent from that domain.
 
-We suggest only tracking open rates for the domain (or subdomain) used to send your [Broadcasts](/docs/dashboard/broadcasts/introduction.md) to ensure that inbox providers do not mistakenly identify your [transactional emails](/docs/dashboard/emails/introduction.md) as marketing emails.
+We suggest only tracking open rates for the domain (or subdomain) used to send your [Broadcasts](https://resend.com/docs/dashboard/broadcasts/introduction.md) to ensure that inbox providers do not mistakenly identify your [transactional emails](https://resend.com/docs/dashboard/emails/introduction.md) as marketing emails.
 
 > [!NOTE]
 >
 > Learn more about why it is better to [send emails from a
-> subdomain](/docs/dashboard/domains/introduction.md#subdomains) than from your root
+> subdomain](https://resend.com/docs/dashboard/domains/introduction.md#subdomains) than from your root
 > domain.
 
 You can enable tracking in the Resend Dashboard under the **Configuration** tab or programmatically when you create a new domain or update an existing domain.
@@ -50,7 +50,7 @@ Once verified, all tracked links in your emails will use your custom tracking su
 
 **1. Provide the tracking subdomain**
 
-When [adding a new domain](/docs/add-a-domain.md) to Resend, add tracking by passing the `tracking_subdomain` field along with `click_tracking` and/or `open_tracking`.
+When [adding a new domain](https://resend.com/docs/add-a-domain.md) to Resend, add tracking by passing the `tracking_subdomain` field along with `click_tracking` and/or `open_tracking`.
 
 ```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
 import { Resend } from 'resend';
@@ -475,7 +475,7 @@ curl -X POST 'https://api.resend.com/domains/d91cd9bd-1176-453e-8fc1-35364d38020
 
 All tracked links in your emails will use your tracking subdomain.
 
-View the [API reference](/docs/api-reference/domains/create-domain.md) for more details.
+View the [API reference](https://resend.com/docs/api-reference/domains/create-domain.md) for more details.
 
 ## How Open Tracking Works
 

@@ -6,12 +6,12 @@
 
 > Learn how to create inboxes in Resend.
 
-An inbox is an email address on a [verified domain](/docs/dashboard/domains/introduction.md). Once it exists, it can send email and collect replies in threads.
+An inbox is an email address on a [verified domain](https://resend.com/docs/dashboard/domains/introduction.md). Once it exists, it can send email and collect replies in threads.
 
 ## Before you create an inbox
 
-* [Add and verify a domain](/docs/dashboard/domains/introduction.md) for sending. The inbox address must use that domain.
-* To receive email at the inbox, the domain also needs [receiving enabled with an MX record](/docs/dashboard/receiving/custom-domains.md#enabling-receiving-for-an-existing-domain). If you can't change the MX record, [set up forwarding](#forward-an-existing-address) instead.
+* [Add and verify a domain](https://resend.com/docs/dashboard/domains/introduction.md) for sending. The inbox address must use that domain.
+* To receive email at the inbox, the domain also needs [receiving enabled with an MX record](https://resend.com/docs/dashboard/receiving/custom-domains.md#enabling-receiving-for-an-existing-domain). If you can't change the MX record, [set up forwarding](#forward-an-existing-address) instead.
 * Inboxes are billed separately from the rest of your plan. When you create an inbox in the dashboard, Resend shows what applies to your account. See [pricing](https://resend.com/pricing#inboxes) for details.
 
 ## Create an inbox
@@ -181,9 +181,9 @@ resend inboxes create \
 
 ## Forward an existing address
 
-If your domain is not verified for receiving emails you have two options. You can either [enable receiving for your domain with an MX record](/docs/dashboard/receiving/custom-domains.md#enabling-receiving-for-an-existing-domain) or set up forwarding. The Dashboard makes these options available to you.
+If your domain is not verified for receiving emails you have two options. You can either [enable receiving for your domain with an MX record](https://resend.com/docs/dashboard/receiving/custom-domains.md#enabling-receiving-for-an-existing-domain) or set up forwarding. The Dashboard makes these options available to you.
 
-If you are using the API and you can't add an MX record for the domain, set `forwarding` to `true` when creating the inbox. Resend provisions a receiving address for the inbox. [Retrieve the inbox](/docs/api-reference/inboxes/get-inbox.md) to read its `receiving_address`, then forward your existing mailbox to that address. Forwarded emails arrive in the inbox as threads.
+If you are using the API and you can't add an MX record for the domain, set `forwarding` to `true` when creating the inbox. Resend provisions a receiving address for the inbox. [Retrieve the inbox](https://resend.com/docs/api-reference/inboxes/get-inbox.md) to read its `receiving_address`, then forward your existing mailbox to that address. Forwarded emails arrive in the inbox as threads.
 
 > [!NOTE]
 >
@@ -192,4 +192,4 @@ If you are using the API and you can't add an MX record for the domain, set `for
 
 ## API Reference
 
-For complete API documentation, see the [Inboxes API reference](/docs/api-reference/inboxes/create-inbox.md).
+For complete API documentation, see the [Inboxes API reference](https://resend.com/docs/api-reference/inboxes/create-inbox.md).

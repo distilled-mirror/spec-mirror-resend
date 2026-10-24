@@ -43,15 +43,15 @@ keys](https://resend.com/api-keys) and update your applications.
 Cancel any plan on the teams you no longer need. Then delete each team from
 [the team settings](https://resend.com/settings/team). Deleting the team
 removes all its data and isn't reversible. For more help, see [How to delete
-your Resend team](/docs/knowledge-base/how-can-i-delete-my-team).
+your Resend team](https://resend.com/docs/knowledge-base/how-can-i-delete-my-team).
 
 ## If you can no longer reach the other team
 
-If a domain sits on a team you no longer have access to, add the domain on the team you want to keep. Resend will prompt you to start a claim, which proves ownership with a TXT record. See [Claiming a domain](/docs/dashboard/domains/claim.md) for more information.
+If a domain sits on a team you no longer have access to, add the domain on the team you want to keep. Resend will prompt you to start a claim, which proves ownership with a TXT record. See [Claiming a domain](https://resend.com/docs/dashboard/domains/claim.md) for more information.
 
 ## Several products or clients in one team
 
-One team can serve several products or clients. See the [multi tenant setup guide](/docs/knowledge-base/setting-up-resend-for-multi-tenants.md) for recommended setup.
+One team can serve several products or clients. See the [multi tenant setup guide](https://resend.com/docs/knowledge-base/setting-up-resend-for-multi-tenants.md) for recommended setup.
 
 ## Additional support
 

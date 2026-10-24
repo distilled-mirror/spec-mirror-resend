@@ -29,7 +29,7 @@ To help you safely test email functionality, Resend provides the following test 
 | `complained@resend.dev` | Email marked as spam |
 | `suppressed@resend.dev` | Email being suppressed |
 
-Using these addresses in your tests allows you to validate email flows without risking real-world deliverability problems. For more help sending test emails, see our [testing documentation](/docs/dashboard/emails/send-test-emails.md).
+Using these addresses in your tests allows you to validate email flows without risking real-world deliverability problems. For more help sending test emails, see our [testing documentation](https://resend.com/docs/dashboard/emails/send-test-emails.md).
 
 ### Labeling support
 

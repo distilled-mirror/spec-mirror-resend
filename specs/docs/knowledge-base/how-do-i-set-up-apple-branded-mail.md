@@ -11,7 +11,7 @@
 To get the most out of this guide, you will need to:
 
 * [Create an Apple Business Connect account](https://www.apple.com/business/connect/)
-* [Setup DMARC on your domain](/docs/dashboard/domains/dmarc.md)
+* [Setup DMARC on your domain](https://resend.com/docs/dashboard/domains/dmarc.md)
 * A company identification number for Apple to verify your company
 
 Prefer watching a video? Check out our video walkthrough below.
@@ -24,12 +24,12 @@ Apple Branded Mail is a proprietary Apple format that displays your logo as an a
 
 There are a few benefits of Apple Branded mail over BIMI:
 
-* Since it's an Apple format, it does not require a certificate like [BIMI does](/docs/dashboard/domains/bimi.md).
+* Since it's an Apple format, it does not require a certificate like [BIMI does](https://resend.com/docs/dashboard/domains/bimi.md).
 * The image support is broader, supporting `.png`, `.heif`, and `.jpg` logos.
 
 Since Apple Branded Mail works only with Apple Mail on new iOS, iPadOS, and macOS versions, your logo will not show in other mail clients or older versions of Apple Mail.
 
-For this reason, follow all possible methods for adding your logo to your emails, including Apple Branded Mail, [our general guide](/docs/knowledge-base/how-do-i-send-with-an-avatar.md), and [BIMI](/docs/dashboard/domains/bimi.md) if it fits your needs.
+For this reason, follow all possible methods for adding your logo to your emails, including Apple Branded Mail, [our general guide](https://resend.com/docs/knowledge-base/how-do-i-send-with-an-avatar.md), and [BIMI](https://resend.com/docs/dashboard/domains/bimi.md) if it fits your needs.
 
 ## Implementing Apple Branded Mail
 
@@ -38,7 +38,7 @@ For this reason, follow all possible methods for adding your logo to your emails
 > [!NOTE]
 >
 > If you haven't set up DMARC yet, follow our [DMARC Setup
-> Guide](/docs/dashboard/domains/dmarc.md).
+> Guide](https://resend.com/docs/dashboard/domains/dmarc.md).
 
 To ensure your logo appears with Apple Branded Mail, set your DMARC policy to either `p=quarantine;` or `p=reject;`. This policy guarantees that your emails are authenticated and prevents others from spoofing your domain and sending emails with your logo.
 
@@ -55,7 +55,7 @@ Here is an example of an adequate DMARC record:
 "v=DMARC1; p=quarantine; pct=100; rua=mailto:dmarcreports@example.com"
 ```
 
-As we mention in our [DMARC Setup Guide](/docs/dashboard/domains/dmarc.md), be sure to test your emails to make sure they are passing DMARC before changing your DMARC policy to `p=quarantine;` or `p=reject;`.
+As we mention in our [DMARC Setup Guide](https://resend.com/docs/dashboard/domains/dmarc.md), be sure to test your emails to make sure they are passing DMARC before changing your DMARC policy to `p=quarantine;` or `p=reject;`.
 
 **2. Create an Apple Business Connect account**
 

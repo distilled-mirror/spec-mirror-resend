@@ -10,7 +10,7 @@
 
 With Templates, you can define the structure and layout of a message once, then reuse it for multiple emails.
 
-Use Templates for [transactional emails](/docs/email-types.md#send-transactional-emails) you send often, like:
+Use Templates for [transactional emails](https://resend.com/docs/email-types.md#send-transactional-emails) you send often, like:
 
 * Login/Auth
 * Onboarding
@@ -22,30 +22,30 @@ Use Templates for [transactional emails](/docs/email-types.md#send-transactional
 
 With Resend's Template features, you can:
 
-* Compose with Resend's [no-code Template editor](/docs/dashboard/templates/template-editor.md).
-* Edit and update Templates with access to full [version history](/docs/dashboard/templates/version-history.md).
-* Include [custom variables](/docs/dashboard/templates/template-variables.md) to personalize content.
+* Compose with Resend's [no-code Template editor](https://resend.com/docs/dashboard/templates/template-editor.md).
+* Edit and update Templates with access to full [version history](https://resend.com/docs/dashboard/templates/version-history.md).
+* Include [custom variables](https://resend.com/docs/dashboard/templates/template-variables.md) to personalize content.
 
-You can even [embed the React Email editor](/docs/knowledge-base/embed-react-email-editor.md) in your own application to let your users create their own transactional emails from Templates and ship HTML-ready email content directly to Resend.
+You can even [embed the React Email editor](https://resend.com/docs/knowledge-base/embed-react-email-editor.md) in your own application to let your users create their own transactional emails from Templates and ship HTML-ready email content directly to Resend.
 
 ## Choose your infrastructure
 
-To [create transactional email Templates](/docs/dashboard/templates/create-template.md), you can use a variety of tools:
+To [create transactional email Templates](https://resend.com/docs/dashboard/templates/create-template.md), you can use a variety of tools:
 
-* [Editor](/docs/dashboard/templates/template-editor.md): create using Resend's no-code editor
-* [SDKs](/docs/sdks.md): create with an SDK built for your language
-* [Integrations](/docs/integrations.md): create with a framework or tool you already use
-* [API](/docs/api-reference/templates/create-template.md): create with raw cURL calls
-* [CLI](/docs/cli.md#emails): create templates from the terminal
-* [MCP](/docs/mcp-server.md): create through your agent with MCP
-* [React Email](/docs/knowledge-base/template-emails-with-react-email.md): create from a React Email Template file
-* [HTML](/docs/dashboard/templates/create-template.md#add-a-template-from-an-existing-file): create from an HTML file
+* [Editor](https://resend.com/docs/dashboard/templates/template-editor.md): create using Resend's no-code editor
+* [SDKs](https://resend.com/docs/sdks.md): create with an SDK built for your language
+* [Integrations](https://resend.com/docs/integrations.md): create with a framework or tool you already use
+* [API](https://resend.com/docs/api-reference/templates/create-template.md): create with raw cURL calls
+* [CLI](https://resend.com/docs/cli.md#emails): create templates from the terminal
+* [MCP](https://resend.com/docs/mcp-server.md): create through your agent with MCP
+* [React Email](https://resend.com/docs/knowledge-base/template-emails-with-react-email.md): create from a React Email Template file
+* [HTML](https://resend.com/docs/dashboard/templates/create-template.md#add-a-template-from-an-existing-file): create from an HTML file
 
 ## Send Emails with Templates
 
-When you send a transactional email from your application, you can reference a [published Template](/docs/dashboard/templates/create-template.md#publish-a-template) to use as your content instead of passing the HTML directly.
+When you send a transactional email from your application, you can reference a [published Template](https://resend.com/docs/dashboard/templates/create-template.md#publish-a-template) to use as your content instead of passing the HTML directly.
 
-Specify the Template ID and include any [Template variables](/docs/dashboard/templates/template-variables.md) in your API endpoint or CLI command. Resend will replace the Template variables with the actual variables specified in your code.
+Specify the Template ID and include any [Template variables](https://resend.com/docs/dashboard/templates/template-variables.md) in your API endpoint or CLI command. Resend will replace the Template variables with the actual variables specified in your code.
 
 ```ts Node.js {8-14} theme={"theme":{"light":"github-light","dark":"vesper"}}
 import { Resend } from 'resend';
@@ -241,14 +241,14 @@ curl -X POST 'https://api.resend.com/emails' \
 
 See how to use Resend's email Template features.
 
-> **[Create Templates](/docs/dashboard/templates/create-template.md)**
+> **[Create Templates](https://resend.com/docs/dashboard/templates/create-template.md)**
 
-> **[Editor](/docs/dashboard/templates/template-editor.md)**
+> **[Editor](https://resend.com/docs/dashboard/templates/template-editor.md)**
 
-> **[Template variables](/docs/dashboard/templates/template-variables.md)**
+> **[Template variables](https://resend.com/docs/dashboard/templates/template-variables.md)**
 
-> **[Version history](/docs/dashboard/templates/version-history.md)**
+> **[Version history](https://resend.com/docs/dashboard/templates/version-history.md)**
 
-> **[React Email Templates](/docs/knowledge-base/template-emails-with-react-email.md)**
+> **[React Email Templates](https://resend.com/docs/knowledge-base/template-emails-with-react-email.md)**
 
-> **[Embed Email Editor](/docs/knowledge-base/embed-react-email-editor.md)**
+> **[Embed Email Editor](https://resend.com/docs/knowledge-base/embed-react-email-editor.md)**

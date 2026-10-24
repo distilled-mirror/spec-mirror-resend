@@ -16,10 +16,10 @@ You must create at least one API key to use the Resend platform through code (e.
 
 You can create API keys in four ways:
 
-* in the [**API keys** Dashboard page](/docs/dashboard/api-keys/introduction.md)
-* using the [Resend API](/docs/api-reference/api-keys/create-api-key.md)
-* with a [Resend CLI command](/docs/cli.md#api-keys)
-* with the [Resend MCP server](/docs/mcp-server.md)
+* in the [**API keys** Dashboard page](https://resend.com/docs/dashboard/api-keys/introduction.md)
+* using the [Resend API](https://resend.com/docs/api-reference/api-keys/create-api-key.md)
+* with a [Resend CLI command](https://resend.com/docs/cli.md#api-keys)
+* with the [Resend MCP server](https://resend.com/docs/mcp-server.md)
 
 To create a new API Key from the Resend Dashboard:
 
@@ -35,7 +35,7 @@ Choose a name (maximum 50 characters) to identify your key.
 
 Choose **"Sending access"** to grant access to only sending emails unless your key needs full access to Resend’s API to create, delete, get, and update any resource.
 
-This [API key permission](/docs/api-reference/api-keys/create-api-key.md#param-permission) can be updated at any time [in the Dashboard](/docs/dashboard/api-keys/introduction.md#edit-api-key-details).
+This [API key permission](https://resend.com/docs/api-reference/api-keys/create-api-key.md#param-permission) can be updated at any time [in the Dashboard](https://resend.com/docs/dashboard/api-keys/introduction.md#edit-api-key-details).
 
 **5. (Optional) Restrict sending to a specific domain**
 
@@ -46,13 +46,13 @@ If you selected **"Sending access"**, you can further choose the domain you want
 > [!NOTE]
 >
 > For security reasons, you can only view the API Key once. Learn more about
-> [API key best practices](/docs/knowledge-base/how-to-handle-api-keys.md).
+> [API key best practices](https://resend.com/docs/knowledge-base/how-to-handle-api-keys.md).
 
 ## Use the API key in your code
 
 Authenticate your requests by adding your Resend API key to your project as an environment variable.
 
-You can check the [quickstart guides](/docs/introduction.md) or [AI builder guides](/docs/ai-onboarding.md#ai-builder-guides) for specific examples of passing your API key to your project.
+You can check the [quickstart guides](https://resend.com/docs/introduction.md) or [AI builder guides](https://resend.com/docs/ai-onboarding.md#ai-builder-guides) for specific examples of passing your API key to your project.
 
 **1. Create and store an environment variable**
 
@@ -90,21 +90,21 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 
 ## Learn more
 
-> **[Manage API keys](/docs/dashboard/api-keys/introduction.md)**
+> **[Manage API keys](https://resend.com/docs/dashboard/api-keys/introduction.md)**
 >
 > View, create, edit, delete, and manage your API keys.
 
-> **[API key best practices](/docs/knowledge-base/how-to-handle-api-keys.md)**
+> **[API key best practices](https://resend.com/docs/knowledge-base/how-to-handle-api-keys.md)**
 >
 > Learn about best practices for managing your API keys.
 
 ## Next steps
 
-> **[Add a domain](/docs/add-a-domain.md)**
+> **[Add a domain](https://resend.com/docs/add-a-domain.md)**
 >
 > Add and verify a domain you own to start sending emails.
 
-> **[Quickstart tutorials](/docs/introduction.md)**
+> **[Quickstart tutorials](https://resend.com/docs/introduction.md)**
 >
 > Send your first transactional email with a quick tutorial for your language
 > or framework.

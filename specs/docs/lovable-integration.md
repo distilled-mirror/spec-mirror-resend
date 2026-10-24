@@ -40,7 +40,7 @@ By default, you can only send emails to your own email address.
 
 To send emails to other email addresses:
 
-1. Add a [custom domain to your Resend account](/docs/add-a-domain.md).
+1. Add a [custom domain to your Resend account](https://resend.com/docs/add-a-domain.md).
 2. Add the custom domain to the `from` field in the `resend` function in Lovable (or ask the chat to update these fields).
 
 > [!NOTE]
@@ -49,4 +49,4 @@ To send emails to other email addresses:
 >
 > You’ll need to ask Lovable to manually update the `From` email to use your verified domain and then redeploy the function so the changes take effect.
 
-Get more help adding a custom domain in [Resend's documentation](/docs/dashboard/domains/introduction.md).
+Get more help adding a custom domain in [Resend's documentation](https://resend.com/docs/dashboard/domains/introduction.md).

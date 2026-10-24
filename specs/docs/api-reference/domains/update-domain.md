@@ -34,7 +34,7 @@ may already be sent with the current tracking subdomain.
 After changing the tracking subdomain, a new DNS record must be verified, until then, the previous value is used.
 Do not remove old tracking DNS records, all previously used records remain active and are included in the response.
 
-Learn more about [custom tracking subdomains](/docs/dashboard/domains/tracking.md).
+Learn more about [custom tracking subdomains](https://resend.com/docs/dashboard/domains/tracking.md).
 
 **tls** `string` (default: opportunistic)
 

@@ -19,7 +19,7 @@ Use batch sending when you need to:
 > [!NOTE]
 >
 > For marketing campaigns, [use our no-code editor,
-> Broadcasts](/docs/dashboard/broadcasts/introduction.md), instead.
+> Broadcasts](https://resend.com/docs/dashboard/broadcasts/introduction.md), instead.
 
 ## Send batch emails
 
@@ -280,7 +280,7 @@ When the request succeeds, each entry in `data` corresponds to the email at the 
 }
 ```
 
-If the request fails, the response will include an `error` object with a `message` property. You can find more information about the error in the [Errors](/docs/api-reference/errors.md) section of the API Reference.
+If the request fails, the response will include an `error` object with a `message` property. You can find more information about the error in the [Errors](https://resend.com/docs/api-reference/errors.md) section of the API Reference.
 
 ## Limitations
 
@@ -297,4 +297,4 @@ All emails sent via the batch endpoint appear in the [Emails page](https://resen
 
 ## API Reference
 
-For complete API documentation, see the [Send Batch Emails API reference](/docs/api-reference/emails/send-batch-emails.md).
+For complete API documentation, see the [Send Batch Emails API reference](https://resend.com/docs/api-reference/emails/send-batch-emails.md).

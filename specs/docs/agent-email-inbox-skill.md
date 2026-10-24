@@ -6,9 +6,9 @@
 
 > Give your AI agent a secure email inbox to receive and act on inbound emails.
 
-The Agent Email Inbox skill enables AI agents to securely receive and respond to emails through a Resend [Inbox](/docs/api-reference/inboxes/create-inbox.md). It provides security patterns that prevent untrusted email content from controlling your agent, including sender allowlists, content filtering, and sandboxed processing.
+The Agent Email Inbox skill enables AI agents to securely receive and respond to emails through a Resend [Inbox](https://resend.com/docs/api-reference/inboxes/create-inbox.md). It provides security patterns that prevent untrusted email content from controlling your agent, including sender allowlists, content filtering, and sandboxed processing.
 
-The inbox groups each conversation into a thread, and your agent replies in the thread with one call. Without a custom domain, or when your plan has no inbox available, the skill falls back to [Receiving](/docs/dashboard/receiving/introduction.md) with the same security levels.
+The inbox groups each conversation into a thread, and your agent replies in the thread with one call. Without a custom domain, or when your plan has no inbox available, the skill falls back to [Receiving](https://resend.com/docs/dashboard/receiving/introduction.md) with the same security levels.
 
 ## Why your agent needs a secure inbox
 
@@ -18,7 +18,7 @@ Unlike polling-based approaches, Resend uses **webhooks** for inbound email. You
 
 ## Installation
 
-This skill is part of the [resend-skills](https://github.com/resend/resend-skills) repository, which also includes the [Resend skill](/docs/resend-skill.md) for sending emails. When you run the install command, you'll be prompted to choose which skills to install.
+This skill is part of the [resend-skills](https://github.com/resend/resend-skills) repository, which also includes the [Resend skill](https://resend.com/docs/resend-skill.md) for sending emails. When you run the install command, you'll be prompted to choose which skills to install.
 
 ```bash theme={"theme":{"light":"github-light","dark":"vesper"}}
 npx skills add resend/resend-skills
@@ -113,7 +113,7 @@ The inbox methods need `resend` 6.34.1 or later.
 
 ## Learn More
 
-> **[OpenClaw Setup Guide](/docs/openclaw-guide.md)**
+> **[OpenClaw Setup Guide](https://resend.com/docs/openclaw-guide.md)**
 >
 > Step-by-step guide for giving an OpenClaw agent a fully functional email
 > inbox.

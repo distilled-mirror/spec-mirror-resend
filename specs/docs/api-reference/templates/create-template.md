@@ -78,9 +78,9 @@ If no fallback value is provided, you must provide a value for the variable when
 >
 > Before you can use a template, you must publish it first. To publish a
 > template, use the [Templates dashboard](https://resend.com/templates) or
-> [publish template API](/docs/api-reference/templates/publish-template.md).
+> [publish template API](https://resend.com/docs/api-reference/templates/publish-template.md).
 >
-> [Learn more about Templates](/docs/dashboard/templates/introduction.md).
+> [Learn more about Templates](https://resend.com/docs/dashboard/templates/introduction.md).
 
 ```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
 import { Resend } from 'resend';

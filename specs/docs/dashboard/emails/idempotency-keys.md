@@ -12,8 +12,8 @@ Include an idempotency key in any email requests to ensure that the same email r
 >
 > Idempotency keys are currently supported on the following endpoints:
 >
-> * Emails: [Send Email](/docs/api-reference/emails/send-email.md) and [Send Email Batch](/docs/api-reference/emails/send-batch-emails.md)
-> * Inboxes: [Send Draft](/docs/api-reference/inboxes/send-draft.md), [Reply to Thread Email](/docs/api-reference/inboxes/reply-thread-email.md) and [Forward Thread Email](/docs/api-reference/inboxes/forward-thread-email.md)
+> * Emails: [Send Email](https://resend.com/docs/api-reference/emails/send-email.md) and [Send Email Batch](https://resend.com/docs/api-reference/emails/send-batch-emails.md)
+> * Inboxes: [Send Draft](https://resend.com/docs/api-reference/inboxes/send-draft.md), [Reply to Thread Email](https://resend.com/docs/api-reference/inboxes/reply-thread-email.md) and [Forward Thread Email](https://resend.com/docs/api-reference/inboxes/forward-thread-email.md)
 
 ## How it works
 

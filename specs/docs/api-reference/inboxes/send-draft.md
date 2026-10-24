@@ -44,14 +44,14 @@ Add an idempotency key to prevent duplicated emails.
 * Reusing the key with a different body, or while the first request is still
   running, returns a `409`
 
-[Learn more](/docs/dashboard/emails/idempotency-keys.md)
+[Learn more](https://resend.com/docs/dashboard/emails/idempotency-keys.md)
 
 ## Response Fields
 
 **id** `string`
 
 The ID of the sent email. Use it with the [emails
-endpoints](/docs/api-reference/emails/retrieve-email.md).
+endpoints](https://resend.com/docs/api-reference/emails/retrieve-email.md).
 
 ```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
 import { Resend } from 'resend';

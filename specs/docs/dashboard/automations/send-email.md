@@ -6,13 +6,13 @@
 
 > Trigger templated emails in your Automations.
 
-This automation step triggers a [Template](/docs/dashboard/templates/introduction.md) email to be sent to the contact.
+This automation step triggers a [Template](https://resend.com/docs/dashboard/templates/introduction.md) email to be sent to the contact.
 
 ## How it works
 
 **Using the dashboard**
 
-After adding a [trigger](/docs/dashboard/automations/trigger.md), create a new step to **Send an email**.
+After adding a [trigger](https://resend.com/docs/dashboard/automations/trigger.md), create a new step to **Send an email**.
 
 ![Add Send Email Action](https://mintcdn.com/resend/ePnINhGLisYSJsWT/images/automations-steps-email.png?fit=max\&auto=format\&n=ePnINhGLisYSJsWT\&q=85\&s=98e94d53506699d565747e510702ad53)
 
@@ -321,7 +321,7 @@ Use the `variables` field to pass data into your template. Each value is a stati
 
 * `event.*` is a field from the event that triggered the Automation, such as `event.firstName`.
 * `contact.*` is a field from the contact, such as `contact.properties.company`.
-* `wait_events.<event_name>.*` is a field from an event a previous [wait for event](/docs/dashboard/automations/wait-for-event.md#use-the-received-event-in-later-steps) step received, such as `wait_events.feedback.received.response`. If the Automation waited for that event more than once, this is the most recent one before this step.
+* `wait_events.<event_name>.*` is a field from an event a previous [wait for event](https://resend.com/docs/dashboard/automations/wait-for-event.md#use-the-received-event-in-later-steps) step received, such as `wait_events.feedback.received.response`. If the Automation waited for that event more than once, this is the most recent one before this step.
 
 ```json {7-14} theme={"theme":{"light":"github-light","dark":"vesper"}}
 {
@@ -345,17 +345,17 @@ Use the `variables` field to pass data into your template. Each value is a stati
 
 Template variables must be present in your referenced template and the key names must match exactly with the template variable names.
 
-For more help working with variables, see the [Template documentation](/docs/dashboard/templates/template-variables.md).
+For more help working with variables, see the [Template documentation](https://resend.com/docs/dashboard/templates/template-variables.md).
 
 ## Unsubscribe behavior
 
-Resend does not automatically add an unsubscribe link to emails sent from a `send_email` step. To let contacts opt out, add `{{{RESEND_UNSUBSCRIBE_URL}}}` to the [Template](/docs/dashboard/templates/introduction.md) used by the step.
+Resend does not automatically add an unsubscribe link to emails sent from a `send_email` step. To let contacts opt out, add `{{{RESEND_UNSUBSCRIBE_URL}}}` to the [Template](https://resend.com/docs/dashboard/templates/introduction.md) used by the step.
 
 > [!NOTE]
 >
 > `{{{RESEND_UNSUBSCRIBE_URL}}}` must be added to the Template itself, not the step's `config`. If the Template doesn't include this variable, contacts have no way to unsubscribe from within the email.
 
-See [when to use an unsubscribe link](/docs/knowledge-base/should-i-add-an-unsubscribe-link.md) to decide whether your Automation emails need one.
+See [when to use an unsubscribe link](https://resend.com/docs/knowledge-base/should-i-add-an-unsubscribe-link.md) to decide whether your Automation emails need one.
 
 ## Configuration
 

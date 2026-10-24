@@ -6,7 +6,7 @@
 
 > Include contacts to a segment as part of your Automation.
 
-This step adds the current contact to a specified [Segment](/docs/dashboard/segments/introduction.md) when reached in the Automation flow.
+This step adds the current contact to a specified [Segment](https://resend.com/docs/dashboard/segments/introduction.md) when reached in the Automation flow.
 
 Common use cases:
 

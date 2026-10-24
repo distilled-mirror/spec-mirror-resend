@@ -10,7 +10,7 @@ RFC 7009 token revocation. Revoking a refresh token revokes the entire grant: ev
 
 Access tokens can't be revoked individually. Revoke the grant's refresh token instead. Per RFC 7009, this endpoint always returns `200` with an empty body.
 
-Confidential clients must authenticate the same way they do at the [token endpoint](/docs/api-reference/oauth/token.md#client-authentication), using `client_secret_basic` or `client_secret_post`. Public clients (`none`) send only `client_id`.
+Confidential clients must authenticate the same way they do at the [token endpoint](https://resend.com/docs/api-reference/oauth/token.md#client-authentication), using `client_secret_basic` or `client_secret_post`. Public clients (`none`) send only `client_id`.
 
 ## Body Parameters
 

@@ -81,4 +81,4 @@ Following security best practices like DMARC will show your validity and authent
 
 ![DMARC policy details](https://mintcdn.com/resend/OWNnQaVDyqcGyhhN/images/kb-dmarc.png?fit=max\&auto=format\&n=OWNnQaVDyqcGyhhN\&q=85\&s=2b853e7501c2863ddd2ded6de271e0b6)
 
-You can use our [DMARC setup guide to get started](/docs/dashboard/domains/dmarc.md).
+You can use our [DMARC setup guide to get started](https://resend.com/docs/dashboard/domains/dmarc.md).

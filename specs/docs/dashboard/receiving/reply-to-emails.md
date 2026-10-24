@@ -12,7 +12,7 @@ If you want to reply to an email, add the `In-Reply-To` header set to the `messa
 
 ## Get the message ID
 
-The `message_id` is included in the [webhook event](/docs/webhooks/emails/received.md) payload when an email is received:
+The `message_id` is included in the [webhook event](https://resend.com/docs/webhooks/emails/received.md) payload when an email is received:
 
 ```json {5} theme={"theme":{"light":"github-light","dark":"vesper"}}
 {

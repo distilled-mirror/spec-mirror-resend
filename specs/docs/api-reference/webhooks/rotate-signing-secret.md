@@ -11,7 +11,7 @@
 > For 24 hours after the rotation, payloads are signed with both the new and the
 > previous secret, so either one verifies them. After that, only the new secret
 > does. Use that window to update the secret your application uses to [verify
-> requests](/docs/webhooks/verify-webhooks-requests.md) without dropping events.
+> requests](https://resend.com/docs/webhooks/verify-webhooks-requests.md) without dropping events.
 
 ## Path Parameters
 

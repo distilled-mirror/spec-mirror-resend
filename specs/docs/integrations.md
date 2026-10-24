@@ -172,7 +172,7 @@
 >
 > Send emails from Softr apps and workflows
 
-> **[Attio](/docs/guides/attio-integration.md)**
+> **[Attio](https://resend.com/docs/guides/attio-integration.md)**
 >
 > Send emails and add contacts to segments from Attio
 
@@ -218,7 +218,7 @@
 
 ## Developer tools
 
-> **[Laravel Cloud](/docs/guides/laravel-cloud-integration.md)**
+> **[Laravel Cloud](https://resend.com/docs/guides/laravel-cloud-integration.md)**
 >
 > Connect Resend to a Laravel Cloud environment
 
@@ -310,6 +310,6 @@
 
 Here's how to build your own integration with Resend:
 
-1. Read the documentation on [how to send emails](/docs/api-reference/emails/send-email.md).
+1. Read the documentation on [how to send emails](https://resend.com/docs/api-reference/emails/send-email.md).
 2. Integrate with your product offering.
 3. [Reach out to us](https://resend.com/help) to feature your product on this page.

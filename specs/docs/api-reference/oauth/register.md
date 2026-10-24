@@ -11,9 +11,9 @@ Unauthenticated (no API key). Rate-limited to 20 registrations per hour per IP a
 > [!NOTE]
 >
 > Prefer a [Client ID Metadata
-> Document](/docs/guides/building-a-resend-oauth-client.md#client-id-metadata-documents)
+> Document](https://resend.com/docs/guides/building-a-resend-oauth-client.md#client-id-metadata-documents)
 > if the client can host a static JSON file. See [Building an OAuth
-> client](/docs/guides/building-a-resend-oauth-client.md) for choosing a registration
+> client](https://resend.com/docs/guides/building-a-resend-oauth-client.md) for choosing a registration
 > method and client type.
 
 ## Body Parameters
@@ -39,13 +39,13 @@ always echoes back `["code"]`.
 **scope** `string`
 
 Space-delimited list of scopes, e.g. `"emails:send"`. Must be a subset of the
-[supported scopes](/docs/api-reference/oauth/authorize.md#scopes). If omitted, the
+[supported scopes](https://resend.com/docs/api-reference/oauth/authorize.md#scopes). If omitted, the
 client is registered with every supported scope.
 
 **token\_endpoint\_auth\_method** `string` (default: none)
 
-How the client authenticates at the [token](/docs/api-reference/oauth/token.md) and
-[revocation](/docs/api-reference/oauth/revoke.md) endpoints. `none` registers a public
+How the client authenticates at the [token](https://resend.com/docs/api-reference/oauth/token.md) and
+[revocation](https://resend.com/docs/api-reference/oauth/revoke.md) endpoints. `none` registers a public
 client (PKCE only). `client_secret_basic` and `client_secret_post` register a
 confidential client and issue a `client_secret` in the response. See
 [Confidential clients](#confidential-clients). PKCE is required on every
@@ -142,7 +142,7 @@ curl -X POST 'https://api.resend.com/oauth/register' \
 
 ## Errors
 
-Errors use the standard OAuth shape (`{"error": "...", "error_description": "..."}`) rather than Resend's usual [error format](/docs/api-reference/errors.md).
+Errors use the standard OAuth shape (`{"error": "...", "error_description": "..."}`) rather than Resend's usual [error format](https://resend.com/docs/api-reference/errors.md).
 
 | Status | `error` | When |
 | - | - | - |

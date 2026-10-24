@@ -7,7 +7,7 @@
 > Retrieve a thread summary.
 
 The response is the thread summary. Messages are listed separately with [List
-Thread Emails](/docs/api-reference/inboxes/list-thread-emails.md).
+Thread Emails](https://resend.com/docs/api-reference/inboxes/list-thread-emails.md).
 
 ## Path Parameters
 

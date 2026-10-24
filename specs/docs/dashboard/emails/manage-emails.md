@@ -10,7 +10,7 @@
 
 After you've sent or scheduled your first email, your emails appear in the [**Emails** Dashboard page](https://resend.com/emails). You can [view email details](#view-email-details), [share a public version](#share-email-link), [view email logs](#see-associated-logs), and more.
 
-You can also manage your scheduled and sent emails using Resend's code tools including the [MCP server](/docs/mcp-server.md), [API endpoints](/docs/api-reference/emails/send-email.md) and [CLI commands](/docs/cli.md#emails) for tasks such as listing, sending, updating, and canceling emails.
+You can also manage your scheduled and sent emails using Resend's code tools including the [MCP server](https://resend.com/docs/mcp-server.md), [API endpoints](https://resend.com/docs/api-reference/emails/send-email.md) and [CLI commands](https://resend.com/docs/cli.md#emails) for tasks such as listing, sending, updating, and canceling emails.
 
 ## View email details
 
@@ -24,18 +24,18 @@ Each email contains a **Preview**, **Plain Text**, and **HTML** version to visua
 
 Here are all the events that can be associated with an email:
 
-* `bounced` - The recipient's mail server rejected the email. ([Learn more about bounced emails](/docs/dashboard/emails/email-bounces.md))
+* `bounced` - The recipient's mail server rejected the email. ([Learn more about bounced emails](https://resend.com/docs/dashboard/emails/email-bounces.md))
 * `canceled` - The scheduled email was canceled (by user).
 * `clicked` - The recipient clicked on a link in the email.
 * `complained` - The email was successfully delivered to the recipient's mail server, but the recipient marked it as spam.
 * `delivered` - Resend successfully delivered the email to the recipient's mail server.
 * `delivery_delayed` - The email couldn't be delivered to the recipient's mail server because a temporary issue occurred. Delivery delays can occur, for example, when the recipient's inbox is full, or when the receiving email server experiences a transient issue. Resend keeps retrying automatically for up to 14 hours. If the recipient's mail server still hasn't accepted the email by then, it's marked as `bounced`.
 * `failed` - The email failed to be sent.
-* `opened` - The recipient opened the email. ([Open rates are not always accurate](/docs/knowledge-base/why-are-my-open-rates-not-accurate.md))
+* `opened` - The recipient opened the email. ([Open rates are not always accurate](https://resend.com/docs/knowledge-base/why-are-my-open-rates-not-accurate.md))
 * `queued` - The email created from Broadcasts or Batches is queued for delivery.
 * `scheduled` - The email is scheduled for delivery.
 * `sent` - The email was sent successfully.
-* `suppressed` - The email was not sent because the recipient is on the suppression list. ([Learn more about the suppression list](/docs/knowledge-base/why-are-my-emails-landing-on-the-suppression-list.md))
+* `suppressed` - The email was not sent because the recipient is on the suppression list. ([Learn more about the suppression list](https://resend.com/docs/knowledge-base/why-are-my-emails-landing-on-the-suppression-list.md))
 
 ## Share email link
 
@@ -53,7 +53,7 @@ Anyone with the link can view the email without authenticating for 48 hours.
 
 ![Email - Share Link Item](https://mintcdn.com/resend/JHWt09hsc7E33HK2/images/dashboard-emails-share-item.png?fit=max\&auto=format\&n=JHWt09hsc7E33HK2\&q=85\&s=05c438ac1b5e0721475b3f028a6f6934)
 
-You can also create share links programmatically using the [Share Email API](/docs/api-reference/emails/share-email.md).
+You can also create share links programmatically using the [Share Email API](https://resend.com/docs/api-reference/emails/share-email.md).
 
 ## See associated logs
 
@@ -100,4 +100,4 @@ All admins on your team can securely access the export for 7 days. Unavailable e
 
 ## API Reference
 
-For complete API documentation, see the [Sending API reference](/docs/api-reference/emails/send-email.md).
+For complete API documentation, see the [Sending API reference](https://resend.com/docs/api-reference/emails/send-email.md).

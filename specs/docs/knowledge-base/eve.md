@@ -8,7 +8,7 @@
 
 [Eve](https://eve.dev/) is an open-source framework for building agents created by Vercel. It's filesystem-first, inspired by Next.js, and provides tools, workflows, connections, hooks, and channels for you to build long-running, durable agents.
 
-Using the [Resend adapter for the Vercel Chat SDK](/docs/chat-sdk.md) you can plug in email as a channel to your eve agent.
+Using the [Resend adapter for the Vercel Chat SDK](https://resend.com/docs/chat-sdk.md) you can plug in email as a channel to your eve agent.
 
 ## Prerequisites
 
@@ -16,8 +16,8 @@ To get started, you'll need to:
 
 * [Create an API key](https://resend.com/api-keys)
 * [Verify your domain](https://resend.com/domains)
-* [Set up webhooks](/docs/webhooks/introduction.md) for `email.received` events
-* [Enable receiving](/docs/dashboard/receiving/introduction.md) on your domain
+* [Set up webhooks](https://resend.com/docs/webhooks/introduction.md) for `email.received` events
+* [Enable receiving](https://resend.com/docs/dashboard/receiving/introduction.md) on your domain
 
 ## Guide
 
@@ -93,11 +93,11 @@ bot.onSubscribedMessage(async (thread, message) => {
 });
 ```
 
-Threading is handled by the [Chat SDK adapter](/docs/chat-sdk.md#how-threading-works).
+Threading is handled by the [Chat SDK adapter](https://resend.com/docs/chat-sdk.md#how-threading-works).
 
 **4. Configure webhooks**
 
-Eve registers adapter endpoints at `/eve/v1/resend`. [Edit your webhook](/docs/webhooks/introduction.md) for `email.received` events to point to this endpoint.
+Eve registers adapter endpoints at `/eve/v1/resend`. [Edit your webhook](https://resend.com/docs/webhooks/introduction.md) for `email.received` events to point to this endpoint.
 
 ## Configuration options
 

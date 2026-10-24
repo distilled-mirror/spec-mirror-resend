@@ -35,7 +35,7 @@ Deleting a key revokes it right away. There's no separate revoke step, and no fu
 > created, so a replacement is always a new key rather than a reissue of the old
 > one.
 
-If your services are still running on the exposed key, follow the [key rotation steps](/docs/knowledge-base/how-to-handle-api-keys.md#key-rotation) so you don't experience downtime while you swap it out.
+If your services are still running on the exposed key, follow the [key rotation steps](https://resend.com/docs/knowledge-base/how-to-handle-api-keys.md#key-rotation) so you don't experience downtime while you swap it out.
 
 ## Review what was sent
 
@@ -75,7 +75,7 @@ You can't prevent every leak, but you can limit what one costs you.
 * **Prefer "Sending access" over "Full access."** Most applications only need to send, and a "Sending access" key can't read your contacts even if it leaks.
 * **Delete keys you aren't using.** Resend flags keys unused for 30 or more days in the Dashboard.
 
-For the full set of practices, see [API key security](/docs/knowledge-base/how-to-handle-api-keys.md).
+For the full set of practices, see [API key security](https://resend.com/docs/knowledge-base/how-to-handle-api-keys.md).
 
 ## Get more help
 

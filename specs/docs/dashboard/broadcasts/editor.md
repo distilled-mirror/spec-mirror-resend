@@ -12,7 +12,7 @@ Resend's no-code Broadcast editor is built into the Dashboard to allow anyone on
 >
 > To create a Broadcast from your application instead, you can [send Broadcasts
 > with the Broadcasts API
-> instead](/docs/dashboard/broadcasts/send-broadcast-with-api.md).
+> instead](https://resend.com/docs/dashboard/broadcasts/send-broadcast-with-api.md).
 
 ## Quickstart
 
@@ -24,7 +24,7 @@ To create and send a Broadcast using the no-code editor:
 
 **3. Add a `from` name and address.**
 
-Choose any username at your [verified domain](/docs/dashboard/domains/introduction.md) to send your Broadcast from.
+Choose any username at your [verified domain](https://resend.com/docs/dashboard/domains/introduction.md) to send your Broadcast from.
 
 We suggest you choose a `from` name and address that describes the purpose of the email, for example:
 
@@ -33,13 +33,13 @@ We suggest you choose a `from` name and address that describes the purpose of th
 
 **4. Select the audience you want to send your email to.**
 
-Choose a [segment of your contacts](/docs/dashboard/segments/introduction.md) to receive the email.
+Choose a [segment of your contacts](https://resend.com/docs/dashboard/segments/introduction.md) to receive the email.
 
 **5. Create a subject for your email.**
 
 **6. Optionally define other email fields.**
 
-Resend's Broadcast editor allows you to specify optional fields such as a different Reply-to address, a [topic](/docs/dashboard/topics/introduction.md), preview text for email clients, and a scheduled time to send.
+Resend's Broadcast editor allows you to specify optional fields such as a different Reply-to address, a [topic](https://resend.com/docs/dashboard/topics/introduction.md), preview text for email clients, and a scheduled time to send.
 
 **7. Write your email content.**
 
@@ -96,7 +96,7 @@ your content, or `@` mention other Broadcasts for design or content inspiration.
 
 When creating Broadcasts, you can include dynamic audience data to personalize the email content.
 
-Add placeholders for your [contact properties](/docs/dashboard/audiences/properties.md) using the following notation:
+Add placeholders for your [contact properties](https://resend.com/docs/dashboard/audiences/properties.md) using the following notation:
 
 * `{{{contact.first_name|fallback}}}`
 * `{{{contact.last_name|fallback}}}`
@@ -108,11 +108,11 @@ Resend generates a unique link for each recipient and each Broadcast. Use `{{{RE
 
 ![Unsubscribe Link](https://mintcdn.com/resend/ABWmVTZIHGIFNTFD/images/audiences-intro-3.png?fit=max\&auto=format\&n=ABWmVTZIHGIFNTFD\&q=85\&s=4b37fb9c380e19ca0b53b80a3c925c8f)
 
-When a contact clicks this link, they will be presented with a preference page where they can update their subscription preferences [per topic](/docs/dashboard/topics/introduction.md) or unsubscribe from all of your emails.
+When a contact clicks this link, they will be presented with a preference page where they can update their subscription preferences [per topic](https://resend.com/docs/dashboard/topics/introduction.md) or unsubscribe from all of your emails.
 
 ![Automatic Unsubscribes](https://mintcdn.com/resend/m2xttJpF68pi6Mw0/images/audiences-intro-4.png?fit=max\&auto=format\&n=m2xttJpF68pi6Mw0\&q=85\&s=b9715a7bb5d97a3795cf82978073895e)
 
-You can [customize your unsubscribe page with your branding](/docs/dashboard/settings/unsubscribe-page.md) from your team settings.
+You can [customize your unsubscribe page with your branding](https://resend.com/docs/dashboard/settings/unsubscribe-page.md) from your team settings.
 
 ![See Topics on the Unsubscribe Page](https://mintcdn.com/resend/WTZjpSkJsZf7Ubl_/images/dashboard-unsubscribe-page-topics.png?fit=max\&auto=format\&n=WTZjpSkJsZf7Ubl_\&q=85\&s=11896d54a3e2bdb510a5b666ae7ee8a8)
 
@@ -133,6 +133,6 @@ Once you're ready to send your email to your Audience, click on **Send**, and sl
 
 ## Cancel a Broadcast
 
-You can [cancel a Broadcast](/docs/knowledge-base/how-do-i-cancel-a-broadcast.md) while it is still sending by clicking on the Broadcast's **Cancel** button in the Dashboard. Canceling stops the send and cancels all queued deliveries, so no further emails go out.
+You can [cancel a Broadcast](https://resend.com/docs/knowledge-base/how-do-i-cancel-a-broadcast.md) while it is still sending by clicking on the Broadcast's **Cancel** button in the Dashboard. Canceling stops the send and cancels all queued deliveries, so no further emails go out.
 
 This only stops delivery of emails that have not yet been sent. Emails that have already been delivered cannot be recalled.

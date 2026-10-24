@@ -81,7 +81,7 @@ True only when every message in the thread is read
 
 **email** `object`
 
-The email, as it is when the webhook is sent, without `html` or `text`. Fetch the body with [Retrieve Thread Email](/docs/api-reference/inboxes/get-thread-email.md). Only when the email is already on the thread when the webhook is sent
+The email, as it is when the webhook is sent, without `html` or `text`. Fetch the body with [Retrieve Thread Email](https://resend.com/docs/api-reference/inboxes/get-thread-email.md). Only when the email is already on the thread when the webhook is sent
 
 **email object**
 
@@ -149,7 +149,7 @@ ISO 8601 timestamp when the email arrived or was sent
 
 **draft** `object`
 
-The draft, as it is when the webhook is sent, without `html` or `text`. Fetch the body with [Retrieve Draft](/docs/api-reference/inboxes/get-draft.md). Absent when the draft no longer exists
+The draft, as it is when the webhook is sent, without `html` or `text`. Fetch the body with [Retrieve Draft](https://resend.com/docs/api-reference/inboxes/get-draft.md). Absent when the draft no longer exists
 
 **draft object**
 

@@ -279,8 +279,8 @@ For the entire docs for Resend, see [https://resend.com/docs/llms-full.txt](http
 
 Before you start, you'll need:
 
-* A Resend [API key](/docs/create-an-api-key.md)
-* A [verified domain](/docs/add-a-domain.md)
+* A Resend [API key](https://resend.com/docs/create-an-api-key.md)
+* A [verified domain](https://resend.com/docs/add-a-domain.md)
 * Have a Cloudflare worker with a bundling setup
   * Recommended to be bootstrapped with `npm create cloudflare`
 

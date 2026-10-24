@@ -22,7 +22,7 @@ Connect any MCP client that supports remote servers (Streamable HTTP). There's n
 
 When you connect, your client opens a browser window to log in to Resend and approve access using OAuth.
 
-The [Resend plugin](https://github.com/resend/resend-skills) follows the [Agent Plugins](https://agent-plugins.org) spec. On clients that install that plugin, it adds this remote MCP server and the adjacent [Resend skills](/docs/resend-skill.md) together. `plugin.json` identifies the plugin, `skills/` holds the skills, and `mcp.json` points at `https://mcp.resend.com/mcp`.
+The [Resend plugin](https://github.com/resend/resend-skills) follows the [Agent Plugins](https://agent-plugins.org) spec. On clients that install that plugin, it adds this remote MCP server and the adjacent [Resend skills](https://resend.com/docs/resend-skill.md) together. `plugin.json` identifies the plugin, `skills/` holds the skills, and `mcp.json` points at `https://mcp.resend.com/mcp`.
 
 Each tab below matches the install on that client's page at resend.com.
 
@@ -69,7 +69,7 @@ See the [GitHub Copilot page](https://resend.com/github-copilot).
 claude plugin install resend@claude-plugins-official
 ```
 
-Then run `/mcp` in Claude Code and select **resend** to complete the OAuth login. The plugin installs the remote MCP server and every [Resend skill](/docs/resend-skill.md).
+Then run `/mcp` in Claude Code and select **resend** to complete the OAuth login. The plugin installs the remote MCP server and every [Resend skill](https://resend.com/docs/resend-skill.md).
 
 See the [Claude Code page](https://resend.com/claude-code).
 
@@ -142,7 +142,7 @@ Ask OpenClaw to install the skills:
 Install the Resend skills: https://github.com/resend/resend-skills
 ```
 
-See the [OpenClaw page](https://resend.com/openclaw). For an inbox, see the [OpenClaw guide](/docs/openclaw-guide.md).
+See the [OpenClaw page](https://resend.com/openclaw). For an inbox, see the [OpenClaw guide](https://resend.com/docs/openclaw-guide.md).
 
 **OpenCode**
 
@@ -191,7 +191,7 @@ Add this to your `~/.gemini/settings.json` file:
 
 **Devin**
 
-In Devin, open **Settings** > **Connections** > **MCP Servers** and click **Add a custom MCP**. See the [Devin guide](/docs/guides/devin.md) for the full step-by-step.
+In Devin, open **Settings** > **Connections** > **MCP Servers** and click **Add a custom MCP**. See the [Devin guide](https://resend.com/docs/guides/devin.md) for the full step-by-step.
 
 ```json theme={"theme":{"light":"github-light","dark":"vesper"}}
 {
@@ -272,8 +272,8 @@ For clients configured with JSON (Cursor, Zed, and others), add an `Authorizatio
 
 The hosted server runs the same open-source code that's available on NPM as [`resend-mcp`](https://github.com/resend/resend-mcp). If you prefer to run the server yourself, you can integrate it into any supported MCP client using `npx`. You'll need to:
 
-* [Create an API key](/docs/create-an-api-key.md)
-* [Verify your domain](/docs/add-a-domain.md)
+* [Create an API key](https://resend.com/docs/create-an-api-key.md)
+* [Verify your domain](https://resend.com/docs/add-a-domain.md)
 
 The local server supports two transport modes: **stdio** (default) and **HTTP**.
 
@@ -407,7 +407,7 @@ Add this to your `~/.gemini/config/mcp_config.json` file:
 
 **Devin**
 
-In Devin, open **Settings** > **Connections** > **MCP Servers** and click **Add a custom MCP**. See the [Devin guide](/docs/guides/devin.md) for the full step-by-step.
+In Devin, open **Settings** > **Connections** > **MCP Servers** and click **Add a custom MCP**. See the [Devin guide](https://resend.com/docs/guides/devin.md) for the full step-by-step.
 
 ```json theme={"theme":{"light":"github-light","dark":"vesper"}}
 {
@@ -562,9 +562,9 @@ Resend's MCP server gives your AI agent native access to the full Resend platfor
 
 Here are some real examples of what your agent can do with these tools:
 
-* Turn a [Paper design](/docs/guides/paper.md) into a ready-to-send [Template](/docs/dashboard/templates/introduction.md) or [Broadcast](/docs/dashboard/broadcasts/introduction.md)
-* [Bulk import contacts from a CSV](/docs/dashboard/contacts/add-contacts.md#add-contacts-by-uploading-a-csv), upserting or skipping duplicates, and organize them into [Segments](/docs/dashboard/segments/introduction.md)
-* Build [Automations](/docs/dashboard/automations/introduction.md) that send emails when a contact is created, updated, or triggers a [custom event](/docs/dashboard/automations/custom-events.md)
-* Read and triage [inbound email](/docs/dashboard/receiving/introduction.md), download attachments, and send replies
-* Schedule, reschedule, and cancel [scheduled emails](/docs/dashboard/emails/schedule-email.md)
-* Debug failed API requests by inspecting the [request logs](/docs/dashboard/logs/introduction.md)
+* Turn a [Paper design](https://resend.com/docs/guides/paper.md) into a ready-to-send [Template](https://resend.com/docs/dashboard/templates/introduction.md) or [Broadcast](https://resend.com/docs/dashboard/broadcasts/introduction.md)
+* [Bulk import contacts from a CSV](https://resend.com/docs/dashboard/contacts/add-contacts.md#add-contacts-by-uploading-a-csv), upserting or skipping duplicates, and organize them into [Segments](https://resend.com/docs/dashboard/segments/introduction.md)
+* Build [Automations](https://resend.com/docs/dashboard/automations/introduction.md) that send emails when a contact is created, updated, or triggers a [custom event](https://resend.com/docs/dashboard/automations/custom-events.md)
+* Read and triage [inbound email](https://resend.com/docs/dashboard/receiving/introduction.md), download attachments, and send replies
+* Schedule, reschedule, and cancel [scheduled emails](https://resend.com/docs/dashboard/emails/schedule-email.md)
+* Debug failed API requests by inspecting the [request logs](https://resend.com/docs/dashboard/logs/introduction.md)

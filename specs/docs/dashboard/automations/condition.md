@@ -473,11 +473,11 @@ A rule's `value` can reference data instead of a fixed value. This lets a condit
 
 * `event.*`, the event that triggered the Automation.
 * `contact.*`, the contact.
-* `wait_events.<event_name>.*`, an event a previous [wait for event](/docs/dashboard/automations/wait-for-event.md#use-the-received-event-in-later-steps) step received. If the Automation waited for that event more than once, this is the most recent one before this step.
+* `wait_events.<event_name>.*`, an event a previous [wait for event](https://resend.com/docs/dashboard/automations/wait-for-event.md#use-the-received-event-in-later-steps) step received. If the Automation waited for that event more than once, this is the most recent one before this step.
 
 A `value` that points at data that doesn't exist never matches.
 
-For example, after a [wait for event](/docs/dashboard/automations/wait-for-event.md) step for `order.shipped`, check that the shipped order is the one that triggered the Automation:
+For example, after a [wait for event](https://resend.com/docs/dashboard/automations/wait-for-event.md) step for `order.shipped`, check that the shipped order is the one that triggered the Automation:
 
 ```json {6-8} theme={"theme":{"light":"github-light","dark":"vesper"}}
 {

@@ -7,9 +7,9 @@
 > Mark a thread read or unread, or move it to another folder.
 
 To change a thread's labels, use
-[Add Thread Labels](/docs/api-reference/inboxes/add-thread-labels.md),
-[Set Thread Labels](/docs/api-reference/inboxes/set-thread-labels.md), or
-[Remove Thread Label](/docs/api-reference/inboxes/remove-thread-label.md).
+[Add Thread Labels](https://resend.com/docs/api-reference/inboxes/add-thread-labels.md),
+[Set Thread Labels](https://resend.com/docs/api-reference/inboxes/set-thread-labels.md), or
+[Remove Thread Label](https://resend.com/docs/api-reference/inboxes/remove-thread-label.md).
 
 ## Path Parameters
 

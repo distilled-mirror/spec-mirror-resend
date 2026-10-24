@@ -12,7 +12,7 @@ days.
 > [!NOTE]
 >
 > This is reversible. To restore a thread, [update
-> it](/docs/api-reference/inboxes/update-thread.md) back to `inbox`, `archive`, or
+> it](https://resend.com/docs/api-reference/inboxes/update-thread.md) back to `inbox`, `archive`, or
 > `spam`, which also clears the deletion deadline.
 
 ## Path Parameters

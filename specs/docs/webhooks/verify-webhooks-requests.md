@@ -10,7 +10,7 @@ Webhook signing secrets are used to validate the payload data sent to your appli
 
 ![Signing Secret](https://mintcdn.com/resend/qZ1nhePh39wY_UO4/images/webhooks-secret-1.png?fit=max\&auto=format\&n=qZ1nhePh39wY_UO4\&q=85\&s=fa5955e5da08d6263850dfd024c642bb)
 
-Calls to [create](/docs/api-reference/webhooks/create-webhook.md), [retrieve](/docs/api-reference/webhooks/get-webhook.md), or [list](/docs/api-reference/webhooks/list-webhooks.md) webhooks will also return the signing secret in the response body.
+Calls to [create](https://resend.com/docs/api-reference/webhooks/create-webhook.md), [retrieve](https://resend.com/docs/api-reference/webhooks/get-webhook.md), or [list](https://resend.com/docs/api-reference/webhooks/list-webhooks.md) webhooks will also return the signing secret in the response body.
 
 ## How to verify webhook requests
 
@@ -99,4 +99,4 @@ Another security concern is replay attacks, where intercepted valid payloads, co
 
 ## API Reference
 
-For complete API documentation, see the [Webhooks API reference](/docs/api-reference/webhooks/create-webhook.md).
+For complete API documentation, see the [Webhooks API reference](https://resend.com/docs/api-reference/webhooks/create-webhook.md).

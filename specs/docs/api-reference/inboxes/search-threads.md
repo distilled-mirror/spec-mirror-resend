@@ -201,9 +201,9 @@ within its inbox. You can move a thread to `inbox`, `archive`, `spam`, or
 
 Identifies the email in the thread that matched the search. When `query`
 has words or phrases, it's the most relevant match. Otherwise, it's the
-newest. [Retrieve Thread Email](/docs/api-reference/inboxes/get-thread-email.md),
+newest. [Retrieve Thread Email](https://resend.com/docs/api-reference/inboxes/get-thread-email.md),
 reply, and forward accept it as `email_id`. It is the same `id` that
-[List Thread Emails](/docs/api-reference/inboxes/list-thread-emails.md) returns.
+[List Thread Emails](https://resend.com/docs/api-reference/inboxes/list-thread-emails.md) returns.
 `null` when the search index returns no matched email for the thread.
 
 ## Errors

@@ -11,7 +11,7 @@ Event triggered whenever the **recipient opened the email**.
 > [!NOTE]
 >
 > Open rates are not always accurate. Learn more about [why open rates may not
-> be accurate](/docs/knowledge-base/why-are-my-open-rates-not-accurate.md).
+> be accurate](https://resend.com/docs/knowledge-base/why-are-my-open-rates-not-accurate.md).
 
 ## Response Body Parameters
 
@@ -50,7 +50,7 @@ RFC Message-ID header value for the email
 
 **from** `string`
 
-Sender's email address. For sent events, this matches the value passed at send time and may include a display name (e.g., `Name <email@domain.com>`). For received events, this is the bare email address only; the display name from the original `From:` header is preserved in `headers.from` on the [retrieve endpoint](/docs/api-reference/emails/retrieve-received-email.md).
+Sender's email address. For sent events, this matches the value passed at send time and may include a display name (e.g., `Name <email@domain.com>`). For received events, this is the bare email address only; the display name from the original `From:` header is preserved in `headers.from` on the [retrieve endpoint](https://resend.com/docs/api-reference/emails/retrieve-received-email.md).
 
 **to** `array`
 

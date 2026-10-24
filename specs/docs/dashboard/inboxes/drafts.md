@@ -362,13 +362,13 @@ Via the API, pass files in the `attachments` array as Base64 encoded `content`.
 
 ## Write with AI
 
-Type <kbd>/</kbd> in the body of a message and choose **Start from a prompt...** to have AI write the message for you. Describe what you want to say, and the message is written in the tone of voice set for the [inbox agent](/docs/dashboard/inboxes/agent.md), using the rest of the thread as context. Once there is content in the message you can prompt again to change it.
+Type <kbd>/</kbd> in the body of a message and choose **Start from a prompt...** to have AI write the message for you. Describe what you want to say, and the message is written in the tone of voice set for the [inbox agent](https://resend.com/docs/dashboard/inboxes/agent.md), using the rest of the thread as context. Once there is content in the message you can prompt again to change it.
 
 ## View drafts
 
 Select the **Drafts** folder in an inbox to see all of its unsent drafts. Select a draft to continue editing it.
 
-You can also [list drafts](/docs/api-reference/inboxes/list-drafts.md) via the API, SDKs, or CLI. Drafts are returned most recently updated first.
+You can also [list drafts](https://resend.com/docs/api-reference/inboxes/list-drafts.md) via the API, SDKs, or CLI. Drafts are returned most recently updated first.
 
 ```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
 import { Resend } from 'resend';
@@ -466,7 +466,7 @@ resend inboxes drafts list --inbox-id b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1
 
 In the Dashboard, open the draft and edit it. Changes are saved automatically.
 
-You can also [update a draft](/docs/api-reference/inboxes/update-draft.md) via the API, SDKs, or CLI. Fields you leave out stay as they are, except for `html` and `text`: sending either one replaces both.
+You can also [update a draft](https://resend.com/docs/api-reference/inboxes/update-draft.md) via the API, SDKs, or CLI. Fields you leave out stay as they are, except for `html` and `text`: sending either one replaces both.
 
 ```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
 import { Resend } from 'resend';
@@ -621,7 +621,7 @@ resend inboxes drafts update \
 
 In the Dashboard, click **Send** or press <kbd>⌘</kbd> + <kbd>Enter</kbd>. The email is sent from the inbox address, along with any attachments saved on the draft.
 
-You can also [send a draft](/docs/api-reference/inboxes/send-draft.md) via the API, SDKs, or CLI. The draft must have at least one recipient in `to`. A reply draft without a subject is sent with the subject of the thread, prefixed with `Re:`.
+You can also [send a draft](https://resend.com/docs/api-reference/inboxes/send-draft.md) via the API, SDKs, or CLI. The draft must have at least one recipient in `to`. A reply draft without a subject is sent with the subject of the thread, prefixed with `Re:`.
 
 ```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
 import { Resend } from 'resend';
@@ -743,13 +743,13 @@ resend inboxes drafts send \
 
 ## Drafts from the inbox agent
 
-If the [inbox agent](/docs/dashboard/inboxes/agent.md) is allowed to draft replies or forward threads, it creates drafts for you to review. The agent never sends a draft itself. When you open the thread, the draft appears in the reply composer with a badge showing it was drafted by the agent. Edit it if needed, then send it.
+If the [inbox agent](https://resend.com/docs/dashboard/inboxes/agent.md) is allowed to draft replies or forward threads, it creates drafts for you to review. The agent never sends a draft itself. When you open the thread, the draft appears in the reply composer with a badge showing it was drafted by the agent. Edit it if needed, then send it.
 
 ## Discard a draft
 
 In the composer, click the trash icon to discard the draft. In the **Drafts** folder, hover over a draft and click **Discard draft**, or select several drafts and click **Discard**. Each discard shows a notification with an **Undo** button.
 
-You can also [delete a draft](/docs/api-reference/inboxes/delete-draft.md) via the API, SDKs, or CLI.
+You can also [delete a draft](https://resend.com/docs/api-reference/inboxes/delete-draft.md) via the API, SDKs, or CLI.
 
 ```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
 import { Resend } from 'resend';
@@ -870,4 +870,4 @@ resend inboxes drafts delete \
 
 ## API Reference
 
-For complete API documentation, see the [Inbox Drafts API reference](/docs/api-reference/inboxes/create-draft.md).
+For complete API documentation, see the [Inbox Drafts API reference](https://resend.com/docs/api-reference/inboxes/create-draft.md).
