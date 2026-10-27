@@ -216,7 +216,6 @@
 - [Can You Receive Emails with Resend?](https://resend.com/docs/knowledge-base/how-can-i-receive-emails-with-resend.md): Receive emails with webhooks and process content, attachments, forwarding, and replies.
 - [Is it better to send emails from a subdomain or the root domain?](https://resend.com/docs/knowledge-base/is-it-better-to-send-emails-from-a-subdomain-or-the-root-domain.md): Discover why sending emails from a subdomain can be better than using a root domain.
 - [What if an email says delivered but the recipient has not received it?](https://resend.com/docs/knowledge-base/what-if-an-email-says-delivered-but-the-recipient-has-not-received-it.md): Learn the steps to take when an email is delivered, but the recipient does not receive it.
-- [Why Are My Emails Going to Spam?](https://resend.com/docs/knowledge-base/why-are-my-emails-going-to-spam.md): Troubleshoot and resolve emails landing in spam or being quarantined.
 - [How to prevent bounces with @privaterelay.appleid.com recipients?](https://resend.com/docs/knowledge-base/sending-apple-private-relay.md): Sending to Apple Private Email Relay requires specific configuration steps to ensure your emails get delivered
 - [Audience Hygiene: How to keep your Audiences in good shape?](https://resend.com/docs/knowledge-base/audience-hygiene.md): Learn strategies for maintaining good audience hygiene and maximizing email deliverability.
 - [Domain and/or IP Warm-up Guide](https://resend.com/docs/knowledge-base/warming-up.md): Learn how to warm up a domain or IP to avoid deliverability issues.

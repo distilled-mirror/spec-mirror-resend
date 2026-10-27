@@ -52,7 +52,7 @@ Step-by-step instructions for verifying your domain with popular DNS providers.
 >
 > Learn how to improve inbox placement in Gmail.
 
-> **[Why Are My Emails Going to Spam?](https://resend.com/docs/knowledge-base/why-are-my-emails-going-to-spam.md)**
+> **[Why Are My Emails Going to Spam?](https://resend.com/guides/email/deliverability/why-emails-go-to-spam)**
 >
 > Troubleshoot emails landing in spam or getting quarantined.
 

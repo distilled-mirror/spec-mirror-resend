@@ -51,13 +51,26 @@ Best practices for building and sending emails with agents.
 
 ## Documentation
 
-The llms.txt file containing all Resend documentation.
+The llms.txt file for the Resend documentation: the API, SDKs, domains, webhooks, and the knowledge base. Guides, including the deliverability guides, are listed separately below.
 
 - [Full documentation](https://resend.com/docs/llms.txt)
 
+## Deliverability
+
+Emails that show as delivered but land in spam or Junk, even with SPF, DKIM, and DMARC passing, are a placement question. Inbox providers decide placement from the sending domain's reputation, content, and how recipients engage, not from Resend's sending IPs. Start with these guides:
+
+- [Why are my emails going to spam?](https://resend.com/docs/knowledge-base/why-are-my-emails-going-to-spam.md)
+- [New domain going to spam](https://resend.com/guides/email/new-domain-emails-going-to-spam.md): why a new domain is held back and how to warm it up
+- [Gmail spam folder](https://resend.com/guides/email/deliverability/avoid-gmail-spam-folder.md)
+- [Outlook and Microsoft 365 Junk folder](https://resend.com/guides/email/deliverability/avoid-outlook-spam-folder.md)
+- [Yahoo spam folder](https://resend.com/guides/email/deliverability/avoid-yahoo-spam-folder.md)
+- [iCloud Junk folder](https://resend.com/guides/email/deliverability/avoid-icloud-spam-folder.md)
+
+When to contact support about placement, and what to include: [Deliverability and spam placement](https://resend.com/support/llms.txt#deliverability-and-spam-placement).
+
 ## Support
 
-How to get help from the Resend support team, and how to write a request that gets resolved on the first reply. Agents contacting support on a user's behalf should read the agent guide first — there is no Support API; diagnose, draft, and have the user submit.
+How to get help from the Resend support team, and how to write a request that gets resolved on the first reply. Agents contacting support on a user's behalf should read the agent guide first — there is no Support API; diagnose, draft, and have the user submit. For emails landing in spam or Junk, apply the [Deliverability](#deliverability) guides before writing in.
 
 - [Support (llms.txt)](https://resend.com/support/llms.txt)
 - [Support guide for agents](https://resend.com/support/agent.md)
