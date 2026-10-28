@@ -358,11 +358,9 @@ When creating an Automation via the API, you can create an entire Automation flo
 
 **1. Define Trigger**
 
-You need a [custom event](https://resend.com/docs/dashboard/automations/custom-events.md) to trigger your automation. If you are not using an existing trigger event, you must first create one.
+Automations are triggered by a custom event. Choose a name like `user.created` or `onboarding.completed` for your custom event to describe the action that will trigger your automation.
 
-You can create new custom events in the [Events tab of the Automation Dashboard page](https://resend.com/automations/events), or using the [Create Event API](https://resend.com/docs/api-reference/events/create-event.md).
-
-Choose a name like `user.created` or `onboarding.completed` for your custom event to describe the action that will trigger your automation.
+If you want to define a schema for the event's properties, create the event in the [Events tab of the Automation Dashboard page](https://resend.com/automations/events) or with the [Create Event API](https://resend.com/docs/api-reference/events/create-event.md). The schema validates the payload when the event is sent and makes the event's properties available to fill in variables in later steps.
 
 **2. Define Automation**
 

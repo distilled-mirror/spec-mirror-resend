@@ -156,6 +156,7 @@ func main() {
 		"4d8e2a1c-9b3f-4c6d-8a21-3e5f7c9c0d12",
 		"5b1a9f47-2c8d-4e6f-9a03-1d2e3f4a5b60",
 	)
+}
 ```
 
 ```rust Rust theme={"theme":{"light":"github-light","dark":"vesper"}}

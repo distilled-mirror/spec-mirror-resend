@@ -205,6 +205,7 @@ func main() {
 	}
 
 	client.Inboxes.Drafts.Create("b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1", params)
+}
 ```
 
 ```rust Rust theme={"theme":{"light":"github-light","dark":"vesper"}}

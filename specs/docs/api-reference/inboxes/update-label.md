@@ -102,6 +102,7 @@ func main() {
 		"7f9c1d2e-4a6b-4c3d-8e15-9b0a7c6d5e34",
 		params,
 	)
+}
 ```
 
 ```rust Rust theme={"theme":{"light":"github-light","dark":"vesper"}}

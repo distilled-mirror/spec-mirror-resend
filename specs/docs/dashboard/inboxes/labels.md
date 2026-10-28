@@ -28,7 +28,7 @@ Press <kbd>Enter</kbd> or click the check button.
 
 You can also create a label while applying it to a thread. Type the new name into the **Label as** menu and choose **Create label**.
 
-An inbox can have up to 100 labels, and each label name must be unique within the inbox.
+An inbox can have up to 100 labels, and each label name must be unique within the inbox, ignoring case.
 
 ### Using the API
 

@@ -152,6 +152,7 @@ async fn main() -> Result<()> {
 import com.resend.Resend;
 import com.resend.core.exception.ResendException;
 import com.resend.services.inboxes.model.InboxAgentAction;
+import com.resend.services.inboxes.model.InboxAgentTone;
 import com.resend.services.inboxes.model.UpdateInboxAgentOptions;
 import com.resend.services.inboxes.model.UpdateInboxAgentResponseSuccess;
 
@@ -161,7 +162,7 @@ public class Main {
 
         UpdateInboxAgentOptions params = UpdateInboxAgentOptions.builder()
                 .instructions("Answer refund questions yourself. Escalate legal threats.")
-                .tone("concise_professional")
+                .tone(InboxAgentTone.CONCISE_PROFESSIONAL)
                 .actions(InboxAgentAction.DRAFT_REPLY, InboxAgentAction.ADD_LABELS)
                 .build();
 

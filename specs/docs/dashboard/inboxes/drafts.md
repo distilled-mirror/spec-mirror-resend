@@ -191,9 +191,9 @@ resend inboxes drafts create \
   --text "Refund issued for order 1041."
 ```
 
-To create a reply draft, pass `thread_id` and `reply_to_email_id` together. If you leave out `to`, it is set to the author of the email you are replying to, or its `Reply-To` address. If the inbox sent that email, `to` is set to that email's recipients instead. `cc` and `bcc` are never filled in. If you leave out `subject`, the draft is sent with the subject of the thread, prefixed with `Re:`.
+To create a reply draft, pass `thread_id` and `reply_to_email_id` together. If you leave out `to`, it is set to the `Reply-To` address of the email you are replying to, or to its sender when it has no `Reply-To`. If the inbox sent that email, `to` is set to that email's recipients instead. `cc` and `bcc` are never filled in. If you leave out `subject`, the draft is sent with the subject of the thread, prefixed with `Re:`.
 
-An email can have only one unsent reply draft. Creating a second one returns the existing draft.
+An email can have only one unsent reply draft. Creating a second one returns the existing draft, and only its attachments are updated.
 
 ```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
 import { Resend } from 'resend';
@@ -358,7 +358,7 @@ resend inboxes drafts create \
 
 In the composer, click **Attach files** or drag files onto the message. Attachment content can total up to 25 MB per draft. Images dropped into the body of the message are inserted inline.
 
-Via the API, pass files in the `attachments` array as Base64 encoded `content`.
+Via the API, pass files in the `attachments` array with `content` as a buffer or Base64 encoded string, a `filename` and a `content_type`. Drafts do not accept attachments by `path`.
 
 ## Write with AI
 
@@ -621,7 +621,7 @@ resend inboxes drafts update \
 
 In the Dashboard, click **Send** or press <kbd>⌘</kbd> + <kbd>Enter</kbd>. The email is sent from the inbox address, along with any attachments saved on the draft.
 
-You can also [send a draft](https://resend.com/docs/api-reference/inboxes/send-draft.md) via the API, SDKs, or CLI. The draft must have at least one recipient in `to`. A reply draft without a subject is sent with the subject of the thread, prefixed with `Re:`.
+You can also [send a draft](https://resend.com/docs/api-reference/inboxes/send-draft.md) via the API, SDKs, or CLI. The draft must have at least one recipient in `to` and an `html` or `text` body. A draft that starts a new conversation also needs a `subject`. A reply draft without a subject is sent with the subject of the thread, prefixed with `Re:`.
 
 ```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
 import { Resend } from 'resend';
