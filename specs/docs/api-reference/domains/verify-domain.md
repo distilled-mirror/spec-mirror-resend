@@ -9,11 +9,13 @@
 > [!NOTE]
 >
 > Calling this API endpoint triggers an **asynchronous domain verification
-> process**. The domain will be temporarily marked as `pending` regardless of
-> its current status while the verification is in progress. Since this request
-> initiates the complete domain verification cycle, it will trigger
-> `domain.updated` webhook events as the domain status changes during the
-> verification process.
+> process**. Records that are already verified stay `verified` while the
+> verification is in progress, so sending and receiving are not interrupted.
+> Records that are not verified are marked as `pending`. If a verified record is
+> no longer found, it is marked as `failed` once the verification times out.
+> Since this request initiates the complete domain verification cycle, it will
+> trigger `domain.updated` webhook events as the domain status changes during
+> the verification process.
 
 > [!NOTE]
 >

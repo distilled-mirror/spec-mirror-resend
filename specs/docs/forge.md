@@ -67,8 +67,9 @@ DNS records stay untouched. Don't remove them.
 **4. Verify**
 
 Once the record verifies, the Forge section of your domain's page shows an
-**Enabled** tag and your email starts going through Forge. Your domain keeps
-sending as usual until then.
+**Enabled** tag. From there, Resend gradually moves your sending onto Forge to
+keep deliverability high, and the share of your email going through Forge
+grows over time.
 
 ## Domain Connect
 
@@ -165,3 +166,9 @@ If the Forge record doesn't verify, these are some common troubleshooting method
 > Forge runs only in North Virginia (`us-east-1`). Data residency is the same
 > as for every other region. See [Data
 > Residency](https://resend.com/docs/dashboard/domains/regions.md#data-residency) for details.
+
+> **I have activated Forge but I'm still seeing the old headers**
+>
+> The **Enabled** tag means your domain is ready for Forge. Resend moves your
+> sending onto Forge gradually, so for a while part of your email still goes
+> out the usual way. You don't need to do anything.
