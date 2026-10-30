@@ -137,7 +137,7 @@ With **Option A**, all tenants share the same sender reputation. If a single ten
 
 With **Option B**, each tenant has a fully independent sender reputation. A problem with one tenant has zero impact on others. However, each tenant is responsible for following best practices on their own.
 
-Regardless of which approach you choose, each new tenant domain must follow a [warm-up schedule](https://resend.com/docs/knowledge-base/warming-up.md). Using a [subdomain](https://resend.com/docs/knowledge-base/is-it-better-to-send-emails-from-a-subdomain-or-the-root-domain.md) for sending is also a good practice to protect the tenant's root domain reputation.
+Regardless of which approach you choose, each new tenant domain must follow a [warm-up schedule](https://resend.com/docs/knowledge-base/warming-up.md). Using a [subdomain](https://resend.com/docs/dashboard/domains/introduction.md#subdomains) for sending is also a good practice to protect the tenant's root domain reputation.
 
 ## Webhook routing
 

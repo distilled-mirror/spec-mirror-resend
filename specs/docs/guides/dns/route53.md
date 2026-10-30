@@ -15,10 +15,10 @@ First, log in to your [Resend Account](https://resend.com/login) and [add a doma
 > [!TIP]
 >
 > It is [best practice to use a
-> subdomain](https://resend.com/docs/knowledge-base/is-it-better-to-send-emails-from-a-subdomain-or-the-root-domain.md)
-> (updates.example.com) instead of the root domain (example.com). Using a
-> subdomain allows for proper reputation segmentation based on topics or purpose
-> (e.g. marketing) and is especially important if receiving emails with Resend.
+> subdomain](https://resend.com/docs/dashboard/domains/introduction.md#subdomains) (updates.example.com)
+> instead of the root domain (example.com). Using a subdomain allows for proper
+> reputation segmentation based on topics or purpose (e.g. marketing) and is
+> especially important if receiving emails with Resend.
 
 ## Log in to Route 53
 

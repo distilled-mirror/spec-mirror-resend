@@ -22,7 +22,7 @@ Go to the [Domains Dashboard page](https://resend.com/domains) and click on **Ad
 
 **2. Add your domain name**
 
-We recommend [using a subdomain](https://resend.com/docs/knowledge-base/is-it-better-to-send-emails-from-a-subdomain-or-the-root-domain.md) like `updates.example.com`.
+We recommend [using a subdomain](https://resend.com/docs/dashboard/domains/introduction.md#subdomains) like `updates.example.com`.
 
 **3. Add the DNS records to your DNS provider.**
 

@@ -56,11 +56,6 @@ Step-by-step instructions for verifying your domain with popular DNS providers.
 >
 > Troubleshoot emails landing in spam or getting quarantined.
 
-> **[Is it better to send from a subdomain or root domain?](https://resend.com/docs/knowledge-base/is-it-better-to-send-emails-from-a-subdomain-or-the-root-domain.md)**
->
-> Discover why sending emails from a subdomain can be better than using a root
-> domain.
-
 > **[Why are my emails landing on the suppression list?](https://resend.com/docs/knowledge-base/why-are-my-emails-landing-on-the-suppression-list.md)**
 >
 > Learn why your emails land on the suppression list, and how to remove them.

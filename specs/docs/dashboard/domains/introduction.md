@@ -10,11 +10,12 @@
 
 Resend sends emails using a domain you own (i.e., not a shared or public domain). You must [add and verify at least one domain](https://resend.com/docs/add-a-domain.md) to send emails with Resend. You can optionally [configure your domain to receive emails](https://resend.com/docs/dashboard/receiving/custom-domains.md).
 
+You can add and verify multiple [subdomains](#subdomains) from the same root domain (e.g., `newsletter.example.com` and `account.example.com`) to identify different sending purposes and still assure recipients and inbox providers that the emails come from you. This can protect the sending reputation of your transactional emails from any negative recipient response to your marketing emails, and allows you to configure different domain settings such as open and click tracking for each subdomain.
+
 ## Domain features
 
 When you add a domain, you can choose to:
 
-* Add a [subdomain](#subdomains) instead of your root domain to communicate the kind of emails you send and receive, and for proper reputation segmentation.
 * Enable [open and click tracking](https://resend.com/docs/dashboard/domains/tracking.md) for your emails.
 * Configure [Enforced Transport Layer Security (TLS)](https://resend.com/docs/dashboard/domains/tls.md) to ensure that you only send encrypted emails.
 * Set a custom subdomain for the [Return-Path address](https://resend.com/docs/dashboard/domains/custom-return-path.md).
@@ -29,11 +30,17 @@ After your domain is verified, you can:
 
 We recommend sending your emails from one or more subdomains (e.g., `updates.example.com`) instead of your root domain to isolate your sending reputation and to clearly communicate your intent to your recipients.
 
-You can [add and verify](https://resend.com/docs/add-a-domain.md) multiple subdomains of the same domain (e.g. `newsletter.example.com` and `account.example.com`) for different sending purposes.
+You must [add each subdomain](https://resend.com/docs/add-a-domain.md) individually, and they will be displayed in the [**Domains** Dashboard page](https://resend.com/domains) as separate entries where you can manage and configure them independently.
 
-For example, you can configure your newsletter for open and click tracking while keeping tracking disabled for your important transactional emails such as password resets.
+There are several benefits to sending from a subdomain:
 
-Learn more about [the benefits of sending emails from a subdomain](https://resend.com/docs/knowledge-base/is-it-better-to-send-emails-from-a-subdomain-or-the-root-domain.md).
+* **Sender intent:** clearly communicate your intent to your recipients, increasing trust through transparency.
+* **Reputation control:** Using separate subdomains can help segment sending reputation.
+* **Configuration settings**: [Enabling open and click tracking](https://resend.com/docs/dashboard/domains/tracking.md) for your marketing emails, while keeping it disabled for your important transactional emails such as password resets.
+
+Subdomains of your main domain also help reinforce your brand identity and build trust with inbox providers.
+
+Domains that look like your main brand but aren’t actually your main brand (e.g., `example-alerts.com` instead of `alerts.example.com`) can appear suspicious to spam filters and confusing to your recipients. Inbox providers may flag them as phishing or spoofing attempts, and your users are more likely to ignore, delete, or even report the emails as spam.
 
 ## Domain management
 

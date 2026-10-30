@@ -69,7 +69,8 @@ DNS records stay untouched. Don't remove them.
 Once the record verifies, the Forge section of your domain's page shows an
 **Enabled** tag. From there, Resend gradually moves your sending onto Forge to
 keep deliverability high, and the share of your email going through Forge
-grows over time.
+grows over time. Once your email is routing through Forge, the tag changes to
+**Active**.
 
 ## Domain Connect
 
