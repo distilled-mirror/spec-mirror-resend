@@ -43,18 +43,18 @@ If you do call the API directly, remember to set the required
 
 ## Next steps
 
-> **[Official SDKs](https://resend.com/docs/sdks.md)**
+> [card] [Official SDKs](https://resend.com/docs/sdks.md)
 >
 > Install the SDK for your language.
 
-> **[Quickstart](https://resend.com/docs/introduction.md)**
+> [card] [Quickstart](https://resend.com/docs/introduction.md)
 >
 > Send your first email in minutes.
 
-> **[API Reference](https://resend.com/docs/api-reference/introduction.md)**
+> [card] [API Reference](https://resend.com/docs/api-reference/introduction.md)
 >
 > Full HTTP API documentation.
 
-> **[MCP Server](https://resend.com/docs/mcp-server.md)**
+> [card] [MCP Server](https://resend.com/docs/mcp-server.md)
 >
 > Give your AI agent access to Resend.

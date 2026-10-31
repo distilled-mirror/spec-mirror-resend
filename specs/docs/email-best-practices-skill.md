@@ -26,6 +26,6 @@ npx skills add resend/email-best-practices
 
 ## Learn More
 
-> **[View on GitHub](https://github.com/resend/email-best-practices)**
+> [card] [View on GitHub](https://github.com/resend/email-best-practices)
 >
 > See the full source code and documentation.

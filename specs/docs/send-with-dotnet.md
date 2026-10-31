@@ -76,42 +76,42 @@ public class FeatureImplementation
 
 ## Examples
 
-> **[Basic Send](https://github.com/resend/resend-examples/blob/main/dotnet-resend-examples/Examples/BasicSend.cs)**
+> [card] [Basic Send](https://github.com/resend/resend-examples/blob/main/dotnet-resend-examples/Examples/BasicSend.cs)
 >
 > Basic email sending
 
-> **[Attachments](https://github.com/resend/resend-examples/blob/main/dotnet-resend-examples/Examples/WithAttachments.cs)**
+> [card] [Attachments](https://github.com/resend/resend-examples/blob/main/dotnet-resend-examples/Examples/WithAttachments.cs)
 >
 > Send emails with file attachments
 
-> **[Templates](https://github.com/resend/resend-examples/blob/main/dotnet-resend-examples/Examples/WithTemplate.cs)**
+> [card] [Templates](https://github.com/resend/resend-examples/blob/main/dotnet-resend-examples/Examples/WithTemplate.cs)
 >
 > Send emails using Resend hosted templates
 
-> **[Scheduling](https://github.com/resend/resend-examples/blob/main/dotnet-resend-examples/Examples/ScheduledSend.cs)**
+> [card] [Scheduling](https://github.com/resend/resend-examples/blob/main/dotnet-resend-examples/Examples/ScheduledSend.cs)
 >
 > Schedule emails for future delivery
 
-> **[Audiences](https://github.com/resend/resend-examples/blob/main/dotnet-resend-examples/Examples/Audiences.cs)**
+> [card] [Audiences](https://github.com/resend/resend-examples/blob/main/dotnet-resend-examples/Examples/Audiences.cs)
 >
 > Manage contacts and audiences
 
-> **[Domains](https://github.com/resend/resend-examples/blob/main/dotnet-resend-examples/Examples/Domains.cs)**
+> [card] [Domains](https://github.com/resend/resend-examples/blob/main/dotnet-resend-examples/Examples/Domains.cs)
 >
 > Create and manage sending domains
 
-> **[Inbound Webhooks](https://github.com/resend/resend-examples/blob/main/dotnet-resend-examples/Examples/Inbound.cs)**
+> [card] [Inbound Webhooks](https://github.com/resend/resend-examples/blob/main/dotnet-resend-examples/Examples/Inbound.cs)
 >
 > Receive and process inbound emails
 
-> **[Double Opt-in](https://github.com/resend/resend-examples/blob/main/dotnet-resend-examples/Examples/DoubleOptinSubscribe.cs)**
+> [card] [Double Opt-in](https://github.com/resend/resend-examples/blob/main/dotnet-resend-examples/Examples/DoubleOptinSubscribe.cs)
 >
 > Double opt-in subscription flow
 
-> **[Minimal API App](https://github.com/resend/resend-examples/tree/main/dotnet-resend-examples/MinimalApiApp)**
+> [card] [Minimal API App](https://github.com/resend/resend-examples/tree/main/dotnet-resend-examples/MinimalApiApp)
 >
 > ASP.NET Minimal API application
 
-> **[MVC App](https://github.com/resend/resend-examples/tree/main/dotnet-resend-examples/MvcApp)**
+> [card] [MVC App](https://github.com/resend/resend-examples/tree/main/dotnet-resend-examples/MvcApp)
 >
 > ASP.NET MVC application

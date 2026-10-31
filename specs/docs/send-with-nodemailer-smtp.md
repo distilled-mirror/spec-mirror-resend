@@ -73,6 +73,6 @@ main().catch(console.error);
 
 ## Examples
 
-> **[Nodemailer SMTP Example](https://github.com/resend/resend-nodemailer-smtp-example)**
+> [card] [Nodemailer SMTP Example](https://github.com/resend/resend-nodemailer-smtp-example)
 >
 > See the full source code.

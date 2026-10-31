@@ -97,6 +97,13 @@ Enterprise plans, SLAs, security and compliance, and how to contact sales.
 - [Enterprise (Markdown)](https://resend.com/enterprise.md)
 - [Enterprise (HTML)](https://resend.com/enterprise)
 
+## Nonprofits
+
+The nonprofit program: the discount, who is eligible, how verification works, and how to apply.
+
+- [Nonprofits (Markdown)](https://resend.com/nonprofits.md)
+- [Nonprofits (HTML)](https://resend.com/nonprofits)
+
 ## Blog
 
 Articles on email infrastructure, developer experience, and product updates. The index enumerates every post as a flat list of links. Append `.md` to any post URL, or send `Accept: text/markdown`, to receive the raw markdown source.

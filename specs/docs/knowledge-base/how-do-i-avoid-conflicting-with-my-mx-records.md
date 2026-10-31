@@ -64,13 +64,13 @@ Now this MX record priority has a lower value (higher priority) so it will be pr
 
 ## Solving common conflicts
 
-> **Conflicts with existing records**
+> [accordion] Conflicts with existing records
 >
 > If you already have a MX record set for `send.example.com`, you will need to remove it before adding the Resend MX record.
 >
 > If you need to keep the existing record, you can add a subdomain to your domain (e.g. `sub.example.com`) which will move the Resend MX location to `send.sub.example.com`.
 
-> **Conflicts with existing priority**
+> [accordion] Conflicts with existing priority
 >
 > Each MX should have a unique priority value. We suggest using 10 for your MX record on `send.example.com`, but you can use a lower number (higher priority) if 10 is already in use.
 >

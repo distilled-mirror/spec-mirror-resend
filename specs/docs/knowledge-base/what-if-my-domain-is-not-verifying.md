@@ -148,7 +148,7 @@ If you've followed all the steps above and your domain still isn't verifying, co
 
 Our team will help identify any remaining issues preventing successful verification.
 
-> **Check your records in the browser**
+> [accordion] Check your records in the browser
 >
 > Tools like [dns.email](https://dns.email) allow you to check your DNS records in the browser.
 >
@@ -158,7 +158,7 @@ Our team will help identify any remaining issues preventing successful verificat
 >
 > You are looking to see the same values that you see in Resend.
 
-> **Check your records in the terminal**
+> [accordion] Check your records in the terminal
 >
 > Checking your DNS records in the terminal is just as easy. You can use the `nslookup` command and a record type flag to get the same information.
 >

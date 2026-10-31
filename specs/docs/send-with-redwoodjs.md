@@ -332,38 +332,38 @@ export const handler = async (event: APIGatewayEvent, context: Context) => {
 
 ## Examples
 
-> **[Send Email](https://github.com/resend/resend-examples/blob/main/redwoodjs-resend-examples/typescript/api/src/functions/send.ts)**
+> [card] [Send Email](https://github.com/resend/resend-examples/blob/main/redwoodjs-resend-examples/typescript/api/src/functions/send.ts)
 >
 > Basic email sending
 
-> **[Attachments](https://github.com/resend/resend-examples/blob/main/redwoodjs-resend-examples/typescript/api/src/functions/sendAttachment.ts)**
+> [card] [Attachments](https://github.com/resend/resend-examples/blob/main/redwoodjs-resend-examples/typescript/api/src/functions/sendAttachment.ts)
 >
 > Send emails with file attachments
 
-> **[Inline Images (CID)](https://github.com/resend/resend-examples/blob/main/redwoodjs-resend-examples/typescript/api/src/functions/sendCid.ts)**
+> [card] [Inline Images (CID)](https://github.com/resend/resend-examples/blob/main/redwoodjs-resend-examples/typescript/api/src/functions/sendCid.ts)
 >
 > Embed inline images using CID
 
-> **[Templates](https://github.com/resend/resend-examples/blob/main/redwoodjs-resend-examples/typescript/api/src/functions/sendTemplate.ts)**
+> [card] [Templates](https://github.com/resend/resend-examples/blob/main/redwoodjs-resend-examples/typescript/api/src/functions/sendTemplate.ts)
 >
 > Send emails using Resend hosted templates
 
-> **[Scheduling](https://github.com/resend/resend-examples/blob/main/redwoodjs-resend-examples/typescript/api/src/functions/sendScheduled.ts)**
+> [card] [Scheduling](https://github.com/resend/resend-examples/blob/main/redwoodjs-resend-examples/typescript/api/src/functions/sendScheduled.ts)
 >
 > Schedule emails for future delivery
 
-> **[Audiences](https://github.com/resend/resend-examples/blob/main/redwoodjs-resend-examples/typescript/api/src/functions/audiencesContacts.ts)**
+> [card] [Audiences](https://github.com/resend/resend-examples/blob/main/redwoodjs-resend-examples/typescript/api/src/functions/audiencesContacts.ts)
 >
 > Manage contacts and audiences
 
-> **[Domains](https://github.com/resend/resend-examples/blob/main/redwoodjs-resend-examples/typescript/api/src/functions/domains.ts)**
+> [card] [Domains](https://github.com/resend/resend-examples/blob/main/redwoodjs-resend-examples/typescript/api/src/functions/domains.ts)
 >
 > Create and manage sending domains
 
-> **[Webhooks](https://github.com/resend/resend-examples/blob/main/redwoodjs-resend-examples/typescript/api/src/functions/webhook.ts)**
+> [card] [Webhooks](https://github.com/resend/resend-examples/blob/main/redwoodjs-resend-examples/typescript/api/src/functions/webhook.ts)
 >
 > Handle webhook events
 
-> **[Double Opt-in](https://github.com/resend/resend-examples/blob/main/redwoodjs-resend-examples/typescript/api/src/functions/doubleOptinSubscribe.ts)**
+> [card] [Double Opt-in](https://github.com/resend/resend-examples/blob/main/redwoodjs-resend-examples/typescript/api/src/functions/doubleOptinSubscribe.ts)
 >
 > Double opt-in subscription flow

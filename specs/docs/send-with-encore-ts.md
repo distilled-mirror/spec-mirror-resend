@@ -551,10 +551,10 @@ npx skills add encoredev/skills
 
 ## Examples
 
-> **[Resend Starter](https://github.com/encoredev/examples/tree/main/ts/resend)**
+> [card] [Resend Starter](https://github.com/encoredev/examples/tree/main/ts/resend)
 >
 > Full example with Pub/Sub email delivery
 
-> **[Encore.ts Docs](https://encore.dev/docs/ts)**
+> [card] [Encore.ts Docs](https://encore.dev/docs/ts)
 >
 > Encore.ts documentation

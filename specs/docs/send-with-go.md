@@ -60,50 +60,50 @@ func main() {
 
 ## Examples
 
-> **[Basic Send](https://github.com/resend/resend-examples/tree/main/go-resend-examples/examples/basic_send)**
+> [card] [Basic Send](https://github.com/resend/resend-examples/tree/main/go-resend-examples/examples/basic_send)
 >
 > Basic email sending
 
-> **[Attachments](https://github.com/resend/resend-examples/tree/main/go-resend-examples/examples/with_attachments)**
+> [card] [Attachments](https://github.com/resend/resend-examples/tree/main/go-resend-examples/examples/with_attachments)
 >
 > Send emails with file attachments
 
-> **[Inline Images (CID)](https://github.com/resend/resend-examples/tree/main/go-resend-examples/examples/with_cid_attachments)**
+> [card] [Inline Images (CID)](https://github.com/resend/resend-examples/tree/main/go-resend-examples/examples/with_cid_attachments)
 >
 > Embed inline images using CID
 
-> **[Templates](https://github.com/resend/resend-examples/tree/main/go-resend-examples/examples/with_template)**
+> [card] [Templates](https://github.com/resend/resend-examples/tree/main/go-resend-examples/examples/with_template)
 >
 > Send emails using Resend hosted templates
 
-> **[Scheduling](https://github.com/resend/resend-examples/tree/main/go-resend-examples/examples/scheduled_send)**
+> [card] [Scheduling](https://github.com/resend/resend-examples/tree/main/go-resend-examples/examples/scheduled_send)
 >
 > Schedule emails for future delivery
 
-> **[Prevent Threading](https://github.com/resend/resend-examples/tree/main/go-resend-examples/examples/prevent_threading)**
+> [card] [Prevent Threading](https://github.com/resend/resend-examples/tree/main/go-resend-examples/examples/prevent_threading)
 >
 > Prevent email threading on Gmail
 
-> **[Audiences](https://github.com/resend/resend-examples/tree/main/go-resend-examples/examples/audiences)**
+> [card] [Audiences](https://github.com/resend/resend-examples/tree/main/go-resend-examples/examples/audiences)
 >
 > Manage contacts and audiences
 
-> **[Domains](https://github.com/resend/resend-examples/tree/main/go-resend-examples/examples/domains)**
+> [card] [Domains](https://github.com/resend/resend-examples/tree/main/go-resend-examples/examples/domains)
 >
 > Create and manage sending domains
 
-> **[Inbound Webhooks](https://github.com/resend/resend-examples/tree/main/go-resend-examples/examples/inbound)**
+> [card] [Inbound Webhooks](https://github.com/resend/resend-examples/tree/main/go-resend-examples/examples/inbound)
 >
 > Receive and process inbound emails
 
-> **[Double Opt-in](https://github.com/resend/resend-examples/tree/main/go-resend-examples/examples/double_optin)**
+> [card] [Double Opt-in](https://github.com/resend/resend-examples/tree/main/go-resend-examples/examples/double_optin)
 >
 > Double opt-in subscription flow
 
-> **[Chi App](https://github.com/resend/resend-examples/tree/main/go-resend-examples/chi_app)**
+> [card] [Chi App](https://github.com/resend/resend-examples/tree/main/go-resend-examples/chi_app)
 >
 > Full Chi web framework application
 
-> **[Gin App](https://github.com/resend/resend-examples/tree/main/go-resend-examples/gin_app)**
+> [card] [Gin App](https://github.com/resend/resend-examples/tree/main/go-resend-examples/gin_app)
 >
 > Full Gin web framework application

@@ -367,42 +367,42 @@ export default app;
 
 ## Examples
 
-> **[Basic Send](https://github.com/resend/resend-examples/blob/main/hono-resend-examples/typescript/examples/basic-send.ts)**
+> [card] [Basic Send](https://github.com/resend/resend-examples/blob/main/hono-resend-examples/typescript/examples/basic-send.ts)
 >
 > Basic email sending
 
-> **[Attachments](https://github.com/resend/resend-examples/blob/main/hono-resend-examples/typescript/examples/with-attachments.ts)**
+> [card] [Attachments](https://github.com/resend/resend-examples/blob/main/hono-resend-examples/typescript/examples/with-attachments.ts)
 >
 > Send emails with file attachments
 
-> **[Inline Images (CID)](https://github.com/resend/resend-examples/blob/main/hono-resend-examples/typescript/examples/with-cid-attachments.ts)**
+> [card] [Inline Images (CID)](https://github.com/resend/resend-examples/blob/main/hono-resend-examples/typescript/examples/with-cid-attachments.ts)
 >
 > Embed inline images using CID
 
-> **[Templates](https://github.com/resend/resend-examples/blob/main/hono-resend-examples/typescript/examples/with-template.ts)**
+> [card] [Templates](https://github.com/resend/resend-examples/blob/main/hono-resend-examples/typescript/examples/with-template.ts)
 >
 > Send emails using Resend hosted templates
 
-> **[Scheduling](https://github.com/resend/resend-examples/blob/main/hono-resend-examples/typescript/examples/scheduled-send.ts)**
+> [card] [Scheduling](https://github.com/resend/resend-examples/blob/main/hono-resend-examples/typescript/examples/scheduled-send.ts)
 >
 > Schedule emails for future delivery
 
-> **[Prevent Threading](https://github.com/resend/resend-examples/blob/main/hono-resend-examples/typescript/examples/prevent-threading.ts)**
+> [card] [Prevent Threading](https://github.com/resend/resend-examples/blob/main/hono-resend-examples/typescript/examples/prevent-threading.ts)
 >
 > Prevent email threading on Gmail
 
-> **[Audiences](https://github.com/resend/resend-examples/blob/main/hono-resend-examples/typescript/examples/audiences.ts)**
+> [card] [Audiences](https://github.com/resend/resend-examples/blob/main/hono-resend-examples/typescript/examples/audiences.ts)
 >
 > Manage contacts and audiences
 
-> **[Domains](https://github.com/resend/resend-examples/blob/main/hono-resend-examples/typescript/examples/domains.ts)**
+> [card] [Domains](https://github.com/resend/resend-examples/blob/main/hono-resend-examples/typescript/examples/domains.ts)
 >
 > Create and manage sending domains
 
-> **[Inbound Webhooks](https://github.com/resend/resend-examples/blob/main/hono-resend-examples/typescript/examples/inbound.ts)**
+> [card] [Inbound Webhooks](https://github.com/resend/resend-examples/blob/main/hono-resend-examples/typescript/examples/inbound.ts)
 >
 > Receive and process inbound emails
 
-> **[Double Opt-in](https://github.com/resend/resend-examples/blob/main/hono-resend-examples/typescript/examples/double-optin-subscribe.ts)**
+> [card] [Double Opt-in](https://github.com/resend/resend-examples/blob/main/hono-resend-examples/typescript/examples/double-optin-subscribe.ts)
 >
 > Double opt-in subscription flow

@@ -61,44 +61,44 @@ See how to use Resend's webhook features such as replaying webhooks and storing 
 
 ## Related Guides
 
-> **[Create webhook](https://resend.com/docs/webhooks/create-webhook.md)**
+> [card] [Create webhook](https://resend.com/docs/webhooks/create-webhook.md)
 
-> **[Respond to emails](https://resend.com/docs/dashboard/receiving/create-receiving-webhook.md)**
+> [card] [Respond to emails](https://resend.com/docs/dashboard/receiving/create-receiving-webhook.md)
 
-> **[Retry replay webhooks](https://resend.com/docs/webhooks/retries-and-replays.md)**
+> [card] [Retry replay webhooks](https://resend.com/docs/webhooks/retries-and-replays.md)
 
-> **[Email event types](https://resend.com/docs/webhooks/event-types.md)**
+> [card] [Email event types](https://resend.com/docs/webhooks/event-types.md)
 
-> **[Verify a webhook request](https://resend.com/docs/webhooks/verify-webhooks-requests.md)**
+> [card] [Verify a webhook request](https://resend.com/docs/webhooks/verify-webhooks-requests.md)
 
-> **[Store webhook data](https://resend.com/docs/webhooks/how-to-store-webhooks-data.md)**
+> [card] [Store webhook data](https://resend.com/docs/webhooks/how-to-store-webhooks-data.md)
 
-> **[Self-host the Resend Webhook Ingester](https://resend.com/docs/webhooks/ingester.md)**
+> [card] [Self-host the Resend Webhook Ingester](https://resend.com/docs/webhooks/ingester.md)
 
-> **[Webhook events reference](https://resend.com/docs/webhooks/emails/bounced.md)**
+> [card] [Webhook events reference](https://resend.com/docs/webhooks/emails/bounced.md)
 
 ## Examples
 
-> **[Next.js (TypeScript)](https://github.com/resend/resend-examples/tree/main/nextjs-resend-examples/typescript/src/app/inbound)**
+> [card] [Next.js (TypeScript)](https://github.com/resend/resend-examples/tree/main/nextjs-resend-examples/typescript/src/app/inbound)
 >
 > See the full source code.
 
-> **[Next.js (JavaScript)](https://github.com/resend/resend-examples/tree/main/nextjs-resend-examples/javascript/src/app/inbound)**
+> [card] [Next.js (JavaScript)](https://github.com/resend/resend-examples/tree/main/nextjs-resend-examples/javascript/src/app/inbound)
 >
 > See the full source code.
 
-> **[PHP](https://github.com/resend/resend-examples/tree/main/php-resend-examples/src/inbound)**
+> [card] [PHP](https://github.com/resend/resend-examples/tree/main/php-resend-examples/src/inbound)
 >
 > See the full source code.
 
-> **[Laravel](https://github.com/resend/resend-examples/tree/main/laravel-resend-examples)**
+> [card] [Laravel](https://github.com/resend/resend-examples/tree/main/laravel-resend-examples)
 >
 > See the full source code.
 
-> **[Python](https://github.com/resend/resend-examples/tree/main/python-resend-examples/examples)**
+> [card] [Python](https://github.com/resend/resend-examples/tree/main/python-resend-examples/examples)
 >
 > See the full source code.
 
-> **[Ruby](https://github.com/resend/resend-examples/tree/main/ruby-resend-examples/examples)**
+> [card] [Ruby](https://github.com/resend/resend-examples/tree/main/ruby-resend-examples/examples)
 >
 > See the full source code.

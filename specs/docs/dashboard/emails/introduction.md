@@ -66,22 +66,22 @@ Learn more about [managing your sent emails](https://resend.com/docs/dashboard/e
 
 See how to use Resend's sending features.
 
-> **[View and manage sent emails](https://resend.com/docs/dashboard/emails/manage-emails.md)**
+> [card] [View and manage sent emails](https://resend.com/docs/dashboard/emails/manage-emails.md)
 
-> **[Send test emails](https://resend.com/docs/dashboard/emails/send-test-emails.md)**
+> [card] [Send test emails](https://resend.com/docs/dashboard/emails/send-test-emails.md)
 
-> **[Include attachments](https://resend.com/docs/dashboard/emails/attachments.md)**
+> [card] [Include attachments](https://resend.com/docs/dashboard/emails/attachments.md)
 
-> **[Embed inline images](https://resend.com/docs/dashboard/emails/embed-inline-images.md)**
+> [card] [Embed inline images](https://resend.com/docs/dashboard/emails/embed-inline-images.md)
 
-> **[Schedule emails](https://resend.com/docs/dashboard/emails/schedule-email.md)**
+> [card] [Schedule emails](https://resend.com/docs/dashboard/emails/schedule-email.md)
 
-> **[Batch sending](https://resend.com/docs/dashboard/emails/batch-sending.md)**
+> [card] [Batch sending](https://resend.com/docs/dashboard/emails/batch-sending.md)
 
-> **[Customize headers](https://resend.com/docs/dashboard/emails/custom-headers.md)**
+> [card] [Customize headers](https://resend.com/docs/dashboard/emails/custom-headers.md)
 
-> **[Prevent duplicate emails](https://resend.com/docs/dashboard/emails/idempotency-keys.md)**
+> [card] [Prevent duplicate emails](https://resend.com/docs/dashboard/emails/idempotency-keys.md)
 
-> **[Add an unsubscribe link](https://resend.com/docs/dashboard/emails/add-unsubscribe-to-transactional-emails.md)**
+> [card] [Add an unsubscribe link](https://resend.com/docs/dashboard/emails/add-unsubscribe-to-transactional-emails.md)
 
-> **[Add identifier tags](https://resend.com/docs/dashboard/emails/tags.md)**
+> [card] [Add identifier tags](https://resend.com/docs/dashboard/emails/tags.md)

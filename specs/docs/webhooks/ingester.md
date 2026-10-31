@@ -22,11 +22,11 @@ While you can build your own webhook handler, the Webhook Ingester provides a pr
 * **Multiple database support** including PostgreSQL, MySQL, MongoDB, and data warehouses
 * **One-click deployment** to Vercel, Railway, or Render
 
-> **[GitHub Repository](https://github.com/resend/resend-webhooks-ingester)**
+> [card] [GitHub Repository](https://github.com/resend/resend-webhooks-ingester)
 >
 > View the source code and contribute
 
-> **[Docker Image](https://ghcr.io/resend/resend-webhooks-ingester)**
+> [card] [Docker Image](https://ghcr.io/resend/resend-webhooks-ingester)
 >
 > Pull the official Docker image
 
@@ -142,45 +142,45 @@ If Resend retries a webhook delivery (due to a temporary failure), the duplicate
 
 ### Database-Specific Variables
 
-> **Supabase**
+> [accordion] Supabase
 >
 > ```env theme={"theme":{"light":"github-light","dark":"vesper"}}
 > SUPABASE_URL=https://your-project.supabase.co
 > SUPABASE_SERVICE_ROLE_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
 > ```
 
-> **Neon**
+> [accordion] Neon
 >
 > ```env theme={"theme":{"light":"github-light","dark":"vesper"}}
 > NEON_DATABASE_URL=postgresql://user:password@ep-xyz.us-east-1.aws.neon.tech/database?sslmode=require
 > ```
 
-> **PostgreSQL**
+> [accordion] PostgreSQL
 >
 > ```env theme={"theme":{"light":"github-light","dark":"vesper"}}
 > POSTGRESQL_URL=postgresql://user:password@host:5432/database
 > ```
 
-> **MySQL**
+> [accordion] MySQL
 >
 > ```env theme={"theme":{"light":"github-light","dark":"vesper"}}
 > MYSQL_URL=mysql://user:password@host:3306/database
 > ```
 
-> **PlanetScale**
+> [accordion] PlanetScale
 >
 > ```env theme={"theme":{"light":"github-light","dark":"vesper"}}
 > PLANETSCALE_URL=mysql://username:password@host/database?ssl={"rejectUnauthorized":true}
 > ```
 
-> **MongoDB**
+> [accordion] MongoDB
 >
 > ```env theme={"theme":{"light":"github-light","dark":"vesper"}}
 > MONGODB_URI=mongodb+srv://username:password@cluster.mongodb.net/
 > MONGODB_DATABASE=resend_webhooks
 > ```
 
-> **Snowflake**
+> [accordion] Snowflake
 >
 > ```env theme={"theme":{"light":"github-light","dark":"vesper"}}
 > SNOWFLAKE_ACCOUNT=your-account-identifier
@@ -191,7 +191,7 @@ If Resend retries a webhook delivery (due to a temporary failure), the duplicate
 > SNOWFLAKE_WAREHOUSE=your-warehouse
 > ```
 
-> **BigQuery**
+> [accordion] BigQuery
 >
 > ```env theme={"theme":{"light":"github-light","dark":"vesper"}}
 > BIGQUERY_PROJECT_ID=your-project-id
@@ -199,7 +199,7 @@ If Resend retries a webhook delivery (due to a temporary failure), the duplicate
 > BIGQUERY_CREDENTIALS={"type":"service_account","project_id":"..."}
 > ```
 
-> **ClickHouse**
+> [accordion] ClickHouse
 >
 > ```env theme={"theme":{"light":"github-light","dark":"vesper"}}
 > CLICKHOUSE_URL=https://your-instance.clickhouse.cloud:8443
@@ -279,19 +279,19 @@ WHERE event_created_at < NOW() - INTERVAL '90 days';
 
 ## Troubleshooting
 
-> **Webhook signature verification failing**
+> [accordion] Webhook signature verification failing
 >
 > * Ensure `RESEND_WEBHOOK_SECRET` matches the signing secret in your Resend
 >   Dashboard - Make sure you're using the raw request body for verification -
 >   Check that the secret hasn't been rotated in Resend
 
-> **Database connection errors**
+> [accordion] Database connection errors
 >
 > * Verify your database credentials are correct - Check that the schema has
 >   been applied to your database - Ensure your database is accessible from your
 >   deployment (check firewall rules)
 
-> **Webhooks not being received**
+> [accordion] Webhooks not being received
 >
 > * Verify your endpoint URL is publicly accessible - Check the webhook status
 >   in your [Resend Dashboard](https://resend.com/webhooks) - Ensure your server
@@ -299,18 +299,18 @@ WHERE event_created_at < NOW() - INTERVAL '90 days';
 
 ## Learn More
 
-> **[Webhook Event Types](https://resend.com/docs/webhooks/event-types.md)**
+> [card] [Webhook Event Types](https://resend.com/docs/webhooks/event-types.md)
 >
 > View all available webhook event types and their payloads
 
-> **[Verify Webhooks](https://resend.com/docs/webhooks/verify-webhooks-requests.md)**
+> [card] [Verify Webhooks](https://resend.com/docs/webhooks/verify-webhooks-requests.md)
 >
 > Learn how webhook signature verification works
 
-> **[Retries and Replays](https://resend.com/docs/webhooks/retries-and-replays.md)**
+> [card] [Retries and Replays](https://resend.com/docs/webhooks/retries-and-replays.md)
 >
 > Understand webhook retry behavior
 
-> **[Storing Webhooks Data](https://resend.com/docs/webhooks/how-to-store-webhooks-data.md)**
+> [card] [Storing Webhooks Data](https://resend.com/docs/webhooks/how-to-store-webhooks-data.md)
 >
 > Learn why and how to store your webhook data

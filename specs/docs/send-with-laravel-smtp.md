@@ -66,22 +66,22 @@ class OrderShipmentController extends Controller
 
 ## Examples
 
-> **[Email Sending](https://github.com/resend/resend-examples/blob/main/laravel-resend-examples/app/Http/Controllers/EmailController.php)**
+> [card] [Email Sending](https://github.com/resend/resend-examples/blob/main/laravel-resend-examples/app/Http/Controllers/EmailController.php)
 >
 > Basic, scheduled, attachments, CID, templates, and prevent threading
 
-> **[Inbound Webhooks](https://github.com/resend/resend-examples/blob/main/laravel-resend-examples/app/Http/Controllers/WebhookController.php)**
+> [card] [Inbound Webhooks](https://github.com/resend/resend-examples/blob/main/laravel-resend-examples/app/Http/Controllers/WebhookController.php)
 >
 > Handle webhook events
 
-> **[Double Opt-in](https://github.com/resend/resend-examples/blob/main/laravel-resend-examples/app/Http/Controllers/DoubleOptinController.php)**
+> [card] [Double Opt-in](https://github.com/resend/resend-examples/blob/main/laravel-resend-examples/app/Http/Controllers/DoubleOptinController.php)
 >
 > Double opt-in subscription flow
 
-> **[Audiences](https://github.com/resend/resend-examples/blob/main/laravel-resend-examples/app/Http/Controllers/AudienceController.php)**
+> [card] [Audiences](https://github.com/resend/resend-examples/blob/main/laravel-resend-examples/app/Http/Controllers/AudienceController.php)
 >
 > Manage contacts and audiences
 
-> **[Domains](https://github.com/resend/resend-examples/blob/main/laravel-resend-examples/app/Http/Controllers/DomainController.php)**
+> [card] [Domains](https://github.com/resend/resend-examples/blob/main/laravel-resend-examples/app/Http/Controllers/DomainController.php)
 >
 > Create and manage sending domains

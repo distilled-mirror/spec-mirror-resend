@@ -336,34 +336,34 @@ export default defineEventHandler(async () => {
 
 ## Examples
 
-> **[Send Email](https://github.com/resend/resend-examples/blob/main/nuxt-resend-examples/typescript/server/api/send.post.ts)**
+> [card] [Send Email](https://github.com/resend/resend-examples/blob/main/nuxt-resend-examples/typescript/server/api/send.post.ts)
 >
 > Basic email sending
 
-> **[Attachments](https://github.com/resend/resend-examples/blob/main/nuxt-resend-examples/typescript/server/api/send-attachment.post.ts)**
+> [card] [Attachments](https://github.com/resend/resend-examples/blob/main/nuxt-resend-examples/typescript/server/api/send-attachment.post.ts)
 >
 > Send emails with file attachments
 
-> **[Inline Images (CID)](https://github.com/resend/resend-examples/blob/main/nuxt-resend-examples/typescript/server/api/send-cid.post.ts)**
+> [card] [Inline Images (CID)](https://github.com/resend/resend-examples/blob/main/nuxt-resend-examples/typescript/server/api/send-cid.post.ts)
 >
 > Embed inline images using CID
 
-> **[Templates](https://github.com/resend/resend-examples/blob/main/nuxt-resend-examples/typescript/server/api/send-template.post.ts)**
+> [card] [Templates](https://github.com/resend/resend-examples/blob/main/nuxt-resend-examples/typescript/server/api/send-template.post.ts)
 >
 > Send emails using Resend hosted templates
 
-> **[Scheduling](https://github.com/resend/resend-examples/blob/main/nuxt-resend-examples/typescript/server/api/send-scheduled.post.ts)**
+> [card] [Scheduling](https://github.com/resend/resend-examples/blob/main/nuxt-resend-examples/typescript/server/api/send-scheduled.post.ts)
 >
 > Schedule emails for future delivery
 
-> **[Audiences](https://github.com/resend/resend-examples/tree/main/nuxt-resend-examples/typescript/server/api/audiences)**
+> [card] [Audiences](https://github.com/resend/resend-examples/tree/main/nuxt-resend-examples/typescript/server/api/audiences)
 >
 > Manage contacts and audiences
 
-> **[Domains](https://github.com/resend/resend-examples/blob/main/nuxt-resend-examples/typescript/server/api/domains.post.ts)**
+> [card] [Domains](https://github.com/resend/resend-examples/blob/main/nuxt-resend-examples/typescript/server/api/domains.post.ts)
 >
 > Create and manage sending domains
 
-> **[Webhooks](https://github.com/resend/resend-examples/blob/main/nuxt-resend-examples/typescript/server/api/webhook.post.ts)**
+> [card] [Webhooks](https://github.com/resend/resend-examples/blob/main/nuxt-resend-examples/typescript/server/api/webhook.post.ts)
 >
 > Handle webhook events

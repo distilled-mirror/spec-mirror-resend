@@ -341,38 +341,38 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 
 ## Examples
 
-> **[Express (TypeScript)](https://github.com/resend/resend-examples/tree/main/express-resend-examples/typescript)**
+> [card] [Express (TypeScript)](https://github.com/resend/resend-examples/tree/main/express-resend-examples/typescript)
 >
 > Full Express app with TypeScript
 
-> **[Express (JavaScript)](https://github.com/resend/resend-examples/tree/main/express-resend-examples/javascript)**
+> [card] [Express (JavaScript)](https://github.com/resend/resend-examples/tree/main/express-resend-examples/javascript)
 >
 > Full Express app with JavaScript
 
-> **[Attachments](https://github.com/resend/resend-examples/blob/main/express-resend-examples/typescript/examples/with-attachments.ts)**
+> [card] [Attachments](https://github.com/resend/resend-examples/blob/main/express-resend-examples/typescript/examples/with-attachments.ts)
 >
 > Send emails with file attachments
 
-> **[Templates](https://github.com/resend/resend-examples/blob/main/express-resend-examples/typescript/examples/with-template.ts)**
+> [card] [Templates](https://github.com/resend/resend-examples/blob/main/express-resend-examples/typescript/examples/with-template.ts)
 >
 > Send emails using Resend hosted templates
 
-> **[Scheduling](https://github.com/resend/resend-examples/blob/main/express-resend-examples/typescript/examples/scheduled-send.ts)**
+> [card] [Scheduling](https://github.com/resend/resend-examples/blob/main/express-resend-examples/typescript/examples/scheduled-send.ts)
 >
 > Schedule emails for future delivery
 
-> **[Audiences](https://github.com/resend/resend-examples/blob/main/express-resend-examples/typescript/examples/audiences.ts)**
+> [card] [Audiences](https://github.com/resend/resend-examples/blob/main/express-resend-examples/typescript/examples/audiences.ts)
 >
 > Manage contacts and audiences
 
-> **[Domains](https://github.com/resend/resend-examples/blob/main/express-resend-examples/typescript/examples/domains.ts)**
+> [card] [Domains](https://github.com/resend/resend-examples/blob/main/express-resend-examples/typescript/examples/domains.ts)
 >
 > Create and manage sending domains
 
-> **[Inbound Webhooks](https://github.com/resend/resend-examples/blob/main/express-resend-examples/typescript/examples/inbound.ts)**
+> [card] [Inbound Webhooks](https://github.com/resend/resend-examples/blob/main/express-resend-examples/typescript/examples/inbound.ts)
 >
 > Receive and process inbound emails
 
-> **[Double Opt-in](https://github.com/resend/resend-examples/blob/main/express-resend-examples/typescript/examples/double-optin-subscribe.ts)**
+> [card] [Double Opt-in](https://github.com/resend/resend-examples/blob/main/express-resend-examples/typescript/examples/double-optin-subscribe.ts)
 >
 > Double opt-in subscription flow

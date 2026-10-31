@@ -754,52 +754,52 @@ Use [List Attachments](https://resend.com/docs/api-reference/emails/list-email-a
 
 ### Attachments
 
-> **[Next.js (TypeScript)](https://github.com/resend/resend-examples/tree/main/nextjs-resend-examples/typescript/src/app/attachments)**
+> [card] [Next.js (TypeScript)](https://github.com/resend/resend-examples/tree/main/nextjs-resend-examples/typescript/src/app/attachments)
 >
 > See the full source code.
 
-> **[Next.js (JavaScript)](https://github.com/resend/resend-examples/tree/main/nextjs-resend-examples/javascript/src/app/attachments)**
+> [card] [Next.js (JavaScript)](https://github.com/resend/resend-examples/tree/main/nextjs-resend-examples/javascript/src/app/attachments)
 >
 > See the full source code.
 
-> **[PHP](https://github.com/resend/resend-examples/tree/main/php-resend-examples/src/attachments)**
+> [card] [PHP](https://github.com/resend/resend-examples/tree/main/php-resend-examples/src/attachments)
 >
 > See the full source code.
 
-> **[Laravel](https://github.com/resend/resend-examples/tree/main/laravel-resend-examples)**
+> [card] [Laravel](https://github.com/resend/resend-examples/tree/main/laravel-resend-examples)
 >
 > See the full source code.
 
-> **[Python](https://github.com/resend/resend-examples/tree/main/python-resend-examples/examples)**
+> [card] [Python](https://github.com/resend/resend-examples/tree/main/python-resend-examples/examples)
 >
 > See the full source code.
 
-> **[Ruby](https://github.com/resend/resend-examples/tree/main/ruby-resend-examples/examples)**
+> [card] [Ruby](https://github.com/resend/resend-examples/tree/main/ruby-resend-examples/examples)
 >
 > See the full source code.
 
 ### Inline Images (CID)
 
-> **[Next.js (TypeScript)](https://github.com/resend/resend-examples/tree/main/nextjs-resend-examples/typescript/src/app/cid-attachments)**
+> [card] [Next.js (TypeScript)](https://github.com/resend/resend-examples/tree/main/nextjs-resend-examples/typescript/src/app/cid-attachments)
 >
 > See the full source code.
 
-> **[Next.js (JavaScript)](https://github.com/resend/resend-examples/tree/main/nextjs-resend-examples/javascript/src/app/cid-attachments)**
+> [card] [Next.js (JavaScript)](https://github.com/resend/resend-examples/tree/main/nextjs-resend-examples/javascript/src/app/cid-attachments)
 >
 > See the full source code.
 
-> **[PHP](https://github.com/resend/resend-examples/tree/main/php-resend-examples/src/attachments)**
+> [card] [PHP](https://github.com/resend/resend-examples/tree/main/php-resend-examples/src/attachments)
 >
 > See the full source code.
 
-> **[Laravel](https://github.com/resend/resend-examples/tree/main/laravel-resend-examples)**
+> [card] [Laravel](https://github.com/resend/resend-examples/tree/main/laravel-resend-examples)
 >
 > See the full source code.
 
-> **[Python](https://github.com/resend/resend-examples/tree/main/python-resend-examples/examples)**
+> [card] [Python](https://github.com/resend/resend-examples/tree/main/python-resend-examples/examples)
 >
 > See the full source code.
 
-> **[Ruby](https://github.com/resend/resend-examples/tree/main/ruby-resend-examples/examples)**
+> [card] [Ruby](https://github.com/resend/resend-examples/tree/main/ruby-resend-examples/examples)
 >
 > See the full source code.

@@ -74,14 +74,14 @@ Learn more about our [rate limits](https://resend.com/docs/api-reference/rate-li
 
 ## FAQ
 
-> **How does pagination work with the API?**
+> [accordion] How does pagination work with the API?
 >
 > Some endpoints support cursor-based pagination to help you browse through
 > large datasets efficiently. Check our [pagination
 > guide](https://resend.com/docs/api-reference/pagination.md) for detailed information on how to use
 > pagination parameters.
 
-> **How do you handle API versioning?**
+> [accordion] How do you handle API versioning?
 >
 > Currently, there's no versioning system in place. We plan to add versioning
 > via calendar-based headers in the future.

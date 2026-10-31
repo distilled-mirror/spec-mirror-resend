@@ -54,18 +54,18 @@ Learn more about [managing your domains](https://resend.com/docs/dashboard/domai
 
 See how to use Resend's verified domain features.
 
-> **[Manage domains](https://resend.com/docs/dashboard/domains/manage-domains.md)**
+> [card] [Manage domains](https://resend.com/docs/dashboard/domains/manage-domains.md)
 
-> **[Implement DMARC](https://resend.com/docs/dashboard/domains/dmarc.md)**
+> [card] [Implement DMARC](https://resend.com/docs/dashboard/domains/dmarc.md)
 
-> **[Enable Tracking](https://resend.com/docs/dashboard/domains/tracking.md)**
+> [card] [Enable Tracking](https://resend.com/docs/dashboard/domains/tracking.md)
 
-> **[Enforced TLS](https://resend.com/docs/dashboard/domains/tls.md)**
+> [card] [Enforced TLS](https://resend.com/docs/dashboard/domains/tls.md)
 
-> **[Custom return path](https://resend.com/docs/dashboard/domains/custom-return-path.md)**
+> [card] [Custom return path](https://resend.com/docs/dashboard/domains/custom-return-path.md)
 
-> **[Choose region](https://resend.com/docs/dashboard/domains/regions.md)**
+> [card] [Choose region](https://resend.com/docs/dashboard/domains/regions.md)
 
-> **[Claim a domain](https://resend.com/docs/dashboard/domains/claim.md)**
+> [card] [Claim a domain](https://resend.com/docs/dashboard/domains/claim.md)
 
-> **[DNS provider guides](https://resend.com/docs/knowledge-base/introduction.md#dns-guides)**
+> [card] [DNS provider guides](https://resend.com/docs/knowledge-base/introduction.md#dns-guides)

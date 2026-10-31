@@ -86,6 +86,6 @@ chat.onNewMention(async (thread, message) => {
 
 ## Try it yourself
 
-> **[Welcome Cards Example](https://github.com/resend/resend-chat-sdk/tree/main/examples/welcome-cards)**
+> [card] [Welcome Cards Example](https://github.com/resend/resend-chat-sdk/tree/main/examples/welcome-cards)
 >
 > Full working example that sends a styled card on first contact

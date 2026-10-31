@@ -62,6 +62,6 @@ Click on `Deploy` and then `Test` at the top of the screen.
 
 ## Examples
 
-> **[AWS Lambda Example](https://github.com/resend/resend-aws-lambda-example)**
+> [card] [AWS Lambda Example](https://github.com/resend/resend-aws-lambda-example)
 >
 > See the full source code.

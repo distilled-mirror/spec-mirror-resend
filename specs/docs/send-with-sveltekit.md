@@ -338,42 +338,42 @@ export async function POST() {
 
 ## Examples
 
-> **[Send Email](https://github.com/resend/resend-examples/tree/main/sveltekit-resend-examples/typescript/src/routes/api/send)**
+> [card] [Send Email](https://github.com/resend/resend-examples/tree/main/sveltekit-resend-examples/typescript/src/routes/api/send)
 >
 > Basic email sending
 
-> **[Attachments](https://github.com/resend/resend-examples/tree/main/sveltekit-resend-examples/typescript/src/routes/api/send-attachment)**
+> [card] [Attachments](https://github.com/resend/resend-examples/tree/main/sveltekit-resend-examples/typescript/src/routes/api/send-attachment)
 >
 > Send emails with file attachments
 
-> **[Inline Images (CID)](https://github.com/resend/resend-examples/tree/main/sveltekit-resend-examples/typescript/src/routes/api/send-cid)**
+> [card] [Inline Images (CID)](https://github.com/resend/resend-examples/tree/main/sveltekit-resend-examples/typescript/src/routes/api/send-cid)
 >
 > Embed inline images using CID
 
-> **[Templates](https://github.com/resend/resend-examples/tree/main/sveltekit-resend-examples/typescript/src/routes/api/send-template)**
+> [card] [Templates](https://github.com/resend/resend-examples/tree/main/sveltekit-resend-examples/typescript/src/routes/api/send-template)
 >
 > Send emails using Resend hosted templates
 
-> **[Scheduling](https://github.com/resend/resend-examples/tree/main/sveltekit-resend-examples/typescript/src/routes/api/send-scheduled)**
+> [card] [Scheduling](https://github.com/resend/resend-examples/tree/main/sveltekit-resend-examples/typescript/src/routes/api/send-scheduled)
 >
 > Schedule emails for future delivery
 
-> **[Prevent Threading](https://github.com/resend/resend-examples/tree/main/sveltekit-resend-examples/typescript/src/routes/api/send-prevent-threading)**
+> [card] [Prevent Threading](https://github.com/resend/resend-examples/tree/main/sveltekit-resend-examples/typescript/src/routes/api/send-prevent-threading)
 >
 > Prevent email threading on Gmail
 
-> **[Audiences](https://github.com/resend/resend-examples/tree/main/sveltekit-resend-examples/typescript/src/routes/api/audiences)**
+> [card] [Audiences](https://github.com/resend/resend-examples/tree/main/sveltekit-resend-examples/typescript/src/routes/api/audiences)
 >
 > Manage contacts and audiences
 
-> **[Domains](https://github.com/resend/resend-examples/tree/main/sveltekit-resend-examples/typescript/src/routes/api/domains)**
+> [card] [Domains](https://github.com/resend/resend-examples/tree/main/sveltekit-resend-examples/typescript/src/routes/api/domains)
 >
 > Create and manage sending domains
 
-> **[Double Opt-in](https://github.com/resend/resend-examples/tree/main/sveltekit-resend-examples/typescript/src/routes/api/double-optin)**
+> [card] [Double Opt-in](https://github.com/resend/resend-examples/tree/main/sveltekit-resend-examples/typescript/src/routes/api/double-optin)
 >
 > Double opt-in subscription flow
 
-> **[Webhooks](https://github.com/resend/resend-examples/tree/main/sveltekit-resend-examples/typescript/src/routes/api/webhook)**
+> [card] [Webhooks](https://github.com/resend/resend-examples/tree/main/sveltekit-resend-examples/typescript/src/routes/api/webhook)
 >
 > Handle webhook events

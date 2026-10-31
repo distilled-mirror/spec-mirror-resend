@@ -117,38 +117,38 @@ Next, register your application's webhook endpoint URL (example: `https://{app_d
 
 ## Examples
 
-> **[Symfony App](https://github.com/resend/resend-examples/tree/main/php-resend-examples/symfony_app)**
+> [card] [Symfony App](https://github.com/resend/resend-examples/tree/main/php-resend-examples/symfony_app)
 >
 > Full Symfony web application
 
-> **[Basic Send](https://github.com/resend/resend-examples/tree/main/php-resend-examples/src/send)**
+> [card] [Basic Send](https://github.com/resend/resend-examples/tree/main/php-resend-examples/src/send)
 >
 > Basic, batch, and prevent-threading send
 
-> **[Attachments](https://github.com/resend/resend-examples/tree/main/php-resend-examples/src/attachments)**
+> [card] [Attachments](https://github.com/resend/resend-examples/tree/main/php-resend-examples/src/attachments)
 >
 > File attachments and inline images (CID)
 
-> **[Scheduling](https://github.com/resend/resend-examples/tree/main/php-resend-examples/src/scheduling)**
+> [card] [Scheduling](https://github.com/resend/resend-examples/tree/main/php-resend-examples/src/scheduling)
 >
 > Schedule emails for future delivery
 
-> **[Templates](https://github.com/resend/resend-examples/tree/main/php-resend-examples/src/templates)**
+> [card] [Templates](https://github.com/resend/resend-examples/tree/main/php-resend-examples/src/templates)
 >
 > Send emails using Resend hosted templates
 
-> **[Double Opt-in](https://github.com/resend/resend-examples/tree/main/php-resend-examples/src/double-optin)**
+> [card] [Double Opt-in](https://github.com/resend/resend-examples/tree/main/php-resend-examples/src/double-optin)
 >
 > Double opt-in subscription flow
 
-> **[Inbound Webhooks](https://github.com/resend/resend-examples/tree/main/php-resend-examples/src/inbound)**
+> [card] [Inbound Webhooks](https://github.com/resend/resend-examples/tree/main/php-resend-examples/src/inbound)
 >
 > Receive and process inbound emails
 
-> **[Audiences](https://github.com/resend/resend-examples/tree/main/php-resend-examples/src/audiences)**
+> [card] [Audiences](https://github.com/resend/resend-examples/tree/main/php-resend-examples/src/audiences)
 >
 > Manage contacts and audiences
 
-> **[Domains](https://github.com/resend/resend-examples/tree/main/php-resend-examples/src/domains)**
+> [card] [Domains](https://github.com/resend/resend-examples/tree/main/php-resend-examples/src/domains)
 >
 > Create and manage sending domains

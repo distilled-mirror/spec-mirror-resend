@@ -196,18 +196,18 @@ Please share any feedback on your experience using Resend for your multi-tenant 
 
 ## Related resources
 
-> **[Create Domain API](https://resend.com/docs/api-reference/domains/create-domain.md)**
+> [card] [Create Domain API](https://resend.com/docs/api-reference/domains/create-domain.md)
 >
 > Add and verify tenant domains programmatically.
 
-> **[Create API Key API](https://resend.com/docs/api-reference/api-keys/create-api-key.md)**
+> [card] [Create API Key API](https://resend.com/docs/api-reference/api-keys/create-api-key.md)
 >
 > Create domain-scoped API keys for tenant isolation.
 
-> **[Webhooks](https://resend.com/docs/webhooks/introduction.md)**
+> [card] [Webhooks](https://resend.com/docs/webhooks/introduction.md)
 >
 > Set up webhooks to receive real-time email event notifications.
 
-> **[Managing Tags](https://resend.com/docs/dashboard/emails/tags.md)**
+> [card] [Managing Tags](https://resend.com/docs/dashboard/emails/tags.md)
 >
 > Use tags to organize emails and route webhook events by tenant.

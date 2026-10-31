@@ -56,38 +56,38 @@ config :my_app, MyApp.Mailer, api_key: "re_xxxxxxxxx"
 
 ## Examples
 
-> **[Phoenix App](https://github.com/resend/resend-examples/tree/main/elixir-resend-examples/phoenix_app)**
+> [card] [Phoenix App](https://github.com/resend/resend-examples/tree/main/elixir-resend-examples/phoenix_app)
 >
 > Full Phoenix web framework application
 
-> **[Basic Send](https://github.com/resend/resend-examples/blob/main/elixir-resend-examples/examples/basic_send.exs)**
+> [card] [Basic Send](https://github.com/resend/resend-examples/blob/main/elixir-resend-examples/examples/basic_send.exs)
 >
 > Basic email sending
 
-> **[Attachments](https://github.com/resend/resend-examples/blob/main/elixir-resend-examples/examples/with_attachments.exs)**
+> [card] [Attachments](https://github.com/resend/resend-examples/blob/main/elixir-resend-examples/examples/with_attachments.exs)
 >
 > Send emails with file attachments
 
-> **[Templates](https://github.com/resend/resend-examples/blob/main/elixir-resend-examples/examples/with_template.exs)**
+> [card] [Templates](https://github.com/resend/resend-examples/blob/main/elixir-resend-examples/examples/with_template.exs)
 >
 > Send emails using Resend hosted templates
 
-> **[Scheduling](https://github.com/resend/resend-examples/blob/main/elixir-resend-examples/examples/scheduled_send.exs)**
+> [card] [Scheduling](https://github.com/resend/resend-examples/blob/main/elixir-resend-examples/examples/scheduled_send.exs)
 >
 > Schedule emails for future delivery
 
-> **[Audiences](https://github.com/resend/resend-examples/blob/main/elixir-resend-examples/examples/audiences.exs)**
+> [card] [Audiences](https://github.com/resend/resend-examples/blob/main/elixir-resend-examples/examples/audiences.exs)
 >
 > Manage contacts and audiences
 
-> **[Domains](https://github.com/resend/resend-examples/blob/main/elixir-resend-examples/examples/domains.exs)**
+> [card] [Domains](https://github.com/resend/resend-examples/blob/main/elixir-resend-examples/examples/domains.exs)
 >
 > Create and manage sending domains
 
-> **[Inbound Webhooks](https://github.com/resend/resend-examples/blob/main/elixir-resend-examples/examples/inbound.exs)**
+> [card] [Inbound Webhooks](https://github.com/resend/resend-examples/blob/main/elixir-resend-examples/examples/inbound.exs)
 >
 > Receive and process inbound emails
 
-> **[Double Opt-in](https://github.com/resend/resend-examples/tree/main/elixir-resend-examples/examples/double_optin)**
+> [card] [Double Opt-in](https://github.com/resend/resend-examples/tree/main/elixir-resend-examples/examples/double_optin)
 >
 > Double opt-in subscription flow

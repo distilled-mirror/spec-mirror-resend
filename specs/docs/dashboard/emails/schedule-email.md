@@ -934,26 +934,26 @@ You can view the failure reason and details in the Resend dashboard by clicking 
 
 ## Try it yourself
 
-> **[Next.js (TypeScript)](https://github.com/resend/resend-examples/tree/main/nextjs-resend-examples/typescript/src/app/scheduling)**
+> [card] [Next.js (TypeScript)](https://github.com/resend/resend-examples/tree/main/nextjs-resend-examples/typescript/src/app/scheduling)
 >
 > See the full source code.
 
-> **[Next.js (JavaScript)](https://github.com/resend/resend-examples/tree/main/nextjs-resend-examples/javascript/src/app/scheduling)**
+> [card] [Next.js (JavaScript)](https://github.com/resend/resend-examples/tree/main/nextjs-resend-examples/javascript/src/app/scheduling)
 >
 > See the full source code.
 
-> **[PHP](https://github.com/resend/resend-examples/tree/main/php-resend-examples/src/scheduling)**
+> [card] [PHP](https://github.com/resend/resend-examples/tree/main/php-resend-examples/src/scheduling)
 >
 > See the full source code.
 
-> **[Laravel](https://github.com/resend/resend-examples/tree/main/laravel-resend-examples)**
+> [card] [Laravel](https://github.com/resend/resend-examples/tree/main/laravel-resend-examples)
 >
 > See the full source code.
 
-> **[Python](https://github.com/resend/resend-examples/tree/main/python-resend-examples/examples)**
+> [card] [Python](https://github.com/resend/resend-examples/tree/main/python-resend-examples/examples)
 >
 > See the full source code.
 
-> **[Ruby](https://github.com/resend/resend-examples/tree/main/ruby-resend-examples/examples)**
+> [card] [Ruby](https://github.com/resend/resend-examples/tree/main/ruby-resend-examples/examples)
 >
 > See the full source code.

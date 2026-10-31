@@ -90,7 +90,7 @@ before activating Forge. If you prefer to add the record yourself, click
 
 If the Forge record doesn't verify, these are some common troubleshooting methods.
 
-> **My DNS provider rejects the CNAME record.**
+> [accordion] My DNS provider rejects the CNAME record.
 >
 > A CNAME can't coexist with other records at the same name. If the subdomain
 > you chose already has records (e.g., an A, TXT, or MX record), pick a
@@ -98,7 +98,7 @@ If the Forge record doesn't verify, these are some common troubleshooting method
 > setup**, then click **Change** next to the Return-Path and choose another
 > name.
 
-> **I added the record but it never verifies.**
+> [accordion] I added the record but it never verifies.
 >
 > DNS changes can take up to 72 hours to propagate, though they're usually much
 > faster. Check that the record name and value match exactly what the Dashboard
@@ -115,7 +115,7 @@ If the Forge record doesn't verify, these are some common troubleshooting method
 > registrar and Cloudflare), run a nameserver lookup with a tool like
 > [dns.email](https://dns.email) to see which provider to use.
 
-> **The record shows as failed. How do I restart verification?**
+> [accordion] The record shows as failed. How do I restart verification?
 >
 > 1. Open your domain's page. Under **Configuration**, click **Finish Forge setup**.
 > 2. The page shows your CNAME record again. Confirm it matches what's in your DNS provider and click **I've added the records** to restart verification.
@@ -124,7 +124,7 @@ If the Forge record doesn't verify, these are some common troubleshooting method
 > re-verifying the existing record and don't need to change anything at your DNS
 > provider.
 
-> **The Activate Resend Forge button is disabled.**
+> [accordion] The Activate Resend Forge button is disabled.
 >
 > Hover over the button to see the reason. Your domain doesn't meet one of the
 > [requirements](#requirements) below.
@@ -136,13 +136,13 @@ If the Forge record doesn't verify, these are some common troubleshooting method
 
 ## FAQ
 
-> **What happens if Forge has an incident or can't deliver an email?**
+> [accordion] What happens if Forge has an incident or can't deliver an email?
 >
 > Your email still goes out. If Forge can't complete a delivery, we route it
 > through the engine Resend has used for years. The fallback is automatic and
 > you don't need to do anything.
 
-> **How long does Forge retry a delayed email?**
+> [accordion] How long does Forge retry a delayed email?
 >
 > When the receiving server asks to try again later, for example with
 > greylisting or a temporary rate limit, Forge keeps retrying for up to 48
@@ -150,25 +150,25 @@ If the Forge record doesn't verify, these are some common troubleshooting method
 > years, which retries for up to 14 hours. An email that still isn't accepted
 > when its retry window ends is marked as `bounced`.
 
-> **Do I need to change my code, SMTP settings, or webhooks?**
+> [accordion] Do I need to change my code, SMTP settings, or webhooks?
 >
 > No. Forge sits behind the same send path, so your API calls, SMTP
 > credentials, and webhook events keep working exactly as today.
 
-> **Why does Forge need a new Return-Path subdomain?**
+> [accordion] Why does Forge need a new Return-Path subdomain?
 >
 > The Return-Path is the address receivers use to return bounces and to check
 > SPF. Forge delivers from infrastructure Resend owns, so the CNAME points
 > that subdomain at Forge. This keeps SPF aligned with your domain and lets us
 > process bounces. Your existing DNS records stay as they are.
 
-> **Which region does Forge send from and receive at?**
+> [accordion] Which region does Forge send from and receive at?
 >
 > Forge runs only in North Virginia (`us-east-1`). Data residency is the same
 > as for every other region. See [Data
 > Residency](https://resend.com/docs/dashboard/domains/regions.md#data-residency) for details.
 
-> **I have activated Forge but I'm still seeing the old headers**
+> [accordion] I have activated Forge but I'm still seeing the old headers
 >
 > The **Enabled** tag means your domain is ready for Forge. Resend moves your
 > sending onto Forge gradually, so for a while part of your email still goes

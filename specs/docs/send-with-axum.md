@@ -78,38 +78,38 @@ email and returns its id!
 
 ## Examples
 
-> **[Axum App](https://github.com/resend/resend-examples/tree/main/rust-resend-examples/axum_app)**
+> [card] [Axum App](https://github.com/resend/resend-examples/tree/main/rust-resend-examples/axum_app)
 >
 > Full Axum web framework application
 
-> **[Basic Send](https://github.com/resend/resend-examples/blob/main/rust-resend-examples/examples/basic_send.rs)**
+> [card] [Basic Send](https://github.com/resend/resend-examples/blob/main/rust-resend-examples/examples/basic_send.rs)
 >
 > Basic email sending
 
-> **[Attachments](https://github.com/resend/resend-examples/blob/main/rust-resend-examples/examples/with_attachments.rs)**
+> [card] [Attachments](https://github.com/resend/resend-examples/blob/main/rust-resend-examples/examples/with_attachments.rs)
 >
 > Send emails with file attachments
 
-> **[Templates](https://github.com/resend/resend-examples/blob/main/rust-resend-examples/examples/with_template.rs)**
+> [card] [Templates](https://github.com/resend/resend-examples/blob/main/rust-resend-examples/examples/with_template.rs)
 >
 > Send emails using Resend hosted templates
 
-> **[Scheduling](https://github.com/resend/resend-examples/blob/main/rust-resend-examples/examples/scheduled_send.rs)**
+> [card] [Scheduling](https://github.com/resend/resend-examples/blob/main/rust-resend-examples/examples/scheduled_send.rs)
 >
 > Schedule emails for future delivery
 
-> **[Audiences](https://github.com/resend/resend-examples/blob/main/rust-resend-examples/examples/audiences.rs)**
+> [card] [Audiences](https://github.com/resend/resend-examples/blob/main/rust-resend-examples/examples/audiences.rs)
 >
 > Manage contacts and audiences
 
-> **[Domains](https://github.com/resend/resend-examples/blob/main/rust-resend-examples/examples/domains.rs)**
+> [card] [Domains](https://github.com/resend/resend-examples/blob/main/rust-resend-examples/examples/domains.rs)
 >
 > Create and manage sending domains
 
-> **[Inbound Webhooks](https://github.com/resend/resend-examples/blob/main/rust-resend-examples/examples/inbound.rs)**
+> [card] [Inbound Webhooks](https://github.com/resend/resend-examples/blob/main/rust-resend-examples/examples/inbound.rs)
 >
 > Receive and process inbound emails
 
-> **[Double Opt-in](https://github.com/resend/resend-examples/blob/main/rust-resend-examples/examples/double_optin_subscribe.rs)**
+> [card] [Double Opt-in](https://github.com/resend/resend-examples/blob/main/rust-resend-examples/examples/double_optin_subscribe.rs)
 >
 > Double opt-in subscription flow

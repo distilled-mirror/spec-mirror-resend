@@ -176,6 +176,6 @@ Playwright will run the tests in the browsers of your choice and show you the re
 
 ## Examples
 
-> **[Example repo](https://github.com/resend/resend-nextjs-playwright-example)**
+> [card] [Example repo](https://github.com/resend/resend-nextjs-playwright-example)
 >
 > See the full source code.

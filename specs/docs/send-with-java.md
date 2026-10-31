@@ -57,42 +57,42 @@ public class Main {
 
 ## Examples
 
-> **[Basic Send](https://github.com/resend/resend-examples/blob/main/java-resend-examples/src/main/java/com/resend/examples/BasicSend.java)**
+> [card] [Basic Send](https://github.com/resend/resend-examples/blob/main/java-resend-examples/src/main/java/com/resend/examples/BasicSend.java)
 >
 > Basic email sending
 
-> **[Attachments](https://github.com/resend/resend-examples/blob/main/java-resend-examples/src/main/java/com/resend/examples/WithAttachments.java)**
+> [card] [Attachments](https://github.com/resend/resend-examples/blob/main/java-resend-examples/src/main/java/com/resend/examples/WithAttachments.java)
 >
 > Send emails with file attachments
 
-> **[Templates](https://github.com/resend/resend-examples/blob/main/java-resend-examples/src/main/java/com/resend/examples/WithTemplate.java)**
+> [card] [Templates](https://github.com/resend/resend-examples/blob/main/java-resend-examples/src/main/java/com/resend/examples/WithTemplate.java)
 >
 > Send emails using Resend hosted templates
 
-> **[Scheduling](https://github.com/resend/resend-examples/blob/main/java-resend-examples/src/main/java/com/resend/examples/ScheduledSend.java)**
+> [card] [Scheduling](https://github.com/resend/resend-examples/blob/main/java-resend-examples/src/main/java/com/resend/examples/ScheduledSend.java)
 >
 > Schedule emails for future delivery
 
-> **[Audiences](https://github.com/resend/resend-examples/blob/main/java-resend-examples/src/main/java/com/resend/examples/Audiences.java)**
+> [card] [Audiences](https://github.com/resend/resend-examples/blob/main/java-resend-examples/src/main/java/com/resend/examples/Audiences.java)
 >
 > Manage contacts and audiences
 
-> **[Domains](https://github.com/resend/resend-examples/blob/main/java-resend-examples/src/main/java/com/resend/examples/Domains.java)**
+> [card] [Domains](https://github.com/resend/resend-examples/blob/main/java-resend-examples/src/main/java/com/resend/examples/Domains.java)
 >
 > Create and manage sending domains
 
-> **[Inbound Webhooks](https://github.com/resend/resend-examples/blob/main/java-resend-examples/src/main/java/com/resend/examples/Inbound.java)**
+> [card] [Inbound Webhooks](https://github.com/resend/resend-examples/blob/main/java-resend-examples/src/main/java/com/resend/examples/Inbound.java)
 >
 > Receive and process inbound emails
 
-> **[Double Opt-in](https://github.com/resend/resend-examples/blob/main/java-resend-examples/src/main/java/com/resend/examples/DoubleOptinSubscribe.java)**
+> [card] [Double Opt-in](https://github.com/resend/resend-examples/blob/main/java-resend-examples/src/main/java/com/resend/examples/DoubleOptinSubscribe.java)
 >
 > Double opt-in subscription flow
 
-> **[Javalin App](https://github.com/resend/resend-examples/tree/main/java-resend-examples/javalin_app)**
+> [card] [Javalin App](https://github.com/resend/resend-examples/tree/main/java-resend-examples/javalin_app)
 >
 > Full Javalin web framework application
 
-> **[Spring Boot App](https://github.com/resend/resend-examples/tree/main/java-resend-examples/spring_boot_app)**
+> [card] [Spring Boot App](https://github.com/resend/resend-examples/tree/main/java-resend-examples/spring_boot_app)
 >
 > Full Spring Boot application

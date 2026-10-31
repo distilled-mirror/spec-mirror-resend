@@ -8,62 +8,62 @@
 
 ## Official SDKs
 
-> **[Node.js](https://github.com/resend/resend-node)**
+> [card] [Node.js](https://github.com/resend/resend-node)
 >
 > github.com/resend/resend-node
 
-> **[PHP](https://github.com/resend/resend-php)**
+> [card] [PHP](https://github.com/resend/resend-php)
 >
 > github.com/resend/resend-php
 
-> **[Laravel](https://github.com/resend/resend-laravel)**
+> [card] [Laravel](https://github.com/resend/resend-laravel)
 >
 > github.com/resend/resend-laravel
 
-> **[Python](https://github.com/resend/resend-python)**
+> [card] [Python](https://github.com/resend/resend-python)
 >
 > github.com/resend/resend-python
 
-> **[Ruby](https://github.com/resend/resend-ruby)**
+> [card] [Ruby](https://github.com/resend/resend-ruby)
 >
 > github.com/resend/resend-ruby
 
-> **[Go](https://github.com/resend/resend-go)**
+> [card] [Go](https://github.com/resend/resend-go)
 >
 > github.com/resend/resend-go
 
-> **[Java](https://github.com/resend/resend-java)**
+> [card] [Java](https://github.com/resend/resend-java)
 >
 > github.com/resend/resend-java
 
-> **[Rust](https://github.com/resend/resend-rust)**
+> [card] [Rust](https://github.com/resend/resend-rust)
 >
 > github.com/resend/resend-rust
 
-> **[.NET](https://github.com/resend/resend-dotnet)**
+> [card] [.NET](https://github.com/resend/resend-dotnet)
 >
 > github.com/resend/resend-dotnet
 
-> **[Chat SDK Adapter](https://github.com/resend/resend-chat-sdk)**
+> [card] [Chat SDK Adapter](https://github.com/resend/resend-chat-sdk)
 >
 > github.com/resend/resend-chat-sdk
 
 ## Community SDKs
 
-> **[Elixir](https://github.com/elixir-saas/resend-elixir)**
+> [card] [Elixir](https://github.com/elixir-saas/resend-elixir)
 >
 > github.com/elixir-saas/resend-elixir
 
-> **[NestJS](https://github.com/jiangtaste/nestjs-resend)**
+> [card] [NestJS](https://github.com/jiangtaste/nestjs-resend)
 >
 > github.com/jiangtaste/nestjs-resend
 
-> **[Dart](https://github.com/coderaveHQ/dart_resend)**
+> [card] [Dart](https://github.com/coderaveHQ/dart_resend)
 >
 > github.com/coderaveHQ/dart\_resend
 
 ## OpenAPI
 
-> **[OpenAPI](https://github.com/resend/resend-openapi)**
+> [card] [OpenAPI](https://github.com/resend/resend-openapi)
 >
 > github.com/resend/resend-openapi

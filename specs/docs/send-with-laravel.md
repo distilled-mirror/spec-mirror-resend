@@ -180,26 +180,26 @@ To enable webhook verification, ensure that the `RESEND_WEBHOOK_SECRET` environm
 
 ## Examples
 
-> **[Email Sending](https://github.com/resend/resend-examples/blob/main/laravel-resend-examples/app/Http/Controllers/EmailController.php)**
+> [card] [Email Sending](https://github.com/resend/resend-examples/blob/main/laravel-resend-examples/app/Http/Controllers/EmailController.php)
 >
 > Basic, scheduled, attachments, CID, templates, and prevent threading
 
-> **[Inbound Webhooks](https://github.com/resend/resend-examples/blob/main/laravel-resend-examples/app/Http/Controllers/WebhookController.php)**
+> [card] [Inbound Webhooks](https://github.com/resend/resend-examples/blob/main/laravel-resend-examples/app/Http/Controllers/WebhookController.php)
 >
 > Handle webhook events
 
-> **[Inbound Email](https://github.com/resend/resend-examples/blob/main/laravel-resend-examples/app/Http/Controllers/InboundController.php)**
+> [card] [Inbound Email](https://github.com/resend/resend-examples/blob/main/laravel-resend-examples/app/Http/Controllers/InboundController.php)
 >
 > Receive and process inbound emails
 
-> **[Double Opt-in](https://github.com/resend/resend-examples/blob/main/laravel-resend-examples/app/Http/Controllers/DoubleOptinController.php)**
+> [card] [Double Opt-in](https://github.com/resend/resend-examples/blob/main/laravel-resend-examples/app/Http/Controllers/DoubleOptinController.php)
 >
 > Double opt-in subscription flow
 
-> **[Audiences](https://github.com/resend/resend-examples/blob/main/laravel-resend-examples/app/Http/Controllers/AudienceController.php)**
+> [card] [Audiences](https://github.com/resend/resend-examples/blob/main/laravel-resend-examples/app/Http/Controllers/AudienceController.php)
 >
 > Manage contacts and audiences
 
-> **[Domains](https://github.com/resend/resend-examples/blob/main/laravel-resend-examples/app/Http/Controllers/DomainController.php)**
+> [card] [Domains](https://github.com/resend/resend-examples/blob/main/laravel-resend-examples/app/Http/Controllers/DomainController.php)
 >
 > Create and manage sending domains

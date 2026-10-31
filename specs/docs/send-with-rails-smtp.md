@@ -81,6 +81,6 @@ mailer.deliver_now!
 
 ## Examples
 
-> **[Rails SMTP Example](https://github.com/resend/resend-rails-smtp-example)**
+> [card] [Rails SMTP Example](https://github.com/resend/resend-rails-smtp-example)
 >
 > See the full source code.

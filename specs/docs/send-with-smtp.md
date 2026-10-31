@@ -61,17 +61,17 @@ Here are some common use cases for custom headers:
 
 Once configured, you can start sending emails via SMTP. Below are some frequently asked questions:
 
-> **What if I need logs from the server to debug?**
+> [accordion] What if I need logs from the server to debug?
 >
 > We currently don't provide SMTP server logs for debugging. If you run into
 > issues, please [reach out to support](https://resend.com/help).
 
-> **Where do I see the emails sent with SMTP?**
+> [accordion] Where do I see the emails sent with SMTP?
 >
 > Emails sent with SMTP will show in your [emails
 > table](https://resend.com/emails).
 
-> **Does the rate limit apply when sending with SMTP?**
+> [accordion] Does the rate limit apply when sending with SMTP?
 >
 > Yes, the rate limit is the [same as the
 > API](https://resend.com/docs/api-reference/introduction.md#rate-limit).

@@ -10,29 +10,29 @@ The [Resend CLI](https://github.com/resend/resend-cli) is the official command-l
 
 ## Installation
 
-**cURL**
+> [tab] cURL
+>
+> ```bash theme={"theme":{"light":"github-light","dark":"vesper"}}
+> curl -fsSL https://resend.com/install.sh | bash
+> ```
 
-```bash theme={"theme":{"light":"github-light","dark":"vesper"}}
-curl -fsSL https://resend.com/install.sh | bash
-```
+> [tab] npm
+>
+> ```bash theme={"theme":{"light":"github-light","dark":"vesper"}}
+> npm install -g resend-cli
+> ```
 
-**npm**
+> [tab] Homebrew
+>
+> ```bash theme={"theme":{"light":"github-light","dark":"vesper"}}
+> brew install resend/cli/resend
+> ```
 
-```bash theme={"theme":{"light":"github-light","dark":"vesper"}}
-npm install -g resend-cli
-```
-
-**Homebrew**
-
-```bash theme={"theme":{"light":"github-light","dark":"vesper"}}
-brew install resend/cli/resend
-```
-
-**PowerShell (Windows)**
-
-```powershell theme={"theme":{"light":"github-light","dark":"vesper"}}
-irm https://resend.com/install.ps1 | iex
-```
+> [tab] PowerShell (Windows)
+>
+> ```powershell theme={"theme":{"light":"github-light","dark":"vesper"}}
+> irm https://resend.com/install.ps1 | iex
+> ```
 
 ## Authentication
 
@@ -842,7 +842,7 @@ steps:
 | Credentials | System secure storage | macOS Keychain, Windows Credential Manager, or Linux secret service |
 | Install directory | `~/.resend/bin/` | Respects `$RESEND_INSTALL` |
 
-> **[Using the CLI with AI Agents](https://resend.com/docs/cli-agents.md)**
+> [card] [Using the CLI with AI Agents](https://resend.com/docs/cli-agents.md)
 >
 > Learn about Agent Skills, non-interactive mode, and local webhook development
 > for AI agents.

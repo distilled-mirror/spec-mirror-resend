@@ -26,6 +26,6 @@ npx skills add resend/react-email
 
 ## Learn More
 
-> **[View on GitHub](https://github.com/resend/react-email/tree/canary/skills)**
+> [card] [View on GitHub](https://github.com/resend/react-email/tree/canary/skills)
 >
 > See the full source code and documentation.

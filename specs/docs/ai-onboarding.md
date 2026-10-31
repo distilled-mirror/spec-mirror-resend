@@ -43,7 +43,7 @@ The [Resend plugin](https://github.com/resend/resend-skills) follows the [Agent 
 * [Resend connector for Claude](https://claude.ai/directory/connectors/resend)
 * [Resend plugin for Codex](https://chatgpt.com/plugins/plugin_asdk_app_6a3c407853888191beddc2151c2b6f8b?open_in_codex)
 
-> **[MCP Server](https://resend.com/docs/mcp-server.md)**
+> [card] [MCP Server](https://resend.com/docs/mcp-server.md)
 >
 > View setup instructions for Claude, Cursor, Codex, Copilot, Hermes, OpenClaw,
 > and more.
@@ -66,7 +66,7 @@ resend emails send \
 
 The CLI also includes a full local webhook setup for developing with inbound email events without deploying anything.
 
-> **[Resend CLI](https://resend.com/docs/cli.md)**
+> [card] [Resend CLI](https://resend.com/docs/cli.md)
 >
 > Install the CLI and set up a local webhook development environment.
 
@@ -293,7 +293,7 @@ console.log(
 
 Equipping your agent with its own email inbox can be a powerful tool to unlock new workflows. Alternatively, give it access to your Resend account to support agentic flows for sending and receiving emails.
 
-> **[Email Automation for OpenClaw using Resend](https://resend.com/docs/openclaw-guide.md)**
+> [card] [Email Automation for OpenClaw using Resend](https://resend.com/docs/openclaw-guide.md)
 >
 > View the OpenClaw guide.
 
@@ -301,7 +301,7 @@ Equipping your agent with its own email inbox can be a powerful tool to unlock n
 
 The `@resend/chat-sdk-adapter` package is a Vercel Chat SDK adapter that turns email into a two-way communication channel. Receive inbound emails through webhooks, reply through the Resend API, and let the adapter handle threading automatically. It also supports card emails, attachments, and proactive outreach.
 
-> **[Chat SDK](https://resend.com/docs/chat-sdk.md)**
+> [card] [Chat SDK](https://resend.com/docs/chat-sdk.md)
 >
 > Build conversational email experiences with the Chat SDK adapter.
 
@@ -321,38 +321,38 @@ Get started using Resend with popular AI builders:
 
 Several AI tools have created integrations for working with Resend. Visit their documentation for information on integrating Resend with their tools.
 
-> **[Lovable](https://docs.lovable.dev/integrations/resend)**
+> [card] [Lovable](https://docs.lovable.dev/integrations/resend)
 >
 > Tell the Lovable AI to send emails
 
-> **[Anything](https://www.createanything.com/docs/integrations/resend)**
+> [card] [Anything](https://www.createanything.com/docs/integrations/resend)
 >
 > Add email to your Anything projects
 
-> **[Wildcard](https://github.com/wild-card-ai/agents-json/blob/master/examples/resend.ipynb)**
+> [card] [Wildcard](https://github.com/wild-card-ai/agents-json/blob/master/examples/resend.ipynb)
 >
 > Send natural language emails using Wildcard
 
-> **[mcp.run](https://www.mcp.run/nilslice/resend)**
+> [card] [mcp.run](https://www.mcp.run/nilslice/resend)
 >
 > Build email AI agents using mcp.run
 
-> **[Rocket](https://docs.rocket.new/integrations/resend)**
+> [card] [Rocket](https://docs.rocket.new/integrations/resend)
 >
 > Send emails from apps built with Rocket
 
-> **[Base44](https://docs.base44.com/Integrations/Resend-integration)**
+> [card] [Base44](https://docs.base44.com/Integrations/Resend-integration)
 >
 > Add email to your Base44 apps
 
-> **[Leap.new](https://docs.leap.new/integrations/resend)**
+> [card] [Leap.new](https://docs.leap.new/integrations/resend)
 >
 > Add email to your Leap apps
 
-> **[Parsley](https://www.parsley.id/integrations/resend)**
+> [card] [Parsley](https://www.parsley.id/integrations/resend)
 >
 > Send alerts and follow-ups with Parsley
 
-> **[Pica](https://www.picaos.com/integrations/resend)**
+> [card] [Pica](https://www.picaos.com/integrations/resend)
 >
 > Integrate Pica with Resend

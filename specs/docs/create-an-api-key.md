@@ -90,21 +90,21 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 
 ## Learn more
 
-> **[Manage API keys](https://resend.com/docs/dashboard/api-keys/introduction.md)**
+> [card] [Manage API keys](https://resend.com/docs/dashboard/api-keys/introduction.md)
 >
 > View, create, edit, delete, and manage your API keys.
 
-> **[API key best practices](https://resend.com/docs/knowledge-base/how-to-handle-api-keys.md)**
+> [card] [API key best practices](https://resend.com/docs/knowledge-base/how-to-handle-api-keys.md)
 >
 > Learn about best practices for managing your API keys.
 
 ## Next steps
 
-> **[Add a domain](https://resend.com/docs/add-a-domain.md)**
+> [card] [Add a domain](https://resend.com/docs/add-a-domain.md)
 >
 > Add and verify a domain you own to start sending emails.
 
-> **[Quickstart tutorials](https://resend.com/docs/introduction.md)**
+> [card] [Quickstart tutorials](https://resend.com/docs/introduction.md)
 >
 > Send your first transactional email with a quick tutorial for your language
 > or framework.

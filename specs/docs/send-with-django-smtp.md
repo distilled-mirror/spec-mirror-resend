@@ -82,6 +82,6 @@ def index(request):
 
 ## Examples
 
-> **[Django SMTP Example](https://github.com/resend/resend-django-smtp-example)**
+> [card] [Django SMTP Example](https://github.com/resend/resend-django-smtp-example)
 >
 > See the full source code.

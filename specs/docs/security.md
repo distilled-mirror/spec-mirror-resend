@@ -12,50 +12,50 @@ Resend establishes policies and controls, monitors compliance with those control
 
 Our policies are based on the following **foundational principles**:
 
-> **Least Privilege**
+> [card] Least Privilege
 >
 > Access should be limited to only those with a legitimate business needs,
 > based on the principle of least privilege.
 
-> **Consistency**
+> [card] Consistency
 >
 > Security controls should be applied consistently across all areas of the
 > enterprise.
 
-> **Defense in Depth**
+> [card] Defense in Depth
 >
 > Security controls should be implemented and layered according to the
 > principle of defense-in-depth.
 
-> **Continuous Improvement**
+> [card] Continuous Improvement
 >
 > The implementation of controls should be iterative, continuously improving
 > effectiveness and decreasing friction.
 
 ### Compliance Standards
 
-> **SOC 2 Type II**
+> [accordion] SOC 2 Type II
 >
 > Resend is SOC 2 Type II compliant. The audit was completed by Vanta & Advantage Partners.
 > You can download a copy of the report on the [Documents](https://resend.com/settings/documents) page.
 
-> **GDPR**
+> [accordion] GDPR
 >
 > Resend is GDPR compliant. You can learn more about our [GDPR compliance](https://resend.com/security/gdpr) or view our [DPA](https://resend.com/legal/dpa).
 
 ## Data Protection
 
-> **Data at rest**
+> [card] Data at rest
 >
 > All datastores are encrypted at rest. Sensitive collections and tables also
 > use row-level encryption.
 
-> **Data in transit**
+> [card] Data in transit
 >
 > Resend uses TLS 1.3 or higher everywhere data is transmitted over
 > potentially insecure networks.
 
-> **Data backup**
+> [card] Data backup
 >
 > Resend backs-up all production data using a point-in-time approach. Backups
 > are persisted for 7 days.
@@ -84,17 +84,17 @@ Vulnerabilities are prioritized based on severity and risk, and are remediated a
 
 ## Enterprise Security
 
-> **Endpoint protection**
+> [card] Endpoint protection
 >
 > All company devices are equipped with anti-malware protection. Endpoint security alerts are monitored with 24/7/365 coverage. We use MDM software to enforce secure configuration of endpoints, such as disk encryption, screen lock configuration, and software updates.
 
-> **Security education**
+> [card] Security education
 >
 > Resend provides comprehensive security training to all employees upon onboarding and annually.
 >
 > Resend's conducts threat briefings with employees to inform them of important security and safety-related updates that require special attention or action.
 
-> **Identity and access management**
+> [card] Identity and access management
 >
 > Resend employees are granted access to applications based on their role, and automatically deprovisioned upon termination of their employment. Further access must be approved according to the policies set for each application.
 >

@@ -76,6 +76,6 @@ try {
 
 ## Examples
 
-> **[PHPMailer SMTP Example](https://github.com/resend/resend-phpmailer-smtp-example)**
+> [card] [PHPMailer SMTP Example](https://github.com/resend/resend-phpmailer-smtp-example)
 >
 > See the full source code.

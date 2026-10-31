@@ -81,6 +81,6 @@ Open the endpoint URL to send an email:
 
 ## Examples
 
-> **[Supabase Edge Functions Example](https://github.com/resend/resend-supabase-edge-functions-example)**
+> [card] [Supabase Edge Functions Example](https://github.com/resend/resend-supabase-edge-functions-example)
 >
 > See the full source code.

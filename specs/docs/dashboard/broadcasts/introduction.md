@@ -132,18 +132,18 @@ All admins on your team can securely access the export for 7 days. Unavailable e
 
 See how to use Resend's Broadcast features.
 
-> **[No-code editor](https://resend.com/docs/dashboard/broadcasts/editor.md)**
+> [card] [No-code editor](https://resend.com/docs/dashboard/broadcasts/editor.md)
 
-> **[Send with API](https://resend.com/docs/dashboard/broadcasts/send-broadcast-with-api.md)**
+> [card] [Send with API](https://resend.com/docs/dashboard/broadcasts/send-broadcast-with-api.md)
 
-> **[Manage Broadcasts](https://resend.com/docs/dashboard/broadcasts/manage-broadcasts.md)**
+> [card] [Manage Broadcasts](https://resend.com/docs/dashboard/broadcasts/manage-broadcasts.md)
 
-> **[Contacts](https://resend.com/docs/dashboard/contacts/introduction.md)**
+> [card] [Contacts](https://resend.com/docs/dashboard/contacts/introduction.md)
 
-> **[Segments](https://resend.com/docs/dashboard/segments/introduction.md)**
+> [card] [Segments](https://resend.com/docs/dashboard/segments/introduction.md)
 
-> **[Topics](https://resend.com/docs/dashboard/topics/introduction.md)**
+> [card] [Topics](https://resend.com/docs/dashboard/topics/introduction.md)
 
-> **[Track performance](https://resend.com/docs/dashboard/broadcasts/performance-tracking.md)**
+> [card] [Track performance](https://resend.com/docs/dashboard/broadcasts/performance-tracking.md)
 
-> **[Handle unsubscribes](https://resend.com/docs/dashboard/audiences/managing-unsubscribe-list.md)**
+> [card] [Handle unsubscribes](https://resend.com/docs/dashboard/audiences/managing-unsubscribe-list.md)

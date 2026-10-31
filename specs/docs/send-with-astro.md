@@ -360,34 +360,34 @@ Call the `send` action from any frontmatter route, script, or component.
 
 ## Examples
 
-> **[Send Email](https://github.com/resend/resend-examples/blob/main/astro-resend-examples/typescript/src/pages/api/send.ts)**
+> [card] [Send Email](https://github.com/resend/resend-examples/blob/main/astro-resend-examples/typescript/src/pages/api/send.ts)
 >
 > Basic email sending
 
-> **[Attachments](https://github.com/resend/resend-examples/blob/main/astro-resend-examples/typescript/src/pages/api/send-attachment.ts)**
+> [card] [Attachments](https://github.com/resend/resend-examples/blob/main/astro-resend-examples/typescript/src/pages/api/send-attachment.ts)
 >
 > Send emails with file attachments
 
-> **[Inline Images (CID)](https://github.com/resend/resend-examples/blob/main/astro-resend-examples/typescript/src/pages/api/send-cid.ts)**
+> [card] [Inline Images (CID)](https://github.com/resend/resend-examples/blob/main/astro-resend-examples/typescript/src/pages/api/send-cid.ts)
 >
 > Embed inline images using CID
 
-> **[Templates](https://github.com/resend/resend-examples/blob/main/astro-resend-examples/typescript/src/pages/api/send-template.ts)**
+> [card] [Templates](https://github.com/resend/resend-examples/blob/main/astro-resend-examples/typescript/src/pages/api/send-template.ts)
 >
 > Send emails using Resend hosted templates
 
-> **[Scheduling](https://github.com/resend/resend-examples/blob/main/astro-resend-examples/typescript/src/pages/api/send-scheduled.ts)**
+> [card] [Scheduling](https://github.com/resend/resend-examples/blob/main/astro-resend-examples/typescript/src/pages/api/send-scheduled.ts)
 >
 > Schedule emails for future delivery
 
-> **[Audiences](https://github.com/resend/resend-examples/tree/main/astro-resend-examples/typescript/src/pages/api/audiences)**
+> [card] [Audiences](https://github.com/resend/resend-examples/tree/main/astro-resend-examples/typescript/src/pages/api/audiences)
 >
 > Manage contacts and audiences
 
-> **[Domains](https://github.com/resend/resend-examples/blob/main/astro-resend-examples/typescript/src/pages/api/domains.ts)**
+> [card] [Domains](https://github.com/resend/resend-examples/blob/main/astro-resend-examples/typescript/src/pages/api/domains.ts)
 >
 > Create and manage sending domains
 
-> **[Webhooks](https://github.com/resend/resend-examples/blob/main/astro-resend-examples/typescript/src/pages/api/webhook.ts)**
+> [card] [Webhooks](https://github.com/resend/resend-examples/blob/main/astro-resend-examples/typescript/src/pages/api/webhook.ts)
 >
 > Handle webhook events

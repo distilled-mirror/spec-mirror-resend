@@ -362,6 +362,6 @@ that you can open and verify that your email has been sent.
 
 ## Examples
 
-> **[Cloudflare Workers Example](https://github.com/resend/resend-cloudflare-workers-example)**
+> [card] [Cloudflare Workers Example](https://github.com/resend/resend-cloudflare-workers-example)
 >
 > See the full source code.

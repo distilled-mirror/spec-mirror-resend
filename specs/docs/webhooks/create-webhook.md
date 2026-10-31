@@ -125,7 +125,7 @@ Once your webhook endpoint is deployed to production, you can register it in the
 
 ## FAQ
 
-> **What is the retry schedule?**
+> [accordion] What is the retry schedule?
 >
 > If Resend does not receive a 200 response from a webhook server, we will retry the webhooks.
 >
@@ -142,7 +142,7 @@ Once your webhook endpoint is deployed to production, you can register it in the
 >
 > You can see when a message will be retried next in the webhook message details in the dashboard.
 
-> **What IPs do webhooks POST from?**
+> [accordion] What IPs do webhooks POST from?
 >
 > If your server requires an allowlist, our webhooks come from the following IP addresses:
 >
@@ -152,19 +152,19 @@ Once your webhook endpoint is deployed to production, you can register it in the
 > * `54.148.139.208`
 > * `2600:1f24:64:8000::/52`
 
-> **What are the delivery guarantees?**
+> [accordion] What are the delivery guarantees?
 >
 > Resend webhooks provide **at-least-once** delivery. Every event will be delivered to your endpoint at least once, but may be delivered more than once in rare cases (such as network timeouts where your server processed the event but the acknowledgement was lost).
 >
 > To handle duplicates, use the `svix-id` header included with every webhook request. This is a unique identifier for each event delivery. Store processed `svix-id` values and skip any duplicates.
 
-> **Do events arrive in order?**
+> [accordion] Do events arrive in order?
 >
 > Events are sent as they occur, but **delivery order is not guaranteed**. Network conditions, retries, and processing delays can cause events to arrive out of order. For example, an `email.opened` event could arrive before the `email.delivered` event for the same email.
 >
 > If ordering matters for your application, use the `created_at` timestamp in the event payload to sort events after receipt.
 
-> **Can I replay webhook events manually?**
+> [accordion] Can I replay webhook events manually?
 >
 > Yes. You can replay webhook events manually from the dashboard.
 >
@@ -189,26 +189,26 @@ For complete API documentation, see the [Webhooks API reference](https://resend.
 
 ## Examples
 
-> **[Next.js (TypeScript)](https://github.com/resend/resend-examples/tree/main/nextjs-resend-examples/typescript/src/app/inbound)**
+> [card] [Next.js (TypeScript)](https://github.com/resend/resend-examples/tree/main/nextjs-resend-examples/typescript/src/app/inbound)
 >
 > See the full source code.
 
-> **[Next.js (JavaScript)](https://github.com/resend/resend-examples/tree/main/nextjs-resend-examples/javascript/src/app/inbound)**
+> [card] [Next.js (JavaScript)](https://github.com/resend/resend-examples/tree/main/nextjs-resend-examples/javascript/src/app/inbound)
 >
 > See the full source code.
 
-> **[PHP](https://github.com/resend/resend-examples/tree/main/php-resend-examples/src/inbound)**
+> [card] [PHP](https://github.com/resend/resend-examples/tree/main/php-resend-examples/src/inbound)
 >
 > See the full source code.
 
-> **[Laravel](https://github.com/resend/resend-examples/tree/main/laravel-resend-examples)**
+> [card] [Laravel](https://github.com/resend/resend-examples/tree/main/laravel-resend-examples)
 >
 > See the full source code.
 
-> **[Python](https://github.com/resend/resend-examples/tree/main/python-resend-examples/examples)**
+> [card] [Python](https://github.com/resend/resend-examples/tree/main/python-resend-examples/examples)
 >
 > See the full source code.
 
-> **[Ruby](https://github.com/resend/resend-examples/tree/main/ruby-resend-examples/examples)**
+> [card] [Ruby](https://github.com/resend/resend-examples/tree/main/ruby-resend-examples/examples)
 >
 > See the full source code.

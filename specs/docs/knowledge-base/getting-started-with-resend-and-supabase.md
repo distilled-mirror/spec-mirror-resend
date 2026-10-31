@@ -78,7 +78,7 @@ Note that this requires enabling [Supabase Auth Hooks](https://supabase.com/docs
 
 [YouTube video player](https://www.youtube.com/embed/tB_HcKjW8fQ)
 
-> **[Supabase Auth Hooks with Resend Templates](https://github.com/resend/supabase-auth-hooks-with-resend-templates)**
+> [card] [Supabase Auth Hooks with Resend Templates](https://github.com/resend/supabase-auth-hooks-with-resend-templates)
 >
 > See the full source code.
 
@@ -158,7 +158,7 @@ Open the endpoint URL to send an email:
 
 ## Examples
 
-> **[Supabase Edge Functions Example](https://github.com/resend/resend-supabase-edge-functions-example)**
+> [card] [Supabase Edge Functions Example](https://github.com/resend/resend-supabase-edge-functions-example)
 >
 > See the full source code.
 

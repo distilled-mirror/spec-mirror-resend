@@ -386,58 +386,58 @@ export const Route = createFileRoute('/api/send')({
 
 ## Examples
 
-> **[TanStack Start (TypeScript)](https://github.com/resend/resend-examples/tree/main/tanstack-resend-examples/typescript)**
+> [card] [TanStack Start (TypeScript)](https://github.com/resend/resend-examples/tree/main/tanstack-resend-examples/typescript)
 >
 > Full-stack TanStack Start app with TypeScript
 
-> **[TanStack Start (JavaScript)](https://github.com/resend/resend-examples/tree/main/tanstack-resend-examples/javascript)**
+> [card] [TanStack Start (JavaScript)](https://github.com/resend/resend-examples/tree/main/tanstack-resend-examples/javascript)
 >
 > Full-stack TanStack Start app with JavaScript
 
-> **[Send Email](https://github.com/resend/resend-examples/blob/main/tanstack-resend-examples/typescript/src/routes/api/send.ts)**
+> [card] [Send Email](https://github.com/resend/resend-examples/blob/main/tanstack-resend-examples/typescript/src/routes/api/send.ts)
 >
 > Basic email sending
 
-> **[Attachments](https://github.com/resend/resend-examples/blob/main/tanstack-resend-examples/typescript/src/routes/api/send-attachment.ts)**
+> [card] [Attachments](https://github.com/resend/resend-examples/blob/main/tanstack-resend-examples/typescript/src/routes/api/send-attachment.ts)
 >
 > Send emails with file attachments
 
-> **[Inline Images (CID)](https://github.com/resend/resend-examples/blob/main/tanstack-resend-examples/typescript/src/routes/api/send-cid.ts)**
+> [card] [Inline Images (CID)](https://github.com/resend/resend-examples/blob/main/tanstack-resend-examples/typescript/src/routes/api/send-cid.ts)
 >
 > Embed inline images using CID
 
-> **[Templates](https://github.com/resend/resend-examples/blob/main/tanstack-resend-examples/typescript/src/routes/api/send-template.ts)**
+> [card] [Templates](https://github.com/resend/resend-examples/blob/main/tanstack-resend-examples/typescript/src/routes/api/send-template.ts)
 >
 > Send emails using Resend hosted templates
 
-> **[Scheduling](https://github.com/resend/resend-examples/blob/main/tanstack-resend-examples/typescript/src/routes/api/send-scheduled.ts)**
+> [card] [Scheduling](https://github.com/resend/resend-examples/blob/main/tanstack-resend-examples/typescript/src/routes/api/send-scheduled.ts)
 >
 > Schedule emails for future delivery
 
-> **[Batch Emails](https://github.com/resend/resend-examples/blob/main/tanstack-resend-examples/typescript/src/routes/api/send-batch.ts)**
+> [card] [Batch Emails](https://github.com/resend/resend-examples/blob/main/tanstack-resend-examples/typescript/src/routes/api/send-batch.ts)
 >
 > Send multiple emails in a single request
 
-> **[Audiences](https://github.com/resend/resend-examples/blob/main/tanstack-resend-examples/typescript/src/routes/api/audiences/contacts.ts)**
+> [card] [Audiences](https://github.com/resend/resend-examples/blob/main/tanstack-resend-examples/typescript/src/routes/api/audiences/contacts.ts)
 >
 > Manage contacts and audiences
 
-> **[Domains](https://github.com/resend/resend-examples/blob/main/tanstack-resend-examples/typescript/src/routes/api/domains.ts)**
+> [card] [Domains](https://github.com/resend/resend-examples/blob/main/tanstack-resend-examples/typescript/src/routes/api/domains.ts)
 >
 > Create and manage sending domains
 
-> **[Double Opt-in](https://github.com/resend/resend-examples/blob/main/tanstack-resend-examples/typescript/src/routes/double-optin.tsx)**
+> [card] [Double Opt-in](https://github.com/resend/resend-examples/blob/main/tanstack-resend-examples/typescript/src/routes/double-optin.tsx)
 >
 > Double opt-in subscription flow
 
-> **[Inbound](https://github.com/resend/resend-examples/blob/main/tanstack-resend-examples/typescript/src/routes/inbound.tsx)**
+> [card] [Inbound](https://github.com/resend/resend-examples/blob/main/tanstack-resend-examples/typescript/src/routes/inbound.tsx)
 >
 > Receive and process inbound emails
 
-> **[Prevent Threading](https://github.com/resend/resend-examples/blob/main/tanstack-resend-examples/typescript/src/routes/prevent-threading.tsx)**
+> [card] [Prevent Threading](https://github.com/resend/resend-examples/blob/main/tanstack-resend-examples/typescript/src/routes/prevent-threading.tsx)
 >
 > Prevent email threading on Gmail
 
-> **[Webhooks](https://github.com/resend/resend-examples/blob/main/tanstack-resend-examples/typescript/src/routes/api/webhook.ts)**
+> [card] [Webhooks](https://github.com/resend/resend-examples/blob/main/tanstack-resend-examples/typescript/src/routes/api/webhook.ts)
 >
 > Handle webhook events

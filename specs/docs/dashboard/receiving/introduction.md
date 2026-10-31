@@ -83,40 +83,40 @@ Learn more about [managing your received emails](https://resend.com/docs/dashboa
 
 See how to use Resend's receiving features.
 
-> **[Custom domains](https://resend.com/docs/dashboard/receiving/custom-domains.md)**
+> [card] [Custom domains](https://resend.com/docs/dashboard/receiving/custom-domains.md)
 
-> **[Received email webhook](https://resend.com/docs/dashboard/receiving/create-receiving-webhook.md)**
+> [card] [Received email webhook](https://resend.com/docs/dashboard/receiving/create-receiving-webhook.md)
 
-> **[Get email content](https://resend.com/docs/dashboard/receiving/get-email-content.md)**
+> [card] [Get email content](https://resend.com/docs/dashboard/receiving/get-email-content.md)
 
-> **[Process attachments](https://resend.com/docs/dashboard/receiving/attachments.md)**
+> [card] [Process attachments](https://resend.com/docs/dashboard/receiving/attachments.md)
 
-> **[Forward emails](https://resend.com/docs/dashboard/receiving/forward-emails.md)**
+> [card] [Forward emails](https://resend.com/docs/dashboard/receiving/forward-emails.md)
 
-> **[Threaded replies](https://resend.com/docs/dashboard/receiving/reply-to-emails.md)**
+> [card] [Threaded replies](https://resend.com/docs/dashboard/receiving/reply-to-emails.md)
 
 ## Examples
 
-> **[Next.js (TypeScript)](https://github.com/resend/resend-examples/tree/main/nextjs-resend-examples/typescript/src/app/inbound)**
+> [card] [Next.js (TypeScript)](https://github.com/resend/resend-examples/tree/main/nextjs-resend-examples/typescript/src/app/inbound)
 >
 > See the full source code.
 
-> **[Next.js (JavaScript)](https://github.com/resend/resend-examples/tree/main/nextjs-resend-examples/javascript/src/app/inbound)**
+> [card] [Next.js (JavaScript)](https://github.com/resend/resend-examples/tree/main/nextjs-resend-examples/javascript/src/app/inbound)
 >
 > See the full source code.
 
-> **[PHP](https://github.com/resend/resend-examples/tree/main/php-resend-examples/src/inbound)**
+> [card] [PHP](https://github.com/resend/resend-examples/tree/main/php-resend-examples/src/inbound)
 >
 > See the full source code.
 
-> **[Laravel](https://github.com/resend/resend-examples/tree/main/laravel-resend-examples)**
+> [card] [Laravel](https://github.com/resend/resend-examples/tree/main/laravel-resend-examples)
 >
 > See the full source code.
 
-> **[Python](https://github.com/resend/resend-examples/tree/main/python-resend-examples/examples)**
+> [card] [Python](https://github.com/resend/resend-examples/tree/main/python-resend-examples/examples)
 >
 > See the full source code.
 
-> **[Ruby](https://github.com/resend/resend-examples/tree/main/ruby-resend-examples/examples)**
+> [card] [Ruby](https://github.com/resend/resend-examples/tree/main/ruby-resend-examples/examples)
 >
 > See the full source code.

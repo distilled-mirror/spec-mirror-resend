@@ -349,6 +349,6 @@ Open the endpoint URL to send an email: `https://your-project.vercel.app/api/sen
 
 ## Examples
 
-> **[Vercel Functions Example](https://github.com/resend/resend-vercel-functions-example)**
+> [card] [Vercel Functions Example](https://github.com/resend/resend-vercel-functions-example)
 >
 > See the full source code.

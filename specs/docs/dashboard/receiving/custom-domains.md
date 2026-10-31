@@ -60,7 +60,7 @@ Once you add the MX record, confirm by clicking the **I've added the record** bu
 
 ## FAQ
 
-> **What happens if I already have MX records for my domain?**
+> [accordion] What happens if I already have MX records for my domain?
 >
 > If you already have existing MX records for your domain, we recommend that you
 > create a subdomain (e.g. `subdomain.example.com`) and add the MX record
@@ -80,13 +80,13 @@ Once you add the MX record, confirm by clicking the **I've added the record** bu
 > record doesn't work: Resend drops emails for domains whose receiving `MX` record
 > isn't verified.
 
-> **I have already verified my domain for sending. Do I need to verify it again for receiving?**
+> [accordion] I have already verified my domain for sending. Do I need to verify it again for receiving?
 >
 > No, you do not need to verify your entire domain again. If you already have a
 > verified domain for sending, you can simply enable receiving for that domain,
 > add the required MX record to your DNS provider, and click "I've added the record"
 > to start verifying *only* the MX record.
 
-> **I want my domain to only receive emails, not send emails from Resend. Is that possible?**
+> [accordion] I want my domain to only receive emails, not send emails from Resend. Is that possible?
 >
 > Yes, on the domain details page, turn off "Enable Sending". You no longer need Resend's SPF records, so you can remove them from your DNS host. You still need our DKIM record to stay published, and the receiving `MX` record with "Enable Receiving" turned on.

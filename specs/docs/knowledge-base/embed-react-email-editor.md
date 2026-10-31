@@ -203,19 +203,19 @@ All three use [composeReactEmail](https://react.email/docs/editor/api-reference/
 
 ## Next steps
 
-> **[React Email editor reference](https://react.email/docs/editor/overview)**
+> [card] [React Email editor reference](https://react.email/docs/editor/overview)
 >
 > The complete API surface — extensions, UI components, theming, and image
 > upload.
 
-> **[Editor styling reference](https://react.email/docs/editor/features/styling)**
+> [card] [Editor styling reference](https://react.email/docs/editor/features/styling)
 >
 > Every CSS variable and `data-re-*` selector you can target.
 
-> **[Custom extensions](https://react.email/docs/editor/advanced/custom-extensions)**
+> [card] [Custom extensions](https://react.email/docs/editor/advanced/custom-extensions)
 >
 > Wrap existing TipTap extensions or build new email-safe nodes and marks.
 
-> **[Template emails with React Email](https://resend.com/docs/knowledge-base/template-emails-with-react-email.md)**
+> [card] [Template emails with React Email](https://resend.com/docs/knowledge-base/template-emails-with-react-email.md)
 >
 > Author templates as `.tsx` files and upload them to Resend with the CLI.

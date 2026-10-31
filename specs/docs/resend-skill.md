@@ -30,10 +30,10 @@ Build with our official recommendations for sending emails with Resend.
 
 ## Learn More
 
-> **[Agent Email Inbox](https://resend.com/docs/agent-email-inbox-skill.md)**
+> [card] [Agent Email Inbox](https://resend.com/docs/agent-email-inbox-skill.md)
 >
 > Give your agent a secure inbox to receive and act on inbound emails.
 
-> **[View on GitHub](https://github.com/resend/resend-skills)**
+> [card] [View on GitHub](https://github.com/resend/resend-skills)
 >
 > See the full source code and documentation.

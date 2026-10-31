@@ -62,6 +62,6 @@ Click on `Save & Deploy` at the top of the screen.
 
 ## Examples
 
-> **[Deno Deploy Example](https://github.com/resend/resend-deno-deploy-example)**
+> [card] [Deno Deploy Example](https://github.com/resend/resend-deno-deploy-example)
 >
 > See the full source code.

@@ -51,6 +51,6 @@ You can also [set up the project locally](https://docs.railway.com/develop/cli) 
 
 ## Examples
 
-> **[Railway Template](https://github.com/resend/resend-node-railway-starter)**
+> [card] [Railway Template](https://github.com/resend/resend-node-railway-starter)
 >
 > See the full source code.

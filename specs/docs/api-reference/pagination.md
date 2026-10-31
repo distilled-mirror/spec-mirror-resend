@@ -426,18 +426,18 @@ curl -X GET 'https://api.resend.com/contacts?limit=50&before=some-contact-id' \
 
 ## Best Practices
 
-> **Use appropriate page sizes**
+> [accordion] Use appropriate page sizes
 >
 > Choose a `limit` that balances performance and usability. Smaller pages are good for real-time applications, while larger pages
 > (hundreds of items) work better for bulk processing.
 
-> **Handle pagination gracefully**
+> [accordion] Handle pagination gracefully
 >
 > Always check the `has_more` field before attempting to fetch additional pages.
 > This prevents unnecessary API calls when you've reached the end of the
 > dataset.
 
-> **Consider rate limits**
+> [accordion] Consider rate limits
 >
 > Be mindful of API rate limits when paginating through large datasets.
 > Implement appropriate delays or batching strategies if processing many

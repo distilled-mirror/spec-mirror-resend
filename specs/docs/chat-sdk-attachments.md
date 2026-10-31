@@ -61,6 +61,6 @@ For more on receiving email attachments outside the Chat SDK, see [Receiving Att
 
 ## Try it yourself
 
-> **[Attachments Example](https://github.com/resend/resend-chat-sdk/tree/main/examples/attachments)**
+> [card] [Attachments Example](https://github.com/resend/resend-chat-sdk/tree/main/examples/attachments)
 >
 > Detects attachments and replies with a summary

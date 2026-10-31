@@ -385,50 +385,50 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
 ## Examples
 
-> **[Next.js (TypeScript)](https://github.com/resend/resend-examples/tree/main/nextjs-resend-examples/typescript)**
+> [card] [Next.js (TypeScript)](https://github.com/resend/resend-examples/tree/main/nextjs-resend-examples/typescript)
 >
 > Full-stack Next.js app with TypeScript
 
-> **[Next.js (JavaScript)](https://github.com/resend/resend-examples/tree/main/nextjs-resend-examples/javascript)**
+> [card] [Next.js (JavaScript)](https://github.com/resend/resend-examples/tree/main/nextjs-resend-examples/javascript)
 >
 > Full-stack Next.js app with JavaScript
 
-> **[Attachments](https://github.com/resend/resend-examples/tree/main/nextjs-resend-examples/typescript/src/app/attachments)**
+> [card] [Attachments](https://github.com/resend/resend-examples/tree/main/nextjs-resend-examples/typescript/src/app/attachments)
 >
 > Send emails with file attachments
 
-> **[React Email](https://github.com/resend/resend-examples/tree/main/nextjs-resend-examples/typescript/src/app/react-email)**
+> [card] [React Email](https://github.com/resend/resend-examples/tree/main/nextjs-resend-examples/typescript/src/app/react-email)
 >
 > Send emails with React Email components
 
-> **[Templates](https://github.com/resend/resend-examples/tree/main/nextjs-resend-examples/typescript/src/app/templates)**
+> [card] [Templates](https://github.com/resend/resend-examples/tree/main/nextjs-resend-examples/typescript/src/app/templates)
 >
 > Send emails using Resend hosted templates
 
-> **[Scheduling](https://github.com/resend/resend-examples/tree/main/nextjs-resend-examples/typescript/src/app/scheduling)**
+> [card] [Scheduling](https://github.com/resend/resend-examples/tree/main/nextjs-resend-examples/typescript/src/app/scheduling)
 >
 > Schedule emails for future delivery
 
-> **[Double Opt-in](https://github.com/resend/resend-examples/tree/main/nextjs-resend-examples/typescript/src/app/double-optin)**
+> [card] [Double Opt-in](https://github.com/resend/resend-examples/tree/main/nextjs-resend-examples/typescript/src/app/double-optin)
 >
 > Double opt-in subscription flow
 
-> **[Inbound Webhooks](https://github.com/resend/resend-examples/tree/main/nextjs-resend-examples/typescript/src/app/inbound)**
+> [card] [Inbound Webhooks](https://github.com/resend/resend-examples/tree/main/nextjs-resend-examples/typescript/src/app/inbound)
 >
 > Receive and process inbound emails
 
-> **[Prevent Threading](https://github.com/resend/resend-examples/tree/main/nextjs-resend-examples/typescript/src/app/prevent-threading)**
+> [card] [Prevent Threading](https://github.com/resend/resend-examples/tree/main/nextjs-resend-examples/typescript/src/app/prevent-threading)
 >
 > Prevent email threading on Gmail
 
-> **[Audiences](https://github.com/resend/resend-examples/tree/main/nextjs-resend-examples/typescript/src/app/audiences)**
+> [card] [Audiences](https://github.com/resend/resend-examples/tree/main/nextjs-resend-examples/typescript/src/app/audiences)
 >
 > Manage contacts and audiences
 
-> **[Domains](https://github.com/resend/resend-examples/tree/main/nextjs-resend-examples/typescript/src/app/domains)**
+> [card] [Domains](https://github.com/resend/resend-examples/tree/main/nextjs-resend-examples/typescript/src/app/domains)
 >
 > Create and manage sending domains
 
-> **[Better Auth](https://github.com/resend/resend-examples/tree/main/nextjs-resend-examples/typescript/src/app/better-auth)**
+> [card] [Better Auth](https://github.com/resend/resend-examples/tree/main/nextjs-resend-examples/typescript/src/app/better-auth)
 >
 > Email authentication with Better Auth

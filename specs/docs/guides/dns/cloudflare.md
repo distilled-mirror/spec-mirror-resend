@@ -188,14 +188,14 @@ Now click [Verify DNS Records](https://resend.com/domains) on your Domain in Res
 
 If your domain is not successfully verified, these are some common troubleshooting methods.
 
-> **Cloudflare returns 'Code: 1004' when adding CNAME Records.**
+> [accordion] Cloudflare returns 'Code: 1004' when adding CNAME Records.
 >
 > Confirm your proxy settings are set to `DNS Only` on the record you are adding.
 
-> **Resend shows my domain verification failed.**
+> [accordion] Resend shows my domain verification failed.
 >
 > Review the records you added to Cloudflare to rule out copy and paste errors.
 
-> **It has been longer than 72 hours and my domain is still Pending.**
+> [accordion] It has been longer than 72 hours and my domain is still Pending.
 >
 > [Review our guide on a domain not verifying](https://resend.com/docs/knowledge-base/what-if-my-domain-is-not-verifying.md).

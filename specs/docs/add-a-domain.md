@@ -75,23 +75,23 @@ After your domain is verified, you may wish to [enable open and click tracking](
 
 ## Learn more
 
-> **[Manage domains](https://resend.com/docs/dashboard/domains/introduction.md)**
+> [card] [Manage domains](https://resend.com/docs/dashboard/domains/introduction.md)
 >
 > View, create, edit, delete, and manage your domains.
 
-> **[Multi-tenant domain setup](https://resend.com/docs/knowledge-base/setting-up-resend-for-multi-tenants.md)**
+> [card] [Multi-tenant domain setup](https://resend.com/docs/knowledge-base/setting-up-resend-for-multi-tenants.md)
 >
 > Learn how to configure Resend for SaaS platforms where tenants send emails
 > from their own domains.
 
 ## Next steps
 
-> **[Add a DMARC record](https://resend.com/docs/dashboard/domains/dmarc.md)**
+> [card] [Add a DMARC record](https://resend.com/docs/dashboard/domains/dmarc.md)
 >
 > Implement DMARC to build trust in your domain and protect against email
 > spoofing.
 
-> **[Quickstart tutorials](https://resend.com/docs/introduction.md)**
+> [card] [Quickstart tutorials](https://resend.com/docs/introduction.md)
 >
 > Send your first transactional email with a quick tutorial for your language
 > or framework.

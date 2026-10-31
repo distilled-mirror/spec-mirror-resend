@@ -113,11 +113,11 @@ The inbox methods need `resend` 6.34.1 or later.
 
 ## Learn More
 
-> **[OpenClaw Setup Guide](https://resend.com/docs/openclaw-guide.md)**
+> [card] [OpenClaw Setup Guide](https://resend.com/docs/openclaw-guide.md)
 >
 > Step-by-step guide for giving an OpenClaw agent a fully functional email
 > inbox.
 
-> **[View on GitHub](https://github.com/resend/resend-skills/tree/main/skills/agent-email-inbox)**
+> [card] [View on GitHub](https://github.com/resend/resend-skills/tree/main/skills/agent-email-inbox)
 >
 > See the full source code, security patterns, and documentation.

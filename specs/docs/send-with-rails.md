@@ -92,38 +92,38 @@ mailer.deliver_now!
 
 ## Examples
 
-> **[Rails App](https://github.com/resend/resend-examples/tree/main/ruby-resend-examples/rails_app)**
+> [card] [Rails App](https://github.com/resend/resend-examples/tree/main/ruby-resend-examples/rails_app)
 >
 > Full Rails web application
 
-> **[Basic Send](https://github.com/resend/resend-examples/blob/main/ruby-resend-examples/examples/basic_send.rb)**
+> [card] [Basic Send](https://github.com/resend/resend-examples/blob/main/ruby-resend-examples/examples/basic_send.rb)
 >
 > Basic email sending
 
-> **[Attachments](https://github.com/resend/resend-examples/blob/main/ruby-resend-examples/examples/with_attachments.rb)**
+> [card] [Attachments](https://github.com/resend/resend-examples/blob/main/ruby-resend-examples/examples/with_attachments.rb)
 >
 > Send emails with file attachments
 
-> **[Templates](https://github.com/resend/resend-examples/blob/main/ruby-resend-examples/examples/with_template.rb)**
+> [card] [Templates](https://github.com/resend/resend-examples/blob/main/ruby-resend-examples/examples/with_template.rb)
 >
 > Send emails using Resend hosted templates
 
-> **[Scheduling](https://github.com/resend/resend-examples/blob/main/ruby-resend-examples/examples/scheduled_send.rb)**
+> [card] [Scheduling](https://github.com/resend/resend-examples/blob/main/ruby-resend-examples/examples/scheduled_send.rb)
 >
 > Schedule emails for future delivery
 
-> **[Audiences](https://github.com/resend/resend-examples/blob/main/ruby-resend-examples/examples/audiences.rb)**
+> [card] [Audiences](https://github.com/resend/resend-examples/blob/main/ruby-resend-examples/examples/audiences.rb)
 >
 > Manage contacts and audiences
 
-> **[Domains](https://github.com/resend/resend-examples/blob/main/ruby-resend-examples/examples/domains.rb)**
+> [card] [Domains](https://github.com/resend/resend-examples/blob/main/ruby-resend-examples/examples/domains.rb)
 >
 > Create and manage sending domains
 
-> **[Inbound Webhooks](https://github.com/resend/resend-examples/blob/main/ruby-resend-examples/examples/inbound.rb)**
+> [card] [Inbound Webhooks](https://github.com/resend/resend-examples/blob/main/ruby-resend-examples/examples/inbound.rb)
 >
 > Receive and process inbound emails
 
-> **[Double Opt-in](https://github.com/resend/resend-examples/tree/main/ruby-resend-examples/examples/double_optin)**
+> [card] [Double Opt-in](https://github.com/resend/resend-examples/tree/main/ruby-resend-examples/examples/double_optin)
 >
 > Double opt-in subscription flow

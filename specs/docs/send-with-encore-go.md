@@ -349,10 +349,10 @@ npx skills add encoredev/skills
 
 # Examples
 
-> **[Encore Go Docs](https://encore.dev/docs/go)**
+> [card] [Encore Go Docs](https://encore.dev/docs/go)
 >
 > Encore Go documentation
 
-> **[Resend Go SDK](https://github.com/resend/resend-go)**
+> [card] [Resend Go SDK](https://github.com/resend/resend-go)
 >
 > Resend Go SDK on GitHub

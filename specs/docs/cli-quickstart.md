@@ -17,29 +17,29 @@ Before you start, you'll need:
 
 **1. Install**
 
-**cURL**
+> [tab] cURL
+>
+> ```bash theme={"theme":{"light":"github-light","dark":"vesper"}}
+> curl -fsSL https://resend.com/install.sh | bash
+> ```
 
-```bash theme={"theme":{"light":"github-light","dark":"vesper"}}
-curl -fsSL https://resend.com/install.sh | bash
-```
+> [tab] npm
+>
+> ```bash theme={"theme":{"light":"github-light","dark":"vesper"}}
+> npm install -g resend-cli
+> ```
 
-**npm**
+> [tab] Homebrew
+>
+> ```bash theme={"theme":{"light":"github-light","dark":"vesper"}}
+> brew install resend/cli/resend
+> ```
 
-```bash theme={"theme":{"light":"github-light","dark":"vesper"}}
-npm install -g resend-cli
-```
-
-**Homebrew**
-
-```bash theme={"theme":{"light":"github-light","dark":"vesper"}}
-brew install resend/cli/resend
-```
-
-**PowerShell (Windows)**
-
-```powershell theme={"theme":{"light":"github-light","dark":"vesper"}}
-irm https://resend.com/install.ps1 | iex
-```
+> [tab] PowerShell (Windows)
+>
+> ```powershell theme={"theme":{"light":"github-light","dark":"vesper"}}
+> irm https://resend.com/install.ps1 | iex
+> ```
 
 **2. Authenticate**
 
@@ -59,7 +59,7 @@ resend emails send \
 
 ## Next steps
 
-> **[CLI Reference](https://resend.com/docs/cli.md)**
+> [card] [CLI Reference](https://resend.com/docs/cli.md)
 >
 > Explore the full command reference, authentication options, and CI/CD
 > examples.

@@ -51,38 +51,38 @@ def send_mail() -> Dict:
 
 ## Examples
 
-> **[FastAPI App](https://github.com/resend/resend-examples/blob/main/python-resend-examples/examples/fastapi_app.py)**
+> [card] [FastAPI App](https://github.com/resend/resend-examples/blob/main/python-resend-examples/examples/fastapi_app.py)
 >
 > Full FastAPI web application
 
-> **[Basic Send](https://github.com/resend/resend-examples/blob/main/python-resend-examples/examples/basic_send.py)**
+> [card] [Basic Send](https://github.com/resend/resend-examples/blob/main/python-resend-examples/examples/basic_send.py)
 >
 > Basic email sending
 
-> **[Attachments](https://github.com/resend/resend-examples/blob/main/python-resend-examples/examples/with_attachments.py)**
+> [card] [Attachments](https://github.com/resend/resend-examples/blob/main/python-resend-examples/examples/with_attachments.py)
 >
 > Send emails with file attachments
 
-> **[Templates](https://github.com/resend/resend-examples/blob/main/python-resend-examples/examples/with_template.py)**
+> [card] [Templates](https://github.com/resend/resend-examples/blob/main/python-resend-examples/examples/with_template.py)
 >
 > Send emails using Resend hosted templates
 
-> **[Scheduling](https://github.com/resend/resend-examples/blob/main/python-resend-examples/examples/scheduled_send.py)**
+> [card] [Scheduling](https://github.com/resend/resend-examples/blob/main/python-resend-examples/examples/scheduled_send.py)
 >
 > Schedule emails for future delivery
 
-> **[Audiences](https://github.com/resend/resend-examples/blob/main/python-resend-examples/examples/audiences.py)**
+> [card] [Audiences](https://github.com/resend/resend-examples/blob/main/python-resend-examples/examples/audiences.py)
 >
 > Manage contacts and audiences
 
-> **[Domains](https://github.com/resend/resend-examples/blob/main/python-resend-examples/examples/domains.py)**
+> [card] [Domains](https://github.com/resend/resend-examples/blob/main/python-resend-examples/examples/domains.py)
 >
 > Create and manage sending domains
 
-> **[Inbound Webhooks](https://github.com/resend/resend-examples/blob/main/python-resend-examples/examples/inbound.py)**
+> [card] [Inbound Webhooks](https://github.com/resend/resend-examples/blob/main/python-resend-examples/examples/inbound.py)
 >
 > Receive and process inbound emails
 
-> **[Double Opt-in](https://github.com/resend/resend-examples/blob/main/python-resend-examples/examples/double_optin_subscribe.py)**
+> [card] [Double Opt-in](https://github.com/resend/resend-examples/blob/main/python-resend-examples/examples/double_optin_subscribe.py)
 >
 > Double opt-in subscription flow

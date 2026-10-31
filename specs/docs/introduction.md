@@ -24,46 +24,46 @@ Then, you'll be ready to send [both types of emails](https://resend.com/docs/exp
 
 Learn how to get Resend set up in your project.
 
-> **[Node.js Quickstart](https://resend.com/docs/send-with-nodejs.md)**
+> [card] [Node.js Quickstart](https://resend.com/docs/send-with-nodejs.md)
 
-> **[Next.js Quickstart](https://resend.com/docs/send-with-nextjs.md)**
+> [card] [Next.js Quickstart](https://resend.com/docs/send-with-nextjs.md)
 
-> **[Express Quickstart](https://resend.com/docs/send-with-express.md)**
+> [card] [Express Quickstart](https://resend.com/docs/send-with-express.md)
 
-> **[PHP Quickstart](https://resend.com/docs/send-with-php.md)**
+> [card] [PHP Quickstart](https://resend.com/docs/send-with-php.md)
 
-> **[Laravel Quickstart](https://resend.com/docs/send-with-laravel.md)**
+> [card] [Laravel Quickstart](https://resend.com/docs/send-with-laravel.md)
 
-> **[Python Quickstart](https://resend.com/docs/send-with-python.md)**
+> [card] [Python Quickstart](https://resend.com/docs/send-with-python.md)
 
-> **[Ruby Quickstart](https://resend.com/docs/send-with-ruby.md)**
+> [card] [Ruby Quickstart](https://resend.com/docs/send-with-ruby.md)
 
-> **[Rails Quickstart](https://resend.com/docs/send-with-rails.md)**
+> [card] [Rails Quickstart](https://resend.com/docs/send-with-rails.md)
 
-> **[Go Quickstart](https://resend.com/docs/send-with-go.md)**
+> [card] [Go Quickstart](https://resend.com/docs/send-with-go.md)
 
-> **[Rust Quickstart](https://resend.com/docs/send-with-rust.md)**
+> [card] [Rust Quickstart](https://resend.com/docs/send-with-rust.md)
 
-> **[Elixir Quickstart](https://resend.com/docs/send-with-elixir.md)**
+> [card] [Elixir Quickstart](https://resend.com/docs/send-with-elixir.md)
 
-> **[Java Quickstart](https://resend.com/docs/send-with-java.md)**
+> [card] [Java Quickstart](https://resend.com/docs/send-with-java.md)
 
-> **[.NET Quickstart](https://resend.com/docs/send-with-dotnet.md)**
+> [card] [.NET Quickstart](https://resend.com/docs/send-with-dotnet.md)
 
-> **[CLI Quickstart](https://resend.com/docs/cli-quickstart.md)**
+> [card] [CLI Quickstart](https://resend.com/docs/cli-quickstart.md)
 
 ## Explore
 
 Discover the full range of features and capabilities.
 
-> **[Emails](dashboard/emails)**
+> [card] [Emails](dashboard/emails)
 >
 > Visualize all the activity in your account.
 
-> **[Domains](https://resend.com/docs/dashboard/domains/introduction.md)**
+> [card] [Domains](https://resend.com/docs/dashboard/domains/introduction.md)
 >
 > Ensure deliverability of your emails.
 
-> **[Webhooks](https://resend.com/docs/webhooks/introduction.md)**
+> [card] [Webhooks](https://resend.com/docs/webhooks/introduction.md)
 >
 > Notify your application about email events.

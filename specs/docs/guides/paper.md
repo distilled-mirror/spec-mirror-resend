@@ -34,50 +34,50 @@ Before you start, make sure you have:
 
 Paper Desktop runs a local MCP server at `http://127.0.0.1:29979/mcp` whenever a file is open.
 
-**Claude Code**
+> [tab] Claude Code
+>
+> Install the official Paper plugin (recommended):
+>
+> ```bash theme={"theme":{"light":"github-light","dark":"vesper"}}
+> /plugin marketplace add paper-design/agent-plugins
+> /plugin install paper-desktop@paper
+> ```
+>
+> Or add the MCP server directly:
+>
+> ```bash theme={"theme":{"light":"github-light","dark":"vesper"}}
+> claude mcp add paper --transport http http://127.0.0.1:29979/mcp --scope user
+> ```
 
-Install the official Paper plugin (recommended):
+> [tab] Codex
+>
+> Install the official Paper plugin (recommended):
+>
+> ```bash theme={"theme":{"light":"github-light","dark":"vesper"}}
+> codex plugin marketplace add paper-design/agent-plugins
+> /plugins
+> ```
+>
+> Select the `paper-design/agent-plugins` marketplace and install the `paper-desktop` plugin.
 
-```bash theme={"theme":{"light":"github-light","dark":"vesper"}}
-/plugin marketplace add paper-design/agent-plugins
-/plugin install paper-desktop@paper
-```
+> [tab] Cursor
+>
+> Run `/add-plugin paper-desktop` in the agent panel, or search for "Paper" in the [Cursor Marketplace](https://cursor.com/marketplace/paper).
 
-Or add the MCP server directly:
-
-```bash theme={"theme":{"light":"github-light","dark":"vesper"}}
-claude mcp add paper --transport http http://127.0.0.1:29979/mcp --scope user
-```
-
-**Codex**
-
-Install the official Paper plugin (recommended):
-
-```bash theme={"theme":{"light":"github-light","dark":"vesper"}}
-codex plugin marketplace add paper-design/agent-plugins
-/plugins
-```
-
-Select the `paper-design/agent-plugins` marketplace and install the `paper-desktop` plugin.
-
-**Cursor**
-
-Run `/add-plugin paper-desktop` in the agent panel, or search for "Paper" in the [Cursor Marketplace](https://cursor.com/marketplace/paper).
-
-**Claude Desktop**
-
-Open Claude Desktop settings > "Developer" tab > "Edit Config".
-
-```json theme={"theme":{"light":"github-light","dark":"vesper"}}
-{
-  "mcpServers": {
-    "paper": {
-      "command": "npx",
-      "args": ["mcp-remote", "http://127.0.0.1:29979/mcp"]
-    }
-  }
-}
-```
+> [tab] Claude Desktop
+>
+> Open Claude Desktop settings > "Developer" tab > "Edit Config".
+>
+> ```json theme={"theme":{"light":"github-light","dark":"vesper"}}
+> {
+>   "mcpServers": {
+>     "paper": {
+>       "command": "npx",
+>       "args": ["mcp-remote", "http://127.0.0.1:29979/mcp"]
+>     }
+>   }
+> }
+> ```
 
 See the [Paper MCP docs](https://paper.design/docs/mcp) for other clients.
 
@@ -85,41 +85,41 @@ See the [Paper MCP docs](https://paper.design/docs/mcp) for other clients.
 
 Connect to Resend's hosted MCP server at `https://mcp.resend.com/mcp`. When you connect, your client opens a browser window to log in to Resend and approve access.
 
-**Claude Code**
+> [tab] Claude Code
+>
+> ```bash theme={"theme":{"light":"github-light","dark":"vesper"}}
+> claude mcp add --transport http resend https://mcp.resend.com/mcp
+> ```
+>
+> Then run `/mcp` in Claude Code and select **resend** to complete the OAuth login.
 
-```bash theme={"theme":{"light":"github-light","dark":"vesper"}}
-claude mcp add --transport http resend https://mcp.resend.com/mcp
-```
+> [tab] Codex
+>
+> ```bash theme={"theme":{"light":"github-light","dark":"vesper"}}
+> codex mcp add resend --url https://mcp.resend.com/mcp
+> ```
 
-Then run `/mcp` in Claude Code and select **resend** to complete the OAuth login.
+> [tab] Cursor
+>
+> Open the command palette and choose "Cursor Settings" > "MCP" > "Add new global MCP server".
+>
+> ```json theme={"theme":{"light":"github-light","dark":"vesper"}}
+> {
+>   "mcpServers": {
+>     "resend": {
+>       "url": "https://mcp.resend.com/mcp"
+>     }
+>   }
+> }
+> ```
 
-**Codex**
-
-```bash theme={"theme":{"light":"github-light","dark":"vesper"}}
-codex mcp add resend --url https://mcp.resend.com/mcp
-```
-
-**Cursor**
-
-Open the command palette and choose "Cursor Settings" > "MCP" > "Add new global MCP server".
-
-```json theme={"theme":{"light":"github-light","dark":"vesper"}}
-{
-  "mcpServers": {
-    "resend": {
-      "url": "https://mcp.resend.com/mcp"
-    }
-  }
-}
-```
-
-**Claude Desktop**
-
-Open **Settings** > **Connectors** > **Add custom connector** and enter:
-
-```
-https://mcp.resend.com/mcp
-```
+> [tab] Claude Desktop
+>
+> Open **Settings** > **Connectors** > **Add custom connector** and enter:
+>
+> ```
+> https://mcp.resend.com/mcp
+> ```
 
 For more clients and configuration options, including running the server locally, see the [MCP Server overview](https://resend.com/docs/mcp-server.md).
 
