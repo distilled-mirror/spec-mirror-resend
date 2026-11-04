@@ -54,21 +54,30 @@ The plain-text body.
 
 **attachments** `array | null`
 
-Files to store on the draft, up to 25 MB in total. Drafts do not accept
-`path` or `content_id`.
+Files to store on the draft, up to 25 MB in total, downloaded files
+included. All `path` downloads must finish within 20 seconds together.
+Drafts do not accept `content_id`.
 
 **properties**
 
-**content** `buffer | string` *required*
+**content** `buffer | string`
 
-Content of an attached file, passed as a buffer or Base64 string.
+Content of an attached file, passed as a buffer or Base64 string. Either
+`content` or `path` must be provided.
+
+**path** `string`
+
+Path where the attachment file is hosted. Resend downloads it when the
+draft is saved, so a URL that cannot be downloaded returns an error. When
+both `content` and `path` are sent, `content` is used.
 
 **filename** `string` *required*
 
 Name of attached file.
 
 Content type for the attachment. Must be a valid MIME type, such as
-`application/pdf`.
+`application/pdf`. Required with `content`. With `path`, it defaults to
+the type of the downloaded file.
 
 The Thread ID to reply in. Must be sent with `reply_to_email_id`.
 

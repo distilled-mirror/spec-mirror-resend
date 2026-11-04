@@ -358,7 +358,7 @@ resend inboxes drafts create \
 
 In the composer, click **Attach files** or drag files onto the message. Attachment content can total up to 25 MB per draft. Images dropped into the body of the message are inserted inline.
 
-Via the API, pass files in the `attachments` array with `content` as a buffer or Base64 encoded string, a `filename` and a `content_type`. Drafts do not accept attachments by `path`.
+Via the API, pass files in the `attachments` array with `content` as a buffer or Base64 encoded string, a `filename` and a `content_type`. You can also pass a `path` URL instead of `content`. The file is downloaded when the request is made and stored on the draft.
 
 ## Write with AI
 
