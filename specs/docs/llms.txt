@@ -90,6 +90,7 @@
 - [Get Email Content](https://resend.com/docs/dashboard/receiving/get-email-content.md): Get the body and headers of a received email.
 - [Forward Received Emails](https://resend.com/docs/dashboard/receiving/forward-emails.md): Forward Received emails to another email address.
 - [Reply to Receiving Emails](https://resend.com/docs/dashboard/receiving/reply-to-emails.md): Reply to Receiving emails in the same thread.
+- [Inboxes](https://resend.com/docs/dashboard/inboxes/introduction.md): An introduction to sending, receiving, and managing email conversations with Inboxes.
 - [Sending Broadcasts](https://resend.com/docs/dashboard/broadcasts/introduction.md): An introduction to sending bulk marketing emails with Resend.
 - [Manage Broadcasts](https://resend.com/docs/dashboard/broadcasts/manage-broadcasts.md): Learn how to view, update, and delete your Broadcasts.
 - [Compose and send with the Broadcast editor](https://resend.com/docs/dashboard/broadcasts/editor.md): Learn how to write and send your Broadcasts in the Dashboard editor
@@ -167,13 +168,6 @@
 - [inbox.draft.updated](https://resend.com/docs/webhooks/inboxes/draft-updated.md): Received when a draft is edited.
 - [inbox.draft.sent](https://resend.com/docs/webhooks/inboxes/draft-sent.md): Received when a draft is sent.
 - [inbox.draft.deleted](https://resend.com/docs/webhooks/inboxes/draft-deleted.md): Received when a draft is discarded.
-- [Inboxes](https://resend.com/docs/dashboard/inboxes/introduction.md): An introduction to sending, receiving, and managing email conversations with Inboxes.
-- [Creating Inboxes](https://resend.com/docs/dashboard/inboxes/create-inboxes.md): Learn how to create inboxes in Resend.
-- [Managing Inboxes](https://resend.com/docs/dashboard/inboxes/manage-inboxes.md): Learn how to rename, update and delete inboxes in Resend.
-- [Managing Threads](https://resend.com/docs/dashboard/inboxes/threads.md): Learn how to read, organize, search, and respond to threads.
-- [Inbox Drafts](https://resend.com/docs/dashboard/inboxes/drafts.md): Learn how to create, update, and send draft emails in the inbox.
-- [Manage Labels](https://resend.com/docs/dashboard/inboxes/labels.md): Learn how to organize threads with inbox labels.
-- [Inbox Agent](https://resend.com/docs/dashboard/inboxes/agent.md): Learn how to configure and use the built-in Inbox agent.
 - [Resend Forge](https://resend.com/docs/forge.md): Send and receive your email through Resend's new infrastructure.
 - [Official SDKs](https://resend.com/docs/sdks.md): Open source client libraries for your favorite platforms.
 - [Resend CLI](https://resend.com/docs/cli.md): The official command-line tool for Resend. Send emails, manage your account, and develop locally from the terminal.
@@ -212,6 +206,12 @@
 - [What attachment types are not supported?](https://resend.com/docs/knowledge-base/what-attachment-types-are-not-supported.md): Learn which file attachment extensions you can't send.
 - [How to fix CORS issues](https://resend.com/docs/knowledge-base/how-do-i-fix-cors-issues.md): Information on recommended options to avoid CORS errors when sending emails.
 - [How to cancel a Broadcast](https://resend.com/docs/knowledge-base/how-do-i-cancel-a-broadcast.md): Cancel a scheduled Broadcast or stop one that is still sending.
+- [Creating Inboxes](https://resend.com/docs/guides/inboxes/create-inboxes.md): Learn how to create inboxes in Resend.
+- [Managing Inboxes](https://resend.com/docs/guides/inboxes/manage-inboxes.md): Learn how to rename, update and delete inboxes in Resend.
+- [Managing Threads](https://resend.com/docs/guides/inboxes/threads.md): Learn how to read, organize, search, and respond to threads.
+- [Inbox Drafts](https://resend.com/docs/guides/inboxes/drafts.md): Learn how to create, update, and send draft emails in the inbox.
+- [Manage Labels](https://resend.com/docs/guides/inboxes/labels.md): Learn how to organize threads with inbox labels.
+- [Inbox Agent](https://resend.com/docs/guides/inboxes/agent.md): Learn how to configure and use the built-in Inbox agent.
 - [Why are my emails landing on the Suppression List?](https://resend.com/docs/knowledge-base/why-are-my-emails-landing-on-the-suppression-list.md): Learn why your emails land on the Suppression List and how to remove them.
 - [Can You Receive Emails with Resend?](https://resend.com/docs/knowledge-base/how-can-i-receive-emails-with-resend.md): Receive emails with webhooks and process content, attachments, forwarding, and replies.
 - [What if an email says delivered but the recipient has not received it?](https://resend.com/docs/knowledge-base/what-if-an-email-says-delivered-but-the-recipient-has-not-received-it.md): Learn the steps to take when an email is delivered, but the recipient does not receive it.
@@ -235,6 +235,7 @@
 - [Laravel Cloud Integration](https://resend.com/docs/guides/laravel-cloud-integration.md): Connect a Resend account to Laravel Cloud and send email from your environments.
 - [Send emails with n8n and Resend](https://resend.com/docs/knowledge-base/n8n-integration.md): Learn how to install and use the official Resend node for n8n to send emails, manage contacts and inboxes, handle webhooks, and more.
 - [Send emails with Attio and Resend](https://resend.com/docs/guides/attio-integration.md): Connect Resend to Attio to create contacts, add people to segments, and send emails from workflows.
+- [Show Resend metrics on TRMNL](https://resend.com/docs/guides/trmnl-integration.md): Add the Resend plugin to your TRMNL e-ink display to see email volume and deliverability at a glance.
 - [Send emails with Devin and Resend](https://resend.com/docs/guides/devin.md): Learn how to install the Resend MCP server in Devin.ai so your agent can send emails, manage contacts, and run broadcasts.
 - [Turn Paper designs into Resend emails](https://resend.com/docs/guides/paper.md): Learn how to combine the Paper MCP server and the Resend MCP server so your agent can turn a Paper design into a template or broadcast in your Resend account.
 - [Resend CLI for AI Agents](https://resend.com/docs/cli-agents.md): How to use the Resend CLI in AI agent workflows.

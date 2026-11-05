@@ -16,11 +16,11 @@ A thread is a conversation within an inbox. Emails sent and received in reply to
 * `trash`: The thread is scheduled for deletion in 30 days.
 * `sent`: Threads whose messages are all outbound.
 
-In the Dashboard, the folder switcher also shows a **Drafts** folder that lists your unsent [drafts](https://resend.com/docs/dashboard/inboxes/drafts.md). The **Inbox** folder shows a count of unread threads.
+In the Dashboard, the folder switcher also shows a **Drafts** folder that lists your unsent [drafts](https://resend.com/docs/guides/inboxes/drafts.md). The **Inbox** folder shows a count of unread threads.
 
 ## View threads
 
-Select an inbox from the [Inboxes dashboard](https://resend.com/inboxes) to see its threads, most recently active first. Use the folder switcher to change folders, or select a label in the left rail to see only the threads with that [label](https://resend.com/docs/dashboard/inboxes/labels.md).
+Select an inbox from the [Inboxes dashboard](https://resend.com/inboxes) to see its threads, most recently active first. Use the folder switcher to change folders, or select a label in the left rail to see only the threads with that [label](https://resend.com/docs/guides/inboxes/labels.md).
 
 Select a thread to open it and read every email in the conversation. Opening a thread marks it as read. Use the **Next email** and **Previous email** buttons, or the <kbd>↓</kbd> and <kbd>↑</kbd> keys, to move between threads.
 
@@ -410,8 +410,8 @@ You can act on a thread from the thread view, from the actions that appear when 
 * **Archive** moves the thread to the archive folder.
 * **Report spam** moves the thread to the spam folder. From the spam folder, use **Report not spam** to move it back.
 * **Delete** moves the thread to the trash. Threads in the trash are scheduled for deletion in 30 days.
-* **Move to** moves the thread to another folder, or applies a [label](https://resend.com/docs/dashboard/inboxes/labels.md), and archives the thread.
-* **Label as** adds or removes [labels](https://resend.com/docs/dashboard/inboxes/labels.md).
+* **Move to** moves the thread to another folder, or applies a [label](https://resend.com/docs/guides/inboxes/labels.md), and archives the thread.
+* **Label as** adds or removes [labels](https://resend.com/docs/guides/inboxes/labels.md).
 
 Each move shows a notification with an **Undo** button. To restore a thread from the archive, spam or trash, use **Move to** and choose **Inbox**.
 
@@ -704,11 +704,11 @@ resend inboxes threads delete \
 
 In the Dashboard, you can assign a thread to a member of your team so everyone knows who is handling it. Hover over a thread in the list and click **Assign thread**, or press <kbd>A</kbd>, then search for a teammate. Choose **Unassigned** to remove the assignment.
 
-The [inbox agent](https://resend.com/docs/dashboard/inboxes/agent.md) can also assign threads based on your instructions.
+The [inbox agent](https://resend.com/docs/guides/inboxes/agent.md) can also assign threads based on your instructions.
 
 ## Reply and forward
 
-While viewing a thread, use the **Reply**, **Reply all** or **Forward** buttons at the bottom of the thread, or the **More** menu on an individual email. The reply opens inline beneath the email and is saved as a [draft](https://resend.com/docs/dashboard/inboxes/drafts.md) as you write. Click **Send** or press <kbd>⌘</kbd> + <kbd>Enter</kbd> to send it.
+While viewing a thread, use the **Reply**, **Reply all** or **Forward** buttons at the bottom of the thread, or the **More** menu on an individual email. The reply opens inline beneath the email and is saved as a [draft](https://resend.com/docs/guides/inboxes/drafts.md) as you write. Click **Send** or press <kbd>⌘</kbd> + <kbd>Enter</kbd> to send it.
 
 Replies are sent from the inbox address and are threaded for the recipient. You can also [reply to](https://resend.com/docs/api-reference/inboxes/reply-thread-email.md) or [forward](https://resend.com/docs/api-reference/inboxes/forward-thread-email.md) an email via the API, SDKs, or CLI.
 

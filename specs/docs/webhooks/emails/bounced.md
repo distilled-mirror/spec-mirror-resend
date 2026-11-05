@@ -41,7 +41,9 @@ Unique identifier for the specific email
 
 **message\_id** `string`
 
-RFC Message-ID header value for the email
+RFC Message-ID header value for the email. Not included on `email.scheduled`,
+`email.failed` and `email.suppressed` events, because the email has not been
+sent when they fire
 
 **from** `string`
 

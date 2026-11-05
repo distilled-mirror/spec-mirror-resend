@@ -17,7 +17,7 @@ Inboxes are useful for:
 
 ## How Inboxes work
 
-Inboxes mirror the familiar email inbox structure, using [**threads**](https://resend.com/docs/dashboard/inboxes/threads.md), [**labels**](https://resend.com/docs/dashboard/inboxes/labels.md), and [**drafts**](https://resend.com/docs/dashboard/inboxes/drafts.md) to organize your conversations. `inbox`, `sent`, `archive`, `trash`, and `spam` folders are built in to your Resend Inbox.
+Inboxes mirror the familiar email inbox structure, using [**threads**](https://resend.com/docs/guides/inboxes/threads.md), [**labels**](https://resend.com/docs/guides/inboxes/labels.md), and [**drafts**](https://resend.com/docs/guides/inboxes/drafts.md) to organize your conversations. `inbox`, `sent`, `archive`, `trash`, and `spam` folders are built in to your Resend Inbox.
 
 > [!NOTE]
 >
@@ -44,7 +44,7 @@ With Resend Inboxes you can:
 
 ## Prerequisites
 
-* A [verified domain with receiving enabled](https://resend.com/docs/dashboard/receiving/custom-domains.md). If you are unable to configure your custom domain to receive email, then you must configure [Inbox forwarding](https://resend.com/docs/dashboard/inboxes/create-inboxes.md#forward-an-existing-address) when you create your Inbox.
+* A [verified domain with receiving enabled](https://resend.com/docs/dashboard/receiving/custom-domains.md). If you are unable to configure your custom domain to receive email, then you must configure [Inbox forwarding](https://resend.com/docs/guides/inboxes/create-inboxes.md#forward-an-existing-address) when you create your Inbox.
 
 ## Quickstart
 
@@ -72,26 +72,26 @@ The reply goes out from the inbox address and stays in the same thread.
 
 ## Related Guides
 
-> [card] [Create inboxes](https://resend.com/docs/dashboard/inboxes/create-inboxes.md)
+> [card] [Create inboxes](https://resend.com/docs/guides/inboxes/create-inboxes.md)
 >
 > Create an address on a verified domain, or forward an existing address.
 
-> [card] [Manage inboxes](https://resend.com/docs/dashboard/inboxes/manage-inboxes.md)
+> [card] [Manage inboxes](https://resend.com/docs/guides/inboxes/manage-inboxes.md)
 >
 > Rename, update, and delete inboxes.
 
-> [card] [Manage threads](https://resend.com/docs/dashboard/inboxes/threads.md)
+> [card] [Manage threads](https://resend.com/docs/guides/inboxes/threads.md)
 >
 > Read, search, and organize conversations, and reply to or forward emails.
 
-> [card] [Drafts](https://resend.com/docs/dashboard/inboxes/drafts.md)
+> [card] [Drafts](https://resend.com/docs/guides/inboxes/drafts.md)
 >
 > Write a message now and send it later.
 
-> [card] [Labels](https://resend.com/docs/dashboard/inboxes/labels.md)
+> [card] [Labels](https://resend.com/docs/guides/inboxes/labels.md)
 >
 > Tag threads with colored labels to keep them organized.
 
-> [card] [Inbox agent](https://resend.com/docs/dashboard/inboxes/agent.md)
+> [card] [Inbox agent](https://resend.com/docs/guides/inboxes/agent.md)
 >
 > Let the built-in agent triage incoming threads from your instructions.

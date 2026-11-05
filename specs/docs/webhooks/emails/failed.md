@@ -43,7 +43,9 @@ Unique identifier for the specific email
 
 **message\_id** `string`
 
-RFC Message-ID header value for the email
+RFC Message-ID header value for the email. Not included on `email.scheduled`,
+`email.failed` and `email.suppressed` events, because the email has not been
+sent when they fire
 
 **from** `string`
 
@@ -92,7 +94,6 @@ Reason for the email failure (e.g., `reached_daily_quota`)
     "broadcast_id": "8b146471-e88e-4322-86af-016cd36fd216",
     "created_at": "2026-11-22T23:41:11.894Z",
     "email_id": "56761188-7520-42d8-8898-ff6fc54ce618",
-    "message_id": "<111-222-333@email.example.com>",
     "from": "Acme <onboarding@resend.dev>",
     "to": ["delivered@resend.dev"],
     "subject": "Sending this example",

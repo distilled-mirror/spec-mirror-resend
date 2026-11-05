@@ -332,13 +332,13 @@ resend inboxes threads labels add \
   --labels 7f9c1d2e-4a6b-4c3d-8e15-9b0a7c6d5e34
 ```
 
-The [inbox agent](https://resend.com/docs/dashboard/inboxes/agent.md) can also apply your existing labels to threads based on your instructions.
+The [inbox agent](https://resend.com/docs/guides/inboxes/agent.md) can also apply your existing labels to threads based on your instructions.
 
 ## Filter threads by label
 
 In the Dashboard, select a label in the left rail or from the folder switcher to see only the threads with that label. You can also click a label on a thread, or use the `label:` operator in search.
 
-Labels also power the **Grouped list** and card-based [inbox views](https://resend.com/docs/dashboard/inboxes/manage-inboxes.md#edit-an-inbox), which group threads by label.
+Labels also power the **Grouped list** and card-based [inbox views](https://resend.com/docs/guides/inboxes/manage-inboxes.md#edit-an-inbox), which group threads by label.
 
 To filter threads by label via the API, pass a comma-separated list of label IDs in the `labels` parameter when you [list](https://resend.com/docs/api-reference/inboxes/list-threads.md) or [search](https://resend.com/docs/api-reference/inboxes/search-threads.md) threads.
 

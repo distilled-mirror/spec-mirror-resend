@@ -34,7 +34,6 @@ Existing list endpoints can optionally return paginated results:
 * [List Segments](https://resend.com/docs/api-reference/segments/list-segments.md)
 * [List Contacts](https://resend.com/docs/api-reference/contacts/list-contacts.md)
 * [List Receiving Emails](https://resend.com/docs/api-reference/emails/list-received-emails.md)
-* [List Receiving Email Attachments](https://resend.com/docs/api-reference/emails/list-received-email-attachments.md)
 
 > [!NOTE]
 >
@@ -44,6 +43,7 @@ Existing list endpoints can optionally return paginated results:
 Newer list endpoints always return paginated results:
 
 * [List Emails](https://resend.com/docs/api-reference/emails/list-emails.md)
+* [List Receiving Email Attachments](https://resend.com/docs/api-reference/emails/list-received-email-attachments.md)
 * [List Templates](https://resend.com/docs/api-reference/templates/list-templates.md)
 * [List Topics](https://resend.com/docs/api-reference/topics/list-topics.md)
 * [List Inboxes](https://resend.com/docs/api-reference/inboxes/list-inboxes.md)

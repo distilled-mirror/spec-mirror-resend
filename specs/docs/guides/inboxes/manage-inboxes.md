@@ -166,11 +166,11 @@ In the Dashboard, you can also update how you view threads in the inbox. You can
 
 ## Inbox agent
 
-In the settings menu, under **Customize**, is the configuration for the built-in agent for this inbox. Each inbox has an agent that can take instructions, perform actions and draft responses. You can find more details about this agent in [Inbox Agent](https://resend.com/docs/dashboard/inboxes/agent.md).
+In the settings menu, under **Customize**, is the configuration for the built-in agent for this inbox. Each inbox has an agent that can take instructions, perform actions and draft responses. You can find more details about this agent in [Inbox Agent](https://resend.com/docs/guides/inboxes/agent.md).
 
 ## Inbox labels
 
-In the settings menu, under **Labels**, you can add, edit and remove labels that can be used to organize threads. Find more details about how to use labels under [Inbox Labels](https://resend.com/docs/dashboard/inboxes/labels.md).
+In the settings menu, under **Labels**, you can add, edit and remove labels that can be used to organize threads. Find more details about how to use labels under [Inbox Labels](https://resend.com/docs/guides/inboxes/labels.md).
 
 ## Delete an inbox
 

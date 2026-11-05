@@ -362,7 +362,7 @@ Via the API, pass files in the `attachments` array with `content` as a buffer or
 
 ## Write with AI
 
-Type <kbd>/</kbd> in the body of a message and choose **Start from a prompt...** to have AI write the message for you. Describe what you want to say, and the message is written in the tone of voice set for the [inbox agent](https://resend.com/docs/dashboard/inboxes/agent.md), using the rest of the thread as context. Once there is content in the message you can prompt again to change it.
+Type <kbd>/</kbd> in the body of a message and choose **Start from a prompt...** to have AI write the message for you. Describe what you want to say, and the message is written in the tone of voice set for the [inbox agent](https://resend.com/docs/guides/inboxes/agent.md), using the rest of the thread as context. Once there is content in the message you can prompt again to change it.
 
 ## View drafts
 
@@ -743,7 +743,7 @@ resend inboxes drafts send \
 
 ## Drafts from the inbox agent
 
-If the [inbox agent](https://resend.com/docs/dashboard/inboxes/agent.md) is allowed to draft replies or forward threads, it creates drafts for you to review. The agent never sends a draft itself. When you open the thread, the draft appears in the reply composer with a badge showing it was drafted by the agent. Edit it if needed, then send it.
+If the [inbox agent](https://resend.com/docs/guides/inboxes/agent.md) is allowed to draft replies or forward threads, it creates drafts for you to review. The agent never sends a draft itself. When you open the thread, the draft appears in the reply composer with a badge showing it was drafted by the agent. Edit it if needed, then send it.
 
 ## Discard a draft
 
