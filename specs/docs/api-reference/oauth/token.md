@@ -15,11 +15,12 @@ Access tokens are JWTs signed with `ES256`, valid for 900 seconds. Refresh token
 How the client proves its identity depends on the `token_endpoint_auth_method` it [registered](https://resend.com/docs/api-reference/oauth/register.md#param-token-endpoint-auth-method) with:
 
 * **Public clients (`none`)** don't send a secret. PKCE (`code_verifier`) is the only proof. This is the default and covers native, CLI, and other clients that can't keep a secret.
-* **Confidential clients** additionally present their `client_secret`, on top of PKCE:
+* **Confidential clients** additionally authenticate, on top of PKCE:
   * `client_secret_basic`: send `client_id` and `client_secret` in the HTTP `Authorization: Basic` header (each URL-encoded, joined with `:`, base64-encoded). With this method `client_id` can be omitted from the body.
   * `client_secret_post`: send `client_secret` as a body parameter alongside `client_id`.
+  * `private_key_jwt`: send a JWT signed with the client's private key as `client_assertion`, with `client_assertion_type` set to `urn:ietf:params:oauth:client-assertion-type:jwt-bearer`. With this method `client_id` can be omitted from the body. See [`private_key_jwt`](https://resend.com/docs/guides/building-a-resend-oauth-client#private-key-jwt) for the claims the JWT must carry.
 
-A client must use exactly one mechanism. Sending both a Basic header and a body `client_secret` fails with `invalid_request`.
+A client must use exactly one mechanism. Sending more than one, such as a Basic header and a body `client_secret`, fails with `invalid_request`.
 
 ## PKCE
 
@@ -55,13 +56,23 @@ Must be `"authorization_code"`.
 **client\_id** `string`
 
 Required, except with `client_secret_basic`, where the `Authorization` header
-already carries it.
+already carries it, and with `private_key_jwt`, where the assertion does.
 
 **client\_secret** `string`
 
 Required for a confidential client using `client_secret_post`. Omit for public
 clients and for `client_secret_basic` (send the secret in the `Authorization`
 header instead). See [Client authentication](#client-authentication).
+
+**client\_assertion\_type** `string`
+
+Required with `private_key_jwt`. Must be
+`urn:ietf:params:oauth:client-assertion-type:jwt-bearer`.
+
+**client\_assertion** `string`
+
+Required with `private_key_jwt`: a JWT signed with the client's private key.
+See [Client authentication](#client-authentication).
 
 **code** `string` *required*
 
@@ -97,6 +108,12 @@ curl -X POST 'https://api.resend.com/oauth/token' \
      -d 'grant_type=authorization_code&client_id=550e8400-e29b-41d4-a716-446655440000&client_secret=CLIENT_SECRET&code=AUTHORIZATION_CODE&redirect_uri=http%3A%2F%2F127.0.0.1%3A49152%2Foauth%2Fcallback&code_verifier=CODE_VERIFIER_VALUE'
 ```
 
+```bash Private Key JWT theme={"theme":{"light":"github-light","dark":"vesper"}}
+curl -X POST 'https://api.resend.com/oauth/token' \
+     -H 'Content-Type: application/x-www-form-urlencoded' \
+     -d 'grant_type=authorization_code&client_assertion_type=urn%3Aietf%3Aparams%3Aoauth%3Aclient-assertion-type%3Ajwt-bearer&client_assertion=SIGNED_JWT&code=AUTHORIZATION_CODE&redirect_uri=https%3A%2F%2Fexample.com%2Foauth%2Fcallback&code_verifier=CODE_VERIFIER_VALUE'
+```
+
 ```json Response theme={"theme":{"light":"github-light","dark":"vesper"}}
 {
   "access_token": "eyJhbGciOiJFUzI1NiIsImtpZCI6Im9hdXRoX2tleSIsInR5cCI6ImF0K2p3dCJ9...",
@@ -116,13 +133,23 @@ Must be `"refresh_token"`.
 **client\_id** `string`
 
 Required, except with `client_secret_basic`, where the `Authorization` header
-already carries it.
+already carries it, and with `private_key_jwt`, where the assertion does.
 
 **client\_secret** `string`
 
 Required for a confidential client using `client_secret_post`. Omit for public
 clients and for `client_secret_basic`. See [Client
 authentication](#client-authentication).
+
+**client\_assertion\_type** `string`
+
+Required with `private_key_jwt`. Must be
+`urn:ietf:params:oauth:client-assertion-type:jwt-bearer`.
+
+**client\_assertion** `string`
+
+Required with `private_key_jwt`: a JWT signed with the client's private key.
+See [Client authentication](#client-authentication).
 
 **refresh\_token** `string` *required*
 
@@ -151,8 +178,9 @@ curl -X POST 'https://api.resend.com/oauth/token' \
 
 | Status | `error` | When |
 | - | - | - |
-| `400` | `invalid_request` | A required field is missing or malformed, or the client sent credentials via more than one mechanism (both a Basic header and a body `client_secret`). |
+| `400` | `invalid_request` | A required field is missing or malformed, or the client sent credentials via more than one mechanism (for example, both a Basic header and a body `client_secret`). |
 | `400` | `invalid_scope` | Refresh requests a scope outside what the grant already has. |
 | `400` | `invalid_grant` | The code/refresh token is invalid, expired, already used, or reused after rotation (which also revokes the grant). Also returned when PKCE verification fails or `redirect_uri` doesn't match. |
-| `401` | `invalid_client` | Unknown or disabled `client_id`, or a confidential client failed authentication (missing or wrong `client_secret`, or `client_id` in the Basic header doesn't match the request). |
+| `401` | `invalid_client` | Unknown or disabled `client_id`, or a confidential client failed authentication (missing or wrong `client_secret`, `client_id` in the Basic header doesn't match the request, a missing, invalid, expired, or replayed `client_assertion`, or a key set that can't be used). |
 | `400` | `unauthorized_client` | The client isn't registered for the grant type it's using. |
+| `503` | `temporarily_unavailable` | A `private_key_jwt` client's key set host timed out or answered with `429` or `5xx`, or the assertion couldn't be checked for replay. Retry the request. |

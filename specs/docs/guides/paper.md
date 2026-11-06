@@ -135,8 +135,12 @@ Design your email as an artboard in Paper. A few tips for designs that translate
 > [!TIP]
 >
 > Where you want personalization, write the variable directly into the design
-> copy, like `Hi {{{NAME|there}}}`. Your agent will preserve it when
-> creating the template or broadcast.
+> copy. For a template, use `{{{NAME}}}` and have your agent declare `NAME` as
+> a variable with a
+> [fallback value](https://resend.com/docs/dashboard/templates/template-variables.md#fallback-values).
+> For a Broadcast, use a contact property with an inline fallback, like
+> `{{{contact.first_name|there}}}` (see
+> [Personalize your content](https://resend.com/docs/dashboard/broadcasts/editor.md#personalize-your-content)).
 
 **4. Ask your agent to create an email**
 
@@ -147,7 +151,8 @@ To create a template, select an artboard in Paper and with both servers connecte
 ```text theme={"theme":{"light":"github-light","dark":"vesper"}}
 Look at the selected artboard in Paper and recreate it as an email template
 in Resend. Convert the design to email-safe HTML (inline styles, table-based
-layout) using the Resend agent skills. Provide a name, subject, and preview text for the template that fits the content. Publish the template.
+layout) using the Resend agent skills. Provide a name, subject, and preview text for the template that fits the content. Declare each {{{VARIABLE}}} in
+the copy as a template variable with a fallback value. Publish the template.
 ```
 
 Behind the scenes, the agent will:

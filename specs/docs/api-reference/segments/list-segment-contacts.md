@@ -12,9 +12,10 @@ The Segment ID.
 
 ## Query Parameters
 
-Note that the `limit` parameter is *optional*. If
-you do not provide a `limit`, all contacts will be returned
-in a single response.
+If `limit` is not provided, all contacts will be returned
+in a single response. Pass `limit` to paginate.
+`after` and `before` only take effect together
+with `limit`.
 
 **limit** `number`
 

@@ -30,6 +30,12 @@ After your domain is verified, you can:
 
 We recommend sending your emails from one or more subdomains (e.g., `updates.example.com`) instead of your root domain to isolate your sending reputation and to clearly communicate your intent to your recipients.
 
+> [!NOTE]
+>
+> If you're [moving email from another provider](#moving-from-another-provider)
+> that already sends from an address with an established reputation, keep that
+> address instead.
+
 You must [add each subdomain](https://resend.com/docs/add-a-domain.md) individually, and they will be displayed in the [**Domains** Dashboard page](https://resend.com/domains) as separate entries where you can manage and configure them independently.
 
 There are several benefits to sending from a subdomain:
@@ -41,6 +47,14 @@ There are several benefits to sending from a subdomain:
 Subdomains of your main domain also help reinforce your brand identity and build trust with inbox providers.
 
 Domains that look like your main brand but aren’t actually your main brand (e.g., `example-alerts.com` instead of `alerts.example.com`) can appear suspicious to spam filters and confusing to your recipients. Inbox providers may flag them as phishing or spoofing attempts, and your users are more likely to ignore, delete, or even report the emails as spam.
+
+### Moving from another provider
+
+If you already send emails from an address with an established reputation, keep sending from that address when you switch to Resend to preserve your reputation history. Follow the [existing domain warm up plan](https://resend.com/docs/knowledge-base/warming-up.md#existing-domain) to avoid any spikes in email volume that might be concerning to inbox service providers.
+
+If you have only sent a few emails, or you send irregularly, your domain has little history to lose if you start sending from a new subdomain in Resend, such as `news.example.com`. Follow the [new domain warm up plan](https://resend.com/docs/knowledge-base/warming-up.md#new-domain) to maximize your deliverability right from the start.
+
+If you keep using an established email address for your marketing emails, add and warm up a new subdomain for your transactional emails, such as `auth.example.com`. This keeps your existing sender reputation for marketing emails, which are more likely to benefit from your history than transactional emails.
 
 ## Domain management
 

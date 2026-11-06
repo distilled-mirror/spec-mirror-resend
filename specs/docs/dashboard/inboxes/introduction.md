@@ -95,3 +95,7 @@ The reply goes out from the inbox address and stays in the same thread.
 > [card] [Inbox agent](https://resend.com/docs/guides/inboxes/agent.md)
 >
 > Let the built-in agent triage incoming threads from your instructions.
+
+> [card] [Build a support inbox](https://resend.com/docs/guides/inboxes/build-a-support-inbox.md)
+>
+> Send contact form submissions to an inbox that the agent triages.

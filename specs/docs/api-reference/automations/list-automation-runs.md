@@ -12,14 +12,11 @@ The automation ID.
 
 ## Query Parameters
 
-Note that the `limit` parameter is *optional*. If
-you do not provide a `limit`, all automation-runs will be returned
-in a single response.
-
 **limit** `number`
 
 Number of automation-runs to retrieve.
-<ul><li>Maximum value: `100`</li>
+<ul><li>Default value: `20`</li>
+<li>Maximum value: `100`</li>
 <li>Minimum value: `1`</li></ul>
 
 **after** `string`

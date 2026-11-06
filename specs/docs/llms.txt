@@ -212,6 +212,7 @@
 - [Inbox Drafts](https://resend.com/docs/guides/inboxes/drafts.md): Learn how to create, update, and send draft emails in the inbox.
 - [Manage Labels](https://resend.com/docs/guides/inboxes/labels.md): Learn how to organize threads with inbox labels.
 - [Inbox Agent](https://resend.com/docs/guides/inboxes/agent.md): Learn how to configure and use the built-in Inbox agent.
+- [Build a support inbox from a contact form](https://resend.com/docs/guides/inboxes/build-a-support-inbox.md): Send contact form submissions to a Resend Inbox, and let the inbox agent label each request and draft a reply.
 - [Why are my emails landing on the Suppression List?](https://resend.com/docs/knowledge-base/why-are-my-emails-landing-on-the-suppression-list.md): Learn why your emails land on the Suppression List and how to remove them.
 - [Can You Receive Emails with Resend?](https://resend.com/docs/knowledge-base/how-can-i-receive-emails-with-resend.md): Receive emails with webhooks and process content, attachments, forwarding, and replies.
 - [What if an email says delivered but the recipient has not received it?](https://resend.com/docs/knowledge-base/what-if-an-email-says-delivered-but-the-recipient-has-not-received-it.md): Learn the steps to take when an email is delivered, but the recipient does not receive it.

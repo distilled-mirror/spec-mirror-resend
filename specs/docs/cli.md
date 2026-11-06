@@ -48,13 +48,25 @@ If no key is found from any source, the CLI errors with code `auth_error`.
 
 **`resend login`**
 
-Authenticate by storing your API key locally. The key is validated against the Resend API before being saved.
+Log in and save your credentials locally.
 
 ```bash theme={"theme":{"light":"github-light","dark":"vesper"}}
 resend login
 ```
 
-In a terminal, the command prompts for your key via masked input. In non-interactive environments (CI, pipes), use the `--key` flag:
+In a terminal, the command asks how to log in. You can approve the login in the browser, or enter an API key through a masked input. The CLI validates an API key against the Resend API before it saves the key.
+
+In non-interactive environments (CI, pipes, AI agents), pass `--web` or `--key`.
+
+`--web` logs in through the browser with no prompts:
+
+```bash theme={"theme":{"light":"github-light","dark":"vesper"}}
+resend login --web
+```
+
+The command tries to open the browser and prints the login URL to stderr. It then waits up to 5 minutes for you to approve the login. The browser must run on the same machine as the CLI. Without `--profile`, the login is saved to the `default` profile.
+
+`--key` saves an API key:
 
 ```bash theme={"theme":{"light":"github-light","dark":"vesper"}}
 resend login --key re_xxxxxxxxxxxxx
@@ -64,7 +76,8 @@ Credentials are saved to your system's secure credential storage (macOS Keychain
 
 | Flag | Description |
 | - | - |
-| `--key <key>` | API key to store (required in non-interactive mode) |
+| `--web` | Log in through the browser with no prompts. Can't be combined with `--key`. |
+| `--key <key>` | API key to store. Required in non-interactive mode, unless you pass `--web`. |
 
 **`resend logout`**
 

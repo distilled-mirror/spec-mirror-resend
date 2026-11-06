@@ -20,14 +20,11 @@ The Contact Email.
 
 ## Query Parameters
 
-Note that the `limit` parameter is *optional*. If
-you do not provide a `limit`, all topics will be returned
-in a single response.
-
 **limit** `number`
 
 Number of topics to retrieve.
-<ul><li>Maximum value: `100`</li>
+<ul><li>Default value: `20`</li>
+<li>Maximum value: `100`</li>
 <li>Minimum value: `1`</li></ul>
 
 **after** `string`
@@ -64,10 +61,10 @@ const { data, error } = await resend.contacts.topics.list({
 $resend = Resend::client('re_xxxxxxxxx');
 
 // Get by contact id
-$resend->contacts->topics->get('e169aa45-1ecf-4183-9955-b1499d5701d3');
+$resend->contacts->topics->list('e169aa45-1ecf-4183-9955-b1499d5701d3');
 
 // Get by contact email
-$resend->contacts->topics->get('steve.wozniak@gmail.com');
+$resend->contacts->topics->list('steve.wozniak@gmail.com');
 ```
 
 ```python Python theme={"theme":{"light":"github-light","dark":"vesper"}}

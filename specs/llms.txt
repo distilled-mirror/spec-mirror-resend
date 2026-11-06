@@ -32,11 +32,13 @@ Install and use the Resend CLI from the terminal.
 
 ## MCP Server
 
-Add Resend to Cursor, Claude, and other MCP clients.
+Add Resend to Cursor, Claude, and other MCP clients. Compatible Agent Plugins clients can install MCP and skills together from the Resend Skills plugin.
 
 - [Remote MCP Server](https://mcp.resend.com/mcp)
 - [Self-hosted MCP Server](https://github.com/resend/resend-mcp)
 - [MCP Discovery](https://resend.com/.well-known/mcp.json)
+- [Agent Plugin](https://github.com/resend/resend-skills)
+- [Agent Plugins standard](https://agent-plugins.org)
 
 ## Skills
 

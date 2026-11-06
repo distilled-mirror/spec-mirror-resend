@@ -16,14 +16,11 @@ You can list all emails received by your team. The list returns references to in
 
 ## Query Parameters
 
-Note that the `limit` parameter is *optional*. If
-you do not provide a `limit`, all emails will be returned
-in a single response.
-
 **limit** `number`
 
 Number of emails to retrieve.
-<ul><li>Maximum value: `100`</li>
+<ul><li>Default value: `20`</li>
+<li>Maximum value: `100`</li>
 <li>Minimum value: `1`</li></ul>
 
 **after** `string`

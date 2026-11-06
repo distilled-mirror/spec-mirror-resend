@@ -259,6 +259,7 @@
     "guides/dns/strato.md",
     "guides/dns/vercel.md",
     "guides/inboxes/agent.md",
+    "guides/inboxes/build-a-support-inbox.md",
     "guides/inboxes/create-inboxes.md",
     "guides/inboxes/drafts.md",
     "guides/inboxes/labels.md",

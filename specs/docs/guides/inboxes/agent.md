@@ -324,6 +324,29 @@ A few rules keep the agent's actions safe:
 * **Assignments need a clear match.** Name the teammate by email address or name in your instructions. If the name matches nobody, or more than one person, the thread is not assigned.
 * **Labels must already exist.** The agent applies your existing labels but does not create new ones. [Create the labels](https://resend.com/docs/guides/inboxes/labels.md#create-a-label) you want it to use first.
 
+## Security
+
+Anyone who knows an inbox address can send it email, including people who write instructions for the agent into an email, an attack known as prompt injection. The agent has these safeguards built in:
+
+* **Email content is data, not instructions.** The agent reads the subject, body, and sender name of every email as untrusted data. It ignores any instructions they contain, and it follows only your instructions. Label names are treated the same way.
+* **It never sends email.** Replies and forwards are saved as [drafts](https://resend.com/docs/dashboard/inboxes/drafts.md), so a person reviews every message before it leaves the inbox.
+* **Forward recipients are checked.** A forward to any address that isn't written out in your instructions is rejected, even when an email asks for it. Lookalike addresses don't match.
+* **Important email stays in the inbox.** Each new email is checked to see whether it needs your attention. When it does, the agent can't archive it, move it to trash, or mark it as spam.
+* **It only uses the actions you enable.** The agent has no access to actions you haven't selected, and it doesn't act on threads in the spam folder.
+
+You also control how much the agent can do. To keep it safe:
+
+* **Enable only the actions you need.** An agent that only adds labels and drafts replies can't move or forward email.
+* **Keep secrets out of your instructions.** A draft reply goes back to the sender, so don't include anything in your instructions that you don't want a sender to see, such as internal links, credentials, or customer data.
+* **Don't trust the sender's address.** Email addresses and display names can be spoofed, so don't write instructions that give a sender special treatment based on who the email claims to be from.
+* **Review drafts before you send them.** Check the recipients and the content of each agent draft, especially forwards.
+
+> [!NOTE]
+>
+> These safeguards apply to the built-in agent. If you build your own agent on
+> [inbox webhooks](https://resend.com/docs/webhooks/inboxes/email-received.md), see the [Agent Email Inbox
+> skill](https://resend.com/docs/agent-email-inbox-skill.md) for security patterns.
+
 ## Writing instructions
 
 Clear, specific instructions get the best results. Tell the agent what kinds of email to expect, and what to do with each. For example:

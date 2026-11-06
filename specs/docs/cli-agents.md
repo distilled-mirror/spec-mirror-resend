@@ -32,6 +32,18 @@ When the CLI detects a non-TTY environment (piped output, CI runner, or the `--j
 
 All required flags must be provided. Interactive prompts are disabled. Missing flags cause an error listing what's needed.
 
+## Authentication
+
+Set `RESEND_API_KEY` in the agent's environment. If no key is available, the agent can log in through the browser with `--web`:
+
+```bash theme={"theme":{"light":"github-light","dark":"vesper"}}
+resend login --web
+```
+
+The command prints the login URL to stderr, and the agent shows that URL to the user. The command waits up to 5 minutes for the user to approve the login, so agents run it in the background. The browser must run on the same machine as the CLI. To save the login to a profile other than `default`, pass `--profile <name>`.
+
+Never pass a literal API key to `--key`. It stays in the shell history and in the agent's logs.
+
 ## Piping from stdin
 
 Agents generate content on the fly. Pass `-` to read from stdin instead of writing temp files:

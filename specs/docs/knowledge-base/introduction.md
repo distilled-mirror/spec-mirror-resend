@@ -83,6 +83,13 @@ Step-by-step instructions for verifying your domain with popular DNS providers.
 > Learn when to add unsubscribe links to your transactional and marketing
 > emails.
 
+## Inboxes
+
+> [card] [Build a support inbox from a contact form](https://resend.com/docs/guides/inboxes/build-a-support-inbox.md)
+>
+> Send contact form submissions to an inbox that the agent labels and drafts
+> replies for.
+
 ## Tutorials
 
 > [card] [Maximize deliverability for Supabase Auth emails](https://resend.com/docs/knowledge-base/how-do-i-maximize-deliverability-for-supabase-auth-emails.md)

@@ -234,7 +234,7 @@ curl -X POST 'https://api.resend.com/emails' \
 
 ## Send attachments from a local file
 
-Include the `content` parameter to send attachments from a local file. This parameter accepts the Base64 encoded content of the file you want to attach.
+Include the `content` parameter to send attachments from a local file. This parameter accepts the Base64 encoded content of the file you want to attach. In the Node.js SDK, you can also pass a buffer directly, and the SDK converts it to Base64 for you.
 
 Define the file name that will be attached using the `filename` parameter.
 
@@ -245,7 +245,7 @@ import fs from 'fs';
 const resend = new Resend('re_xxxxxxxxx');
 
 const filepath = `${__dirname}/static/invoice.pdf`;
-const attachment = fs.readFileSync(filepath).toString('base64');
+const attachment = fs.readFileSync(filepath);
 
 await resend.emails.send({
   from: 'Acme <onboarding@resend.dev>',

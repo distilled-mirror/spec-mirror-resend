@@ -265,7 +265,7 @@ import fs from 'fs';
 const resend = new Resend('re_xxxxxxxxx');
 
 const filepath = `${__dirname}/static/logo.png`;
-const attachment = fs.readFileSync(filepath).toString('base64');
+const attachment = fs.readFileSync(filepath);
 
 await resend.emails.send({
   from: 'Acme <onboarding@resend.dev>',

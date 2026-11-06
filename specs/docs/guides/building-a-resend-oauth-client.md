@@ -16,8 +16,8 @@ Resend implements OAuth 2.0 and 2.1, including Proof Key for Code Exchange (PKCE
 
 Resend supports both **public** and **confidential** clients. PKCE is required on every authorization code exchange regardless of type:
 
-* **Public clients** authenticate with PKCE alone. Register them with `token_endpoint_auth_method: "none"` (the default), or declare that value in the metadata document. Use a public client when it can't keep a secret, such as native apps, CLIs, and single-page apps. A CIMD client is always public, since its document is world-readable and can't carry a secret.
-* **Confidential clients** additionally present a `client_secret` at the token and revocation endpoints. Register them with `token_endpoint_auth_method: "client_secret_basic"` (or `client_secret_post`) to have Resend issue the secret. Use a confidential client when it has a backend that can store the secret privately, such as a server-side web app.
+* **Public clients** authenticate with PKCE alone. Register them with `token_endpoint_auth_method: "none"` (the default), or declare that value in the metadata document. Use a public client when it can't keep a secret, such as native apps, CLIs, and single-page apps.
+* **Confidential clients** additionally authenticate at the token and revocation endpoints. A registered client presents a `client_secret`: register it with `token_endpoint_auth_method: "client_secret_basic"` (or `client_secret_post`) to have Resend issue the secret. A CIMD client can't carry a secret, since its document is world-readable, so it signs a JWT with its own private key instead ([`private_key_jwt`](#private-key-jwt)). Use a confidential client when it has a backend that can keep a credential private, such as a server-side web app.
 
 Because Resend does not offer self-service verification or domain-ownership checks yet, pre-register remote third-party clients rather than registering them dynamically, but you can register them with the same register endpoint.
 
@@ -27,7 +27,7 @@ The Resend dashboard hosts the login and consent screen. Your client only needs 
 
 The standard case is registering beforehand, and the worked examples below use it. A metadata document is the next best thing for clients that can't predict their own deployment details ahead of time, like an MCP server: it works for hosted apps and local tools alike, and one document serves every install. Register dynamically only when the client can't host a document.
 
-Also decide whether the client is public or confidential. A client running entirely on the user's machine, such as a native app, CLI, or single-page app, can't hide a secret, so register it as public (`none`). A client with a server-side backend should register as confidential (`client_secret_basic`) and keep the issued `client_secret` out of any user-facing code. That choice only applies to a registered client, since a CIMD client is always public. The [pre-registered remote client](#pre-registered-remote-client) section below covers the confidential path, and the [local client](#local-client) section covers the public one.
+Also decide whether the client is public or confidential. A client running entirely on the user's machine, such as a native app, CLI, or single-page app, can't hide a secret, so register it as public (`none`). A client with a server-side backend should register as confidential (`client_secret_basic`) and keep the issued `client_secret` out of any user-facing code. A CIMD client makes the same choice in its document: `none` for a public client, or [`private_key_jwt`](#private-key-jwt) for a confidential one. The [pre-registered remote client](#pre-registered-remote-client) section below covers the confidential path, and the [local client](#local-client) section covers the public one.
 
 ## Scopes
 
@@ -109,16 +109,18 @@ The fields are the [registration](https://resend.com/docs/api-reference/oauth/re
 | `client_id` | Required. Must equal the document's own URL, character for character. |
 | `client_name` | Required, 1–200 characters. |
 | `redirect_uris` | Required, 1 to 10 entries. An `https` URI must be on the same host as the document. See [Redirect URIs](#redirect-uris-in-a-document). |
-| `token_endpoint_auth_method` | Must be `none`, or omitted. A document is public, so it can't authenticate with a secret. |
+| `token_endpoint_auth_method` | `none` (or omitted) for a public client, or `private_key_jwt`. A document is public, so it can't authenticate with a secret. |
 | `client_secret` | Must be absent. |
-| `jwks`, `jwks_uri` | Must be absent. Resend doesn't support `private_key_jwt`. |
+| `jwks_uri` | Required with `private_key_jwt`, and must be absent otherwise. Same URL rules as the document URL, on the same host as the document. |
+| `jwks` | Must be absent. Publish the key set at `jwks_uri` instead. |
+| `token_endpoint_auth_signing_alg` | Optional, with `private_key_jwt` only. One of `RS256`, `PS256`, or `ES256`. When set, assertions signed with any other algorithm are rejected. |
 | `grant_types` | Must include `authorization_code`. Values Resend doesn't support are ignored rather than rejected. |
 | `response_types` | If present, `["code"]` only. |
 | `scope` | Space-delimited, and every value must be [supported](#scopes). Pass it explicitly: an omitted `scope` gives the client both scopes. |
 | `logo_uri` | Optional, `http` or `https`. Shown on the consent screen only when it's served from the same host as the document. |
 | `client_uri` | Optional. Read but not otherwise used. |
 
-Apart from `grant_types`, a declaration Resend can't honor fails the whole document rather than being dropped from it. A client that declares `private_key_jwt`, for instance, gets an error rather than being downgraded to an unauthenticated one.
+Apart from `grant_types`, a declaration Resend can't honor fails the whole document rather than being dropped from it. A client that declares `client_secret_basic`, for instance, gets an error rather than being downgraded to an unauthenticated one.
 
 ### The document URL
 
@@ -133,6 +135,49 @@ A document proves that you control its host, and nothing else:
 * An `https` redirect URI must be on the same host as the document URL. A document at `https://example.com/oauth/client.json` can't name a callback on `app.example.net`.
 * Loopback `http` URIs (`127.0.0.1`, `localhost`, `[::1]`) are exempt. A loopback address names the user's own machine rather than a publisher, so there's nothing to compare. Port variance works the same way it does for a registered client.
 * Private-use URI schemes (e.g. `cursor://`) are exempt too, since they carry no web host at all.
+
+### Private key JWT
+
+A CIMD client with a backend can authenticate with a key pair instead of a secret, following [RFC 7523](https://datatracker.ietf.org/doc/html/rfc7523). The private key never leaves the client, so it can live in a hardware security module, and Resend only ever sees the public key.
+
+Declare it in the document, and publish the public key set at `jwks_uri`, on the same host:
+
+```json theme={"theme":{"light":"github-light","dark":"vesper"}}
+{
+  "client_id": "https://example.com/oauth/client.json",
+  "client_name": "Example App",
+  "redirect_uris": ["https://example.com/oauth/callback"],
+  "grant_types": ["authorization_code", "refresh_token"],
+  "token_endpoint_auth_method": "private_key_jwt",
+  "token_endpoint_auth_signing_alg": "ES256",
+  "jwks_uri": "https://example.com/oauth/jwks.json",
+  "scope": "emails:send"
+}
+```
+
+The key set is a standard JWK Set (`{"keys": [...]}`). Give each key a `kid` and put it in the JWT header, so Resend can pick the right key. Resend fetches the key set without following redirects, with a 16 KB limit and a 5 second timeout.
+
+On every call to `/oauth/token` and `/oauth/revoke`, send a newly signed JWT in place of a secret:
+
+```
+client_assertion_type=urn:ietf:params:oauth:client-assertion-type:jwt-bearer
+client_assertion=<signed JWT>
+```
+
+| Part | Value |
+| - | - |
+| `alg` (header) | `RS256`, `PS256`, or `ES256`, matching `token_endpoint_auth_signing_alg` when it's declared. |
+| `kid` (header) | The `kid` of a key in the key set. |
+| `iss` and `sub` | Both the document URL, the same value as `client_id`. |
+| `aud` | `https://api.resend.com`. |
+| `jti` | A unique random value. Each one is accepted once, so a replayed assertion fails. |
+| `exp` | Required, at most 10 minutes ahead. A minute is plenty. |
+
+`client_id` can be omitted from the request body, since the assertion carries it.
+
+To rotate a key, publish the new key next to the old one, then start signing with the new `kid`. Resend refetches the key set when it sees a `kid` it doesn't know, at most once every 30 seconds, so wait 30 seconds after publishing before switching. Then remove the old key.
+
+An ES256 signature from an HSM or a cloud KMS usually comes back DER-encoded. Convert it to the raw 64-byte `R || S` form a JWT expects before base64url-encoding it.
 
 ### Hosting and caching
 

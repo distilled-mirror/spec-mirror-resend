@@ -41,13 +41,13 @@ Free accounts have the following:
 
 ## Overage Limits
 
-Paid plans include pay-as-you-go overages, which allow you to continue sending emails after you've reached your monthly quota. To prevent extreme overages and unexpected costs, a hard limit of 5x your monthly quota applies.
+Paid plans can turn on pay-as-you-go overages, which let you keep sending emails after you reach your monthly quota. Overages are off until a team admin turns on **Transactional pay-as-you-go** on the [Usage page](https://resend.com/settings/usage). While they are off, sending stops at your monthly quota until the next billing cycle.
 
 > [!NOTE]
 >
-> By default, overage usage is capped at **5x your plan's monthly quota**. Once you reach this limit, sending will be paused until the next billing cycle.
+> Overage sending is capped by an overage limit, set as a percentage of your monthly quota. The default is 400%, so you can send up to 5x your monthly quota in a billing cycle. Once you reach the limit, sending is paused until the next billing cycle.
 >
-> If you need to adjust this limit, please [contact support](https://resend.com/help).
+> A team admin can change the overage limit on the [Usage page](https://resend.com/settings/usage), from 100% to 1,000% in steps of 100%.
 
 > [!TIP]
 >

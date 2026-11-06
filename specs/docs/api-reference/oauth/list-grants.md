@@ -12,14 +12,11 @@ once the grant is revoked.
 
 ## Query Parameters
 
-Note that the `limit` parameter is *optional*. If
-you do not provide a `limit`, all OAuth grants will be returned
-in a single response.
-
 **limit** `number`
 
 Number of OAuth grants to retrieve.
-<ul><li>Maximum value: `100`</li>
+<ul><li>Default value: `20`</li>
+<li>Maximum value: `100`</li>
 <li>Minimum value: `1`</li></ul>
 
 **after** `string`

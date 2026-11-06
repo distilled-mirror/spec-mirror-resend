@@ -26,40 +26,63 @@ Use the `id` of objects as the cursor for pagination. The cursor itself is *excl
 
 ## Supported endpoints
 
-Existing list endpoints can optionally return paginated results:
+The following list endpoints support cursor-based pagination.
 
-* [List Domains](https://resend.com/docs/api-reference/domains/list-domains.md)
-* [List API Keys](https://resend.com/docs/api-reference/api-keys/list-api-keys.md)
-* [List Broadcasts](https://resend.com/docs/api-reference/broadcasts/list-broadcasts.md)
-* [List Segments](https://resend.com/docs/api-reference/segments/list-segments.md)
+### Endpoints that default to 20 items
+
+Most paginated endpoints return 20 items by default when `limit` is not provided:
+
+* [List Automations](https://resend.com/docs/api-reference/automations/list-automations.md)
+* [List Automation Runs](https://resend.com/docs/api-reference/automations/list-automation-runs.md)
+* [List Broadcast Clicked Links](https://resend.com/docs/api-reference/broadcasts/list-broadcast-clicked-links.md)
+* [List Broadcast Recipients](https://resend.com/docs/api-reference/broadcasts/list-broadcast-recipients.md)
+* [List Contact Properties](https://resend.com/docs/api-reference/contact-properties/list-contact-properties.md)
 * [List Contacts](https://resend.com/docs/api-reference/contacts/list-contacts.md)
-* [List Receiving Emails](https://resend.com/docs/api-reference/emails/list-received-emails.md)
-
-> [!NOTE]
->
-> Note that for these endpoints, the `limit` parameter is optional. If you do
-> not provide a `limit`, all items will be returned in a single response.
-
-Newer list endpoints always return paginated results:
-
+* [List Contact Segments](https://resend.com/docs/api-reference/contacts/list-contact-segments.md)
+* [Get Contact Topics](https://resend.com/docs/api-reference/contacts/get-contact-topics.md)
 * [List Emails](https://resend.com/docs/api-reference/emails/list-emails.md)
+* [List Email Attachments](https://resend.com/docs/api-reference/emails/list-email-attachments.md)
+* [List Receiving Emails](https://resend.com/docs/api-reference/emails/list-received-emails.md)
 * [List Receiving Email Attachments](https://resend.com/docs/api-reference/emails/list-received-email-attachments.md)
-* [List Templates](https://resend.com/docs/api-reference/templates/list-templates.md)
-* [List Topics](https://resend.com/docs/api-reference/topics/list-topics.md)
+* [List Events](https://resend.com/docs/api-reference/events/list-events.md)
 * [List Inboxes](https://resend.com/docs/api-reference/inboxes/list-inboxes.md)
 * [List Threads](https://resend.com/docs/api-reference/inboxes/list-threads.md)
 * [Search Threads](https://resend.com/docs/api-reference/inboxes/search-threads.md)
 * [List Thread Emails](https://resend.com/docs/api-reference/inboxes/list-thread-emails.md)
 * [List Drafts](https://resend.com/docs/api-reference/inboxes/list-drafts.md)
+* [List Logs](https://resend.com/docs/api-reference/logs/list-logs.md)
+* [List OAuth Grants](https://resend.com/docs/api-reference/oauth/list-grants.md)
+* [List Suppressions](https://resend.com/docs/api-reference/suppressions/list-suppressions.md)
+* [List Templates](https://resend.com/docs/api-reference/templates/list-templates.md)
+* [List Topics](https://resend.com/docs/api-reference/topics/list-topics.md)
+* [List Webhooks](https://resend.com/docs/api-reference/webhooks/list-webhooks.md)
+* [List Webhook Events](https://resend.com/docs/api-reference/webhooks/list-events.md)
+* [List Event Attempts](https://resend.com/docs/api-reference/webhooks/list-event-attempts.md)
+
+### Endpoints that return all items by default
+
+The following endpoints return all items in a single response when `limit` is not provided. Pass `limit` to paginate and set the page size. The `after` and `before` parameters only take effect together with `limit`.
+
+* [List API Keys](https://resend.com/docs/api-reference/api-keys/list-api-keys.md)
+* [List Audiences](https://resend.com/docs/api-reference/audiences/list-audiences.md) (deprecated, alias for Segments)
+* [List Broadcasts](https://resend.com/docs/api-reference/broadcasts/list-broadcasts.md)
+* [List Domains](https://resend.com/docs/api-reference/domains/list-domains.md)
+* [List Segments](https://resend.com/docs/api-reference/segments/list-segments.md)
+* [List Segment Contacts](https://resend.com/docs/api-reference/segments/list-segment-contacts.md)
+
+### Other endpoints
+
+* [List Contact Imports](https://resend.com/docs/api-reference/contacts/list-contact-imports.md) defaults to **10 items** when `limit` is not provided
 
 ## Parameters
 
-All paginated endpoints support the following query parameters:
+Paginated endpoints accept the following query parameters:
 
 **limit** `number`
 
-The number of items to return per page. Default is `20`, maximum is `100`, and
-minimum is `1`.
+The number of items to return per page. The maximum is `100` and the minimum
+is `1`. The default depends on the endpoint. See [Supported
+endpoints](#supported-endpoints).
 
 **after** `string`
 
@@ -72,6 +95,9 @@ the ID of the last item from the current page. This will return the page that
 The cursor before which to start retrieving items. To get the previous page,
 use the ID of the first item from the current page. This will return the page
 that **ends before** the object with this ID (excluding the passed ID itself).
+[List Webhook Events](https://resend.com/docs/api-reference/webhooks/list-events.md) and [List Event
+Attempts](https://resend.com/docs/api-reference/webhooks/list-event-attempts.md) do not support
+`before`.
 
 > [!WARNING]
 >
