@@ -425,6 +425,7 @@
 - [Revoke Token](https://resend.com/docs/api-reference/oauth/revoke.md): Disconnect a client by revoking its refresh token.
 - [Resend API vs SDK](https://resend.com/docs/api-vs-sdk.md): For most use cases, the Resend SDK offers a better developer experience.
 - [How to delete your Resend team](https://resend.com/docs/knowledge-base/how-can-i-delete-my-team.md): How to request your Resend team and team data to be deleted.
+- [How to collect a HAR log](https://resend.com/docs/knowledge-base/how-to-collect-a-har-log.md): Capture a HAR file in Chrome or Firefox so Resend support can see what your browser sent when something failed.
 - [The Secret Endpoint](https://resend.com/docs/secret.md): Get a special gift from Resend.
 - [SupaSquad + Resend](https://resend.com/docs/supasquad.md): A quick jumpstart to using Resend with Supabase for SupaSquad members.
 
