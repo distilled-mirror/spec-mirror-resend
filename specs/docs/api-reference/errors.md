@@ -104,7 +104,7 @@ Resend uses standard HTTP response codes for success and failure notifications, 
 
 * **Status:** 403
 * **Message:** You have reached the inboxes included in your plan. Pay-as-you-go for inboxes isn't available for your billing setup.
-* **Suggested action:** Teams billed through Vercel or Stripe Projects cannot enable pay-as-you-go for inboxes. [Contact support](https://resend.com/help) if you need more than the 3 included inboxes.
+* **Suggested action:** Teams billed through Stripe Projects cannot enable pay-as-you-go for inboxes. [Contact support](https://resend.com/help) if you need more than the 3 included inboxes.
 
 ### `validation_error`
 
@@ -130,6 +130,12 @@ Resend uses standard HTTP response codes for success and failure notifications, 
 * **Message:** There is another request in progress with the same idempotency key.
 * **Suggested action:** Try the request again later.
 
+### `forge_not_enabled`
+
+* **Status:** 409
+* **Message:** Forge is not enabled on this domain.
+* **Suggested action:** Call `POST /domains/{id}/forge` first.
+
 ### `invalid_idempotent_request`
 
 * **Status:** 409
@@ -141,6 +147,12 @@ Resend uses standard HTTP response codes for success and failure notifications, 
 * **Status:** 409
 * **Message:** Another request is already updating this resource.
 * **Suggested action:** Retry the request after a short delay.
+
+### `forge_unavailable`
+
+* **Status:** 422
+* **Message:** Forge is not available for this domain.
+* **Suggested action:** The message names the reason: a dedicated IP, a legacy DKIM setup, a receive-only domain or a pending claim. Contact [support@resend.com](mailto:support@resend.com) if you need Forge on it.
 
 ### `invalid_attachment`
 
@@ -166,6 +178,12 @@ Resend uses standard HTTP response codes for success and failure notifications, 
 * **Message:** The request is missing one or more required parameters.
 * **Suggested action:** Check the error message to see the list of missing parameters.
 
+### `return_path_unavailable`
+
+* **Status:** 422
+* **Message:** The requested return path cannot be used for Forge.
+* **Suggested action:** Choose a `return_path` label that has no DNS records yet and differs from the current SES return path.
+
 ### `daily_quota_exceeded`
 
 * **Status:** 429
@@ -176,7 +194,7 @@ Resend uses standard HTTP response codes for success and failure notifications, 
 
 * **Status:** 429
 * **Message:** You have exceeded your monthly email sending quota.
-* **Suggested action:** [Upgrade your plan](https://resend.com/settings/billing) to increase the monthly email quota. Both sent and received emails count towards this quota.
+* **Suggested action:** [Upgrade your plan](https://resend.com/settings/billing) to increase the monthly email quota, or on a paid plan turn on [pay-as-you-go](https://resend.com/settings/usage) to keep sending past it. Both sent and received emails count towards this quota.
 
 ### `rate_limit_exceeded`
 
@@ -189,6 +207,12 @@ Resend uses standard HTTP response codes for success and failure notifications, 
 * **Status:** 500
 * **Message:** An unexpected error occurred.
 * **Suggested action:** Try the request again later. If the error does not resolve, check our [status page](https://resend-status.com) for service updates.
+
+### `dns_lookup_failed`
+
+* **Status:** 503
+* **Message:** Could not check DNS for the requested host.
+* **Suggested action:** Retry the request in a few seconds.
 
 ### `service_unavailable`
 

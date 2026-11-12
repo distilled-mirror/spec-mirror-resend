@@ -20,6 +20,8 @@ These limits help improve your deliverability and likelihood of reaching your re
 > account's email quota. Each received email counts as 1 email against your
 > daily and monthly limits, just like sent emails.
 
+When a quota stops a send, the API returns a `429` error with `daily_quota_exceeded` or `monthly_quota_exceeded`. Resend doesn't queue or retry that email. You can send it again after the quota resets or after you upgrade your plan.
+
 ## Free Account Quotas and Limits
 
 Free accounts have the following:

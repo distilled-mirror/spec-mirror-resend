@@ -77,8 +77,10 @@ Accounts created from the Marketplace are billed by Vercel. Manage your account 
 
 > [!WARNING]
 >
-> Discounts, promo codes, and startup or partner credits do not apply to
-> Marketplace plans.
+> Discounts, promo codes, and startup or partner credits do not apply to Vercel
+> Marketplace accounts. Some features are unavailable for Vercel Marketplace
+> accounts, including some add-ons (e.g., dedicated IPs) and Resend Marketing
+> plans.
 
 ## Next steps
 
