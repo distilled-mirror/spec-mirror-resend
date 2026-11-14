@@ -10,7 +10,7 @@ In November 2025, [Resend changed how Contacts are segmented](https://resend.com
 
 Contacts are now independent of the groups they belong to, and the former Audiences are now called Segments. A Contact can be in zero, one or multiple Segments and count as only one Contact toward your Contact quota.
 
-Contacts API endpoints that previously required an `audience_id` can now be used directly instead. The [Audiences API](https://resend.com/docs/api-reference/audiences/create-audience.md) is now deprecated and will be removed in the future.
+Contacts API endpoints that previously required an `audience_id` can now be used directly instead. The [Audiences API](https://resend.com/docs/api-reference/audiences/create-audience) is now deprecated and will be removed in the future.
 
 ## What changed
 

@@ -1,6 +1,6 @@
 {
   "source": "https://resend.com/docs/llms.txt",
-  "openapi": "https://resend.com/openapi.json",
+  "openapi": "https://raw.githubusercontent.com/resend/resend-openapi/main/resend.json",
   "pages": [
     "add-a-domain.md",
     "agent-email-inbox-skill.md",

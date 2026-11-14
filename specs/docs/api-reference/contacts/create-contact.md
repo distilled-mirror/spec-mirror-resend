@@ -10,7 +10,7 @@
 
 **email** `string` *required*
 
-The email address of the contact.
+The email address of the contact. Max length is `320` characters.
 
 The first name of the contact.
 

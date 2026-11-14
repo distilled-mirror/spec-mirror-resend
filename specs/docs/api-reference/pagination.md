@@ -64,7 +64,7 @@ Most paginated endpoints return 20 items by default when `limit` is not provided
 The following endpoints return all items in a single response when `limit` is not provided. Pass `limit` to paginate and set the page size. The `after` and `before` parameters only take effect together with `limit`.
 
 * [List API Keys](https://resend.com/docs/api-reference/api-keys/list-api-keys.md)
-* [List Audiences](https://resend.com/docs/api-reference/audiences/list-audiences.md) (deprecated, alias for Segments)
+* [List Audiences](https://resend.com/docs/api-reference/audiences/list-audiences) (deprecated, alias for Segments)
 * [List Broadcasts](https://resend.com/docs/api-reference/broadcasts/list-broadcasts.md)
 * [List Domains](https://resend.com/docs/api-reference/domains/list-domains.md)
 * [List Segments](https://resend.com/docs/api-reference/segments/list-segments.md)

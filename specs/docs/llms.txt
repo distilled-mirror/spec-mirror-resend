@@ -295,35 +295,13 @@
 - [List Received Emails](https://resend.com/docs/api-reference/emails/list-received-emails.md): Retrieve a list of received emails for the authenticated user.
 - [Retrieve Attachment](https://resend.com/docs/api-reference/emails/retrieve-received-email-attachment.md): Retrieve a single attachment from a received email.
 - [List Attachments](https://resend.com/docs/api-reference/emails/list-received-email-attachments.md): Retrieve a list of attachments from a received email.
-- [Create Inbox](https://resend.com/docs/api-reference/inboxes/create-inbox.md): Create an inbox to send, receive and organize email.
-- [Retrieve Inbox](https://resend.com/docs/api-reference/inboxes/get-inbox.md): Retrieve a single inbox by its ID or email address.
-- [List Inboxes](https://resend.com/docs/api-reference/inboxes/list-inboxes.md): Retrieve a list of inboxes for the team.
-- [Update Inbox](https://resend.com/docs/api-reference/inboxes/update-inbox.md): Update the internal inbox name or the name recipients see when sending.
-- [Delete Inbox](https://resend.com/docs/api-reference/inboxes/delete-inbox.md): Remove an existing inbox.
-- [Create Label](https://resend.com/docs/api-reference/inboxes/create-label.md): Create a label on an inbox.
-- [List Labels](https://resend.com/docs/api-reference/inboxes/list-labels.md): Retrieve the labels on an inbox.
-- [Update Label](https://resend.com/docs/api-reference/inboxes/update-label.md): Rename or recolor an existing label.
-- [Delete Label](https://resend.com/docs/api-reference/inboxes/delete-label.md): Remove an existing label from an inbox.
-- [List Threads](https://resend.com/docs/api-reference/inboxes/list-threads.md): Retrieve the threads in an inbox, filtered by folder, label, and read status.
-- [Search Threads](https://resend.com/docs/api-reference/inboxes/search-threads.md): Find threads in an inbox by text, people, attachments, and dates.
-- [Retrieve Thread](https://resend.com/docs/api-reference/inboxes/get-thread.md): Retrieve a thread summary.
-- [Update Thread](https://resend.com/docs/api-reference/inboxes/update-thread.md): Mark a thread read or unread, or move it to another folder.
-- [Delete Thread](https://resend.com/docs/api-reference/inboxes/delete-thread.md): Move a thread to the trash folder.
-- [Add Thread Labels](https://resend.com/docs/api-reference/inboxes/add-thread-labels.md): Apply one or more labels to a thread.
-- [Set Thread Labels](https://resend.com/docs/api-reference/inboxes/set-thread-labels.md): Replace every label on a thread.
-- [Remove Thread Label](https://resend.com/docs/api-reference/inboxes/remove-thread-label.md): Take one label off a thread.
-- [List Thread Emails](https://resend.com/docs/api-reference/inboxes/list-thread-emails.md): Retrieve the messages in a thread.
-- [Retrieve Thread Email](https://resend.com/docs/api-reference/inboxes/get-thread-email.md): Retrieve a single message from a thread.
-- [Reply to Thread Email](https://resend.com/docs/api-reference/inboxes/reply-thread-email.md): Send a reply to a message in an inbox thread.
-- [Forward Thread Email](https://resend.com/docs/api-reference/inboxes/forward-thread-email.md): Forward a message in an inbox thread to new recipients.
-- [Create Draft](https://resend.com/docs/api-reference/inboxes/create-draft.md): Create a draft in an inbox, either to start a new thread or reply to an existing thread.
-- [List Drafts](https://resend.com/docs/api-reference/inboxes/list-drafts.md): Retrieve the unsent drafts in an inbox.
-- [Retrieve Draft](https://resend.com/docs/api-reference/inboxes/get-draft.md): Retrieve a single draft by its ID.
-- [Update Draft](https://resend.com/docs/api-reference/inboxes/update-draft.md): Update an unsent draft.
-- [Delete Draft](https://resend.com/docs/api-reference/inboxes/delete-draft.md): Discard an unsent draft.
-- [Send Draft](https://resend.com/docs/api-reference/inboxes/send-draft.md): Send an existing draft from the inbox address.
-- [Retrieve Agent Settings](https://resend.com/docs/api-reference/inboxes/get-agent.md): Retrieve the agent settings for an inbox.
-- [Update Agent Settings](https://resend.com/docs/api-reference/inboxes/update-agent.md): Update the agent settings for an inbox.
+- [Create Template](https://resend.com/docs/api-reference/templates/create-template.md): Create a new template with optional variables.
+- [Retrieve Template](https://resend.com/docs/api-reference/templates/get-template.md): Retrieve a template by ID.
+- [List Templates](https://resend.com/docs/api-reference/templates/list-templates.md): List all templates.
+- [Update Template](https://resend.com/docs/api-reference/templates/update-template.md): Update a template.
+- [Delete Template](https://resend.com/docs/api-reference/templates/delete-template.md): Delete a template.
+- [Publish Template](https://resend.com/docs/api-reference/templates/publish-template.md): Publish a template.
+- [Duplicate Template](https://resend.com/docs/api-reference/templates/duplicate-template.md): Duplicate a template.
 - [Create Broadcast](https://resend.com/docs/api-reference/broadcasts/create-broadcast.md): Create a new broadcast to send to your contacts.
 - [Send Broadcast](https://resend.com/docs/api-reference/broadcasts/send-broadcast.md): Start sending broadcasts to your audience through the Resend API.
 - [Cancel Broadcast](https://resend.com/docs/api-reference/broadcasts/cancel-broadcast.md): Cancel a queued or scheduled broadcast.
@@ -349,13 +327,6 @@
 - [List Events](https://resend.com/docs/api-reference/events/list-events.md): Retrieve a list of events.
 - [Update Event](https://resend.com/docs/api-reference/events/update-event.md): Update an existing event schema.
 - [Delete Event](https://resend.com/docs/api-reference/events/delete-event.md): Remove an existing event.
-- [Create Template](https://resend.com/docs/api-reference/templates/create-template.md): Create a new template with optional variables.
-- [Retrieve Template](https://resend.com/docs/api-reference/templates/get-template.md): Retrieve a template by ID.
-- [List Templates](https://resend.com/docs/api-reference/templates/list-templates.md): List all templates.
-- [Update Template](https://resend.com/docs/api-reference/templates/update-template.md): Update a template.
-- [Delete Template](https://resend.com/docs/api-reference/templates/delete-template.md): Delete a template.
-- [Publish Template](https://resend.com/docs/api-reference/templates/publish-template.md): Publish a template.
-- [Duplicate Template](https://resend.com/docs/api-reference/templates/duplicate-template.md): Duplicate a template.
 - [Create Contact](https://resend.com/docs/api-reference/contacts/create-contact.md): Create a contact.
 - [Retrieve Contact](https://resend.com/docs/api-reference/contacts/get-contact.md): Retrieve a single contact.
 - [List Contacts](https://resend.com/docs/api-reference/contacts/list-contacts.md): Show all contacts.
@@ -386,6 +357,41 @@
 - [List Topics](https://resend.com/docs/api-reference/topics/list-topics.md): Retrieve a list of topics for the authenticated user.
 - [Update Topic](https://resend.com/docs/api-reference/topics/update-topic.md): Update an existing topic.
 - [Delete Topic](https://resend.com/docs/api-reference/topics/delete-topic.md): Remove an existing topic.
+- [Add Suppression](https://resend.com/docs/api-reference/suppressions/add-suppression.md): Add an email address to the suppression list.
+- [Retrieve Suppression](https://resend.com/docs/api-reference/suppressions/get-suppression.md): Retrieve a single suppression by ID or email.
+- [List Suppressions](https://resend.com/docs/api-reference/suppressions/list-suppressions.md): Show all suppressions.
+- [Remove Suppression](https://resend.com/docs/api-reference/suppressions/remove-suppression.md): Remove a single suppression by ID or email.
+- [Add Batch Suppressions](https://resend.com/docs/api-reference/suppressions/add-batch-suppressions.md): Add up to 100 email addresses to the suppression list at once.
+- [Remove Batch Suppressions](https://resend.com/docs/api-reference/suppressions/remove-batch-suppressions.md): Remove up to 100 suppressions from the suppression list at once.
+- [Create Inbox](https://resend.com/docs/api-reference/inboxes/create-inbox.md): Create an inbox to send, receive and organize email.
+- [Retrieve Inbox](https://resend.com/docs/api-reference/inboxes/get-inbox.md): Retrieve a single inbox by its ID or email address.
+- [List Inboxes](https://resend.com/docs/api-reference/inboxes/list-inboxes.md): Retrieve a list of inboxes for the team.
+- [Update Inbox](https://resend.com/docs/api-reference/inboxes/update-inbox.md): Update the internal inbox name or the name recipients see when sending.
+- [Delete Inbox](https://resend.com/docs/api-reference/inboxes/delete-inbox.md): Remove an existing inbox.
+- [List Threads](https://resend.com/docs/api-reference/inboxes/list-threads.md): Retrieve the threads in an inbox, filtered by folder, label, and read status.
+- [Search Threads](https://resend.com/docs/api-reference/inboxes/search-threads.md): Find threads in an inbox by text, people, attachments, and dates.
+- [Retrieve Thread](https://resend.com/docs/api-reference/inboxes/get-thread.md): Retrieve a thread summary.
+- [Update Thread](https://resend.com/docs/api-reference/inboxes/update-thread.md): Mark a thread read or unread, or move it to another folder.
+- [Delete Thread](https://resend.com/docs/api-reference/inboxes/delete-thread.md): Move a thread to the trash folder.
+- [List Thread Emails](https://resend.com/docs/api-reference/inboxes/list-thread-emails.md): Retrieve the messages in a thread.
+- [Retrieve Thread Email](https://resend.com/docs/api-reference/inboxes/get-thread-email.md): Retrieve a single message from a thread.
+- [Reply to Thread Email](https://resend.com/docs/api-reference/inboxes/reply-thread-email.md): Send a reply to a message in an inbox thread.
+- [Forward Thread Email](https://resend.com/docs/api-reference/inboxes/forward-thread-email.md): Forward a message in an inbox thread to new recipients.
+- [Add Thread Labels](https://resend.com/docs/api-reference/inboxes/add-thread-labels.md): Apply one or more labels to a thread.
+- [Set Thread Labels](https://resend.com/docs/api-reference/inboxes/set-thread-labels.md): Replace every label on a thread.
+- [Remove Thread Label](https://resend.com/docs/api-reference/inboxes/remove-thread-label.md): Take one label off a thread.
+- [Create Label](https://resend.com/docs/api-reference/inboxes/create-label.md): Create a label on an inbox.
+- [List Labels](https://resend.com/docs/api-reference/inboxes/list-labels.md): Retrieve the labels on an inbox.
+- [Update Label](https://resend.com/docs/api-reference/inboxes/update-label.md): Rename or recolor an existing label.
+- [Delete Label](https://resend.com/docs/api-reference/inboxes/delete-label.md): Remove an existing label from an inbox.
+- [Create Draft](https://resend.com/docs/api-reference/inboxes/create-draft.md): Create a draft in an inbox, either to start a new thread or reply to an existing thread.
+- [List Drafts](https://resend.com/docs/api-reference/inboxes/list-drafts.md): Retrieve the unsent drafts in an inbox.
+- [Retrieve Draft](https://resend.com/docs/api-reference/inboxes/get-draft.md): Retrieve a single draft by its ID.
+- [Update Draft](https://resend.com/docs/api-reference/inboxes/update-draft.md): Update an unsent draft.
+- [Delete Draft](https://resend.com/docs/api-reference/inboxes/delete-draft.md): Discard an unsent draft.
+- [Send Draft](https://resend.com/docs/api-reference/inboxes/send-draft.md): Send an existing draft from the inbox address.
+- [Retrieve Agent Settings](https://resend.com/docs/api-reference/inboxes/get-agent.md): Retrieve the agent settings for an inbox.
+- [Update Agent Settings](https://resend.com/docs/api-reference/inboxes/update-agent.md): Update the agent settings for an inbox.
 - [Create Domain](https://resend.com/docs/api-reference/domains/create-domain.md): Create a domain through the Resend Email API.
 - [Claim Domain](https://resend.com/docs/api-reference/domains/claim-domain.md): Claim a domain that is already verified by another team.
 - [Retrieve Domain Claim](https://resend.com/docs/api-reference/domains/get-domain-claim.md): Retrieve the latest claim for a domain.
@@ -395,20 +401,6 @@
 - [List Domains](https://resend.com/docs/api-reference/domains/list-domains.md): Retrieve a list of domains for the authenticated user.
 - [Update Domain](https://resend.com/docs/api-reference/domains/update-domain.md): Update an existing domain.
 - [Delete Domain](https://resend.com/docs/api-reference/domains/delete-domain.md): Remove an existing domain.
-- [Retrieve Log](https://resend.com/docs/api-reference/logs/retrieve-log.md): Retrieve a single API request log.
-- [List Logs](https://resend.com/docs/api-reference/logs/list-logs.md): Retrieve a list of API request logs.
-- [Create API key](https://resend.com/docs/api-reference/api-keys/create-api-key.md): Add a new API key to authenticate communications with Resend.
-- [List API keys](https://resend.com/docs/api-reference/api-keys/list-api-keys.md): Retrieve a list of API keys for the authenticated user.
-- [Update API key](https://resend.com/docs/api-reference/api-keys/update-api-key.md): Update the name of an existing API key.
-- [Delete API key](https://resend.com/docs/api-reference/api-keys/delete-api-key.md): Remove an existing API key.
-- [Add Suppression](https://resend.com/docs/api-reference/suppressions/add-suppression.md): Add an email address to the suppression list.
-- [Retrieve Suppression](https://resend.com/docs/api-reference/suppressions/get-suppression.md): Retrieve a single suppression by ID or email.
-- [List Suppressions](https://resend.com/docs/api-reference/suppressions/list-suppressions.md): Show all suppressions.
-- [Remove Suppression](https://resend.com/docs/api-reference/suppressions/remove-suppression.md): Remove a single suppression by ID or email.
-- [Add Batch Suppressions](https://resend.com/docs/api-reference/suppressions/add-batch-suppressions.md): Add up to 100 email addresses to the suppression list at once.
-- [Remove Batch Suppressions](https://resend.com/docs/api-reference/suppressions/remove-batch-suppressions.md): Remove up to 100 suppressions from the suppression list at once.
-- [List Grants](https://resend.com/docs/api-reference/oauth/list-grants.md): Retrieve a list of OAuth grants for the authenticated team.
-- [Revoke Grant](https://resend.com/docs/api-reference/oauth/revoke-grant.md): Revoke an OAuth grant for the authenticated team.
 - [Create Webhook](https://resend.com/docs/api-reference/webhooks/create-webhook.md): Create a webhook to receive real-time notifications about email events.
 - [Retrieve Webhook](https://resend.com/docs/api-reference/webhooks/get-webhook.md): Retrieve a single webhook for the authenticated user.
 - [List Webhooks](https://resend.com/docs/api-reference/webhooks/list-webhooks.md): Retrieve a list of webhooks for the authenticated user.
@@ -419,10 +411,18 @@
 - [Retrieve Event](https://resend.com/docs/api-reference/webhooks/get-event.md): Retrieve the details of a single event delivered to a webhook.
 - [Replay Event](https://resend.com/docs/api-reference/webhooks/replay-event.md): Queue an additional delivery attempt for a webhook event.
 - [List Attempts](https://resend.com/docs/api-reference/webhooks/list-event-attempts.md): Retrieve the delivery attempts for a single webhook event.
+- [Create API key](https://resend.com/docs/api-reference/api-keys/create-api-key.md): Add a new API key to authenticate communications with Resend.
+- [List API keys](https://resend.com/docs/api-reference/api-keys/list-api-keys.md): Retrieve a list of API keys for the authenticated user.
+- [Update API key](https://resend.com/docs/api-reference/api-keys/update-api-key.md): Update the name of an existing API key.
+- [Delete API key](https://resend.com/docs/api-reference/api-keys/delete-api-key.md): Remove an existing API key.
+- [Retrieve Log](https://resend.com/docs/api-reference/logs/retrieve-log.md): Retrieve a single API request log.
+- [List Logs](https://resend.com/docs/api-reference/logs/list-logs.md): Retrieve a list of API request logs.
 - [Register Client](https://resend.com/docs/api-reference/oauth/register.md): Dynamically register an OAuth client for the authorization code + PKCE flow (RFC 7591).
 - [Authorize](https://resend.com/docs/api-reference/oauth/authorize.md): Start the OAuth authorization code + PKCE flow.
 - [Token](https://resend.com/docs/api-reference/oauth/token.md): Exchange an authorization code for tokens, or refresh an access token.
 - [Revoke Token](https://resend.com/docs/api-reference/oauth/revoke.md): Disconnect a client by revoking its refresh token.
+- [List Grants](https://resend.com/docs/api-reference/oauth/list-grants.md): Retrieve a list of OAuth grants for the authenticated team.
+- [Revoke Grant](https://resend.com/docs/api-reference/oauth/revoke-grant.md): Revoke an OAuth grant for the authenticated team.
 - [Resend API vs SDK](https://resend.com/docs/api-vs-sdk.md): For most use cases, the Resend SDK offers a better developer experience.
 - [How to delete your Resend team](https://resend.com/docs/knowledge-base/how-can-i-delete-my-team.md): How to request your Resend team and team data to be deleted.
 - [How to collect a HAR log](https://resend.com/docs/knowledge-base/how-to-collect-a-har-log.md): Capture a HAR file in Chrome or Firefox so Resend support can see what your browser sent when something failed.
