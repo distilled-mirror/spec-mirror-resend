@@ -426,6 +426,7 @@
 - [Resend API vs SDK](https://resend.com/docs/api-vs-sdk.md): For most use cases, the Resend SDK offers a better developer experience.
 - [How to delete your Resend team](https://resend.com/docs/knowledge-base/how-can-i-delete-my-team.md): How to request your Resend team and team data to be deleted.
 - [How to collect a HAR log](https://resend.com/docs/knowledge-base/how-to-collect-a-har-log.md): Capture a HAR file in Chrome or Firefox so Resend support can see what your browser sent when something failed.
+- [Partner Program Code Redemption](https://resend.com/docs/partner-program-redemption.md): Issue unique redemption codes for approved partner programs.
 - [The Secret Endpoint](https://resend.com/docs/secret.md): Get a special gift from Resend.
 - [SupaSquad + Resend](https://resend.com/docs/supasquad.md): A quick jumpstart to using Resend with Supabase for SupaSquad members.
 

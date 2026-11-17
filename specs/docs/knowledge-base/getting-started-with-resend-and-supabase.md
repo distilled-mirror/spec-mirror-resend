@@ -8,9 +8,14 @@
 
 This guide helps you get started with Resend by:
 
-* [Setting up Resend](#set-up-resend)
+* [Set up Resend](#set-up-resend)
 * [Send Auth Emails with Resend](#send-auth-emails-with-resend)
+  * [Send with the Resend Integration](#send-with-the-resend-integration)
+  * [Send with custom auth functions](#send-with-custom-auth-functions)
+  * [Send with a custom SMTP server for self-hosting](#send-with-a-custom-smtp-server-for-self-hosting)
 * [Send Emails with Supabase Edge Functions](#send-emails-with-supabase-edge-functions)
+* [Examples](#examples)
+* [Get more help](#get-more-help)
 
 ## Set up Resend
 
@@ -33,11 +38,23 @@ Go to [the Domains page](https://resend.com/domains) and click on **Add Domain**
 
 ## Send Auth Emails with Resend
 
-If you want to use Resend to send your Supabase Auth Emails, you have three options:
+If you want to use Resend to send your Supabase Auth emails, you have three options:
 
 1. [Using the Resend Integration](#send-with-the-resend-integration): simplest, but less customizable email templates.
 2. [Custom Auth Functions](#send-with-custom-auth-functions): more customizable email templates, but requires more setup.
-3. [Self-hosted with custom SMTP](#send-with-custom-smtp-server-for-self-hosting): only for those self-hosting Supabase.
+3. [Self-hosted with custom SMTP](#send-with-a-custom-smtp-server-for-self-hosting): only for those self-hosting Supabase.
+
+> [!WARNING]
+>
+> Before you go live, [set up a custom domain in
+> Supabase](https://supabase.com/docs/guides/platform/custom-domains). By
+> default, the links in Supabase Auth emails, like email confirmation and
+> password reset links, point to your project's `supabase.co` domain. When the
+> links in an email don't align with the domain you send from, inbox providers
+> are more likely to send the email to spam.
+>
+> [Learn more about maximizing deliverability for Supabase Auth
+> emails](https://resend.com/docs/knowledge-base/how-do-i-maximize-deliverability-for-supabase-auth-emails.md#setup-a-custom-domain-on-supabase).
 
 ### Send with the Resend Integration
 
@@ -88,7 +105,7 @@ If you're self-hosting Supabase, you can use a custom SMTP server to send your e
 
 ## Send Emails with Supabase Edge Functions
 
-If you're using Supabase Edge Functions, you can add email sending to your function by using the Resend Node.js SDK. You can use these functions for Auth Emails ([as shown above](#custom-auth-functions)) or for other emails (for example, app notifications and account activity).
+If you're using Supabase Edge Functions, you can add email sending to your function by using the Resend Node.js SDK. You can use these functions for Auth Emails ([as shown above](#send-with-custom-auth-functions)) or for other emails (for example, app notifications and account activity).
 
 First, make sure you have the latest version of the [Supabase CLI](https://supabase.com/docs/guides/cli#installation) installed.
 
