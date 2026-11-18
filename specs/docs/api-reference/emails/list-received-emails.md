@@ -42,12 +42,37 @@ Cannot be used with the `after` parameter.
 > [pagination guide](https://resend.com/docs/api-reference/pagination.md) for more
 > information.
 
+**to** `string`
+
+Comma-separated recipient addresses. Returns emails received by any of these
+addresses. Up to `20` values. Matches are exact and case-sensitive, so
+`support@example.com` doesn't match `Support@example.com`.
+
+**start\_date** `string`
+
+Matches emails received on or after this date. Accepts a date like
+`2026-09-01` or an ISO 8601 timestamp, in UTC unless the timestamp has an
+offset.
+
+**end\_date** `string`
+
+Matches emails received on or before this date. Same formats as `start_date`.
+A date covers that whole day, so `start_date=2026-09-01&end_date=2026-09-30`
+covers all of September.
+
+> [!NOTE]
+>
+> If your range starts before your plan's data retention window, results start
+> at the beginning of the window.
+
 ```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
 import { Resend } from 'resend';
 
 const resend = new Resend('re_xxxxxxxxx');
 
-const { data, error } = await resend.emails.receiving.list();
+const { data, error } = await resend.emails.receiving.list({
+  to: ['support@example.com'],
+});
 ```
 
 ```php PHP theme={"theme":{"light":"github-light","dark":"vesper"}}
@@ -125,7 +150,7 @@ Console.WriteLine( "Nr Received={0}", resp.Content.Data.Count );
 ```
 
 ```bash cURL theme={"theme":{"light":"github-light","dark":"vesper"}}
-curl -X GET 'https://api.resend.com/emails/receiving' \
+curl -X GET 'https://api.resend.com/emails/receiving?to=support@example.com' \
      -H 'Authorization: Bearer re_xxxxxxxxx'
 ```
 
@@ -140,7 +165,7 @@ resend emails receiving list
   "data": [
     {
       "id": "a39999a6-88e3-48b1-888b-beaabcde1b33",
-      "to": ["recipient@example.com"],
+      "to": ["support@example.com"],
       "from": "sender@example.com",
       "created_at": "2026-10-09T14:37:40.951Z",
       "subject": "Hello World",
@@ -162,3 +187,15 @@ resend emails receiving list
   ]
 }
 ```
+
+## Errors
+
+Validation errors return `422` with the name `validation_error`.
+
+| Status | Message | When |
+| - | - | - |
+| `422` | ``The `to` parameter must contain at most 20 values, but received 25.`` | `to` has more than `20` values. |
+| `422` | ``The `to` parameter can only be provided once.`` | A parameter is sent more than once, like `?to=a&to=b`. |
+| `422` | ``The `start_date` must be a valid ISO 8601 date.`` | `start_date` or `end_date` isn't a date or timestamp. |
+| `422` | ``The `start_date` must be on or before the `end_date`.`` | `end_date` is before `start_date`. |
+| `422` | `The requested date range is outside your data retention window.` | `end_date` is before your plan's data retention window. |
