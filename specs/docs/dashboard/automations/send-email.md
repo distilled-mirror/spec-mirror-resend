@@ -20,6 +20,8 @@ This automation step triggers a [Template](https://resend.com/docs/dashboard/tem
 >
 > ![Send Email Action Sender Settings](https://mintcdn.com/resend/3_DkZ6MFMzztlC_E/images/automations-steps-email-settings.png?fit=max\&auto=format\&n=3_DkZ6MFMzztlC_E\&q=85\&s=312f80d13ca502ae8de7e7bffd31e251)
 >
+> Optionally, select a [Topic](#send-with-a-topic) to skip this step for contacts who opted out of it.
+>
 > *The subject always comes from the Template. To send a different subject, set `subject` when creating the step via the [API](#configuration).*
 
 > [tab] Using the API
@@ -347,6 +349,37 @@ Template variables must be present in your referenced template and the key names
 
 For more help working with variables, see the [Template documentation](https://resend.com/docs/dashboard/templates/template-variables.md).
 
+## Send with a Topic
+
+Set `topic_id` to send the email only to contacts subscribed to a [Topic](https://resend.com/docs/dashboard/contacts/manage-topics.md). This lets contacts opt out of one kind of Automation email, like product tips, while still receiving others.
+
+```json {8} theme={"theme":{"light":"github-light","dark":"vesper"}}
+{
+  "key": "tips",
+  "type": "send_email",
+  "config": {
+    "template": {
+      "id": "044db673-fff6-420f-a566-f6aba05d60e7"
+    },
+    "topic_id": "b6d24b8e-af0b-4c3c-be0c-359bbd97381e"
+  }
+}
+```
+
+When the step runs, Resend checks the contact's subscription to the Topic:
+
+* **Opted in**: the email is sent.
+* **Opted out**: the step is [skipped](https://resend.com/docs/dashboard/automations/runs.md#skipped-steps) and no email is sent. The Automation continues to the next step.
+* **No preference**: the Topic's default subscription decides. The email is sent if the default is `opt_in`, and the step is skipped if it's `opt_out`.
+
+The Topic must exist in your team. If it doesn't, the API rejects the request with a `422` error.
+
+> [!WARNING]
+>
+> If you delete a Topic that a `send_email` step uses, the step keeps the
+> deleted Topic's ID and fails every time it runs. Pick another Topic for the
+> step or remove it before deleting the Topic.
+
 ## Unsubscribe behavior
 
 Resend does not automatically add an unsubscribe link to emails sent from a `send_email` step. To let contacts opt out, add `{{{RESEND_UNSUBSCRIBE_URL}}}` to the [Template](https://resend.com/docs/dashboard/templates/introduction.md) used by the step.
@@ -354,6 +387,12 @@ Resend does not automatically add an unsubscribe link to emails sent from a `sen
 > [!NOTE]
 >
 > `{{{RESEND_UNSUBSCRIBE_URL}}}` must be added to the Template itself, not the step's `config`. If the Template doesn't include this variable, contacts have no way to unsubscribe from within the email.
+
+When the Template includes `{{{RESEND_UNSUBSCRIBE_URL}}}`, Resend handles unsubscribes as follows, with or without a Topic:
+
+* **Global unsubscribe always wins.** A contact who is [unsubscribed](https://resend.com/docs/dashboard/contacts/managing-unsubscribe-list.md#subscription-statuses) never receives Automation emails, even if they have opted in to the step's Topic.
+* **The unsubscribe link opens your preference page.** It works the same as the [Broadcast unsubscribe link](https://resend.com/docs/dashboard/broadcasts/editor.md#broadcast-unsubscribe-link).
+* **One-click unsubscribe is global.** Resend also adds `List-Unsubscribe` and `List-Unsubscribe-Post` headers, which inbox providers like Gmail show as an unsubscribe button. Using that button unsubscribes the contact from all Broadcasts and Automation emails, not only the step's Topic.
 
 See [when to use an unsubscribe link](https://resend.com/docs/knowledge-base/should-i-add-an-unsubscribe-link.md) to decide whether your Automation emails need one.
 
@@ -391,6 +430,12 @@ Reply-to email address.
 
 If provided, this value will override the template's default value.
 
+**config.topic\_id** `string`
+
+The ID of the [Topic](https://resend.com/docs/dashboard/contacts/manage-topics.md) this email belongs
+to. Contacts not subscribed to the Topic skip this step. See [Send with a
+Topic](https://resend.com/docs/dashboard/automations/send-email.md#send-with-a-topic).
+
 ```json theme={"theme":{"light":"github-light","dark":"vesper"}}
 {
   "key": "welcome",
@@ -404,7 +449,8 @@ If provided, this value will override the template's default value.
     },
     "from": "hello@example.com",
     "subject": "Welcome!",
-    "reply_to": "support@example.com"
+    "reply_to": "support@example.com",
+    "topic_id": "b6d24b8e-af0b-4c3c-be0c-359bbd97381e"
   }
 }
 ```

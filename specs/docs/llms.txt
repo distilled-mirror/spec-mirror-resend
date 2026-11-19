@@ -180,10 +180,7 @@
 - [How to handle a leaked API key](https://resend.com/docs/knowledge-base/how-to-handle-a-leaked-api-key.md): Learn what to do when a Resend API key is exposed or used without authorization.
 - [How to avoid conflicts with your MX records](https://resend.com/docs/knowledge-base/how-do-i-avoid-conflicting-with-my-mx-records.md): Learn how to avoid conflicts with your existing MX records when setting up a Resend domain.
 - [What if my domain is not verifying?](https://resend.com/docs/knowledge-base/what-if-my-domain-is-not-verifying.md): Learn what steps to take when your domain doesn't seem to be verifying.
-- [403 Error with Error Code 1010](https://resend.com/docs/knowledge-base/403-error-1010.md): Learn how to resolve a 403 error caused by a missing User-Agent header when sending requests to the Resend API.
-- [403 Error Using Verified Domain](https://resend.com/docs/knowledge-base/403-error-domain-mismatch.md): Learn how to resolve a 403 error caused by using a domain in your API request that doesn't match your verified domain.
 - [403 Error Using resend.dev Domain](https://resend.com/docs/knowledge-base/403-error-resend-dev-domain.md): Learn how to resolve a 403 error when using the resend.dev domain to send emails to recipients other than your own.
-- [Domain Already Registered by Another Account](https://resend.com/docs/knowledge-base/domain-already-registered.md): Resolve the 403 domain already registered error by verifying domain ownership or starting a self-serve claim.
 - [DMARC Analyzer](https://resend.com/docs/dmarc-analyzer.md): Analyze DMARC XML reports with a free, open-source tool built by Resend.
 - [Cloudflare](https://resend.com/docs/guides/dns/cloudflare.md): Verify your domain on Cloudflare with Resend.
 - [DreamHost](https://resend.com/docs/guides/dns/dreamhost.md): Verify your domain on DreamHost with Resend.
@@ -321,6 +318,7 @@
 - [Delete Automation](https://resend.com/docs/api-reference/automations/delete-automation.md): Remove an existing automation.
 - [List Automation Runs](https://resend.com/docs/api-reference/automations/list-automation-runs.md): Retrieve a list of automation runs.
 - [Retrieve Automation Run](https://resend.com/docs/api-reference/automations/get-automation-run.md): Retrieve a single automation run.
+- [Cancel Automation Run](https://resend.com/docs/api-reference/automations/cancel-automation-run.md): Cancel a single automation run.
 - [Create Event](https://resend.com/docs/api-reference/events/create-event.md): Create a new event that can be used to trigger automations.
 - [Send Event](https://resend.com/docs/api-reference/events/send-event.md): Send a named event to trigger matching automations.
 - [Retrieve Event](https://resend.com/docs/api-reference/events/get-event.md): Retrieve a single event by ID or name.
@@ -401,6 +399,7 @@
 - [List Domains](https://resend.com/docs/api-reference/domains/list-domains.md): Retrieve a list of domains for the authenticated user.
 - [Update Domain](https://resend.com/docs/api-reference/domains/update-domain.md): Update an existing domain.
 - [Delete Domain](https://resend.com/docs/api-reference/domains/delete-domain.md): Remove an existing domain.
+- [Enable Forge](https://resend.com/docs/api-reference/domains/enable-forge.md): Put a domain's sending on Resend Forge.
 - [Create Webhook](https://resend.com/docs/api-reference/webhooks/create-webhook.md): Create a webhook to receive real-time notifications about email events.
 - [Retrieve Webhook](https://resend.com/docs/api-reference/webhooks/get-webhook.md): Retrieve a single webhook for the authenticated user.
 - [List Webhooks](https://resend.com/docs/api-reference/webhooks/list-webhooks.md): Retrieve a list of webhooks for the authenticated user.
@@ -424,6 +423,8 @@
 - [List Grants](https://resend.com/docs/api-reference/oauth/list-grants.md): Retrieve a list of OAuth grants for the authenticated team.
 - [Revoke Grant](https://resend.com/docs/api-reference/oauth/revoke-grant.md): Revoke an OAuth grant for the authenticated team.
 - [Resend API vs SDK](https://resend.com/docs/api-vs-sdk.md): For most use cases, the Resend SDK offers a better developer experience.
+- [403 Error Using Verified Domain](https://resend.com/docs/knowledge-base/403-error-domain-mismatch.md): Learn how to resolve a 403 error caused by using a domain in your API request that doesn't match your verified domain.
+- [Domain Already Registered by Another Account](https://resend.com/docs/knowledge-base/domain-already-registered.md): Resolve the 403 domain already registered error by verifying domain ownership or starting a self-serve claim.
 - [How to delete your Resend team](https://resend.com/docs/knowledge-base/how-can-i-delete-my-team.md): How to request your Resend team and team data to be deleted.
 - [How to collect a HAR log](https://resend.com/docs/knowledge-base/how-to-collect-a-har-log.md): Capture a HAR file in Chrome or Firefox so Resend support can see what your browser sent when something failed.
 - [Partner Program Code Redemption](https://resend.com/docs/partner-program-redemption.md): Issue unique redemption codes for approved partner programs.

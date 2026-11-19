@@ -20,11 +20,11 @@ Each run has one of the following statuses:
 | `completed` | All steps finished successfully |
 | `failed` | A step encountered an error and the run stopped |
 | `cancelled` | The run was cancelled before completing |
-| `skipped` | A step was skipped because the contact has either unsubscribed or followed a different branch path |
+| `skipped` | A step was skipped because the contact unsubscribed, isn't subscribed to the step's Topic, or followed a different branch path |
 
 ### Skipped steps
 
-When a contact unsubscribes, any remaining **Send Email** steps in the Automation will be skipped automatically. Other step types (such as Delay, Condition, or Update Contact) will still be executed as normal.
+When a contact unsubscribes, any remaining **Send Email** steps in the Automation will be skipped automatically. A **Send Email** step with a [Topic](https://resend.com/docs/dashboard/automations/send-email.md#send-with-a-topic) is also skipped when the contact isn't subscribed to that Topic. Other step types (such as Delay, Condition, or Update Contact) will still be executed as normal.
 
 ## Listing runs
 
@@ -612,6 +612,36 @@ Common failure scenarios:
 * **Wait for event timeout:** The expected event was not received within the timeout window.
 * **Send email failed:** The template may not be published, or the sender address may not be verified.
 
+## Cancelling a run
+
+Cancel a single run to skip its remaining steps, for example when the same event triggered a duplicate run. Emails the run already sent are not affected, and the Automation stays enabled. A run that already completed or failed can't be cancelled.
+
+> [tab] Using the dashboard
+>
+> In the runs list, click the **Run actions** button on a `running` run and select **Cancel run**. Type `CANCEL` to confirm.
+
+> [tab] Using the API
+>
+> Cancel a run programmatically:
+>
+> ```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
+> import { Resend } from 'resend';
+>
+> const resend = new Resend('re_xxxxxxxxx');
+>
+> const { data, error } = await resend.automations.runs.cancel({
+>   automationId: 'c9b16d4f-ba6c-4e2e-b044-6bf4404e57fd',
+>   runId: 'a1b2c3d4-e5f6-7890-abcd-ef1234567890',
+> });
+> ```
+>
+> ```bash cURL theme={"theme":{"light":"github-light","dark":"vesper"}}
+> curl -X POST 'https://api.resend.com/automations/c9b16d4f-ba6c-4e2e-b044-6bf4404e57fd/runs/a1b2c3d4-e5f6-7890-abcd-ef1234567890/cancel' \
+>      -H 'Authorization: Bearer re_xxxxxxxxx'
+> ```
+
+View the [Cancel Automation Run API reference](https://resend.com/docs/api-reference/automations/cancel-automation-run.md) for more details.
+
 ## Stopping an Automation
 
 > [tab] Using the dashboard
@@ -715,7 +745,7 @@ Common failure scenarios:
 > >
 > > Stopping an Automation prevents new runs from being created.
 > >
-> > Existing in-progress runs will continue to completion.
+> > It also cancels the Automation's runs in progress. To cancel a single run instead, see [Cancelling a run](#cancelling-a-run).
 
 View the [Stop Automation API reference](https://resend.com/docs/api-reference/automations/stop-automation.md) for more details.
 

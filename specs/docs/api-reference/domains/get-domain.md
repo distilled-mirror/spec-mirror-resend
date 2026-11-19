@@ -15,6 +15,12 @@ The Domain ID.
 > See all available [domain `status`
 > types](https://resend.com/docs/dashboard/domains/manage-domains#understand-a-domain-status).
 
+> [!NOTE]
+>
+> The Forge record is the `SPF` record of type `CNAME` that points at
+> `send.forge.rmta.net`. Its `status` is the domain's Forge status. See [Enable
+> Forge](https://resend.com/docs/api-reference/domains/enable-forge.md).
+
 ```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
 import { Resend } from 'resend';
 
@@ -137,6 +143,14 @@ resend domains get d91cd9bd-1176-453e-8fc1-35364d380206
       "name": "send",
       "value": "\"v=spf1 include:amazonses.com ~all\"",
       "type": "TXT",
+      "ttl": "Auto",
+      "status": "not_started"
+    },
+    {
+      "record": "SPF",
+      "name": "mail",
+      "value": "send.forge.rmta.net",
+      "type": "CNAME",
       "ttl": "Auto",
       "status": "not_started"
     },

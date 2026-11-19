@@ -32,6 +32,17 @@
 
 The Domain ID.
 
+## Body Parameters
+
+Limit the check to specific records. The only supported value is `forge`: only
+the Forge record is checked, and the other records keep their current status.
+Requires [Forge](https://resend.com/docs/forge.md) to be enabled on the domain, otherwise the endpoint
+responds with a `forge_not_enabled` error. When omitted, all records are
+checked.
+
+When verifying a Forge record, always pass `["forge"]` so we only verify
+its record and sending is never interrupted.
+
 ```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
 import { Resend } from 'resend';
 
@@ -39,6 +50,8 @@ const resend = new Resend('re_xxxxxxxxx');
 
 const { data, error } = await resend.domains.verify(
   'd91cd9bd-1176-453e-8fc1-35364d380206',
+  // Optional: verify only the Forge record
+  // { scope: ['forge'] },
 );
 ```
 

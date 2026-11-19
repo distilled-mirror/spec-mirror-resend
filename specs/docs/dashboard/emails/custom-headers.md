@@ -8,14 +8,15 @@
 
 Email headers are typically hidden from the end user but are crucial for deliverability. They include information about the sender, receiver, timestamp, and more.
 
-Resend already includes all the necessary headers for you, but now you can also add your own custom headers.
+Resend SDKs already include all the necessary headers for you, but you can also add your own custom headers. This can be useful for advanced use cases:
 
-This is a fairly advanced feature, but it can be useful for a few things:
+* **Prevent threading on Gmail** with the **`X-Entity-Ref-ID`** header ([Example](https://github.com/resend/resend-examples/tree/main/nextjs-resend-examples/typescript/src/app/prevent-threading))
+* **Include a shortcut for users to unsubscribe** with the **`List-Unsubscribe`** header
+* **Add missing identification headers** such as the `User-Agent` header when sending direct HTTP requests to the Resend API
 
-* Prevent threading on Gmail with the **`X-Entity-Ref-ID`** header ([Example](https://github.com/resend/resend-examples/tree/main/nextjs-resend-examples/typescript/src/app/prevent-threading))
-* Include a shortcut for users to unsubscribe with the **`List-Unsubscribe`** header
+## Add custom headers
 
-Here's how you can add custom headers to your emails:
+Add custom headers to your emails in the `headers` object:
 
 ```ts Node.js {11} theme={"theme":{"light":"github-light","dark":"vesper"}}
 import { Resend } from 'resend';
@@ -210,4 +211,29 @@ resend emails send \
   --subject "hello world" \
   --html "<p>it works!</p>" \
   --headers "X-Entity-Ref-ID=xxx_xxxx"
+```
+
+## Avoid 403 error code 1010 with the `User-Agent` header
+
+If you're using a [Resend SDK](https://resend.com/docs/sdks.md) or tools like `curl`, the required `User-Agent` header is already included automatically.
+
+However, direct HTTP requests made without an SDK may require you to add a `User-Agent` header to avoid a 403 error with error code 1010 (`Access denied`):
+
+**Example with Node.js `fetch`:**
+
+```javascript theme={"theme":{"light":"github-light","dark":"vesper"}}
+fetch('https://api.resend.com/emails', {
+  method: 'POST',
+  headers: {
+    'Authorization': 'Bearer re_123456789',
+    'Content-Type': 'application/json',
+    'User-Agent': 'my-app/1.0',
+  },
+  body: JSON.stringify({
+    from: 'you@example.com',
+    to: 'user@example.com',
+    subject: 'Hello World',
+    html: '<p>Hello World</p>',
+  }),
+});
 ```

@@ -124,10 +124,6 @@ Step-by-step instructions for verifying your domain with popular DNS providers.
 >
 > Recommended options to avoid CORS errors when sending emails.
 
-> [card] [403 Error: Domain Mismatch](https://resend.com/docs/knowledge-base/403-error-domain-mismatch.md)
->
-> Resolve 403 errors when the sending domain doesn't match your verified domain.
-
 > [card] [Domain Already Registered by Another Account](https://resend.com/docs/knowledge-base/domain-already-registered.md)
 >
 > Resolve domain ownership conflicts when a domain is already registered.

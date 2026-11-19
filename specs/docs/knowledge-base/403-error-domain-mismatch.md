@@ -2,58 +2,220 @@
 > Fetch the complete documentation index at: https://resend.com/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-# 403 Error Using Verified Domain
+# Errors
 
-> Learn how to resolve a 403 error caused by using a domain in your API request that doesn't match your verified domain.
+> Troubleshoot problems with this comprehensive breakdown of all error codes.
 
-A 403 error can occur when there's a mismatch between the domain you're using in your API request and the domain you've verified in Resend.
+## Error schema
 
-## The Problem
+Resend uses standard HTTP response codes for success and failure notifications, and errors are further classified by type.
 
-You've verified a domain (or subdomain) in Resend, but your API request is using a different domain.
+### `invalid_idempotency_key`
 
-**Example scenario:**
+* **Status:** 400
+* **Message:** Idempotency keys, if present, must have between 1 and 256 characters.
+* **Suggested action:** Retry with a valid idempotency key.
 
-* You verified `sending.domain.com` in Resend
-* Your API request is using `domain.com` (that is, without the `sending` subdomain)
+### `validation_error`
 
-## How to Identify This Issue
+* **Status:** 400
+* **Message:** An error was found with one or more fields in the request.
+* **Suggested action:** The message will contain more details about what field and error were found.
 
-1. Check which domain you've verified in your [Resend Domains page](https://resend.com/domains).
-2. Compare it with the domain you're using in [your API request's](https://resend.com/logs) `from` field.
+### `validation_error`
 
-## Solution
+* **Status:** 400
+* **Message:** API key is invalid
+* **Suggested action:** Check the key on the [API Keys page](https://resend.com/api-keys) and create a new one if it was deleted. Every endpoint except sending returns this for a key that doesn't exist or was deleted, and every endpoint returns it when the `Authorization` header isn't a valid key.
 
-You have two options to resolve this:
+### `missing_api_key`
 
-**Option 1: Update your API request** (Recommended)
+* **Status:** 401
+* **Message:** Missing API Key
+* **Suggested action:** Include the following header in the request: `Authorization: Bearer YOUR_API_KEY`.
 
-Update your API call to use the verified domain. For example, if you verified `sending.domain.com`, make sure your `from` field uses that exact domain:
+### `restricted_api_key`
 
-```javascript theme={"theme":{"light":"github-light","dark":"vesper"}}
-resend.emails.send({
-  from: 'onboarding@sending.domain.com', // Use your verified domain
-  to: 'user@example.com',
-  subject: 'Hello World',
-  html: '<p>Hello World</p>',
-});
-```
+* **Status:** 401
+* **Message:** This API key is restricted to only send emails.
+* **Suggested action:** Make sure the API key has `Full access` to perform actions other than sending emails.
 
-**Option 2: Delete and re-add the domain**
+### `validation_error`
 
-1. Delete the domain you've added in Resend
-2. Add and verify the domain that matches what you're using in your API request
+* **Status:** 401
+* **Message:** API key is invalid
+* **Suggested action:** Check the key on the [API Keys page](https://resend.com/api-keys) and create a new one if it was deleted. The sending endpoints return this for a key that doesn't exist, was deleted, or isn't active.
 
-> [!WARNING]
->
-> Make sure the domain in your API request exactly matches the domain you've
-> verified in Resend, including any subdomains.
+### `email_above_quota`
 
-## If You're Still Having Issues
+* **Status:** 403
+* **Message:** You can't retrieve this email's content because it was above quota when received.
+* **Suggested action:** [Upgrade your plan](https://resend.com/settings/billing) to increase your quota.
 
-If you've verified that your domain matches and you're still getting a 403 error:
+### `invalid_permission`
 
-1. Verify that your domain is fully verified in the [Resend Domains page](https://resend.com/domains).
-2. Double-check that the domain in your API request's `from` field exactly matches your verified domain
-3. Ensure your API key has the necessary permissions.
-4. [Contact Resend support](https://resend.com/help) with details about your error
+* **Status:** 403
+* **Message:** Access token is missing required scopes.
+* **Suggested action:** Request an access token that includes the scopes required by this endpoint.
+
+### `restricted_api_key`
+
+* **Status:** 403
+* **Message:** API key is not active
+* **Suggested action:** Check the API key on the [API Keys page](https://resend.com/api-keys) and create a new one if needed.
+
+### `suspended_api_key`
+
+* **Status:** 403
+* **Message:** This API key is suspended
+* **Suggested action:** [Contact support](https://resend.com/contact) if you believe this is a mistake.
+
+### `validation_error`
+
+* **Status:** 403
+* **Message:** You can only send testing emails to your own email address (`youremail@domain.com`). To send emails to other recipients, please verify a domain at resend.com/domains, and change the `from` address to an email using this domain.
+* **Suggested action:** In [Resend's Domain page](https://resend.com/domains), add and verify a domain for which you have DNS access. This allows you to send emails to addresses beyond your own. [Learn more about resolving this error](https://resend.com/docs/knowledge-base/403-error-resend-dev-domain.md).
+
+### `validation_error`
+
+* **Status:** 403
+* **Message:** The `domain.com` domain is not verified. Please, add and verify your domain.
+* **Suggested action:** Make sure the domain in your API request's `from` field matches a domain you've verified in Resend. Update your API request to use your verified domain, or add and verify the domain you're trying to use. [Learn more about resolving this error](https://resend.com/docs/knowledge-base/403-error-domain-mismatch.md).
+
+### `validation_error`
+
+* **Status:** 403
+* **Message:** The `example.com` domain has been registered already.
+* **Suggested action:** Verify you are signed in to the correct Resend account and check whether a teammate already added the domain. If you still cannot access it, [contact support](https://resend.com/help). [Learn more about resolving this error](https://resend.com/docs/knowledge-base/domain-already-registered.md).
+
+### `validation_error`
+
+* **Status:** 403
+* **Message:** You have reached the inboxes included in your plan. Enable pay-as-you-go for inboxes at [https://resend.com/settings/usage](https://resend.com/settings/usage) to add more.
+* **Suggested action:** Every plan includes 3 inboxes. A team admin can enable pay-as-you-go for inboxes in your [usage settings](https://resend.com/settings/usage), after which each extra inbox costs \$1 per month.
+
+### `validation_error`
+
+* **Status:** 403
+* **Message:** You have reached the inboxes included in your plan. Upgrade your Transactional plan to unlock pay-as-you-go for inboxes.
+* **Suggested action:** Every plan includes 3 inboxes, and pay-as-you-go for inboxes needs a paid Transactional plan. [Upgrade your plan](https://resend.com/settings/billing), then enable pay-as-you-go for inboxes in your [usage settings](https://resend.com/settings/usage).
+
+### `validation_error`
+
+* **Status:** 403
+* **Message:** You have reached the inboxes included in your plan. Pay-as-you-go for inboxes isn't available for your billing setup.
+* **Suggested action:** Teams billed through Stripe Projects cannot enable pay-as-you-go for inboxes. [Contact support](https://resend.com/help) if you need more than the 3 included inboxes.
+
+### `validation_error`
+
+* **Status:** 403
+* **Message:** You have reached the inboxes included in your plan. Manage pay-as-you-go for inboxes at [https://resend.com/settings/usage](https://resend.com/settings/usage) to add more.
+* **Suggested action:** Every plan includes 3 inboxes. Open your [usage settings](https://resend.com/settings/usage) to enable pay-as-you-go for inboxes, which needs a paid Transactional plan.
+
+### `not_found`
+
+* **Status:** 404
+* **Message:** The requested endpoint does not exist.
+* **Suggested action:** Change your request URL to match a valid API endpoint.
+
+### `method_not_allowed`
+
+* **Status:** 405
+* **Message:** Method is not allowed for the requested path.
+* **Suggested action:** Change your API endpoint to use a valid method.
+
+### `concurrent_idempotent_requests`
+
+* **Status:** 409
+* **Message:** There is another request in progress with the same idempotency key.
+* **Suggested action:** Try the request again later.
+
+### `forge_not_enabled`
+
+* **Status:** 409
+* **Message:** Forge is not enabled on this domain.
+* **Suggested action:** Call `POST /domains/{id}/forge` first.
+
+### `invalid_idempotent_request`
+
+* **Status:** 409
+* **Message:** This idempotency key has been used with this HTTP method and endpoint within the last 24 hours, but the request body was modified and doesn't match the original request.
+* **Suggested action:** Change your idempotency key or payload.
+
+### `resource_locked`
+
+* **Status:** 409
+* **Message:** Another request is already updating this resource.
+* **Suggested action:** Retry the request after a short delay.
+
+### `forge_unavailable`
+
+* **Status:** 422
+* **Message:** Forge is not available for this domain.
+* **Suggested action:** The message names the reason: a dedicated IP, a legacy DKIM setup, a receive-only domain or a pending claim. Contact [support@resend.com](mailto:support@resend.com) if you need Forge on it.
+
+### `invalid_attachment`
+
+* **Status:** 422
+* **Message:** Attachment must have either a `content` or `path`.
+* **Suggested action:** Attachments must either have a `content` (strings, Buffer, or Stream contents) or `path` to a remote resource (better for larger attachments).
+
+### `invalid_parameter`
+
+* **Status:** 422
+* **Message:** The `parameter` must be a valid UUID.
+* **Suggested action:** Check the value and make sure it's valid.
+
+### `missing_required_field`
+
+* **Status:** 422
+* **Message:** The request body is missing one or more required fields.
+* **Suggested action:** Check the error message to see the list of missing fields.
+
+### `missing_required_parameter`
+
+* **Status:** 422
+* **Message:** The request is missing one or more required parameters.
+* **Suggested action:** Check the error message to see the list of missing parameters.
+
+### `return_path_unavailable`
+
+* **Status:** 422
+* **Message:** The requested return path cannot be used for Forge.
+* **Suggested action:** Choose a `return_path` label that has no DNS records yet and differs from the current SES return path.
+
+### `daily_quota_exceeded`
+
+* **Status:** 429
+* **Message:** You have exceeded your daily email sending quota.
+* **Suggested action:** [Upgrade your plan](https://resend.com/settings/billing) to remove the daily quota limit or wait for the quota to reset at midnight UTC. Both sent and received emails count towards this quota.
+
+### `monthly_quota_exceeded`
+
+* **Status:** 429
+* **Message:** You have exceeded your monthly email sending quota.
+* **Suggested action:** [Upgrade your plan](https://resend.com/settings/billing) to increase the monthly email quota, or on a paid plan turn on [pay-as-you-go](https://resend.com/settings/usage) to keep sending past it. Both sent and received emails count towards this quota.
+
+### `rate_limit_exceeded`
+
+* **Status:** 429
+* **Message:** Too many requests. Please limit the number of requests per second. Or [contact support](https://resend.com/contact) to increase rate limit.
+* **Suggested action:** Read the [response headers](https://resend.com/docs/api-reference/introduction.md#rate-limit) and reduce the rate at which you request the API. This can be done by introducing a queue mechanism or reducing the number of concurrent requests per second. If you have specific requirements, [contact support](https://resend.com/contact) to request a rate increase.
+
+### `application_error`
+
+* **Status:** 500
+* **Message:** An unexpected error occurred.
+* **Suggested action:** Try the request again later. If the error does not resolve, check our [status page](https://resend-status.com) for service updates.
+
+### `dns_lookup_failed`
+
+* **Status:** 503
+* **Message:** Could not check DNS for the requested host.
+* **Suggested action:** Retry the request in a few seconds.
+
+### `service_unavailable`
+
+* **Status:** 503
+* **Message:** API is temporarily unavailable
+* **Suggested action:** Try the request again later. Check our [status page](https://resend-status.com) for service updates.

@@ -42,8 +42,8 @@ User-Agent: my-app/1.0
 > [!NOTE]
 >
 > If you're getting a `403` error with error code `1010` despite having a valid
-> API key, a missing `User-Agent` header is likely the cause. See [Error
-> 1010](https://resend.com/docs/knowledge-base/403-error-1010.md) for more details.
+> API key, a missing `User-Agent` header is likely the cause. You may need to
+> [add a custom header](https://resend.com/docs/dashboard/emails/custom-headers.md) to your API request.
 
 ## Response codes
 
