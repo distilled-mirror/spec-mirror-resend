@@ -66,8 +66,8 @@ DNS records stay untouched. Don't remove them.
 
 **4. Verify**
 
-Once the record verifies, the Forge section of your domain's page shows an
-**Enabled** tag. From there, Resend gradually moves your sending onto Forge to
+Once the record verifies, the Forge section of your domain's page shows a
+**Ready** tag. From there, Resend gradually moves your sending onto Forge to
 keep deliverability high, and the share of your email going through Forge
 grows over time. Once your email is routing through Forge, the tag changes to
 **Active**.
@@ -170,6 +170,6 @@ If the Forge record doesn't verify, these are some common troubleshooting method
 
 > [accordion] I have activated Forge but I'm still seeing the old headers
 >
-> The **Enabled** tag means your domain is ready for Forge. Resend moves your
+> The **Ready** tag means your domain is ready for Forge. Resend moves your
 > sending onto Forge gradually, so for a while part of your email still goes
 > out the usual way. You don't need to do anything.

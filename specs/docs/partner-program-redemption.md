@@ -39,9 +39,10 @@ Your program identifier (provided by Resend)
 
 Verified email address of the subscriber requesting the code
 
-**company\_name** `string` *required*
+**company\_name** `string | null`
 
-Subscriber's company name
+Subscriber's company name. Leave it out or send `null` when the subscriber has
+no company. Don't send a placeholder such as "Individual".
 
 ## Request Example
 

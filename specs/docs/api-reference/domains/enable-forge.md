@@ -4,13 +4,18 @@
 
 # Enable Forge
 
-> Put a domain's sending on Resend Forge.
+> Put a domain's sending and receiving on Resend Forge.
 
-This endpoint returns the DNS record Forge needs. Add it to your DNS and call
+This endpoint returns the DNS records Forge needs. Add them to your DNS and call
 [Verify Domain](https://resend.com/docs/api-reference/domains/verify-domain.md) with `scope: ["forge"]`,
-then poll [Retrieve Domain](https://resend.com/docs/api-reference/domains/get-domain.md) until the
-Forge record's `status` is `verified`.
+then poll [Retrieve Domain](https://resend.com/docs/api-reference/domains/get-domain.md) until each of
+these records has the `status` `verified`.
 Calling this endpoint again just returns the current state.
+
+* **Sending:** a Forge `SPF` record of type `CNAME`.
+* **Receiving:** when the domain also receives email, Forge moves receiving
+  too. The `Receiving` record of type `MX` gets a new value and the `status`
+  `pending`. Replace your current `MX` record with it.
 
 > [!NOTE]
 >

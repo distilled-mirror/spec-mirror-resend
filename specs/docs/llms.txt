@@ -399,7 +399,7 @@
 - [List Domains](https://resend.com/docs/api-reference/domains/list-domains.md): Retrieve a list of domains for the authenticated user.
 - [Update Domain](https://resend.com/docs/api-reference/domains/update-domain.md): Update an existing domain.
 - [Delete Domain](https://resend.com/docs/api-reference/domains/delete-domain.md): Remove an existing domain.
-- [Enable Forge](https://resend.com/docs/api-reference/domains/enable-forge.md): Put a domain's sending on Resend Forge.
+- [Enable Forge](https://resend.com/docs/api-reference/domains/enable-forge.md): Put a domain's sending and receiving on Resend Forge.
 - [Create Webhook](https://resend.com/docs/api-reference/webhooks/create-webhook.md): Create a webhook to receive real-time notifications about email events.
 - [Retrieve Webhook](https://resend.com/docs/api-reference/webhooks/get-webhook.md): Retrieve a single webhook for the authenticated user.
 - [List Webhooks](https://resend.com/docs/api-reference/webhooks/list-webhooks.md): Retrieve a list of webhooks for the authenticated user.
