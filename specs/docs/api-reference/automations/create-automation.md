@@ -10,23 +10,23 @@
 
 **name** `string` *required*
 
-The name of the automation.
+The name of the Automation.
 
 **status** `string`
 
-The status of the automation. Possible values are `enabled` or `disabled`.
+The status of the Automation. Possible values are `enabled` or `disabled`.
 Defaults to `disabled`.
 
 **steps** `Step[]`
 
-The steps that compose the automation graph. Must be provided together with
+The steps that compose the Automation graph. Must be provided together with
 `connections`. See [Step
 Properties](https://resend.com/docs/dashboard/automations/steps.md#step-properties) for full object
 definition.
 
 **connections** `Connection[]`
 
-The connections between steps in the automation graph. Must be provided
+The connections between steps in the Automation graph. Must be provided
 together with `steps`. See [Connection
 Properties](https://resend.com/docs/dashboard/automations/connections.md#connection-properties) for full
 object definition.

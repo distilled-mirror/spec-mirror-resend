@@ -25,7 +25,7 @@ The ID of the last draft on the current page. Returns the next, older page.
 **before** `string`
 
 The ID of the first draft on the current page. Returns the previous, newer
-page. Cannot be combined with `after`.
+page. Can't be combined with `after`.
 
 ## Response Fields
 

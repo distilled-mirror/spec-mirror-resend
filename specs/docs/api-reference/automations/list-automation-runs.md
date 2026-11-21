@@ -8,7 +8,7 @@
 
 ## Path Parameters
 
-The automation ID.
+The Automation ID.
 
 ## Query Parameters
 

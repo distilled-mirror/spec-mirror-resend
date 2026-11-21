@@ -85,7 +85,7 @@ Must be a thread ID.
 **before** `string`
 
 The ID of the first thread on the current page. Returns the previous, newer
-page. Cannot be combined with `after`. Must be a thread ID.
+page. Can't be combined with `after`. Must be a thread ID.
 
 ## How matching works
 

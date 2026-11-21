@@ -16,13 +16,13 @@
 
 ## Vercel Marketplace integration
 
-If you installed Resend through the [Vercel Marketplace](https://vercel.com/marketplace/resend), Vercel manages the lifecycle of your Resend team, API keys, and domains. These resources cannot be deleted from the Resend dashboard, as they must uninstalled from Vercel to remove them.
+If you installed Resend through the [Vercel Marketplace](https://vercel.com/marketplace/resend), Vercel manages the lifecycle of your Resend team, API keys, and domains. These resources cannot be deleted from the Resend dashboard, as they must be uninstalled from Vercel to remove them.
 
 ## Add Domain to Resend
 
 First, log in to your [Resend Account](https://resend.com/login) and [add a domain](https://resend.com/domains).
 
-![Domain Details](https://mintcdn.com/resend/JHWt09hsc7E33HK2/images/dashboard-domains-resend-add-domain.png?fit=max\&auto=format\&n=JHWt09hsc7E33HK2\&q=85\&s=418dd93c2f2ead0b0d83d1b7c2fb0970)
+![Domain Details](https://mintlify.s3.us-west-1.amazonaws.com/resend/images/dashboard-domains-resend-add-domain.png)
 
 > [!TIP]
 >

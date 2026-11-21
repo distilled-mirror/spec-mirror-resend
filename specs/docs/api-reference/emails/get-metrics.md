@@ -59,15 +59,15 @@ List of metrics to include in the response. Omit for all. See
 
 List of dimensions to break the response down by. Combine
 any of `period`, `domain`, `email`, or `broadcast` to group the data by
-more than one at once, except `email` cannot be combined with `broadcast`.
+more than one at once, except `email` can't be combined with `broadcast`.
 Omit for a single `totals` row for the whole range, with no `data`.
 
 Possible values:
 
 * `period`: groups the data by `granularity` period, in chronological order.
 * `domain`: groups the data by sending domain.
-* `email`: groups the data by email. Cannot be combined with `broadcast`.
-* `broadcast`: groups the data by broadcast. Cannot be combined with `email`.
+* `email`: groups the data by email. Can't be combined with `broadcast`.
+* `broadcast`: groups the data by Broadcast. Can't be combined with `email`.
 
 **domain\_id** `string[]`
 
@@ -75,12 +75,12 @@ List of sending domain IDs to restrict the response to, up to 100.
 
 **email\_id** `string[]`
 
-List of email IDs to restrict the response to, up to 100. Cannot be combined
+List of email IDs to restrict the response to, up to 100. Can't be combined
 with the `broadcast` dimension or `broadcast_id`.
 
 **broadcast\_id** `string[]`
 
-List of broadcast IDs to restrict the response to, up to 100. Cannot be
+List of Broadcast IDs to restrict the response to, up to 100. Can't be
 combined with the `email` dimension or `email_id`.
 
 > [!TIP]

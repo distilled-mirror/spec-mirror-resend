@@ -9,11 +9,11 @@
 You can only cancel Broadcasts that are `queued` or `scheduled`. When you cancel a Broadcast, here's what happens based on its status:
 
 * `scheduled` → `draft`: no emails are sent. You can update the Broadcast and reschedule it to be sent.
-* `queued` → `canceled`: emails that have already been sent are not affected, but any emails still in the queue will no longer be sent.
+* `queued` → `canceled`: emails that have already been sent aren't affected, but any emails still in the queue will no longer be sent.
 
 ## Path Parameters
 
-The broadcast ID.
+The Broadcast ID.
 
 ```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
 import { Resend } from 'resend';

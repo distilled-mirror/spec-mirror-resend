@@ -21,8 +21,8 @@ The Inbox ID or the inbox email address, such as `support@example.com`.
 
 ## Body Parameters
 
-At least one of `to`, `cc`, `bcc`, `subject`, `text`, `html`, or `attachments`
-must be non-empty. `to`, `cc`, and `bcc` combined cannot exceed 50 recipients.
+At least one recipient field (`to`, `cc`, or `bcc`) or content field (`subject`, `text`, `html`, or `attachments`)
+must be non-empty. `to`, `cc`, and `bcc` combined can't exceed 50 recipients.
 
 **to** `string | string[] | null`
 
@@ -56,7 +56,7 @@ The plain-text body.
 
 Files to store on the draft, up to 25 MB in total, downloaded files
 included. All `path` downloads must finish within 20 seconds together.
-Drafts do not accept `content_id`.
+Drafts don't accept `content_id`.
 
 **properties**
 
@@ -68,7 +68,7 @@ Content of an attached file, passed as a buffer or Base64 string. Either
 **path** `string`
 
 Path where the attachment file is hosted. Resend downloads it when the
-draft is saved, so a URL that cannot be downloaded returns an error. When
+draft is saved, so a URL that can't be downloaded returns an error. When
 both `content` and `path` are sent, `content` is used.
 
 **filename** `string` *required*
@@ -91,12 +91,12 @@ sent with `thread_id`.
 
 Add an idempotency key to prevent duplicated drafts.
 
-* Should be **unique per API request**
+* Use a **unique key per API request**
 * Idempotency keys expire after **24 hours**
 * Have a maximum length of **256 characters**
 * A retry with the same key returns the first successful response, with the
   `idempotent-replayed: true` header
-* A failed request is not stored, so you can retry it with the same key
+* A failed request isn't stored, so you can retry it with the same key
 * Reusing the key with a different body, or while the first request is still
   running, returns a `409`
 

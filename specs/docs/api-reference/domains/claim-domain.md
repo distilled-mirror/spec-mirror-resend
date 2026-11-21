@@ -25,9 +25,9 @@ The name of the domain you want to claim.
 The region where emails will be sent from. Possible values: `'us-east-1' |
     'eu-west-1' | 'sa-east-1' | 'ap-northeast-1'`
 
-Choose a subdomain for the Return-Path address. Defaults to `send` (i.e.,
-`send.yourdomain.tld`). Avoid setting values that could undermine credibility
-(e.g. `testing`), as they may be exposed to recipients.
+Choose a subdomain for the Return-Path address. Defaults to `send` (that is,
+`send.yourdomain.tld`). Avoid setting values that undermine credibility (e.g.
+`testing`), as they may be exposed to recipients.
 
 Track the open rate of each email.
 

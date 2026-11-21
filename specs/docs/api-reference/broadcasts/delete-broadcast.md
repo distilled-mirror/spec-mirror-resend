@@ -6,11 +6,11 @@
 
 > Remove an existing broadcast.
 
-You can only delete Broadcasts that have not yet been sent (i.e., `draft` or `scheduled`). Deleting a `scheduled` Broadcast also cancels the scheduled delivery and the email will not be sent.
+You can only delete Broadcasts that haven't yet been sent (`draft` or `scheduled`). Deleting a `scheduled` Broadcast also cancels the scheduled delivery and the email won't be sent.
 
 ## Path Parameters
 
-The broadcast ID.
+The Broadcast ID.
 
 ```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
 import { Resend } from 'resend';

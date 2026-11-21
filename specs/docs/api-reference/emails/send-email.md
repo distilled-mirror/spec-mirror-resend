@@ -33,8 +33,7 @@ strings.
 Cc recipient email address. For multiple addresses, send as an array of
 strings.
 
-Schedule email to be sent later. The date should be in natural language (e.g.: `in 1 min`) or ISO 8601 format (e.g:
-`2026-08-05T11:52:01.858Z`).
+Schedule email to be sent later. Use natural language (e.g.: `in 1 min`) or ISO 8601 format (e.g: `2026-08-05T11:52:01.858Z`).
 
 [See examples](https://resend.com/docs/dashboard/emails/schedule-email.md)
 
@@ -65,8 +64,8 @@ Custom headers to add to the email.
 The topic ID to receive the email.
 
 * If the recipient is a contact and has opted-in to the topic, the email is sent.
-* If the recipient is a contact and has opted-out of the topic, the email is not sent and will be marked as failed.
-* If the recipient is not a contact, the email is sent if the topic default subscription value is set to `opt-in`.
+* If the recipient is a contact and has opted-out of the topic, the email isn't sent and will be marked as failed.
+* If the recipient isn't a contact, the email is sent if the topic default subscription value is set to `opt-in`.
 
 > [!NOTE]
 >
@@ -141,7 +140,7 @@ The id of the published email template. Required if `template` is provided. Only
 
 Template variables object with key/value pairs.
 
-```ts theme={"theme":{"light":"github-light","dark":"vesper"}}
+```ts theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}}
 variables: {
 	CTA: 'Sign up now',
 	CTA_LINK: 'https://example.com/signup'
@@ -177,7 +176,7 @@ Observe these technical limitations:
 
 Add an idempotency key to prevent duplicated emails.
 
-* Should be **unique per API request**
+* Use a **unique key per API request**
 * Idempotency keys expire after **24 hours**
 * Have a maximum length of **256 characters**
 

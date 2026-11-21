@@ -24,7 +24,7 @@ A human must create the Resend account. Once you have an account, you'll need to
 
 > [!NOTE]
 >
-> To send or receive with Resend, you'll need to [verify a domain](https://resend.com/domains). While an agent can [create a domain](https://resend.com/docs/api-reference/domains/create-domain.md), the API returns DNS records you will need to add in your DNS provider before [verifying your DNS records](https://resend.com/docs/api-reference/domains/verify-domain.md). You may find it easier to verify your domain in the dashboard.
+> To send or receive with Resend, you'll need to [verify a domain](https://resend.com/domains). While an agent can [create a domain](https://resend.com/docs/api-reference/domains/create-domain.md), the API returns DNS records you will need to add in your DNS provider before [verifying your DNS records](https://resend.com/docs/api-reference/domains/verify-domain.md). You may find it easier to verify your domain in the Dashboard.
 
 ## Resend MCP Server
 
@@ -45,8 +45,8 @@ The [Resend plugin](https://github.com/resend/resend-skills) follows the [Agent 
 
 > [card] [MCP Server](https://resend.com/docs/mcp-server.md)
 >
-> View setup instructions for Claude, Cursor, Codex, Copilot, Hermes, OpenClaw,
-> and more.
+> View setup instructions for Claude, Cursor, Codex, and Copilot. The setup also
+> covers Hermes, OpenClaw, and more.
 
 ## Resend CLI
 
@@ -114,7 +114,7 @@ Or install individually:
 | - | - | - |
 | [Resend](https://resend.com/docs/resend-skill.md) | `npx skills add resend/resend-skills` | Send and receive emails, handle errors, and prevent duplicate sends. Get code examples from various SDKs. |
 | [React Email](https://resend.com/docs/react-email-skill.md) | `npx skills add resend/react-email` | Build emails in React, Tailwind, and TypeScript. Audit existing React emails for style and cross-client rendering. |
-| [Email Best Practices](https://resend.com/docs/email-best-practices-skill.md) | `npx skills add resend/email-best-practices` | Audit SPF/DKIM/DMARC setup, compliance (CAN-SPAM, GDPR), webhook handling |
+| [Email Best Practices](https://resend.com/docs/email-best-practices-skill.md) | `npx skills add resend/email-best-practices` | Audit Sender Policy Framework (SPF), DomainKeys Identified Mail (DKIM), and Domain-based Message Authentication, Reporting, and Conformance (DMARC) setup. Check compliance (CAN-SPAM, GDPR) and webhook handling. |
 
 ## Quick Start Guides
 
@@ -126,25 +126,23 @@ Resend provides two endpoints for sending emails:
 
 | Approach | Endpoint | Use Case |
 | - | - | - |
-| **Single** | `POST /emails` | Individual transactional emails, emails with attachments, scheduled sends |
+| **Single** | `POST /emails` | Individual transactional emails, emails with attachments |
 | **Batch** | `POST /emails/batch` | Multiple distinct emails in one request (max 100), bulk notifications |
 
 **Choose batch when:**
 
 * Sending 2+ distinct emails at once
 * Reducing API calls is important (by default, rate limit is 10 requests per second)
-* No attachments or scheduling needed
+* No attachments needed
 
 **Choose single when:**
 
 * Sending one email
 * Email needs attachments
-* Email needs to be scheduled
-* Different recipients need different timing
 
 ## Quick Start
 
-1. **Detect project language** from config files (package.json, requirements.txt, go.mod, etc.)
+1. **Detect project language** from config files (such as package.json, requirements.txt, or go.mod)
 2. **Install SDK** (preferred) or use cURL
 3. **Choose single or batch** based on the decision matrix above
 4. **Implement best practices** - Idempotency keys, error handling, retries
@@ -179,7 +177,7 @@ Prevent duplicate emails when retrying failed requests.
 ### Retry Strategy
 
 * **Backoff:** Exponential (1s, 2s, 4s...)
-* **Max retries:** 3-5 for most use cases
+* **Max retries:** 3–5 for most use cases
 * **Only retry:** 429 (rate limit) and 500 (server error)
 * **Always use:** Idempotency keys when retrying
 
@@ -241,7 +239,6 @@ console.log('Sent:', data.id);
 ### Limitations
 
 * **No attachments** - Use single sends for emails with attachments
-* **No scheduling** - Use single sends for scheduled emails
 * **Atomic** - If one email fails validation, the entire batch fails
 * **Max 100 emails** per request
 * **Max 50 recipients** per individual email in the batch

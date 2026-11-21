@@ -200,7 +200,7 @@ resend emails batch --file ./emails.json
 | `--idempotency-key <key>` | No | Deduplicate this batch request |
 | `--batch-validation <mode>` | No | `strict` (default, entire batch fails on any error) or `permissive` |
 
-Each email in the JSON array supports the same fields as `resend emails send`, including per-email `scheduled_at` (natural language or ISO 8601) and `tags`. The `attachments` field is not supported in batch sends.
+Each email in the JSON array supports the same fields as `resend emails send`, including per-email `scheduled_at` (natural language or ISO 8601) and `tags`. The `attachments` field isn't supported in batch sends.
 
 ```json emails.json theme={"theme":{"light":"github-light","dark":"vesper"}}
 [

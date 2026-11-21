@@ -11,7 +11,7 @@
 **event** `string` *required*
 
 The name of the event to trigger. Must match the event name configured in an
-automation trigger step.
+Automation trigger step.
 
 Either `contact_id` or `email` must be provided, but not both.
 
@@ -22,11 +22,11 @@ The contact ID (UUID) to associate with this event. Exactly one of
 
 The email address to associate with this event. Exactly one of `contact_id` or
 `email` must be provided. If no contact with this email exists in your
-Audience, one will be created automatically when the automation runs.
+Audience, one will be created automatically when the Automation runs.
 
 **payload** `object`
 
-An optional object containing custom data to pass to the automation. This data
+An optional object containing custom data to pass to the Automation. This data
 can be used in template variables and conditions. If the event has a schema
 defined, the payload values will be validated and coerced to match the schema
 types.

@@ -10,7 +10,7 @@ This endpoint returns the DNS records Forge needs. Add them to your DNS and call
 [Verify Domain](https://resend.com/docs/api-reference/domains/verify-domain.md) with `scope: ["forge"]`,
 then poll [Retrieve Domain](https://resend.com/docs/api-reference/domains/get-domain.md) until each of
 these records has the `status` `verified`.
-Calling this endpoint again just returns the current state.
+Calling this endpoint again returns the current state.
 
 * **Sending:** a Forge `SPF` record of type `CNAME`.
 * **Receiving:** when the domain also receives email, Forge moves receiving
@@ -25,7 +25,8 @@ Calling this endpoint again just returns the current state.
 > [!NOTE]
 >
 > The domain must be a sending domain. Receive-only domains, domains on a
-> dedicated IP, and domains with legacy DKIM get a `forge_unavailable` error.
+> dedicated IP, and domains with legacy DomainKeys Identified Mail (DKIM) get a
+> `forge_unavailable` error.
 
 ## Path Parameters
 
@@ -35,11 +36,11 @@ The Domain ID.
 
 The subdomain label for the Forge return path, for example `forge` on
 `example.com` produces a `CNAME` record for `forge.example.com`. It must start
-with a letter, end with a letter or digit, contain only letters, digits, and
-hyphens, and be 63 characters or less. It is stored lowercased. When omitted,
-Resend picks a label that is free in your DNS. It cannot equal the domain's
-current return path, and the chosen host must not already have DNS records;
-either case gets a `return_path_unavailable` error. It is set once and cannot
+with a letter and end with a letter or digit. It can contain only letters,
+digits, and hyphens, and be 63 characters or less. It's stored lowercased.
+When omitted, Resend picks a label that is free in your DNS. It can't equal
+the domain's current return path, and the chosen host must not already have
+DNS records, and either case gets a `return_path_unavailable` error. It can't
 be changed afterwards.
 
 ## Headers
@@ -48,12 +49,12 @@ be changed afterwards.
 
 Add an idempotency key to enable Forge only once.
 
-* Should be **unique per API request**
+* Must be **unique per API request**
 * Idempotency keys expire after **24 hours**
 * Have a maximum length of **256 characters**
 * A retry with the same key returns the first successful response, with the
   `idempotent-replayed: true` header
-* A failed request is not stored, so you can retry it with the same key
+* A failed request isn't stored, so you can retry it with the same key
 * Reusing the key with a different body, or while the first request is still
   running, returns a `409`
 

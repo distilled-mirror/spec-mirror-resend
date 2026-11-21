@@ -32,7 +32,7 @@ This value can only be changed after it has been specified, never removed. This 
 may already be sent with the current tracking subdomain.
 
 After changing the tracking subdomain, a new DNS record must be verified, until then, the previous value is used.
-Do not remove old tracking DNS records, all previously used records remain active and are included in the response.
+Don't remove old tracking DNS records, all previously used records remain active and are included in the response.
 
 Learn more about [custom tracking subdomains](https://resend.com/docs/dashboard/domains/tracking.md).
 
@@ -40,15 +40,16 @@ Learn more about [custom tracking subdomains](https://resend.com/docs/dashboard/
 
 <ul>
   <li>
-    `opportunistic`: Opportunistic TLS means that it always attempts to make a
-    secure connection to the receiving mail server. If it can't establish a
-    secure connection, it sends the message unencrypted.
+    `opportunistic`: Opportunistic Transport Layer Security (TLS) means that
+    it always attempts to make a secure connection to the receiving mail
+    server. If it can't establish a secure connection, it sends the message
+    unencrypted.
   </li>
 
   <li>
-    `enforced`: Enforced TLS on the other hand, requires that the email
-    communication must use TLS no matter what. If the receiving server does
-    not support TLS, the email will not be sent.
+    `enforced`: Enforced TLS, on the other hand, requires that the email
+    communication must be encrypted no matter what. If the receiving server
+    doesn't support it, the email won't be sent.
   </li>
 </ul>
 

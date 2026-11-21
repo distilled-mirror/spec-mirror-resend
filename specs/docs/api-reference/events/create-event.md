@@ -10,19 +10,19 @@
 
 **name** `string` *required*
 
-The name of the event. Used to match events to automation triggers.
+The name of the event. Used to match events to Automation triggers.
 
 > [!NOTE]
 >
 > The event name can be any string (e.g., `user.created`, `welcome`,
-> `my-custom-event`). Dot notation is a recommended convention but is not
-> required. If multiple enabled automations use the same event name, all of them
+> `my-custom-event`). Dot notation is a recommended convention but isn't
+> required. If multiple enabled Automations use the same event name, all of them
 > will be triggered. Use unique event names if you want to target a specific
-> automation.
+> Automation.
 
 > [!WARNING]
 >
-> Event names cannot start with the `resend:` prefix, which is reserved for system events.
+> Event names can't start with the `resend:` prefix, which is reserved for system events.
 
 **schema** `object`
 

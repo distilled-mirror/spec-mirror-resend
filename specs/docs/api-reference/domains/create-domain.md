@@ -18,10 +18,11 @@ The region where emails will be sent from. Possible values: `'us-east-1' |
     'eu-west-1' | 'sa-east-1' | 'ap-northeast-1'`
 
 For advanced use cases, choose a subdomain for the Return-Path address. The
-custom return path is used for SPF authentication, DMARC alignment, and
-handling bounced emails. Defaults to `send` (i.e., `send.yourdomain.tld`). Avoid
-setting values that could undermine credibility (e.g. `testing`), as they may
-be exposed to recipients.
+custom return path is used for Sender Policy Framework (SPF)
+authentication, Domain-based Message Authentication, Reporting, and
+Conformance (DMARC) alignment, and handling bounced emails. Defaults to
+`send` (that is, `send.yourdomain.tld`). Avoid setting values that undermine
+credibility (e.g. `testing`), as they may be exposed to recipients.
 
 Learn more about [custom return paths](https://resend.com/docs/dashboard/domains/custom-return-path.md).
 
@@ -47,15 +48,16 @@ Learn more about [custom tracking subdomains](https://resend.com/docs/dashboard/
 
 <ul>
   <li>
-    `opportunistic`: Opportunistic TLS means that it always attempts to make a
-    secure connection to the receiving mail server. If it can't establish a
-    secure connection, it sends the message unencrypted.
+    `opportunistic`: Opportunistic Transport Layer Security (TLS) means that
+    it always attempts to make a secure connection to the receiving mail
+    server. If it can't establish a secure connection, it sends the message
+    unencrypted.
   </li>
 
   <li>
-    `enforced`: Enforced TLS on the other hand, requires that the email
-    communication must use TLS no matter what. If the receiving server does
-    not support TLS, the email will not be sent.
+    `enforced`: Enforced Transport Layer Security (TLS) on the other hand,
+    requires that the email communication must use TLS no matter what. If the
+    receiving server doesn't support TLS, the email won't be sent.
   </li>
 </ul>
 

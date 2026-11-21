@@ -22,7 +22,7 @@ The ID of the inbox.
 
 **name** `string`
 
-Internal name for the inbox. Recipients do not see it.
+Internal name for the inbox. Recipients don't see it.
 
 **email\_address** `string`
 

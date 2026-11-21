@@ -28,15 +28,15 @@ Number of contact imports to retrieve.
 
 **after** `string`
 
-The contact import ID *after* which we'll retrieve more contact
-imports. This ID will *not* be included in the returned list. Cannot be
-used with the `before` parameter.
+The contact import ID *after* which to retrieve more contact imports.
+This ID *won't* be included in the returned list. Can't be used with
+the `before` parameter.
 
 **before** `string`
 
-The contact import ID *before* which we'll retrieve more contact
-imports. This ID will *not* be included in the returned list. Cannot be
-used with the `after` parameter.
+The contact import ID *before* which to retrieve more contact imports.
+This ID *won't* be included in the returned list. Can't be used with
+the `after` parameter.
 
 **status** `'queued' | 'in_progress' | 'completed' | 'failed'`
 

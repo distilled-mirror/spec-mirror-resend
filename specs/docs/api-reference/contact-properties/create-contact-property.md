@@ -13,8 +13,8 @@ and underscores are allowed.
 
 The property type. Possible values: `string` or `number`.
 
-The default value to use when the property is not set for a contact. Must
-match the type specified in the `type` field.
+The default value to use when the property isn't set for a contact. Must match
+the type specified in the `type` field.
 
 ```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
 import { Resend } from 'resend';

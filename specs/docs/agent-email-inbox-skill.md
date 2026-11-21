@@ -30,7 +30,7 @@ npx skills add resend/resend-skills
 * **Real-time webhook architecture**: Event-driven design means your agent reacts to emails in seconds, not minutes.
 * **Threaded replies**: Your agent replies inside the conversation, and Resend sets the recipients and threading headers.
 * **Webhook signature verification**: Built-in patterns for verifying Resend webhook signatures to prevent spoofed events.
-* **Multi-language SDK support**: The inbox examples use the Node.js SDK. The Receiving fallback works with Node.js, Python, Go, Ruby, PHP, Rust, Java, and .NET.
+* **Multi-language SDK support**: The inbox examples use the Node.js SDK. The Receiving fallback works with eight SDKs: Node.js, Python, Go, and Ruby, as well as PHP, Rust, Java, and .NET.
 * **Common threat protection**: Built-in guidance for handling prompt injection, sender spoofing, and email flooding.
 
 ## Architecture

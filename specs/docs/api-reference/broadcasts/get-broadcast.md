@@ -6,11 +6,11 @@
 
 > Retrieve a single broadcast.
 
-You can retrieve broadcasts created via both this API and the Resend dashboard.
+You can retrieve Broadcasts created via both this API and the Resend Dashboard.
 
 ## Path Parameters
 
-The broadcast ID.
+The Broadcast ID.
 
 > [!NOTE]
 >

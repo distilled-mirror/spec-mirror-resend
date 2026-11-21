@@ -13,7 +13,7 @@ The Email ID.
 ## Body Parameters
 
 How long the link stays valid for, as a duration like `10m`, `2 hours`, or `1
-    day`. Defaults to `48h` and cannot exceed 48 hours.
+    day`. Defaults to `48h` and can't exceed 48 hours.
 
 ```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
 import { Resend } from 'resend';

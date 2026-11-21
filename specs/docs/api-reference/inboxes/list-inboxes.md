@@ -8,7 +8,7 @@
 
 Inboxes are returned newest first. Results are paginated with cursors. See
 [Pagination](https://resend.com/docs/api-reference/pagination.md) for how `after` and `before` work. The
-cursors take an inbox ID. A value that is not a UUID returns a `422`, and an
+cursors take an inbox ID. A value that isn't a UUID returns a `422`, and an
 unknown ID returns a `404`.
 
 The list items carry fewer fields than a single inbox. [Retrieve an
@@ -64,7 +64,7 @@ The ID of the inbox.
 
 **name** `string | null`
 
-Internal name for the inbox. Recipients do not see it.
+Internal name for the inbox. Recipients don't see it.
 
 **email\_address** `string`
 

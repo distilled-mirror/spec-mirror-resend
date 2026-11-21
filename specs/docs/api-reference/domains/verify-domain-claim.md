@@ -18,8 +18,8 @@
 > [!NOTE]
 >
 > **After the claim completes:** the domain is transferred to your account as a
-> brand-new domain with its own DKIM keys, so the previous account's DNS records
-> can't be reused. Fetch it with [Retrieve
+> brand-new domain with its own DomainKeys Identified Mail (DKIM) keys, so the
+> previous account's DNS records can't be reused. Fetch it with [Retrieve
 > Domain](https://resend.com/docs/api-reference/domains/get-domain.md), update your DNS with the new DKIM
 > record(s), then run [Verify Domain](https://resend.com/docs/api-reference/domains/verify-domain.md) to
 > finish setup before sending or receiving email. See [DKIM

@@ -6,7 +6,7 @@
 
 > Retrieve the recipients of a broadcast for a given event type.
 
-Retrieve the recipients of a broadcast, filtered by a single event `type` (for
+Retrieve the recipients of a Broadcast, filtered by a single event `type` (for
 example everyone who `opened`, `clicked`, or `bounced`). Results are paginated
 with cursors. See [Pagination](https://resend.com/docs/api-reference/pagination.md) for how `after` and
 `before` work.
@@ -18,7 +18,7 @@ with cursors. See [Pagination](https://resend.com/docs/api-reference/pagination.
 
 ## Path Parameters
 
-The broadcast ID.
+The Broadcast ID.
 
 ## Query Parameters
 
@@ -54,7 +54,7 @@ The recipients matching the requested `type`.
 
 **id** `string`
 
-An opaque cursor for this row, used only for pagination. It does not
+An opaque cursor for this row, used only for pagination. It doesn't
 identify any entity in Resend. Use `contact_id` to reference the contact.
 
 **contact\_id** `string | null`

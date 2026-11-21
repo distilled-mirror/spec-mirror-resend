@@ -9,22 +9,22 @@
 An inbox sends and receives email at an address on one of your domains, such as
 `support@example.com`.
 
-Without `forwarding`, the domain must have receiving enabled, with DKIM and SPF
+Without `forwarding`, the domain must have receiving enabled, with DomainKeys Identified Mail (DKIM) and Sender Policy Framework (SPF)
 verified and the inbound MX record verified or pending. With `forwarding` set to
-`true`, the domain needs only DKIM and SPF verified. Otherwise, the request
+`true`, the domain needs only those DKIM and SPF records verified. Otherwise, the request
 returns a `422`. An address that is already in use
 returns a `409`. A team at the inbox limit of its plan gets a `403`.
 
 ## Body Parameters
 
 The inbox email address on one of your verified domains. The part before the
-`@` can contain only letters, numbers, and `.`, `_`, `%`, and `-`, up to 64
-characters. It cannot start or end with `.` or have two `.` in a row. To call
-an inbox with a `%` in its address, use the Inbox ID in the path.
+`@` can contain up to 64 letters, numbers, `.`, `_`, `%`, or `-` characters.
+It can't start or end with `.` or have two `.` in a row. To call an inbox with
+a `%` in its address, use the Inbox ID in the path.
 
 **name** `string`
 
-Internal name for the inbox. Recipients do not see it. Max 64 characters.
+Internal name for the inbox. Recipients don't see it. Max 64 characters.
 Defaults to `email_address`.
 
 The name recipients see when mail is sent from this inbox. Use a plain name,

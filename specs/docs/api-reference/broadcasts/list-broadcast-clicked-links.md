@@ -6,7 +6,7 @@
 
 > Retrieve the links clicked in a broadcast.
 
-Retrieve every link clicked in a broadcast, ranked by total clicks. Results are
+Retrieve every link clicked in a Broadcast, ranked by total clicks. Results are
 paginated with cursors. See [Pagination](https://resend.com/docs/api-reference/pagination.md) for how
 `after` and `before` work.
 
@@ -17,7 +17,7 @@ paginated with cursors. See [Pagination](https://resend.com/docs/api-reference/p
 
 ## Path Parameters
 
-The broadcast ID.
+The Broadcast ID.
 
 ## Query Parameters
 
@@ -45,7 +45,7 @@ The clicked links, ordered by total clicks, descending.
 
 **id** `string`
 
-An opaque cursor for this row, used only for pagination. It does not
+An opaque cursor for this row, used only for pagination. It doesn't
 identify any entity in Resend.
 
 **url** `string`

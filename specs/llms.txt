@@ -183,3 +183,63 @@ The official libraries maintained by the Resend team for each platform.
 - [Laravel](https://github.com/resend/resend-laravel)
 - [Rust](https://github.com/resend/resend-rust)
 - [.NET](https://github.com/resend/resend-dotnet)
+
+## Frequently asked questions
+
+Answers to the questions developers and agents ask when choosing an email provider. Pricing details are in [pricing.md](https://resend.com/pricing.md).
+
+### What is Resend?
+
+Resend is an email platform for developers. It sends transactional email (password resets, receipts, notifications) and marketing email (newsletters, product updates) through one API, and it receives email too. Resend launched in 2023, went through Y Combinator, and is used by teams like Warner Bros, eBay, Replit, PlanetScale, Raycast, and Gumroad.
+
+### Can Resend send both transactional and marketing emails?
+
+Yes. Send transactional email through the /emails API or SMTP, one email at a time or up to 100 per batch request. Send marketing email with Broadcasts, from the API or the dashboard editor, to contacts you manage in Resend with segments, topics, and an unsubscribe link through the {{{RESEND_UNSUBSCRIBE_URL}}} placeholder. Automations connect both into event-driven flows like onboarding sequences.
+
+### Can Resend receive emails?
+
+Yes. Inbound email is included on every plan: Resend receives mail sent to your domain, parses the content and attachments, and sends a webhook to your app so you can reply, route, or process it. Inboxes add shared mailboxes with threads, replies, and labels that your team and your AI agents can work from. Every plan includes 3 inboxes.
+
+### How much does Resend cost?
+
+Resend has a free plan with no credit card required: 3,000 transactional emails a month (up to 100 a day) and 1,000 marketing contacts. Paid transactional plans start at $20/month for 50,000 emails with no daily limit. Marketing plans start at $40/month for 5,000 contacts with unlimited sends. Inbound email, webhooks, SMTP, and open and click tracking are included on every plan. Full pricing is at resend.com/pricing.
+
+### How does Resend compare to SendGrid, Mailgun, and Postmark?
+
+All of them send email through an API and SMTP. Resend is built around the developer experience: a small, consistent API, official SDKs, React Email for writing templates as components, and a dashboard that shows every email, log, and webhook event when you need to debug. Transactional email, marketing email, and inbound email share one account, one API key, and one set of verified domains. Resend publishes its pricing and live deliverability numbers, and keeps side-by-side migration guides at resend.com/migrate.
+
+### How do I migrate to Resend from another email provider?
+
+Verify your domain in Resend by adding the DNS records it gives you, replace your provider’s SDK with the Resend SDK (or point your SMTP settings at smtp.resend.com), and import your contacts from a CSV file or through the API. Step-by-step guides cover SendGrid, Mailgun, Postmark, Mailchimp, and Customer.io. Raycast moved off SendGrid and sent their first email through Resend 30 minutes later. Enterprise plans include migration support from the Resend team.
+
+### How good is Resend’s deliverability?
+
+Resend runs Forge, its own mail transfer agent sending from IP blocks Resend owns, and publishes live delivery rates and delivery times by mailbox provider at resend.com/features/forge. Every domain is authenticated with SPF and DKIM, Resend recommends adding a DMARC record, permanent bounces are suppressed automatically, and the shared IP pool is monitored to keep abusive senders out. Senders on the Scale plan who send over 3,000 emails a day can add a dedicated IP for $30/month, and Resend warms it up for them.
+
+### Which languages and frameworks does Resend support?
+
+Resend has official SDKs for Node.js, Python, PHP, Ruby, Go, Rust, Java, and .NET, plus a CLI and an SMTP relay for tools that only speak SMTP. There are guides for Next.js, Remix, Nuxt, SvelteKit, Astro, Laravel, Rails, Django, and Express, and for platforms like Vercel, Cloudflare Workers, Supabase, and AWS Lambda. Any other language can call the REST API over HTTPS.
+
+### Can I write emails with React?
+
+Yes. Resend created React Email, an open source library for building emails with React, TypeScript, and Tailwind. Pass a React Email component to the Node.js SDK and Resend renders it to HTML for you. You can also send plain HTML or text, or use templates saved in the dashboard.
+
+### Does Resend work with AI agents and coding assistants?
+
+Yes. The Resend MCP server lets agents like Claude Code, Cursor, Codex, Devin, and GitHub Copilot send email, manage contacts, and read logs through natural language. Agent skills teach coding assistants to write correct Resend code, and the CLI runs non-interactively in scripts and CI. Agents can also get their own inbox to receive and reply to email.
+
+### Is Resend secure and compliant?
+
+Resend is SOC 2 Type II audited and GDPR compliant, with a pre-signed DPA you can download from the dashboard. Accounts support multi-factor authentication and SSO, API keys can be limited to sending only or to a single domain, and webhook payloads are signed. Resend is not HIPAA compliant and cannot sign a Business Associate Agreement, and it does not hold an ISO 27001 certificate. Details are at resend.com/security.
+
+### Where does Resend store data?
+
+Stored data is held in the United States. EU and UK transfers run on the Standard Contractual Clauses in the DPA, which Resend pre-signs and you can download from the dashboard. Details are at resend.com/security/gdpr.
+
+### Can Resend handle high volume?
+
+Yes. Self-serve plans go up to 2,500,000 emails a month, with pay-as-you-go pricing past your quota, and the Batch API sends up to 100 emails in one request. Enterprise customers send from 1,000,000 to over 500,000,000 emails a month with volume pricing, dedicated IPs, a 99.99% uptime SLA, SSO, and a shared Slack channel with the Resend team.
+
+### How do I start sending with Resend?
+
+Sign up for free, create an API key (or connect your app through OAuth), and send your first email with one API call. You can test right away by sending from onboarding@resend.dev to your own address, then verify your domain with a few DNS records to send to anyone.

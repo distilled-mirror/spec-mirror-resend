@@ -29,7 +29,7 @@ The ID of the last message on the current page. Returns the next, newer page.
 **before** `string`
 
 The ID of the first message on the current page. Returns the previous, older
-page. Cannot be combined with `after`.
+page. Can't be combined with `after`.
 
 ## Response Fields
 

@@ -10,9 +10,9 @@
 >
 > Calling this API endpoint triggers an **asynchronous domain verification
 > process**. Records that are already verified stay `verified` while the
-> verification is in progress, so sending and receiving are not interrupted.
-> Records that are not verified are marked as `pending`. If a verified record is
-> no longer found, it is marked as `failed` once the verification times out.
+> verification is in progress, so sending and receiving aren't interrupted.
+> Records that aren't verified are marked as `pending`. If a verified record is
+> no longer found, it's marked as `failed` once the verification times out.
 > Since this request initiates the complete domain verification cycle, it will
 > trigger `domain.updated` webhook events as the domain status changes during
 > the verification process.
@@ -40,7 +40,7 @@ Requires [Forge](https://resend.com/docs/forge.md) to be enabled on the domain, 
 responds with a `forge_not_enabled` error. When omitted, all records are
 checked.
 
-When verifying a Forge record, always pass `["forge"]` so we only verify
+When verifying a Forge record, always pass `["forge"]` to verify only
 its record and sending is never interrupted.
 
 ```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}

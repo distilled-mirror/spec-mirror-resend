@@ -12,13 +12,13 @@ The Contact Property ID.
 
 > [!NOTE]
 >
-> The `key` and `type` fields cannot be changed after creation. This preserves
+> The `key` and `type` fields can't be changed after creation. This preserves
 > data integrity for existing contact values.
 
 ## Body Parameters
 
-The default value to use when the property is not set for a contact. Must
-match the type of the property.
+The default value to use when the property isn't set for a contact. Must match
+the type of the property.
 
 ```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
 import { Resend } from 'resend';

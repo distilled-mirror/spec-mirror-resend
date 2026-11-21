@@ -13,7 +13,7 @@ to the sender. A reply to a message the inbox sent goes to that message's `to`
 recipients.
 
 Attachments can have at most 25 MB of `content` in total. Files sent with
-`path` do not count toward it. The whole email can be at most 40 MB.
+`path` don't count toward it. The whole email can be at most 40 MB.
 
 ## Path Parameters
 
@@ -70,7 +70,7 @@ Name of attached file.
 
 Path where the attachment file is hosted.
 
-Content type for the attachment. When not set, it is derived from the
+Content type for the attachment. When not set, it's derived from the
 `filename`.
 
 Content ID for embedding inline images with a `cid:` reference in the
@@ -87,12 +87,12 @@ Custom headers to add to the email. You cannot set `In-Reply-To`,
 
 Add an idempotency key to prevent duplicated emails.
 
-* Should be **unique per API request**
+* Use a **unique key per API request**
 * Idempotency keys expire after **24 hours**
 * Have a maximum length of **256 characters**
 * A retry with the same key returns the first successful response, with the
   `idempotent-replayed: true` header
-* A failed request is not stored, so you can retry it with the same key
+* A failed request isn't stored, so you can retry it with the same key
 * Reusing the key with a different body, or while the first request is still
   running, returns a `409`
 

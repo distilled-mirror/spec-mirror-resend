@@ -8,7 +8,7 @@
 
 ## Path Parameters
 
-The ID of the broadcast you want to update.
+The ID of the Broadcast you want to update.
 
 ## Body Parameters
 
@@ -51,9 +51,9 @@ SDK.*
 
 **name** `string`
 
-The friendly name of the broadcast. Only used for internal reference.
+The friendly name of the Broadcast. Only used for internal reference.
 
-The topic ID that the broadcast will be scoped to.
+The topic ID that the Broadcast will be scoped to.
 
 ```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
 import { Resend } from 'resend';

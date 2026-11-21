@@ -16,9 +16,9 @@ Resend sends emails using a domain you own. Before you can send or receive email
 
 ## Choose a sending domain
 
-We strongly recommend sending emails from a subdomain (e.g., `notifications.example.com`) instead of your root domain (`example.com`) to conform to deliverability best practices.
+For deliverability best practices, send emails from a subdomain (e.g., `notifications.example.com`) instead of your root domain (`example.com`).
 
-If you are [transferring from another provider](https://resend.com/docs/dashboard/domains/introduction.md#moving-from-another-provider) and already have an established sender reputation for your marketing emails, add and verify the domain or subdomain that matches your existing `from` address to continue sending from that address.
+If you are [transferring from another provider](https://resend.com/docs/dashboard/domains/introduction.md#moving-from-another-provider) and already have an established sender reputation for your marketing emails, add the domain or subdomain that matches your existing `from` address, then verify it to continue sending from that address.
 
 You can have multiple subdomains associated with your root domain (e.g., `updates.example.com`, `notifications.example.com`). Each one must be added and verified individually, and they will be displayed as separate entries in the [**Domains** Dashboard page](https://resend.com/domains) where you can manage and configure them independently.
 
@@ -49,9 +49,9 @@ To add a new domain from the Resend Dashboard:
 
 **3. Enter your domain (including a subdomain, if you wish) to use for your Resend emails.**
 
-Enter the existing domain you currently send emails from, or choose a subdomain that reflects the purpose of your emails, such as `customers.example.com` or `updates.example.com`.
+Enter the existing domain you send emails from, or choose a subdomain that reflects the purpose of your emails, such as `customers.example.com` or `updates.example.com`.
 
-If you add a domain already used by another team, the dashboard will notify you and you can [claim the domain](https://resend.com/docs/dashboard/domains/claim.md) to transfer it to your team.
+If you add a domain already used by another team, the Dashboard will notify you and you can [claim the domain](https://resend.com/docs/dashboard/domains/claim.md) to transfer it to your team.
 
 **4. Choose a region from the list provided.**
 
@@ -65,7 +65,7 @@ Return-Path defaults to `send.example.com`, although you can [provide a custom p
 
 View the **Records** tab for your domain to find the records to provide to your DNS host provider. Adding these records will verify that you own the domain and have the correct permissions to send and receive emails.
 
-Provide the DKIM and SPF configurations (`TXT` and `MX` or `CNAME` records) to your DNS provider. These records must match exactly what Resend generated. Copy and paste the records to avoid configuration errors.
+Provide the DomainKeys Identified Mail (DKIM) and Sender Policy Framework (SPF) configurations (`TXT` and `MX` or `CNAME` records) to your DNS provider. These records must match exactly what Resend generated. Copy and paste the records to avoid configuration errors.
 
 > [!TIP]
 >
@@ -75,11 +75,11 @@ Provide the DKIM and SPF configurations (`TXT` and `MX` or `CNAME` records) to y
 
 When this process is completed correctly, your domain will often verify within 15 minutes of adding the DNS records. However, DNS changes can occasionally take up to 72 hours to propagate globally.
 
-You can use Resend's [dns.email tool](https://dns.email/) to check that your records are visible publicly. If verification has not completed after 72 hours, use the **Restart verification** button in the Resend dashboard to trigger a fresh verification check.
+You can use Resend's [dns.email tool](https://dns.email/) to check that your records are visible publicly. If verification hasn't completed after 72 hours, use the **Restart verification** button in the Resend Dashboard to trigger a fresh verification check.
 
 **8. Add a DMARC record.**
 
-After your domain is verified, [implement DMARC](https://resend.com/docs/dashboard/domains/dmarc.md) to build additional trust in your domain and protect against email spoofing.
+After your domain is verified, implement Domain-based Message Authentication, Reporting, and Conformance ([DMARC](https://resend.com/docs/dashboard/domains/dmarc.md)) to build additional trust in your domain and protect against email spoofing.
 
 This is an email authentication protocol to verify email senders and to allow receivers to reject unauthenticated messages, and is important for email deliverability.
 
@@ -102,8 +102,8 @@ After your domain is verified, you may wish to [enable open and click tracking](
 
 > [card] [Add a DMARC record](https://resend.com/docs/dashboard/domains/dmarc.md)
 >
-> Implement DMARC to build trust in your domain and protect against email
-> spoofing.
+> Implement Domain-based Message Authentication, Reporting, and Conformance
+> (DMARC) to build trust in your domain and protect against email spoofing.
 
 > [card] [Quickstart tutorials](https://resend.com/docs/introduction.md)
 >

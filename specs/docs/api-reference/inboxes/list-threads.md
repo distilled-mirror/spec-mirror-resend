@@ -49,10 +49,10 @@ Threads](https://resend.com/docs/api-reference/inboxes/search-threads.md) with `
 **before** `string`
 
 The ID of the first thread on the current page. Returns the previous, newer
-page. Cannot be combined with `after`. Must be a thread ID. To filter by date,
+page. Can't be combined with `after`. Must be a thread ID. To filter by date,
 use [Search Threads](https://resend.com/docs/api-reference/inboxes/search-threads.md) with `end_date`.
 
-To find threads by text, sender, recipient, attachment, or date, use [Search
+To find threads by text, email address, attachment, or date, use [Search
 Threads](https://resend.com/docs/api-reference/inboxes/search-threads.md).
 
 ## Response Fields

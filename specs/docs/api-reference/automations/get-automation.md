@@ -8,7 +8,7 @@
 
 ## Path Parameters
 
-The automation ID.
+The Automation ID.
 
 ```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
 import { Resend } from 'resend';

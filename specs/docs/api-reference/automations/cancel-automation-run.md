@@ -12,9 +12,9 @@ You can cancel any run that hasn't finished. Cancelling a run that already compl
 
 ## Path Parameters
 
-The automation ID.
+The Automation ID.
 
-The automation run ID.
+The Automation run ID.
 
 ```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
 import { Resend } from 'resend';

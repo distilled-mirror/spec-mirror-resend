@@ -34,7 +34,7 @@ Cannot be used with the `after` parameter.
 > [pagination guide](https://resend.com/docs/api-reference/pagination.md) for more
 > information.
 
-Filter automations by status. Possible values: `enabled`, `disabled`.
+Filter Automations by status. Possible values: `enabled`, `disabled`.
 
 ```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
 import { Resend } from 'resend';

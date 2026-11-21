@@ -49,20 +49,20 @@ SDK.*
 
 **name** `string`
 
-The friendly name of the broadcast. Only used for internal reference.
+The friendly name of the Broadcast. Only used for internal reference.
 
 Optional. Omit it to send to every subscribed contact in the segment, without
 checking topic preferences.
 
 **send** `boolean`
 
-Send the broadcast immediately after creation. Defaults to `false`.
+Send the Broadcast immediately after creation. Defaults to `false`.
 
 > [!NOTE]
 >
-> When set to `true`, the broadcast will be sent or scheduled (if `scheduled_at` is provided) without requiring a separate call to the [Send Broadcast](https://resend.com/docs/api-reference/broadcasts/send-broadcast.md) endpoint.
+> When set to `true`, the Broadcast will be sent or scheduled (if `scheduled_at` is provided) without requiring a separate call to the [Send Broadcast](https://resend.com/docs/api-reference/broadcasts/send-broadcast.md) endpoint.
 
-Schedule the broadcast to be sent later. The date should be in natural language (e.g.: `in 1 min`) or ISO 8601 format (e.g: `2026-08-05T11:52:01.858Z`).
+Schedule the Broadcast to be sent later. Use natural language (e.g.: `in 1 min`) or ISO 8601 format (e.g: `2026-08-05T11:52:01.858Z`).
 
 > [!WARNING]
 >

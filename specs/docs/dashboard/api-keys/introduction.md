@@ -8,7 +8,7 @@
 
 ## API keys
 
-API keys are secret tokens used to authenticate your requests. They are unique to your account and must be kept confidential.
+API keys are secret tokens used to authenticate your requests. They're unique to your account and must be kept confidential.
 
 You can use multiple keys to isolate different application actions to different API keys. This allows you to [view logs per key](#view-api-key-logs), detect possible abuse, and control any damage that may be done accidentally or maliciously.
 
@@ -85,7 +85,7 @@ Admins can download your data in CSV format for the following resources:
 
 To start, apply filters to your data and click on the "Export" button. Confirm your filters before exporting your data.
 
-<video autoPlay muted loop playsinline src="https://mintcdn.com/resend/OWNnQaVDyqcGyhhN/images/exports.mp4?fit=max&auto=format&n=OWNnQaVDyqcGyhhN&q=85&s=1149ee4e83b4414e75a0ecaa92774c38" />
+<video autoPlay muted loop playsinline src="https://mintlify.s3.us-west-1.amazonaws.com/resend/images/exports.mp4" />
 
 If your exported data includes 1,000 items or less, the export will download immediately. For larger exports, you'll receive an email with a link to download your data.
 

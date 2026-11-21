@@ -6,11 +6,11 @@
 
 > Duplicate a broadcast.
 
-Creates a new draft broadcast with the same segment, topic, sender, subject, reply-to, preview text, and content as the source. The copy is named after the source with ` (copy)` appended, truncated to 70 characters. Any broadcast can be duplicated, including sent ones.
+Creates a new draft Broadcast that copies the source's segment, topic, sender, and subject. It also copies the reply-to, preview text, and content. The copy is named after the source with ` (copy)` appended, truncated to 70 characters. Any Broadcast can be duplicated, including sent ones.
 
 ## Path Parameters
 
-The broadcast ID.
+The Broadcast ID.
 
 ```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
 import { Resend } from 'resend';

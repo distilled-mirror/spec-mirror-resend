@@ -14,8 +14,8 @@ The Email ID.
 
 ## Body Parameters
 
-Schedule email to be sent later. The date should be in ISO 8601 format (e.g:
-2026-08-05T11:52:01.858Z).
+Schedule email to be sent later. Use natural language (e.g.: `in 1 min`) or
+ISO 8601 format (e.g: `2026-08-05T11:52:01.858Z`).
 
 ```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
 import { Resend } from 'resend';
