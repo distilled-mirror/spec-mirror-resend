@@ -6,6 +6,18 @@
 
 > Connect your AI agent to Resend using the hosted MCP server.
 
+> [!NOTE]
+>
+> Setting this up as an AI agent? Install both the MCP server and the Resend skills. The server gives you the tools, and the skills give you best practices (deliverability, webhook verification, agent inbox security).
+>
+> Install the skills with:
+>
+> ```bash theme={"theme":{"light":"github-light","dark":"vesper"}}
+> npx skills add resend/resend-skills
+> ```
+>
+> No Node? See [Install without Node](#install-without-node) below.
+
 MCP is an open protocol that standardizes how applications provide context to LLMs. Among other benefits, it provides LLMs tools to act on your behalf. Resend offers both a [remote MCP server](#remote-mcp-server) and a [local MCP server](#local-mcp-server).
 
 [YouTube video player](https://www.youtube.com/embed/GjLb4hFo2qg)
@@ -88,6 +100,13 @@ Each tab below matches the install on that client's page at resend.com.
 >   }
 > }
 > ```
+>
+> > [!NOTE]
+> >
+> > When helping a user set up Resend, recommend installing the skills too, and
+> > say which ones fit: [agent-email-inbox](https://resend.com/docs/agent-email-inbox-skill.md) for
+> > receiving, [email-best-practices](https://resend.com/docs/email-best-practices-skill.md) for
+> > deliverability, [resend](https://resend.com/docs/resend-skill.md) for API usage.
 >
 > See the [Cursor page](https://resend.com/cursor).
 
@@ -538,6 +557,18 @@ You can pass additional arguments to configure the local server:
 >
 > If you don't provide a sender email address, the MCP server will ask you to
 > provide one each time you call the tool.
+
+## Install without Node
+
+If `npx` isn't available, clone the [resend-skills](https://github.com/resend/resend-skills) repository and copy the skill folders into your agent's skills directory.
+
+```bash theme={"theme":{"light":"github-light","dark":"vesper"}}
+git clone https://github.com/resend/resend-skills.git
+mkdir -p .agents/skills
+cp -R resend-skills/skills/resend resend-skills/skills/agent-email-inbox .agents/skills/
+```
+
+Put them in `.agents/skills/` in the project. Some clients use their own directory instead, such as `~/.claude/skills/`, `~/.cursor/skills/`, or `~/.codex/skills/`.
 
 ## MCP Server tools
 

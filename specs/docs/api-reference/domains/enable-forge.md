@@ -43,23 +43,6 @@ the domain's current return path, and the chosen host must not already have
 DNS records, and either case gets a `return_path_unavailable` error. It can't
 be changed afterwards.
 
-## Headers
-
-**Idempotency-Key** `string`
-
-Add an idempotency key to enable Forge only once.
-
-* Must be **unique per API request**
-* Idempotency keys expire after **24 hours**
-* Have a maximum length of **256 characters**
-* A retry with the same key returns the first successful response, with the
-  `idempotent-replayed: true` header
-* A failed request isn't stored, so you can retry it with the same key
-* Reusing the key with a different body, or while the first request is still
-  running, returns a `409`
-
-[Learn more](https://resend.com/docs/dashboard/emails/idempotency-keys.md)
-
 ```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
 import { Resend } from 'resend';
 
