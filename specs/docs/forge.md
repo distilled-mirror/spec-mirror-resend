@@ -72,6 +72,43 @@ keep deliverability high, and the share of your email going through Forge
 grows over time. Once your email is routing through Forge, the tag changes to
 **Active**.
 
+## Checking your Forge status
+
+The top of your domain's page shows a **Resend Forge** badge with your domain's
+Forge status. That status can be **Disabled**, **Pending**, **Ready**, or
+**Active**.
+
+Below you can see what each status means.
+
+| Status | What it means | What you need to do |
+| - | - | - |
+| **Disabled** | The domain sends through the current infrastructure and Forge hasn't been activated. | [Activate Forge](#activate-resend-forge) from the **Configuration** tab. |
+| **Pending** | Forge is activated, but the Forge DNS record and the DKIM record haven't both verified yet. For a receiving-only domain, the MX record doesn't point at Forge yet. | Add the records shown on your domain's page. See [Troubleshooting](#troubleshooting) if they don't verify. |
+| **Ready** | The Forge record and DKIM are verified. Your email is moving onto Forge gradually, so for a while some of it still goes out the usual way. | Nothing. The move is automatic. |
+| **Active** | Your email is routing through Forge. | Nothing. |
+
+There's no fixed timeline for moving from **Ready** to **Active**, and the move
+can't be sped up, paused or limited for a domain. A domain with open or click
+tracking turned on stays **Ready** and keeps sending through the current
+infrastructure until tracking is supported on Forge. See
+[Requirements](#requirements).
+
+## Receiving on Forge
+
+If your domain also receives email, activating Forge shows a new MX record
+value. Receiving moves to Forge only once you replace your current MX record
+with it. Until then, inbound email keeps arriving the way it does today, so you
+can activate Forge for sending first and move receiving later.
+
+Nothing changes in how you receive: the same `email.received` webhook events,
+API, and retention apply. After you change the MX record, some sending servers
+keep using the old value until their cached copy expires, so allow for the
+record's TTL before testing.
+
+Forge only accepts inbound email for a domain whose DKIM record is verified.
+Email that arrives before then is discarded and no `email.received` event is
+created for it, so verify the domain before you send test messages to it.
+
 ## Domain Connect
 
 [Domain Connect](https://www.domainconnect.org/) lets Resend add the Forge
@@ -154,6 +191,49 @@ If the Forge record doesn't verify, these are some common troubleshooting method
 >
 > No. Forge sits behind the same send path, so your API calls, SMTP
 > credentials, and webhook events keep working exactly as today.
+>
+> Everything else on your account stays the same too: your logs, metrics,
+> suppression list, rate limits, idempotency keys, templates, and Broadcasts.
+
+> [accordion] Does Forge cost anything extra?
+>
+> No. Forge is available on every plan at no extra cost, and your plan and
+> pricing don't change when your domain moves to Forge.
+
+> [accordion] Will Forge change my deliverability?
+>
+> Forge delivers from IP blocks Resend owns and operates. We monitor every
+> step between your API call and the receiving server's final answer, for
+> each receiver and each IP. That lets us spot problems within minutes and
+> keep the shared pool clean, so you don't need to warm up IPs of your own. In
+> our measurements, Forge gets email accepted faster than the previous engine
+> at Gmail, Yahoo, and Outlook. See the [full
+> results](https://resend.com/features/forge).
+>
+> Whether an accepted email reaches the inbox or spam is still up to each
+> mailbox provider. They decide mostly from your domain's reputation, your
+> content, and how your recipients engage. Your domain's reputation doesn't
+> reset when your sending moves to Forge.
+
+> [accordion] Can I turn Forge off or move back to the previous engine?
+>
+> Forge is where Resend's sending is headed, so domains that move to Forge
+> stay on it. There's no option to switch a domain back, and you won't need
+> one. Forge sends your email faster and gives you better delivery, from IPs
+> Resend owns. Because we can see every step of each delivery, we can help
+> more with any deliverability question.
+>
+> You also keep the safety net of the previous engine. If Forge can't
+> complete a delivery, the email automatically goes out through the engine
+> Resend has used for years, so it still reaches your recipients.
+>
+> Once you've added the Forge record, keep it in place. Removing it doesn't
+> move a domain back.
+
+> [accordion] Is the previous engine being retired?
+>
+> There's no retirement date. The previous engine stays in place as Forge's
+> automatic fallback.
 
 > [accordion] Why does Forge need a new Return-Path subdomain?
 >
@@ -162,11 +242,24 @@ If the Forge record doesn't verify, these are some common troubleshooting method
 > that subdomain at Forge. This keeps SPF aligned with your domain and lets us
 > process bounces. Your existing DNS records stay as they are.
 
+> [accordion] My domain is already a subdomain. Why is the suggested Return-Path so long?
+>
+> The Return-Path is created under the domain you send from, so a sending
+> domain like `news.yourdomain.com` gets a suggestion like
+> `mail.news.yourdomain.com`. Recipients see your From address, not the
+> Return-Path, so its length doesn't affect how your email looks. The
+> suggested label is only a default: you can type a shorter one, as long as
+> nothing else uses that name in your DNS.
+
 > [accordion] Which region does Forge send from and receive at?
 >
 > Forge runs only in North Virginia (`us-east-1`). Data residency is the same
 > as for every other region. See [Data
 > Residency](https://resend.com/docs/dashboard/domains/regions.md#data-residency) for details.
+>
+> Your DPA and data residency don't change with Forge. Forge is part of
+> Resend, not a separate company, so it doesn't appear on the sub-processor
+> list.
 
 > [accordion] I have activated Forge but I'm still seeing the old headers
 >
