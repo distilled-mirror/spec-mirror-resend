@@ -162,7 +162,7 @@ resend emails receiving attachments 4ef9a417-02e9-4d39-ad75-9611e0fcc33c
       "content_type": "image/png",
       "content_disposition": "inline",
       "content_id": "img001",
-      "download_url": "https://inbound-cdn.resend.com/4ef9a417-02e9-4d39-ad75-9611e0fcc33c/attachments/2a0c9ce0-3112-4728-976e-47ddcd16a318?some-params=example&signature=sig-123",
+      "download_url": "https://cdn.resend.app/4ef9a417-02e9-4d39-ad75-9611e0fcc33c/attachments/2a0c9ce0-3112-4728-976e-47ddcd16a318?some-params=example&signature=sig-123",
       "expires_at": "2026-10-17T14:29:41.521Z"
     }
   ]

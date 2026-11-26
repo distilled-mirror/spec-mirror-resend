@@ -140,7 +140,7 @@ The id of the published email template. Required if `template` is provided. Only
 
 Template variables object with key/value pairs.
 
-```ts theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}} theme={"theme":{"light":"github-light","dark":"vesper"}}
+```ts theme={"theme":{"light":"github-light","dark":"vesper"}}
 variables: {
 	CTA: 'Sign up now',
 	CTA_LINK: 'https://example.com/signup'
