@@ -420,7 +420,7 @@ func main() {
 ```
 
 ```rust Rust theme={"theme":{"light":"github-light","dark":"vesper"}}
-use resend_rs::{Resend, Result};
+use resend_rs::{types::VerifyDomainOptions, Resend, Result};
 
 #[tokio::main]
 async fn main() -> Result<()> {
@@ -428,7 +428,7 @@ async fn main() -> Result<()> {
 
   resend
     .domains
-    .verify("d91cd9bd-1176-453e-8fc1-35364d380206")
+    .verify("d91cd9bd-1176-453e-8fc1-35364d380206", VerifyDomainOptions::new())
     .await?;
 
   Ok(())

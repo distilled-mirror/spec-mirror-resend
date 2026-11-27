@@ -54,11 +54,113 @@ const { data, error } = await resend.domains.forge.enable({
 });
 ```
 
+```php PHP theme={"theme":{"light":"github-light","dark":"vesper"}}
+$resend = Resend::client('re_xxxxxxxxx');
+
+$resend->domains->forge->enable('d91cd9bd-1176-453e-8fc1-35364d380206', [
+  'custom_return_path' => 'forge',
+]);
+```
+
+```python Python theme={"theme":{"light":"github-light","dark":"vesper"}}
+import resend
+
+resend.api_key = "re_xxxxxxxxx"
+
+params: resend.Domains.Forge.EnableParams = {
+    "id": "d91cd9bd-1176-453e-8fc1-35364d380206",
+    "custom_return_path": "forge",
+}
+
+resend.Domains.Forge.enable(params)
+```
+
+```ruby Ruby theme={"theme":{"light":"github-light","dark":"vesper"}}
+require "resend"
+
+Resend.api_key = "re_xxxxxxxxx"
+
+domain = Resend::Domains::Forge.enable(
+  id: "d91cd9bd-1176-453e-8fc1-35364d380206",
+  custom_return_path: "forge"
+)
+puts domain
+```
+
+```go Go theme={"theme":{"light":"github-light","dark":"vesper"}}
+package main
+
+import "github.com/resend/resend-go/v4"
+
+func main() {
+	client := resend.NewClient("re_xxxxxxxxx")
+
+	params := &resend.EnableDomainForgeRequest{
+		CustomReturnPath: "forge",
+	}
+
+	client.DomainForge.Enable("d91cd9bd-1176-453e-8fc1-35364d380206", params)
+}
+```
+
+```rust Rust theme={"theme":{"light":"github-light","dark":"vesper"}}
+use resend_rs::{types::EnableForgeOptions, Resend, Result};
+
+#[tokio::main]
+async fn main() -> Result<()> {
+  let resend = Resend::new("re_xxxxxxxxx");
+
+  let options = EnableForgeOptions::new().with_custom_return_path("forge");
+
+  let _domain = resend
+    .domains
+    .enable_forge("d91cd9bd-1176-453e-8fc1-35364d380206", options)
+    .await?;
+
+  Ok(())
+}
+```
+
+```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
+import com.resend.Resend;
+import com.resend.core.exception.ResendException;
+import com.resend.services.domains.model.Domain;
+import com.resend.services.domains.model.EnableForgeOptions;
+
+public class Main {
+    public static void main(String[] args) throws ResendException {
+        Resend resend = new Resend("re_xxxxxxxxx");
+
+        EnableForgeOptions params = EnableForgeOptions
+                .builder()
+                .customReturnPath("forge").build();
+
+        Domain domain = resend.domains().forge()
+                .enable("d91cd9bd-1176-453e-8fc1-35364d380206", params);
+    }
+}
+```
+
+```csharp .NET theme={"theme":{"light":"github-light","dark":"vesper"}}
+using Resend;
+
+IResend resend = ResendClient.Create( "re_xxxxxxxxx" ); // Or from DI
+
+var resp = await resend.DomainForgeEnableAsync(
+    new Guid( "d91cd9bd-1176-453e-8fc1-35364d380206" ),
+    "forge" );
+Console.WriteLine( "Domain Id={0}", resp.Content.Id );
+```
+
 ```bash cURL theme={"theme":{"light":"github-light","dark":"vesper"}}
 curl -X POST 'https://api.resend.com/domains/d91cd9bd-1176-453e-8fc1-35364d380206/forge' \
      -H 'Authorization: Bearer re_xxxxxxxxx' \
      -H 'Content-Type: application/json' \
      -d '{"custom_return_path": "forge"}'
+```
+
+```bash CLI theme={"theme":{"light":"github-light","dark":"vesper"}}
+resend domains forge enable d91cd9bd-1176-453e-8fc1-35364d380206 --custom-return-path forge
 ```
 
 ```json Response theme={"theme":{"light":"github-light","dark":"vesper"}}

@@ -59,6 +59,8 @@ const { data, error } = await resend.domains.verify(
 $resend = Resend::client('re_xxxxxxxxx');
 
 $resend->domains->verify('d91cd9bd-1176-453e-8fc1-35364d380206');
+// Optional: verify only the Forge record
+// $resend->domains->verify('d91cd9bd-1176-453e-8fc1-35364d380206', ['scope' => ['forge']]);
 ```
 
 ```python Python theme={"theme":{"light":"github-light","dark":"vesper"}}
@@ -66,6 +68,8 @@ import resend
 
 resend.api_key = "re_xxxxxxxxx"
 resend.Domains.verify(domain_id="d91cd9bd-1176-453e-8fc1-35364d380206")
+# Optional: verify only the Forge record
+# resend.Domains.verify(domain_id="d91cd9bd-1176-453e-8fc1-35364d380206", params={"scope": ["forge"]})
 ```
 
 ```ruby Ruby theme={"theme":{"light":"github-light","dark":"vesper"}}
@@ -74,6 +78,8 @@ require "resend"
 Resend.api_key = "re_xxxxxxxxx"
 
 Resend::Domains.verify("d91cd9bd-1176-453e-8fc1-35364d380206")
+# Optional: verify only the Forge record
+# Resend::Domains.verify("d91cd9bd-1176-453e-8fc1-35364d380206", scope: ["forge"])
 ```
 
 ```go Go theme={"theme":{"light":"github-light","dark":"vesper"}}
@@ -85,19 +91,28 @@ func main() {
 	client := resend.NewClient("re_xxxxxxxxx")
 
 	client.Domains.Verify("d91cd9bd-1176-453e-8fc1-35364d380206")
+	// Optional: verify only the Forge record (also import "context")
+	// client.Domains.VerifyWithOptions(context.Background(), "d91cd9bd-1176-453e-8fc1-35364d380206", &resend.VerifyDomainOptions{Scope: []resend.VerifyDomainScope{"forge"}})
 }
 ```
 
 ```rust Rust theme={"theme":{"light":"github-light","dark":"vesper"}}
-use resend_rs::{Resend, Result};
+use resend_rs::{
+  types::{VerifyDomainOptions, VerifyDomainScope},
+  Resend, Result,
+};
 
 #[tokio::main]
 async fn main() -> Result<()> {
   let resend = Resend::new("re_xxxxxxxxx");
 
+  let options = VerifyDomainOptions::new();
+  // Optional: verify only the Forge record
+  // let options = VerifyDomainOptions::new().with_scope([VerifyDomainScope::Forge]);
+
   resend
     .domains
-    .verify("d91cd9bd-1176-453e-8fc1-35364d380206")
+    .verify("d91cd9bd-1176-453e-8fc1-35364d380206", options)
     .await?;
 
   Ok(())
@@ -107,13 +122,18 @@ async fn main() -> Result<()> {
 ```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
 import com.resend.Resend;
 import com.resend.core.exception.ResendException;
+import com.resend.services.domains.model.VerifyDomainOptions;
 import com.resend.services.domains.model.VerifyDomainResponse;
+import com.resend.services.domains.model.VerifyDomainScope;
+import java.util.List;
 
 public class Main {
     public static void main(String[] args) throws ResendException {
         Resend resend = new Resend("re_xxxxxxxxx");
 
         VerifyDomainResponse verified = resend.domains().verify("d91cd9bd-1176-453e-8fc1-35364d380206");
+        // Optional: verify only the Forge record
+        // resend.domains().verify("d91cd9bd-1176-453e-8fc1-35364d380206", VerifyDomainOptions.builder().scope(List.of(VerifyDomainScope.FORGE)).build());
     }
 }
 ```
@@ -124,6 +144,8 @@ using Resend;
 IResend resend = ResendClient.Create( "re_xxxxxxxxx" ); // Or from DI
 
 var resp = await resend.DomainVerifyAsync( new Guid( "d91cd9bd-1176-453e-8fc1-35364d380206" ) );
+// Optional: verify only the Forge record
+// await resend.DomainVerifyAsync( new Guid( "d91cd9bd-1176-453e-8fc1-35364d380206" ), new[] { DomainVerificationScope.Forge } );
 ```
 
 ```bash cURL theme={"theme":{"light":"github-light","dark":"vesper"}}
@@ -134,6 +156,9 @@ curl -X POST 'https://api.resend.com/domains/d91cd9bd-1176-453e-8fc1-35364d38020
 
 ```bash CLI theme={"theme":{"light":"github-light","dark":"vesper"}}
 resend domains verify d91cd9bd-1176-453e-8fc1-35364d380206
+
+# Optional: verify only the Forge record
+# resend domains verify d91cd9bd-1176-453e-8fc1-35364d380206 --scope forge
 ```
 
 ```json Response theme={"theme":{"light":"github-light","dark":"vesper"}}
