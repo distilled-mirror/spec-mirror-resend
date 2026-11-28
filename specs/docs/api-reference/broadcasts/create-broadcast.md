@@ -29,13 +29,21 @@ Reply-to email address. For multiple addresses, send as an array of strings.
 
 **html** `string`
 
-The HTML version of the message. You can include Contact Properties in the
-body of the Broadcast. Learn more about [Contact
-Properties](https://resend.com/docs/dashboard/contacts/properties.md).
+The HTML version of the message. You can include contact properties in the
+body of the Broadcast. Learn more about [contact
+properties](https://resend.com/docs/dashboard/contacts/properties.md).
+
+> [!NOTE]
+>
+> Contact placeholders like `{{{contact.first_name|there}}}` work in Broadcasts
+> only. Templates can't read them. To personalize a Template sent by an
+> Automation, add a Template variable and [map it to a contact property in the
+> Send Email step](https://resend.com/docs/dashboard/automations/send-email.md#use-contact-properties-in-a-template).
 
 **text** `string`
 
-The plain text version of the message. You can include Contact Properties in the body of the Broadcast. Learn more about [Contact Properties](https://resend.com/docs/dashboard/contacts/properties.md).
+The plain text version of the message. Like `html`, it can include [contact
+properties](https://resend.com/docs/dashboard/contacts/properties.md), which work in Broadcasts only.
 
 > [!NOTE]
 >

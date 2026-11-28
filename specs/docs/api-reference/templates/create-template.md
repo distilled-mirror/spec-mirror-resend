@@ -63,6 +63,7 @@ Each variable is an object with the following properties:
 
 The key of the variable. We recommend capitalizing the key (e.g. `PRODUCT_NAME`). The following variable names are reserved and cannot be used:
 `FIRST_NAME`, `LAST_NAME`, `EMAIL`, `RESEND_UNSUBSCRIBE_URL`, `contact`, and `this`.
+Contact placeholders like `{{{contact.first_name}}}` don't work in Templates. To fill a variable from the contact in an Automation, [map it to a contact property](https://resend.com/docs/dashboard/automations/send-email.md#use-contact-properties-in-a-template).
 
 **type** `'string' | 'number'` *required*
 

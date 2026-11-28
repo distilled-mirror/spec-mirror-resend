@@ -96,11 +96,18 @@ your content, or `@` mention other Broadcasts for design or content inspiration.
 
 When creating Broadcasts, you can include dynamic audience data to personalize the email content.
 
-Add placeholders for your [contact properties](https://resend.com/docs/dashboard/audiences/properties.md) using the following notation:
+Add placeholders for your [contact properties](https://resend.com/docs/dashboard/contacts/properties.md) using the following notation:
 
 * `{{{contact.first_name|fallback}}}`
 * `{{{contact.last_name|fallback}}}`
 * `{{{contact.email}}}`
+
+> [!NOTE]
+>
+> Contact placeholders like `{{{contact.first_name|there}}}` work in Broadcasts
+> only. Templates can't read them. To personalize a Template sent by an
+> Automation, add a Template variable and [map it to a contact property in the
+> Send Email step](https://resend.com/docs/dashboard/automations/send-email.md#use-contact-properties-in-a-template).
 
 ## Broadcast unsubscribe link
 

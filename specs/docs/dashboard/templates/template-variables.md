@@ -250,7 +250,14 @@ curl -X POST 'https://api.resend.com/templates' \
 > [!NOTE]
 >
 > The following variable names are reserved and cannot be used: `FIRST_NAME`,
-> `LAST_NAME`, `EMAIL`, `UNSUBSCRIBE_URL`, `contact`,`this`.
+> `LAST_NAME`, `EMAIL`, `UNSUBSCRIBE_URL`, `contact`, and `this`.
+
+> [!NOTE]
+>
+> Contact placeholders like `{{{contact.first_name|there}}}` work in Broadcasts
+> only. Templates can't read them. To personalize a Template sent by an
+> Automation, add a Template variable and [map it to a contact property in the
+> Send Email step](https://resend.com/docs/dashboard/automations/send-email.md#use-contact-properties-in-a-template).
 
 Each variable is an object with the following properties:
 

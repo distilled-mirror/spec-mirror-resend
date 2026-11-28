@@ -135,7 +135,7 @@ See the [errors reference](https://resend.com/docs/api-reference/errors.md) for 
 
 The key of the variable.
 
-May only contain ASCII letters (a–z, A–Z), numbers (0–9), and underscores (\_). The following variable names are reserved and cannot be used: `FIRST_NAME`, `LAST_NAME`, `EMAIL`, `UNSUBSCRIBE_URL`.
+May only contain ASCII letters (a–z, A–Z), numbers (0–9), and underscores (\_). The following variable names are reserved and cannot be used: `FIRST_NAME`, `LAST_NAME`, `EMAIL`, `UNSUBSCRIBE_URL`. Contact placeholders like `{{{contact.first_name}}}` don't work in Templates, so pass the value as a variable instead.
 
 It can contain no more than 50 characters.
 

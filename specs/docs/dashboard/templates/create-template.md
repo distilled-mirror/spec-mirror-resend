@@ -341,6 +341,16 @@ You can turn any sent [Broadcast](https://resend.com/docs/dashboard/broadcasts/i
 
 Locate your desired Broadcast in the [Broadcast dashboard](https://resend.com/broadcasts), click the more options button , and choose **Clone as Template**.
 
+> [!WARNING]
+>
+> Cloning copies contact placeholders like `{{{contact.first_name|there}}}` as
+> they are, but Templates can't read them. Before you publish, replace each one
+> with a [Template variable](https://resend.com/docs/dashboard/templates/template-variables.md) whose name
+> isn't [reserved](https://resend.com/docs/dashboard/templates/template-variables.md#create-custom-variables),
+> such as `USER_FIRST_NAME` instead of `FIRST_NAME`. To fill it from the contact
+> in an Automation, [map it to a contact property in the Send Email
+> step](https://resend.com/docs/dashboard/automations/send-email.md#use-contact-properties-in-a-template).
+
 ## Publish a Template
 
 By default, Templates are in a **draft** state. To use a Template to send emails, you must first **publish** it via the Dashboard, using the [Templates API](https://resend.com/docs/api-reference/templates/publish-template.md), or with a [Templates CLI command](https://resend.com/docs/cli.md#templates).

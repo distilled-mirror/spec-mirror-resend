@@ -8,7 +8,9 @@
 
 Cancelling a run skips its remaining steps. Emails the run already sent stay sent, and the Automation stays enabled. To disable the Automation and cancel all of its runs in progress, [stop the Automation](https://resend.com/docs/api-reference/automations/stop-automation.md) instead.
 
-You can cancel any run that hasn't finished. Cancelling a run that already completed or failed returns a `422` `validation_error`. Cancelling a run that's already cancelled succeeds.
+You can cancel a run that's `running` or `quota_exceeded`. Cancelling a run that's `completed`, `failed`, or `skipped` returns a `422` `validation_error`. Cancelling a run that's already cancelled succeeds and changes nothing.
+
+A cancelled run was stopped on purpose, not by an error. Steps that already finished stay finished, and the remaining steps show as `skipped`. Learn more about [cancelled runs](https://resend.com/docs/dashboard/automations/runs.md#cancelled-runs).
 
 ## Path Parameters
 

@@ -348,7 +348,7 @@ After sending events, you can monitor your Automation executions through Runs. E
 See the [Runs documentation](https://resend.com/docs/dashboard/automations/runs.md) to learn how to:
 
 * View Run statuses and execution details
-* Filter Runs by status (`running`, `completed`, `failed`, `cancelled`)
+* Filter Runs by status (`running`, `completed`, `failed`, `cancelled`, `quota_exceeded`, `skipped`)
 * Debug failed Runs with step-level error information
 * Stop Automation Runs when needed
 
@@ -993,7 +993,7 @@ curl -X GET 'https://api.resend.com/automations/c9b16d4f-ba6c-4e2e-b044-6bf4404e
 resend automations runs list c9b16d4f-ba6c-4e2e-b044-6bf4404e57fd
 ```
 
-You can filter Runs by status (`running`, `completed`, `failed`, `cancelled`).
+You can filter Runs by status (`running`, `completed`, `failed`, `cancelled`, `quota_exceeded`, `skipped`).
 
 See the [Runs documentation](https://resend.com/docs/dashboard/automations/runs.md) and [List Runs API reference](https://resend.com/docs/api-reference/automations/list-automation-runs.md) for more details.
 

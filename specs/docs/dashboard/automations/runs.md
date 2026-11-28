@@ -8,6 +8,8 @@
 
 Every time an event [triggers](https://resend.com/docs/dashboard/automations/trigger.md) an Automation, Resend creates a run.
 
+Each run is for one contact, the one [identified in the event](https://resend.com/docs/dashboard/automations/trigger.md#identifying-contacts). A run needs that contact to keep going. If the contact is deleted while the run is in progress, the run ends as [`skipped`](#skipped-runs).
+
 A run tracks the execution of each step in the workflow, including its status and timing, along with any errors.
 
 ## How it works
@@ -16,15 +18,59 @@ Each run has one of the following statuses:
 
 | Status | Description |
 | - | - |
-| `running` | The Automation is executing steps |
-| `completed` | All steps finished successfully |
-| `failed` | A step encountered an error and the run stopped |
-| `cancelled` | The run was cancelled before completing |
-| `skipped` | A step was skipped because the contact unsubscribed, isn't subscribed to the step's Topic, or followed a different branch path |
+| `running` | The run is still going, including while it waits in a Delay or Wait for event step |
+| `completed` | Every step on the run's path finished |
+| `failed` | A step hit an error it couldn't recover from. Something needs fixing |
+| `cancelled` | The run was stopped on purpose before it finished. See [Cancelled runs](#cancelled-runs) |
+| `quota_exceeded` | The team went over its Automation run quota, so the run is waiting to start |
+| `skipped` | The run ended on its own because it could no longer continue. See [Skipped runs](#skipped-runs) |
+
+In the API, `failed` and `skipped` runs include a `status_reason`, so you can see why a run ended without retrieving it:
+
+| Status | `status_reason` |
+| - | - |
+| `failed` | The error code of the step that failed, such as `missing_variable` |
+| `skipped` | The [skip reason](#skipped-runs), such as `contact_deleted` |
+
+It's `unknown` when the step has no code. Runs with any other status don't include the field.
+
+### Cancelled runs
+
+A `cancelled` run was stopped on purpose, not by an error. Nothing needs fixing.
+
+A run is cancelled when:
+
+* Someone cancels it in the dashboard or with the [Cancel Automation Run API](https://resend.com/docs/api-reference/automations/cancel-automation-run.md).
+* Someone stops the Automation with **Stop now** in the dashboard or with the [Stop Automation API](https://resend.com/docs/api-reference/automations/stop-automation.md). This also cancels its `quota_exceeded` runs. **Stop new runs** lets runs in progress finish instead.
+* The Automation is disabled or deleted while the run is in progress. The run stops when it reaches its next step, so a run waiting in a [Delay](https://resend.com/docs/dashboard/automations/delay.md) shows as `running` until the delay ends.
+
+Steps that already finished stay finished, and emails the run already sent aren't recalled. The remaining steps show as `skipped`.
+
+### Skipped runs
+
+A `skipped` run ended on its own because it could no longer continue. It isn't an error, and nothing needs fixing.
+
+* The step where the run ended shows the reason, and the steps after it are `skipped`.
+* Steps that already finished stay finished, and emails the run already sent aren't recalled.
+* A skipped run has already ended, so it can't be cancelled.
+
+A run is skipped for one of these reasons:
+
+| Reason | Description |
+| - | - |
+| `contact_deleted` | The contact the run was for was deleted while the run was in progress |
+
+When the contact is deleted:
+
+* The run keeps going until it reaches a step that needs the contact, such as **Send Email**, **Update Contact**, or **Add to Segment**. It ends there.
+* **Delay** and **Wait for event** steps don't need the contact, so a run waiting in one shows as `running` until that step ends.
+* If none of the remaining steps need the contact, the run completes as usual.
 
 ### Skipped steps
 
-When a contact unsubscribes, any remaining **Send Email** steps in the Automation will be skipped automatically. A **Send Email** step with a [Topic](https://resend.com/docs/dashboard/automations/send-email.md#send-with-a-topic) is also skipped when the contact isn't subscribed to that Topic. Other step types (such as Delay, Condition, or Update Contact) will still be executed as normal.
+Each step in a run also has its own status, separate from the run's status. A step can be `skipped` while the run keeps going.
+
+A step is skipped when the contact unsubscribed, isn't subscribed to the step's Topic, or followed a different branch path. When a contact unsubscribes, any remaining **Send Email** steps in the Automation are skipped. A **Send Email** step with a [Topic](https://resend.com/docs/dashboard/automations/send-email.md#send-with-a-topic) is also skipped when the contact isn't subscribed to that Topic. Other step types, such as **Delay**, **Condition**, or **Update Contact**, still run as usual.
 
 ## Listing runs
 
@@ -36,7 +82,7 @@ When a contact unsubscribes, any remaining **Send Email** steps in the Automatio
 >
 > Each run shows:
 >
-> * **Status** — Whether the run is `running`, `completed`, `failed`, `cancelled`, or `skipped`.
+> * **Status** — Whether the run is `running`, `completed`, `failed`, `cancelled`, `quota_exceeded`, or `skipped`.
 > * **Started** — When the run began.
 > * **Duration** — When the run finished (if applicable).
 
@@ -601,7 +647,7 @@ View the [Retrieve Automation Run API reference](https://resend.com/docs/api-ref
 
 When a run fails, use the step-level details to identify the issue:
 
-1. **List failed runs:** Filter runs by `status=failed` to find problematic executions.
+1. **List failed runs:** Filter runs by `status=failed` to find problematic executions. Each one has a `status_reason` with the error code of the step that failed.
 2. **Retrieve the run:** Get the full run details including the `steps` array.
 3. **Find the failed step:** Look for the step with a `failed` status.
 4. **Check the error:** The `error` field on the failed step contains details about what went wrong.
@@ -614,7 +660,7 @@ Common failure scenarios:
 
 ## Cancelling a run
 
-Cancel a single run to skip its remaining steps, for example when the same event triggered a duplicate run. Emails the run already sent are not affected, and the Automation stays enabled. A run that already completed or failed can't be cancelled.
+Cancel a single run to skip its remaining steps, for example when the same event triggered a duplicate run. Emails the run already sent are not affected, and the Automation stays enabled. Only a `running` or `quota_exceeded` run can be cancelled, and the dashboard cancels `running` runs only. A run that's `completed`, `failed`, or `skipped` can't be cancelled.
 
 > [tab] Using the dashboard
 >
@@ -745,7 +791,7 @@ View the [Cancel Automation Run API reference](https://resend.com/docs/api-refer
 > >
 > > Stopping an Automation prevents new runs from being created.
 > >
-> > It also cancels the Automation's runs in progress. To cancel a single run instead, see [Cancelling a run](#cancelling-a-run).
+> > It also cancels the Automation's runs in progress and its `quota_exceeded` runs. To cancel a single run instead, see [Cancelling a run](#cancelling-a-run).
 
 View the [Stop Automation API reference](https://resend.com/docs/api-reference/automations/stop-automation.md) for more details.
 

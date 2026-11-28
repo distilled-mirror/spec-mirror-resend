@@ -347,6 +347,34 @@ Use the `variables` field to pass data into your template. Each value is a stati
 
 Template variables must be present in your referenced template and the key names must match exactly with the template variable names.
 
+### Use contact properties in a Template
+
+A Template only reads the variables the step maps. It can't read contact placeholders like `{{{contact.first_name}}}` or `{{{contact.first_name|there}}}`, which work in [Broadcasts](https://resend.com/docs/dashboard/broadcasts/editor.md#personalize-your-content) only. A Template that uses them fails when the step sends it, and the run's `status_reason` is `inline_fallback` or `template_render_failed`.
+
+To greet the contact by name:
+
+1. In the Template, add a [variable](https://resend.com/docs/dashboard/templates/template-variables.md) such as `USER_FIRST_NAME`, with `there` as its fallback value, and write `Hi {{{USER_FIRST_NAME}}}`. Resend uses the fallback when the contact has no first name set.
+2. In the step, map the variable to the contact property:
+
+```json {7-9} theme={"theme":{"light":"github-light","dark":"vesper"}}
+{
+  "key": "welcome",
+  "type": "send_email",
+  "config": {
+    "template": {
+      "id": "044db673-fff6-420f-a566-f6aba05d60e7",
+      "variables": {
+        "USER_FIRST_NAME": { "var": "contact.first_name" }
+      }
+    }
+  }
+}
+```
+
+Built-in properties map as `contact.first_name`, `contact.last_name`, and `contact.email`. A custom property needs the `properties.` prefix: a Broadcast's `{{{contact.company}}}` becomes `{ "var": "contact.properties.company" }`.
+
+Use a variable name that isn't [reserved](https://resend.com/docs/dashboard/templates/template-variables.md#create-custom-variables). `FIRST_NAME` is reserved, which is why the example uses `USER_FIRST_NAME`.
+
 For more help working with variables, see the [Template documentation](https://resend.com/docs/dashboard/templates/template-variables.md).
 
 ## Send with a Topic

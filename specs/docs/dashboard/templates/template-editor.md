@@ -36,4 +36,4 @@ You can also edit individual styles for each component, including the font size,
 
 ## Personalize your content
 
-When creating Templates, you can include dynamic audience data to personalize the email content. Learn more about working with [template variables](https://resend.com/docs/dashboard/templates/template-variables.md).
+Use [Template variables](https://resend.com/docs/dashboard/templates/template-variables.md) to personalize the email content. You pass their values when you send the Template, or an Automation [maps them to contact properties](https://resend.com/docs/dashboard/automations/send-email.md#use-contact-properties-in-a-template). Contact placeholders like `{{{contact.first_name}}}` work in Broadcasts only.

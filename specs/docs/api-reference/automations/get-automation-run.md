@@ -6,6 +6,8 @@
 
 > Retrieve a single automation run.
 
+A `failed` or `skipped` run includes a `status_reason` with the reason behind its status, such as `missing_variable` or `contact_deleted`. Runs with any other status don't include the field. See [run statuses](https://resend.com/docs/dashboard/automations/runs.md#how-it-works).
+
 ## Path Parameters
 
 The Automation ID.

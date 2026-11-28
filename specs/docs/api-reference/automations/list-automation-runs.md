@@ -6,6 +6,8 @@
 
 > Retrieve a list of automation runs.
 
+A `failed` or `skipped` run includes a `status_reason` with the reason behind its status, such as `missing_variable` or `contact_deleted`. Runs with any other status don't include the field. See [run statuses](https://resend.com/docs/dashboard/automations/runs.md#how-it-works).
+
 ## Path Parameters
 
 The Automation ID.
@@ -39,7 +41,8 @@ Cannot be used with the `after` parameter.
 > information.
 
 Filter runs by status. Comma-separated list: `running`, `completed`, `failed`,
-`cancelled`.
+`cancelled`, `quota_exceeded`, `skipped`. See [run
+statuses](https://resend.com/docs/dashboard/automations/runs.md#how-it-works) for what each one means.
 
 ```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
 import { Resend } from 'resend';
@@ -149,6 +152,22 @@ resend automations runs list c9b16d4f-ba6c-4e2e-b044-6bf4404e57fd
       "started_at": "2026-10-01 12:00:00.000000+00",
       "completed_at": "2026-10-01 12:05:00.000000+00",
       "created_at": "2026-10-01 12:00:00.000000+00"
+    },
+    {
+      "id": "c3d4e5f6-a7b8-9012-cdef-123456789012",
+      "status": "failed",
+      "status_reason": "missing_variable",
+      "started_at": "2026-10-01 14:00:00.000000+00",
+      "completed_at": "2026-10-01 14:00:02.000000+00",
+      "created_at": "2026-10-01 14:00:00.000000+00"
+    },
+    {
+      "id": "d4e5f6a7-b8c9-0123-def0-234567890123",
+      "status": "skipped",
+      "status_reason": "contact_deleted",
+      "started_at": "2026-10-01 16:00:00.000000+00",
+      "completed_at": "2026-10-03 16:00:01.000000+00",
+      "created_at": "2026-10-01 16:00:00.000000+00"
     },
     {
       "id": "b2c3d4e5-f6a7-8901-bcde-f12345678901",

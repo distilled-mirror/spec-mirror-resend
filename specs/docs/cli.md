@@ -535,7 +535,7 @@ resend automations runs get --automation-id <id> --run-id <id>  # Retrieve a spe
 
 | Flag | Required | Description |
 | - | - | - |
-| `--status <status>` | No | Filter by status: `running`, `completed`, `failed`, `cancelled` (comma-separated) |
+| `--status <status>` | No | Filter by status: `running`, `completed`, `failed`, `cancelled`, `quota_exceeded`, `skipped` (comma-separated) |
 
 ## Inboxes
 
